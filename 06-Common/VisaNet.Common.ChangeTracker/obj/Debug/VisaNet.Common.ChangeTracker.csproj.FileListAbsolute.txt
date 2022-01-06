@@ -1,0 +1,14 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\bin\Debug\VisaNet.Common.ChangeTracker.dll.config
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\bin\Debug\VisaNet.Common.ChangeTracker.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\bin\Debug\VisaNet.Common.ChangeTracker.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\bin\Debug\EntityFramework.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\bin\Debug\VisaNet.Common.Security.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\bin\Debug\VisaNet.Utilities.Cryptography.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\bin\Debug\VisaNet.Common.Security.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\bin\Debug\EntityFramework.xml
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\bin\Debug\VisaNet.Utilities.Cryptography.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\obj\Debug\VisaNet.Common.ChangeTracker.csprojResolveAssemblyReference.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\obj\Debug\VisaNet.Common.ChangeTracker.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\obj\Debug\VisaNet.Common.ChangeTracker.csproj.CopyComplete
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\obj\Debug\VisaNet.Common.ChangeTracker.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ChangeTracker\obj\Debug\VisaNet.Common.ChangeTracker.pdb

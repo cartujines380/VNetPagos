@@ -1,0 +1,8 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Exceptions\bin\Debug\VisaNet.Common.Exceptions.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Exceptions\bin\Debug\VisaNet.Common.Exceptions.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Exceptions\obj\Debug\VisaNet.Common.Exceptions.csprojResolveAssemblyReference.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Exceptions\obj\Debug\VisaNet.Common.Exceptions.ExceptionMessages.resources
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Exceptions\obj\Debug\VisaNet.Common.Exceptions.csproj.GenerateResource.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Exceptions\obj\Debug\VisaNet.Common.Exceptions.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Exceptions\obj\Debug\VisaNet.Common.Exceptions.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Exceptions\obj\Debug\VisaNet.Common.Exceptions.pdb

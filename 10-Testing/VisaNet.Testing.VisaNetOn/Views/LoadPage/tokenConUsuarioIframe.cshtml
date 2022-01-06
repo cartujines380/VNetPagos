@@ -1,0 +1,45 @@
+﻿@using System.Configuration
+
+<div id="content">
+    <form method="post" id="formIframe" class="" action="@Url.Action("PaginaTokenConUsuarioFirmaIframe", "LoadPage")">
+        @{
+            var random = new Random();
+        }
+
+        <h4>Datos usuario</h4>
+        <label for="IdUsuario">IdUsuario(*)</label>
+        <input type="text" name="IdUsuario" placeholder="IdUsuario" value="IdUsuario" />
+        <br />
+        <br />
+
+        <h4>Datos comercio</h4>
+        <label for="UrlCallback">UrlCallback(*)</label>
+        <input type="text" name="UrlCallback" placeholder="UrlCallback" value="@ConfigurationManager.AppSettings["TestingUrlCallback"]" />
+        <label for="IdOperacion">IdOperacion(*)</label>
+        <input type="text" name="IdOperacion" placeholder="IdOperacion" value="@random.Next(1, 100000000)" />
+        <label for="IdApp">IdApp(*)</label>
+        <input type="text" name="IdApp" placeholder="IdApp" value="@ConfigurationManager.AppSettings["TestingAppId"]" />
+        <br />
+        <br />
+
+        <h4>Referencias</h4>
+        <label for="RefCliente1">Referencia 1</label>
+        <input type="text" name="RefCliente1" placeholder="Referencia 1" value="" />
+        <label for="RefCliente2">Referencia 2</label>
+        <input type="text" name="RefCliente2" placeholder="Referencia 2" value="" />
+        <label for="RefCliente3">Referencia 3</label>
+        <input type="text" name="RefCliente3" placeholder="Referencia 3" value="" />
+        <br />
+        <br />
+        <label for="RefCliente4">Referencia 4</label>
+        <input type="text" name="RefCliente4" placeholder="Referencia 4" value="" />
+        <label for="RefCliente5">Referencia 5</label>
+        <input type="text" name="RefCliente5" placeholder="Referencia 5" value="" />
+        <label for="RefCliente6">Referencia 6</label>
+        <input type="text" name="RefCliente6" placeholder="Referencia 6" value="" />
+        <br />
+        <br />
+
+        <input type="submit" id="enviar" value="TOKEN CON USUARIO" />
+    </form>
+</div>

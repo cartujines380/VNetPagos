@@ -1,0 +1,8 @@
+﻿@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+@Html.LabelFor(s => s.BinGroups)
+<div class="selectMask w100 selectMultiple">
+    @Html.DropDownListFor(x => x.BinGroups, Model.BinGroupsSelectList, Model.IsDetailsView
+        ? new Dictionary<string, object> { { "class", "selectpicker binGroupSelect" }, { "disabled", "disabled" }, { "multiple", "multiple" }, { "data-selected-text-format", "count>3" }, { "data-actions-box", "true" }, { "data-icon-base", "fa" }, { "data-tick-icon", "fa-check" }, { "data-select-all-text", "Todos" }, { "data-deselect-all-text", "Ninguno" }, { "data-none-selected-text", "Ninguno seleccionado" }, { "data-count-selected-text", "Seleccionados {0} de {1}" } }
+        : new Dictionary<string, object> { { "class", "selectpicker binGroupSelect" }, { "multiple", "multiple" }, { "data-selected-text-format", "count>3" }, { "data-actions-box", "true" }, { "data-icon-base", "fa" }, { "data-tick-icon", "fa-check" }, { "data-select-all-text", "Todos" }, { "data-deselect-all-text", "Ninguno" }, { "data-none-selected-text", "Ninguno seleccionado" }, { "data-count-selected-text", "Seleccionados {0} de {1}" } })
+</div>

@@ -1,0 +1,51 @@
+﻿@using System.Configuration
+@model VisaNet.Presentation.VisaNetOn.Models.PageModel
+
+<span class="title-form">Elegí una tarjeta</span>
+<ul id="ulCardList" class="seleccion-tarjeta">
+    @foreach (var card in Model.UserData.CardList)
+    {
+        if (card.Expired)
+        {
+            var venc = card.DueDate.ToString("MM-yyyy") + " (vencida)";
+            <li>
+                @if (!string.IsNullOrEmpty(card.Image))
+                {
+                    <img src="@card.Image" />
+                }
+                else
+                {
+                    <img src="~/images/visa-logo-transparent.png" class="tarjeta">
+                }
+                <div>
+                    <span>@card.MaskedNumber</span><br />
+                    <span class="fecha-vencimiento">Vencimiento:@venc</span>
+                </div>
+                <i class="fa fa-ban" style="color: #b30000"></i>
+            </li>
+            <hr>
+        }
+        else
+        {
+            <li data-cardid="@card.Id" data-cardnumber="@card.MaskedNumber" data-cardquotas="@card.Quotas" onclick="updateSelectedCard(this)">
+                @if (!string.IsNullOrEmpty(card.Image))
+                {
+                    <img src="@card.Image" />
+                }
+                else
+                {
+                    <img src="~/images/visa-logo-transparent.png" class="tarjeta">
+                }
+                <div>
+                    <span>@card.MaskedNumber</span><br />
+                    <span class="fecha-vencimiento">Vencimiento:@card.DueDate.ToString("MM-yyyy")</span>
+                </div>
+                <i class="fa"></i>
+            </li>
+            <hr>
+        }
+    }
+</ul>
+<a href="" id="btnAddNewCard"><i class="fa fa-plus"></i> Agregar una nueva tarjeta</a>
+<br />
+<br />

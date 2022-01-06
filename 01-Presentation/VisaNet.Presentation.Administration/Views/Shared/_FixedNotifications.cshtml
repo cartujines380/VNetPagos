@@ -1,0 +1,53 @@
+﻿@using VisaNet.Domain.EntitiesDtos.Enums
+@using VisaNet.Utilities.Helpers
+@model IEnumerable<VisaNet.Presentation.Administration.Models.FixedNotificationGroup>
+
+<ul class="nav navbar-nav navbar-right ">
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <div class="alert-num">@Model.Count()</div>
+            @if (!Model.Any())
+            {
+                <i class="fa fa-bell-o fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            }
+            else
+            {
+                <i class="fa fa-bell-o fa-fw faa-ring animated"></i>  <i class="fa fa-caret-down"></i>
+            }
+        </a>
+        <ul class="dropdown-menu dropdown-alerts">
+            @for (int i = 0; i < Model.Count() && i < 10; i++)
+            {
+                var notificationGroup = Model.ElementAt(i);
+                var level = notificationGroup.Level == FixedNotificationLevelDto.Warning ? "yellow" : notificationGroup.Level == FixedNotificationLevelDto.Error ? "red" : "green";
+                var span = DateTime.Now - notificationGroup.DateTime;
+                var url = string.IsNullOrEmpty(notificationGroup.QueryString) ? Url.Action("Details", "Notification", new { Id = notificationGroup.Id }) : Url.Action("Index", "Notification", new {description = notificationGroup.Description, from = notificationGroup.DateTime});
+                <li class="@level">
+                    <a href="@url">
+                        <div class="row">
+                            <div class="col-xs-1"><i class="fa fa-comment fa-fw"></i></div>
+                            <div class="col-xs-10" style="overflow: hidden">@notificationGroup.Description</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">Cantidad: @notificationGroup.Count </div>
+                            <div class="col-xs-4 col-sm-offset-4"><span class="pull-right text-muted small">Hace @span.ToSmartString()</span></div>
+                        </div>
+                    </a>
+
+                </li>
+                if (i != Model.Count())
+                {
+                    <li class="divider"></li>
+                }
+            }
+            <li>
+                <a class="text-center" href="@Url.Action("Index", "Notification")">
+                    <strong>Ver todas</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- /.dropdown-alerts -->
+    </li>
+</ul>
+

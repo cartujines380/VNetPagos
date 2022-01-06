@@ -1,0 +1,189 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.VONRegister.Helpers.Html
+@model VisaNet.VONRegister.Models.Register
+<div id="content">
+
+    <ul id="registro" class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#cuenta" aria-controls="cuenta" role="tab" data-toggle="tab"><span>1</span> Tu Cuenta</a></li>
+        <li role="presentation"><a href="#" aria-controls="tarjeta" role="tab" data-toggle="tab"><span>2</span> Tu Tarjeta</a></li>
+        <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa hidden-xs">
+    </ul>
+    <div class="logos-visa visible-xs">
+        <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa-xs">
+        <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="logoVisaNetPagos-xs">
+    </div>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="container-fluid tab-pane active" id="cuenta">
+            <p>Registrate como usuario de VisaNetPagos para realizar tus pagos en @Model.ServiceName.</p>
+            <form class="registro" action="@Url.Action("Register")" method="post" id="cuenta">
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Nombre</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        @Html.TextBoxFor(x => x.Name, new Dictionary<string, object> { { "placeholder", "Nombre" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Apellido</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        @Html.TextBoxFor(x => x.Surname, new Dictionary<string, object> { { "placeholder", "Apellido" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Email</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        @if (Model.EditableEmail)
+                        {
+                            @Html.EmailFor(x => x.Email, new Dictionary<string, object> { { "placeholder", "Email" } })
+                        }
+                        else
+                        {
+                            @Html.EmailFor(x => x.Email, new Dictionary<string, object> { { "placeholder", "Email" }, { "disabled", "disabled" } })
+                            @Html.HiddenFor(x => x.Email)
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Direcci&oacute;n</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        @Html.TextBoxFor(x => x.Address, new Dictionary<string, object> { { "placeholder", "Dirección" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Tel&eacute;fono</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        @Html.TextBoxFor(x => x.Phone, new Dictionary<string, object> { { "placeholder", "Teléfono" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Celular</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        @Html.TextBoxFor(x => x.Mobile, new Dictionary<string, object> { { "placeholder", "Celular" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">C.I.</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        @Html.TextBoxFor(x => x.Identity, new Dictionary<string, object> { { "placeholder", "C.I." } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Contraseña</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        <div class="input-group">
+                            @Html.PasswordFor(x => x.Password, new Dictionary<string, object> { { "placeholder", "Contraseña" }, { "class", "form-control" } })
+                            <div class="input-group-addon">
+                                <div tabindex="-1" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Debe ser alfanumérica y contener al menos 8 caracteres, uno en mayúscula y uno en minúscula.">
+                                    <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        @Html.ValidationMessageFor(x => x.Password)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Repetir contraseña</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        @Html.PasswordFor(x => x.PasswordReEntered, new Dictionary<string, object> { { "placeholder", "Repetir contraseña" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-6 col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        <div class="checkbox">
+                            <label for="@Html.NameFor(x => x.AgreeToTermsVisaNetPagos)">
+                                @Html.CheckBoxFor(x => x.AgreeToTermsVisaNetPagos)
+                                <a href="#" data-target="#myModalVisaNetPagos" data-toggle="modal">Acepto los términos y condiciones de VisaNetPagos</a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                @if (Model.AskUserForReferences)
+                {
+                    @Html.Partial("_ServiceReferences", Model)
+                }
+
+                @if (Model.EditableEmail)
+                {
+                    <a href="@Url.Action("LogIn", "Account")" style="float: right">Ya tengo usuario !!</a>
+                }
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="footer-registro">
+                            <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="hidden-xs hidden-sm">
+                            <div class="actions">
+                                <a class="btn" href="@Url.Action("Cancel", "Home")">Cancelar</a>
+                                <button class="btn siguiente">Siguiente</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @Html.HiddenFor(x => x.AskUserForReferences)
+            </form>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tarjeta">
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        "use strict";
+        var acceptTermsVisa = function () {
+            $('#@Html.IdFor(x => x.AgreeToTermsVisaNetPagos)').click();
+            $('#myModalVisaNetPagos').modal('hide');
+        };
+    </script>
+}
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModalVisaNetPagos">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="titulo">
+                    <h3>@PresentationWebStrings.HighwayAdmission_TermsVisa</h3>
+                    <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa hidden-xs">
+                </div>
+                <div class="logos-visa visible-xs">
+                    <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa-xs">
+                    <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="logoVisaNetPagos-xs">
+                </div>
+                <div class="modal-body">
+                    <p>@Html.Raw(Model.TermsAndConditionsVisa)</p>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="hidden-xs">
+                            <div class="actions">
+                                <a class="btn fLeft" data-dismiss="modal">Cancelar</a>
+                                <button class="btn siguiente" onclick=" acceptTermsVisa() ">Aceptar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>

@@ -1,0 +1,8 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.ExtensionMethods\bin\Debug\VisaNet.Utilities.ExtensionMethods.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.ExtensionMethods\bin\Debug\VisaNet.Utilities.ExtensionMethods.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.ExtensionMethods\obj\Debug\VisaNet.Utilities.ExtensionMethods.csprojResolveAssemblyReference.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.ExtensionMethods\obj\Debug\VisaNet.Utilities.ExtensionMethods.Resources.HelpersStrings.resources
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.ExtensionMethods\obj\Debug\VisaNet.Utilities.ExtensionMethods.csproj.GenerateResource.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.ExtensionMethods\obj\Debug\VisaNet.Utilities.ExtensionMethods.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.ExtensionMethods\obj\Debug\VisaNet.Utilities.ExtensionMethods.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.ExtensionMethods\obj\Debug\VisaNet.Utilities.ExtensionMethods.pdb

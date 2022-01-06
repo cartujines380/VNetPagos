@@ -1,0 +1,41 @@
+﻿@using VisaNet.Common.Resource.Presentation
+<div id="lbConfirmCancelation" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@PresentationAdminStrings.Reports_Email_CancelModal_Title</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Hidden("lbHiddenUrl")
+                @Html.Hidden("lbHiddenId")
+                <p>@PresentationAdminStrings.Reports_Email_CancelModal</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-danger lb-accept" id="lnkCancelAccept">@PresentationAdminStrings.Common_Confirm</a>
+                <a href="#" class="btn lb-cancel" id="lnkDeleteCancel" data-dismiss="modal">@PresentationAdminStrings.Cancel</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    var tr;
+    $(document).ready(function () {
+        $("#lnkCancelAccept").click(function (e) {
+            e.preventDefault();
+            $.post($("#lbHiddenUrl").val(), function (data) {
+                $('#lbConfirmCancelation').modal("hide");
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    ShowNotification(data.Title, data.Message, 'success');
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+                dataTableFilters.fnFilter();
+            }).fail(function() {
+                 window.location.replace('@Url.Action("Index", "Error")');
+            });;
+        });
+    });
+</script>

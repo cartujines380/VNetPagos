@@ -1,0 +1,54 @@
+﻿@using System.Configuration
+@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" type="image/png" href="@Url.Content("~/Content/images/favicon.ico")" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VisaNetPagos - Portal de pagos online para los servicios de Uruguay con su tarjeta VISA</title>
+
+        @*@Styles.Render("~/Content/style")*@
+        @Styles.Render("~/Content/css/style")
+        @Styles.Render("~/Content/font/font-awesome/css/style")
+        @*@Styles.Render("~/Content/font/font-awesome/fonts/style")*@
+    
+        @Scripts.Render("~/Scripts/files")
+        @Scripts.Render("~/Scripts/js/files")
+    
+        <!--[if lt IE 9]>
+            <script src="@Url.Content("~/Scripts/html5shim/html5shim.js")"></script>
+        <![endif]-->
+
+    @*<script src="https://www.google.com/recaptcha/api.js" async defer></script>*@
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <!-- header -->
+                <div class="header p15t p5b">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-6"><a class="brandVisaNet fLeft"></a></div>
+                            <div class="col-xs-6"><a class="brandVisa fRight"></a></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navigationBar visaBlue">
+                <div class="container">
+                    <div class="navbar navbar-default" role="navigation">
+                    </div>
+                </div>
+            </div>
+                        @Html.Partial("_Notifications")
+        <div id="content" style="padding-bottom: 10px">
+                <!-- Area de contenidos -->
+                @RenderBody()
+            </div>
+        </div>  
+                    @Html.Partial("_LoaderFullScreen")
+</body>
+</html>

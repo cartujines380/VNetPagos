@@ -1,0 +1,55 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>VISA</title>
+</head>
+
+<body style="background:#e6eced">
+    <table width="800" border="0" cellspacing="0" cellpadding="0" style="margin:0 auto; background:#ffffff; border: 1px solid #dadada">
+        <tr>
+            <td><img style="right: 0; height: 56px;" src="{HeaderPath}header.png" alt="VISA" /></td>
+        </tr>
+        <tr>
+            <td style="padding-top: 60px;padding-left: 36px;padding-right: 36px;padding-bottom: 5px;font-family: arial;color: #4f9bc9;font-size: 18px;">
+                <strong>@Model.Title </strong>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 10px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;padding-bottom:5px;font-family: arial;color: #858585;font-size: 14px;">
+                @Model.Message
+            </td>
+        </tr>
+
+        @foreach (var result in Model.Results)
+        {
+            <tr style="padding-top: 10px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;padding-bottom:5px;font-family: arial;color: #858585;font-size: 14px;">
+                <td style="padding-left: 36px;font-size: 14px;color:#4f9bc9;padding-bottom:10px;padding-top:10px;font-family: arial;font-weight: bold">
+                    <tr>
+                        <td style="color: #858585;padding-left: 50px;font-size: 14px;padding-bottom:10px;font-family: arial;font-weight: bold">
+                            Archivo: <span style="font-weight:normal"> @result.Key</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="color: #858585;padding-left: 50px;font-size: 14px;padding-bottom:10px;font-family: arial;font-weight: bold">
+                            Resultado: <span style="font-weight:normal"> @result.Value</span>
+                        </td>
+                    </tr>
+                </td>
+            </tr>
+        }
+        
+        <tr>
+            <td style="padding-top: 10px; line-height: 1.4em; padding-left: 36px; padding-right: 36px; padding-bottom: 5px; font-family: arial; color: #858585; font-size: 14px;">
+                <p>Para obtener más información al respecto, consulte los logs del sistema. </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 20px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;padding-bottom: 60px;font-family: arial;color: #858585;font-size: 14px; font-style:italic"></td>
+        </tr>
+        <tr>
+            <td style="background:#75787b; padding-top:10px; padding-left:36px; padding-bottom:10px; padding-right:36px; color:#dadada; font-family:Arial, Helvetica, sans-serif; font-size:12px">Visa portal de pagos © 2014. Todos los derechos reservados.</td>
+        </tr>
+    </table>
+</body>
+</html>

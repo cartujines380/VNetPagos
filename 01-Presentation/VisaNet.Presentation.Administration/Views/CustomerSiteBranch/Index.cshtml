@@ -1,0 +1,176 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.CustomerSite.EntitiesDtos.TableFilters.CustomerSiteBranchFilterDto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Portal de Comercio - Sucursales</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <label>@PresentationAdminStrings.Name</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control w100", @placeholder = "Ingrese un nombre de sucursal", autocomplete = "off" })
+    </div>
+    <div class="col-md-4">
+        <label>@PresentationAdminStrings.CustomerSiteCommerce</label>
+        @Html.DropDownListFor(m => m.CommerceId, (IEnumerable<SelectListItem>)ViewBag.CommercesLigthList, PresentationAdminStrings.Filters_Commerce_Placeholder, new Dictionary<string, object> { { "style", "width: 100%; height: 100%; color:#999" }, { "class", "search_init form-control" } })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-default btn-standar mt10 w100" id="execute">@PresentationAdminStrings.Common_Search</a>
+    </div>
+</div>
+
+<div class="loadingMessaje hidden" id="loaderMessage">
+    <div class="loading">@PresentationAdminStrings.Loading</div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2></h2>
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @PresentationAdminStrings.Name
+                        </th>
+                        <th>Comercio</th>
+                        <th>Ver</th>
+                        <th>Editar</th>
+                        <th>Activo</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@Html.ActionActionLink(Actions.CustomerSiteBranchCreate, "<i class=\"icon-plus\"></i>" + PresentationAdminStrings.Create, new Dictionary<string, object> { { "Class", "btn btn-default" }, { "id", "btnNew" } })
+
+@Html.Partial("_DeleteLightbox")
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var dataTableFilters;
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "Name", "value": $("#@Html.IdFor(m => m.Name)").val() });
+            aoData.push({ "name": "CommerceId", "value": $("#@Html.IdFor(m => m.CommerceId)").val() });
+        }
+
+        function drawTable() {
+            dataTableFilters = applyDatatableExternalFilters($('#table'), null,
+                [
+                    { "mDataProp": "Name" },
+                    {
+                        "sName": "BranchesCount",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '<a href="@Url.Action("IndexWithId", "CustomerSiteCommerce")?commerce=' + oObj.aData.Commerce + '">' + oObj.aData.Commerce + '</a>';
+                        }
+                    },
+                    {
+                        "sName": "Details",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.CustomerSiteBranchDetails, "<i class=\"fa fa-search\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                        }
+                    },
+                    {
+                        "sName": "Edit",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.CustomerSiteBranchEdit, "<i class=\"fa fa-edit\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                        }
+                    },
+                    {
+                        "sName": "Borrar",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            if (oObj.aData.Disabled === '1') {
+                                return '@Html.ActionGridActionLink(Actions.CustomerSiteBranchEnable, "<i class=\"fa fa-toggle-off\"></i>", new Dictionary<string, object> { { "Class", " lnkUnBlock" } })';
+                            }
+                            return '@Html.ActionGridActionLink(Actions.CustomerSiteBranchEnable, "<i class=\"fa fa-toggle-on\"></i>", new Dictionary<string, object> { { "Class", "lnkBlock" } })';
+                        }
+                    },
+                    {
+                        "sName": "Borrar",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.CustomerSiteBranchDelete, "<i class=\"fa fa-trash-o\"></i>", new Dictionary<string, object> { { "Class", "btn-editar lnkDelete" } })';
+                        }
+                    }
+                ],
+                '@Url.Action("AjaxHandler", "CustomerSiteBranch")',
+                externalFilters, null,
+                [[0, "asc"]]
+            );
+        }
+
+        $("#execute").click(function (e) {
+            e.preventDefault();
+            drawTable();
+            dataTableFilters.fnFilter();
+        });
+
+        $('table').on("click", ".lnkDelete", function (e) {
+            if (!$(this).hasClass("disabled")) {
+                e.preventDefault();
+                tr = $(this).parents("tr");
+                var lb = $('#lbConfirmDelete');
+                $("#lbHiddenUrl", lb).val($(this).attr("href"));
+                lb.modal();
+            }
+        });
+
+        function block(obj) {
+            tr = obj.parents("tr");
+            var lb = $('#lbConfirmBlock');
+            var url = obj.attr("href").split('/');
+            $("#lbBlockHiddenUrl", lb).val("CustomerSiteBranch/ChangeState/" + url[url.length - 1]);
+            lb.modal();
+        }
+        $('table').on("click", ".lnkBlock", function (e) {
+            if (!$(this).hasClass("disabled")) {
+                e.preventDefault();
+                $('#ModalTitle').html("Desahbilitar sucursal");
+                block($(this));
+            }
+        });
+
+        $('table').on("click", ".lnkUnBlock", function (e) {
+            if (!$(this).hasClass("disabled")) {
+                e.preventDefault();
+                $('#ModalTitle').html("Habilitar sucursal");
+                block($(this));
+            }
+        });
+
+    });
+
+</script>

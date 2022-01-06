@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessToken_Canceled" xml:space="preserve">
+    <value>El comercio inhabilito el token generado para el pago de facturas. Póngase en contacto con ellos.</value>
+  </data>
+  <data name="FieldApellidoMax" xml:space="preserve">
+    <value>El campo Apellido excede el largo máximo (50).</value>
+  </data>
+  <data name="FieldCIMax" xml:space="preserve">
+    <value>El campo CI excede el largo máximo (50).</value>
+  </data>
+  <data name="FieldConceptoMax" xml:space="preserve">
+    <value>El campo Concepto excede el largo máximo (100).</value>
+  </data>
+  <data name="FieldDireccionMax" xml:space="preserve">
+    <value>El campo Direccion excede el largo máximo (50).</value>
+  </data>
+  <data name="FieldEmailMax" xml:space="preserve">
+    <value>El campo Email excede el largo máximo (50).</value>
+  </data>
+  <data name="FieldFacturaConsFinalMax" xml:space="preserve">
+    <value>El campo FacturaConsFinal excede el largo máximo (1).</value>
+  </data>
+  <data name="FieldFacturaCuotaMax" xml:space="preserve">
+    <value>El campo FacturaCuota excede el largo máximo (1).</value>
+  </data>
+  <data name="FieldFacturaDescripcionMax" xml:space="preserve">
+    <value>El campo FacturaDescripcion excede el largo máximo (100).</value>
+  </data>
+  <data name="FieldFacturaFechaMax" xml:space="preserve">
+    <value>El campo FacturaFecha excede el largo máximo (8).</value>
+  </data>
+  <data name="FieldFacturaIdentificadorMax" xml:space="preserve">
+    <value>El campo FacturaIdentificador excede el largo máximo (100).</value>
+  </data>
+  <data name="FieldFacturaImporteGravadoMax" xml:space="preserve">
+    <value>El campo FacturaImporteGravado excede el largo máximo (12).</value>
+  </data>
+  <data name="FieldFacturaImporteMax" xml:space="preserve">
+    <value>El campo FacturaImporte excede el largo máximo (12).</value>
+  </data>
+  <data name="FieldFacturaMonedaMax" xml:space="preserve">
+    <value>El campo FacturaMoneda excede el largo máximo (1).</value>
+  </data>
+  <data name="FieldIdAppMax" xml:space="preserve">
+    <value>El campo IdApp excede el largo máximo (50).</value>
+  </data>
+  <data name="FieldIdOperacionMax" xml:space="preserve">
+    <value>El campo IdOperacion excede el largo máximo (50).</value>
+  </data>
+  <data name="FieldIdUsuarioMax" xml:space="preserve">
+    <value>El campo IdUsuario excede el largo máximo (36).</value>
+  </data>
+  <data name="FieldImporteMax" xml:space="preserve">
+    <value>El campo Importe excede el largo máximo (12).</value>
+  </data>
+  <data name="FieldMerchantIdMax" xml:space="preserve">
+    <value>El campo MerchantId excede el largo máximo (25).</value>
+  </data>
+  <data name="FieldMovilMax" xml:space="preserve">
+    <value>El campo Movil excede el largo máximo (50).</value>
+  </data>
+  <data name="FieldNombreMax" xml:space="preserve">
+    <value>El campo Nombre excede el largo máximo (50).</value>
+  </data>
+  <data name="FieldOrdenMax" xml:space="preserve">
+    <value>El campo Orden excede el largo máximo (2).</value>
+  </data>
+  <data name="FieldPermiteCambioEmailMax" xml:space="preserve">
+    <value>El campo PermiteCambioEmail excede el largo máximo (1).</value>
+  </data>
+  <data name="FieldPermiteRecordarUsuarioMax" xml:space="preserve">
+    <value>El campo PermiteRecordarUsuario excede el largo máximo (1).</value>
+  </data>
+  <data name="FieldRefCliente1Max" xml:space="preserve">
+    <value>El campo RefCliente1 excede el largo máximo (100).</value>
+  </data>
+  <data name="FieldRefCliente2Max" xml:space="preserve">
+    <value>El campo RefCliente2 excede el largo máximo (100).</value>
+  </data>
+  <data name="FieldRefCliente3Max" xml:space="preserve">
+    <value>El campo RefCliente3 excede el largo máximo (100).</value>
+  </data>
+  <data name="FieldRefCliente4Max" xml:space="preserve">
+    <value>El campo RefCliente4 excede el largo máximo (100).</value>
+  </data>
+  <data name="FieldRefCliente5Max" xml:space="preserve">
+    <value>El campo RefCliente5 excede el largo máximo (100).</value>
+  </data>
+  <data name="FieldRefCliente6Max" xml:space="preserve">
+    <value>El campo RefCliente6 excede el largo máximo (100).</value>
+  </data>
+  <data name="FieldSendEmailMax" xml:space="preserve">
+    <value>El campo SendEmail excede el largo máximo (1).</value>
+  </data>
+  <data name="FieldTelefonoMax" xml:space="preserve">
+    <value>El campo Telefono excede el largo máximo (50).</value>
+  </data>
+  <data name="FieldUrlCallbackMax" xml:space="preserve">
+    <value>El campo UrlCallback excede el largo máximo (255).</value>
+  </data>
+  <data name="RequiredFieldApellido" xml:space="preserve">
+    <value>El campo campo Apellido es requerido.</value>
+  </data>
+  <data name="RequiredFieldDireccion" xml:space="preserve">
+    <value>El campo campo Dirección es requerido.</value>
+  </data>
+  <data name="RequiredFieldEmail" xml:space="preserve">
+    <value>El campo campo Email es requerido.</value>
+  </data>
+  <data name="RequiredFieldFacturaConsFinal" xml:space="preserve">
+    <value>El campo campo FacturaConsFinal es requerido.</value>
+  </data>
+  <data name="RequiredFieldFacturaIdentificador" xml:space="preserve">
+    <value>El campo campo FacturaIdentificador es requerido.</value>
+  </data>
+  <data name="RequiredFieldFacturaImporte" xml:space="preserve">
+    <value>El campo campo FacturaImporte es requerido.</value>
+  </data>
+  <data name="RequiredFieldFacturaMoneda" xml:space="preserve">
+    <value>El campo campo FacturaMoneda es requerido.</value>
+  </data>
+  <data name="RequiredFieldFirmaDigital" xml:space="preserve">
+    <value>El campo campo FirmaDigital es requerido.</value>
+  </data>
+  <data name="RequiredFieldIdApp" xml:space="preserve">
+    <value>El campo campo IdApp es requerido.</value>
+  </data>
+  <data name="RequiredFieldIdOperacion" xml:space="preserve">
+    <value>El campo campo IdOperacion es requerido.</value>
+  </data>
+  <data name="RequiredFieldIdUsuario" xml:space="preserve">
+    <value>El campo campo IdUsuario es requerido.</value>
+  </data>
+  <data name="RequiredFieldMerchantId" xml:space="preserve">
+    <value>El campo campo MerchantId es requerido.</value>
+  </data>
+  <data name="RequiredFieldNombre" xml:space="preserve">
+    <value>El campo campo Nombre es requerido.</value>
+  </data>
+  <data name="RequiredFieldUrlCallback" xml:space="preserve">
+    <value>El campo campo UrlCallback es requerido.</value>
+  </data>
+</root>

@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Presentation.Administration.Models.DiscountModel
+
+<h2>@PresentationAdminStrings.Discount_Details_Title</h2>
+
+<div class="row">
+    <div class="col-md-8 pl0">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.CardTypeId)
+                @Html.TextBox("CardType", EnumHelpers.GetName(typeof(CardTypeDto), Model.CardTypeId, EnumsStrings.ResourceManager), new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.MaximumAmount)
+                @Html.TextBoxFor(s => s.MaximumAmount, new { @class = "form-control", @disabled = "disable" })
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.From)
+                @Html.TextBox("From", Model.From.ToShortDateString(), new { @class = "form-control", @disabled = "disable" })
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.To)
+                @Html.TextBox("To", Model.To.ToShortDateString(), new { @class = "form-control", @disabled = "disable" })
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.Fixed)
+                @Html.TextBoxFor(s => s.Fixed, new { @class = "form-control", @disabled = "disable" })
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.Additional)
+                @Html.TextBoxFor(s => s.Additional, new { @class = "form-control", @disabled = "disable" })
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.DiscountType)
+                @Html.TextBox("DiscountType", EnumHelpers.GetName(typeof(DiscountTypeDto), Model.DiscountType, EnumsStrings.ResourceManager), new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.DiscountLabel)
+                @Html.TextBox("DiscountLabel", EnumHelpers.GetName(typeof(DiscountLabelTypeDto), Model.DiscountLabel, EnumsStrings.ResourceManager), new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <a href="@Url.Action("Index", "Discount")" class="btn btn-default">@PresentationAdminStrings.Back </a>
+    </div>
+</div>
+

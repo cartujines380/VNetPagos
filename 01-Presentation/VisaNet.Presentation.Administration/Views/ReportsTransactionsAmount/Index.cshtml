@@ -1,0 +1,237 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+
+@model VisaNet.Domain.EntitiesDtos.TableFilters.ReportsTransactionsAmountFilterDto
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Reports_Transactions_Amount_Title</h2>
+
+@using (Html.BeginForm("ExcelExport", "ReportsTransactionsAmount", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+{
+    <div class="row">
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.From</label>
+            @Html.EditorFor(m => m.From, new { @class = "w100" })
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationWebStrings.Filters_To</label>
+            @Html.EditorFor(m => m.To, new { @class = "w100" })
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.Reports_Transactions_Parameter</label>
+            <div class="selectMask w100">
+                @Html.DropDownListFor(model => model.Parameter,
+                    EnumHelpers.ConvertToSelectList(typeof(ParameterDto), EnumsStrings.ResourceManager),
+                    new Dictionary<string, object> { { "id", "parameter" }, { "style", "width: 100%; height: 100%; color:#999" }, { "class", "form-control" } })
+            </div>
+        </div>
+        <div id="divDateParameter" class="col-md-3">
+            <label>@PresentationAdminStrings.Reports_Transactions_Date_Parameter</label>
+            <div class="selectMask w100">
+                @Html.DropDownListFor(model => model.DateParameter,
+                    EnumHelpers.ConvertToSelectList(typeof(DateParameterDto), EnumsStrings.ResourceManager),
+                    new Dictionary<string, object> { { "id", "dateParameter" }, { "style", "width: 100%; height: 100%; color:#999" }, { "class", "form-control" } })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.Reports_Transactions_Dimension</label>
+            <div class="selectMask w100">
+                @Html.DropDownListFor(model => model.Dimension,
+                    EnumHelpers.ConvertToSelectList(typeof(DimensionDto), EnumsStrings.ResourceManager),
+                    new Dictionary<string, object> { { "id", "dimension" }, { "style", "width: 100%; height: 100%; color:#999" }, { "class", "form-control" } })
+            </div>
+        </div>
+        <div id="currency" class="col-md-3 hide">
+            <label>@PresentationAdminStrings.Reports_Transactions_Currency</label>
+            <div class="selectMask w100">
+                @Html.DropDownListFor(model => model.Currency,
+                    (from int value in Enum.GetValues(typeof(CurrencyDto))
+                     where value != (int)CurrencyDto.UI
+                     select new SelectListItem
+                     {
+                         Text = EnumHelpers.GetName(typeof(CurrencyDto), value, EnumsStrings.ResourceManager),
+                         Value = value.ToString()
+                     }).ToList(),
+                    new Dictionary<string, object> { { "style", "width: 100%; height: 100%; color:#999" }, { "class", "form-control" } })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.Reports_Transactions_Status</label>
+            <div class="selectMask w100">
+                @Html.DropDownListFor(model => model.TransactionStatus,
+                    EnumHelpers.ConvertToSelectList(typeof(TransactionStatusDto), EnumsStrings.ResourceManager),
+                    new Dictionary<string, object> { { "id", "estado" }, { "style", "width: 100%; height: 100%; color:#999" }, { "class", "form-control" } })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.Reports_Transactions_ExcludeZeros</label>
+            <div class="selectMask w100">
+                @Html.CheckBoxFor(model => model.ExcludeZeros)
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-xs-6 p5l pr0">
+                <a class="btn btn-default btn-standar mt10 w100" id="execute"> @PresentationCoreMessages.Common_Execute</a>
+            </div>
+            <div class="col-xs-6 p5l pr0">
+                <a class="btn btn-default btn-standar mt10 w100" id="export"> @PresentationCoreMessages.Common_Export</a>
+            </div>
+        </div>
+    </div>
+}
+
+<br />
+<div id="chart_div" class="hide"></div>
+
+<br />
+<div id="listado"></div>
+
+<script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+
+    //Gráfica Pie
+    function drawVisualizationPie(data, grafica) {
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+
+        var formatter = new google.visualization.NumberFormat({ pattern: '###,###' });
+
+        for (var i = 1; i < grafica.cols.length; i++) {
+            formatter.format(data, i);
+        }
+
+        var parameter = $("#parameter option:selected").text();
+        var dimension = $("#dimension option:selected").text();
+
+        var title = dimension + " Total de Transacciones por " + parameter;
+
+        chart.draw(data, {
+            title: title,
+            titleTextStyle: { fontSize: 16 },
+            colors: ['#002776', '#92D400', '#00A1DE', '#72C7E7', '#3C8A2E', '#C9DD03', '#7F93BA', '#C8E97F', '#7FD0EE', '#BBE3F3', '#9DC496', '#E4EE81', '#8C8C8C', '#B4B4B4', '#DCDCDC'],
+            width: 870,
+            height: 500,
+            fontSize: 14,
+            chartArea: { left: 150 },
+            pieSliceText: 'value',
+            sliceVisibilityThreshold: 0,
+            legend: { position: 'left' }
+        });
+    }
+
+    //Gráfica de barras (para cuando es por período)
+    function drawVisualizationColumn(data, grafica) {
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+        var formatter = new google.visualization.NumberFormat({ pattern: '###,###' });
+
+        for (var i = 1; i < grafica.cols.length; i++) {
+            formatter.format(data, i);
+        }
+
+        var dateParameter = $("#dateParameter option:selected").text();
+        var dimension = $("#dimension option:selected").text();
+
+        var title = dimension + " Total de Transacciones por " + dateParameter;
+
+        chart.draw(data, {
+            title: title,
+            titleTextStyle: { fontSize: 16 },
+            colors: ['#002776', '#92D400', '#00A1DE', '#72C7E7', '#3C8A2E', '#C9DD03', '#7F93BA', '#C8E97F', '#7FD0EE', '#BBE3F3', '#9DC496', '#E4EE81', '#8C8C8C', '#B4B4B4', '#DCDCDC'],
+            width: data.getNumberOfRows() * 65 > 870 ? data.getNumberOfRows() * 65 : 870,
+            height: 500,
+            fontSize: 14,
+            chartArea: { left: 150 },
+            isStacked: true,
+            bar: { groupWidth: 20 },
+            legend: { position: 'none' }
+        });
+    }
+
+    $(document).ready(function () {
+
+        $("#execute").click(function () {
+            var dataModel = $("#form").serialize();
+            GetTable(dataModel);
+        });
+
+        $("#export").click(function () {
+            $("#form").submit();
+        });
+
+        //si es por período agrego otro parámetro para saber si es por año, mes, etc
+        $("#parameter").click(function () {
+            var isDate = $("#parameter option:selected").val() == '@((int)ParameterDto.Date)';
+            if (isDate) {
+                $("#divDateParameter").removeClass("hide");
+            } else {
+                $("#divDateParameter").addClass("hide");
+            }
+        });
+
+        //si es por cantidad, no muestro la moneda
+        $("#dimension").click(function () {
+            var isCount = $("#dimension option:selected").val() == '@((int)DimensionDto.Count)';
+            if (isCount) {
+                $("#currency").addClass("hide");
+            } else {
+                $("#currency").removeClass("hide");
+            }
+        });
+    });
+
+    function GetTable(dataModel) {
+        var isDate = $("#parameter option:selected").val() == '@((int)ParameterDto.Date)';
+
+        $(document).ajaxComplete(function () { $.unblockUI(); });
+
+        $.ajax({
+            dataType: 'json',
+            type: "POST",
+            url: "@Url.Action("GetTable", "ReportsTransactionsAmount")",
+            data: dataModel,
+            beforeSend: function () {
+                showBlockUI('Procesando...');
+            },
+            success: function (ret) {
+                if (ret.ResponseType == RESPONSE.SUCCESS) {
+                    $("#listado").html(ret.Content);
+
+                    $("#chart_div").removeClass("chart_div_scroll");
+
+                    var grafica = (ret.Chart.Data);
+
+                    if (ret.Chart.Data.cols != null) {
+                        if (grafica.rows.length > 0) {
+                            $("#chart_div").removeClass("hide");
+                            var data = new google.visualization.DataTable(grafica);
+                            if (isDate) {
+                                if (data.getNumberOfRows() * 65 > 870) {
+                                    $("#chart_div").addClass("chart_div_scroll");
+                                }
+                                drawVisualizationColumn(data, grafica);
+                            } else {
+                                drawVisualizationPie(data, grafica);
+                            }
+                        } else {
+                            $("#chart_div").addClass("hide");
+                        }
+                    } else {
+                        $("#chart_div").addClass("hide");
+                    }
+                }
+                if (ret.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(ret.Title, ret.Message, 'error');
+                }
+            }
+        });
+    }
+</script>

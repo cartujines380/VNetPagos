@@ -1,0 +1,6 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ConfigSections\bin\Debug\VisaNet.Common.ConfigSections.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ConfigSections\bin\Debug\VisaNet.Common.ConfigSections.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ConfigSections\obj\Debug\VisaNet.Common.ConfigSections.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ConfigSections\obj\Debug\VisaNet.Common.ConfigSections.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ConfigSections\obj\Debug\VisaNet.Common.ConfigSections.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.ConfigSections\obj\Debug\VisaNet.Common.ConfigSections.csprojResolveAssemblyReference.cache

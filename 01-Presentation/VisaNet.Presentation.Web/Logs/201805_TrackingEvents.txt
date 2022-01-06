@@ -1,0 +1,65 @@
+2018-05-07 16:30:29.568 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-07 16:30:29.590 | Info | PaymentHandlerController - RequestId: 5257250388766937003525
+2018-05-07 16:30:29.590 | Info | reason_code: 100, invalid_fields: ,  req_bill_to_email: fmiranda@hexacta.com
+2018-05-07 16:30:30.673 | Info | AssociateCardToUser - Llega comunicaccion de CS
+2018-05-07 16:30:30.676 | Info | AssociateCardToUser - RequestId: 5257250388766937003525
+2018-05-07 17:03:44.241 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-07 17:03:44.260 | Info | PaymentHandlerController - RequestId: 5257270336746965403529
+2018-05-07 17:03:44.260 | Info | reason_code: 100, invalid_fields: ,  req_bill_to_email: fmiranda@hexacta.com
+2018-05-07 17:03:45.247 | Info | AssociateCardToUser - Llega comunicaccion de CS
+2018-05-07 17:03:45.247 | Info | AssociateCardToUser - RequestId: 5257270336746965403529
+2018-05-07 17:04:29.155 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-07 17:04:29.160 | Info | PaymentHandlerController - RequestId: 5257270786416951803526
+2018-05-07 17:04:29.160 | Info | reason_code: 100, invalid_fields: ,  req_bill_to_email: fmiranda@hexacta.com
+2018-05-07 17:04:29.292 | Info | AssociateCardToUser - Llega comunicaccion de CS
+2018-05-07 17:04:29.292 | Info | AssociateCardToUser - RequestId: 5257270786416951803526
+2018-05-07 17:06:06.873 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-07 17:06:06.873 | Info | PaymentHandlerController - RequestId: 5257271762846958603523
+2018-05-07 17:06:06.880 | Info | reason_code: 100, invalid_fields: ,  req_bill_to_email: fmiranda@hexacta.com
+2018-05-07 17:06:07.014 | Info | AssociateCardToUser - Llega comunicaccion de CS
+2018-05-07 17:06:07.014 | Info | AssociateCardToUser - RequestId: 5257271762846958603523
+2018-05-15 14:45:25.765 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-15 14:45:25.765 | Info | PaymentHandlerController - RequestId: 5264099469586326204104
+2018-05-15 14:45:25.785 | Info | reason_code: 100, invalid_fields: ,  req_bill_to_email: fmiranda@hexacta.com
+2018-05-15 14:45:26.774 | Info | AssociateCardToUser - Llega comunicaccion de CS
+2018-05-15 14:45:26.780 | Info | AssociateCardToUser - RequestId: 5264099469586326204104
+2018-05-15 14:46:12.413 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-15 14:46:12.413 | Info | PaymentHandlerController - RequestId: 5264099937986277304106
+2018-05-15 14:46:12.421 | Info | reason_code: 100, invalid_fields: ,  req_bill_to_email: fmiranda@hexacta.com
+2018-05-15 14:46:12.539 | Info | AssociateCardToUser - Llega comunicaccion de CS
+2018-05-15 14:46:12.539 | Info | AssociateCardToUser - RequestId: 5264099937986277304106
+2018-05-15 14:46:52.213 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-15 14:46:52.217 | Info | PaymentHandlerController - RequestId: 5264100335916316404101
+2018-05-15 14:46:52.217 | Info | reason_code: 100, invalid_fields: ,  req_bill_to_email: fmiranda@hexacta.com
+2018-05-15 14:46:52.327 | Info | AssociateCardToUser - Llega comunicaccion de CS
+2018-05-15 14:46:52.327 | Info | AssociateCardToUser - RequestId: 5264100335916316404101
+2018-05-18 13:44:07.051 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-18 13:44:07.072 | Info | PaymentHandlerController - RequestId: 5266654728096294904102
+2018-05-18 13:44:07.078 | Info | reason_code: 100, invalid_fields: ,  req_bill_to_email: fmiranda@hexacta.com
+2018-05-18 13:44:10.459 | Info | AssociateCardToUser - Llega comunicaccion de CS
+2018-05-18 13:44:10.459 | Info | AssociateCardToUser - RequestId: 5266654728096294904102
+2018-05-18 13:46:09.377 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-18 13:46:09.377 | Info | PaymentHandlerController - RequestId: 5266655950836299704106
+2018-05-18 13:46:09.389 | Info | reason_code: 100, invalid_fields: ,  req_bill_to_email: fmiranda@hexacta.com
+2018-05-18 13:46:09.940 | Info | AssociateCardToUser - Llega comunicaccion de CS
+2018-05-18 13:46:09.940 | Info | AssociateCardToUser - RequestId: 5266655950836299704106
+2018-05-29 09:22:02.262 | Info | Metodo CheckPaymentModel - Llamada
+2018-05-29 09:22:02.281 | Info | Metodo CheckPaymentModel - Hay un pago en sesion. Devuelvo 1
+2018-05-29 09:22:07.388 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-29 09:22:07.388 | Info | PaymentHandlerController - RequestId: 
+2018-05-29 09:22:07.388 | Info | reason_code: 102, invalid_fields: payment_token,  req_bill_to_email: 
+2018-05-29 09:23:32.529 | Info | Metodo CheckPaymentModel - Llamada
+2018-05-29 09:23:32.529 | Info | Metodo CheckPaymentModel - Hay un pago en sesion. Devuelvo 1
+2018-05-29 09:23:35.494 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-29 09:23:35.498 | Info | PaymentHandlerController - RequestId: 5276002158336080604107
+2018-05-29 09:23:35.498 | Info | reason_code: 100, invalid_fields: ,  req_bill_to_email: fmiranda@hexacta.com
+2018-05-29 09:27:47.333 | Info | Metodo CheckPaymentModel - Llamada
+2018-05-29 09:27:47.333 | Info | Metodo CheckPaymentModel - Hay un pago en sesion. Devuelvo 1
+2018-05-29 09:27:50.214 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-29 09:27:50.223 | Info | PaymentHandlerController - RequestId: 5276004709246078804102
+2018-05-29 09:27:50.223 | Info | reason_code: 100, invalid_fields: ,  req_bill_to_email: fmiranda@hexacta.com
+2018-05-29 09:40:46.354 | Info | Metodo CheckPaymentModel - Llamada
+2018-05-29 09:40:46.360 | Info | Metodo CheckPaymentModel - Hay un pago en sesion. Devuelvo 1
+2018-05-29 09:40:50.179 | Info | PaymentHandlerController - Llega comunicaccion de CS
+2018-05-29 09:40:50.183 | Info | PaymentHandlerController - RequestId: 5276012508766063404106
+2018-05-29 09:40:50.183 | Info | reason_code: 100, invalid_fields: ,  req_bill_to_email: fmiranda@hexacta.com

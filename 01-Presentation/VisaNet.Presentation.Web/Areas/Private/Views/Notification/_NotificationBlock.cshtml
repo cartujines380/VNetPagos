@@ -1,0 +1,53 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+@using VisaNet.Utilities.Exportation.ExtensionMethods
+@model VisaNet.Presentation.Web.Areas.Private.Models.NotificationModel
+
+<div class="itemBox notificationItem">
+    <div class="row">
+        <div class="col-xs-2 notificationActions">
+            <ul>
+                <li>
+                    @if (Model.NotificationPrupose == NotificationPruposeDto.AlertNotification)
+                    {
+                        <i class='icon-warning-sign'></i>
+                    }
+                    @if (Model.NotificationPrupose == NotificationPruposeDto.ErrorNotification)
+                    {
+                        <i class='icon-minus-sign'></i>
+                    }
+                    @if (Model.NotificationPrupose == NotificationPruposeDto.SueccessNotification)
+                    {
+                        <i class='icon-ok'></i>
+                    }
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-10 notificationDetail">
+            <ul>
+                @if (Model.NotificationPrupose == NotificationPruposeDto.AlertNotification)
+                {
+                    <li class="query warning"><i class="icon-warning-sign"></i> Advertencia</li>
+                }
+                @if (Model.NotificationPrupose == NotificationPruposeDto.ErrorNotification)
+                {
+                    <li class="query wrong"><i class="icon-minus-sign"></i> Se produjo un error</li>
+                }
+                @if (Model.NotificationPrupose == NotificationPruposeDto.SueccessNotification)
+                {
+                    <li class="query ok"><i class="icon-ok"></i> Pago exitoso</li>
+                }
+                <li>
+                    <span class="titleCard">@Model.ServiceName </span>
+                    @* ¡VER! muestra la descripcion del Servicio y no del Servicio Asociado *@
+                    @*<span class="shortDescription" title="@Model.ServiceDesc">
+                        @(string.IsNullOrEmpty(Model.ServiceDesc) ? string.Empty : " - " + @Model.ServiceDesc.Short(45))
+                    </span>*@
+                </li>
+                <li><span class="bold">@PresentationWebStrings.Date:</span> @Model.Date.ToString("dd/MM/yyyy")</li>
+                <li><span class="bold">Estado:</span> @Model.Message</li>
+                <li><span class="bold">E-mail:</span> @Model.RegisteredUserEmail</li>
+            </ul>
+        </div>
+    </div>
+</div>

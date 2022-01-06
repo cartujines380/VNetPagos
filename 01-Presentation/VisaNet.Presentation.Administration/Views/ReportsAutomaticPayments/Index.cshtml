@@ -1,0 +1,158 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Domain.EntitiesDtos.TableFilters.ReportsAutomaticPaymentsFilterDto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Reports_AutomaticPayments_Title</h2>
+
+@using (Html.BeginForm("ExcelExport", "ReportsAutomaticPayments", FormMethod.Post, new { id = "frmExcel", autocomplete = "off" }))
+{
+    <div class="row">
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.CreationDateFrom</label>
+            @Html.EditorFor(m => m.CreationDateFrom, new { @class = "form-control w100" })
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.CreationDateTo</label>
+            @Html.EditorFor(m => m.CreationDateTo, new { @class = "form-control w100" })
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.Filters_Email</label>
+            @if (Model != null && Model.ServiceAssociatedId != default(Guid))
+            {
+                @Html.TextBoxFor(m => m.ClientEmail, new { @class = "form-control w100", @disabled = "disabled" })
+            }
+            else
+            {
+                @Html.TextBoxFor(m => m.ClientEmail, new { @class = "form-control w100", placeholder = "Ingrese el correo electrónico a buscar" })
+            }
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.Filters_ServiceAssociated (Nombre - Descripci&oacute;n)</label>
+            @if (Model != null && Model.ServiceAssociatedId != default(Guid))
+            {
+                @Html.TextBoxFor(m => m.ServiceNameAndDesc, new { @class = "form-control w100", @disabled = "disabled" })
+            }
+            else
+            {
+                @Html.TextBoxFor(m => m.ServiceNameAndDesc, new { @class = "form-control w100", placeholder = "Ingrese el nombre servicio - descripción a buscar" })
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <a class="btn btn-default btn-standar mt10 w100" id="execute">@PresentationAdminStrings.Common_Search</a>
+        </div>
+
+        <div class="col-md-2">
+            <input class="btn btn-default btn-standar mt10 w100" type="submit" formnovalidate value="@PresentationCoreMessages.Common_Export">
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2></h2>
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            Usuario
+                        </th>
+                        <th>
+                            Servicio asociado
+                        </th>
+                        <th>
+                            Monto m&aacute;ximo
+                        </th>
+                        <th>
+                            D&iacute;as previo venc.
+                        </th>
+                        <th>
+                            Cuotas
+                        </th>
+                        <th>
+                            Sucive anual
+                        </th>
+                        <th>
+                            Cant. pagos realizados
+                        </th>
+                        @*<th>
+                                Total pagado
+                            </th>*@
+                        <th>
+                            Total pagos en pesos
+                        </th>
+                        <th>
+                            Total pagos en dolares
+                        </th>
+                        <th>
+                            Fecha de creaci&oacute;n
+                        </th>
+                        @*<th>
+                                Fecha de modificaci&oacute;n
+                            </th>*@
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var dataTableFilters;
+
+    $(document).ready(function () {
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "CreationDateFrom", "value": $("#@Html.IdFor(m => m.CreationDateFrom)").val() });
+            aoData.push({ "name": "CreationDateTo", "value": $("#@Html.IdFor(m => m.CreationDateTo)").val() });
+            aoData.push({ "name": "ClientEmail", "value": $("#@Html.IdFor(m => m.ClientEmail)").val() });
+            aoData.push({ "name": "ServiceNameAndDesc", "value": $("#@Html.IdFor(m => m.ServiceNameAndDesc)").val() });
+        }
+
+        function drawTable() {
+            dataTableFilters = applyDatatableExternalFilters($('#table'),
+                null,
+                [
+                    { "mDataProp": "ClientEmail" },
+                    { "mDataProp": "ServiceNameAndDesc" },
+                    { "mDataProp": "Maximum" },
+                    { "mDataProp": "DaysBeforeDueDate" },
+                    { "mDataProp": "Quotas" },
+                    { "mDataProp": "SuciveAnnualPatent" },
+                    {
+                        "mDataProp": "PaymentsCount",
+                        "fnRender": function (a) {
+                            if (a.aData.PaymentsCount != 0) {
+                                return "<a target='_blank' href='@Url.Action("Index", "ReportsTransactions")?Email=" + a.aData.ClientEmail + "&ServiceAssociatedId=" + a.aData.ServiceAssociatedId + "&ServiceNameAndDesc=" + a.aData.ServiceNameAndDesc + "&PaymentType=" + 3 + "'>" + a.aData.PaymentsCount + "</a>";
+                            } else {
+                                return a.aData.PaymentsCount;
+                            }
+                        }
+                    },
+                    //{ "mDataProp": "PaymentsAmount" },
+                    { "mDataProp": "PaymentsAmountPesos" },
+                    { "mDataProp": "PaymentsAmountDollars" },
+                    { "mDataProp": "CreationDate" }
+                    //{ "mDataProp": "LastModificationDate" }
+                ],
+                '@Url.Action("AjaxHandler", "ReportsAutomaticPayments")',
+                externalFilters,
+                [[0, "asc"]]);
+        }
+
+        $("#execute").click(function (e) {
+            e.preventDefault();
+            drawTable();
+            dataTableFilters.fnFilter();
+        });
+
+    });
+
+</script>

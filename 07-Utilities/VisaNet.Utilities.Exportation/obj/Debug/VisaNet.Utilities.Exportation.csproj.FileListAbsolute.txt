@@ -1,0 +1,9 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Exportation\bin\Debug\VisaNet.Utilities.Exportation.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Exportation\bin\Debug\VisaNet.Utilities.Exportation.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Exportation\bin\Debug\EPPlus.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Exportation\bin\Debug\EPPlus.xml
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Exportation\obj\Debug\VisaNet.Utilities.Exportation.csprojResolveAssemblyReference.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Exportation\obj\Debug\VisaNet.Utilities.Exportation.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Exportation\obj\Debug\VisaNet.Utilities.Exportation.csproj.CopyComplete
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Exportation\obj\Debug\VisaNet.Utilities.Exportation.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Exportation\obj\Debug\VisaNet.Utilities.Exportation.pdb

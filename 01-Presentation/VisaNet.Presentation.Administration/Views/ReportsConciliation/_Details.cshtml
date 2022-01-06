@@ -1,0 +1,410 @@
+﻿@using System.Globalization
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.Entities.Enums
+@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Presentation.Administration.Models.ConciliationSummaryModel
+
+<div id="lbDetails" class="modal fade">
+    <div class="modal-dialog" style="width: 70%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>@PresentationAdminStrings.Reports_Conciliation_Details</h4>
+            </div>
+            <div class="modal-header">
+                <h4>@PresentationAdminStrings.Transaction_type</h4>
+                @if (Model.TransactionType == TransactionType.Refund)
+                {
+                    @PresentationAdminStrings.Transaction_Refund
+                }
+                @if (Model.TransactionType == TransactionType.Payment)
+                {
+                    @PresentationAdminStrings.Transaction_Payment
+                }
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id" name="id" value="@Model.ConciliationSummaryId" />
+                @if (Model.ConciliationType == ConciliationTypeDto.Complete)
+                {
+                    <input type="hidden" name="gateway" value="@false" />
+                }
+                <table class="table table-striped table-bordered table-hover tablesorter">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%">@PresentationAdminStrings.Reports_Conciliation_Table</th>
+                            <th style="width: 10%">@PresentationAdminStrings.Reports_Conciliation_TransactionNumber</th>
+                            <th style="width: 15%">@PresentationAdminStrings.Reports_Conciliation_Date</th>
+                            <th style="width: 10%">@PresentationAdminStrings.Reports_Conciliation_Currency</th>
+                            @if (Model.ConciliationType == ConciliationTypeDto.Complete)
+                            {
+                                <th style="width: 10%">@PresentationAdminStrings.Reports_Conciliation_AmountTotal</th>
+                                <th style="width: 10%">@PresentationAdminStrings.Reports_Conciliation_AmountWithDiscount</th>
+                            }
+                            else
+                            {
+                                <th style="width: 10%">@PresentationAdminStrings.Reports_Conciliation_Amount</th>
+                            }
+                            <th style="width: 10%">@PresentationAdminStrings.Reports_Conciliation_Check</th>
+                            <th style="width: 10%">ESTADO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @*PORTAL ROW*@
+                        <tr>
+                            <td style="width: 10%">@PresentationAdminStrings.Reports_Conciliation_Portal</td>
+                            @if (Model.Payment != null)
+                            {
+                                <td style="width: 10%">@Model.Payment.TransactionNumber</td>
+                                <td style="width: 15%">@Model.Payment.Date.ToString("G")</td>
+                                <td style="width: 10%">@Model.Payment.Bills.FirstOrDefault().Currency</td>
+                                <td style="width: 10%">@Model.Payment.Bills.FirstOrDefault().Amount.ToString("##.00")</td>
+                                <td style="width: 10%">
+                                    @(Model.Payment.AmountTocybersource != 0 && Model.Payment.Bills.FirstOrDefault().Amount != Model.Payment.AmountTocybersource ?
+                                          Model.Payment.AmountTocybersource.ToString() : "")
+                                </td>
+                            }
+                            else
+                            {
+                                <td style="width: 10%">@(Model.Log != null ? Model.Log.LogPaymentCyberSource.CyberSourceLogData.TransactionId : "")</td>
+                                <td style="width: 15%">@(Model.Log != null ? Model.Log.LogPaymentCyberSource.TransactionDateTime.ToString("G") : "")</td>
+                                <td style="width: 10%">@(Model.Log != null ? Model.Log.LogPaymentCyberSource.CyberSourceLogData.ReqCurrency : "")</td>
+                                if (Model.ConciliationType == ConciliationTypeDto.Complete)
+                                {
+                                    <td style="width: 10%"></td>
+                                    <td style="width: 10%"></td>
+                                }
+                                else
+                                {
+                                    <td style="width: 10%">
+                                        @(Model.Log != null ? !String.IsNullOrEmpty(Model.Log.LogPaymentCyberSource.CyberSourceLogData.ReqAmount) ?
+                                              Double.Parse(Model.Log.LogPaymentCyberSource.CyberSourceLogData.ReqAmount, CultureInfo.InvariantCulture).ToString() :
+                                              !String.IsNullOrEmpty(Model.Log.LogPaymentCyberSource.CyberSourceLogData.AuthAmount) ?
+                                                  Double.Parse(Model.Log.LogPaymentCyberSource.CyberSourceLogData.AuthAmount, CultureInfo.InvariantCulture).ToString() : "" : "")
+                                    </td>
+                                }
+                            }
+                            @if (Model.PortalState != ConciliationStateDto.Ok && Model.PortalState != ConciliationStateDto.DoesNotApply && Model.PortalState != ConciliationStateDto.Checked)
+                            {
+                                <td class="column-icon">@Html.CheckBox("portalCheckState", Model.CybersourceState == ConciliationStateDto.Checked)</td>
+                            }
+                            else
+                            {
+                                <td style="width: 10%"></td>
+                            }
+                            <td class="column-icon">
+                                @if (Model.PortalState == ConciliationStateDto.Ok)
+                                {
+                                    <div class="greenCircle no-pointer"></div>
+                                }
+                                @if (Model.PortalState == ConciliationStateDto.Difference)
+                                {
+                                    <div class="yellowCircle no-pointer"></div>
+                                }
+                                @if (Model.PortalState == ConciliationStateDto.NotFound)
+                                {
+                                    <div class="redCircle no-pointer"></div>
+                                }
+                                @if (Model.PortalState == ConciliationStateDto.Checked)
+                                {
+                                    <div class="blueCircle no-pointer"></div>
+                                }
+                                @if (Model.PortalState == ConciliationStateDto.DoesNotApply)
+                                {
+                                    <div class="greyCircle no-pointer"></div>
+                                }
+                            </td>
+                        </tr>
+
+                        @*CYBERSOURCE ROW*@
+                        <tr>
+                            <td style="width: 10%">Cybersource</td>
+                            <td style="width: 10%">@(Model.ConciliationCybersource != null ? Model.ConciliationCybersource.RequestId : "")</td>
+                            <td style="width: 10%">@(Model.ConciliationCybersource != null ? Model.ConciliationCybersource.Date.ToString("G") : "")</td>
+                            <td style="width: 10%">@(Model.ConciliationCybersource != null ? Model.ConciliationCybersource.Currency : "")</td>
+                            @if (Model.ConciliationType == ConciliationTypeDto.Complete)
+                            {
+                                <td style="width: 10%">
+                                    @(Model.ConciliationCybersource != null ?
+                                          Model.Payment.Bills.FirstOrDefault().Amount == Model.ConciliationCybersource.Amount ?
+                                              Model.ConciliationCybersource.Amount.ToString("##.00") : "" : "")
+                                </td>
+                                <td style="width: 10%">
+                                    @(Model.ConciliationCybersource != null ?
+                                          Model.Payment.Bills.FirstOrDefault().Amount != Model.ConciliationCybersource.Amount ?
+                                              Model.ConciliationCybersource.Amount.ToString("##.00") : "" : "")
+                                </td>
+                            }
+                            else
+                            {
+                                <td style="width: 10%">@(Model.ConciliationCybersource != null ? Model.ConciliationCybersource.Amount.ToString("##.00") : "")</td>
+                            }
+                            @if (Model.CybersourceState != ConciliationStateDto.Ok && Model.CybersourceState != ConciliationStateDto.DoesNotApply && Model.CybersourceState != ConciliationStateDto.Checked)
+                            {
+                                <td class="column-icon">@Html.CheckBox("cybersourceCheckState", Model.CybersourceState == ConciliationStateDto.Checked)</td>
+                            }
+                            else
+                            {
+                                <td style="width: 10%"></td>
+                            }
+                            <td class="column-icon">
+                                @if (Model.CybersourceState == ConciliationStateDto.Ok)
+                                {
+                                    <div class="greenCircle no-pointer"></div>
+                                }
+                                @if (Model.CybersourceState == ConciliationStateDto.Difference)
+                                {
+                                    <div class="yellowCircle no-pointer"></div>
+                                }
+                                @if (Model.CybersourceState == ConciliationStateDto.NotFound)
+                                {
+                                    <div class="redCircle no-pointer"></div>
+                                }
+                                @if (Model.CybersourceState == ConciliationStateDto.Checked)
+                                {
+                                    <div class="blueCircle no-pointer"></div>
+                                }
+                                @if (Model.CybersourceState == ConciliationStateDto.DoesNotApply)
+                                {
+                                    <div class="greyCircle no-pointer"></div>
+                                }
+                            </td>
+                        </tr>
+
+                        @*GATEWAY ROW*@
+                        <tr>
+                            @if (Model.ConciliationBanred != null)
+                            {
+                                <td style="width: 10%">Banred</td>
+                                <td style="width: 10%">@Model.ConciliationBanred.VisaTransactionId.ToString()</td>
+                                <td style="width: 10%">@Model.ConciliationBanred.Date.ToString("G")</td>
+                                <td style="width: 10%">@Model.ConciliationBanred.Currency</td>
+                                <td style="width: 10%">@Model.ConciliationBanred.Amount.ToString("##.00")</td>
+                            }
+                            else
+                            {
+                                if (Model.ConciliationSistarbanc != null)
+                                {
+                                    <td style="width: 10%">Sistarbanc</td>
+                                    <td style="width: 10%">@Model.ConciliationSistarbanc.VisaTransactionId.ToString()</td>
+                                    <td style="width: 10%">@Model.ConciliationSistarbanc.Date.ToString("G")</td>
+                                    <td style="width: 10%">@Model.ConciliationSistarbanc.Currency</td>
+                                    <td style="width: 10%">@Model.ConciliationSistarbanc.Amount.ToString("##.00")</td>
+                                }
+                                else
+                                {
+                                    if (Model.ConciliationSucive != null)
+                                    {
+                                        <td style="width: 10%">Sucive</td>
+                                        <td style="width: 10%">@Model.ConciliationSucive.BillExternalId.ToString()</td>
+                                        <td style="width: 10%">@Model.ConciliationSucive.Date.ToString("G")</td>
+                                        <td style="width: 10%">@Model.ConciliationSucive.Currency</td>
+                                        <td style="width: 10%">@Model.ConciliationSucive.Amount.ToString("##.00")</td>
+                                    }
+                                    else
+                                    {
+                                        <td style="width: 10%">@Model.ConciliationSummeryGatewayName</td>
+                                        <td style="width: 10%"></td>
+                                        <td style="width: 10%"></td>
+                                        <td style="width: 10%"></td>
+                                        <td style="width: 10%"></td>
+                                    }
+                                }
+                            }
+                            @if (Model.ConciliationType == ConciliationTypeDto.Complete)
+                            {
+                                <td style="width: 10%"></td>
+                            }
+                            @if (Model.GatewayState != ConciliationStateDto.Ok && Model.GatewayState != ConciliationStateDto.DoesNotApply && Model.GatewayState != ConciliationStateDto.Checked)
+                            {
+                                <td class="column-icon">@Html.CheckBox("gatewayCheckState", Model.CybersourceState == ConciliationStateDto.Checked)</td>
+                            }
+                            else
+                            {
+                                <td style="width: 10%"></td>
+                            }
+                            <td class="column-icon">
+                                @if (Model.GatewayState == ConciliationStateDto.Ok)
+                                {
+                                    <div class="greenCircle no-pointer"></div>
+                                }
+                                @if (Model.GatewayState == ConciliationStateDto.Difference)
+                                {
+                                    <div class="yellowCircle no-pointer"></div>
+                                }
+                                @if (Model.GatewayState == ConciliationStateDto.NotFound)
+                                {
+                                    <div class="redCircle no-pointer"></div>
+                                }
+                                @if (Model.GatewayState == ConciliationStateDto.Checked)
+                                {
+                                    <div class="blueCircle no-pointer"></div>
+                                }
+                                @if (Model.GatewayState == ConciliationStateDto.DoesNotApply)
+                                {
+                                    <div class="greyCircle no-pointer"></div>
+                                }
+                            </td>
+                        </tr>
+
+                        @*@if (Model.TransactionType != TransactionType.Void && Model.TransactionType != TransactionType.Reverse)
+                            {*@
+                        @*TC33 ROW*@
+                        <tr>
+                            <td style="width: 10%">TC33</td>
+                            <td style="width: 10%">@(Model.ConciliationVisanet != null ? Model.ConciliationVisanet.RequestId : "")</td>
+                            <td style="width: 10%">@(Model.ConciliationVisanet != null ? Model.ConciliationVisanet.Date.ToString("G") : "")</td>
+                            <td style="width: 10%">@(Model.ConciliationVisanet != null ? Model.ConciliationVisanet.Currency : "")</td>
+                            @if (Model.ConciliationType == ConciliationTypeDto.Complete)
+                            {
+                                <td style="width: 10%">
+                                    @(Model.ConciliationVisanet != null && Model.Payment != null && Model.Payment.Bills != null && Model.Payment.Bills.Any() ?
+                                              Model.Payment.Bills.FirstOrDefault().Amount == Model.ConciliationVisanet.Amount ?
+                                                  Model.ConciliationVisanet.Amount.ToString("##.00") : "" : "")
+                                </td>
+                                <td style="width: 10%">
+                                    @(Model.ConciliationVisanet != null && Model.Payment != null && Model.Payment.Bills != null && Model.Payment.Bills.Any() ?
+                                              Model.Payment.Bills.FirstOrDefault().Amount != Model.ConciliationVisanet.Amount ?
+                                                  Model.ConciliationVisanet.Amount.ToString("##.00") : "" : "")
+                                </td>
+                            }
+                            else
+                            {
+                                <td style="width: 10%">@(Model.ConciliationVisanet != null ? Model.ConciliationVisanet.Amount.ToString("##.00") : "")</td>
+                            }
+
+                            @if (Model.VisanetState != ConciliationStateDto.Ok && Model.VisanetState != ConciliationStateDto.DoesNotApply && Model.VisanetState != ConciliationStateDto.Checked)
+                            {
+                                <td class="column-icon">@Html.CheckBox("visanetCheckState", Model.CybersourceState == ConciliationStateDto.Checked)</td>
+                            }
+                            else
+                            {
+                                <td style="width: 10%"></td>
+                            }
+                            <td class="column-icon">
+                                @if (Model.VisanetState == ConciliationStateDto.Ok)
+                                {
+                                    <div class="greenCircle no-pointer"></div>
+                                }
+                                @if (Model.VisanetState == ConciliationStateDto.Difference)
+                                {
+                                    <div class="yellowCircle no-pointer"></div>
+                                }
+                                @if (Model.VisanetState == ConciliationStateDto.NotFound)
+                                {
+                                    <div class="redCircle no-pointer"></div>
+                                }
+                                @if (Model.VisanetState == ConciliationStateDto.Checked)
+                                {
+                                    <div class="blueCircle no-pointer"></div>
+                                }
+                                @if (Model.VisanetState == ConciliationStateDto.DoesNotApply)
+                                {
+                                    <div class="greyCircle no-pointer"></div>
+                                }
+                            </td>
+                        </tr>
+                        @* } *@
+
+                        @*BATCH ROW*@
+                        <tr>
+                            <td style="width: 10%">Batch</td>
+                            <td style="width: 10%">@(Model.ConciliationVisanetCallback != null ? Model.ConciliationVisanetCallback.CyberSourceId : "")</td>
+                            <td style="width: 10%">@(Model.ConciliationVisanetCallback != null ? Model.ConciliationVisanetCallback.RegisterDate.ToString("G") : "")</td>
+                            <td style="width: 10%">@(Model.ConciliationVisanetCallback != null ? Model.ConciliationVisanetCallback.Currency : "")</td>
+                            @if (Model.ConciliationType == ConciliationTypeDto.Complete)
+                            {
+                                <td style="width: 10%">
+                                    @(Model.ConciliationVisanetCallback != null ? Model.ConciliationVisanetCallback.Amount.ToString("##.00") : "")
+                                </td>
+                                <td style="width: 10%">
+                                    @(Model.ConciliationVisanetCallback != null ? Model.ConciliationVisanetCallback.Amount.ToString("##.00") : "")
+                                </td>
+                            }
+                            else
+                            {
+                                <td style="width: 10%">@(Model.ConciliationVisanetCallback != null ? Model.ConciliationVisanetCallback.Amount.ToString("##.00") : "")</td>
+                            }
+
+                            @if (Model.BatchState != ConciliationStateDto.Ok && Model.BatchState != ConciliationStateDto.DoesNotApply && Model.BatchState != ConciliationStateDto.Checked)
+                            {
+                                <td class="column-icon">@Html.CheckBox("batchCheckState", Model.BatchState == ConciliationStateDto.Checked)</td>
+                            }
+                            else
+                            {
+                                <td style="width: 10%"></td>
+                            }
+                            <td class="column-icon">
+                                @if (Model.BatchState == ConciliationStateDto.Ok)
+                                {
+                                    <div class="greenCircle no-pointer"></div>
+                                }
+                                @if (Model.BatchState == ConciliationStateDto.Difference)
+                                {
+                                    <div class="yellowCircle no-pointer"></div>
+                                }
+                                @if (Model.BatchState == ConciliationStateDto.NotFound)
+                                {
+                                    <div class="redCircle no-pointer"></div>
+                                }
+                                @if (Model.BatchState == ConciliationStateDto.Checked)
+                                {
+                                    <div class="blueCircle no-pointer"></div>
+                                }
+                                @if (Model.BatchState == ConciliationStateDto.DoesNotApply)
+                                {
+                                    <div class="greyCircle no-pointer"></div>
+                                }
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-body">
+                Comentarios
+                @Html.TextAreaFor(m => m.GeneralComment, new { @class = "w100", @style = "height: 100px!important" })
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-detalles" id="lnkAccept">@PresentationAdminStrings.Back</a>
+                <a href="#" class="btn btn-success" id="lnkSave">@PresentationAdminStrings.Save</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#lnkAccept").click(function (e) {
+            e.preventDefault();
+            $("#lbDetails").modal("hide");
+        });
+
+        $("#lnkSave").click(function (e) {
+            e.preventDefault();
+            var id = $("#id").val();
+            var cybersourceCheckState = $("#cybersourceCheckState").is(":checked");
+            var gatewayCheckState = $("#gatewayCheckState").is(":checked");
+            var visanetCheckState = $("#visanetCheckState").is(":checked");
+            var portalCheckState = $("#portalCheckState").is(":checked");
+            var batchCheckState = $("#batchCheckState").is(":checked");
+            var comment = $("#GeneralComment").val();
+            $.ajax({
+                dataType: 'json',
+                type: "POST",
+                url: "@Url.Action("CheckConciliationSummary", "ReportsConciliation")",
+                data: {
+                    id: id, portal: portalCheckState, cybersource: cybersourceCheckState, gateway: gatewayCheckState,
+                    visanet: visanetCheckState, batch: batchCheckState, comment: comment
+                },
+                success: function (result) {
+                    $("#lbDetails").modal("hide");
+                    oTable.fnFilter();
+                }
+            });
+        });
+
+    });
+
+</script>

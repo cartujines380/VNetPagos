@@ -1,0 +1,310 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Service_Edit_Title</h2>
+
+@using (Html.BeginForm("Edit", "Service", FormMethod.Post, new { enctype = "multipart/form-data", id = "formService" }))
+{
+    <div class="row ">
+        <div class="col-lg-12">
+
+            @* SECCIONES *@
+            @Html.Partial("_NameSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_MainConfiguration</h4>
+            @Html.Partial("_MainConfigurationSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_Cybersource_Section</h4>
+            @Html.Partial("_CybersourceSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_Gateway_Section</h4>
+            @Html.Partial("_GatewaysSection", Model)
+
+            <div id="depto">
+                <div class="horizontalLineLighGrey mt20 mb20"></div>
+                <h4>@PresentationAdminStrings.Service_Departament_Section</h4>
+                @Html.Partial("_DepartmentSection", Model)
+            </div>
+
+            <div id="highway">
+                <div class="horizontalLineLighGrey mt20 mb20"></div>
+                <h4>@PresentationAdminStrings.HighwaySection</h4>
+                @Html.Partial("_HighwaySection", Model)
+            </div>
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.CommunicationExternal</h4>
+            @Html.Partial("_ExternalSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Extract</h4>
+            @Html.Partial("_ExtractSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_Params_Section</h4>
+            @Html.Partial("_ReferencesSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_Detail_Section</h4>
+            @Html.Partial("_DetailsSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Discounts</h4>
+            @Html.Partial("_DiscountSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationWebStrings.Service_Intro</h4>
+            @Html.Partial("_ServiceIntroSection", Model)
+
+            @Html.HiddenFor(s => s.Id)
+            @Html.HiddenFor(s => s.IsEditView)
+            @Html.HiddenFor(m => m.ContainerHasReferences)
+
+            @* BOTONES *@
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <a href="@Url.Action("Index", "Service")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+                        <a href="#" id="btnGuardar" class="btn btn-default lbApprove">
+                            <strong>@PresentationAdminStrings.Save</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+@Html.Partial("_RegexLightbox")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        loadEditor("@Html.IdFor(x => x.ContentIntro)");
+
+        var counter = (parseInt)(@(Model.ServiceEnableEmailModel != null ? Model.ServiceEnableEmailModel.Count() - 1 : -1));
+
+        depto();
+
+        highway();
+
+        if ($('#imageSee').length > 0) {
+            $('#Image').addClass('hide');
+        }
+        $("#dImage").click(function (e) {
+            e.preventDefault();
+            $("#DeleteImage").val(true);
+            $("#imageSee").addClass("hide");
+            $("#dImage").addClass("hide");
+            $('#Image').removeClass("hide");
+            $('#imageNameLabel').addClass("hide");
+            $('#@Model.Image').val("");
+        });
+
+        if ($('#toolSee').length > 0) {
+            $('#ImageTooltip').addClass('hide');
+        }
+        $("#dtooltip").click(function (e) {
+            e.preventDefault();
+            $("#DeleteImageTooltip").val(true);
+            $("#toolSee").addClass("hide");
+            $("#dtooltip").addClass("hide");
+            $('#ImageTooltip').removeClass("hide");
+            $('#imageTooltipNameLabel').addClass("hide");
+            $('#@Model.ImageTooltip').val("");
+        });
+
+        $("a.lbApprove").click(function (e) {
+            e.preventDefault();
+            showBlockUI('Procesando...');
+            $("#formService").submit();
+        });
+
+        $("#ServiceGateways_2__Active").click(function () {
+            depto();
+        });
+        $("#ServiceGateways_3__Active").click(function () {
+            depto();
+        });
+        $("#ServiceGateways_4__Active").click(function () {
+            highway();
+        });
+
+        function depto() {
+            if ($('#ServiceGateways_2__Active').prop('checked') || $('#ServiceGateways_3__Active').prop('checked')) {
+                $("#depto").removeClass("hide");
+            } else {
+                $("#depto").addClass("hide");
+            }
+        }
+
+        function highway() {
+            if ($('#ServiceGateways_4__Active').prop('checked')) {
+                $("#highway").removeClass("hide");
+            } else {
+                $("#highway").addClass("hide");
+            }
+        }
+
+        function validarTablaEnableEmail() {
+            var y = true;
+            $('input', '#tblEnableEmailBody').each(function (i, e) {
+                if ($(e).val() == "") {
+                    y = false;
+                }
+            });
+            return y;
+        }
+
+        function actualizarIndices() {
+            $('tr', '#tblEnableEmailBody').each(function (i, e) {
+                var kk = "tr_" + i;
+                $(e).attr("id", kk);
+            });
+            var x = 0;
+            $('input', '#tblEnableEmailBody').each(function (i, e) {
+                switch (i % 2) {
+                    case 0:
+                        $(e).attr("name", "ServiceEnableEmailModel[" + x + "].Id");
+                        break;
+                    case 1:
+                        $(e).attr("name", "ServiceEnableEmailModel[" + x + "].Email");
+                        x++;
+                        break;
+                }
+            });
+
+            $('.quitarLineaEnableEmail', '#tblEnableEmailBody').each(function (i, e) {
+                $(e).attr("id", "lnkBorrar_" + i);
+            });
+        }
+
+        $("#addFilaEnableEmail").click(function (e) {
+            counter++;
+            var line = "<tr id='tr_" + counter + "'>" +
+                "<input id='EnableEmail_" + counter + "__Id' name='ServiceEnableEmailModel[" + counter + "].Id' type='hidden' value='@Guid.Empty'>" +
+                "<td class=''>" +
+                "<input class='form-control' name='ServiceEnableEmailModel[" + counter + "].Email' type='text' value=''>" +
+                "</td>" +
+                "<td class='quitarLineaEnableEmail' style='color: red' id='lnkBorrar_" + counter + "'>[-]" +
+                "</td>" +
+                "</tr>";
+            $('#tblEnableEmailBody').append(line);
+        });
+
+        $("#tblEnableEmail").delegate(".quitarLineaEnableEmail", "click", function (e) {
+            e.preventDefault();
+            var id = $(this).attr("id").split("_")[1];
+            $("#tr_" + id, "#tblEnableEmail").remove();
+            counter = counter - 1;
+            actualizarIndices();
+        });
+
+        $("#@Html.IdFor(model => model.ServiceContainerId)").on('change', function (e) {
+            e.preventDefault();
+            var combo = $("#@Html.IdFor(model => model.ServiceContainerId)").val();
+            var empty = '@Guid.Empty';
+            if (combo !== empty) {
+                $("#CommunicationExternal").addClass("hidden");
+                $("#CommunicationExternalText").removeClass("hidden");
+            } else {
+                $("#CommunicationExternal").removeClass("hidden");
+                $("#CommunicationExternalText").addClass("hidden");
+                if (!$("#divShowContainerReferences").hasClass("hidden")) {
+                    $("#divShowContainerReferences").addClass("hidden");
+                }
+            }
+            updateContainerData(combo);
+        });
+
+        $("#@Html.IdFor(model => model.ServiceContainerId)").trigger("change");
+
+        $(".triggerRegexModal").click(function (e) {
+            e.preventDefault();
+            $("#regexModal").modal('toggle');
+        });
+
+        $("#btnShowContainerReferences").click(function (e) {
+            e.preventDefault();
+            $("#containerReferencesModal").modal('toggle');
+        });
+
+        $("#btnShowReferences").click(function (e) {
+            e.preventDefault();
+            $("#divShowReferences").addClass("hidden");
+            $("#divReferences").removeClass("hidden");
+        });
+
+        @if (ViewBag.SelectedBinGroups != null)
+        {
+            <text>
+            $("#BinGroups").on('loaded.bs.select', function (e) {
+                $("#BinGroups").selectpicker('val', @Html.Raw(ViewBag.SelectedBinGroups));
+            });
+            </text>
+        }
+
+    });
+
+    function updateContainerData(containerId) {
+        showBlockUI('Procesando...');
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetContainerConfiguration", "Service")',
+            data: "containerId=" + containerId + "&isCreateView=" + false,
+            dataType: 'json',
+            success: function(data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    //Quotas
+                    $("#quotasComboId").html(data.Content.QuotasView);
+                    //References
+                    if (data.Content.ContainerHasReferences) {
+                        $("#@Html.IdFor(m => m.ContainerHasReferences)").val(true);
+                        if ($("#divShowContainerReferences").hasClass("hidden")) {
+                            $("#divShowContainerReferences").removeClass("hidden");
+                        }
+                        if (!$("#divReferences").hasClass("hidden") && $("#divShowReferences").hasClass("hidden") && ($("#@Html.IdFor(m => m.ReferenceParamName)").val() === null || $("#@Html.IdFor(m => m.ReferenceParamName)").val() === "")) {
+                            $("#divReferences").addClass("hidden");
+                            $("#divShowReferences").removeClass("hidden");
+                            $("#@Html.IdFor(m => m.ReferenceParamName)").val(null);
+                            $("#@Html.IdFor(m => m.ReferenceParamName2)").val(null);
+                            $("#@Html.IdFor(m => m.ReferenceParamName3)").val(null);
+                            $("#@Html.IdFor(m => m.ReferenceParamName4)").val(null);
+                            $("#@Html.IdFor(m => m.ReferenceParamName5)").val(null);
+                            $("#@Html.IdFor(m => m.ReferenceParamName6)").val(null);
+                            $("#@Html.IdFor(m => m.ReferenceParamRegex)").val(null);
+                            $("#@Html.IdFor(m => m.ReferenceParamRegex2)").val(null);
+                            $("#@Html.IdFor(m => m.ReferenceParamRegex3)").val(null);
+                            $("#@Html.IdFor(m => m.ReferenceParamRegex4)").val(null);
+                            $("#@Html.IdFor(m => m.ReferenceParamRegex5)").val(null);
+                            $("#@Html.IdFor(m => m.ReferenceParamRegex6)").val(null);
+                        }
+                    }
+                    $("#divContainerRefs").html(data.Content.ReferencesView);
+                    //Bin Groups
+                    $("#divBinGroups").html(data.Content.BinGroupsView);
+                    $("#BinGroups").selectpicker('render');
+                    if (data.Content.SelectAll === true || data.Content.SelectAll === "True" || data.Content.SelectAll === "true") {
+                        $("#BinGroups").selectpicker('selectAll');
+                    } else {
+                        $("#BinGroups").selectpicker('val', @Html.Raw(ViewBag.SelectedBinGroups));
+                    }
+                }
+                hideBlockUI();
+            },
+            error: function () {
+                hideBlockUI();
+            }
+        });
+    }
+
+</script>

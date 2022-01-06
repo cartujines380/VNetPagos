@@ -1,0 +1,220 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.VisaNetOn.Models.PageAssociationModel
+
+@if (Model.NewUser)
+{
+    <div class="row title-section-wrapper hidden-xs">
+        <span class="title-section cpo">Seleccioná tu tarjeta</span> <span class="log-in-cta">¿Tenés cuenta en VisaNetPagos? <a href="" data-toggle="modal" data-target="#logInModal">Click acá para iniciar sesión</a></span>
+    </div>
+    @Html.Partial("_LogIn")
+}
+else
+{
+    <div class="row title-section-wrapper hidden-xs">
+        <span class="title-section cpo">Seleccioná tu tarjeta</span>
+    </div>
+}
+
+<div class="col-xs-12 col-sm-5 col-md-5">
+    @Html.Partial("_AssociationDetailsMobile")
+
+    <form id="formVon" method="post" class="registro">
+        @if (Model.UserData.CardList != null && Model.UserData.CardList.Any())
+        {
+            @Html.Partial("_Cards")
+        }
+
+        @Html.HiddenFor(x => x.IdOperation)
+        @Html.HiddenFor(x => x.ServiceInfo.IdApp)
+        @Html.HiddenFor(x => x.ServiceInfo.ServiceId)
+        @Html.HiddenFor(x => x.ServiceInfo.ServiceName)
+        @Html.HiddenFor(x => x.ServiceInfo.MerchantId)
+        @Html.HiddenFor(x => x.ServiceInfo.UrlCallback)
+        @Html.HiddenFor(x => x.ServiceInfo.ReferenceNumber1)
+        @Html.HiddenFor(x => x.ServiceInfo.ReferenceNumber2)
+        @Html.HiddenFor(x => x.ServiceInfo.ReferenceNumber3)
+        @Html.HiddenFor(x => x.ServiceInfo.ReferenceNumber4)
+        @Html.HiddenFor(x => x.ServiceInfo.ReferenceNumber5)
+        @Html.HiddenFor(x => x.ServiceInfo.ReferenceNumber6)
+
+        @Html.Partial("_UserData")
+
+        @Html.HiddenFor(x => x.NewCard)
+        @Html.HiddenFor(x => x.SelectedCardId)
+        @Html.HiddenFor(x => x.CardBin)
+    </form>
+
+    <form id="formPostCs" method="post" class="registro" action="@ConfigurationManager.AppSettings["CybersourceFormUrl"]silent/token/create">
+        <div id="divNewCard" class="@(Model.UserData.CardList != null && Model.UserData.CardList.Any() ? "hidden" : "")">
+            @Html.Partial("_CardForm")
+        </div>
+    </form>
+
+    <div class="footer-registro">
+        <div class="wrapper-chbox">
+            @*@if (Model.NewUser)
+                {*@
+            @{
+                var serviceName = !string.IsNullOrEmpty(Model.ServiceInfo.ServiceContainerName) ? Model.ServiceInfo.ServiceContainerName : Model.ServiceInfo.ServiceName;
+                var acceptText = "";
+            }
+            <span class="chbox chbox-signup">
+                @if (string.IsNullOrEmpty(Model.ServiceInfo.TermsAndConditionsService))
+                {
+                    acceptText = "Quiero que se guarden mis datos para próximas compras en <b>" + serviceName + "</b>.";
+                }
+                else
+                {
+                    acceptText = "Quiero que se guarden mis datos para próximas compras en <b>" + serviceName + "</b>, y acepto sus <b><a href='' data-toggle='modal' data-target='#modalServiceTC'>Términos y Condiciones</a></b>.";
+                }
+                @Html.Raw(acceptText)
+            </span>
+            @*}*@
+        </div>
+        <div class="actions">
+            <a class="btn" id="btnCancel">Cancelar</a>
+            <a class="btn siguiente" id="btnValidate" href="#tarjeta" aria-controls="tarjeta" role="tab" data-toggle="tab">Aceptar</a>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_AssociationDetails")
+
+@Html.Partial("_TermsAndConditionsService", Model.ServiceInfo)
+@Html.Partial("_ConfirmAssociation")
+
+<script>
+
+    function updateSelectedCard(card) {
+        var cardBin = $(card).data("cardnumber").substring(0, 6);
+        var cardId = $(card).data("cardid");
+        $("#divNewCard").addClass("hidden");
+        $("#@Html.IdFor(x => x.NewCard)").val("false");
+        $("#@Html.IdFor(x => x.SelectedCardId)").val(cardId);
+        $("#@Html.IdFor(x => x.CardBin)").val(cardBin);
+        $("#ulCardList").children().find("i").removeClass("fa-check");
+        $(card).find("i").addClass("fa-check");
+    };
+
+    $(document).ready(function () {
+
+        var fpProfiler = cybs_dfprofiler("@Model.ServiceInfo.MerchantId.Trim()", "@ConfigurationManager.AppSettings["CsEnvironment"]", "@ConfigurationManager.AppSettings["CsFingerprintRedirectUrl"]");
+
+        $("#closeModalLogin").on('click', function () {
+            $("#mobileLogIn").trigger('click');
+        });
+
+        $("#btnValidate").click(function (e) {
+            //Envia los datos para validar
+            e.preventDefault();
+            if (validateRequiredFields()) {
+                showLoaderFullScreen();
+                var formData = $("#formVon").serialize();
+                $.post("@Url.Action("ValidateCard", "Association")", formData).done(validationCallback);
+            }
+        });
+
+        $("#btnAssociate").click(function (e) {
+            //Confirma la asociacion
+            e.preventDefault();
+            $("#lbConfirmAssociation").modal('hide');
+            showLoaderFullScreen();
+            if ($("#@Html.IdFor(x => x.NewCard)").val() === "false" || $("#@Html.IdFor(x => x.NewCard)").val() === "False") {
+                //Tarjeta existente: no se llama a CS
+                $("#formVon").attr("action", "@Url.Action("AssociateCard", "Association")");
+                $("#formVon").submit();
+            } else {
+                //Tarjeta nueva: se llama CS
+                loadCyberSourceKeysForAssociationAndSubmit();
+            }
+        });
+
+        $("#btnAddNewCard").click(function (e) {
+            //Muestra seccion para agregar nueva tarjeta
+            e.preventDefault();
+            resetNewCardFields();
+            $("#divNewCard").removeClass("hidden");
+            $("#@Html.IdFor(x => x.NewCard)").val("true");
+            $("#@Html.IdFor(x => x.SelectedCardId)").val("");
+            $("#ulCardList").children().find("i").removeClass("fa-check");
+        });
+
+        $("#btnCancel").click(function (e) {
+            //Cancela la operacion
+            e.preventDefault();
+            $("#formVon").attr("action", "@Url.Action("CancelAssociation", "Association")");
+            $("#formVon").submit();
+        });
+
+        function validateRequiredFields() {
+            var cardValidation = true;
+            var newCard = $("#@Html.IdFor(x => x.NewCard)").val() == "true" || $("#@Html.IdFor(x => x.NewCard)").val() == "True";
+
+            if (newCard) {
+                cardValidation = validateCardRequiredFields();
+                var expireDate = $("[name='month']").val() + "-" + $("[name='year']").val();
+                $("#card_expiry_date").val(expireDate);
+                var cardBin = $("#card_number").val().substring(0, 6);
+                $("#@Html.IdFor(x => x.CardBin)").val(cardBin);
+            } else {
+                if ($("#@Html.IdFor(x => x.SelectedCardId)").val() == null || $("#@Html.IdFor(x => x.SelectedCardId)").val() == "") {
+                    cardValidation = false;
+                    showNotification("Debe seleccionar una tarjeta o ingresar una nueva.", 'error');
+                }
+            }
+
+            return cardValidation;
+        }
+
+        function resetNewCardFields() {
+            $("#card_number").val("");
+            $("#card_cvn").val("");
+            $("#card_holder_name").val("");
+            $("[name='month']").val("01");
+            $("[name='year']").val(@DateTime.Now.Year);
+            $("#card_expiry_date").val("");
+        }
+
+        var validationCallback = function (data) {
+            hideLoaderFullScreen();
+            if (data.ResponseType === 0) {
+                $("#lbConfirmAssociation").modal();
+            } else {
+                showNotification(data.Message, 'error');
+            }
+        };
+
+        function loadCyberSourceKeysForAssociationAndSubmit() {
+            var formUrl = "@Url.Action("LoadCyberSourceKeysForAssociation", "Association")";
+            var formData = $("#formVon").serialize() + "&nameTh=" + $("#card_holder_name").val() + "&fingerprint=" + fpProfiler;
+            loadCyberSourceKeysAjax(formUrl, formData);
+        }
+
+        function loadCyberSourceKeysAjax(formUrl, formData) {
+            $.ajax({
+                url: formUrl,
+                type: "post",
+                data: formData,
+                dataType: "json",
+                success: function (data) {
+                    if (data.ResponseType === 0) {
+                        $("#formPostCs").append(data.Content.Keys);
+                        $("#formPostCs").submit();
+                    } else {
+                        hideLoaderFullScreen();
+                        showNotification(data.Message, "error");
+                        $("#myModal").modal('hide');
+                    }
+                },
+                error: function () {
+                    hideLoaderFullScreen();
+                    showNotification("@PresentationCoreMessages.NotificationFail", "error");
+                    $("#myModal").modal('hide');
+                }
+            });
+        }
+
+    });
+
+</script>

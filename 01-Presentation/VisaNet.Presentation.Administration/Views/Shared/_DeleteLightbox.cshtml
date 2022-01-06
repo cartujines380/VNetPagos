@@ -1,0 +1,48 @@
+﻿@using VisaNet.Common.Resource.Presentation
+<div id="lbConfirmDelete" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>@PresentationCoreMessages.Common_Delete</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Hidden("lbHiddenUrl")
+                @Html.Hidden("lbHiddenId")
+                <p>@PresentationCoreMessages.Common_ConfirmDelete</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-danger lb-accept" id="lnkDeleteAccept">@PresentationAdminStrings.Common_Confirm</a>
+                <a href="#" class="btn lb-cancel" id="lnkDeleteCancel">@PresentationAdminStrings.Cancel</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    var tr;
+    $(document).ready(function () {
+
+        $("#lnkDeleteAccept").click(function (e) {
+            e.preventDefault();
+            $.post($("#lbHiddenUrl").val(), function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    oTable.fnDeleteRow(tr[0]);
+                    tr = null;
+                    $('#lbConfirmDelete').modal("hide");
+                    ShowNotification(data.Title, data.Message, 'success');
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    $('#lbConfirmDelete').modal("hide");
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            }).fail(function () { window.location.replace('@Url.Action("Index", "Error")'); });;
+        });
+
+        $("#lnkDeleteCancel").click(function (e) {
+            e.preventDefault();
+            $("#lbConfirmDelete").modal("hide");
+        });
+
+    });
+</script>

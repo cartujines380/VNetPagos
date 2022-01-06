@@ -1,0 +1,859 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4CD327CE-F46D-4D65-9F51-A6AA4BD804CB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VisaNet.Testing.DummyWCFPrueba</RootNamespace>
+    <AssemblyName>VisaNet.Testing.DummyWCFPrueba</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Deployment\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>497F46B8900B9A28C165C63C8A0DEF9CC1C96A07</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>DummyWCFPrueba_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure|AnyCPU'">
+    <OutputPath>bin\Azure\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Production|AnyCPU'">
+    <OutputPath>bin\demouy.Production\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Testing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.Testing\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Development|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.Development\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'VisaNet.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\VisaNet.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Azure.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Staging|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Azure.Staging\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\BajaServicioModel.cs" />
+    <Compile Include="Model\ConsultaFacturasModel.cs" />
+    <Compile Include="Model\ConsultaUrlTransaccionModel.cs" />
+    <Compile Include="Model\ConsultaServiciosModel.cs" />
+    <Compile Include="Model\AnularFacturaModel.cs" />
+    <Compile Include="Model\CobroOnlineModel.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PruebaSignature.cs" />
+    <Compile Include="Service References\Azure_VisaNet_v020211\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Azure_VisaNet_v030006\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Azure_VisaNet_v03\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Demouy_Development_v03\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Demouy_Development_v05\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Demouy_Production_v020210\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Demouy_Production_v020211\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Demouy_Production_v020302\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Demouy_Production_v02\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Demouy_Production_v03\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Demouy_Production_v05\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Demouy_Testing_v03\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Demouy_Testing_v05\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Localhost\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="VersionTests\FifthVersionWcf.cs" />
+    <Compile Include="VersionTests\FourthVersionWcf.cs" />
+    <Compile Include="VersionTests\SecondVersionWcf.cs" />
+    <Compile Include="VersionTests\FirstVersionWcf.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\FifthVersionData\ConsultaUrlTransaction.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FirstVersionData\AnularFactura.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FirstVersionData\CobroOnline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FirstVersionData\ConsultaFacturas.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FirstVersionData\ConsultaServicios.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FifthVersionData\AnularFactura.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FifthVersionData\BajaServicio.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FifthVersionData\CobroOnline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FifthVersionData\ConsultaFacturas.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FifthVersionData\ConsultaServicios.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FourthVersionData\BajaServicio.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FourthVersionData\ConsultaFacturas.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FourthVersionData\ConsultaServicios.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FourthVersionData\AnularFactura.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\FourthVersionData\CobroOnline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DummyWCFPrueba_TemporaryKey.pfx" />
+    <None Include="NLog.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\VisaNet.WebService.VisaNetPagosWCF.EntitiesModel.VNPRespuesta.datasource" />
+    <None Include="Properties\DataSources\VisaNet.WebService.VisaNetPagosWCF.EntitiesModel.VNPRespuestaConsultaClientes.datasource" />
+    <None Include="Properties\DataSources\VisaNet.WebService.VisaNetPagosWCF.EntitiesModel.VNPRespuestaConsultaComercios.datasource" />
+    <None Include="Properties\DataSources\VisaNet.WebService.VisaNetPagosWCF.EntitiesModel.VNPRespuestaConsultaFacturas.datasource" />
+    <None Include="Properties\DataSources\VisaNet.WebService.VisaNetPagosWCF.EntitiesModel.VNPRespuestaEnvioFacturas.datasource" />
+    <None Include="Data\SecondVersionData\AnularFactura.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\SecondVersionData\BajaServicio.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\SecondVersionData\CobroOnline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\SecondVersionData\ConsultaFacturas.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\SecondVersionData\ConsultaServicios.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v020211\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v020211.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v020211\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v020211.VNPRespuestaBajaTarjeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v020211\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v020211.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v020211\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v020211.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v020211\VNPAccess.wsdl" />
+    <None Include="Service References\Azure_VisaNet_v020211\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v020211\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v020211\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v030006\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v030006.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v030006\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v030006.VNPRespuestaBajaTarjeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v030006\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v030006.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v030006\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v030006.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v030006\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v030006.VNPRespuestaConsultaUrlTransaccion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v030006\VNPAccess.wsdl" />
+    <None Include="Service References\Azure_VisaNet_v030006\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v030006\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v030006\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v03\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v03.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v03\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v03.VNPRespuestaBajaTarjeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v03\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v03.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v03\VisaNet.Testing.DummyWCFPrueba.Azure_VisaNet_v03.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v03\VNPAccess.wsdl" />
+    <None Include="Service References\Azure_VisaNet_v03\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v03\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Azure_VisaNet_v03\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Development_v03\VisaNet.Testing.DummyWCFPrueba.Demouy_Development_v03.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Development_v03\VisaNet.Testing.DummyWCFPrueba.Demouy_Development_v03.VNPRespuestaBajaTarjeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Development_v03\VisaNet.Testing.DummyWCFPrueba.Demouy_Development_v03.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Development_v03\VisaNet.Testing.DummyWCFPrueba.Demouy_Development_v03.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Development_v03\VNPAccess.wsdl" />
+    <None Include="Service References\Demouy_Development_v03\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Development_v03\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Development_v03\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Development_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Development_v05.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Development_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Development_v05.VNPRespuestaBajaTarjeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Development_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Development_v05.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Development_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Development_v05.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Development_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Development_v05.VNPRespuestaConsultaUrlTransaccion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Development_v05\VNPAccess.wsdl" />
+    <None Include="Service References\Demouy_Development_v05\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Development_v05\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Development_v05\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v020210\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v020210.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v020210\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v020210.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v020210\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v020210.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v020210\VNPAccess.wsdl" />
+    <None Include="Service References\Demouy_Production_v020210\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v020210\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v020210\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v020211\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v020211.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v020211\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v020211.VNPRespuestaBajaTarjeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v020211\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v020211.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v020211\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v020211.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v020211\VNPAccess.wsdl" />
+    <None Include="Service References\Demouy_Production_v020211\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v020211\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v020211\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v020302\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v020302.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v020302\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v020302.VNPRespuestaBajaTarjeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v020302\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v020302.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v020302\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v020302.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v020302\VNPAccess.wsdl" />
+    <None Include="Service References\Demouy_Production_v020302\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v020302\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v020302\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v02\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v02.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v02\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v02.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v02\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v02.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v02\VNPAccess.wsdl" />
+    <None Include="Service References\Demouy_Production_v02\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v02\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v02\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v03\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v03.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v03\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v03.VNPRespuestaBajaTarjeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v03\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v03.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v03\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v03.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v03\VNPAccess.wsdl" />
+    <None Include="Service References\Demouy_Production_v03\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v03\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v03\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v05.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v05.VNPRespuestaBajaTarjeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v05.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v05.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Production_v05.VNPRespuestaConsultaUrlTransaccion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Production_v05\VNPAccess.wsdl" />
+    <None Include="Service References\Demouy_Production_v05\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v05\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Production_v05\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Testing_v03\VisaNet.Testing.DummyWCFPrueba.Demouy_Testing_v03.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Testing_v03\VisaNet.Testing.DummyWCFPrueba.Demouy_Testing_v03.VNPRespuestaBajaTarjeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Testing_v03\VisaNet.Testing.DummyWCFPrueba.Demouy_Testing_v03.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Testing_v03\VisaNet.Testing.DummyWCFPrueba.Demouy_Testing_v03.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Testing_v03\VNPAccess.wsdl" />
+    <None Include="Service References\Demouy_Testing_v03\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Testing_v03\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Testing_v03\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Testing_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Testing_v05.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Testing_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Testing_v05.VNPRespuestaBajaTarjeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Testing_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Testing_v05.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Testing_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Testing_v05.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Testing_v05\VisaNet.Testing.DummyWCFPrueba.Demouy_Testing_v05.VNPRespuestaConsultaUrlTransaccion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Demouy_Testing_v05\VNPAccess.wsdl" />
+    <None Include="Service References\Demouy_Testing_v05\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Testing_v05\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Demouy_Testing_v05\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Localhost\VisaNet.Testing.DummyWCFPrueba.Localhost.VNPRespuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Localhost\VisaNet.Testing.DummyWCFPrueba.Localhost.VNPRespuestaBajaTarjeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Localhost\VisaNet.Testing.DummyWCFPrueba.Localhost.VNPRespuestaConsultaComercios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Localhost\VisaNet.Testing.DummyWCFPrueba.Localhost.VNPRespuestaConsultaFacturas.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Localhost\VisaNet.Testing.DummyWCFPrueba.Localhost.VNPRespuestaConsultaUrlTransaccion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Localhost\VNPAccess.wsdl" />
+    <None Include="Service References\Localhost\VNPAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Localhost\VNPAccess1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Localhost\VNPAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Logging\VisaNet.Common.Logging.csproj">
+      <Project>{7716D78C-5414-404A-B804-D10B2C965724}</Project>
+      <Name>VisaNet.Common.Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Azure_VisaNet_v020211\" />
+    <WCFMetadataStorage Include="Service References\Azure_VisaNet_v030006\" />
+    <WCFMetadataStorage Include="Service References\Azure_VisaNet_v03\" />
+    <WCFMetadataStorage Include="Service References\Demouy_Development_v03\" />
+    <WCFMetadataStorage Include="Service References\Demouy_Development_v05\" />
+    <WCFMetadataStorage Include="Service References\Demouy_Production_v020210\" />
+    <WCFMetadataStorage Include="Service References\Demouy_Production_v020211\" />
+    <WCFMetadataStorage Include="Service References\Demouy_Production_v020302\" />
+    <WCFMetadataStorage Include="Service References\Demouy_Production_v02\" />
+    <WCFMetadataStorage Include="Service References\Demouy_Production_v03\" />
+    <WCFMetadataStorage Include="Service References\Demouy_Production_v05\" />
+    <WCFMetadataStorage Include="Service References\Demouy_Testing_v03\" />
+    <WCFMetadataStorage Include="Service References\Demouy_Testing_v05\" />
+    <WCFMetadataStorage Include="Service References\Localhost\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Localhost\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Localhost\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Localhost\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Testing_v03\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Testing_v03\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Testing_v03\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Development_v03\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Development_v03\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Development_v03\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v03\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v03\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v03\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v02\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v02\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v02\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v020210\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v020210\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v020210\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v020211\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v020211\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v020211\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v020302\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v020302\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v020302\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Azure_VisaNet_v03\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Azure_VisaNet_v03\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Azure_VisaNet_v03\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v05\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v05\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Production_v05\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Development_v05\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Development_v05\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Development_v05\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Azure_VisaNet_v020211\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Azure_VisaNet_v020211\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Azure_VisaNet_v020211\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Azure_VisaNet_v030006\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Azure_VisaNet_v030006\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Azure_VisaNet_v030006\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Testing_v05\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Testing_v05\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Demouy_Testing_v05\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if not exist "$(TargetDir)\Data\" mkdir "$(TargetDir)\Data\"
+
+if not exist "$(TargetDir)\Data\FirstVersionData\" mkdir "$(TargetDir)\Data\FirstVersionData\"
+if not exist "$(TargetDir)\Data\SecondVersionData\" mkdir "$(TargetDir)\Data\SecondVersionData\"
+if not exist "$(TargetDir)\Data\FourthVersionData\" mkdir "$(TargetDir)\Data\FourthVersionData\"
+
+copy /Y "$(ProjectDir)\Data\FirstVersionData" "$(TargetDir)\Data\FirstVersionData\"
+copy /Y "$(ProjectDir)\Data\SecondVersionData" "$(TargetDir)\Data\SecondVersionData\"
+copy /Y "$(ProjectDir)\Data\FourthVersionData" "$(TargetDir)\Data\FourthVersionData\"</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

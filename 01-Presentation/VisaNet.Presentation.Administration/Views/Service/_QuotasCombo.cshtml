@@ -1,0 +1,6 @@
+﻿@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+<div class="form-group">
+    @Html.LabelFor(s => s.MaxQuotaAllow)
+    @Html.DropDownListFor(s => s.MaxQuotaAllow, (ICollection<SelectListItem>)ViewBag.Quotas, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+</div>

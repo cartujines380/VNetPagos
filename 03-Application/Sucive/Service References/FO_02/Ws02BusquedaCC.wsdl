@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="GeoTribUy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlns="GeoTribUy" xmlns:tns1="GeoTribUy" name="Ws02BusquedaCC" targetNamespace="GeoTribUy" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="GeoTribUy">
+      <xsd:complexType name="SDT_BusquedaCargada">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SDT_BusquedaCargada.SDT_BusquedaCargadaItem" type="tns1:SDT_BusquedaCargada.SDT_BusquedaCargadaItem" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SDT_BusquedaCargada.SDT_BusquedaCargadaItem">
+        <xsd:all>
+          <xsd:element name="TipoBusqueda" type="xsd:int" />
+          <xsd:element name="NumeroParametro" type="xsd:int" />
+          <xsd:element name="ValorParametro" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="SDT_DatosdePadronesCC">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SDT_DatosdePadronesCC.SDT_DatosdePadronesCCItem" type="tns1:SDT_DatosdePadronesCC.SDT_DatosdePadronesCCItem" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SDT_DatosdePadronesCC.SDT_DatosdePadronesCCItem">
+        <xsd:all>
+          <xsd:element name="CodigoIDPadron" type="xsd:int" />
+          <xsd:element name="DescripcionPadron" type="xsd:string" />
+          <xsd:element name="NombreContribuyente" type="xsd:string" />
+          <xsd:element name="MontoCuentaCorriente" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="Ws02BusquedaCC.Execute">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Tipopadron" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Sdtbusquedacargada" type="tns1:SDT_BusquedaCargada" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Ws02BusquedaCC.ExecuteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Sdtdatosdepadronescc" type="tns1:SDT_DatosdePadronesCC" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Codigoretorno" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Mensajeretorno" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Ws02BusquedaCC.ExecuteSoapIn">
+    <part name="parameters" element="tns1:Ws02BusquedaCC.Execute" />
+  </message>
+  <message name="Ws02BusquedaCC.ExecuteSoapOut">
+    <part name="parameters" element="tns1:Ws02BusquedaCC.ExecuteResponse" />
+  </message>
+  <portType name="Ws02BusquedaCCSoapPort">
+    <operation name="Execute">
+      <input message="tns1:Ws02BusquedaCC.ExecuteSoapIn" />
+      <output message="tns1:Ws02BusquedaCC.ExecuteSoapOut" />
+    </operation>
+  </portType>
+  <binding name="Ws02BusquedaCCSoapBinding" type="tns1:Ws02BusquedaCCSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Execute">
+      <soap:operation soapAction="GeoTribUyaction/AWS02BUSQUEDACC.Execute" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Ws02BusquedaCC">
+    <port name="Ws02BusquedaCCSoapPort" binding="tns1:Ws02BusquedaCCSoapBinding">
+      <soap:address location="http://florida.sucive.gub.uy/cows/servlet/aws02busquedacc" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,139 @@
+﻿@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+<div id="divShowContainerReferences" class="@(Model.ContainerHasReferences ? "" : "hidden")">* El servicio contenedor tiene parámetros de entrada configurados. Para verlos haga <a href="#" id="btnShowContainerReferences">click aquí</a>.</div>
+@if (!Model.IsDetailsView && string.IsNullOrEmpty(Model.ReferenceParamName))
+{
+    <div id="divShowReferences" class="@(Model.ContainerHasReferences ? "" : "hidden")">* Si desea que sea este servicio quien determine los parámetros de entrada haga <a href="#" id="btnShowReferences">click aquí</a>.</div>
+}
+<br />
+
+<div class="row">
+    <div id="divReferences" class="@(Model.ContainerHasReferences && string.IsNullOrEmpty(Model.ReferenceParamName) ? "hidden" : "")">
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ReferenceParamName)
+                        @Html.TextBoxFor(s => s.ReferenceParamName, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.ReferenceParamName)
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ReferenceParamRegex)
+                        <div class="input-group">
+                            <span class="input-group-addon triggerRegexModal"><i class="fa fa-check-square-o"></i></span>
+                            @Html.TextBoxFor(s => s.ReferenceParamRegex, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ReferenceParamName2)
+                        @Html.TextBoxFor(s => s.ReferenceParamName2, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.ReferenceParamName2)
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ReferenceParamRegex2)
+                        <div class="input-group">
+                            <span class="input-group-addon triggerRegexModal"><i class="fa fa-check-square-o"></i></span>
+                            @Html.TextBoxFor(s => s.ReferenceParamRegex2, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ReferenceParamName3)
+                        @Html.TextBoxFor(s => s.ReferenceParamName3, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.ReferenceParamName3)
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ReferenceParamRegex3)
+                        <div class="input-group">
+                            <span class="input-group-addon triggerRegexModal"><i class="fa fa-check-square-o"></i></span>
+                            @Html.TextBoxFor(s => s.ReferenceParamRegex3, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ReferenceParamName4)
+                        @Html.TextBoxFor(s => s.ReferenceParamName4, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.ReferenceParamName4)
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ReferenceParamRegex4)
+                        <div class="input-group">
+                            <span class="input-group-addon triggerRegexModal"><i class="fa fa-check-square-o"></i></span>
+                            @Html.TextBoxFor(s => s.ReferenceParamRegex4, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ReferenceParamName5)
+                        @Html.TextBoxFor(s => s.ReferenceParamName5, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.ReferenceParamName5)
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ReferenceParamRegex5)
+                        <div class="input-group">
+                            <span class="input-group-addon triggerRegexModal"><i class="fa fa-check-square-o"></i></span>
+                            @Html.TextBoxFor(s => s.ReferenceParamRegex5, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ReferenceParamName6)
+                        @Html.TextBoxFor(s => s.ReferenceParamName6, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.ReferenceParamName6)
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ReferenceParamRegex6)
+                        <div class="input-group">
+                            <span class="input-group-addon triggerRegexModal"><i class="fa fa-check-square-o"></i></span>
+                            @Html.TextBoxFor(s => s.ReferenceParamRegex6, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="divContainerRefs">
+    @Html.Partial("_ContainerReferencesLightbox", Model)
+</div>

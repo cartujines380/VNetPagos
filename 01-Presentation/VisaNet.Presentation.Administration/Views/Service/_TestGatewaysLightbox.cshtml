@@ -1,0 +1,140 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Domain.EntitiesDtos.ServiceDto
+
+<div id="lbTestGateways" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                @if (Model != null)
+                {
+                    <h4>Test de conexi&oacute;n del servicio <strong>@Model.Name</strong> con pasarelas</h4>
+                    <br />
+
+                    if (Model.ServiceGatewaysDto.Any())
+                    {
+                        <p>Pasarelas a testear:</p>
+                        <ul>
+                            @foreach (var gateway in Model.ServiceGatewaysDto)
+                            {
+                                <li>@gateway.Gateway.Name</li>
+                            }
+                        </ul>
+
+                        <p>Ingrese los n&uacute;meros de referencia para consultar facturas.</p>
+
+                        using (Html.BeginForm("TestGatewaysAjax", "Service", FormMethod.Post, new { id = "frmTestGateways" }))
+                        {
+                            <input type="hidden" name="ServiceId" id="ServiceId" value="@Model.Id" />
+
+                            <div class="row">
+                                @if (!String.IsNullOrEmpty(Model.ReferenceParamName))
+                                {
+                                    <div class="col-md-6">
+                                        <input type="text" name="ReferenceNumber" id="ReferenceNumber" placeholder="@Model.ReferenceParamName" class="w100" />
+                                    </div>
+                                }
+                                @if (!String.IsNullOrEmpty(Model.ReferenceParamName2))
+                                {
+                                    <div class="col-md-6">
+                                        <input type="text" name="ReferenceNumber2" id="ReferenceNumber2" placeholder="@Model.ReferenceParamName2" class="w100" />
+                                    </div>
+                                }
+                            </div>
+                            <div class="row">
+                                @if (!String.IsNullOrEmpty(Model.ReferenceParamName3))
+                                {
+                                    <div class="col-md-6">
+                                        <input type="text" name="ReferenceNumber3" id="ReferenceNumber3" placeholder="@Model.ReferenceParamName3" class="w100" />
+                                    </div>
+                                }
+                                @if (!String.IsNullOrEmpty(Model.ReferenceParamName4))
+                                {
+                                    <div class="col-md-6">
+                                        <input type="text" name="ReferenceNumber4" id="ReferenceNumber4" placeholder="@Model.ReferenceParamName4" class="w100" />
+                                    </div>
+                                }
+                            </div>
+                            <div class="row">
+                                @if (!String.IsNullOrEmpty(Model.ReferenceParamName5))
+                                {
+                                    <div class="col-md-6">
+                                        <input type="text" name="ReferenceNumber5" id="ReferenceNumber5" placeholder="@Model.ReferenceParamName5" class="w100" />
+                                    </div>
+                                }
+                                @if (!String.IsNullOrEmpty(Model.ReferenceParamName6))
+                                {
+                                    <div class="col-md-6">
+                                        <input type="text" name="ReferenceNumber6" id="ReferenceNumber6" placeholder="@Model.ReferenceParamName6" class="w100" />
+                                    </div>
+                                }
+                            </div>
+                        }
+
+                        <br />
+
+                        <div class="loadingMessaje hidden" id="loadingBills">
+                            <div class="loading">@PresentationAdminStrings.Loading_TestingConnection</div>
+                        </div>
+
+                        <div id="responseTable"></div>
+
+                    }
+                    else
+                    {
+                        <p>Este servicio no tiene pasarelas para testear.</p>
+                    }
+                }
+            </div>
+            <div class="modal-footer">
+                @if (Model != null && Model.ServiceGatewaysDto.Any())
+                {
+                    <a href="#" class="btn btn-success lb-accept" id="lnkTestGatewaysAccept">@PresentationAdminStrings.Common_Confirm</a>
+                }
+                <a href="#" class="btn lb-cancel" id="lnkTestGatewaysCancel">@PresentationAdminStrings.Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#lnkTestGatewaysAccept").click(function (e) {
+            e.preventDefault();
+
+            $('#loadingBills').removeClass("hidden");
+            $('#responseTable').addClass("hidden");
+
+            $.ajax({
+                dataType: 'json',
+                type: "POST",
+                url: "@Url.Action("TestGatewaysAjax", "Service")",
+                data: $("#frmTestGateways").serialize(),
+                success: function (ret) {
+                    if (ret.ResponseType == RESPONSE.SUCCESS) {
+                        $('#loadingBills').addClass("hidden");
+                        $('#responseTable').removeClass("hidden");
+                        $("#responseTable").html(ret.Content);
+                    }
+                    if (ret.ResponseType == RESPONSE.ERROR) {
+                        $('#loadingBills').addClass("hidden");
+                        $('#responseTable').removeClass("hidden");
+                        ShowNotification(ret.Title, ret.Message, 'error');
+                    }
+                }
+            });
+        });
+
+        $("#lnkTestGatewaysCancel").click(function (e) {
+            e.preventDefault();
+            $("#lbTestGateways").modal("hide");
+        });
+
+    });
+
+</script>

@@ -1,0 +1,78 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ServiceContainerModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.ServiceContainer_Detail_Title</h2>
+
+<div class="row">
+    <div class="col-lg-10">
+
+        @* SECCIONES *@
+        @Html.Partial("_NameSection", Model)
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationAdminStrings.Service_MainConfiguration</h4>
+        @Html.Partial("_MainConfigurationSection", Model)
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationAdminStrings.CommunicationExternal</h4>
+        @Html.Partial("_ExternalSection", Model)
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationAdminStrings.Service_Params_Section</h4>
+        @Html.Partial("_ReferencesSection", Model)
+
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationAdminStrings.Service_Detail_Section</h4>
+        @Html.Partial("_DetailsSection", Model)
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationWebStrings.Service_Intro</h4>
+        @Html.Partial("_ServiceIntroSection", Model)
+
+
+        @* BOTONES *@
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="@Url.Action("Index", "ServiceContainer")" class="btn btn-default mt30">@PresentationAdminStrings.Back </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@Html.Partial("_RegexLightbox")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        loadEditor("@Html.IdFor(x => x.ContentIntro)", "@Html.Raw(Model.ContentIntro)");
+
+        var combo = '@Guid.Empty';
+        var empty = '@Guid.Empty';
+        if (combo !== empty) {
+            $("#CommunicationExternal").addClass("hidden");
+            $("#CommunicationExternalText").removeClass("hidden");
+        } else {
+            $("#CommunicationExternal").removeClass("hidden");
+            $("#CommunicationExternalText").addClass("hidden");
+        };
+
+        @if (ViewBag.SelectedBinGroups != null)
+        {
+            <text>
+            $("#BinGroups").on('loaded.bs.select', function (e) {
+                $("#BinGroups").selectpicker('val', @Html.Raw(ViewBag.SelectedBinGroups));
+            });
+            </text>
+        }
+
+        $(".triggerRegexModal").click(function(e) {
+            $("#regexModal").modal('toggle');
+        });
+    });
+</script>

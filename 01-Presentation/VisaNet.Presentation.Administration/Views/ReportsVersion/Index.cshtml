@@ -1,0 +1,17 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.SystemVersionsModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Reports_Version_Title</h2>
+
+@Html.Partial("_PublicSites", Model)
+<br />
+@Html.Partial("_PrivateApis", Model)
+<br />
+@Html.Partial("_PublicApis", Model)
+<br />
+@Html.Partial("_Processes", Model)

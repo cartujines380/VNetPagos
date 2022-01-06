@@ -1,0 +1,42 @@
+﻿@using System.Configuration
+@model VisaNet.Presentation.Web.Areas.Private.Models.ServiceAssociateModel
+
+@Html.HiddenFor(x => x.ServiceSecondcomboId)
+@Html.HiddenFor(x => x.AskChildService)
+@if (Model != null && Model.ServicesInContainer != null && Model.ServicesInContainer.Any())
+{
+    <div class="formMargin">
+            <div class="row mt20 ">
+                <div class="row serviceContainerComboArea">
+                    <div class="col-md-12" style="padding-left: 5px; padding-right: 5px; "> <label>Port favor, seleccione una de las siguientes opciones:</label></div>
+                        @foreach (var state in Model.ServicesInContainer)
+                        {
+                            <div class="col-md-3">
+                                <a id="@state.Id" class="stateItem">
+                                    <div class="serviceContainerCombosBox @(Model.ServiceSecondcomboId == @state.Id ? "active": "")">
+                                        <div class="serviceContainerComboImage"><img src="@state.ImageUrl" width="54" /></div>
+                                        <h3>@state.Name</h3>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+    </div>
+}
+
+
+
+<script>
+    $(document).ready(function () {
+        $("a.stateItem").click(function (e) {
+            e.preventDefault();
+            $('div.serviceContainerCombosBox').removeClass("active");
+            $(this).find('div.serviceContainerCombosBox').addClass("active");
+            var id = $(this).attr("id");
+            $("#@Html.IdFor(m => m.ServiceSecondcomboId)").val(id);
+            LoadRef();
+        });
+    });
+</script>

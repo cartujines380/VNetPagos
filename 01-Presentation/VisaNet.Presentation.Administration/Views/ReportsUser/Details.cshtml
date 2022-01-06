@@ -1,0 +1,103 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model VisaNet.Presentation.Administration.Models.ApplicationUserModel
+
+<h2>@PresentationAdminStrings.ReportsUser_details</h2>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            @Html.AntiForgeryToken()
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.CreationDate)
+                    @Html.TextBoxFor(b => b.CreationDate, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Email)
+                    @Html.TextBoxFor(b => b.Email, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Name)
+                    @Html.TextBoxFor(b => b.Name, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.Surname)
+                    @Html.TextBoxFor(s => s.Surname, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.IdentityNumber)
+                    @Html.TextBoxFor(b => b.IdentityNumber, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.CallCenterKey)
+                    @Html.TextBoxFor(b => b.CallCenterKey, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.MobileNumber)
+                    @Html.TextBoxFor(s => s.MobileNumber, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.PhoneNumber)
+                    @Html.TextBoxFor(b => b.PhoneNumber, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.PlatformId)
+                    <input class="form-control" disabled="disabled" id="Platform" name="Platform" value="@(EnumHelpers.GetName(typeof(PlatformDto), Model.PlatformId,EnumsStrings.ResourceManager))" type="text">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.Address)
+                    @Html.TextBoxFor(s => s.Address, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.FailLogInCount)
+                    @Html.TextBoxFor(b => b.FailLogInCount, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Status)
+                    @Html.TextBoxFor(b => b.Status, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <a href="@Url.Action("Index", "ReportsUser")" class="btn btn-default">@PresentationAdminStrings.Back </a>
+    </div>
+</div>
+
+

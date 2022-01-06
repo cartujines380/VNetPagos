@@ -1,0 +1,49 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Presentation.Administration.Models
+@model IEnumerable<CardUserVonViewModel>
+
+<div id="lbVonUsersCards" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4>@PresentationWebStrings.Cards</h4>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>@PresentationAdminStrings.Name</th>
+                            <th>N&uacute;mero</th>
+                            <th>@PresentationWebStrings.CreationDate</th>
+                            <th>@PresentationWebStrings.DueDate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var card in Model)
+                        {
+                            <tr>
+                                <td>@card.CardName</td>
+                                <td>@card.CardMaskedNumber</td>
+                                <td>@card.CreationDate</td>
+                                <td>@card.CardDueDate</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-6 p5l">
+                        <button type="button" class="btn btn-default btn-cancelar w100" data-dismiss="modal">@PresentationWebStrings.Close <i class="icon-remove"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,195 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Presentation.Web.Areas.Debit.Models
+@model VisaNet.Presentation.Web.Areas.Debit.Models.DebitModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container p25t">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 nameSection">@PresentationWebStrings.Debit_New_Title</h3>
+            <h4 class="pageDescription">@PresentationWebStrings.Debit_New_Desc</h4>
+        </div>
+        <div class="clearfix"></div>
+        <div class="horizontalLineGrey"></div>
+    </div>
+
+    <div class="mt20">
+
+        <div class="wizardBox">
+            <!-- area de titulo y breadcrumb-->
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="mt5">Paso @Model.Setps[DebitsStepsEnum.User]: Creación de usuario</h3>
+                    <h4 class="pageDescription">@PresentationWebStrings.Debit_User</h4>
+                </div>
+                <div class="col-md-4 steps">
+                    @Html.Partial("_Steps", Model.Setps)
+                </div>
+                <div class="clearfix"></div>
+                <div class="horizontalLineGrey"></div>
+            </div>
+
+            <!-- area de datos seleccionados -->
+            <div class="highlightArea">
+                <h3><i class="icon-angle-right"></i>@PresentationWebStrings.Payment_Data_SoFar</h3>
+                <label><i class="icon-angle-right lightBlue"></i> @PresentationWebStrings.Service: <span>@Model.CommerceModel.Name</span></label>
+
+                @foreach (var props in Model.CommerceModel.ProductosListModel.First(x => x.Id == Model.CommerceModel.ProductSelected).ProductPropertyModelList)
+                {
+                    if (!string.IsNullOrEmpty(props.UserInput))
+                    {
+                        <label><i class="icon-angle-right lightBlue"></i> @props.Name: <span> @props.UserInput</span></label>
+                    }
+                }
+            </div>
+
+            <!-- area de titulo y breadcrumb-->
+            <!-- campos obligatorios -->
+            <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+            <!-- campos obligatorios -->
+            @using (Html.BeginForm("Card", "Debit", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(x => x.CommerceModel.Id)
+                <div class="pageBox mb20">
+                    <div class="formMargin">
+                        <h4 class="lightBlue">@PresentationWebStrings.Registration_User</h4>
+                        <div class="horizontalLineWhite"></div>
+
+                        <div class="row">
+                            <div class="col-md-12 hide generalError" id="generalError">
+                                <i class="icon-warning-sign"></i>
+                                @PresentationWebStrings.From_General_Error
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                @Html.LabelFor(p => p.ApplicationUserModel.Name) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                @Html.TextBoxFor(p => p.ApplicationUserModel.Name, new { @class = "w100", @placeholder = PresentationWebStrings.Name_Placeholder, autocomplete = "off" })
+                                @Html.ValidationMessageFor(p => p.ApplicationUserModel.Name)
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(p => p.ApplicationUserModel.Surname) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                @Html.TextBoxFor(p => p.ApplicationUserModel.Surname, new {@class = "w100", @placeholder = PresentationWebStrings.Surname_Placeholder, autocomplete = "off"})
+                                @Html.ValidationMessageFor(p => p.ApplicationUserModel.Surname)
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(p => p.ApplicationUserModel.IdentityNumber)
+                                @Html.TextBoxFor(p => p.ApplicationUserModel.IdentityNumber, new { @class = "w100", @placeholder = PresentationWebStrings.IdentityNumber_Placeholder, autocomplete = "off" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                @Html.LabelFor(p => p.ApplicationUserModel.MobileNumber)
+                                @Html.TextBoxFor(p => p.ApplicationUserModel.MobileNumber, new {@class = "w100", @placeholder = PresentationWebStrings.MobileNumber_Placeholder, autocomplete = "off"})
+                                @Html.ValidationMessageFor(p => p.ApplicationUserModel.MobileNumber)
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                @*<div class="pageBox mb20">
+                    <div class="formMargin">
+                        <h4 class="lightBlue">@PresentationWebStrings.CallCenter</h4>
+                        <div class="horizontalLineWhite"></div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                @Html.LabelFor(p => p.ApplicationUserModel.CallCenterKey) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                @Html.TextBoxFor(p => p.ApplicationUserModel.CallCenterKey, new { @class = "w100 numeric", @placeholder = PresentationWebStrings.CallCenterKey_Placeholder, autocomplete = "off" })
+                                @Html.ValidationMessageFor(p => p.ApplicationUserModel.CallCenterKey)
+
+                                <h5 class="helpUser">
+                                    <i class="icon-info-sign"></i>
+                                    <a class="preview" rel="popover"> @PresentationWebStrings.Resgistration_CallCenter_Question</a>
+                                </h5>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                </div>*@
+                <div class="pageBox mb20">
+                    <div class="formMargin">
+                        <h4 class="lightBlue">@PresentationWebStrings.Registration_Login</h4>
+                        <div class="horizontalLineWhite"></div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                @Html.LabelFor(p => p.ApplicationUserModel.Email) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                @Html.TextBoxFor(p => p.ApplicationUserModel.Email, new { @class = "w100", @placeholder = PresentationWebStrings.Email_Placeholder, autocomplete = "off" })
+                                @Html.ValidationMessageFor(p => p.ApplicationUserModel.Email)
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(p => p.ApplicationUserModel.Password) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                @Html.PasswordFor(p => p.ApplicationUserModel.Password, new {@class = "w100", @placeholder = PresentationWebStrings.Password_Placeholder, autocomplete = "off"})
+                                @Html.ValidationMessageFor(p => p.ApplicationUserModel.Password)
+
+                                <h5 class="helpUser">
+                                    <i class="icon-info-sign"></i>
+                                    <a class="previewPassword" rel="popover"> @PresentationWebStrings.Resgistration_Password_Requirements</a>
+                                </h5>
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(p => p.ApplicationUserModel.PasswordConfirmation) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                @Html.PasswordFor(p => p.ApplicationUserModel.PasswordConfirmation, new {@class = "w100", @placeholder = PresentationWebStrings.PasswordConfirmation_Placeholder, autocomplete = "off"})
+                                @Html.ValidationMessageFor(p => p.ApplicationUserModel.PasswordConfirmation)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row wizardButtons">
+                    <div class="col-md-8">
+                        @Html.CheckBoxFor(p => p.ApplicationUserModel.AcceptTermsAndConditions, new {@id = "checkConditions"})
+                        <label>@PresentationWebStrings.Registration_Conditions_Accept <a target="_blank" href="@Url.Action("Conditions", "Registration", new { area = "" })">@PresentationWebStrings.Registration_Conditions</a></label>
+                    </div>
+                    <span id="conditionsMessage" class="hide help-inline field-validation-error">@PresentationWebStrings.Registration_Conditions_Validation</span>
+                    <div class="col-md-4">
+                        <div class="col-xs-6">
+                            <a href="@Url.Action("Service")" class="btn btn-default btn-anterior mt10 w100"><i class="icon-chevron-sign-left"></i> @PresentationCoreMessages.Common_Previous</a>
+                        </div>
+                        <div class="col-xs-6 p5l pr0">
+                            <button id="btnNext" class="btn btn-default btn-siguiente mt10 w100">@PresentationCoreMessages.Common_Next<i class="icon-chevron-sign-right"></i></button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!-- fin del formMargin-->
+            }
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <button id="btnCancelDebit" class="btn btn-default btn-cancelar mt10 w100">@PresentationWebStrings.Abandon_Request<i class="icon-remove"></i></button>
+            </div>
+        </div>
+        @Html.Partial("_Cancel")
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#stepUser").addClass("active");
+        $("#debitRequestLink").addClass("vnpTitleSelected");
+
+        $("#btnNext").click(function () {
+            $("#form").submit();
+        });
+
+        $("#btnCancelDebit").click(function (e) {
+            e.preventDefault();
+            $("#lbCancelDebit").modal();
+        });
+
+        $('.previewPassword').popover({
+            'trigger': 'hover',
+            'html': true,
+            'content': function () {
+                return "@PresentationWebStrings.Resgistration_Password_Desc";
+            }
+        });
+    });
+</script>

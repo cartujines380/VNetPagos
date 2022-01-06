@@ -1,0 +1,1087 @@
+@font-face {
+    font-family: 'Segoe UI';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe UI'), url('segoeui.woff') format('woff');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Helvetica, sans-serif;
+    color: #333
+}
+
+img {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+    a:active, a:active * {
+        outline: none !important;
+        -moz-outline-style: none !important;
+    }
+
+    a:focus, a:focus * {
+        outline: none !important;
+        -moz-outline-style: none !important;
+    }
+
+.no-border {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+#content {
+    max-width: 1000px;
+    margin: 0px auto;
+    background-color: #fff;
+    padding: 25px
+}
+
+.title-section-wrapper {
+    margin: 0 0 20px;
+}
+
+.title-section {
+    font-size: 20px;
+    font-weight: 900;
+    color: #1a1f70;
+}
+
+.title-section-xs {
+    font-size: 17px;
+    font-weight: 900;
+    color: #1a1f70;
+}
+
+.black {
+    color: #000;
+}
+
+.log-in-cta {
+    font-size: 11px;
+}
+
+.title-form {
+    font-size: 16px;
+    color: #1a1f70;
+    margin-bottom: 10px;
+    display: block;
+}
+
+#registro {
+    border-bottom: 2px solid #1a1f70;
+    margin-bottom: 5%;
+    position: relative;
+    min-height: 50px;
+}
+
+    #registro li a {
+        border: none;
+        padding-left: 0;
+        padding-right: 35px;
+        color: #e1e1e1;
+        background-color: transparent !important;
+        font-weight: 500;
+        pointer-events: none;
+    }
+
+        #registro li a:hover {
+            color: #1a1f70
+        }
+
+        #registro li a span {
+            font-size: 25px
+        }
+
+    #registro > li.active > a, #registro > li.active > a:focus, #registro > li.active > a:hover {
+        background-color: transparent;
+        color: #1a1f70;
+    }
+
+.logoVisa {
+    position: absolute;
+    bottom: 8px;
+    right: 0
+}
+
+.logoVisaNet {
+    position: absolute;
+    bottom: 8px;
+    left: 0
+}
+
+.logos-visa {
+    overflow: hidden;
+    padding: 5px 0 20px 0
+}
+
+    .logos-visa .logoVisa-xs {
+        float: right;
+    }
+
+    .logos-visa .logoVisaNetPagos-xs {
+        float: left;
+    }
+
+.tab-pane {
+    padding: 0 !important
+}
+
+.modal-header {
+    padding: 15px 15px 0;
+    border-bottom: none;
+}
+
+.modal-body {
+    padding: 15px 15px 0;
+}
+
+.modal-footer {
+    padding: 0 15px 30px;
+    border-top: none;
+}
+
+.title-modal {
+    margin-bottom: 1%;
+}
+
+form#persona {
+    margin-top: 20px;
+}
+
+form.registro .column {
+    padding: 3px !important
+}
+
+form.registro label {
+    text-align: right;
+    display: block;
+    margin-top: 7px;
+    font-weight: lighter;
+}
+
+form.registro input {
+    height: 35px;
+    border-radius: 3px;
+    width: 100%;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #d3d3d3;
+    padding: 0 8px;
+    margin-bottom: 5px
+}
+
+    form.registro input.small {
+        width: 50%;
+    }
+
+form.registro select {
+    height: 35px;
+    width: 70px;
+    border-radius: 3px;
+    border: 1px solid #d3d3d3;
+    padding: 0 8px;
+    margin-bottom: 5px
+}
+
+.form-group p {
+    color: #888;
+    font-size: 12px;
+    margin-bottom: 0
+}
+
+.icon {
+    position: absolute;
+    top: 15px;
+    right: 14px;
+    color: #a3a3a3;
+}
+
+.codigoTarjeta {
+    float: left;
+    margin-top: 5px;
+    margin-left: 6px
+}
+
+    .codigoTarjeta span {
+        color: #888;
+        font-size: 11px
+    }
+
+.footer-registro {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-top: 2%;
+    border-top: 1px solid #1a1f70;
+    width: 100%;
+}
+
+    .footer-registro img {
+        margin-top: 8px
+    }
+
+.actions {
+    margin-top: 15px;
+    align-self: center;
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+}
+
+.modal-actions {
+    justify-content: center;
+}
+
+.actions a {
+    height: 38px;
+    width: 160px;
+    background-color: none;
+    color: #1a1f70;
+    font-weight: bold;
+    border: 1px solid #1a1f70;
+    ;
+    line-height: 23px
+}
+
+    .actions a.siguiente {
+        background-color: #f1a800;
+        color: #fff;
+        font-weight: normal;
+        border: none;
+        margin-left: auto;
+    }
+
+p.condiciones {
+    text-align: right;
+    margin-top: 25px
+}
+
+    p.condiciones a {
+        text-decoration: underline;
+        color: #333
+    }
+
+p.newPass a {
+    text-decoration: underline;
+    color: #333
+}
+
+.help {
+    margin-left: 8px;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+}
+
+    .help:hover {
+        text-decoration: none;
+    }
+
+.tooltip-inner {
+    background-color: #ffedc3;
+    color: #333
+}
+
+.tooltip.right {
+    text-align: left;
+}
+
+.tooltip.top {
+    text-align: center
+}
+
+.tooltip.right .tooltip-arrow {
+    border-right-color: #ffedc3;
+}
+
+.tooltip.top .tooltip-arrow {
+    border-top-color: #ffedc3;
+}
+
+.wrapper-chbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chbox {
+    color: #1a1f70;
+}
+
+.chbox-signup {
+    width: 90%;
+}
+
+.registro.right {
+    display: flex;
+    flex-direction: column;
+}
+
+.registro .title-form {
+    align-self: left;
+}
+
+.wrapper-vendedor {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.crop {
+    max-width: 150px;
+    max-height: 150px;
+    overflow: hidden;
+    margin-left: 20%
+}
+
+    .crop img {
+        width: 100%;
+        margin-top: -20%; /* TODO: PROBAR CON DIFERENTES IMAGENES */
+    }
+
+.info-vendedor {
+    display: flex;
+    flex-direction: column
+}
+
+.empresa {
+    font-size: 16px;
+}
+
+.vendedor {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a1f70;
+}
+
+.factura {
+    font-size: 12px;
+    color: gray;
+    margin-top: 2%;
+}
+
+.pedido {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.wrapper-precio {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 3%;
+    flex-direction: row;
+    color: #1a1f70;
+    border-top: 2px solid #1a1f70;
+}
+
+.wrapper-precio-confirm {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 4%;
+    flex-direction: row;
+    color: #1a1f70;
+}
+
+.precio {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.seleccion-tarjeta {
+    list-style: none;
+    padding: 0;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+    .seleccion-tarjeta a {
+        margin: 0 auto;
+        display: block;
+    }
+
+    .seleccion-tarjeta b {
+        font-size: 14px;
+    }
+
+    .seleccion-tarjeta li {
+        padding: 15px 0;
+        color: #333;
+        display: flex;
+        align-items: center;
+    }
+
+        .seleccion-tarjeta li i {
+            margin-left: auto;
+            font-size: 30px;
+            color: #1a1f70;
+        }
+
+        .seleccion-tarjeta li:hover {
+            z-index: 1;
+            background: #eaeaea;
+        }
+
+    .seleccion-tarjeta hr {
+        z-index: 0;
+        width: 100%;
+        margin: -1px auto;
+        border-bottom: 1px solid #1a1f70;
+        border-top: none;
+        display: block;
+        padding: 0;
+    }
+
+.tarjeta {
+    margin-right: 5%;
+    height: 30px;
+}
+
+.fecha-vencimiento {
+    color: gray;
+    font-size: 12px;
+    text-align: right;
+}
+
+.hidden-icon {
+    visibility: hidden;
+}
+
+.compra-detail {
+    margin: 5% auto 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 4%;
+    background-color: #eaeaea;
+}
+
+    .compra-detail .right-value {
+        width: 50%;
+        text-align: right;
+    }
+
+    .compra-detail .left-title {
+        text-align: left;
+        color: #1a1f70;
+        width: 50%
+    }
+
+.modal-compra-detail {
+    margin: 2% auto 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 4% 4% 2%;
+    border-bottom: 2px solid #1a1f70;
+}
+
+    .modal-compra-detail .right-value {
+        width: 50%;
+        text-align: right;
+    }
+
+    .modal-compra-detail .left-title {
+        text-align: left;
+        width: 50%;
+        color: #1a1f70;
+    }
+
+.legales {
+    font-size: 10px;
+}
+
+.legales-xl {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.bold {
+    font-weight: bold;
+    margin-top: 1%;
+}
+
+.vencido {
+    color: #ba0000 !important;
+}
+
+
+.login-switch {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+    color: gray;
+}
+
+/*CSS para el slider*/
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+}
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        display: none;
+    }
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+    .slider.round:before {
+        border-radius: 50%;
+        top: 3px;
+        left: 3px;
+    }
+
+/*checkboxes*/
+.squaredTwo {
+    width: 19px; /*5%*/
+    height: 19px;
+    position: relative;
+    margin: 0;
+    background: #1a1f70;
+}
+
+    .squaredTwo label {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        position: absolute; /*
+  left: 4px;
+  top: 4px;*/
+    }
+
+        .squaredTwo label:after {
+            content: '';
+            width: 60%;
+            height: 35%;
+            position: absolute;
+            top: 4px;
+            left: 3px;
+            border: 3px solid #fcfff4;
+            border-top: none;
+            border-right: none;
+            background: transparent;
+            opacity: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+        .squaredTwo label:hover::after {
+            opacity: 0.3;
+        }
+
+    .squaredTwo input[type=checkbox] {
+        visibility: hidden;
+    }
+
+        .squaredTwo input[type=checkbox]:checked + label:after {
+            opacity: 1;
+        }
+
+/*pagina de error */
+
+.error-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8%;
+}
+
+.error-title {
+    font-size: 3em;
+    color: #1a1f70;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.error-cta {
+    color: #f1a800;
+    font-size: 2em;
+    line-height: 1.8;
+}
+
+.error-text {
+    font-style: italic;
+    color: #8C8C8C;
+    line-height: 1;
+}
+
+
+/*pagina de compra exitosa*/
+
+.wrapper-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.green {
+    color: #5cb85c;
+}
+
+.success-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 2%;
+}
+
+.wrapper-top i {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.wrapper-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 5%;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+    .wrapper-buttons span {
+        font-size: 14px;
+        margin-bottom: 2%;
+    }
+
+    .wrapper-buttons a {
+        margin-top: 1%;
+        width: 100%;
+    }
+
+.gray {
+    color: gray;
+}
+
+.wrapper-comprobante {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #1a1f70;
+    padding: 10% 10% 5%;
+    justify-content: flex-start;
+}
+
+.header-comprobante {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10%;
+}
+
+.title-comprobante {
+    color: #1a1f70;
+    font-size: 18px;
+}
+
+.body-comprobante {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+}
+
+    .body-comprobante span {
+        margin-bottom: 2%;
+    }
+
+.wrapper-comprobante hr {
+    border: 1px solid #1a1f70;
+    width: 20%;
+    margin: 2% 0;
+}
+
+.blue {
+    color: #1a1f70;
+}
+
+.front {
+    z-index: 1000;
+}
+
+@media (max-width: 768px) and (orientation:portrait) {
+
+    .wrapper-comprobante {
+        border: none;
+        padding-left: 0;
+    }
+
+    .wrapper-buttons {
+        width: 100%;
+    }
+
+    #content {
+        padding: 5px;
+    }
+
+    .container-fluid {
+        padding: 0;
+    }
+
+    body {
+        background-color: #fff
+    }
+
+    #content {
+        margin: 0;
+    }
+
+    form#cuenta label {
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    form.registro select {
+        height: 35px;
+        width: 49%
+    }
+
+    form.registro input.small {
+        width: 70px;
+        float: left;
+    }
+
+    .actions {
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+
+        .actions a {
+            height: 38px;
+            width: 49%;
+        }
+
+            .actions a.siguiente {
+                margin-left: auto;
+            }
+
+    p.condiciones {
+        text-align: left;
+    }
+
+    .cpo {
+        display: block;
+    }
+
+    hr {
+        margin-top: 0;
+    }
+
+    .header-visible {
+        display: flex;
+        justify-content: space-between;
+        color: #1a1f70;
+    }
+
+    .crop {
+        width: 85px;
+        height: 50px;
+    }
+
+    .empresa {
+        font-size: 10px;
+    }
+
+    .vendedor {
+        font-size: 14px;
+    }
+
+    .factura {
+        font-size: 10px;
+    }
+
+    .wrapper-vendedor {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+        .wrapper-vendedor > div {
+            display: flex;
+            margin-top: 15px;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .wrapper-vendedor > span {
+            text-align: right;
+            font-size: 10px;
+            width: 55%;
+            margin-top: 15px;
+        }
+
+    .header-visible a {
+        text-decoration: none;
+    }
+
+    .pedido {
+        background-color: #eaeaea;
+        padding: 10px;
+        margin: 5px 0 2px;
+    }
+
+    .compra-detail {
+        font-size: 12px;
+        width: 100%;
+    }
+
+    .modal-body .title-form {
+        font-size: 14px;
+        margin-bottom: 0
+    }
+
+    .error-wrapper {
+        margin: 10% 5%;
+    }
+
+    .error-cta {
+        font-size: 1.3em;
+    }
+}
+
+/*BLOCK UI*/
+.sk-fading-circle {
+    margin: 100px auto;
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+    .sk-fading-circle .sk-circle {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+        .sk-fading-circle .sk-circle:before {
+            content: '';
+            display: block;
+            margin: 0 auto;
+            width: 15%;
+            height: 15%;
+            background-color: #FFF;
+            border-radius: 100%;
+            -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+            animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+        }
+
+    .sk-fading-circle .sk-circle2 {
+        -webkit-transform: rotate(30deg);
+        -ms-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+
+    .sk-fading-circle .sk-circle3 {
+        -webkit-transform: rotate(60deg);
+        -ms-transform: rotate(60deg);
+        transform: rotate(60deg);
+    }
+
+    .sk-fading-circle .sk-circle4 {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    .sk-fading-circle .sk-circle5 {
+        -webkit-transform: rotate(120deg);
+        -ms-transform: rotate(120deg);
+        transform: rotate(120deg);
+    }
+
+    .sk-fading-circle .sk-circle6 {
+        -webkit-transform: rotate(150deg);
+        -ms-transform: rotate(150deg);
+        transform: rotate(150deg);
+    }
+
+    .sk-fading-circle .sk-circle7 {
+        -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+
+    .sk-fading-circle .sk-circle8 {
+        -webkit-transform: rotate(210deg);
+        -ms-transform: rotate(210deg);
+        transform: rotate(210deg);
+    }
+
+    .sk-fading-circle .sk-circle9 {
+        -webkit-transform: rotate(240deg);
+        -ms-transform: rotate(240deg);
+        transform: rotate(240deg);
+    }
+
+    .sk-fading-circle .sk-circle10 {
+        -webkit-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        transform: rotate(270deg);
+    }
+
+    .sk-fading-circle .sk-circle11 {
+        -webkit-transform: rotate(300deg);
+        -ms-transform: rotate(300deg);
+        transform: rotate(300deg);
+    }
+
+    .sk-fading-circle .sk-circle12 {
+        -webkit-transform: rotate(330deg);
+        -ms-transform: rotate(330deg);
+        transform: rotate(330deg);
+    }
+
+    .sk-fading-circle .sk-circle2:before {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+    }
+
+    .sk-fading-circle .sk-circle3:before {
+        -webkit-animation-delay: -1s;
+        animation-delay: -1s;
+    }
+
+    .sk-fading-circle .sk-circle4:before {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+    }
+
+    .sk-fading-circle .sk-circle5:before {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+    }
+
+    .sk-fading-circle .sk-circle6:before {
+        -webkit-animation-delay: -0.7s;
+        animation-delay: -0.7s;
+    }
+
+    .sk-fading-circle .sk-circle7:before {
+        -webkit-animation-delay: -0.6s;
+        animation-delay: -0.6s;
+    }
+
+    .sk-fading-circle .sk-circle8:before {
+        -webkit-animation-delay: -0.5s;
+        animation-delay: -0.5s;
+    }
+
+    .sk-fading-circle .sk-circle9:before {
+        -webkit-animation-delay: -0.4s;
+        animation-delay: -0.4s;
+    }
+
+    .sk-fading-circle .sk-circle10:before {
+        -webkit-animation-delay: -0.3s;
+        animation-delay: -0.3s;
+    }
+
+    .sk-fading-circle .sk-circle11:before {
+        -webkit-animation-delay: -0.2s;
+        animation-delay: -0.2s;
+    }
+
+    .sk-fading-circle .sk-circle12:before {
+        -webkit-animation-delay: -0.1s;
+        animation-delay: -0.1s;
+    }
+
+@-webkit-keyframes sk-circleFadeDelay {
+    0%, 39%, 100% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+}
+
+@keyframes sk-circleFadeDelay {
+    0%, 39%, 100% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+}
+
+.blockUI.blockMsg.blockPage {
+    color: #000000 !important;
+    color: rgba(0, 0, 0, 0) !important;
+    border: none !important;
+    background: #000000 !important;
+    background: rgba(0, 0, 0, 0) !important;
+}
+
+/*ERRORES EN FORM*/
+form input.input-validation-error {
+    border-color: red;
+    box-shadow: 1px 1px 1px 1px rgba(255, 0, 0, 0.15);
+}

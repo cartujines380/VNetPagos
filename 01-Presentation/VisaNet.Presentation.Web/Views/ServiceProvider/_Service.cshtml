@@ -1,0 +1,53 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.ServiceModel
+
+<div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="itemBox serviceListItem">
+        <div class="serviceInformation col-md-12 col-sm-12 col-xs-12">
+            <div class="pr0 pl0 mb10 serviceListActions col-md-4 col-sm-12 col-xs-12">
+                @if (!string.IsNullOrEmpty(Model.ImgUrl))
+                {
+                    <img src="@Model.ImgUrl" width="54" />
+                }
+                else
+                {
+                    <img src="@ConfigurationManager.AppSettings["DefaultServiceImage"]" width="54" />
+                }
+            </div>
+            <div class="serviceListDetail col-md-8 col-sm-12 col-xs-12 pl0">
+                <ul>
+                    <li><span class="titleCard">@Model.Name</span></li>
+                    <li><span> @Model.Description </span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="serviceActions">
+            <ul>
+                @if (Model.EnableBill)
+                {
+                    using (Html.BeginForm("Service", "Pay", new RouteValueDictionary() { { "Area", "Pay" } }, FormMethod.Post, new Dictionary<string, object> { { "id", string.Format("form_{0}", Model.Id) } }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("ServiceId", Model.Id)
+                    }
+                    <li><a class="btn-pay" data-id="@Model.Id"><i class="fa fa-money"></i>@PresentationWebStrings.Add_Payment</a></li>
+                }
+                @if (Model.EnableDebit)
+                {
+                    <li><a class="Activate" href="@Url.Action("Service", "Debit", new {area = "Debit", commerceId = Model.CommerceId})"><i class="fa fa-repeat"></i>@PresentationWebStrings.RequestDebit</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".btn-pay").click(function () {
+            var id = $(this).data("id");
+            var form = $("#form_" + id);
+            form.submit();
+        });
+    });
+</script>

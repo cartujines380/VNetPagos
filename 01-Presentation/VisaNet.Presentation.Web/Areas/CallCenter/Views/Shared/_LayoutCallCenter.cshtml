@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="@Url.Content("~/Content/images/favicon.ico")" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Pagos</title>
+
+    @*@Styles.Render("~/Content/style")*@
+    @Styles.Render("~/Content/css/style")
+    @Styles.Render("~/Content/font/font-awesome/css/style")
+    @*@Styles.Render("~/Content/font/font-awesome/fonts/style")*@
+
+    @Scripts.Render("~/Scripts/files")
+    @Scripts.Render("~/Scripts/js/files")
+    
+    <!--[if lt IE 9]>
+        <script src="@Url.Content("~/Scripts/html5shim/html5shim.js")"></script>
+
+        <script type="text/javascript">
+            var url = "@Url.Action("OldBrowser", "Error")";
+            window.location.href = url;
+        </script>
+    <![endif]-->
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <!-- call center header -->
+    @Html.Partial("_HeaderCallCenter")
+
+    <!-- fin  call center header -->
+    @Html.Partial("_Notifications")
+
+    <!-- Area de contenidos -->
+    @RenderBody()
+
+    <!-- fin Area de contenidos -->
+    @Html.Partial("_LoaderFullScreen")
+</body>
+</html>

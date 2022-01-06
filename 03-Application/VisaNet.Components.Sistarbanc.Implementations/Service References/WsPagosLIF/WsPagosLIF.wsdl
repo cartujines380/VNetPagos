@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="https://spf.sistarbanc.com.uy/spfws/services/WsPagosLIF" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns1="urn:WsPagosLIF" xmlns:impl="https://spf.sistarbanc.com.uy/spfws/services/WsPagosLIF" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="https://spf.sistarbanc.com.uy/spfws/services/WsPagosLIF" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:WsPagosLIF">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="Resultado">
+        <xsd:sequence>
+          <xsd:element name="codigoError" type="xsd:int" />
+          <xsd:element name="descripcionError" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResultadoWsPagosLIF">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns1:Resultado">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="pagarReciboRequest">
+    <wsdl:part name="idClienteBanco" type="soapenc:string" />
+    <wsdl:part name="codigoFactura" type="soapenc:string" />
+    <wsdl:part name="tipoServicio" type="soapenc:string" />
+    <wsdl:part name="idOrganismo" type="soapenc:string" />
+    <wsdl:part name="banco" type="soapenc:string" />
+    <wsdl:part name="nroTranBanco" type="soapenc:string" />
+    <wsdl:part name="importe" type="soapenc:string" />
+    <wsdl:part name="moneda" type="soapenc:string" />
+    <wsdl:part name="guardarPerfil" type="soapenc:string" />
+    <wsdl:part name="nroTranSB" type="soapenc:string" />
+    <wsdl:part name="fecha" type="soapenc:string" />
+    <wsdl:part name="firmaPago" type="soapenc:string" />
+    <wsdl:part name="origen" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="pagarReciboResponse">
+    <wsdl:part name="pagarReciboReturn" type="tns1:ResultadoWsPagosLIF" />
+  </wsdl:message>
+  <wsdl:portType name="WsPagosLIF">
+    <wsdl:operation name="pagarRecibo" parameterOrder="idClienteBanco codigoFactura tipoServicio idOrganismo banco nroTranBanco importe moneda guardarPerfil nroTranSB fecha firmaPago origen">
+      <wsdl:input name="pagarReciboRequest" message="impl:pagarReciboRequest" />
+      <wsdl:output name="pagarReciboResponse" message="impl:pagarReciboResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsPagosLIFSoapBinding" type="impl:WsPagosLIF">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="pagarRecibo">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="pagarReciboRequest">
+        <wsdlsoap:body use="encoded" namespace="https://spf.sistarbanc.com.uy/spfws/services/WsPagosLIF" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="pagarReciboResponse">
+        <wsdlsoap:body use="encoded" namespace="https://spf.sistarbanc.com.uy/spfws/services/WsPagosLIF" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsPagosLIFService">
+    <wsdl:port name="WsPagosLIF" binding="impl:WsPagosLIFSoapBinding">
+      <wsdlsoap:address location="https://spf.quanam.com/spfws/services/WsPagosLIF" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

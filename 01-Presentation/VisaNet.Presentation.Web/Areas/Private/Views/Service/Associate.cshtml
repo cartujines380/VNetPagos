@@ -1,0 +1,188 @@
+﻿@{
+    ViewBag.Title = "Associate";
+}
+
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Areas.Private.Models.ServiceAssociateModel
+
+<div class="container p25t">
+    <div class="wizardBox">
+        <!-- area de titulo y breadcrumb-->
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="mt5">@PresentationWebStrings.Service_Step1_Title</h3>
+                <h4 class="pageDescription"> @PresentationWebStrings.Service_Step1_Desc</h4>
+            </div>
+            <div class="col-md-4">
+                @Html.Partial("_Steps")
+            </div>
+            <div class="clearfix"></div>
+            <div class="horizontalLineGrey"></div>
+        </div>
+        <!-- area de titulo y breadcrumb-->
+        <!-- campos obligatorios -->
+        <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+        <!-- campos obligatorios -->
+        @using (Html.BeginForm("StepNotification", "Service", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.DisableEdition)
+            <div class="formMargin">
+                <div class="row">
+                    <div class="col-md-12 hide generalError" id="generalError">
+                        <i class="icon-warning-sign"></i>
+                        @PresentationWebStrings.From_General_Error
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div> @Html.LabelFor(model => model.ServiceFirstComboId)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i></div>
+                        <select data-val="true" data-val-required="El campo es requerido." id="@Html.IdFor(m => m.ServiceFirstComboId)" name="@Html.NameFor(m => m.ServiceFirstComboId)">
+                            <option></option>
+                            @foreach (var i in Model.Services)
+                            {
+                                <option value="@i.Id" data-tags="@i.Tags" @(((Model != null) && (Model.ServiceFirstComboId != Guid.Empty) && (Model.ServiceFirstComboId == i.Id)) ? "selected='selected'" : string.Empty)>@i.Name</option>
+                            }
+                        </select>
+
+                        @Html.ValidationMessageFor(m => m.ServiceFirstComboId)
+                    </div>
+                </div>
+
+
+                <div id="ServicesInContainerDiv">
+                    @Html.Partial("_ServicesInContainer", Model)
+                </div>
+
+                <div class="row">
+                    <div id="ReferencesDiv" class="col-md-12">
+                        @Html.Partial("_References", Model)
+                    </div>
+                </div>
+                <div class="horizontalLineWhite"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Description)
+                        @Html.TextAreaFor(model => model.Description, new { @class = "w100 ", placeholder = PresentationWebStrings.Payment_Placeholder_Description })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+                <div class="row wizardButtons">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4 pr0">
+                        <div class="col-xs-6">
+                        </div>
+                        <div class="col-xs-6 p5l pr0">
+                            <button id="btnNext" class="btn btn-default btn-siguiente mt10 w100"> @PresentationWebStrings.Next <i class="icon-chevron-sign-right"></i></button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        <!-- fin del formMargin-->
+            @Html.HiddenFor(m => m.reference_number)
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <button id="btnCancelPayment" class="btn btn-default btn-cancelar mt10 w100">@PresentationWebStrings.Service_Cancel <i class="icon-remove"></i></button>
+        </div>
+    </div>
+
+    @Html.Partial("_Cancel")
+</div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#servicesLink").addClass("vnpTitleSelected");
+
+            $("#@Html.IdFor(m => m.ServiceFirstComboId)").combobox();
+
+            $("#stepService").addClass("active");
+
+            @*$("#btnNext").click(function (e) {
+            e.preventDefault();
+            var name = $("#@Html.IdFor(m => m.ServiceId) :selected").text();
+            if (name != "") {
+                if ($("#form").valid()) {
+                    $("#ServiceName").val(name);
+                    showLoaderFullScreen("@PresentationWebStrings.Loader_Message_Getting_Bills");
+                    $("#form").submit();
+                } else {
+                    if ($("#generalError").hasClass("hide")) {
+                        changeStateGeneralErrorForm();
+                    }
+                }
+            } else {
+                if ($("#generalError").hasClass("hide")) {
+                    changeStateGeneralErrorForm();
+                }
+            }
+        });*@
+
+            $("#btnNext").click(function() {
+                $("#ReferenceValue").val($("#ReferenceValue").val().replace(/ /g, "").replace(/-/g, "").replace(/\./g, "").trim());
+                if ($("#form").valid()) {
+                    $("#form").submit(function() {
+                        showLoaderFullScreen("@PresentationWebStrings.Loader_Message_Getting_Bills");
+                    });
+                } else {
+                    if ($("#generalError").hasClass("hide")) {
+                        changeStateGeneralErrorForm();
+                    }
+                }
+            });
+
+            $("#btnCancelPayment").click(function () {
+                $("#lbCancelPayment").modal({
+                    onShow: function () {
+                        $("#btnCancel").click(function () {
+                            window.location.replace('@Url.Action("Index", "Dashboard")');
+                        });
+                    }
+                });
+            });
+
+
+            $('#@Html.IdFor(m => m.ServiceFirstComboId)').change(function () {
+                LoadRef();
+            });
+
+            if ($('#ServiceFirstComboId').val() != '00000000-0000-0000-0000-00000000000') {
+                LoadRef();
+            }
+
+        });
+
+        function LoadRef() {
+            $.ajax({
+                data: $('#form').serialize(),
+                url: '@Url.Action("GetService", "Service")',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.ResponseType == RESPONSE.SUCCESS) {
+                        removeStateGeneralErrorForm();
+                        var dataContainer = data.Content["newcombo"];
+                        var dataRefs = data.Content["refcontent"];
+                        if (dataRefs) {
+                            $('#ReferencesDiv').html(dataRefs);
+                            if (dataContainer == 'clean') $('#ServicesInContainerDiv').html('');
+                        }
+                        if (dataContainer && dataContainer != 'clean') {
+                            $('#ServicesInContainerDiv').html(dataContainer);
+                            $('#ReferencesDiv').html('');
+                        }
+                        if (dataContainer && dataContainer == 'clean') {
+                            $('#ServicesInContainerDiv').html('');
+                        }
+
+                        var form = $("form");
+                        form.unbind();
+                        form.data("validator", null);
+                        $.validator.unobtrusive.parse(document);
+                        form.validate(form.data("unobtrusiveValidation").options);
+                    }
+                }
+            });
+        }
+    </script>

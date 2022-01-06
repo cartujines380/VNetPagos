@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Presentation.Administration.Models.PageModel
+
+<h2>@PresentationAdminStrings.LegalPages_Edit_Title</h2>
+
+<div class="row">
+    <div class="col-lg-8">
+        @using (Html.BeginForm("Edit", "LegalPages", FormMethod.Post, new { id = "formPage" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(s => s.Id)
+            @Html.HiddenFor(s => s.PageType)
+            <div class="form-group">
+                @Html.TextAreaFor(m => m.Content, new { id = "Content" })
+            </div>
+            @Html.ActionActionLink(Actions.LegalPagesDetails, PresentationAdminStrings.Cancel, new Dictionary<string, object> { { "Class", "btn btn-default btn-cancel" } })
+            @*<a href="@Url.Action("Details", "LegalPages")" class="btn btn-default">Cancelar </a>*@
+            <a href="#" id="btnGuardar" class="btn btn-default">
+                <strong>Guardar</strong>
+            </a>
+        }
+    </div>
+</div>
+
+@{
+    var contenido = Html.Raw(Model.Content);
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        loadEditor("Content", "@contenido");
+
+        $("#btnGuardar").click(function () {
+            $("#formPage").submit();
+        });
+    });
+</script>

@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FF7A803E-AF0F-47C6-BB7E-133DBCB38EBF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VisaNet.Repository.Interfaces</RootNamespace>
+    <AssemblyName>VisaNet.Repository.Interfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy|AnyCPU'">
+    <OutputPath>bin\demouy\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure|AnyCPU'">
+    <OutputPath>bin\Azure\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SebaPrueba|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\SebaPrueba\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Testing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Testing\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Production|AnyCPU'">
+    <OutputPath>bin\demouy.Production\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Testing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.Testing\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Development|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.Development\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.ReleaseCandidate|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.ReleaseCandidate\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'VisaNet.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\VisaNet.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Azure.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Staging|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Azure.Staging\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\IRepository.cs" />
+    <Compile Include="Interfaces\IRepositoryAffiliationCard.cs" />
+    <Compile Include="Interfaces\IRepositoryConciliationRun.cs" />
+    <Compile Include="Interfaces\IRepositoryCyberSourceVoid.cs" />
+    <Compile Include="Interfaces\IRepositoryCyberSourceAcknowledgement.cs" />
+    <Compile Include="Interfaces\IRepositoryDebitRequest.cs" />
+    <Compile Include="Interfaces\IRepositoryLifApiBill.cs" />
+    <Compile Include="Interfaces\IRepositoryBinGroup.cs" />
+    <Compile Include="Interfaces\IRepositoryInterpreter.cs" />
+    <Compile Include="Interfaces\IRepositoryChangeTracker.cs" />
+    <Compile Include="Interfaces\IRepositoryBank.cs" />
+    <Compile Include="Interfaces\IRepositoryConciliationDailySummary.cs" />
+    <Compile Include="Interfaces\IRepositoryConciliationVisanetCallback.cs" />
+    <Compile Include="Interfaces\IRepositoryConciliationVisanet.cs" />
+    <Compile Include="Interfaces\IRepositoryFixedNotification.cs" />
+    <Compile Include="Interfaces\IRepositoryVonData.cs" />
+    <Compile Include="Interfaces\IRepositoryProcessHistory.cs" />
+    <Compile Include="Interfaces\IRepositoryWsBillQuery.cs" />
+    <Compile Include="Interfaces\IRepositoryWsBillPaymentOnline.cs" />
+    <Compile Include="Interfaces\IRepositoryWebhookNewAssociation.cs" />
+    <Compile Include="Interfaces\IRepositoryWsCardRemove.cs" />
+    <Compile Include="Interfaces\IRepositoryWsPaymentCancellation.cs" />
+    <Compile Include="Interfaces\IRepositoryWsCommerceQuery.cs" />
+    <Compile Include="Interfaces\IRepositoryWebhookDown.cs" />
+    <Compile Include="Interfaces\IRepositoryWebhookRegistration.cs" />
+    <Compile Include="Interfaces\IRepositoryHighwayBill.cs" />
+    <Compile Include="Interfaces\IRepositoryHighwayEmail.cs" />
+    <Compile Include="Interfaces\IRepositoryLocation.cs" />
+    <Compile Include="Interfaces\IRepositoryReports.cs" />
+    <Compile Include="Interfaces\IRepositoryTc33.cs" />
+    <Compile Include="Interfaces\IRepositoryConciliationCybersource.cs" />
+    <Compile Include="Interfaces\IRepositoryConciliationSucive.cs" />
+    <Compile Include="Interfaces\IRepositoryConciliationSummary.cs" />
+    <Compile Include="Interfaces\IRepositoryConciliationSistarbanc.cs" />
+    <Compile Include="Interfaces\IRepositoryCybersourceErrorGroup.cs" />
+    <Compile Include="Interfaces\IRepositoryConciliationBanred.cs" />
+    <Compile Include="Interfaces\IRepositorySistarbancUser.cs" />
+    <Compile Include="Interfaces\IRepositoryAnonymousUser.cs" />
+    <Compile Include="Interfaces\IRepositoryBill.cs" />
+    <Compile Include="Interfaces\IRepositoryPaymentIdentifier.cs" />
+    <Compile Include="Interfaces\IRepositoryPromotion.cs" />
+    <Compile Include="Interfaces\IRepositoryCard.cs" />
+    <Compile Include="Interfaces\IRepositoryBin.cs" />
+    <Compile Include="Interfaces\IRepositoryNewBillNotificationInfo.cs" />
+    <Compile Include="Interfaces\IRepositoryEmailMessage.cs" />
+    <Compile Include="Interfaces\IRepositoryNotification.cs" />
+    <Compile Include="Interfaces\IRepositoryDiscount.cs" />
+    <Compile Include="Interfaces\IRepositoryQuotation.cs" />
+    <Compile Include="Interfaces\IRepositorySmsMessage.cs" />
+    <Compile Include="Interfaces\IRepositoryContact.cs" />
+    <Compile Include="Interfaces\IRepositoryFaq.cs" />
+    <Compile Include="Interfaces\IRepositoryGateway.cs" />
+    <Compile Include="Interfaces\IRepositoryHomePageItem.cs" />
+    <Compile Include="Interfaces\IRepositoryHomePage.cs" />
+    <Compile Include="Interfaces\IRepositoryPayment.cs" />
+    <Compile Include="Interfaces\IRepositoryParameters.cs" />
+    <Compile Include="Interfaces\IRepositoryPage.cs" />
+    <Compile Include="Interfaces\IRepositoryServiceAsociated.cs" />
+    <Compile Include="Interfaces\IRepositoryService.cs" />
+    <Compile Include="Interfaces\IRepositoryServiceCategory.cs" />
+    <Compile Include="Interfaces\IRepositoryApplicationUser.cs" />
+    <Compile Include="Interfaces\IRepositoryMembershipUser.cs" />
+    <Compile Include="Interfaces\IRepositoryRole.cs" />
+    <Compile Include="Interfaces\IRepositorySystemUser.cs" />
+    <Compile Include="Interfaces\IRepositorySubscriber.cs" />
+    <Compile Include="Interfaces\IRepositoryTc33Transaction.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.Entities.Base\VisaNet.Domain.Entities.Base.csproj">
+      <Project>{515F6F54-E3E5-4042-98ED-91E236E6B843}</Project>
+      <Name>VisaNet.Domain.Entities.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.Entities\VisaNet.Domain.Entities.csproj">
+      <Project>{A7D3A101-C512-4000-A66C-9BDD86B2AF82}</Project>
+      <Name>VisaNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.ChangeTracker\VisaNet.Common.ChangeTracker.csproj">
+      <Project>{55D072B8-47F9-422E-ACC5-D397C621087C}</Project>
+      <Name>VisaNet.Common.ChangeTracker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Logging\VisaNet.Common.Logging.csproj">
+      <Project>{7716D78C-5414-404A-B804-D10B2C965724}</Project>
+      <Name>VisaNet.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Security.Entities\VisaNet.Common.Security.Entities.csproj">
+      <Project>{45708FFD-868A-4DAC-B15A-E2B6F984A5D2}</Project>
+      <Name>VisaNet.Common.Security.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Security\VisaNet.Common.Security.csproj">
+      <Project>{868E5B09-7DBE-4DD9-B06E-EA4CCB3ECB58}</Project>
+      <Name>VisaNet.Common.Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

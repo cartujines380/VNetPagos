@@ -1,0 +1,11 @@
+﻿@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.ExtractEmail)
+            @Html.TextBoxFor(s => s.ExtractEmail, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+        @Html.ValidationMessageFor(s => s.ExtractEmail)
+    </div>
+</div>

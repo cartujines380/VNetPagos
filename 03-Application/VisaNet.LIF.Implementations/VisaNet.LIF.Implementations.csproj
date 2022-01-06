@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{93EA2CB4-6E13-4A73-B653-3970831A6236}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VisaNet.LIF.Implementations</RootNamespace>
+    <AssemblyName>VisaNet.LIF.Implementations</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SebaPrueba|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\SebaPrueba\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Testing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Testing\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Production|AnyCPU'">
+    <OutputPath>bin\demouy.Production\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Testing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.Testing\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Development|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.Development\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.ReleaseCandidate|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.ReleaseCandidate\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'VisaNet.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\VisaNet.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Azure.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Staging|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Azure.Staging\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="QuotaService.cs" />
+    <Compile Include="CardService.cs" />
+    <Compile Include="DiscountService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.Entities.Base\VisaNet.Domain.Entities.Base.csproj">
+      <Project>{515F6F54-E3E5-4042-98ED-91E236E6B843}</Project>
+      <Name>VisaNet.Domain.Entities.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.EntitiesDtos\VisaNet.Domain.EntitiesDtos.csproj">
+      <Project>{CAC323D1-C42C-4821-AB23-06CACEFB548E}</Project>
+      <Name>VisaNet.Domain.EntitiesDtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.Entities\VisaNet.Domain.Entities.csproj">
+      <Project>{A7D3A101-C512-4000-A66C-9BDD86B2AF82}</Project>
+      <Name>VisaNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Lif.Domain.EntitesDtos\VisaNet.Lif.Domain.EntitesDtos\VisaNet.Lif.Domain.EntitesDtos.csproj">
+      <Project>{F624F91C-0DA8-4B33-BF32-F8938C9E5E80}</Project>
+      <Name>VisaNet.Lif.Domain.EntitesDtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Exceptions\VisaNet.Common.Exceptions.csproj">
+      <Project>{CB1FEB9F-6933-445A-A6EE-A1769D25C266}</Project>
+      <Name>VisaNet.Common.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Logging\VisaNet.Common.Logging.csproj">
+      <Project>{7716D78C-5414-404A-B804-D10B2C965724}</Project>
+      <Name>VisaNet.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Resource\VisaNet.Common.Resource.csproj">
+      <Project>{98E9C8F3-4D89-4B5C-B5C5-4B4B026F7596}</Project>
+      <Name>VisaNet.Common.Resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.ExtensionMethods\VisaNet.Utilities.ExtensionMethods.csproj">
+      <Project>{CD892170-2611-4375-84DB-9BAC1AC9882D}</Project>
+      <Name>VisaNet.Utilities.ExtensionMethods</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.Application.Interfaces\VisaNet.Application.Interfaces.csproj">
+      <Project>{9C9EA748-A322-4B65-8B24-DD76EE0DA93F}</Project>
+      <Name>VisaNet.Application.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.LIF.Interfaces\VisaNet.LIF.Interfaces.csproj">
+      <Project>{5CF597F1-C26D-4B99-B601-4A465BE77CB1}</Project>
+      <Name>VisaNet.LIF.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

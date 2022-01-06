@@ -1,0 +1,122 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Domain.EntitiesDtos.TableFilters.BinGroupFilterDto
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.BinGroup</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control w100", @placeholder = "Ingrese el nombre a buscar", autocomplete = "off" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-default btn-standar mt10 w100" id="execute">@PresentationAdminStrings.Common_Search</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-10">
+        <h2></h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>@PresentationAdminStrings.BinGroup <i class=""></i></th>
+                        <th><i class=""></i></th>
+                        <th><i class=""></i></th>
+                        <th><i class=""></i></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        @Html.ActionActionLink(Actions.BinGroupCreate, "<i class=\"icon-plus\"></i>" + PresentationAdminStrings.Create, new Dictionary<string, object> { { "Class", "btn btn-default" }, { "id", "btnNew" } })
+    </div>
+</div>
+
+@Html.Partial("_DeleteLightbox")
+@Html.Partial("_EditLightbox")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var dataTableFilters;
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "Name", "value": $("#@Html.IdFor(m => m.Name)").val() });
+        }
+
+        var dataTableFilters = applyDatatableExternalFilters($('table'),
+            [0],
+            [
+                { "mDataProp": "Name" },
+                {
+                    "sName": "Details",
+                    "sClass": "column-icon",
+                    "sDefaultContent": "",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "fnRender": function (oObj) {
+                        return '@Html.ActionGridActionLink(Actions.BinGroupDetails, "<i class=\"fa fa-search\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                    }
+                },
+                {
+                    "sName": "Edit",
+                    "sClass": "column-icon",
+                    "sDefaultContent": "",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "fnRender": function (oObj) {
+                        return '@Html.ActionGridActionLink(Actions.BinGroupEdit, "<i class=\"fa fa-edit\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                    }
+                },
+                {
+                    "sName": "Delete",
+                    "sClass": "column-icon",
+                    //esto le indica que no lo mapee con el array
+                    "sDefaultContent": "",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "fnRender": function (oObj) {
+                        return '@Html.ActionGridActionLink(Actions.BinGroupDelete, "<i class=\"fa fa-trash-o\"></i>", new Dictionary<string, object> { { "Class", "btn-editar lnkDelete" } })';
+                    }
+                }
+            ],
+            '@Url.Action("AjaxHandler", "BinGroup")', externalFilters, null, [[0, "asc"]]);
+
+        dataTableFilters.fnSort([[0, 'asc']]);
+        $('table').on("click", ".lnkDelete", function (e) {
+            if (!$(this).hasClass("disabled")) {
+                e.preventDefault();
+                tr = $(this).parents("tr");
+                var lb = $('#lbConfirmDelete');
+                $("#lbHiddenUrl", lb).val($(this).attr("href"));
+                lb.modal();
+            }
+        });
+        $('table').on("click", ".btn-change", function (e) {
+            if (!$(this).hasClass("disabled")) {
+                e.preventDefault();
+                tr = $(this).parents("tr");
+                var lb = $('#lbConfirmChange');
+                var url = $(this).attr("href").split('/');
+                $("#lbChangeHiddenUrl", lb).val("Bins/ChangeState/" + url[url.length - 1]);
+                lb.modal();
+            }
+        });
+
+        $("#execute").click(function (e) {
+            e.preventDefault();
+            dataTableFilters.fnFilter();
+        });
+    });
+
+</script>
+

@@ -1,0 +1,192 @@
+﻿<error errorId="771f9580-f3e3-4a1a-9728-efd571148334" application="/LM/W3SVC/4/ROOT" host="DESKTOP-LV00ICC" type="System.Threading.Tasks.TaskCanceledException" message="Se canceló una tarea." source="mscorlib" detail="System.Threading.Tasks.TaskCanceledException: Se canceló una tarea.&#xD;&#xA;   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   en System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()&#xD;&#xA;   en VisaNet.Presentation.Core.WebApiHttpCustomRequest.WebApiHttpRequestPut.&lt;Action&gt;d__3.MoveNext() en C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\01-Presentation\VisaNet.Presentation.Core\WebApiHttpCustomRequest\WebApiHttpRequestPut.cs:línea 18&#xD;&#xA;--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---&#xD;&#xA;   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   en System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()&#xD;&#xA;   en VisaNet.Presentation.Core.WebApiClient.&lt;CallApiServiceAsync&gt;d__1.MoveNext() en C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:línea 19&#xD;&#xA;--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---&#xD;&#xA;   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   en System.Runtime.CompilerServices.TaskAwaiter.GetResult()&#xD;&#xA;   en VisaNet.Presentation.Administration.Controllers.BinGroupController.&lt;Edit&gt;d__10.MoveNext() en C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\01-Presentation\VisaNet.Presentation.Administration\Controllers\BinGroupController.cs:línea 196&#xD;&#xA;--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---&#xD;&#xA;   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   en lambda_method(Closure , Task )&#xD;&#xA;   en System.Threading.Tasks.TaskHelpersExtensions.ThrowIfFaulted(Task task)&#xD;&#xA;   en System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass34.&lt;BeginInvokeAsynchronousActionMethod&gt;b__33(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3c()&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass45.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3e()&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass45.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3e()&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass30.&lt;BeginInvokeActionMethodWithFilters&gt;b__2f(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass1e.&lt;&gt;c__DisplayClass28.&lt;BeginInvokeAction&gt;b__19()&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass1e.&lt;BeginInvokeAction&gt;b__1b(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__4(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   en System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)&#xD;&#xA;   en System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)" user="admin" time="2018-05-14T14:42:36.0901799Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_CONTENT_LENGTH:257&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:es-VE,en-US;q=0.8,en;q=0.6,es-ES;q=0.4,es;q=0.2&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=rSE3sTva7TY92tdvyaru9yAw_gaFIQ-dsVBXAc9-aZj8HnWS8fQjk7E34cRjwHvjs_yB743RYtkLQJrXSQMoqDbu2RCU-XWbqgMrcM-Hmdc1; .ASPXAUTH=D14370AB69EEA57122DFD540083B58481F88D4411857277471646C71733E657A8F19243FE84627EE40ADFCA56FCA2DBC2293E7FF02EF88EA3173C8D9C05C140E90F9F573AD43030AAC5F6C4FC26D76175CA150ECAAD3787A3D2601F76D318553; ASP.NET_SessionId=bkflv01vjlhouk0nv05fmzqq&#xD;&#xA;HTTP_HOST:localhost:64504&#xD;&#xA;HTTP_REFERER:http://localhost:64504/BinGroup/Edit/f15e2b54-bcef-45a5-a40f-65e4a08b456a&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Content-Length: 257&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: es-VE,en-US;q=0.8,en;q=0.6,es-ES;q=0.4,es;q=0.2&#xD;&#xA;Cookie: __RequestVerificationToken=rSE3sTva7TY92tdvyaru9yAw_gaFIQ-dsVBXAc9-aZj8HnWS8fQjk7E34cRjwHvjs_yB743RYtkLQJrXSQMoqDbu2RCU-XWbqgMrcM-Hmdc1; .ASPXAUTH=D14370AB69EEA57122DFD540083B58481F88D4411857277471646C71733E657A8F19243FE84627EE40ADFCA56FCA2DBC2293E7FF02EF88EA3173C8D9C05C140E90F9F573AD43030AAC5F6C4FC26D76175CA150ECAAD3787A3D2601F76D318553; ASP.NET_SessionId=bkflv01vjlhouk0nv05fmzqq&#xD;&#xA;Host: localhost:64504&#xD;&#xA;Referer: http://localhost:64504/BinGroup/Edit/f15e2b54-bcef-45a5-a40f-65e4a08b456a&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/4/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\01-Presentation\VisaNet.Presentation.Administration\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="257" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="4" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/4" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/BinGroup/Edit/f15e2b54-bcef-45a5-a40f-65e4a08b456a" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\01-Presentation\VisaNet.Presentation.Administration\BinGroup\Edit\f15e2b54-bcef-45a5-a40f-65e4a08b456a" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="28269" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/BinGroup/Edit/f15e2b54-bcef-45a5-a40f-65e4a08b456a" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="64504" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/BinGroup/Edit/f15e2b54-bcef-45a5-a40f-65e4a08b456a" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="257" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="es-VE,en-US;q=0.8,en;q=0.6,es-ES;q=0.4,es;q=0.2" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=rSE3sTva7TY92tdvyaru9yAw_gaFIQ-dsVBXAc9-aZj8HnWS8fQjk7E34cRjwHvjs_yB743RYtkLQJrXSQMoqDbu2RCU-XWbqgMrcM-Hmdc1; .ASPXAUTH=D14370AB69EEA57122DFD540083B58481F88D4411857277471646C71733E657A8F19243FE84627EE40ADFCA56FCA2DBC2293E7FF02EF88EA3173C8D9C05C140E90F9F573AD43030AAC5F6C4FC26D76175CA150ECAAD3787A3D2601F76D318553; ASP.NET_SessionId=bkflv01vjlhouk0nv05fmzqq" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:64504" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:64504/BinGroup/Edit/f15e2b54-bcef-45a5-a40f-65e4a08b456a" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="tQrQsN5YButWZkWxSlyDM3hdUlVM7mIOF7Xr7RCagt6PNpWCiU5dem-fg2KrjbGJFYHijnOlqmSfrwHG9yPlDEUNRmEr9DDMbv9-LIisKko1" />
+    </item>
+    <item name="Name">
+      <value string="Crédito extranjeras" />
+    </item>
+    <item name="Services">
+      <value string="3a2f6d22-4484-43f8-b9d8-bc4dd0e79370" />
+      <value string="75d4ffd6-292e-48e1-9347-121964d12942" />
+    </item>
+  </form>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="rSE3sTva7TY92tdvyaru9yAw_gaFIQ-dsVBXAc9-aZj8HnWS8fQjk7E34cRjwHvjs_yB743RYtkLQJrXSQMoqDbu2RCU-XWbqgMrcM-Hmdc1" />
+    </item>
+    <item name=".ASPXAUTH">
+      <value string="D14370AB69EEA57122DFD540083B58481F88D4411857277471646C71733E657A8F19243FE84627EE40ADFCA56FCA2DBC2293E7FF02EF88EA3173C8D9C05C140E90F9F573AD43030AAC5F6C4FC26D76175CA150ECAAD3787A3D2601F76D318553" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="bkflv01vjlhouk0nv05fmzqq" />
+    </item>
+  </cookies>
+</error>

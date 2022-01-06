@@ -1,0 +1,50 @@
+﻿@model VisaNet.Presentation.Administration.Models.SystemVersionsModel
+
+<h4>Procesos</h4>
+
+<div class="row">
+    <div class="col-md-10">
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th class="col-md-2">
+                            Pago programado
+                        </th>
+                        <th class="col-md-2">
+                            Notificación de facturas
+                        </th>
+                        <th class="col-md-2">
+                            Conciliación
+                        </th>
+                        <th class="col-md-2">
+                            ACK Cybersource
+                        </th>
+                        <th class="col-md-2">
+                            Débitos Sincronización
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Model.PaymentProcessVersion
+                        </td>
+                        <td>
+                            @Model.NotificationProcessVersion
+                        </td>
+                        <td>
+                            @Model.ConciliationProcessVersion
+                        </td>
+                        <td>
+                            @Model.CsAckProcessVersion
+                        </td>
+                        <td>
+                            @Model.DebitSynchronizationProcessVersion
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

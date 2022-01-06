@@ -1,0 +1,79 @@
+﻿@model VisaNet.Presentation.Administration.Models.ServiceContainerModel
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.ServiceCategoryId)
+            @Html.DropDownListFor(s => s.ServiceCategoryId, (ICollection<SelectListItem>)ViewBag.Categories, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.LinkId)
+            @Html.TextBoxFor(s => s.LinkId, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.Description)
+            @Html.TextAreaFor(s => s.Description, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.Image)
+            @if (!Model.IsDetailsView)
+            {
+                <span id="imageNameLabel">@Model.Image</span>
+                <input type="file" name="Image" id="Image" />
+                if (!string.IsNullOrEmpty(Model.ImagePath))
+                {
+                    <a id="imageSee" href="@Model.ImagePath" target="_blank"> VER </a>
+                    <a href="" id="dImage" target=""> ELIMINAR </a>
+                }
+                @Html.HiddenFor(s => s.DeleteImage)
+                @Html.HiddenFor(s => s.Image)
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(Model.ImagePath))
+                {
+                    <a href="@Model.ImagePath" target="_blank"> VER </a>
+                }
+                else
+                {
+                    <div>Este servicio no tiene imagen.</div>
+                }
+            }
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.Tags)
+            @Html.TextAreaFor(s => s.Tags, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.PostAssociationDesc)
+            @Html.TextAreaFor(s => s.PostAssociationDesc, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.TermsAndConditions)
+            @Html.TextAreaFor(s => s.TermsAndConditions, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.Sort)
+            @Html.TextBoxFor(s => s.Sort, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+        @Html.ValidationMessageFor(s => s.Sort)
+    </div>
+</div>

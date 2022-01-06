@@ -1,0 +1,331 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Presentation.Administration.Models.BinGroupModel
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.BinGroup_Edit_Title</h2>
+
+@using (Html.BeginForm("Edit", "BinGroup", FormMethod.Post, new Dictionary<string, object> { { "Id", "form" } }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.LabelFor(b => b.Name, new { @class = "obligatoryField" }) *
+                @Html.TextBoxFor(b => b.Name, new { @class = "form-control", autocomplete = "off" })
+            </div>
+
+            @Html.ValidationMessageFor(s => s.Name)
+        </div>        
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.Label("Servicios disponibles", new { @class = "obligatoryField" }) *
+                <div class="selectMask w100 selectMultiple">
+                    @Html.DropDownListFor(m => m.Services, Model.ServicesSelectList,
+                                             new Dictionary<string, object> { { "class", "selectpicker" }, { "multiple", "multiple" }, { "data-selected-text-format", "count>3" }, { "data-actions-box", "true" }, { "data-icon-base", "fa" }, { "data-tick-icon", "fa-check" }, { "data-select-all-text", "Todos" }, { "data-deselect-all-text", "Ninguno" }, { "data-none-selected-text", "Ninguno seleccionado" }, { "data-count-selected-text", "Seleccionados {0} de {1}" } })
+                </div>
+                @Html.ValidationMessageFor(s => s.Services)
+            </div>
+        </div>
+    </div>
+
+        }
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <h4>Agregar BIN's</h4>
+                            <div class="col-md-3">
+                                <label>@PresentationAdminStrings.Name</label>
+                                <input type="text" class="w100" id="FilterName" autocomplete="off" />
+                            </div>
+                            <div class="col-md-3">
+                                <label>@PresentationAdminStrings.Value</label>
+                                <input type="text" class="w100" id="FilterValue" autocomplete="off" />
+                            </div>
+                            <div class="col-md-3">
+                                <label>@PresentationAdminStrings.Country</label>
+                                <input type="text" class="w100" id="FilterCountry" autocomplete="off" />
+                            </div>
+                            <div class="col-md-3">
+                                <label>Emisor</label>
+                                <input type="text" class="w100" id="FilterBank" autocomplete="off" />
+                            </div>
+                            <div class="col-md-3">
+                                <label>&nbsp;</label>
+                                <a class="btn btn-default btn-standar mt10 w100" style="margin-top: 0 !important" id="execute"> @PresentationAdminStrings.Filter</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 scrollTable">
+                        <table class="table table-striped" id="binFilter" style="margin-top: 10px;">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Valor</th>
+                                    <th>País</th>
+                                    <th>Emisor</th>
+                                    <th>Tipo</th>
+                                    <th class="center">Agregar</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-4 col-md-offset-8">
+                        <label>&nbsp;</label>
+                        <a class="btn btn-default btn-standar mt10 w100" style="margin-top: 0 !important" id="addSelected">Agregar seleccionados</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 scrollTable">
+                        <h4>BIN's agregados</h4>
+                        <table class="table table-striped" id="binAdded">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Valor</th>
+                                    <th>País</th>
+                                    <th>Emisor</th>
+                                    <th>Tipo</th>
+                                    <th class="center">Quitar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Bins != null && Model.Bins.Any())
+                                {
+                                    foreach (var bin in Model.Bins)
+                                    {
+                                <tr>                                    
+                                    <td><a target='_blank' href='@Url.Action("Edit", "Bins")?id=@bin.Id'>@bin.Name</a></td>
+                                    <td>@bin.Value</td>
+                                    <td>@bin.Country</td>
+                                    <td>@bin.BankName</td>
+                                    <td>@bin.CardTypeName </td>
+                                    <td class='center'><input type='checkbox' value='@Json.Encode(bin)' /></td>
+                                </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-4 col-md-offset-8">
+                        <label>&nbsp;</label>
+                        <a class="btn btn-default btn-standar mt10 w100" style="margin-top: 0 !important" id="rmSelected">Quitar seleccionados</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a href="@Url.Action("Index", "BinGroup")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+                        <a href="#" id="btnGuardar" class="btn btn-default">
+                            <strong>@PresentationAdminStrings.Save</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+    var _dataTable = undefined;
+    var _dataTableData = undefined;
+    var _addedElements = [];
+    var _removedElements = [];
+            //var _addedServices = [];
+            //var _deletedServices = [];
+
+            $(document).ready(function () {
+
+                $("#btnGuardar").click(function (e) {
+                    e.preventDefault();
+                    loadAddedBins();                    
+                    $("#form").submit();
+                });
+
+
+                $(document).ready(function () {
+                    applyDataTable();
+                });
+
+                $("#execute").click(function (e) {
+                    e.preventDefault();
+
+                    var filters = { Name: $("#FilterName").val(), Country: $("#FilterCountry").val(), Value: $("#FilterValue").val(), Bank: $("#FilterBank").val() };
+
+                    $.post("@Url.Action("FilterBins", "BinGroup")", filters).success(function (data) {
+                        $("tbody", "#binFilter").html("");
+                        for (var i in data) {
+                            if (data.hasOwnProperty(i)) {
+                                // var bankName = data[i].BankDto === null ? "" : data[i].BankDto.Name;
+                                $("tbody", "#binFilter").append("<tr><td>" + data[i].Name + "</td><td>" + data[i].Value + "</td><td>" + data[i].Country + "</td><td>" + data[i].BankName + "</td><td>" + data[i].CardTypeName + "</td><td class='center'><input type='checkbox' checked='checked' value='" + JSON.stringify(data[i]) + "'/></td></tr>");
+                            }
+                        }
+                    });
+                });
+
+                $("#addSelected").click(function (e) {
+                    e.preventDefault();
+                    var elements = $("input[type='checkbox']:checked", "#binFilter").toArray();
+                    for (var i in elements) {
+                        var element = JSON.parse($(elements[i]).val());
+                        if (!alreadyAdded(element.Id)) {
+                            //var bankName = element.BankDto === null ? "" : element.BankDto.Name;
+                            $("tbody", "#binAdded").append("<tr><td>" + element.Name + "</td><td>" + element.Value + "</td><td>" + element.Country + "</td><td>" + element.BankName + "</td><td>" + element.CardTypeName + "</td><td class='center'><input type='checkbox' value='" + JSON.stringify(element) + "'/></td></tr>");
+                            addElement(element);
+                        }
+                    }
+                });
+
+                $("#rmSelected").click(function (e) {
+                    e.preventDefault();
+                    var elements = $("input[type='checkbox']:not(:checked)", "#binAdded").toArray();
+                    var removedElements = $("input[type='checkbox']:checked", "#binAdded").toArray();
+                    $("tbody", "#binAdded").html("");
+                    for (var i in elements) {
+                        var element = JSON.parse($(elements[i]).val());
+                        //var bankName = element.BankDto === null ? "" : element.BankDto.Name;
+                        $("tbody", "#binAdded").append("<tr><td>" + element.Name + "</td><td>" + element.Value + "</td><td>" + element.Country + "</td><td>" + element.BankName + "</td><td>" + element.CardTypeName + "</td><td class='center'><input type='checkbox' value='" + JSON.stringify(element) + "'/></td></tr>");
+                    }
+
+                    for (var i in removedElements) {
+                        var element = JSON.parse($(removedElements[i]).val());
+                        removeElement(element);
+                    }
+
+                });
+
+
+                function alreadyAdded(id) {
+                    var elements = $("input[type='checkbox']", "#binAdded").toArray();
+                    for (var i in elements) {
+                        var element = JSON.parse($(elements[i]).val());
+                        if (element.Id === id)
+                            return true;
+                    }
+
+                    return false;
+                }
+
+                function loadAddedBins() {
+                    //Agrego los bines agregados
+                    for (var i in _addedElements) {
+                        var element = JSON.parse(_addedElements[i][5]);
+                        var id = '@Html.NameFor(x => x.AddedBins)' + '[' + i + '].Id';
+                        var name = '@Html.NameFor(x => x.AddedBins)' + '[' + i + '].Name';
+                        var value = '@Html.NameFor(x => x.AddedBins)' + '[' + i + '].Value';
+                        $("#form").append("<input type='hidden' name='" + id + "' value='" + element.Id + "'/>");
+                        $("#form").append("<input type='hidden' name='" + name + "' value='" + element.Name + "'/>");
+                        $("#form").append("<input type='hidden' name='" + value + "' value='" + element.Value + "'/>");
+                    }
+
+                    //Agrego los bines borrados
+                    for (var i in _removedElements) {
+                        var element = JSON.parse(_removedElements[i][5]);
+                        var id = '@Html.NameFor(x => x.DeletedBins)' + '[' + i + '].Id';
+                        var name = '@Html.NameFor(x => x.DeletedBins)' + '[' + i + '].Name';
+                        var value = '@Html.NameFor(x => x.DeletedBins)' + '[' + i + '].Value';
+                        $("#form").append("<input type='hidden' name='" + id + "' value='" + element.Id + "'/>");
+                        $("#form").append("<input type='hidden' name='" + name + "' value='" + element.Name + "'/>");
+                        $("#form").append("<input type='hidden' name='" + value + "' value='" + element.Value + "'/>");
+                    }
+
+                }
+
+                //function loadAddedServices() {
+                                        
+
+                //    $("#form").append("<input type='hidden' name='deletedServices' value='" + JSON.stringify(_deletedServices) + "' />");
+                //    $("#form").append("<input type='hidden' name='addedServices' value='" + JSON.stringify(_addedServices) + "' />");
+                //}
+
+                function applyDataTable() {
+                    _dataTable = $("#binAdded").dataTable({ "oLanguage": TABLES_LOCALE });
+                    _dataTableData = _dataTable.fnGetData();
+                }
+
+                function addElement(element) {
+
+
+                    var allreadyAdded = false;
+
+                    //Chequeo que no esté agregado
+                    for (var i in _addedElements) {
+                        //[1] es el BIN
+                        if (_addedElements[i][1] === element.Value) {
+                            allreadyAdded = true;
+                        }
+                    }
+
+                    //Si no está gregado lo agrego
+                    if (!allreadyAdded) {
+                        _addedElements.push([element.Name, element.Value, element.Country, element.BankName, element.CardTypeName, JSON.stringify(element)]);
+                    }
+
+                    //Si está en la lista de borrados lo elimino
+                    var indexOf = -1;
+                    for (var i in _removedElements) {
+                        //[1] es el BIN
+                        if (_removedElements[i][1] === element.Value) {
+                            indexOf = i;
+                        }
+                    }
+
+                    if (indexOf !== -1) {
+                        _removedElements.splice(indexOf, 1);
+                    }
+                }
+
+                function removeElement(element) {
+
+                    var allreadyAdded = false;
+
+                    //Chequeo que no esté agregado
+                    for (var i in _removedElements) {
+                        //[1] es el BIN
+                        if (_removedElements[i][1] === element.Value) {
+                            allreadyAdded = true;
+                        }
+                    }
+
+                    //Si no está gregado lo agrego
+                    if (!allreadyAdded) {
+                        _removedElements.push([element.Name, element.Value, element.Country, element.BankName, element.CardTypeName, JSON.stringify(element)]);
+                    }
+
+                    //Si está en la lista de borrados lo elimino
+                    var indexOf = -1;
+                    for (var i in _addedElements) {
+                        //[1] es el BIN
+                        if (_addedElements[i][1] === element.Value) {
+                            indexOf = i;
+                        }
+                    }
+
+                    if (indexOf !== -1) {
+                        _addedElements.splice(indexOf, 1);
+                    }
+                }
+
+                $("#Services").on('loaded.bs.select', function (e) {
+
+                    $("#Services").selectpicker('val', @Html.Raw(ViewBag.ServicesJson));
+
+                });
+
+                $('#Services').on('changed.bs.select', function (e, clickedIndex, newValue, oldValue) {
+
+                    var selected = this.value;
+                   
+                });
+
+            });
+        </script>

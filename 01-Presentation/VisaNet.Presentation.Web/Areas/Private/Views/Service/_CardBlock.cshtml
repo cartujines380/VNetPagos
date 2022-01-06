@@ -1,0 +1,52 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Models
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Areas.Private.Models.CardListModel
+
+
+
+<div class="itemBox paymentItem">
+    <div class="row">
+        <div class="col-md-7 paymentInformation">
+            <div class="col-md-3 pr0 pl0 paymentImage">
+                @if (String.IsNullOrEmpty(Model.CardImage))
+                {
+                    <img src="../../../../Content/images/visa.jpg" width="65" />
+                }
+                else
+                {
+                    <img src="@Model.CardImage" width="65" />
+                }
+
+            </div>
+            <div class="col-md-9 paymentDetail">
+                <ul>
+                    @if (!string.IsNullOrEmpty(Model.Description))
+                    {
+                        <li><span class="bold">@ModelsStrings.Card - @Model.Description</span><span class="titleCard">@Model.Mask</span></li>
+                    }
+                    else
+                    {
+                        <li><span class="bold">@ModelsStrings.Card: </span><span class="titleCard">@Model.Mask</span></li>
+                    }                    
+                    <li><span class="bold">@ModelsStrings.Card_DueDate: </span> @Model.DueDate</li>
+                    @if (Model.Default)
+                    {
+                        <li class="selectedCreditCard"><i class="icon-ok"></i>@PresentationWebStrings.Card_Selected</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-5 paymentActions">
+            <ul>
+                @if (Model.Active)
+                {
+                    if (!Model.Default)
+                    {
+                        <li><a class="Default" href="#" data-service="@Model.ServiceId" data-card="@Model.Id" data-bin="@Model.Mask.Substring(0,6)"><i class="icon-ok-circle"></i>@PresentationWebStrings.Card_Set_Default </a></li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>

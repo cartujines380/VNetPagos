@@ -1,0 +1,189 @@
+﻿<!--  banner principal -->
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos
+@using VisaNet.Presentation.Web.Models
+
+@model VisaNet.Presentation.Web.Models.HomeServiceModel
+
+<div class="container-fluid homeBanner softGrey">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-6">
+                <div class="mainPanel">
+                    <div class="mailTitle">Bienvenido al portal de <span>pagos de Visanet Uruguay</span></div>
+                    @using (Html.BeginForm("Service", "Pay", new RouteValueDictionary() { { "Area", "Pay" } }, FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>@PresentationWebStrings.Home_Select_service <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i></label>
+                                <div class="w80">
+                                    <select data-val="true" data-val-required="El campo es requerido." id="@Html.IdFor(m=>m.serviceId)" name="@Html.NameFor(m=>m.serviceId)">
+                                        <option value=""></option>
+                                        @foreach (var i in (IEnumerable<ServiceDto>)ViewBag.Services)
+                                        {
+                                            <option value="@i.Id" data-tags="@i.Tags" @((Model != null && !string.IsNullOrEmpty(Model.serviceId) && Model.serviceId.Equals(i.Id.ToString())) ? "selected='selected'" : string.Empty)>@i.Name</option>
+                                        }
+                                    </select>
+                                    @Html.ValidationMessageFor(m => m.serviceId)
+                                </div>
+                            </div>
+                        </div>
+                        <a id="btnPay" class="btn btn-default btn-mainComponent w50 mt20 mb20"><i class="icon-circle-arrow-right"></i> Pagar servicio</a>
+                    }
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mainPanel">
+                    <div class="mailTitle">Adherite al debito en el portal de <span>pagos de Visanet Uruguay</span></div>
+                    @using (Html.BeginForm("Service", "Debit", new RouteValueDictionary() { { "Area", "Debit" }} , FormMethod.Post, new Dictionary<string, object> { { "id", "formdebit" } }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>@PresentationWebStrings.Home_Selection_Commerces <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i></label>
+                                <div class="w80">
+                                    <select data-val="true" data-val-required="El campo es requerido." id="@Html.IdFor(m=>m.CommerceId)" name="@Html.NameFor(m => m.CommerceId)">
+                                        <option value=""></option>
+                                        @foreach (var i in (IEnumerable<CommerceModel>)ViewBag.Commerces)
+                                        {
+                                            <option value="@i.Id" data-tags="@i.Tags" @((Model != null && !string.IsNullOrEmpty(Model.CommerceId) && Model.CommerceId.Equals(i.Id.ToString())) ? "selected='selected'" : string.Empty)>@i.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <a id="btnDebit" class="btn btn-default btn-mainComponent w50 mt20 mb20"><i class="icon-circle-arrow-right"></i> Adherirte</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- fin del banner principal -->
+<!-- brands-->
+@*<div class="container-fluid whiteBack">
+    <div class="container">
+        <div class="serviceBrands"></div>
+    </div>
+</div>*@
+<!-- fin brands-->
+<!-- burbujas-->
+@{var dataPage = (HomePageDto)ViewBag.DataPage;}
+
+<div class="highlightHome">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="highlightItem mb10">
+                    <div class="horizontalLineLighGrey p15l">
+                        <div class="fLeft p15r">
+                            <div class="homeMobileIcon"></div>
+                        </div>
+                        <div class="fLeft">
+                            <h4>@dataPage.HomePageItem1.Headline1</h4>
+                            <h3>@dataPage.HomePageItem1.Headline2</h3>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="homeText">
+                        <p>@dataPage.HomePageItem1.Description</p>
+                    </div>
+                    @*@if (!string.IsNullOrEmpty(dataPage.HomePageItem1.LinkUrl))
+                    {<a target="_blank" href="@dataPage.HomePageItem1.LinkUrl" class="btn btn-default btn-viewMore mt5"> <i class="icon-chevron-right"></i>@dataPage.HomePageItem1.LinkName</a>}*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="highlightItem mb10">
+                    <div class="horizontalLineLighGrey p15l">
+                        <div class="fLeft p15r">
+                            <div class="homeLockIcon"></div>
+                        </div>
+                        <div class="fLeft">
+                            <h4>@dataPage.HomePageItem2.Headline1</h4>
+                            <h3>@dataPage.HomePageItem2.Headline2</h3>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="homeText">
+                        <p>@dataPage.HomePageItem2.Description</p>
+                    </div>
+                    @*@if (!string.IsNullOrEmpty(dataPage.HomePageItem2.LinkUrl))
+                    {<a target="_blank" href="@dataPage.HomePageItem2.LinkUrl" class="btn btn-default btn-viewMore mt5"> <i class="icon-chevron-right"></i>@dataPage.HomePageItem2.LinkName</a>}*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="highlightItem mb10">
+                    <div class="horizontalLineLighGrey p15l">
+                        <div class="fLeft p15r">
+                            <div class="homeOkIcon"></div>
+                        </div>
+                        <div class="fLeft">
+                            <h4>@dataPage.HomePageItem3.Headline1</h4>
+                            <h3>@dataPage.HomePageItem3.Headline2</h3>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="homeText">
+                        <p>@dataPage.HomePageItem3.Description</p>
+                    </div>
+                    @*@if (!string.IsNullOrEmpty(dataPage.HomePageItem3.LinkUrl))
+                    {<a target="_blank" href="@dataPage.HomePageItem3.LinkUrl" class="btn btn-default btn-viewMore mt5"> <i class="icon-chevron-right"></i>@dataPage.HomePageItem3.LinkName</a>}*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="promotion"></div>
+<!-- fin burbujas -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnPay").click(function () {
+            $("#form").submit();
+        });
+        $("#btnDebit").click(function () {
+            $("#formdebit").submit();
+        });
+        
+        $("#@Html.IdFor(m => m.serviceId)").combobox();
+        $("#@Html.IdFor(m => m.CommerceId)").combobox();
+    });
+
+    //Promotions
+    function GetCookie(name) {
+        var arg = name + "=";
+        var alen = arg.length;
+        var clen = document.cookie.length;
+        var i = 0;
+        while (i < clen) {
+            var j = i + alen;
+            if (document.cookie.substring(i, j) == arg)
+                return "here";
+            i = document.cookie.indexOf(" ", i) + 1;
+            if (i == 0) break;
+        }
+        return null;
+    }
+    var visit = GetCookie("Promotion");
+    if (visit == null) {
+        $.ajax({
+            url: '@Url.Action("GetActivePromotion", "Home")',
+            dataType: 'html',
+            success: function (result) {
+                var today = new Date();
+                var tomorrow = new Date();
+                tomorrow.setDate(today.getDate() + 1);
+                document.cookie = "Promotion=here; expires=" + tomorrow;
+                if (result !== "None") {
+                    $('#promotion').html(result);
+                    $("#lbPromotion").modal();
+                }
+            }
+        });
+    }
+</script>

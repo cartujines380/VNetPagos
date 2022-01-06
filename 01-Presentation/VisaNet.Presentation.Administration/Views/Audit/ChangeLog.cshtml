@@ -1,0 +1,207 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.ChangeTracker
+@model  VisaNet.Domain.EntitiesDtos.TableFilters.ChangeTrackerFilterDto
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Audit de cambios</h2>
+
+@using (Html.BeginForm("AjaxHandlerChangeLog", "Audit", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <label>@PresentationAdminStrings.From</label>
+            @Html.EditorFor(m => m.From, new { @class = "w100" })
+        </div>
+
+        <div class="col-md-1">
+            <label>Hora</label>
+            <select name="@Html.NameFor(x => x.HoursFrom)" type="text" class="selectMask w100" value="@Model.HoursFrom" id="@Html.IdFor(m => m.HoursFrom)">
+                @for (var i = 0; i < 24; i++)
+                {
+                    <option value="@i">@i.ToString("00")</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-1">
+            <label>Minutos</label>
+            <select name="@Html.NameFor(x => x.MinutesFrom)" type="text" class="selectMask w100" value="@Model.MinutesFrom" id="@Html.IdFor(m => m.MinutesFrom)">
+                @for (var i = 0; i < 60; i = i + 5)
+                {
+                    <option value="@i">@i.ToString("00")</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label>@PresentationAdminStrings.To</label>
+            @Html.EditorFor(m => m.To, new { @class = "w100" })
+        </div>
+
+        <div class="col-md-1">
+            <label>Hora</label>
+            <select name="@Html.NameFor(x => x.HoursTo)" type="text" class="selectMask w100" value="@Model.HoursTo" id="@Html.IdFor(m => m.HoursTo)">
+                @for (var i = 0; i < 24; i++)
+                {
+                    <option value="@i">@i.ToString("00")</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-1">
+            <label>Minutos</label>
+            <select name="@Html.NameFor(x => x.MinutesTo)" type="text" class="selectMask w100" value="@Model.MinutesTo" id="@Html.IdFor(m => m.MinutesTo)">
+                @for (var i = 0; i < 60; i = i + 5)
+                {
+                    <option value="@i">@i.ToString("00")</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>@PresentationAdminStrings.TrackChanges_UserName</label>
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control w100", autocomplete = "off" })
+        </div>
+
+        <div class="col-md-6">
+            <label>@PresentationAdminStrings.TrackChanges_LogType</label>
+            @Html.DropDownListFor(m => m.EventType, EnumHelpers.ConvertToSelectList(typeof(EventTypeDto), EnumsStrings.ResourceManager), PresentationCoreMessages.Common_Select, new { @style = "color:#999", @class = "form-control w100" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>@PresentationAdminStrings.TrackChanges_Entity</label>
+            @Html.DropDownListFor(m => m.TableName, (IEnumerable<SelectListItem>)ViewBag.Entities, "Seleccione", new { @style = "color:#999", @class = "form-control w100" })
+
+        </div>
+
+        <div class="col-md-6">
+            <label>@PresentationAdminStrings.TrackChanges_AditionalInfo</label>
+            @Html.TextBoxFor(m => m.AditionalInfo, new { @class = "form-control w100", autocomplete = "off" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a class="btn btn-default btn-standar mt10 w100" id="lnkFilter">@PresentationAdminStrings.Common_Search</a>
+                </div>
+                <div class="col-xs-6">
+                    <a class="btn btn-default btn-standar mt10 w100" id="lnkExcel" href="@Url.Action("ChangeLogExcelExport", "Audit")" target="_blank">Exportar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table id="tblList" class="table table-striped table-bordered table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>@PresentationAdminStrings.TrackChanges_DateTime</th>
+                        <th>@PresentationAdminStrings.TrackChanges_Ip</th>
+                        <th>@PresentationAdminStrings.TrackChanges_LogType</th>
+                        <th>@PresentationAdminStrings.TrackChanges_UserName</th>
+                        <th>@PresentationAdminStrings.TrackChanges_TableName</th>
+                        <th>@PresentationAdminStrings.TrackChanges_AditionalInfo</th>
+                        <th><i class=""></i></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="divLb"></div>
+
+<script type="text/javascript">
+    var oTable;
+
+    $(document).ready(function () {
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "From", "value": $("#@Html.IdFor(m => m.From)").val() });
+            aoData.push({ "name": "To", "value": $("#@Html.IdFor(m => m.To)").val() });
+            aoData.push({ "name": "EventType", "value": $("#@Html.IdFor(m => m.EventType)").val() });
+            aoData.push({ "name": "TableName", "value": $("#@Html.IdFor(m => m.TableName)").val() });
+            aoData.push({ "name": "UserName", "value": $("#@Html.IdFor(m => m.UserName)").val() });
+            aoData.push({ "name": "AditionalInfo", "value": $("#@Html.IdFor(m => m.AditionalInfo)").val() });
+            aoData.push({ "name": "HoursFrom", "value": $("#@Html.IdFor(m => m.HoursFrom)").val() });
+            aoData.push({ "name": "HoursTo", "value": $("#@Html.IdFor(m => m.HoursTo)").val() });
+            aoData.push({ "name": "MinutesFrom", "value": $("#@Html.IdFor(m => m.MinutesFrom)").val() });
+            aoData.push({ "name": "MinutesTo", "value": $("#@Html.IdFor(m => m.MinutesTo)").val() });
+        }
+
+        function drawTable() {
+            oTable = applyDatatableExternalFilters($('#tblList'),
+            null,
+            [
+                { "mDataProp": "DateTime", "sWidth": 250 },
+                { "mDataProp": "IP" },
+                { "mDataProp": "EventType", "sWidth": 120 },
+                { "mDataProp": "UserName" },
+                { "mDataProp": "TableName" },
+                { "mDataProp": "AditionalInfo" },
+                {
+                    "sName": "Details",
+                    "sClass": "column-icon",
+                    "sDefaultContent": "",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "fnRender": function (oObj) {
+                        return '<a class="tableButton" href="@Url.Action("ChangeLogDetail", "Audit")/' +
+                            oObj.aData.AuditLogId +
+                            '"><i class="fa fa-search"></i></a>';
+                    }
+                }
+            ],
+            '@Url.Action("AjaxHandlerChangeLog", "Audit")',
+            externalFilters,
+            false);
+        }
+
+        $("#lnkFilter").click(function (e) {
+            e.preventDefault();
+            drawTable();
+            oTable.fnFilter();
+        });
+
+        $("#tblList").on("click", "a.tableButton", function (e) {
+            e.preventDefault();
+            $.get($(this).attr("href"), function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $("#divLb").html(data.Content);
+
+                    $("#lbDetails").modal();
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            });
+        });
+
+        $("#lnkExcel").click(function (e) {
+            var h = '@Url.Action("ChangeLogExcelExport", "Audit")';
+            $(this).attr("href", h);
+            var form = $("#form");
+            var href = $(this).attr("href");
+            $(this).attr("href", href + "?" + form.serialize());
+        });
+    });
+
+</script>

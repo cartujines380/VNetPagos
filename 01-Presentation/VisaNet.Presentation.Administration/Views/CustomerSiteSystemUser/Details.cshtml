@@ -1,0 +1,89 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model VisaNet.Presentation.Administration.Models.CustomerSiteSystemUserModel
+
+<h2>Portal de Comercio - Ver Usuario</h2>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-6">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(b => b.Email, new { @class = "obligatoryField" }) *
+                        @Html.TextBoxFor(b => b.Email, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(b => b.UserType, new { @class = "obligatoryField" }) *
+                        @Html.DropDownListFor(s => s.UserType, (ICollection<SelectListItem>)ViewBag.SystemUserTypeList, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.CommerceId, new { @class = "obligatoryField" }) *
+                        <div class="selectMask w100 selectMultiple" id="commerceDivId">
+                            @Html.DropDownListFor(m => m.CommerceId, (IEnumerable<SelectListItem>)ViewBag.CommercesLigthList,
+                                new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.Name)
+                        @Html.TextBoxFor(s => s.Name, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.Surname)
+                        @Html.TextBoxFor(s => s.Surname, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.PhoneNumber)
+                        @Html.TextBoxFor(s => s.PhoneNumber, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.LastAttemptToLogIn)
+                        @Html.TextBoxFor(s => s.LastAttemptToLogIn, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.FailLogInCount)
+                        @Html.TextBoxFor(s => s.FailLogInCount, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.LastResetPassword)
+                        @Html.TextBoxFor(s => s.LastResetPassword, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="@Url.Action("Index", "CustomerSiteSystemUser")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Back </a>
+                </div>
+            </div>
+        </div>
+    </div>

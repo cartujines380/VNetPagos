@@ -1,0 +1,115 @@
+﻿@model VisaNet.Presentation.Web.Models.LandingModel
+
+<div class="container p25t">
+
+    <!-- area de titulo para secciones que no son wizard-->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 nameSection">Pago de Sucive</h3>
+            <h4 class="pageDescription">
+                Bienvenido a VisaNetPagos, el portal de pagos de Visanet Uruguay 
+            </h4>
+        </div>
+        <div class="col-md-4"> </div>
+        <div class="clearfix"></div>
+        <div class="horizontalLineGrey"></div>
+    </div>
+    <!-- fin del area de titulo para secciones que no son wizard -->
+
+    <div class="pageBox mb20">
+        <div class="formMargin">
+            <div class="row mt20 ">
+
+            </div>
+            <div class="row">
+                @if (@User != null && User.Identity.IsAuthenticated)
+                {
+                    <h4>Seleccione un departamento</h4>
+                }
+                else
+                {
+                    <h4><span class="visanetOrangeTxt">1 -</span> Seleccione un departamento</h4>
+                }
+            </div>
+            <div class="row departmentArea">
+                @foreach (var state in Model.States)
+                {
+                    <div class="col-md-3">
+                        @if (state.Active)
+                        {
+                            <a id="@state.Id" class="stateItem">
+                                <div class="departmentsBox">
+                                    <div class="departmentImage"><img src="~/Content/images/logos/@state.ImgName" alt="@state.Name" /></div>
+                                    <h3>@state.Name</h3>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        }
+                        else
+                        {
+                            <div class="departmentsBoxNotActive">
+                                <div class="departmentImage"><img src="~/Content/images/logos/@state.ImgName" alt="@state.Name" /></div>
+                                <h3>@state.Name</h3>
+                                <div class="clearfix"></div>
+                            </div>
+                        }
+
+                    </div>
+
+                }
+            </div>
+            <div class="row mt20 " id="step2">
+                @if (@User != null && User.Identity.IsAuthenticated)
+                {
+                    <a class="btn btn-default btn-siguiente mt10" id="notRegistered" href='@Url.Action("PaymentService", "Payment")'>Pagar <span id="selected2"></span></a>
+                }
+                else
+                {
+                    <h4><span class="visanetOrangeTxt">2 -</span> Seleccione una modalidad de usuario para avanzar con el pago del departamento <a id="selected"></a></h4>
+                    <h5 class="departamentareainfo">
+                        Podés hacer el pago de SUCIVE de con tu tarjeta VISA sin ser usuario registrado en VisaNetPagos, también podés registrarte en 1 minuto y realizar pagos en línea de forma segura sin tener que volver a ingresar tus datos cada vez; además de Sucive podrás pagar otros servicios y agendar el pago automático entre otros beneficios de ser <a href="@Url.Action("Index","Registration")">Usuario Registrado</a> en VisaNetPagos. 
+                    </h5>
+                    <a class="btn btn-default btn-siguiente mt10" id="notRegistered" href='@Url.Action("PaymentService", "Payment")'>NO estoy registrado</a>
+                    <a class="btn btn-default btn-siguiente mt10" id="registered" href="@Url.Action("LogIn","Account")">SI estoy registrado</a>
+                }
+
+            </div>
+        </div>
+
+        <!-- fin del formMargin-->
+    </div>
+</div>
+<input class="hidden" id="stateSelected" />
+
+
+<script>
+    $(document).ready(function () {
+        $("#step2").hide();
+        $("a.stateItem").click(function (e) {
+            e.preventDefault();
+            var name = $(this).find('h3').html();
+            var id = $(this).attr("id");
+            $('div.departmentsBox').removeClass("active");
+            $(this).find('div.departmentsBox').addClass("active");
+            $("#selected").html(name);
+            $("#selected2").html(name);
+            $("#stateSelected").val(id);
+            $("#step2").show();
+            $('html,body').animate({
+                scrollTop: $("#step2").offset().top
+            }, 'slow');
+        });
+        $("#notRegistered").click(function (e) {
+            e.preventDefault();
+            var href = $(this).attr('href');
+            window.location.href = href + "?serviceName=" + $("#stateSelected").val();
+            //$("#stateSelected").val()
+        });
+        $("#registered").click(function (e) {
+            e.preventDefault();
+            var href = $(this).attr('href');
+            window.location.href = href + "?ReturnUrl=%2fPayment%2fPaymentService" + "?serviceName=" + $("#stateSelected").val();
+            //$("#stateSelected").val()
+        });
+    });
+</script>

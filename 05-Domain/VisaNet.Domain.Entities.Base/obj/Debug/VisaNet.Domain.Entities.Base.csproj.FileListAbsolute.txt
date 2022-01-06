@@ -1,0 +1,6 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\05-Domain\VisaNet.Domain.Entities.Base\bin\Debug\VisaNet.Domain.Entities.Base.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\05-Domain\VisaNet.Domain.Entities.Base\bin\Debug\VisaNet.Domain.Entities.Base.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\05-Domain\VisaNet.Domain.Entities.Base\obj\Debug\VisaNet.Domain.Entities.Base.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\05-Domain\VisaNet.Domain.Entities.Base\obj\Debug\VisaNet.Domain.Entities.Base.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\05-Domain\VisaNet.Domain.Entities.Base\obj\Debug\VisaNet.Domain.Entities.Base.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\05-Domain\VisaNet.Domain.Entities.Base\obj\Debug\VisaNet.Domain.Entities.Base.csprojResolveAssemblyReference.cache

@@ -1,0 +1,11 @@
+﻿@model VisaNet.Testing.VisaNetOn.Models.End
+
+@{
+    ViewBag.Title = "ErrorAcceso";
+}
+
+<h2>ErrorAcceso PaginaVNP</h2>
+
+OPERACION       : @Html.TextBoxFor(x => x.OperationId)<br />
+COD     ERROR   : @Html.TextBoxFor(x => x.ResultCode) <br />
+DESC    ERROR   : <textarea style="width: 100%;height: 100%">@Model.ResultDescription</textarea><br />

@@ -1,0 +1,191 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Domain.EntitiesDtos.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Domain.EntitiesDtos.TableFilters.ContactFilterDto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Contacts</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Name</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control w100", @placeholder = "Ingrese el nombre a buscar", autocomplete = "off" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Filters_Surname</label>
+        @Html.TextBoxFor(m => m.Surname, new { @class = "form-control w100", @placeholder = "Ingrese el apellido a buscar", autocomplete = "off" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Filters_Email</label>
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control w100", @placeholder = "Ingrese el correo electrónico a buscar", autocomplete = "off" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Filters_QueryType</label>
+        @Html.DropDownList("sSearch_3", EnumHelpers.ConvertToSelectList(typeof(QueryTypeDto), EnumsStrings.ResourceManager), "Tipo", new Dictionary<string, object> { { "style", "width: 100%; height: 100%; color:#999" }, { "class", "form-control" } })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-default btn-standar mt10 w100" id="execute">@PresentationAdminStrings.Common_Search</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2></h2>
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @PresentationAdminStrings.Date
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Surname)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Filters_QueryType
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Subject
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@Html.Partial("_DeleteLightbox")
+
+<div id="divLb"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var dataTableFilters;
+
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "Name", "value": $("#@Html.IdFor(m => m.Name)").val() });
+            aoData.push({ "name": "Surname", "value": $("#@Html.IdFor(m => m.Surname)").val() });
+            aoData.push({ "name": "Email", "value": $("#@Html.IdFor(m => m.Email)").val() });
+            aoData.push({ "name": "sSearch_3", "value": $("#sSearch_3").val() });
+        }
+
+        dataTableFilters = applyDatatableExternalFilters($('table'),
+                [0, 1, 2, 3, 4, 5],
+                [
+                    { "mDataProp": "Date" },
+                    { "mDataProp": "Name" },
+                    { "mDataProp": "Surname" },
+                    { "mDataProp": "Email" },
+                    { "mDataProp": "QueryType" },
+                    { "mDataProp": "Subject" },
+                    {
+                        "sName": "Comments",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.ContactEdit, "<i class=\"fa fa-comment-o\"></i>", new Dictionary<string, object> { { "Class", "btn-edit" } })';
+
+                        }
+                    },
+                    {
+                        "sName": "Detalles",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.ContactDetails, "<i class=\"fa fa-search\"></i>", new Dictionary<string, object> { { "Class", "btn-detalles" } })';
+                            //return '<a href="Contact/Details/' + oObj.aData.Id + '" class="btn-detalles"><i class="fa fa-search"></i></a>';
+                        }
+                    },
+                    {
+                        "sName": "Borrar",
+                        "sClass": "column-icon",
+                        //esto le indica que no lo mapee con el array
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.ContactDelete, "<i class=\"fa fa-trash-o\"></i>", new Dictionary<string, object> { { "Class", "btn-borrar lnkDelete" } })';
+                            //return '<a href="Contact/Delete/' + oObj.aData.Id + '" class="btn-borrar"><i class="fa fa-trash-o"></i></a>';
+                        }
+                    }
+                ],
+            '@Url.Action("AjaxHandler", "Contact")', externalFilters,null, [[0, "desc"]]);
+
+        dataTableFilters.fnSort([[0, 'desc']]);
+        $("#table").on("click", ".btn-detalles", function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: "GET",
+                url: $(this).attr("href"),
+                dataType: 'json',
+                success: function (data) {
+                    if (data.ResponseType == RESPONSE.SUCCESS) {
+                        $('#divLb').html(data.Content);
+                        $("#lbDetails").modal();
+                    }
+                    if (data.ResponseType == RESPONSE.ERROR) {
+                        ShowNotification(data.Title, data.Message, 'error');
+                    }
+                }
+            });
+        });
+
+        $("#table").on("click", ".btn-edit", function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: "GET",
+                url: $(this).attr("href"),
+                dataType: 'json',
+                success: function (data) {
+                    if (data.ResponseType == RESPONSE.SUCCESS) {
+                        $('#divLb').html(data.Content);
+                        $("#lbEdit").modal();
+                    }
+                    if (data.ResponseType == RESPONSE.ERROR) {
+                        ShowNotification(data.Title, data.Message, 'error');
+                    }
+                }
+            });
+        });
+
+        $('table').on("click", ".lnkDelete", function (e) {
+            if (!$(this).hasClass("disabled")) {
+                e.preventDefault();
+                tr = $(this).parents("tr");
+                var lb = $('#lbConfirmDelete');
+                $("#lbHiddenUrl", lb).val($(this).attr("href"));
+                lb.modal();
+            }
+        });
+
+        $("#execute").click(function (e) {
+            e.preventDefault();
+            dataTableFilters.fnFilter();
+        });
+    });
+</script>

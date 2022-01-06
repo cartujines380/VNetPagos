@@ -1,0 +1,128 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Service_Detail_Title</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+
+        @* SECCIONES *@
+        @Html.Partial("_NameSection", Model)
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationAdminStrings.Service_MainConfiguration</h4>
+        @Html.Partial("_MainConfigurationSection", Model)
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationAdminStrings.Service_Cybersource_Section</h4>
+        @Html.Partial("_CybersourceSection", Model)
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationAdminStrings.Service_Gateway_Section</h4>
+        @Html.Partial("_GatewaysSection", Model)
+
+        <div id="depto">
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_Departament_Section</h4>
+            @Html.Partial("_DepartmentSection", Model)
+        </div>
+
+        <div id="highway">
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.HighwaySection</h4>
+            @Html.Partial("_HighwaySection", Model)
+        </div>
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationAdminStrings.CommunicationExternal</h4>
+        @Html.Partial("_ExternalSection", Model)
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationAdminStrings.Extract</h4>
+        @Html.Partial("_ExtractSection", Model)
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationAdminStrings.Service_Params_Section</h4>
+        @Html.Partial("_ReferencesSection", Model)
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationAdminStrings.Service_Detail_Section</h4>
+        @Html.Partial("_DetailsSection", Model)
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationAdminStrings.Discounts</h4>
+        @Html.Partial("_DiscountSection", Model)
+
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>@PresentationWebStrings.Service_Intro</h4>
+        @Html.Partial("_ServiceIntroSection", Model)
+
+
+        @* BOTONES *@
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="@Url.Action("Index", "Service")" class="btn btn-default mt30">@PresentationAdminStrings.Back </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@Html.Partial("_RegexLightbox")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        loadEditor("@Html.IdFor(x => x.ContentIntro)", "@Html.Raw(Model.ContentIntro)");
+        depto();
+        highway();
+        function depto() {
+            if ($('#ServiceGateways_2__Active').prop('checked') || $('#ServiceGateways_3__Active').prop('checked')) {
+                $("#depto").removeClass("hide");
+            } else {
+                $("#depto").addClass("hide");
+            }
+        }
+        function highway() {
+            if ($('#ServiceGateways_4__Active').prop('checked')) {
+                $("#highway").removeClass("hide");
+            } else {
+                $("#highway").addClass("hide");
+            }
+        }
+
+        var combo = $("#@Html.IdFor(model => model.ServiceContainerId)").val();
+        var empty = '@Guid.Empty';
+        if (combo !== empty) {
+            $("#CommunicationExternal").addClass("hidden");
+            $("#CommunicationExternalText").removeClass("hidden");
+        } else {
+            $("#CommunicationExternal").removeClass("hidden");
+            $("#CommunicationExternalText").addClass("hidden");
+        };
+
+        @if (ViewBag.SelectedBinGroups != null)
+        {
+            <text>
+            $("#BinGroups").on('loaded.bs.select', function (e) {
+                $("#BinGroups").selectpicker('val', @Html.Raw(ViewBag.SelectedBinGroups));
+            });
+            </text>
+        }
+
+        $(".triggerRegexModal").click(function (e) {
+                e.preventDefault();
+            $("#regexModal").modal('toggle');
+        });
+
+        $("#btnShowContainerReferences").click(function (e) {
+            e.preventDefault();
+            $("#containerReferencesModal").modal('toggle');
+        });
+
+    });
+</script>

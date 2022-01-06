@@ -1,0 +1,6 @@
+﻿@using VisaNet.Domain.EntitiesDtos.TableFilters
+@{
+    ViewBag.Title = "Index";
+    }
+
+@Html.Partial("_Reports", new ReportFilterDto { From = DateTime.Now.AddYears(-1), To = DateTime.Now })

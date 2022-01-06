@@ -1,0 +1,6 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.CustomProxy\bin\Debug\VisaNet.Utilities.CustomProxy.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.CustomProxy\bin\Debug\VisaNet.Utilities.CustomProxy.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.CustomProxy\obj\Debug\VisaNet.Utilities.CustomProxy.csprojResolveAssemblyReference.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.CustomProxy\obj\Debug\VisaNet.Utilities.CustomProxy.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.CustomProxy\obj\Debug\VisaNet.Utilities.CustomProxy.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.CustomProxy\obj\Debug\VisaNet.Utilities.CustomProxy.pdb

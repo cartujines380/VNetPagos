@@ -1,0 +1,16 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Presentation.Administration.Models.BinAuthorizationAmountModel
+
+<div class="form-group">
+    
+    <label>@Model.Label</label>
+    @Html.DropDownListFor(x => x.AuthorizationAmountTypeDto,
+    EnumHelpers.ConvertToSelectList(typeof(AuthorizationAmountTypeDto), Model.AuthorizationAmountTypeDto, EnumsStrings.ResourceManager),
+    new { @class = "form-control" })
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.LawDto)
+    @Html.HiddenFor(x => x.Label)
+    @Html.HiddenFor(x => x.BinId)
+</div>

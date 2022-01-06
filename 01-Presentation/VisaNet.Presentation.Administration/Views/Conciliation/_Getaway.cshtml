@@ -1,0 +1,31 @@
+﻿@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Presentation.Administration.Models.DailyConciliationDetailModel
+
+@{
+    var showClass = Model.ConciliationApp == ConciliationAppDto.Tc33 ? "" : "hidden";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>VNP</th>
+            <th>Totales @Model.GetawayName</th>
+            <th>OK</th>
+            <th>Con Diferencias</th>
+            <th>Chequeadas</th>
+            <th>Portal no @Model.GetawayName</th>
+            <th>@Model.GetawayName no Portal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.TotalVnp</td>
+            <td>@Model.TotalGetaway</td>
+            <td><a id="conciliationDetailOk">@Model.TotalOk</a> </td>
+            <td><a id="conciliationDetailDiff">@Model.TotalDiff</a></td>
+            <td><a id="conciliationDetailChecked">@Model.TotalChecked</a></td>
+            <td><a id="conciliationDetailError">@Model.SiteNoGetaway</a></td>
+            <td><a id="conciliationDetailError">@Model.GetawayNoSite</a></td>
+        </tr>
+    </tbody>
+</table>

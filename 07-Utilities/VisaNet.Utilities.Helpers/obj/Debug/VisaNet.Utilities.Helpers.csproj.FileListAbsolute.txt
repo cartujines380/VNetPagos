@@ -1,0 +1,13 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\bin\Debug\VisaNet.Utilities.Helpers.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\bin\Debug\VisaNet.Utilities.Helpers.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\bin\Debug\System.Web.Mvc.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\bin\Debug\System.Web.WebPages.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\bin\Debug\System.Web.Mvc.xml
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\bin\Debug\System.Web.WebPages.xml
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\obj\Debug\VisaNet.Utilities.Helpers.csprojResolveAssemblyReference.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\obj\Debug\VisaNet.Utilities.Helpers.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\obj\Debug\VisaNet.Utilities.Helpers.csproj.CopyComplete
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\obj\Debug\VisaNet.Utilities.Helpers.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Helpers\obj\Debug\VisaNet.Utilities.Helpers.pdb

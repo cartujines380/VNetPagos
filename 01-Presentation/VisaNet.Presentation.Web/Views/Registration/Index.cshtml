@@ -1,0 +1,230 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Presentation
+
+@model VisaNet.Presentation.Web.Models.RegistrationModel
+
+<div class="container p25t">
+
+    <!-- area de titulo para secciones que no son wizard-->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 nameSection">@PresentationWebStrings.Registration</h3>
+            @*<h4 class="pageDescription mt20">@PresentationWebStrings.Registration_Desc</h4>*@
+        </div>
+        <div class="clearfix"></div>
+        <div class="horizontalLineGrey"></div>
+    </div>
+    <!-- fin del area de titulo para secciones que no son wizard -->
+    @using (Html.BeginForm("Index", "Registration", FormMethod.Post, new { id = "frmSubmit" }))
+    {
+
+        @Html.AntiForgeryToken()
+        <div class="pageBox mb20">
+            <div class="formMargin">
+                <h4 class="lightBlue">@PresentationWebStrings.Registration_User</h4>
+                <div class="horizontalLineWhite"></div>
+                <!-- campos obligatorios -->
+                <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+                <!-- campos obligatorios -->
+                <div class="row">
+                    <div class="col-md-12 hide generalError" id="generalError">
+                        <i class="icon-warning-sign"></i>
+                        @PresentationWebStrings.From_General_Error
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.Name) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Name, new { @class = "w100", @placeholder = PresentationWebStrings.Name_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Name)
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.Surname) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Surname, new { @class = "w100", @placeholder = PresentationWebStrings.Surname_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Surname)
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.IdentityNumber)
+                        @Html.TextBoxFor(p => p.IdentityNumber, new { @class = "w100", @placeholder = PresentationWebStrings.IdentityNumber_Placeholder, autocomplete = "off" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.MobileNumber)
+                        @Html.TextBoxFor(p => p.MobileNumber, new { @class = "w100", @placeholder = PresentationWebStrings.MobileNumber_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.MobileNumber)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pageBox mb20">
+            <div class="formMargin">
+                <h4 class="lightBlue">@PresentationWebStrings.CallCenter</h4>
+                <div class="horizontalLineWhite"></div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.CallCenterKey) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.CallCenterKey, new { @class = "w100 numeric", @placeholder = PresentationWebStrings.CallCenterKey_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.CallCenterKey)
+
+                        <h5 class="helpUser">
+                            <i class="icon-info-sign"></i>
+                            <a class="preview" rel="popover"> @PresentationWebStrings.Resgistration_CallCenter_Question</a>
+                        </h5>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="pageBox mb20">
+            <div class="formMargin">
+                <h4 class="lightBlue">@PresentationWebStrings.Registration_Login</h4>
+                <div class="horizontalLineWhite"></div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.Email) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Email, new { @class = "w100", @placeholder = PresentationWebStrings.Email_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Email)
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.Password) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.PasswordFor(p => p.Password, new {@class = "w100", @placeholder = PresentationWebStrings.Password_Placeholder, autocomplete = "off"})
+                        @Html.ValidationMessageFor(p => p.Password)
+
+                        <h5 class="helpUser">
+                            <i class="icon-info-sign"></i>
+                            <a class="previewPassword" rel="popover"> @PresentationWebStrings.Resgistration_Password_Requirements</a>
+                        </h5>
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.PasswordConfirmation) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.PasswordFor(p => p.PasswordConfirmation, new {@class = "w100", @placeholder = PresentationWebStrings.PasswordConfirmation_Placeholder, autocomplete = "off"})
+                        @Html.ValidationMessageFor(p => p.PasswordConfirmation)
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pageBox mb20">
+            <div class="formMargin">
+                <h4 class="lightBlue">@PresentationWebStrings.Registration_Conditions</h4>
+                <div class="horizontalLineWhite"></div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.CheckBoxFor(p => p.AcceptTermsAndConditions, new { @id = "checkConditions" })
+                        <label>@PresentationWebStrings.Registration_Conditions_Accept <a target="_blank" href="@Url.Action("Conditions", "Registration")">@PresentationWebStrings.Registration_Conditions</a></label>
+                        @*<input id="checkConditions" type="checkbox" /> <label>@PresentationWebStrings.Registration_Conditions_Accept <a target="_blank" href="@Url.Action("Conditions", "Registration")">@PresentationWebStrings.Registration_Conditions</a></label>*@
+                    </div>
+                </div>
+                <span id="conditionsMessage" class="hide help-inline field-validation-error">@PresentationWebStrings.Registration_Conditions_Validation</span>
+            </div>
+        </div>
+
+        <div class="pageBox mb20">
+            <div class="formMargin">
+                <h4 class="lightBlue">@PresentationWebStrings.Captcha_Info</h4>
+                <div class="horizontalLineWhite"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Label(PresentationWebStrings.Captcha_Info) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        <div class="g-recaptcha" data-sitekey="@ConfigurationManager.AppSettings["RecaptchaPublicKey"]"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- fin del formMargin-->
+        </div>
+
+        <div class="row buttonsActionsBox">
+            <div class="col-md-4 pl0 pr0">
+                <div class="col-xs-6  pr0 pl0">
+                    <a href="@Url.Action("Index","Home")" class="btn btn-default btn-cancelar mt10 w100" role="button"> @PresentationWebStrings.Cancel <i class="icon-remove"></i></a>
+                </div>
+                <div class="col-xs-6 p5l pr0">
+                    @*<a href="#" class="btn btn-default btn-action mt10 w100 lbApprove" role="button"> @PresentationWebStrings.Register <i class="icon-ok"></i></a>*@
+                    <button type="submit" id="btnSend" class="btn btn-default btn-action mt10 w100">@PresentationWebStrings.Register <i class="icon-ok"></i></button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-8">
+                <h5 class="helpMode"> @PresentationWebStrings.Help <a href="@Url.Action("Index", "Contact")">@PresentationWebStrings.Help_Contact</a> <i class="icon-warning-sign"></i></h5>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    }
+
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#checkConditions").click(function () {
+            if ($(this).is(":checked")) {
+                if (!$("#conditionsMessage").hasClass("hide")) {
+                    $("#conditionsMessage").addClass("hide");
+                }
+            }
+        });
+
+        $("#frmSubmit").submit(function () {
+            //changeStateGeneralErrorForm();
+            showLoaderFullScreen();
+        });
+
+        if ('@ViewBag.Error' == 'True') {
+            if ($("#generalError").hasClass("hide")) {
+                changeStateGeneralErrorForm();
+            }
+        }
+
+        $("#btnSend").click(function (e) {
+            e.preventDefault();
+            if (!$("#frmSubmit").valid()) {
+                if ($("#generalError").hasClass("hide")) {
+                    changeStateGeneralErrorForm();
+                }
+                ShowNotification('Error en el formulario', 'Verificá los datos ingresados', 'error');
+            }
+
+            if ($("#checkConditions").is(":checked") == false) {
+                $("#conditionsMessage").removeClass("hide");
+                if ($("#generalError").hasClass("hide")) {
+                    changeStateGeneralErrorForm();
+                }
+                ShowNotification('¡Atención!', 'Debés aceptar los términos y condiciones', 'alert');
+            }
+            else {
+                if ($("#frmSubmit").valid()) {
+                    $("#frmSubmit").submit();
+                }
+            }
+        });
+
+        $("#btnReload").click(function (e) {
+            e.preventDefault();
+            $("#img").attr("src", "@Url.Action("GetCaptcha", "Home")?" + new Date().getTime());
+        });
+
+        $('.preview').popover({
+            'trigger': 'hover',
+            'html': true,
+            'content': function () {
+                return "@PresentationWebStrings.Resgistration_CallCenter_Desc";
+            }
+        });
+
+        $('.previewPassword').popover({
+            'trigger': 'hover',
+            'html': true,
+            'content': function () {
+                return "@PresentationWebStrings.Resgistration_Password_Desc";
+            }
+        });
+
+        $("#@Html.IdFor(x => x.PhoneNumber)").numeric();
+        $("#@Html.IdFor(x => x.MobileNumber)").numeric();
+        $("#@Html.IdFor(x => x.IdentityNumber)").numeric();
+    });
+
+</script>

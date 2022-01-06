@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api-vnp-2.vnet.uy/v020211/VNPAccess.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaNetPagosWCF.EntitiesModel" />
+  <xs:element name="CobroFacturaOnlineApp">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaNetPagosWCF.EntitiesModel" minOccurs="0" name="data" nillable="true" type="q1:CobrarFacturaData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CobroFacturaOnlineAppResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaNetPagosWCF.EntitiesModel" minOccurs="0" name="CobroFacturaOnlineAppResult" nillable="true" type="q2:VNPRespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnulacionCobroApp">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaNetPagosWCF.EntitiesModel" minOccurs="0" name="data" nillable="true" type="q3:AnularFacturaData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnulacionCobroAppResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaNetPagosWCF.EntitiesModel" minOccurs="0" name="AnulacionCobroAppResult" nillable="true" type="q4:VNPRespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultaTransacciones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaNetPagosWCF.EntitiesModel" minOccurs="0" name="data" nillable="true" type="q5:ConsultaFacturasData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultaTransaccionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaNetPagosWCF.EntitiesModel" minOccurs="0" name="ConsultaTransaccionesResult" nillable="true" type="q6:VNPRespuestaConsultaFacturas" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultaComercios">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaNetPagosWCF.EntitiesModel" minOccurs="0" name="data" nillable="true" type="q7:ConsultaComerciosData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultaComerciosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaNetPagosWCF.EntitiesModel" minOccurs="0" name="ConsultaComerciosResult" nillable="true" type="q8:VNPRespuestaConsultaComercios" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BajaTarjeta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaNetPagosWCF.EntitiesModel" minOccurs="0" name="data" nillable="true" type="q9:BajaTarjetaData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BajaTarjetaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaNetPagosWCF.EntitiesModel" minOccurs="0" name="BajaTarjetaResult" nillable="true" type="q10:VNPRespuestaBajaTarjeta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

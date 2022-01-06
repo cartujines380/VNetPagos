@@ -1,0 +1,4 @@
+﻿@foreach (var keyValue in Model)
+{
+    <input type="hidden" name="@keyValue.Key" id="@keyValue.Key" value="@keyValue.Value" />
+}

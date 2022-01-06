@@ -1,0 +1,12 @@
+﻿@model VisaNet.Testing.VisaNetOn.Models.AccessUrlModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Index</h2>
+
+<iframe src="@Url.Action("PedirAcceso", "LoadPage", new {tokenAcceso = Model.Token})" width="100%" height="100%">
+    
+</iframe>

@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Presentation.Administration.Models.ParametersModel
+
+<h2>@PresentationAdminStrings.Parameters_Details_Title</h2>
+
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.ContactEmail)
+                    @Html.TextBoxFor(s => s.ContactEmail, new { @class = "form-control", @disabled = "disable" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.ErrorNotificationEmail)
+                    @Html.TextBoxFor(s => s.ErrorNotificationEmail, new { @class = "form-control", @disabled = "disable" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.SendingEmail)
+                    @Html.TextBoxFor(s => s.SendingEmail, new { @class = "form-control", @disabled = "disable" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.LoginNumberOfTries)
+                    @Html.TextBoxFor(s => s.LoginNumberOfTries, new { @class = "form-control", @disabled = "disable" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.MerchantId)
+                    @Html.TextBoxFor(s => s.MerchantId, new { @class = "form-control", @disabled = "disable" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.CybersourceProfileId)
+                    @Html.TextBoxFor(s => s.CybersourceProfileId, new { @class = "form-control", @disabled = "disable" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.CybersourceAccessKey)
+                    @Html.TextBoxFor(s => s.CybersourceAccessKey, new { @class = "form-control", @disabled = "disable" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.CybersourceSecretKey)
+                    @Html.TextBoxFor(s => s.CybersourceSecretKey, new { @class = "form-control", @disabled = "disable" })
+                </div>
+            </div>
+        </div>
+        <div class="horizontalLineLighGrey mt20 mb20"></div>
+        <h4>Parametros </h4>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.BanredCode)
+                    @Html.TextBoxFor(s => s.BanredCode, new { @class = "form-control", @disabled = "disable" })
+                </div>
+                @Html.ValidationMessageFor(s => s.BanredCode)
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.SistarbancCode)
+                    @Html.TextBoxFor(s => s.SistarbancCode, new { @class = "form-control", @disabled = "disable" })
+                </div>
+                @Html.ValidationMessageFor(s => s.SistarbancCode)
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.SistarbancCodeBrou)
+                    @Html.TextBoxFor(s => s.SistarbancCodeBrou, new { @class = "form-control", @disabled = "disable" })
+                </div>
+                @Html.ValidationMessageFor(s => s.SistarbancCodeBrou)
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.CybersourceCode)
+                    @Html.TextBoxFor(s => s.CybersourceCode, new { @class = "form-control", @disabled = "disable" })
+                </div>
+                @Html.ValidationMessageFor(s => s.CybersourceCode)
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.SuciveCode)
+                    @Html.TextBoxFor(s => s.SuciveCode, new { @class = "form-control", @disabled = "disable" })
+                </div>
+                @Html.ValidationMessageFor(s => s.SuciveCode)
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.GeocomCode)
+                    @Html.TextBoxFor(s => s.GeocomCode, new { @class = "form-control", @disabled = "disable" })
+                </div>
+                @Html.ValidationMessageFor(s => s.GeocomCode)
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.ActionActionLink(Actions.ParametersEdit, PresentationAdminStrings.Edit, new RouteValueDictionary { { "id", Model.Id } }, new Dictionary<string, object> { { "Class", "btn btn-default" } })
+
+

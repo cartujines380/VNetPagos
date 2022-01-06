@@ -1,0 +1,42 @@
+﻿@using System.Globalization
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.VisaNetOn.Models.PagePaymentModel
+
+<div class="modal fade" tabindex="-1" role="dialog" id="lbConfirmPayment" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close closeButton" id="closeModalLogin" data-dismiss="modal" aria-label="Close" style=""><span aria-hidden="true">&times;</span></button>
+                <div class="row title-section-wrapper">
+                    <span class="title-section cpo hidden-xs">Confirmá tu pago</span>
+                    <span class="title-section-xs cpo visible-xs">Confirmá tu pago</span>
+                </div>
+                <p class="legales">
+                </p>
+            </div>
+
+            <div class="modal-body">
+                <span class="title-form">Detalle pago de @Model.ServiceInfo.ServiceName</span>
+                <div class="modal-compra-detail">
+                    <span class="left-title">@PresentationWebStrings.Payment_Total_Bills</span>
+                    <span class="right-value">@Model.BillData.CurrencySymbol @Model.BillData.Amount.ToString("#,###.00", CultureInfo.CreateSpecificCulture("es-UY"))</span>
+                    <span class="left-title" id="lblPaymentDiscountType"></span>
+                    <span class="right-value" id="lblPaymentDiscountAmount"></span>
+                </div>
+            </div>
+
+            <div class="wrapper-precio-confirm">
+                <span class="precio">@PresentationWebStrings.Payment_Total_After_Discount: </span> <span class="precio" id="lblPaymentTotalAfterDiscount"></span>
+            </div>
+
+            <div class="modal-footer">
+                <div class="modal-actions actions">
+                    <a class="btn" data-dismiss="modal">Cancelar</a>
+                    <a class="btn siguiente" id="btnPay" href="" aria-controls="tarjeta" role="tab" data-toggle="tab">@PresentationWebStrings.Payment_Pay</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

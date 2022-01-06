@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AuditDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="AuditList" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="BinGroupCreate" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="BinGroupDelete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="BinGroupDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="BinGroupEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="BinGroupList" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="ConciliationDailyList" xml:space="preserve">
+    <value>Conciliación por día</value>
+  </data>
+  <data name="ConciliationVNP" xml:space="preserve">
+    <value>Ejecutar Conciliación</value>
+  </data>
+  <data name="ContactCreate" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="ContactDelete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="ContactDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="ContactEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="ContactList" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="DiscountDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="DiscountEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="DiscountList" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="FaqCreate" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="FaqDelete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="FaqDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="FaqEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="FaqList" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="HomePageDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="HomePageEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="HomePageList" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="InstitutionalContentDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="InstitutionalContentEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="LegalPagesDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="LegalPagesEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="NoticesDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="NoticesEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="ParametersDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="ParametersEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="ReportsAutomaticPaymentsDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="ReportsCardsDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="ReportsConciliationDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="ReportsConciliationRun" xml:space="preserve">
+    <value>Corridas Conciliación</value>
+  </data>
+  <data name="ReportsCybersourceTransactionsDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="ReportsDashboardDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="ReportsDebitsSuscriptionList" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="ReportsHighwayBills" xml:space="preserve">
+    <value>Carreteras Facturas</value>
+  </data>
+  <data name="ReportsHighwayEmails" xml:space="preserve">
+    <value>Carretera Emails</value>
+  </data>
+  <data name="ReportsIntegration" xml:space="preserve">
+    <value>Log integración</value>
+  </data>
+  <data name="ReportsServicesAssociatedDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="ReportsTc33" xml:space="preserve">
+    <value>Tc33</value>
+  </data>
+  <data name="ReportsTransactionsAmountDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="ReportsTransactionsDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="ReportsUserCreate" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="ReportsUserDelete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="ReportsUserDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="ReportsUserEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="ReportsUserList" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="ReportsVersionDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="RolesCreate" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="RolesDelete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="RolesDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="RolesEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="RolesList" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="SubscriberCreate" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="SubscriberDelete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="SubscriberDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="SubscriberEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="SubscriberList" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="SystemUsersCreate" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="SystemUsersDelete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="SystemUsersDetails" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="SystemUsersEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="SystemUsersList" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+</root>

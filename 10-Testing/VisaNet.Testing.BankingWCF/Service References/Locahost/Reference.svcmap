@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="be2460b3-1fdb-4b9b-a6b3-35db6b7bdc81" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:46736/VisaNetAccess.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="VisaNetAccess.wsdl" MetadataType="Wsdl" ID="16d05104-4630-4f25-83cb-9b65f15a1582" SourceId="1" SourceUrl="http://localhost:46736/VisaNetAccess.svc?wsdl" />
+    <MetadataFile FileName="VisaNetAccess.xsd" MetadataType="Schema" ID="ec3a50de-cbfb-44c0-82fd-b0d92d63d68b" SourceId="1" SourceUrl="http://localhost:46736/VisaNetAccess.svc?xsd=xsd0" />
+    <MetadataFile FileName="VisaNetAccess1.xsd" MetadataType="Schema" ID="ac3f33dd-9cb5-4133-b4a9-5ac4984b941a" SourceId="1" SourceUrl="http://localhost:46736/VisaNetAccess.svc?xsd=xsd1" />
+    <MetadataFile FileName="VisaNetAccess2.xsd" MetadataType="Schema" ID="17059fa0-df52-479f-98c3-a4fc5d61c7fb" SourceId="1" SourceUrl="http://localhost:46736/VisaNetAccess.svc?xsd=xsd2" />
+    <MetadataFile FileName="VisaNetAccess3.xsd" MetadataType="Schema" ID="66b52527-8702-4e1d-99a1-bd2cedd58f27" SourceId="1" SourceUrl="http://localhost:46736/VisaNetAccess.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

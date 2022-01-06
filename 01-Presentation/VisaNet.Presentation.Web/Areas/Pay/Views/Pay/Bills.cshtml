@@ -1,0 +1,344 @@
+﻿@using System.Globalization
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Presentation.Web.Models
+@using VisaNet.Utilities.Cybersource
+@model PaymentBillModel
+
+<div class="container p25t">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 nameSection">@PresentationWebStrings.Payment_Title</h3>
+            <h4 class="pageDescription">@PresentationWebStrings.Payment_Desc</h4>
+        </div>
+        <div class="clearfix"></div>
+        <div class="horizontalLineGrey"></div>
+    </div>
+
+    <div class="mt20">
+        <div class="wizardBox">
+            <!-- area de titulo y breadcrumb-->
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="mt5">
+                        @(Model.EnableBills ? PresentationWebStrings.Payment_Step2 : PresentationWebStrings.Payment_Step2_1)
+                </h3>
+                <h4 class="pageDescription">@(Model.EnableBills ? PresentationWebStrings.Payment_Step2_Info : PresentationWebStrings.Payment_Step2_Info_1) </h4>
+            </div>
+            <div class="col-md-4">
+                @Html.Partial("_Steps")
+            </div>
+            <div class="clearfix"></div>
+            <div class="horizontalLineGrey"></div>
+        </div>
+        <!-- area de titulo y breadcrumb-->
+        <!-- campos obligatorios -->
+        <h5 style="display:none"><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+        <!-- campos obligatorios -->
+        @using (Html.BeginForm("Card", "Pay", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.PaymentMethod)
+            @Html.HiddenFor(m => m.MinPeso)
+            @Html.HiddenFor(m => m.MaxPeso)
+            @Html.HiddenFor(m => m.MaxD)
+            @Html.HiddenFor(m => m.MinD)
+                <!-- area de datos seleccionados -->
+            <div class="highlightArea">
+                <h3><i class="icon-angle-right"></i> @PresentationWebStrings.Payment_Data_SoFar</h3>
+                <label> @PresentationWebStrings.Payment_Service <span>@ViewBag.Service</span> </label>
+                @if (!String.IsNullOrEmpty(ViewBag.ReferenceName) && !String.IsNullOrEmpty(ViewBag.ReferenceValue))
+                {
+                    <label><i class="icon-angle-right lightBlue"></i> @ViewBag.ReferenceName: <span>@ViewBag.ReferenceValue</span></label>
+                }
+                @if (!String.IsNullOrEmpty(ViewBag.ReferenceName2) && !String.IsNullOrEmpty(ViewBag.ReferenceValue2))
+                {
+                    <label><i class="icon-angle-right lightBlue"></i> @ViewBag.ReferenceName2: <span>@ViewBag.ReferenceValue2</span></label>
+                }
+                @if (!String.IsNullOrEmpty(ViewBag.ReferenceName3) && !String.IsNullOrEmpty(ViewBag.ReferenceValue3))
+                {
+                    <label><i class="icon-angle-right lightBlue"></i> @ViewBag.ReferenceName3: <span>@ViewBag.ReferenceValue3</span></label>
+                }
+                @if (!String.IsNullOrEmpty(ViewBag.ReferenceName4) && !String.IsNullOrEmpty(ViewBag.ReferenceValue4))
+                {
+                    <label><i class="icon-angle-right lightBlue"></i> @ViewBag.ReferenceName4: <span>@ViewBag.ReferenceValue4</span></label>
+                }
+                @if (!String.IsNullOrEmpty(ViewBag.ReferenceName5) && !String.IsNullOrEmpty(ViewBag.ReferenceValue5))
+                {
+                    <label><i class="icon-angle-right lightBlue"></i> @ViewBag.ReferenceName5: <span>@ViewBag.ReferenceValue5</span></label>
+                }
+                @if (!String.IsNullOrEmpty(ViewBag.ReferenceName6) && !String.IsNullOrEmpty(ViewBag.ReferenceValue6))
+                {
+                    <label><i class="icon-angle-right lightBlue"></i> @ViewBag.ReferenceName6: <span>@ViewBag.ReferenceValue6</span></label>
+                }
+            </div>
+                <!--fin del area de datos seleccionados -->
+
+            <div class="formMargin">
+                @if (Model.EnableBills && Model.EnablePartialPayment || Model.EnableBills && Model.EnableImporte || Model.EnableImporte && Model.EnablePartialPayment)
+                {
+                    <fieldset>
+                        <label>Seleccione una acción</label>
+                        <div class="form-group">
+                            @if (Model.EnableBills && (Model.EnablePartialPayment || Model.EnableImporte))
+                            {
+                                <div class="radio">
+                                    <input type="radio" name="optionsRadios" id="radiobill" @(Model.PaymentMethod == 1 ? "checked" : "")>
+                                    <label class="control-label" for="">Pagar la Totalidad de la Factura Seleccionada</label>
+                                </div>
+                            }
+                            @if (Model.EnablePartialPayment && (Model.EnableBills || Model.EnableImporte))
+                            {
+                                <div class="radio">
+                                    <input type="radio" name="optionsRadios" id="">
+                                    <label class="control-label" for="">Pagar las Facturas de Forma Parcial</label>
+                                </div>
+                            }
+                            @if (Model.EnableImporte && (Model.EnableBills || Model.EnablePartialPayment))
+                            {
+                                <div class="radio">
+                                    <input type="radio" name="optionsRadios" id="radioimporte" @(Model.PaymentMethod == 2 ? "checked" : "")>
+                                    <label class="control-label" for="">Pagar un Importe Diferente</label>
+                                </div>
+                            }
+                        </div>
+                    </fieldset>
+                }
+
+                @if (Model.EnableBills)
+                {
+                    <div class="@(Model.EnableBills && Model.EnableImporte ? "hide": "")" id="rowbill">
+                        <!-- warning area-->
+
+                        <h5><i class=" icon-warning-sign visanetOrangeTxt"></i>@PresentationWebStrings.Payment_Bills_Info</h5>
+                        <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@PresentationWebStrings.Payment_Bills_Calculate</h5>
+                        @if (Model.Bills != null && Model.Bills.Any() && Model.Bills.First().HasAnnualPatent)
+                        {
+                            <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@PresentationWebStrings.Payment_Bill_SuciveAnnual</h5>
+                        }
+                        @*<div class="row">
+                                <div class="col-md-12">
+                                    <a class="visaTextBlue" href="#" id="selectAll">Seleccionar todas</a>
+                                </div>
+                            </div>*@
+
+                        <!-- fin de warning area-->
+                        <div class="row">
+                            @{
+                    var index = 0;
+                            }
+                            @if (Model.Bills == null || Model.Bills.Any() == false)
+                            {
+                                <div class="highlightArea">@PresentationWebStrings.Payment_No_Pending_Bills</div>
+                            }
+                            else
+                            {
+                                if (TempData["BillsInvalid"] != null)
+                                {
+                                    <div class="highlightArea">@TempData["BillsInvalid"]</div>
+                                }
+                                foreach (var bill in Model.Bills)
+                                {
+                                    <div class="col-md-6">
+                                        <!-- item box -->
+                                        <div class="itemBox">
+                                            <div class="row">
+                                                <div class="col-xs-1">
+                                                    @if (bill.Payable)
+                                                    {
+                                                        @Html.CheckBox("Bills[" + index + "].Pay", bill.Pay);
+                                                    }
+                                                </div>
+                                                <div class="col-xs-11 verticalLeftDotted">
+                                                    @if (!String.IsNullOrEmpty(bill.Description))
+                                                    {
+                                                        <h4> @bill.Description</h4>
+                                                    }
+                                                    <h4><span>@PresentationWebStrings.DueDate:</span> @bill.ExpirationDate.ToString("dd/MM/yyyy")</h4>
+                                                    @if (bill.GeneratedDate != null)
+                                                    {
+                                                        <h4><span>@PresentationWebStrings.BillGeneratedDate:</span> @bill.GeneratedDate.Value.ToString("dd/MM/yyyy")</h4>
+                                                    }
+
+                                                    <h4>
+                                                        <span>@PresentationWebStrings.Payment_Bills_Amount: </span>
+                                                        <span class="amount">
+                                                            @if (bill.Bills != null && bill.Bills.Any())
+                                                            {
+                                                                <a id="@bill.Id" href="#" class="billdetail">
+                                                                    @(bill.Currency == Currency.PESO_URUGUAYO ? Html.Raw("$") : Html.Raw("U$D"))
+                                                                    @bill.Amount.ToString("##,#0.00", CultureInfo.CurrentCulture) (+)
+                                                                </a>
+                                                            }
+                                                            else
+                                                            {
+                                                                @(bill.Currency == Currency.PESO_URUGUAYO ? Html.Raw("$") : Html.Raw("U$D"))
+                                                                @bill.Amount.ToString("##,#0.00", CultureInfo.CurrentCulture)
+                                                            }
+                                                        </span>
+                                                    </h4>
+                                                    @if (!bill.Payable && !string.IsNullOrEmpty(bill.DashboardDescription))
+                                                    {
+                                                        <h4><span style="font-style: italic">@bill.DashboardDescription</span></h4>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- fin item box-->
+                                    </div>
+                                    @Html.Hidden("Bills[" + index + "].Amount", bill.Amount)
+                                    @Html.Hidden("Bills[" + index + "].Currency", bill.Currency)
+                                    @Html.Hidden("Bills[" + index + "].ExpirationDate", bill.ExpirationDate)
+                                    @Html.Hidden("Bills[" + index + "].BillExternalId", bill.BillExternalId)
+                                    @Html.Hidden("Bills[" + index + "].FinalConsumer", bill.FinalConsumer)
+                                    @Html.Hidden("Bills[" + index + "].TaxedAmount", bill.TaxedAmount)
+                                    @Html.Hidden("Bills[" + index + "].GatewayTransactionId", bill.GatewayTransactionId)
+                                    @Html.Hidden("Bills[" + index + "].Gateway", bill.Gateway)
+                                    @Html.Hidden("Bills[" + index + "].Line", bill.Line)
+                                    @Html.Hidden("Bills[" + index + "].Description", bill.Description)
+                                    @Html.Hidden("Bills[" + index + "].Payable", bill.Payable)
+                                    @Html.Hidden("Bills[" + index + "].Id", bill.Id)
+                                    @Html.Hidden("Bills[" + index + "].DashboardDescription", bill.DashboardDescription)
+                                                    index++;
+                                }
+                            }
+                        </div>
+                    </div>
+                }
+                @if (Model.EnableImporte)
+                {
+                    <div class="@(Model.EnableBills && Model.EnableImporte ? "hide": "")" id="rowimporte">
+                        <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Seleccione Moneda <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i></label>
+                                <div class="selectMask w100">
+                                    @Html.DropDownListFor(m => m.Currency, (IEnumerable<SelectListItem>)ViewBag.CurrencyList)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Ingrese Nuevo Importe <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i></label>
+                                @Html.TextBoxFor(model => model.ImporteAmount, new { @class = "form-control w100 numeric", placeholder = "Ingrese el Importe" })
+                                @Html.ValidationMessageFor(m => m.ImporteAmount)
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+                <!-- fin del formMargin-->
+                <!-- botones del wizard-->
+            <div class="row wizardButtons">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    @if (!String.IsNullOrEmpty(ViewBag.BillsInvalid))
+                    {
+                        <span class="help-inline field-validation-error">@ViewBag.BillsInvalid</span>
+                    }
+                    <div class="col-xs-6 p5r pl0">
+                        @if (!Model.DisableEditServicePage)
+                        {
+                            <a href="@Url.Action("Service")" class="btn btn-default btn-anterior mt10 w100"><i class="icon-chevron-sign-left"></i> @PresentationCoreMessages.Common_Previous</a>
+                        }
+                    </div>
+                    <div class="col-xs-6 p5l pr0">
+                        @if (Model.EnableImporte || Model.NextPage)
+                        {
+                            <button id="btnNext" class="btn btn-default btn-siguiente mt10 w100"> @PresentationCoreMessages.Common_Next <i class="icon-chevron-sign-right"></i></button>
+                        }
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+                <!-- fin botones del wizard-->
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <button id="btnCancelPayment" class="btn btn-default btn-cancelar mt10 w100">@PresentationWebStrings.Payment_Cancel <i class="icon-remove"></i></button>
+        </div>
+    </div>
+</div>
+
+</div>
+@Html.Partial("_Cancel")
+<div id="billDetail"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        radioclick();
+        $("#stepBills").addClass("active");
+        $("#paymentRequestLink").addClass("vnpTitleSelected");
+        var enableBills = '@(Model.EnableMultipleBills)';
+
+        $("#btnNext").click(function () {
+            $("#form").submit(function () {
+                if ($(this).validate().form()) {
+                    showLoaderFullScreen("@PresentationWebStrings.Loader_Message");
+                }
+            });
+        });
+
+        $(":checkbox").click(function () {
+            if (enableBills == 'False') {
+                if ($(this).is(":checked")) {
+                    var all = $('input:checkbox');
+                    for (var i = 0; i < all.length; i++) {
+                        if (all[i].id != $(this).attr('id')) {
+                            all[i].checked = false;
+                        }
+                    }
+                }
+            }
+        });
+        $("#btnCancelPayment").click(function (e) {
+            e.preventDefault();
+            $("#lbCancelPayment").modal();
+        });
+
+        $(":radio").click(function () {
+            radioclick();
+        });
+
+        $("a.billdetail").click(function (e) {
+            e.preventDefault();
+            var billId = $(this).attr("id");
+            $.get("@Url.Action("BillDetail", "Pay")" + "?id=" + billId).success(function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $("#billDetail").html(data.Content);
+                    $("#modalDetailBill", "#billDetail").modal();
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            });
+        });
+
+        $("#selectAll").click(function (e) {
+            e.preventDefault();
+            $("#rowbill input[type='checkbox']").click();
+        });
+    });
+
+    function radioclick() {
+
+        if ($("#radioimporte").prop("checked")) {
+            $("#rowimporte").removeClass("hide");
+            $("#rowbill").addClass("hide");
+            $("#@Html.IdFor(m => m.PaymentMethod)").val(2);
+            var all = $('input:checkbox');
+            for (var i = 0; i < all.length; i++) {
+                if (all[i].id != $(this).attr('id')) {
+                    all[i].checked = false;
+                }
+            }
+        }
+        if ($("#radiobill").prop("checked")) {
+            $("#rowbill").removeClass("hide");
+            $("#rowimporte").addClass("hide");
+            $("#@Html.IdFor(m => m.PaymentMethod)").val(1);
+        }
+    }
+</script>

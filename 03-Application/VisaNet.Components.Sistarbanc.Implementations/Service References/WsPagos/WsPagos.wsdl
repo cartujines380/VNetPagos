@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="https://192.168.141.190/spfws/services/WsPagos" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns1="urn:WsPagosImp" xmlns:impl="https://192.168.141.190/spfws/services/WsPagos" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="https://192.168.141.190/spfws/services/WsPagos" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:WsPagosImp">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="Resultado">
+        <xsd:sequence>
+          <xsd:element name="codigoError" type="xsd:int" />
+          <xsd:element name="descripcionError" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResultadoWsPagoFacturas">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns1:Resultado">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="pagarReciboRequest1">
+    <wsdl:part name="idClienteBanco" type="soapenc:string" />
+    <wsdl:part name="codigoFactura" type="soapenc:string" />
+    <wsdl:part name="tipoServicio" type="soapenc:string" />
+    <wsdl:part name="idOrganismo" type="soapenc:string" />
+    <wsdl:part name="banco" type="soapenc:string" />
+    <wsdl:part name="nroTranBanco" type="soapenc:string" />
+    <wsdl:part name="importe" type="soapenc:string" />
+    <wsdl:part name="moneda" type="soapenc:string" />
+    <wsdl:part name="addProfile" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="pagarReciboResponse1">
+    <wsdl:part name="pagarReciboReturn" type="tns1:ResultadoWsPagoFacturas" />
+  </wsdl:message>
+  <wsdl:message name="pagarReciboRequest">
+    <wsdl:part name="idClienteBanco" type="soapenc:string" />
+    <wsdl:part name="codigoFactura" type="soapenc:string" />
+    <wsdl:part name="tipoServicio" type="soapenc:string" />
+    <wsdl:part name="idOrganismo" type="soapenc:string" />
+    <wsdl:part name="banco" type="soapenc:string" />
+    <wsdl:part name="nroTranBanco" type="soapenc:string" />
+    <wsdl:part name="importe" type="soapenc:string" />
+    <wsdl:part name="moneda" type="soapenc:string" />
+    <wsdl:part name="addProfile" type="soapenc:string" />
+    <wsdl:part name="nroTranSB" type="soapenc:string" />
+    <wsdl:part name="fecha" type="soapenc:string" />
+    <wsdl:part name="firmaPago" type="soapenc:string" />
+    <wsdl:part name="origen" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="pagarReciboResponse">
+    <wsdl:part name="pagarReciboReturn" type="tns1:ResultadoWsPagoFacturas" />
+  </wsdl:message>
+  <wsdl:portType name="WsPagosImp">
+    <wsdl:operation name="pagarRecibo" parameterOrder="idClienteBanco codigoFactura tipoServicio idOrganismo banco nroTranBanco importe moneda addProfile nroTranSB fecha firmaPago origen">
+      <wsdl:input name="pagarReciboRequest" message="impl:pagarReciboRequest" />
+      <wsdl:output name="pagarReciboResponse" message="impl:pagarReciboResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="pagarRecibo" parameterOrder="idClienteBanco codigoFactura tipoServicio idOrganismo banco nroTranBanco importe moneda addProfile">
+      <wsdl:input name="pagarReciboRequest1" message="impl:pagarReciboRequest1" />
+      <wsdl:output name="pagarReciboResponse1" message="impl:pagarReciboResponse1" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsPagosSoapBinding" type="impl:WsPagosImp">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="pagarRecibo">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="pagarReciboRequest">
+        <wsdlsoap:body use="encoded" namespace="https://192.168.141.190/spfws/services/WsPagos" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="pagarReciboResponse">
+        <wsdlsoap:body use="encoded" namespace="https://192.168.141.190/spfws/services/WsPagos" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pagarRecibo">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="pagarReciboRequest1">
+        <wsdlsoap:body use="encoded" namespace="https://192.168.141.190/spfws/services/WsPagos" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="pagarReciboResponse1">
+        <wsdlsoap:body use="encoded" namespace="https://192.168.141.190/spfws/services/WsPagos" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsPagosImpService">
+    <wsdl:port name="WsPagos" binding="impl:WsPagosSoapBinding">
+      <wsdlsoap:address location="https://192.168.141.190/spfws/services/WsPagos" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

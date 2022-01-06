@@ -1,0 +1,18 @@
+﻿@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+<div class="row">
+    <div class="col-lg-6">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(s => s.Name, new { @class = "obligatoryField" }) *
+            @Html.TextBoxFor(s => s.Name, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+        @Html.ValidationMessageFor(s => s.Name)
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.UrlName)
+            @Html.TextBoxFor(s => s.UrlName, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+    </div>
+</div>

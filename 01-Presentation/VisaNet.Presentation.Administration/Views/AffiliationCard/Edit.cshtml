@@ -1,0 +1,70 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model VisaNet.Presentation.Administration.Models.AffiliationCardModel
+
+<h2>@PresentationAdminStrings.AffiliationCard_Edit_Title</h2>
+
+@using (Html.BeginForm("Edit", "AffiliationCard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-lg-10">
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(b => b.Name, new { @class = "obligatoryField" }) *
+                        @Html.TextBoxFor(b => b.Name, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.Name)
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.Code, new { @class = "obligatoryField" }) *
+                        @Html.TextBoxFor(s => s.Code, new { @class = "form-control numeric" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.Code)
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.BankId)
+                        @Html.DropDownList("BankId", (IEnumerable<SelectListItem>)ViewBag.Banks, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.BankId)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="@Url.Action("Index", "AffiliationCard")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+                    <a href="#" id="btnGuardar" class="btn btn-default lbApprove">
+                        <strong>@PresentationAdminStrings.Save</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("a.lbApprove").click(function () {
+            $(this).parents("form").submit();
+        });
+
+    });
+</script>
+
+

@@ -1,0 +1,156 @@
+﻿@using System.Globalization
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-user fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.ApplicationUsers</div>
+                        <div>Usuarios registrados</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-dollar fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.Payments <br/> @ViewBag.Currency @(ViewBag.PaymentsAmount != 0 ? ViewBag.PaymentsAmount.ToString("#,#", CultureInfo.CurrentCulture) : "0")</div>
+                        <div>Pagos realizados</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-exclamation fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.Notifications</div>
+                        <div>Notificaciones enviadas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-envelope fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.Contacts</div>
+                        <div>Contactos recibidos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-lightblue">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-thumbs-o-up fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.Subscribers</div>
+                        <div>Suscripciones a newsletter</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-dollar"></i> Detalle de pagos realizados</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Cantidad</th>
+                                    <th>Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Usuarios no registrados</td>
+                                    <td>@ViewBag.AnonymousPayments</td>
+                                    <td>@ViewBag.Currency @(ViewBag.AnonymousPaymentsAmount != 0 ? ViewBag.AnonymousPaymentsAmount.ToString("#,#", CultureInfo.CurrentCulture) : "0")</td>
+                                </tr>
+                                <tr>
+                                    <td>Usuarios registrados (manual)</td>
+                                    <td>@ViewBag.ManualPayments</td>
+                                    <td>@ViewBag.Currency @(ViewBag.ManualPaymentsAmount != 0 ? ViewBag.ManualPaymentsAmount.ToString("#,#", CultureInfo.CurrentCulture) : "0")</td>
+                                </tr>
+                                <tr>
+                                    <td>Pagos programados</td>
+                                    <td>@ViewBag.AutomaticPayments</td>
+                                    <td>@ViewBag.Currency @(ViewBag.AutomaticPaymentsAmount != 0 ? ViewBag.AutomaticPaymentsAmount.ToString("#,#", CultureInfo.CurrentCulture) : "0")</td>
+                                </tr>
+                                <tr>
+                                    <td>Por aplicaci&oacute;n</td>
+                                    <td>@ViewBag.AppsPayments</td>
+                                    <td>@ViewBag.Currency @(ViewBag.AppsPaymentsAmount != 0 ? ViewBag.AppsPaymentsAmount.ToString("#,#", CultureInfo.CurrentCulture) : "0")</td>
+                                </tr>
+                                <tr>
+                                    <td>Por banco</td>
+                                    <td>@ViewBag.BankPayments</td>
+                                    <td>@ViewBag.Currency @(ViewBag.BankPaymentsAmount != 0 ? ViewBag.BankPaymentsAmount.ToString("#,#", CultureInfo.CurrentCulture) : "0")</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-envelope"></i> Detalle de contactos recibidos</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Quejas</td>
+                                    <td>@ViewBag.ComplaintContacts</td>
+                                </tr>
+                                <tr>
+                                    <td>Preguntas</td>
+                                    <td>@ViewBag.QuestionContacts</td>
+                                </tr>
+                                <tr>
+                                    <td>Sugerencias</td>
+                                    <td>@ViewBag.SuggestionContacts</td>
+                                </tr>
+                                <tr>
+                                    <td>Otros</td>
+                                    <td>@ViewBag.OtherContacts</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/CallCenter/Views/Shared/_LayoutCallCenterUser.cshtml";
+}
+@model IEnumerable<VisaNet.Presentation.Web.Areas.Private.Models.CardListModel>
+
+<div class="container p25t">
+    <div class="pageBox mb20">
+        <div class="formMargin">
+            <h3 class="visaTextBlue"><i class="icon-warning-sign mr5"></i> @PresentationCoreMessages.Callcenter_Lost_Data</h3>
+            <div class="horizontalLineWhite"></div>
+            <h4 class="pageNotFoundDescription"> @PresentationCoreMessages.Callcenter_Lost_Data_Desc</h4>
+        </div>
+
+        <!-- fin del formMargin-->
+    </div>
+</div>

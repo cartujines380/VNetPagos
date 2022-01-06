@@ -1,0 +1,34 @@
+﻿namespace VisaNet.Presentation.Web.Constants
+{
+    public class SessionConstants
+    {
+        public const string CURRENT_SELECTED_USER = "SESSION_CURRENT_SELECTED_USER";
+        public const string CURRENT_SELECTED_USER_ID = "CURRENT_SELECTED_USER_ID";
+
+        public const string CURRENT_USER_FUNCTIONALITY_GROUP = "SESSION_CURRENT_USER_FUNCTIONALITY_GROUP";
+        public const string CURRENT_USER_FUNCTIONALITIES = "SESSION_CURRENT_USER_FUNCTIONALITIES";
+        public const string CURRENT_USER_FUNCTIONALITIES_GROUP_ACTUAL = "SESSION_CURRENT_USER_FUNCTIONALITIES_GROUP_ACTUAL";
+        public const string CURRENT_USER_ENABLED_ACTIONS = "SESSION_CURRENT_USER_ENABLED_ACTIONS";
+
+        public const string FUNCTIONALITY_GROUP_SELECTED = "SESSION_FUNCTIONALITY_GROUP_SELECTED";
+        public const string FUNCTIONALITY_SELECTED = "SESSION_FUNCTIONALITY_SELECTED";
+
+        public const string CURRENT_CALLCENTER_USER = "CURRENT_CALLCENTER_USER";
+        public const string CURRENT_CALLCENTER_USER_ID = "CURRENT_CALLCENTER_USER_ID";
+
+        public const string SERVICES_ASSOSIATION = "SERVICES_ASSOSIATION";
+        public const string SERVICES_ASSOSIATE_NEW_CARD = "SERVICES_ASSOSIATE_NEW_CARD";
+
+        public const string PAYMENT_DATA = "SESSION_PAYMENT_DATA";
+
+        public const string PAYMENT_DATA_ANONYMOUS_USER = "PAYMENT_DATA_ANONYMOUS_USER";
+        public const string PAYMENT_DATA_ANONYMOUS_USER_ID = "PAYMENT_DATA_ANONYMOUS_USER_ID";
+
+        public const string HIGHWAY_ADMISSION = "HIGHWAY_ADMISSION";
+        public const string APP_ADMISSION = "APP_ADMISSION";
+
+        public const string TEMPORARY_ID = "TEMPORARY_ID";
+
+        public const string DEBIT_PROCESS = "DEBIT_PROCESS";
+    }
+}

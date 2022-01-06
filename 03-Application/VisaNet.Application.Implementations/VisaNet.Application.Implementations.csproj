@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{30FB9FCE-9E46-42F3-9A01-F9D18AFFA52B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VisaNet.Application.Implementations</RootNamespace>
+    <AssemblyName>VisaNet.Application.Implementations</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy|AnyCPU'">
+    <OutputPath>bin\demouy\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure|AnyCPU'">
+    <OutputPath>bin\Azure\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SebaPrueba|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\SebaPrueba\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Testing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Testing\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Production|AnyCPU'">
+    <OutputPath>bin\demouy.Production\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Testing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.Testing\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Development|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.Development\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.ReleaseCandidate|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.ReleaseCandidate\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'VisaNet.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\VisaNet.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Azure.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Staging|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Azure.Staging\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\..\packages\EPPlus.3.1.3.3\lib\net35\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WindowsAzure.ServiceBus.3.4.2\lib\net45-full\Microsoft.ServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\..\packages\RazorEngine.3.4.1\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.DirectoryServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="VisaNet.Domain.Debit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\10-Testing\VisaNet.Testing.CSAcknowledgement\bin\Debug\VisaNet.Domain.Debit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Cache\ServiceCloudCache.cs" />
+    <Compile Include="Cache\ServiceDatabaseCache.cs" />
+    <Compile Include="Cache\ServiceMemoryCache.cs" />
+    <Compile Include="ExtensionMethods\Filters\ServiceAssociatedIncludeFilters.cs" />
+    <Compile Include="ExtensionMethods\ServiceAssociatedConverter.cs" />
+    <Compile Include="ServiceConciliationRun.cs" />
+    <Compile Include="ServiceCustomerSite.cs" />
+    <Compile Include="ServiceAffiliationCard.cs" />
+    <Compile Include="ServiceBinGroup.cs" />
+    <Compile Include="ServiceAnalyzeCsCall.cs" />
+    <Compile Include="ServiceConciliationVisanetCallback.cs" />
+    <Compile Include="ServiceCyberSourceAcknowledgement.cs" />
+    <Compile Include="ServiceDebitRequest.cs" />
+    <Compile Include="ServiceExternalNotification.cs" />
+    <Compile Include="ServiceInterpreter.cs" />
+    <Compile Include="ServiceChangeTracker.cs" />
+    <Compile Include="Base\BaseService.cs" />
+    <Compile Include="PDF\TableReferences.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TableReferences.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceConciliationDailySummary.cs" />
+    <Compile Include="ServiceBinFile.cs" />
+    <Compile Include="ServiceIntegration.cs" />
+    <Compile Include="ServiceFixedNotification.cs" />
+    <Compile Include="ServiceEmailMessage.cs" />
+    <Compile Include="ServiceLifApiBill.cs" />
+    <Compile Include="ServiceNewBillNotificationInfo.cs" />
+    <Compile Include="ServicePostSignatureFifthVersion.cs" />
+    <Compile Include="ServicePostSignatureThirdVersion.cs" />
+    <Compile Include="ServicePostSignatureFourthVersion.cs" />
+    <Compile Include="ServiceServiceValidator.cs" />
+    <Compile Include="ServiceSmsNotification.cs" />
+    <Compile Include="ServiceVonData.cs" />
+    <Compile Include="ServicePostSignatureFactory.cs" />
+    <Compile Include="ServicePostSignatureFirstAndSecondVersion.cs" />
+    <Compile Include="ServicePostSignature.cs" />
+    <Compile Include="ServicePostNotification.cs" />
+    <Compile Include="ServicePaymentTicket.cs" />
+    <Compile Include="ServiceProcessHistory.cs" />
+    <Compile Include="ServiceSystemVersions.cs" />
+    <Compile Include="ServiceWsBillPaymentOnline.cs" />
+    <Compile Include="ServiceWsBillQuery.cs" />
+    <Compile Include="ServiceWsCardRemove.cs" />
+    <Compile Include="ServiceWsCommerceQuery.cs" />
+    <Compile Include="ServiceWebhookDown.cs" />
+    <Compile Include="ServiceWebhookNewAssociation.cs" />
+    <Compile Include="ServiceWsPaymentCancellation.cs" />
+    <Compile Include="ServiceWebhookRegistration.cs" />
+    <Compile Include="ServiceWsBank.cs" />
+    <Compile Include="ServiceAudit.cs" />
+    <Compile Include="ServiceBank.cs" />
+    <Compile Include="ServiceConciliationVisanet.cs" />
+    <Compile Include="ServiceFileShipping.cs" />
+    <Compile Include="ServiceHighwayFile.cs" />
+    <Compile Include="ServiceHighway.cs" />
+    <Compile Include="ServiceLocation.cs" />
+    <Compile Include="ServiceMailgun.cs" />
+    <Compile Include="ServiceTc33.cs" />
+    <Compile Include="ServiceBin.cs" />
+    <Compile Include="ServiceConciliationCybersource.cs" />
+    <Compile Include="ServiceConciliationSucive.cs" />
+    <Compile Include="ServiceConciliationSummary.cs" />
+    <Compile Include="ServiceConciliationSistarbanc.cs" />
+    <Compile Include="ServiceDiscount.cs" />
+    <Compile Include="ServiceDiscountCalculator.cs" />
+    <Compile Include="ServiceHomePageItem.cs" />
+    <Compile Include="ServiceHomePage.cs" />
+    <Compile Include="ServiceBill.cs" />
+    <Compile Include="ServiceAnonymousUser.cs" />
+    <Compile Include="ServiceCard.cs" />
+    <Compile Include="ServiceCybersourceErrorGroup.cs" />
+    <Compile Include="ServiceReports.cs" />
+    <Compile Include="ServicePaymentIdentifier.cs" />
+    <Compile Include="ServicePayment.cs" />
+    <Compile Include="ServiceParameters.cs" />
+    <Compile Include="ServicePage.cs" />
+    <Compile Include="ServiceFaq.cs" />
+    <Compile Include="ServiceApplicationUser.cs" />
+    <Compile Include="ServicePromotion.cs" />
+    <Compile Include="ServiceRole.cs" />
+    <Compile Include="ServiceServiceAssosiate.cs" />
+    <Compile Include="ServiceNotification.cs" />
+    <Compile Include="ServiceQuotation.cs" />
+    <Compile Include="ServiceConciliationBanred.cs" />
+    <Compile Include="ServiceSystemUser.cs" />
+    <Compile Include="ServiceSubscriber.cs" />
+    <Compile Include="ServiceContact.cs" />
+    <Compile Include="ServiceService.cs" />
+    <Compile Include="ServiceServiceCategory.cs" />
+    <Compile Include="ServiceTc33Transaction.cs" />
+    <Compile Include="ServiceAssociationSelector.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\04-Repository\VisaNet.Repository.Implementations\VisaNet.Repository.Implementations.csproj">
+      <Project>{249C56B4-9E72-4A53-B878-9541B2C5F534}</Project>
+      <Name>VisaNet.Repository.Implementations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\04-Repository\VisaNet.Repository.Interfaces\VisaNet.Repository.Interfaces.csproj">
+      <Project>{FF7A803E-AF0F-47C6-BB7E-133DBCB38EBF}</Project>
+      <Name>VisaNet.Repository.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.CustomerSite.EntitiesDtos\VisaNet.CustomerSite.EntitiesDtos.csproj">
+      <Project>{D291090E-2461-47AC-A835-B29E43A8221F}</Project>
+      <Name>VisaNet.CustomerSite.EntitiesDtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.Entities.Base\VisaNet.Domain.Entities.Base.csproj">
+      <Project>{515F6F54-E3E5-4042-98ED-91E236E6B843}</Project>
+      <Name>VisaNet.Domain.Entities.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.Entities.BatchProcesses\VisaNet.Domain.Entities.BatchProcesses.csproj">
+      <Project>{11022332-ae1a-46da-9b04-389212e19348}</Project>
+      <Name>VisaNet.Domain.Entities.BatchProcesses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.EntitiesDtos\VisaNet.Domain.EntitiesDtos.csproj">
+      <Project>{CAC323D1-C42C-4821-AB23-06CACEFB548E}</Project>
+      <Name>VisaNet.Domain.EntitiesDtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.Entities\VisaNet.Domain.Entities.csproj">
+      <Project>{A7D3A101-C512-4000-A66C-9BDD86B2AF82}</Project>
+      <Name>VisaNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.LIF.Domain\VisaNet.LIF.Domain.Entities.csproj">
+      <Project>{2AFDD8DD-E482-4F07-8602-6B247D1FAAB5}</Project>
+      <Name>VisaNet.LIF.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.ApiClient\VisaNet.Common.ApiClient.csproj">
+      <Project>{84E4365F-09F0-4FF1-B1DC-0088A63910AB}</Project>
+      <Name>VisaNet.Common.ApiClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.AzureUpload\VisaNet.Common.AzureUpload.csproj">
+      <Project>{20001DBA-6EA1-4342-94C4-40EF07FB5ADF}</Project>
+      <Name>VisaNet.Common.AzureUpload</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.ChangeTracker\VisaNet.Common.ChangeTracker.csproj">
+      <Project>{55D072B8-47F9-422E-ACC5-D397C621087C}</Project>
+      <Name>VisaNet.Common.ChangeTracker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Exceptions\VisaNet.Common.Exceptions.csproj">
+      <Project>{CB1FEB9F-6933-445A-A6EE-A1769D25C266}</Project>
+      <Name>VisaNet.Common.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.FrameworkExtensions\VisaNet.Common.FrameworkExtensions.csproj">
+      <Project>{23E10552-ADA9-41B2-85E7-268CB7A773E7}</Project>
+      <Name>VisaNet.Common.FrameworkExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Logging\VisaNet.Common.Logging.csproj">
+      <Project>{7716D78C-5414-404A-B804-D10B2C965724}</Project>
+      <Name>VisaNet.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Resource\VisaNet.Common.Resource.csproj">
+      <Project>{98E9C8F3-4D89-4B5C-B5C5-4B4B026F7596}</Project>
+      <Name>VisaNet.Common.Resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Security.Entities\VisaNet.Common.Security.Entities.csproj">
+      <Project>{45708FFD-868A-4DAC-B15A-E2B6F984A5D2}</Project>
+      <Name>VisaNet.Common.Security.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Security\VisaNet.Common.Security.csproj">
+      <Project>{868E5B09-7DBE-4DD9-B06E-EA4CCB3ECB58}</Project>
+      <Name>VisaNet.Common.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.Cryptography\VisaNet.Utilities.Cryptography.csproj">
+      <Project>{39516270-8878-400C-BCD9-A7B5C63617AA}</Project>
+      <Name>VisaNet.Utilities.Cryptography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.Cybersource\VisaNet.Utilities.Cybersource.csproj">
+      <Project>{8B1B0270-9611-41EE-A980-D39B4A2F87E0}</Project>
+      <Name>VisaNet.Utilities.Cybersource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.DigitalSignature\VisaNet.Utilities.DigitalSignature.csproj">
+      <Project>{6EF80049-90EB-491A-B8AE-A92C115AB646}</Project>
+      <Name>VisaNet.Utilities.DigitalSignature</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.ExtensionMethods\VisaNet.Utilities.ExtensionMethods.csproj">
+      <Project>{CD892170-2611-4375-84DB-9BAC1AC9882D}</Project>
+      <Name>VisaNet.Utilities.ExtensionMethods</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.Googl\VisaNet.Utilities.Googl.csproj">
+      <Project>{0D21F1F2-4686-4089-AB1A-350CBB1F2DD4}</Project>
+      <Name>VisaNet.Utilities.Googl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.Helpers\VisaNet.Utilities.Helpers.csproj">
+      <Project>{D5D69AF0-7CAA-47B8-9CE3-E93C893665FD}</Project>
+      <Name>VisaNet.Utilities.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.SFTPClient\VisaNet.Utilities.SFTPClient.csproj">
+      <Project>{ADF74233-BC52-4C71-95F2-CB81EF2B5406}</Project>
+      <Name>VisaNet.Utilities.SFTPClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.SmsApi.Twilio\VisaNet.Utilities.SmsApi.Twilio.csproj">
+      <Project>{c4ac01e7-913f-4043-95db-65679edb8629}</Project>
+      <Name>VisaNet.Utilities.SmsApi.Twilio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.Components.CyberSource.Interfaces\VisaNet.Components.CyberSource.Interfaces.csproj">
+      <Project>{FEE868C6-2033-451F-B6E9-7DEDA1A2E8EE}</Project>
+      <Name>VisaNet.Components.CyberSource.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.Application.Interfaces\VisaNet.Application.Interfaces.csproj">
+      <Project>{9C9EA748-A322-4B65-8B24-DD76EE0DA93F}</Project>
+      <Name>VisaNet.Application.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.Components.Banred.Interfaces\VisaNet.Components.Banred.Interfaces.csproj">
+      <Project>{7418DEF7-90A8-41C5-909F-05749CCCB622}</Project>
+      <Name>VisaNet.Components.Banred.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.Components.Geocom.Interfaces\VisaNet.Components.Geocom.Interfaces.csproj">
+      <Project>{7F204779-4686-406C-88CC-844E00663251}</Project>
+      <Name>VisaNet.Components.Geocom.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.Components.Sistarbanc.Implementations\VisaNet.Components.Sistarbanc.Implementations.csproj">
+      <Project>{804D1998-C93B-41FC-8FFB-7F029E0BB78B}</Project>
+      <Name>VisaNet.Components.Sistarbanc.Implementations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.Components.Sistarbanc.Interfaces\VisaNet.Components.Sistarbanc.Interfaces.csproj">
+      <Project>{A12E541E-ACFB-4B8A-8836-B9AF2F8D319B}</Project>
+      <Name>VisaNet.Components.Sistarbanc.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.Components.Sucive.Interfaces\VisaNet.Components.Sucive.Interfaces.csproj">
+      <Project>{C719B18B-9ED2-49C6-8195-B9724FF9978B}</Project>
+      <Name>VisaNet.Components.Sucive.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\header.png" />
+    <Content Include="Templates\visa_mail_footer.png" />
+    <Content Include="Templates\visa_mail_header.png" />
+    <None Include="App.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PDF\TableReferences.xsc">
+      <DependentUpon>TableReferences.xsd</DependentUpon>
+    </None>
+    <None Include="PDF\TableReferences.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TableReferences.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="PDF\TableReferences.xss">
+      <DependentUpon>TableReferences.xsd</DependentUpon>
+    </None>
+    <Content Include="Templates\HighwayProcessed.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\HighwayError.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\HighwayRejected.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Templates\AutomaticPaymentNotification.cshtml" />
+    <None Include="Templates\BillNotification.cshtml" />
+    <None Include="Templates\BinFileProcessed.cshtml" />
+    <None Include="Templates\BinNotDefined.cshtml" />
+    <None Include="Templates\CopyPayment.cshtml" />
+    <None Include="Templates\CustomerSiteResetPassword.cshtml" />
+    <None Include="Templates\ExpiringCard.cshtml" />
+    <None Include="Templates\GeneralNotification.cshtml" />
+    <None Include="Templates\InternalErrorNotification.cshtml" />
+    <None Include="Templates\InternalGeneralNotification.cshtml" />
+    <None Include="Templates\CustomerSiteSystemUserCreation.cshtml" />
+    <None Include="Templates\CustomerSiteBillNotification.cshtml" />
+    <None Include="Templates\NewApplicationUser.cshtml" />
+    <None Include="Templates\NewContact.cshtml" />
+    <None Include="Templates\DebitSuscriptionNotification.cshtml" />
+    <None Include="Templates\NewPayment.cshtml" />
+    <None Include="Templates\PaymentCancellationError.cshtml" />
+    <None Include="Templates\PaymentDoneCancellation.cshtml" />
+    <None Include="Templates\PaymentsFileExtract.cshtml" />
+    <None Include="Templates\NewUserRequestPassword.cshtml" />
+    <None Include="Templates\ResetPasswordApplicationUser.cshtml" />
+    <None Include="Templates\DeletedCustomerCardNotification.cshtml" />
+    <None Include="Templates\ServiceDeletedNotification.cshtml" />
+    <None Include="Templates\ConciliationResults.cshtml" />
+    <None Include="Templates\UserAutomaticPaymentNotification.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PDF\Tc33Details.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PDF\PaymentTicket.rdlc" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

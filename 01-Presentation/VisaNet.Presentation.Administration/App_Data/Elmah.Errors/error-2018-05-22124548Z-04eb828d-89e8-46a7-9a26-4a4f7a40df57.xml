@@ -1,0 +1,162 @@
+﻿<error errorId="04eb828d-89e8-46a7-9a26-4a4f7a40df57" application="/LM/W3SVC/4/ROOT" host="DESKTOP-LV00ICC" type="System.Web.HttpException" message="The controller for path '/Content/css/bootstrap.css.map' was not found or does not implement IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): The controller for path '/Content/css/bootstrap.css.map' was not found or does not implement IController.&#xD;&#xA;   en System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   en System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   en System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   en System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   en System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="admin" time="2018-05-22T12:45:48.0752477Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:es-ES,es;q=0.9&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=pr3EbRczwod_au13-d_wPyE9aKKSWZ58EjGpkg41RvUq0giHYAIF70drFjl0mE3yvHhbOEJj_oj798yhSo9ppo1Fu7HGHOMRVidxz-fFp181; .ASPXAUTH=B5D39FC126E2EE959223C3F82FCF370CAAA50B7BE6258984936F4E75BDFA8FD38F7EC8DAABCC3BB537E303B9A1E4D39DE6E30972D5901070DD51254505F770FC5C578C02C249520C73A4C65DAC417D6A42E26E18506D90B6B73CAD0811B38121; ASP.NET_SessionId=srakau24ic0qhaq5zqwc1z3c&#xD;&#xA;HTTP_HOST:localhost:64504&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: es-ES,es;q=0.9&#xD;&#xA;Cookie: __RequestVerificationToken=pr3EbRczwod_au13-d_wPyE9aKKSWZ58EjGpkg41RvUq0giHYAIF70drFjl0mE3yvHhbOEJj_oj798yhSo9ppo1Fu7HGHOMRVidxz-fFp181; .ASPXAUTH=B5D39FC126E2EE959223C3F82FCF370CAAA50B7BE6258984936F4E75BDFA8FD38F7EC8DAABCC3BB537E303B9A1E4D39DE6E30972D5901070DD51254505F770FC5C578C02C249520C73A4C65DAC417D6A42E26E18506D90B6B73CAD0811B38121; ASP.NET_SessionId=srakau24ic0qhaq5zqwc1z3c&#xD;&#xA;Host: localhost:64504&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/4/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\01-Presentation\VisaNet.Presentation.Administration\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="4" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/4" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Content/css/bootstrap.css.map" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\01-Presentation\VisaNet.Presentation.Administration\Content\css\bootstrap.css.map" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="8309" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Content/css/bootstrap.css.map" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="64504" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Content/css/bootstrap.css.map" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="es-ES,es;q=0.9" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=pr3EbRczwod_au13-d_wPyE9aKKSWZ58EjGpkg41RvUq0giHYAIF70drFjl0mE3yvHhbOEJj_oj798yhSo9ppo1Fu7HGHOMRVidxz-fFp181; .ASPXAUTH=B5D39FC126E2EE959223C3F82FCF370CAAA50B7BE6258984936F4E75BDFA8FD38F7EC8DAABCC3BB537E303B9A1E4D39DE6E30972D5901070DD51254505F770FC5C578C02C249520C73A4C65DAC417D6A42E26E18506D90B6B73CAD0811B38121; ASP.NET_SessionId=srakau24ic0qhaq5zqwc1z3c" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:64504" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="pr3EbRczwod_au13-d_wPyE9aKKSWZ58EjGpkg41RvUq0giHYAIF70drFjl0mE3yvHhbOEJj_oj798yhSo9ppo1Fu7HGHOMRVidxz-fFp181" />
+    </item>
+    <item name=".ASPXAUTH">
+      <value string="B5D39FC126E2EE959223C3F82FCF370CAAA50B7BE6258984936F4E75BDFA8FD38F7EC8DAABCC3BB537E303B9A1E4D39DE6E30972D5901070DD51254505F770FC5C578C02C249520C73A4C65DAC417D6A42E26E18506D90B6B73CAD0811B38121" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="srakau24ic0qhaq5zqwc1z3c" />
+    </item>
+  </cookies>
+</error>

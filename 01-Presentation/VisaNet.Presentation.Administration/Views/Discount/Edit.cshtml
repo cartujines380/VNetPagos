@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Presentation.Administration.Models.DiscountModel
+
+<h2>@PresentationAdminStrings.Discount_Edit_Title</h2>
+
+
+@using (Html.BeginForm("Edit", "Discount", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(s => s.Id)
+
+    <div class="row">
+        <div class="col-lg-8">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.CardTypeId)
+                        @Html.DropDownListFor(s => s.CardTypeId,
+                            EnumHelpers.ConvertToSelectList(typeof(CardTypeDto), Model.CardTypeId, EnumsStrings.ResourceManager),
+                            PresentationCoreMessages.Common_Select,
+                            new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.CardTypeId)
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.MaximumAmount)
+                        @Html.TextBoxFor(s => s.MaximumAmount, new { @class = "form-control numeric" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.MaximumAmount)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.From)
+                        @Html.EditorFor(s => s.From, new { @class = "form-control numeric" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.From)
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.To)
+                        @Html.EditorFor(s => s.To, new { @class = "form-control numeric" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.To)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.Fixed)
+                        @Html.TextBoxFor(s => s.Fixed, new { @class = "form-control numeric" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.Fixed)
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.Additional)
+                        @Html.TextBoxFor(s => s.Additional, new { @class = "form-control numeric" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.Additional)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.DiscountType)
+                        @Html.DropDownListFor(s => s.DiscountType, (ICollection<SelectListItem>)ViewBag.Discounts, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.DiscountType)
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.DiscountLabel)
+                        @Html.DropDownListFor(s => s.DiscountLabel, (ICollection<SelectListItem>)ViewBag.DiscountsLabels, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.DiscountLabel)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="@Url.Action("Index", "Discount")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel</a>
+                    <a href="#" id="btnGuardar" class="btn btn-default">
+                        <strong>@PresentationAdminStrings.Save</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnGuardar").click(function () {
+            $(this).parents("form").submit();
+        });
+    });
+</script>

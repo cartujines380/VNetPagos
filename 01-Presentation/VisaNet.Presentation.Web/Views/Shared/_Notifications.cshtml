@@ -1,0 +1,27 @@
+﻿@using VisaNet.Presentation.Web.Constants
+@using VisaNet.Utilities.Notifications
+
+@if (TempData[TempDataConstants.SHOW_NOTIFICATION] != null)
+{
+    var notifications = ((List<Notification>)TempData[TempDataConstants.SHOW_NOTIFICATION]);
+    <script type="text/javascript">
+        $(document).ready(function () {
+            @foreach (var notification in (IList<Notification>)notifications)
+            {
+                <text>
+                $.pnotify({
+                    title: "@notification.Title",
+                    text: "@notification.Text",
+                    hide: false,
+                    sticker: false,
+                    type: "@notification.Type.ToString().ToLower()",
+                    history: false,
+                    styling: "fontawesome",
+                });
+                </text>
+            }
+        });
+    </script>
+}
+
+

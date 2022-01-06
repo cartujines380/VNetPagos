@@ -1,0 +1,6 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Notifications\bin\Debug\VisaNet.Utilities.Notifications.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Notifications\bin\Debug\VisaNet.Utilities.Notifications.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Notifications\obj\Debug\VisaNet.Utilities.Notifications.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Notifications\obj\Debug\VisaNet.Utilities.Notifications.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Notifications\obj\Debug\VisaNet.Utilities.Notifications.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Notifications\obj\Debug\VisaNet.Utilities.Notifications.csprojResolveAssemblyReference.cache

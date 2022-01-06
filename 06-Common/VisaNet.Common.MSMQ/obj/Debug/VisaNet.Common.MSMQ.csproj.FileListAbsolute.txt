@@ -1,0 +1,6 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.MSMQ\bin\Debug\VisaNet.Common.MSMQ.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.MSMQ\bin\Debug\VisaNet.Common.MSMQ.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.MSMQ\obj\Debug\VisaNet.Common.MSMQ.csprojResolveAssemblyReference.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.MSMQ\obj\Debug\VisaNet.Common.MSMQ.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.MSMQ\obj\Debug\VisaNet.Common.MSMQ.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.MSMQ\obj\Debug\VisaNet.Common.MSMQ.pdb

@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Presentation.Administration.Models.ServiceCategoryModel
+
+<h2>@PresentationAdminStrings.Service_Category_Detail_Title</h2>
+
+<div class="row">
+    <div class="col-lg-5">
+        <div class="form-group">
+            @Html.LabelFor(s => s.Name)
+            @Html.TextBoxFor(s => s.Name, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-5">
+        <a href="@Url.Action("Index", "ServiceCategory")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Back</a>
+        @Html.ActionActionLink(Actions.ServiceCategoryEdit, "<i class=\"icon-plus\"></i>" + PresentationAdminStrings.Edit, new RouteValueDictionary(new Dictionary<string, object> { { "id", Model.Id } }), new Dictionary<string, object> { { "Class", "btn btn-default" }, { "id", "btnEdit" } })
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@model IEnumerable<VisaNet.Presentation.Web.Areas.Private.Models.CardListModel>
+
+<div class="formMargin">
+    <div>
+        <h4>@PresentationWebStrings.Service_CardList</h4>
+        <div class="row">
+            <!-- item para servicios -->
+            @foreach (var card in Model)
+            {
+                <div class="col-md-6">
+                    @if (card.MultipleCards)
+                    {
+                        @Html.Partial("_CardBlockExternal", card)
+                    }
+                    else
+                    {
+                        @Html.Partial("_CardBlock", card)
+                    }
+                    
+                </div>
+            }
+            <!-- fin del item para servicios -->
+        </div>
+        <a href="@Url.Action("Index","Service")" class="btn btn-anterior mt10 p1030"><i class="icon-chevron-sign-left"></i>@PresentationWebStrings.Back</a>
+        <a id="addCard" class="btn btn-default btn-link-box mt10" href="@Url.Action("AddCard","Card")"><i class="icon-plus"></i>@PresentationWebStrings.Add_Card </a>  
+    </div>
+    <!-- fin del formMargin-->
+</div>

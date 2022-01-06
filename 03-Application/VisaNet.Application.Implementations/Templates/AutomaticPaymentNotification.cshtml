@@ -1,0 +1,197 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>VISA</title>
+</head>
+
+<body style="background:#e6eced">
+    <table width="800" border="0" cellspacing="0" cellpadding="0" style="margin:0 auto; background:#ffffff; border: 1px solid #dadada">
+        <tr>
+            <td><img style="right: 0; height: 56px;" src="{HeaderPath}header.png" alt="VISA" /></td>
+        </tr>
+        <tr>
+            <td style="padding-top: 60px;padding-left: 36px;padding-right: 36px;padding-bottom: 5px;font-family: arial;color: #4f9bc9;font-size: 18px;">
+                <strong>PROCESO PAGO PROGRAMADO Y NOTIFICACIONES FINALIZADO </strong>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 10px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;padding-bottom:5px;font-family: arial;color: #858585;font-size: 14px;">
+                @Model.Message
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 10px; line-height: 1.4em; padding-left: 36px; padding-right: 36px; padding-bottom: 5px; font-family: arial; color: #4f9bc9; font-size: 14px; font-weight: bold; ">
+                Datos:
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 10px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;font-family: arial;color: #858585;font-size: 14px;">
+                <ul style="list-style-type: none;">
+                    <li style="font-size: 14px;color:#858585;padding-left:5px;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">@Model.TotalServices servicios con pagos programados o notificaciones activas.</li>
+                    <li style="font-size: 14px;color:#858585;padding-left:5px;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                        @if (Model.GetBillsExceptions > 0)
+                        {
+                            <span style="color:#CE4A4A">@Model.GetBillsExceptions </span>
+                        }
+                        else
+                        {
+                            <span>@Model.GetBillsExceptions </span>
+                        }
+                        errores producidos durante la obtención de facturas del servicio.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 5px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;padding-bottom:5px;font-family: arial;color: #858585;font-size: 14px;">
+                <ul style="list-style-type: none;">
+                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                        @Model.TotalBills facturas obtenidas.
+                        <ul>
+                            <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                @Model.TotalBillsToPay facturas habilitadas para pago.
+                                <ul>
+                                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                        @if (Model.PaymentsDone > 0)
+                                        {
+                                            <span style="color:#03AF2B">@Model.PaymentsDone </span>
+                                        }
+                                        else
+                                        {
+                                            <span>@Model.PaymentsDone </span>
+                                        }
+                                        facturas pagadas con éxito.
+                                    </li>
+                                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                        @if (Model.PaymentsNotDoneCybersource > 0)
+                                        {
+                                            <span style="color: #CE4A4A">@Model.PaymentsNotDoneCybersource </span>
+                                        }
+                                        else
+                                        {
+                                            <span>@Model.PaymentsNotDoneCybersource </span>
+                                        }
+                                        facturas canceladas por Cybersource.
+                                    </li>
+                                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                        @if (Model.PaymentsNotDoneGateway > 0)
+                                        {
+                                            <span style="color: #CE4A4A">@Model.PaymentsNotDoneGateway </span>
+                                        }
+                                        else
+                                        {
+                                            <span>@Model.PaymentsNotDoneGateway </span>
+                                        }
+                                        facturas canceladas porque no se pudo notificar al ente.
+                                    </li>
+                                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                        @if (Model.PaymentsNotDoneDiscountCalculation > 0)
+                                        {
+                                            <span style="color: #CE4A4A">@Model.PaymentsNotDoneDiscountCalculation </span>
+                                        }
+                                        else
+                                        {
+                                            <span>@Model.PaymentsNotDoneDiscountCalculation </span>
+                                        }
+                                        facturas fallaron al obtener el descuento. 
+                                    </li>
+                                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                        @if (Model.PaymentsNotDoneBinNotValidForService > 0)
+                                        {
+                                            <span style="color: #CE4A4A">@Model.PaymentsNotDoneBinNotValidForService </span>
+                                        }
+                                        else
+                                        {
+                                            <span>@Model.PaymentsNotDoneBinNotValidForService </span>
+                                        }
+                                        facturas no se pagaron porque el servicio no acepta el tipo de tarjeta utilizado.
+                                    </li>
+                                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                        @if (Model.PaymentsNotDoneExceptions > 0)
+                                        {
+                                            <span style="color: #CE4A4A">@Model.PaymentsNotDoneExceptions </span>
+                                        }
+                                        else
+                                        {
+                                            <span>@Model.PaymentsNotDoneExceptions </span>
+                                        }
+                                        facturas no se pagaron por errores inesperados.
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                @(Model.TotalBills - Model.TotalBillsToPay) facturas no habilitadas para pago.
+                                <ul>
+                                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                        @if (Model.PaymentsNotDoneAmount > 0)
+                                        {
+                                            <span style="color: #CE4A4A">@Model.PaymentsNotDoneAmount </span>
+                                        }
+                                        else
+                                        {
+                                            <span>@Model.PaymentsNotDoneAmount </span>
+                                        }
+                                        facturas cuyo monto es mayor al monto máximo configurado.
+                                    </li>
+                                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                        @if (Model.PaymentsNotDoneQuotas > 0)
+                                        {
+                                            <span style="color: #CE4A4A">@Model.PaymentsNotDoneQuotas </span>
+                                        }
+                                        else
+                                        {
+                                            <span>@Model.PaymentsNotDoneQuotas </span>
+                                        }
+                                        facturas que superaron el límite de cantidad máxima de cuotas habilitadas por el usuario.
+                                    </li>
+                                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                        @if (Model.PaymentsNotDoneInvalidCard > 0)
+                                        {
+                                            <span style="color: #CE4A4A">@Model.PaymentsNotDoneInvalidCard </span>
+                                        }
+                                        else
+                                        {
+                                            <span>@Model.PaymentsNotDoneInvalidCard </span>
+                                        }
+                                        facturas no se pagaron porque falló la validación interna de la tarjeta (vencida/bin/token).
+                                    </li>
+                                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                        @if (Model.PaymentsNotDoneExpired > 0)
+                                        {
+                                            <span style="color: #CE4A4A">@Model.PaymentsNotDoneExpired </span>
+                                        }
+                                        else
+                                        {
+                                            <span>@Model.PaymentsNotDoneExpired </span>
+                                        }
+                                        facturas no se pagaron porque se superó el plazo de vencimiento.
+                                    </li>
+                                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                        @Model.PaymentsNotDoneServiceValidation facturas no se pagaron por no tener pago programado configurado o porque el servicio ya no permite pagos programados.
+                                    </li>
+                                    <li style="font-size: 14px;color:#858585;padding-bottom:5px;font-family: arial;list-style: none;font-weight: bold;">
+                                        @Model.TotalBillsNotReadyToPay facturas a pagar próximamente.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 10px; line-height: 1.4em; padding-left: 36px; padding-right: 36px; padding-bottom: 5px; font-family: arial; color: #858585; font-size: 14px;">
+                <p>Para obtener más información al respecto, consulte los logs del sistema. </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 20px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;padding-bottom: 60px;font-family: arial;color: #858585;font-size: 14px; font-style:italic"></td>
+        </tr>
+        <tr>
+            <td style="background:#75787b; padding-top:10px; padding-left:36px; padding-bottom:10px; padding-right:36px; color:#dadada; font-family:Arial, Helvetica, sans-serif; font-size:12px">Visa portal de pagos © 2014. Todos los derechos reservados.</td>
+        </tr>
+    </table>
+</body>
+</html>

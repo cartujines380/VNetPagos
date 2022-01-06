@@ -1,0 +1,91 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Domain.EntitiesDtos.TableFilters.ReportsIntegrationFilterDto
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @PresentationAdminStrings.CreationDate
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Operation_Id_App
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Commerce
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Branch
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.MerchantId
+                        </th>
+                        <th>
+                            Ref Cliente 1
+                        </th>
+                        <th>
+                            Ref Cliente 2
+                        </th>
+                        <th>
+                            Ref Cliente 3
+                        </th>
+                        <th>
+                            Nro de Factura
+                        </th>
+                        <th>
+                            Fecha de Consulta
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.ResultCode
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.WcfVersion
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var dataTableFilters;
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "ExternalRequestType", "value": $("#@Html.IdFor(m => m.ExternalRequestType)").val() });
+            aoData.push({ "name": "DateFrom", "value": $("#@Html.IdFor(m => m.DateFrom)").val() });
+            aoData.push({ "name": "DateTo", "value": $("#@Html.IdFor(m => m.DateTo)").val() });
+            aoData.push({ "name": "IdOperation", "value": $("#@Html.IdFor(m => m.IdOperation)").val() });
+            aoData.push({ "name": "IdApp", "value": $("#@Html.IdFor(m => m.IdApp)").val() });
+        }
+
+        dataTableFilters = applyDatatableExternalFilters($('#table'),
+            null,
+            [
+                { "mDataProp": "CreationDate" },
+                { "mDataProp": "IdOperationApp", "bSortable": false },
+                { "mDataProp": "CodCommerce", "bSortable": false },
+                { "mDataProp": "CodBranch", "bSortable": false },
+                { "mDataProp": "IdMerchant", "bSortable": false },
+                { "mDataProp": "RefClient", "bSortable": false },
+                { "mDataProp": "RefClient2", "bSortable": false },
+                { "mDataProp": "RefClient3", "bSortable": false },
+                { "mDataProp": "BillNumber", "bSortable": false },
+                { "mDataProp": "Date", "bSortable": false },
+                { "mDataProp": "Codresult", "bSortable": false },
+                { "mDataProp": "WcfVersion", "bSortable": false }
+            ],
+            '@Url.Action("AjaxHandlerLoadTable", "ReportsIntegration")',
+            externalFilters,
+            [[0, "desc"]]
+        );
+
+    });
+
+</script>

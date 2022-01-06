@@ -1,0 +1,85 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Resource.Enums
+@model VisaNet.Presentation.Web.Areas.Private.Models.SevicesAssosiatedViewModel
+<div id="lbAssociatedServices" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <a class="brandVisaNet fLeft" href="/"> </a>
+                    </div>
+                    <div class="col-xs-6"><a class="brandVisa fRight"></a></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h4 class="modal-title">@PresentationWebStrings.AssociatedServices<span id="deleteCardMask"></span></h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                            <th>Pago programado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @if (Model.ServicesAssociated.Any())
+                        {
+                            foreach (var service in Model.ServicesAssociated)
+                            {
+                                <tr>
+                                    <td>@service.ServiceDto.Name</td>
+                                    <td>@EnumsStrings.Type_Service</td>
+                                    <td>@service.Description</td>
+                                    @if (service.AutomaticPaymentDtoId != null)
+                                    {
+                                        <td>@EnumsStrings.YesNoEnumDto_Yes </td>
+                                    }
+                                    else
+                                    {
+                                        <td>@EnumsStrings.YesNoEnumDto_No</td>
+                                    }
+                                    <td><a href="@Url.Action("CardList", "Service", new { Area = "Private", serviceId = service.Id })">Cambiar tarjeta</a></td>
+                                </tr>
+                            }
+                        }
+
+                        @if (Model.DebitsAssociated.Any())
+                        {
+                            foreach (var debit in Model.DebitsAssociated)
+                            {
+                                <tr>
+                                    <td>@debit.CommerceName</td>
+                                    <td>@EnumsStrings.Type_Debit</td>
+                                    <td>@debit.ReferenceNumber</td>
+                                    <td>N/A</td>
+                                    <td></td>
+                                </tr>
+                            }
+                        }
+
+                        @if (!Model.ServicesAssociated.Any())
+                        {
+                            <tr>
+                                <td colspan="5">@PresentationWebStrings.ThreIsNoAssociatedService</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-6 p5r">
+                        <button type="button" class="btn btn-default btn-cancelar w100" data-dismiss="modal">@PresentationWebStrings.Close <i class="icon-remove"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

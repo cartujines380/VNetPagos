@@ -1,0 +1,7 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Testing.DummyBankWCFPrueba\bin\Debug\VisaNet.Testing.DummyBankWCFPrueba.exe.config
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Testing.DummyBankWCFPrueba\bin\Debug\VisaNet.Testing.DummyBankWCFPrueba.exe
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Testing.DummyBankWCFPrueba\bin\Debug\VisaNet.Testing.DummyBankWCFPrueba.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Testing.DummyBankWCFPrueba\obj\Debug\VisaNet.Testing.DummyBankWCFPrueba.csprojResolveAssemblyReference.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Testing.DummyBankWCFPrueba\obj\Debug\VisaNet.Testing.DummyBankWCFPrueba.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Testing.DummyBankWCFPrueba\obj\Debug\VisaNet.Testing.DummyBankWCFPrueba.exe
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Testing.DummyBankWCFPrueba\obj\Debug\VisaNet.Testing.DummyBankWCFPrueba.pdb

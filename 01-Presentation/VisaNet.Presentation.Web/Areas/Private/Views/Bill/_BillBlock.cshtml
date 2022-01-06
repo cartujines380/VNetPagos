@@ -1,0 +1,89 @@
+﻿@using System.Configuration
+@using System.Globalization
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Utilities.Cybersource
+@using VisaNet.Utilities.Exportation.ExtensionMethods
+@model VisaNet.Presentation.Web.Areas.Private.Models.BillToPayModel
+
+<div class="itemBox panelItem">
+    <div class="row">
+        <div class="col-md-8 col-sm-8 col-xs-12 serviceInformation">
+            <div class="col-md-3 pr0 pl0 panelImage">
+                @if (!String.IsNullOrEmpty(Model.ServiceImageName))
+                {
+                    <img src="@Model.ServiceImageName" width="65" />
+                }
+                else
+                {
+                    <img src="@ConfigurationManager.AppSettings["DefaultServiceImage"]" width="54" />
+                }
+            </div>
+            <div class="col-md-9 serviceDetail">
+                <ul>
+                    <li>
+                        @if (!string.IsNullOrEmpty(Model.ServiceContainerName))
+                        {<span>@Model.ServiceContainerName - @Model.ServiceName </span>}
+                        else
+                        {<span class="titleCard">@Model.ServiceName </span>}
+                        <span class="shortDescription" title="@Model.ServiceDesc">
+                            @(string.IsNullOrEmpty(Model.ServiceDesc) ? string.Empty : "- " + @Model.ServiceDesc.Short(45))
+                        </span>
+                    </li>
+                    @if (!String.IsNullOrEmpty(Model.ReferenceName))
+                    {
+                        <li><span class="bold">@Model.ReferenceName:</span> @Model.ReferenceValue</li>
+                    }
+
+                    @if (Model != null && !String.IsNullOrEmpty(Model.DefaultCardMask))
+                    {
+                        var card = Model.DefaultCardMask;
+                        <li><span class="bold">@PresentationWebStrings.Payment_Card:</span> @Html.Raw(card) </li>
+                    }
+                    <li><span class="bold">@PresentationWebStrings.DueDate:</span> @Model.DueDate.ToShortDateString()</li>
+                    @{
+                        var currency = Model.Currency == Currency.PESO_URUGUAYO ? "$" : "U$D";
+                    }
+                    <li><span class="bold">@PresentationWebStrings.Amount:</span> @currency @Model.Amount.ToString("##,#0.00", CultureInfo.CurrentCulture)</li>
+
+                    @if (Model.AllowsAutomaticPayment)
+                    {
+                        if (String.IsNullOrEmpty(Model.AutomaticPaymentDateString))
+                        {
+                            <li><a class="btn btn-default btn-link pl0" style="color: #428BC9!important;" href="@Url.Action("Item", "AutomaticPayment", new RouteValueDictionary { { "serviceId", Model.ServiceAssociatedId }, { "fromConfiguration", true } })"><i class="icon-chevron-right"></i> @PresentationWebStrings.AutomaticPayment_Not_Arranged </a></li>
+                        }
+                        if (!String.IsNullOrEmpty(Model.AutomaticPaymentDateString))
+                        {
+                            <li><span>@PresentationWebStrings.AutomaticPayment_Arranged_Date </span>@Model.AutomaticPaymentDateString</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12 panelActions">
+            <ul>
+                @if (Model.Payable)
+                {
+                    <li>
+                        <a id="btnPayBill" class="link-block" href="@Url.Action("PaySelectedBill", "Bill", new RouteValueDictionary { { "billExternalId", Model.BillExternalId },
+                                     { "serviceAssociatedId", Model.ServiceAssociatedId }, { "gateway", (int)Model.GatewayEnumDto }, { "line", Model.Line } })"><i class="icon-dollar"></i>@PresentationWebStrings.Pay</a>
+                    </li>
+                    @*<li><a href="@Url.Action("PayBill", "Bill", new RouteValueDictionary { { "id", Model.ServiceAssociatedId }, { "gateway", (int)Model.GatewayEnumDto } })"><i class="icon-dollar"></i> @PresentationWebStrings.Pay</a></li>*@
+                    if (Model.MultipleBills)
+                    {
+                        <li>
+                            <a id="btnMultipleBills" class="link-block" href="@Url.Action("PayMultipleBills", "Bill", new RouteValueDictionary { { "billExternalId", Model.BillExternalId },
+                                         { "serviceAssociatedId", Model.ServiceAssociatedId }, { "gateway", (int)Model.GatewayEnumDto }, { "line", Model.Line } })"><i class="icon-money"></i>@PresentationWebStrings.Pay_Multiple_Bills</a>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li>@Model.DashboardDescription</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+

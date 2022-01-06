@@ -1,0 +1,1515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Categoría</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Servicios</value>
+  </data>
+  <data name="Services_Categories" xml:space="preserve">
+    <value>Categorías de servicios</value>
+  </data>
+  <data name="Service_Category_Edit_Title" xml:space="preserve">
+    <value>Edición de categoria de servicio</value>
+  </data>
+  <data name="Service_Category_New" xml:space="preserve">
+    <value>Nueva categoría servicio</value>
+  </data>
+  <data name="Service_Category_New_Title" xml:space="preserve">
+    <value>Creación de nueva categoría de servicio</value>
+  </data>
+  <data name="Service_Edit_Title" xml:space="preserve">
+    <value>Edición de  servicio</value>
+  </data>
+  <data name="Service_New" xml:space="preserve">
+    <value>Nuevo servicio</value>
+  </data>
+  <data name="Service_New_Title" xml:space="preserve">
+    <value>Creación de nuevo servicio</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contactos</value>
+  </data>
+  <data name="Faqs" xml:space="preserve">
+    <value>Preguntas frecuentes</value>
+  </data>
+  <data name="InstitutionalContent" xml:space="preserve">
+    <value>Contenido institucional</value>
+  </data>
+  <data name="LegalPages" xml:space="preserve">
+    <value>Páginas legales</value>
+  </data>
+  <data name="Notices" xml:space="preserve">
+    <value>Novedades</value>
+  </data>
+  <data name="Subscribers" xml:space="preserve">
+    <value>Registros a newsletter</value>
+  </data>
+  <data name="SystemUsers" xml:space="preserve">
+    <value>Usuarios del sistema</value>
+  </data>
+  <data name="SystemUser_New_Title" xml:space="preserve">
+    <value>Creación de nuevo usuario del sistema</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="Role_New_Title" xml:space="preserve">
+    <value>Creación de nuevo rol</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="Roles_ActionRequired" xml:space="preserve">
+    <value>Existen acciones requeridas que no fueron seleccionadas.</value>
+  </data>
+  <data name="Gateway" xml:space="preserve">
+    <value>Pasarelas</value>
+  </data>
+  <data name="Reference" xml:space="preserve">
+    <value>Nro Referencia</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Management" xml:space="preserve">
+    <value>Gestion</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Consultas</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Seguridad</value>
+  </data>
+  <data name="Website_content" xml:space="preserve">
+    <value>Sitio Publico</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Página de inicio</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="SystemUser_Edit_Title" xml:space="preserve">
+    <value>Edición usuario del sistema</value>
+  </data>
+  <data name="Role_Edit_Title" xml:space="preserve">
+    <value>Edición de rol</value>
+  </data>
+  <data name="Image_wrong_size" xml:space="preserve">
+    <value>Tamaño de archivo demasiado grande.</value>
+  </data>
+  <data name="Image_wrong_type" xml:space="preserve">
+    <value>Formato de archivo incorrecto.</value>
+  </data>
+  <data name="Service_Category_Detail_Title" xml:space="preserve">
+    <value>Detalle de categoría de servicio</value>
+  </data>
+  <data name="Service_Detail_Title" xml:space="preserve">
+    <value>Detalle de servicio</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Volver</value>
+  </data>
+  <data name="Contact_Details_Title" xml:space="preserve">
+    <value>Detalle de contacto</value>
+  </data>
+  <data name="Faq_Details_Title" xml:space="preserve">
+    <value>Detalle de pregunta frecuente</value>
+  </data>
+  <data name="Faq_Edit_Title" xml:space="preserve">
+    <value>Edición de pregunta frecuente</value>
+  </data>
+  <data name="Faq_New_Title" xml:space="preserve">
+    <value>Creación de nueva pregunta frecuente</value>
+  </data>
+  <data name="HomePage_Details_Title" xml:space="preserve">
+    <value>Detalle de pastilla</value>
+  </data>
+  <data name="HomePage_Edit_Title" xml:space="preserve">
+    <value>Edición de pastilla</value>
+  </data>
+  <data name="InstitutionalContent_Details_Title" xml:space="preserve">
+    <value>Detalle de contenido institucional</value>
+  </data>
+  <data name="InstitutionalContent_Edit_Title" xml:space="preserve">
+    <value>Edición de contenido institucional</value>
+  </data>
+  <data name="LegalPages_Details_Title" xml:space="preserve">
+    <value>Detalle de páginas legales</value>
+  </data>
+  <data name="LegalPages_Edit_Title" xml:space="preserve">
+    <value>Edición de páginas legales</value>
+  </data>
+  <data name="Notices_Details_Title" xml:space="preserve">
+    <value>Detalle de novedades</value>
+  </data>
+  <data name="Notices_Edit_Title" xml:space="preserve">
+    <value>Edición de novedades</value>
+  </data>
+  <data name="Parameters_Details_Title" xml:space="preserve">
+    <value>Detalle de parámetros generales</value>
+  </data>
+  <data name="Parameters_Edit_Title" xml:space="preserve">
+    <value>Edición de parámetros generales</value>
+  </data>
+  <data name="Bin" xml:space="preserve">
+    <value>BIN</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Valor</value>
+  </data>
+  <data name="Bin_Detail_Title" xml:space="preserve">
+    <value>Detalle de Bin</value>
+  </data>
+  <data name="Bin_Edit_Title" xml:space="preserve">
+    <value>Edición de Bin</value>
+  </data>
+  <data name="Bin_New_Title" xml:space="preserve">
+    <value>Nuevo Bin</value>
+  </data>
+  <data name="Reports_ServicesAssociated_Title" xml:space="preserve">
+    <value>Reporte de servicios asociados</value>
+  </data>
+  <data name="Reports_Transactions_Title" xml:space="preserve">
+    <value>Listado de transacciones</value>
+  </data>
+  <data name="Reports_Dashboard_Title" xml:space="preserve">
+    <value>Panel</value>
+  </data>
+  <data name="Reports_Transactions_Amount_Title" xml:space="preserve">
+    <value>Cantidad de transacciones</value>
+  </data>
+  <data name="Reports_Transactions_Dimension" xml:space="preserve">
+    <value>Dimensión</value>
+  </data>
+  <data name="Reports_Transactions_Parameter" xml:space="preserve">
+    <value>Parámetro</value>
+  </data>
+  <data name="File_wrong_size" xml:space="preserve">
+    <value>El tamaño del archivo es incorrecto. Máximo 5MB.</value>
+  </data>
+  <data name="File_wrong_type" xml:space="preserve">
+    <value>El tipo de archivo es incorrecto. Se aceptan únicamente archivos PDF.</value>
+  </data>
+  <data name="Audit" xml:space="preserve">
+    <value>Auditoría</value>
+  </data>
+  <data name="Audit_AnonymousUser" xml:space="preserve">
+    <value>Usuario anónimo</value>
+  </data>
+  <data name="Audit_ApplicationUser" xml:space="preserve">
+    <value>Usuario aplicación</value>
+  </data>
+  <data name="Audit_DateTime" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="Audit_Details_Title" xml:space="preserve">
+    <value>Detalle de auditoría</value>
+  </data>
+  <data name="Audit_Ip" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="Audit_LogCommunicationType" xml:space="preserve">
+    <value>Vía</value>
+  </data>
+  <data name="Audit_LogType" xml:space="preserve">
+    <value>Tipo registro</value>
+  </data>
+  <data name="Audit_LogUserType" xml:space="preserve">
+    <value>Tipo usuario</value>
+  </data>
+  <data name="Audit_Message" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
+  <data name="Audit_SystemUser" xml:space="preserve">
+    <value>Usuario sistema</value>
+  </data>
+  <data name="Common_From" xml:space="preserve">
+    <value>Desde</value>
+  </data>
+  <data name="Common_Search" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="Common_To" xml:space="preserve">
+    <value>Hasta</value>
+  </data>
+  <data name="Audit_LogOperationType" xml:space="preserve">
+    <value>Tipo de operación</value>
+  </data>
+  <data name="Audit_User" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Promotion" xml:space="preserve">
+    <value>Promoción</value>
+  </data>
+  <data name="Promotions" xml:space="preserve">
+    <value>Promociones</value>
+  </data>
+  <data name="Promotion_Detail_Title" xml:space="preserve">
+    <value>Detalle de promoción</value>
+  </data>
+  <data name="Promotion_Edit_Title" xml:space="preserve">
+    <value>Edición de promoción</value>
+  </data>
+  <data name="Promotion_New_Title" xml:space="preserve">
+    <value>Nueva promoción</value>
+  </data>
+  <data name="Help_Details_Title" xml:space="preserve">
+    <value>Detalle de página de ayuda</value>
+  </data>
+  <data name="Help_Edit_Title" xml:space="preserve">
+    <value>Edición de página de ayuda</value>
+  </data>
+  <data name="Filters_Email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="Filters_Email_Placeholder" xml:space="preserve">
+    <value>Ingrese un correo electrónico</value>
+  </data>
+  <data name="Filters_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Filters_Name_Placeholder" xml:space="preserve">
+    <value>Ingrese un nombre</value>
+  </data>
+  <data name="Filters_PaymentType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Filters_PaymentType_Placeholder" xml:space="preserve">
+    <value>Seleccione un tipo</value>
+  </data>
+  <data name="Filters_Service" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="Filters_ServiceCategory" xml:space="preserve">
+    <value>Categoría de servicios</value>
+  </data>
+  <data name="Filters_ServiceCategory_Placeholder" xml:space="preserve">
+    <value>Seleccione una categoría de servicios</value>
+  </data>
+  <data name="Filters_Service_Placeholder" xml:space="preserve">
+    <value>Seleccione un servicio</value>
+  </data>
+  <data name="Filters_Surname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="Filters_Surname_Placeholder" xml:space="preserve">
+    <value>Ingrese un apellido</value>
+  </data>
+  <data name="CardType" xml:space="preserve">
+    <value>Tipo de tarjeta</value>
+  </data>
+  <data name="Discount_Details_Title" xml:space="preserve">
+    <value>Detalle de descuento</value>
+  </data>
+  <data name="Discount_Edit_Title" xml:space="preserve">
+    <value>Edición de descuento</value>
+  </data>
+  <data name="Discounts" xml:space="preserve">
+    <value>Descuentos</value>
+  </data>
+  <data name="Additional" xml:space="preserve">
+    <value>Descuento adicional</value>
+  </data>
+  <data name="Fixed" xml:space="preserve">
+    <value>Descuento fijo</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Fecha desde</value>
+  </data>
+  <data name="MaximumAmount" xml:space="preserve">
+    <value>Monto máximo</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Fecha hasta</value>
+  </data>
+  <data name="CardTypes" xml:space="preserve">
+    <value>Tipos de tarjeta</value>
+  </data>
+  <data name="Filters_Gateway" xml:space="preserve">
+    <value>Pasarela de pago</value>
+  </data>
+  <data name="Filters_Gateway_Placeholder" xml:space="preserve">
+    <value>Seleccione una pasarela de pago</value>
+  </data>
+  <data name="Reports_Transactions_Date_Parameter" xml:space="preserve">
+    <value>Parámetro del período</value>
+  </data>
+  <data name="Reports_Transactions_Currency" xml:space="preserve">
+    <value>Mostrar totales en</value>
+  </data>
+  <data name="Reports_Transactions_List_Empty" xml:space="preserve">
+    <value>No se encontraron transacciones para el período de tiempo ingresado.</value>
+  </data>
+  <data name="Image_Proportion_65" xml:space="preserve">
+    <value>La imagen debe ser de 65 x 35 pixeles.</value>
+  </data>
+  <data name="Image_wrong_proportion" xml:space="preserve">
+    <value>Proporción de archivo incorrecto. Tiene que ser 65 x 35 pixeles.</value>
+  </data>
+  <data name="See" xml:space="preserve">
+    <value>Ver</value>
+  </data>
+  <data name="Contact_Edit_Title" xml:space="preserve">
+    <value>Tomar contacto</value>
+  </data>
+  <data name="Contacts_Error" xml:space="preserve">
+    <value>Se pordujo un error al intentar modificar el contacto.</value>
+  </data>
+  <data name="Contact_Sueccess" xml:space="preserve">
+    <value>Contacto editado satisfactoriamente.</value>
+  </data>
+  <data name="Error_General_Model" xml:space="preserve">
+    <value>Se produjo un error. Intente mas tarde.</value>
+  </data>
+  <data name="Image_required" xml:space="preserve">
+    <value>Imagen requerida.</value>
+  </data>
+  <data name="Image_wrong_size_500000" xml:space="preserve">
+    <value>Tamaño de archivo demasiado grande. No puede ser mayor a 500 KB</value>
+  </data>
+  <data name="Promotion_Active" xml:space="preserve">
+    <value>Activa</value>
+  </data>
+  <data name="Promotion_Inactive" xml:space="preserve">
+    <value>Inactiva</value>
+  </data>
+  <data name="Cybersource_Transactions_Title" xml:space="preserve">
+    <value>Transacciones de Cybersource</value>
+  </data>
+  <data name="Cybersource_Transactions_CreateToken" xml:space="preserve">
+    <value>Creación de token</value>
+  </data>
+  <data name="Cybersource_Transactions_Payment" xml:space="preserve">
+    <value>Pagos</value>
+  </data>
+  <data name="Cybersource_Payment_Transactions_Completed" xml:space="preserve">
+    <value>Transacciones completadas sin creación de token</value>
+  </data>
+  <data name="Cybersource_Payment_Transactions_Other" xml:space="preserve">
+    <value>Transacciones incompletas por otros errores</value>
+  </data>
+  <data name="Cybersource_Payment_Transactions_Token_Completed" xml:space="preserve">
+    <value>Transacciones completadas con creación de token</value>
+  </data>
+  <data name="Cybersource_Transactions" xml:space="preserve">
+    <value>Transacciones incompletas en </value>
+  </data>
+  <data name="Cybersource_Transactions_Completed" xml:space="preserve">
+    <value>Transacciones completadas</value>
+  </data>
+  <data name="Cybersource_Transactions_Error" xml:space="preserve">
+    <value>Transacciones terminadas en error</value>
+  </data>
+  <data name="Cybersource_Transactions_Total" xml:space="preserve">
+    <value>TOTAL</value>
+  </data>
+  <data name="Reports_Conciliation_Title" xml:space="preserve">
+    <value>Reporte de conciliación</value>
+  </data>
+  <data name="Reports_Conciliation_All" xml:space="preserve">
+    <value>Todas</value>
+  </data>
+  <data name="Reports_Conciliation_AmountTotal" xml:space="preserve">
+    <value>Monto total</value>
+  </data>
+  <data name="Reports_Conciliation_BillExternalId" xml:space="preserve">
+    <value>Número de factura</value>
+  </data>
+  <data name="Reports_Conciliation_Check" xml:space="preserve">
+    <value>Revisado</value>
+  </data>
+  <data name="Reports_Conciliation_Currency" xml:space="preserve">
+    <value>Moneda</value>
+  </data>
+  <data name="Reports_Conciliation_Cybersource" xml:space="preserve">
+    <value>Cybersource</value>
+  </data>
+  <data name="Reports_Conciliation_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="Reports_Conciliation_Details_Gateway" xml:space="preserve">
+    <value>Detalle de conciliación con pasarela de pago</value>
+  </data>
+  <data name="Reports_Conciliation_Error" xml:space="preserve">
+    <value>Con errores</value>
+  </data>
+  <data name="Reports_Conciliation_ExpirationDate" xml:space="preserve">
+    <value>Fecha de vencimiento</value>
+  </data>
+  <data name="Reports_Conciliation_Gateway" xml:space="preserve">
+    <value>Pasarela</value>
+  </data>
+  <data name="Reports_Conciliation_GeneralState" xml:space="preserve">
+    <value>Estado general</value>
+  </data>
+  <data name="Reports_Conciliation_IdTransaccionSTB" xml:space="preserve">
+    <value>ID de transacción STB</value>
+  </data>
+  <data name="Reports_Conciliation_Portal" xml:space="preserve">
+    <value>Portal</value>
+  </data>
+  <data name="Reports_Conciliation_ReferenceNumber" xml:space="preserve">
+    <value>Número de referencia</value>
+  </data>
+  <data name="Reports_Conciliation_SistarbancUserId" xml:space="preserve">
+    <value>ID de usuario Sistarbanc</value>
+  </data>
+  <data name="Reports_Conciliation_State" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Reports_Conciliation_Table" xml:space="preserve">
+    <value>Tabla</value>
+  </data>
+  <data name="Reports_Conciliation_TransactionNumber" xml:space="preserve">
+    <value>Número de transacción</value>
+  </data>
+  <data name="Reports_Conciliation_Type" xml:space="preserve">
+    <value>Tipo de conciliación</value>
+  </data>
+  <data name="Reports_Conciliation_VisaNetTC33" xml:space="preserve">
+    <value>TC33</value>
+  </data>
+  <data name="Reports_Conciliation_VisaTransactionId" xml:space="preserve">
+    <value>ID de transacción Pasarela</value>
+  </data>
+  <data name="Reports_Conciliation_Details_Cybersource" xml:space="preserve">
+    <value>Detalle de conciliación con Cybersource</value>
+  </data>
+  <data name="Reports_Conciliation_AmountWithDiscount" xml:space="preserve">
+    <value>Monto con descuento</value>
+  </data>
+  <data name="Reports_Conciliation_State_Checked" xml:space="preserve">
+    <value>Revisado</value>
+  </data>
+  <data name="Reports_Conciliation_State_Error" xml:space="preserve">
+    <value>Algunos datos no coinciden</value>
+  </data>
+  <data name="Reports_Conciliation_State_NotFound" xml:space="preserve">
+    <value>No se encontró la conciliación</value>
+  </data>
+  <data name="Reports_Conciliation_State_Ok" xml:space="preserve">
+    <value>Correcto</value>
+  </data>
+  <data name="Reports_Conciliation_Amount" xml:space="preserve">
+    <value>Monto</value>
+  </data>
+  <data name="Transaction_Payment" xml:space="preserve">
+    <value>Transacción de pago</value>
+  </data>
+  <data name="Transaction_Refund" xml:space="preserve">
+    <value>Transacción de reembolso</value>
+  </data>
+  <data name="Transaction_type" xml:space="preserve">
+    <value>Tipo de transacción</value>
+  </data>
+  <data name="Filters_Bin" xml:space="preserve">
+    <value>BIN</value>
+  </data>
+  <data name="Filters_Bin_Placeholder" xml:space="preserve">
+    <value>Seleccione un BIN</value>
+  </data>
+  <data name="Filters_CardType" xml:space="preserve">
+    <value>Tipo de tarjeta</value>
+  </data>
+  <data name="Filters_CardType_Placeholder" xml:space="preserve">
+    <value>Seleccione un tipo de tarjeta</value>
+  </data>
+  <data name="Filters_MaskedNumber" xml:space="preserve">
+    <value>Número de tarjeta</value>
+  </data>
+  <data name="Filters_MaskedNumber_Placeholder" xml:space="preserve">
+    <value>Ingrese un número de tarjeta</value>
+  </data>
+  <data name="Reports_Cards_Title" xml:space="preserve">
+    <value>Listado de tarjetas asociadas a clientes</value>
+  </data>
+  <data name="Cybersource_Transactions_Refund" xml:space="preserve">
+    <value>Transacciones Refund</value>
+  </data>
+  <data name="Cybersource_Transactions_Void" xml:space="preserve">
+    <value>Transacciones Void</value>
+  </data>
+  <data name="Only_sucive" xml:space="preserve">
+    <value>Solo sucive/geocom acepta múltiples facturas</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="Service_Cards_Section" xml:space="preserve">
+    <value>Tarjetas</value>
+  </data>
+  <data name="Service_Cybersource_Section" xml:space="preserve">
+    <value>Datos de Cybersource</value>
+  </data>
+  <data name="Service_Detail_Section" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="Service_Gateway" xml:space="preserve">
+    <value>Pasarela</value>
+  </data>
+  <data name="Service_Gateway_Section" xml:space="preserve">
+    <value>Pasarelas de pago</value>
+  </data>
+  <data name="Service_Param1" xml:space="preserve">
+    <value>Parametro 1</value>
+  </data>
+  <data name="Service_Params_Section" xml:space="preserve">
+    <value>Parámetros de entrada</value>
+  </data>
+  <data name="Service_Type" xml:space="preserve">
+    <value>Tipo de servicio</value>
+  </data>
+  <data name="Departament" xml:space="preserve">
+    <value>Departamento</value>
+  </data>
+  <data name="Service_Banred_Param1" xml:space="preserve">
+    <value>Nombre Servicio</value>
+  </data>
+  <data name="Service_Banred_Param2" xml:space="preserve">
+    <value>Tipo de Servicio</value>
+  </data>
+  <data name="Service_Departament_Section" xml:space="preserve">
+    <value>Departamento del servicio (Sucive / Geocom)</value>
+  </data>
+  <data name="Service_Geocom_Param1" xml:space="preserve">
+    <value>Tipo de padrón</value>
+  </data>
+  <data name="Service_Geocom_Param2" xml:space="preserve">
+    <value>Tipo de búsqueda</value>
+  </data>
+  <data name="Service_Param2" xml:space="preserve">
+    <value>Parametro 2</value>
+  </data>
+  <data name="Service_Sistarbanc_Param1" xml:space="preserve">
+    <value>Nombre Servicio</value>
+  </data>
+  <data name="Service_Sistarbanc_Param2" xml:space="preserve">
+    <value>Tipo de Servicio</value>
+  </data>
+  <data name="Service_Sucive_Param1" xml:space="preserve">
+    <value>Tipo de padrón</value>
+  </data>
+  <data name="Service_Sucive_Param2" xml:space="preserve">
+    <value>Tipo de búsqueda</value>
+  </data>
+  <data name="Value_Hidden" xml:space="preserve">
+    <value>Valor oculto por securidad</value>
+  </data>
+  <data name="HighwaySection" xml:space="preserve">
+    <value>Carretera</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Correo Electrónico</value>
+  </data>
+  <data name="Email_InvalidFormat" xml:space="preserve">
+    <value>Formato de correo electrónico no valido.</value>
+  </data>
+  <data name="StatusChange" xml:space="preserve">
+    <value>Cambiar estado</value>
+  </data>
+  <data name="Service_Highway_Param1" xml:space="preserve">
+    <value>Código comercio</value>
+  </data>
+  <data name="Service_Highway_Param2" xml:space="preserve">
+    <value>Código sucursal</value>
+  </data>
+  <data name="Extract" xml:space="preserve">
+    <value>Extract</value>
+  </data>
+  <data name="ExtractEmail" xml:space="preserve">
+    <value>Correo electrónico para envio de extract</value>
+  </data>
+  <data name="Reports_Highway_Bill_Title" xml:space="preserve">
+    <value>Listado de facturas Carretera</value>
+  </data>
+  <data name="Branch" xml:space="preserve">
+    <value>Nro Sucursal</value>
+  </data>
+  <data name="Commerce" xml:space="preserve">
+    <value>Nro Comercio</value>
+  </data>
+  <data name="CreationDateFrom" xml:space="preserve">
+    <value>Fecha creación desde</value>
+  </data>
+  <data name="CreationDateTo" xml:space="preserve">
+    <value>Fecha creación hasta</value>
+  </data>
+  <data name="ReportHighwayEmail" xml:space="preserve">
+    <value>Carretera - Emails</value>
+  </data>
+  <data name="SenderEmail" xml:space="preserve">
+    <value>Correo Electrónico</value>
+  </data>
+  <data name="AttachmentInputName" xml:space="preserve">
+    <value>Adjunto entrada</value>
+  </data>
+  <data name="AttachmentOutputName" xml:space="preserve">
+    <value>Archivo generado</value>
+  </data>
+  <data name="CreationDate" xml:space="preserve">
+    <value>Fecha Creación</value>
+  </data>
+  <data name="Transaction" xml:space="preserve">
+    <value>Transacción</value>
+  </data>
+  <data name="SendExtract" xml:space="preserve">
+    <value>Envio archivo transacciónes</value>
+  </data>
+  <data name="HighwayEmailUpload" xml:space="preserve">
+    <value>Cargar Archivo de Carretera</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comentarios</value>
+  </data>
+  <data name="Service_Importe_Param1" xml:space="preserve">
+    <value>Importe mínimo pesos</value>
+  </data>
+  <data name="Service_Importe_Param2" xml:space="preserve">
+    <value>Importe máximo pesos</value>
+  </data>
+  <data name="Certificates" xml:space="preserve">
+    <value>Certificados</value>
+  </data>
+  <data name="Service_Param3" xml:space="preserve">
+    <value>Parametro 3</value>
+  </data>
+  <data name="Service_Param4" xml:space="preserve">
+    <value>Parametro 4</value>
+  </data>
+  <data name="Service_Importe_Param3" xml:space="preserve">
+    <value>Importe mínimo dolares</value>
+  </data>
+  <data name="Service_Importe_Param4" xml:space="preserve">
+    <value>Importe máximo dolares</value>
+  </data>
+  <data name="DiscountType" xml:space="preserve">
+    <value>Tipo de descuento</value>
+  </data>
+  <data name="Service_MainConfiguration" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="Service_Container" xml:space="preserve">
+    <value>Servicio contenedor</value>
+  </data>
+  <data name="CommunicationExternal" xml:space="preserve">
+    <value>Datos necesarios para interacción entre servicios</value>
+  </data>
+  <data name="Reports_Integration_Title" xml:space="preserve">
+    <value>Integración externa</value>
+  </data>
+  <data name="Application_Id" xml:space="preserve">
+    <value>Id Aplicación</value>
+  </data>
+  <data name="Card_Id" xml:space="preserve">
+    <value>Id Tarjeta</value>
+  </data>
+  <data name="Operation_Id" xml:space="preserve">
+    <value>Id Operación</value>
+  </data>
+  <data name="ResultCode" xml:space="preserve">
+    <value>Código Resultado</value>
+  </data>
+  <data name="User_Id" xml:space="preserve">
+    <value>Id Usuario</value>
+  </data>
+  <data name="CertificateThumbprintExternalEmpty" xml:space="preserve">
+    <value>El campo "Thumbprint de certificado publico externo" no puede ser vacío si se activa la pasarela Apps</value>
+  </data>
+  <data name="CertificateThumbprintVisaEmpty" xml:space="preserve">
+    <value>El campo "Thumbprint de certificado privado VisaNetPagos" no puede ser vacío si se activa la pasarela Apps</value>
+  </data>
+  <data name="ExternalUrlAddEmpty" xml:space="preserve">
+    <value>El campo "Url externa para notificar nueva asociación o tarjeta" no puede ser vacío si se activa la pasarela Apps</value>
+  </data>
+  <data name="ExternalUrlRemoveEmpty" xml:space="preserve">
+    <value>El campo "Url externa para notificar baja de asociación o tarjeta" no puede ser vacío si se activa la pasarela Apps</value>
+  </data>
+  <data name="UrlNameEmpty" xml:space="preserve">
+    <value>El campo "Nombre de servicio para URL" no puede ser vacío si se activa la pasarela Apps</value>
+  </data>
+  <data name="Filters_PaymentStatus" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Filters_PaymentStatus_Placeholder" xml:space="preserve">
+    <value>Seleccione un estado</value>
+  </data>
+  <data name="Reports_Transactions_Status" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="DiscountLabel" xml:space="preserve">
+    <value>Etiqueta Pdf</value>
+  </data>
+  <data name="TrackChanges_ColumnName" xml:space="preserve">
+    <value>Propiedad</value>
+  </data>
+  <data name="TrackChanges_DateTime" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="TrackChanges_Entity" xml:space="preserve">
+    <value>Entidad</value>
+  </data>
+  <data name="TrackChanges_Ip" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="TrackChanges_LogType" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="TrackChanges_NewValue" xml:space="preserve">
+    <value>Valor nuevo</value>
+  </data>
+  <data name="TrackChanges_OrginalValue" xml:space="preserve">
+    <value>Valor actual</value>
+  </data>
+  <data name="TrackChanges_TableName" xml:space="preserve">
+    <value>Entidad</value>
+  </data>
+  <data name="TrackChanges_AditionalInfo" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="TrackChanges_UserName" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notificaciones</value>
+  </data>
+  <data name="Notifications_Category" xml:space="preserve">
+    <value>Categoría</value>
+  </data>
+  <data name="Notifications_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Notifications_Detail" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="Notifications_Level" xml:space="preserve">
+    <value>Severidad</value>
+  </data>
+  <data name="Notifications_Resolved" xml:space="preserve">
+    <value>Resuelto</value>
+  </data>
+  <data name="Notifications_DateTime" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="Reports_Transactions_ExcludeZeros" xml:space="preserve">
+    <value>¿Excluir ceros?</value>
+  </data>
+  <data name="Filters_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Filters_Active" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="Filters_AutomaticPayment" xml:space="preserve">
+    <value>Pago programado</value>
+  </data>
+  <data name="Filters_ServiceAssociated" xml:space="preserve">
+    <value>Servicio asociado</value>
+  </data>
+  <data name="Filters_Status" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Filters_Deleted" xml:space="preserve">
+    <value>Eliminado</value>
+  </data>
+  <data name="Reports_AutomaticPayments_Title" xml:space="preserve">
+    <value>Reporte de Pagos Programados</value>
+  </data>
+  <data name="Loading_TestingConnection" xml:space="preserve">
+    <value>Aguardá un instante, estamos intentando establecer la conexión.</value>
+  </data>
+  <data name="Notifications_ResolveAllMessage" xml:space="preserve">
+    <value>¿Está seguro que desea resolver todas las notificaciones que se están listando?</value>
+  </data>
+  <data name="Notifications_ResolveAllTitle" xml:space="preserve">
+    <value>Resolver todas las notificaciones</value>
+  </data>
+  <data name="Resolve" xml:space="preserve">
+    <value>Resolver</value>
+  </data>
+  <data name="TestCybersource_ConnectionError" xml:space="preserve">
+    <value>Conexión fallida.</value>
+  </data>
+  <data name="TestCybersource_ConnectionSuccessful" xml:space="preserve">
+    <value>Conexión exitosa.</value>
+  </data>
+  <data name="TestCybersource_UnexpectedError" xml:space="preserve">
+    <value>Error inesperado.</value>
+  </data>
+  <data name="ServiceContainer_Detail_Title" xml:space="preserve">
+    <value>Detalle de servicio contenedor</value>
+  </data>
+  <data name="ServiceContainer_Edit_Title" xml:space="preserve">
+    <value>Edición de  servicio contenedor</value>
+  </data>
+  <data name="ServiceContainer_New_Title" xml:space="preserve">
+    <value>Creación de nuevo servicio contenedor</value>
+  </data>
+  <data name="Reports_Version_Title" xml:space="preserve">
+    <value>Versiones del sistema</value>
+  </data>
+  <data name="ExcelTransactions_FilterDateFrom" xml:space="preserve">
+    <value>Filtro Fecha Desde</value>
+  </data>
+  <data name="ExcelTransactions_FilterDateTo" xml:space="preserve">
+    <value>Filtro Fecha Hasta</value>
+  </data>
+  <data name="ExcelTransactions_FilterPaymentStatus" xml:space="preserve">
+    <value>Filtro Estado de Pago</value>
+  </data>
+  <data name="ExcelTransactions_FilterPaymentType" xml:space="preserve">
+    <value>Filtro Tipo de Pago</value>
+  </data>
+  <data name="ExcelTransactions_FilterServiceCategory" xml:space="preserve">
+    <value>Filtro Categoría de Servicios</value>
+  </data>
+  <data name="ExcelTransactions_FilterServiceName" xml:space="preserve">
+    <value>Filtro Servicio</value>
+  </data>
+  <data name="ExcelTransactions_FilterTransactionNumber" xml:space="preserve">
+    <value>Filtro Transacción en Cybersource</value>
+  </data>
+  <data name="ExcelTransactions_FilterUserEmail" xml:space="preserve">
+    <value>Filtro Email</value>
+  </data>
+  <data name="ExcelTransactions_FilterUserName" xml:space="preserve">
+    <value>Filtro Nombre</value>
+  </data>
+  <data name="ExcelTransactions_FilterUserSurname" xml:space="preserve">
+    <value>Filtro Apellido</value>
+  </data>
+  <data name="Filters_CybersourceTransactionNumber" xml:space="preserve">
+    <value>Transacción en Cybersource</value>
+  </data>
+  <data name="Filters_GatewayTransactionNumber" xml:space="preserve">
+    <value>Transacción en pasarela</value>
+  </data>
+  <data name="ExcelTransactions_FilterGateway" xml:space="preserve">
+    <value>Filtro Pasarela</value>
+  </data>
+  <data name="ExcelTransactions_FilterUniqueIdentifier" xml:space="preserve">
+    <value>Filtro Transacción en pasarela</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Esta operación puede demorar varios minutos</value>
+  </data>
+  <data name="Reports_Conciliation_Application" xml:space="preserve">
+    <value>Aplicación</value>
+  </data>
+  <data name="Reports_Conciliation_Banred" xml:space="preserve">
+    <value>Banred</value>
+  </data>
+  <data name="Reports_Conciliation_Batch" xml:space="preserve">
+    <value>Batch</value>
+  </data>
+  <data name="Reports_Conciliation_Payment" xml:space="preserve">
+    <value>Pago</value>
+  </data>
+  <data name="Reports_Conciliation_Settelment" xml:space="preserve">
+    <value>Liquidación</value>
+  </data>
+  <data name="Reports_Conciliation_Sistarbanc" xml:space="preserve">
+    <value>Sistarbanc</value>
+  </data>
+  <data name="Reports_Conciliation_Sucive" xml:space="preserve">
+    <value>Sucive</value>
+  </data>
+  <data name="Reports_Conciliation_Tc33" xml:space="preserve">
+    <value>TC 33</value>
+  </data>
+  <data name="Reports_Conciliation_State_DoesNotApply" xml:space="preserve">
+    <value>No aplica</value>
+  </data>
+  <data name="Reports_Conciliation_External" xml:space="preserve">
+    <value>EXT</value>
+  </data>
+  <data name="Reports_Conciliation_Origin" xml:space="preserve">
+    <value>Origen</value>
+  </data>
+  <data name="Reports_Conciliation_Site" xml:space="preserve">
+    <value>Portal</value>
+  </data>
+  <data name="Reports_Conciliation_VNP" xml:space="preserve">
+    <value>VNP</value>
+  </data>
+  <data name="MerchantId" xml:space="preserve">
+    <value>Id Merchant</value>
+  </data>
+  <data name="Apps_CodComercio_CodSucursal_numeric" xml:space="preserve">
+    <value>Para la pasarela apps, el codComercio y codSucursal deben ser números</value>
+  </data>
+  <data name="WcfVersion" xml:space="preserve">
+    <value>Versión web service de pago</value>
+  </data>
+  <data name="Reports_Email_Title" xml:space="preserve">
+    <value>Listado de correos electrónicos</value>
+  </data>
+  <data name="Filters_MailgunStatus_Placeholder" xml:space="preserve">
+    <value>Seleccione un estado</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="EmailType" xml:space="preserve">
+    <value>Tipo de email</value>
+  </data>
+  <data name="Filters_EmailType_Placeholder" xml:space="preserve">
+    <value>Seleccione un tipo</value>
+  </data>
+  <data name="Reports_Email_CancelModal" xml:space="preserve">
+    <value>¿Estás seguro que querés cancelar el email?</value>
+  </data>
+  <data name="Reports_Email_CancelModal_Title" xml:space="preserve">
+    <value>Cancelar email</value>
+  </data>
+  <data name="Email_CancelSuccess" xml:space="preserve">
+    <value>Se ha cancelado el email con éxito</value>
+  </data>
+  <data name="EmailPreview" xml:space="preserve">
+    <value>Ver</value>
+  </data>
+  <data name="EmailResend" xml:space="preserve">
+    <value>Reenviar</value>
+  </data>
+  <data name="Email_ResendSuccess" xml:space="preserve">
+    <value>Se ha reenviado el email con éxito</value>
+  </data>
+  <data name="ReportsUser" xml:space="preserve">
+    <value>Usuarios VNP</value>
+  </data>
+  <data name="CallCenter_Pin" xml:space="preserve">
+    <value>Clave CallCenter</value>
+  </data>
+  <data name="EmailResendAll" xml:space="preserve">
+    <value>Reenviar todos</value>
+  </data>
+  <data name="Reports_Email_ResendAll" xml:space="preserve">
+    <value>¿Estás seguro que querés reenviar todos los emails? Solo se reenviaran los emails en estado: "Error al enviar a Mailgun" y "Fallo de envío (recuperable)"</value>
+  </data>
+  <data name="Reports_Email_ResendAll_Title" xml:space="preserve">
+    <value>Reenviar todos</value>
+  </data>
+  <data name="Email_ResendAllSuccess" xml:space="preserve">
+    <value>Se han reenviado los emails con éxito</value>
+  </data>
+  <data name="Email_ResendAllSuccess_NoEmails" xml:space="preserve">
+    <value>No hay emails pendientes de envío en el sistema</value>
+  </data>
+  <data name="ReportsUser_details" xml:space="preserve">
+    <value>Usuarios VNP - Detalle</value>
+  </data>
+  <data name="ApplicationUser_Edit_Error" xml:space="preserve">
+    <value>Se pordujo un error al intentar modificar el usuario</value>
+  </data>
+  <data name="ApplicationUser_Edit_Sueccess" xml:space="preserve">
+    <value>Usuario editado satisfactoriamente.</value>
+  </data>
+  <data name="ReportsUser_edit" xml:space="preserve">
+    <value>Usuarios VNP - Editar</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Cambiar contraseña</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>Repetir contraseña</value>
+  </data>
+  <data name="Email_CheckStatusSuccess" xml:space="preserve">
+    <value>Se han actualizado los estados de los emails</value>
+  </data>
+  <data name="CheckEmailsStatus" xml:space="preserve">
+    <value>Actualizar Estados</value>
+  </data>
+  <data name="CheckEmailsStatusBtn" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="BinGroup" xml:space="preserve">
+    <value>Grupos de BIN's</value>
+  </data>
+  <data name="BinGroup_New_Title" xml:space="preserve">
+    <value>Crear nuevo grupo de BIN's</value>
+  </data>
+  <data name="BinGroup_Details_Title" xml:space="preserve">
+    <value>Detalles de grupo de BIN's</value>
+  </data>
+  <data name="BinGroup_Edit_Title" xml:space="preserve">
+    <value>Editar grupo de BIN's</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filtrar</value>
+  </data>
+  <data name="BinGroup_Required" xml:space="preserve">
+    <value>Debe seleccionar al menos un grupo de BIN's</value>
+  </data>
+  <data name="Bank" xml:space="preserve">
+    <value>Emisor</value>
+  </data>
+  <data name="Bank_Detail_Title" xml:space="preserve">
+    <value>Detalle del Banco</value>
+  </data>
+  <data name="Bank_Edit_Title" xml:space="preserve">
+    <value>Edición de Banco</value>
+  </data>
+  <data name="Bank_New_Title" xml:space="preserve">
+    <value>Nuevo Banco</value>
+  </data>
+  <data name="Banks" xml:space="preserve">
+    <value>Bancos</value>
+  </data>
+  <data name="BinValue" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Codigo</value>
+  </data>
+  <data name="Quoata" xml:space="preserve">
+    <value>Cuotas</value>
+  </data>
+  <data name="MailgunErrorDescription" xml:space="preserve">
+    <value>Error obtenido de Mailgun</value>
+  </data>
+  <data name="ValueFrom" xml:space="preserve">
+    <value>Valor desde</value>
+  </data>
+  <data name="ValueTo" xml:space="preserve">
+    <value>Valor hasta</value>
+  </data>
+  <data name="LawIndi" xml:space="preserve">
+    <value>Indicador de ley</value>
+  </data>
+  <data name="LifApiBill_List" xml:space="preserve">
+    <value>Listado de llamadas API LIF</value>
+  </data>
+  <data name="LifApiBill_Detail_Title" xml:space="preserve">
+    <value>Detalle de llamada API LIF</value>
+  </data>
+  <data name="Interpreter" xml:space="preserve">
+    <value>Interpretes</value>
+  </data>
+  <data name="Interpreter_create" xml:space="preserve">
+    <value>Nuevo Interprete</value>
+  </data>
+  <data name="Interpreter_details" xml:space="preserve">
+    <value>Interpretes - Detalle</value>
+  </data>
+  <data name="Interpreter_edit" xml:space="preserve">
+    <value>Interpretes - Editar</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>Archivo</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Nombre del archivo</value>
+  </data>
+  <data name="Interpreter_BadFile" xml:space="preserve">
+    <value>El archivo tiene que tener extensión .dll</value>
+  </data>
+  <data name="Interpreter_Delete_Error" xml:space="preserve">
+    <value>El interprete se dio de baja, pero no se pudo eliminar el archivo.</value>
+  </data>
+  <data name="Interpreter_Edit_Error" xml:space="preserve">
+    <value>Los datos del interprete se editaron pero no se pudo subir el archivo. Intente nuevamente.</value>
+  </data>
+  <data name="Interpreter_Error" xml:space="preserve">
+    <value>No se pudo subir el archivo. Intente nuevamente</value>
+  </data>
+  <data name="Filters_PaymentPlatform" xml:space="preserve">
+    <value>Plataforma</value>
+  </data>
+  <data name="Filters_PaymentPlatform_Placeholder" xml:space="preserve">
+    <value>Seleccione una plataforma</value>
+  </data>
+  <data name="ProcessStarted" xml:space="preserve">
+    <value>Se ha iniciado del proceso</value>
+  </data>
+  <data name="Bank_FirstQuota_NotSelected" xml:space="preserve">
+    <value>Debe seleccionar la cuota 1.</value>
+  </data>
+  <data name="Reports_Conciliation_Details" xml:space="preserve">
+    <value>Detalle de conciliación</value>
+  </data>
+  <data name="Reports_Transactions_ConfirmCancel" xml:space="preserve">
+    <value>¿Está seguro que desea cancelar la transacción?</value>
+  </data>
+  <data name="Reports_Transactions_Title_Cancel" xml:space="preserve">
+    <value>Cancelar transacción</value>
+  </data>
+  <data name="ConciliationBatch_Title" xml:space="preserve">
+    <value>Conciliación batch</value>
+  </data>
+  <data name="Reports_DailyConciliation_Title" xml:space="preserve">
+    <value>Conciliación diaria</value>
+  </data>
+  <data name="Integration_Father_Only" xml:space="preserve">
+    <value>* Si el comercio tiene configurado un comercio padre, los datos de integracion se obtienen de dicho servicio.</value>
+  </data>
+  <data name="CustomerSiteUser" xml:space="preserve">
+    <value>Usuario Portal de Comercios</value>
+  </data>
+  <data name="CustomerSite_Success" xml:space="preserve">
+    <value>Registro editado correctamente</value>
+  </data>
+  <data name="CustomerSiteCommerce" xml:space="preserve">
+    <value>Comercio</value>
+  </data>
+  <data name="Filters_Commerce_Placeholder" xml:space="preserve">
+    <value>Seleccione un comercio</value>
+  </data>
+  <data name="Service_LinkPayment_Param1" xml:space="preserve">
+    <value>Segundos de vida Token</value>
+  </data>
+  <data name="Service_ServiceCateogry" xml:space="preserve">
+    <value>Categoría</value>
+  </data>
+  <data name="Service_ServiceContainer" xml:space="preserve">
+    <value>Servicio contenedor</value>
+  </data>
+  <data name="Service_ServiceGateway" xml:space="preserve">
+    <value>Pasarela de pago</value>
+  </data>
+  <data name="Service_ServiceName" xml:space="preserve">
+    <value>Nombre del servicio</value>
+  </data>
+  <data name="Filters_IsDebitCommerce_Placeholder" xml:space="preserve">
+    <value>Tipo de comercio</value>
+  </data>
+  <data name="DebitCommerce_False" xml:space="preserve">
+    <value>No débito</value>
+  </data>
+  <data name="DebitCommerce_True" xml:space="preserve">
+    <value>Débito</value>
+  </data>
+  <data name="Filters_Branch_Placeholder" xml:space="preserve">
+    <value>Seleccione una sucursal</value>
+  </data>
+  <data name="CustomerSiteBranch" xml:space="preserve">
+    <value>Sucursal</value>
+  </data>
+  <data name="Service_ServiceName_Debit" xml:space="preserve">
+    <value>Nombre servicio de debito</value>
+  </data>
+  <data name="Debit_State" xml:space="preserve">
+    <value>Estado de solicitud</value>
+  </data>
+  <data name="Debit_type" xml:space="preserve">
+    <value>Tipo de solicitud</value>
+  </data>
+  <data name="Email_CheckStatusInProgress" xml:space="preserve">
+    <value>Se estan actualizado los estados de los emails</value>
+  </data>
+  <data name="Debit_CardMonth" xml:space="preserve">
+    <value>Mes de vencimiento</value>
+  </data>
+  <data name="Debit_CardNumber" xml:space="preserve">
+    <value>Número de tarjeta</value>
+  </data>
+  <data name="Debit_CardYear" xml:space="preserve">
+    <value>Año de vencimiento</value>
+  </data>
+  <data name="Debit_Merchant" xml:space="preserve">
+    <value>Comercio</value>
+  </data>
+  <data name="Debit_MerchantGroup" xml:space="preserve">
+    <value>Grupo de comercio</value>
+  </data>
+  <data name="Debit_MerchantProduct" xml:space="preserve">
+    <value>Producto</value>
+  </data>
+  <data name="Debit_References" xml:space="preserve">
+    <value>Referencias del producto</value>
+  </data>
+  <data name="Debit_UserAddress" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="Debit_UserEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Debit_UserFullName" xml:space="preserve">
+    <value>Nombre y Apellido</value>
+  </data>
+  <data name="Debit_UserIdentityNumber" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="Debit_UserPhoneNumber" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Debit_CreationDate" xml:space="preserve">
+    <value>Fecha de solicitud</value>
+  </data>
+  <data name="Debit_ExportManualSynchronization" xml:space="preserve">
+    <value>Exportar sincronización manual</value>
+  </data>
+  <data name="Debit_SynchronizationDate" xml:space="preserve">
+    <value>Última modificación</value>
+  </data>
+  <data name="AffiliationCards" xml:space="preserve">
+    <value>Listado programa de tarjetas</value>
+  </data>
+  <data name="AffiliationCard_Edit_Title" xml:space="preserve">
+    <value>Editar programa</value>
+  </data>
+  <data name="AffiliationCard_New_Title" xml:space="preserve">
+    <value>Nuevo programa</value>
+  </data>
+  <data name="AffiliationCard_Detail_Title" xml:space="preserve">
+    <value>Detalle programa</value>
+  </data>
+  <data name="ReportsUsersVON" xml:space="preserve">
+    <value>Usuarios VON</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Asunto</value>
+  </data>
+  <data name="Filters_QueryType" xml:space="preserve">
+    <value>Tipo de consulta</value>
+  </data>
+  <data name="Service_Needs_References" xml:space="preserve">
+    <value>Se indicó que el servicio pida referencias pero no se completaron las mismas.</value>
+  </data>
+  <data name="Operation_Id_App" xml:space="preserve">
+    <value>Id Operación App</value>
+  </data>
+  <data name="Operation_Id_Vnp" xml:space="preserve">
+    <value>Id Operación VNP</value>
+  </data>
+  <data name="Operation_Id_Cobro" xml:space="preserve">
+    <value>Id Operación Cobro</value>
+  </data>
+  <data name="Card_DueDate_Short" xml:space="preserve">
+    <value>Venc. Tarjeta</value>
+  </data>
+  <data name="Card_Suffix" xml:space="preserve">
+    <value>Sufijo Tarjeta</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="Transaction_Number_Short" xml:space="preserve">
+    <value>Nro. Transacción</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="Bill_Date" xml:space="preserve">
+    <value>Fecha Factura</value>
+  </data>
+  <data name="Bill_External_Id" xml:space="preserve">
+    <value>Nro. Factura</value>
+  </data>
+  <data name="CI" xml:space="preserve">
+    <value>C.I.</value>
+  </data>
+  <data name="BankCode" xml:space="preserve">
+    <value>Cód. Emisor</value>
+  </data>
+  <data name="CardAffiliation" xml:space="preserve">
+    <value>Programa Tarjeta</value>
+  </data>
+  <data name="CardAffiliationCode" xml:space="preserve">
+    <value>Cód. Programa Tarjeta</value>
+  </data>
+  <data name="DiscountAmount" xml:space="preserve">
+    <value>Monto Descuento</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>Celular</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="AffiliationCardName" xml:space="preserve">
+    <value>Programa de tarjeta</value>
+  </data>
+  <data name="Filters_Application_Placeholder" xml:space="preserve">
+    <value>Seleccione una aplicación</value>
+  </data>
+  <data name="DateTo" xml:space="preserve">
+    <value>Fecha hasta</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="ConciliationDateFrom" xml:space="preserve">
+    <value>Fecha conciliación desde</value>
+  </data>
+  <data name="ConciliationDateTo" xml:space="preserve">
+    <value>Fecha conciliación hasta</value>
+  </data>
+  <data name="FinishDate" xml:space="preserve">
+    <value>Fecha Finalización</value>
+  </data>
+  <data name="ReportsConciliationRun" xml:space="preserve">
+    <value>Corridas Conciliación</value>
+  </data>
+  <data name="BinGroup_Container_NotMatch" xml:space="preserve">
+    <value>Los grupos de BIN's seleccionados no coinciden con los permitidos por el servicio contenedor.</value>
+  </data>
+  <data name="ServiceContainer_Warning_ChangeBinGroups" xml:space="preserve">
+    <value>Se han modificado los grupos de BIN's del servicio contenedor. Debes indicar si quieres que estos cambios se apliquen a sus servicios hijos.</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>¡Atención!</value>
+  </data>
+  <data name="Reports_Cards_DeleteCs_Fail" xml:space="preserve">
+    <value>Error al eliminar tarjeta de Cybersource.</value>
+  </data>
+  <data name="Reports_Cards_DeleteCs_Succes" xml:space="preserve">
+    <value>Tarjeta eliminada de Cybersource con exito.</value>
+  </data>
+  <data name="Service_Required" xml:space="preserve">
+    <value>Debe seleccionar al menos un servicio.</value>
+  </data>
+</root>

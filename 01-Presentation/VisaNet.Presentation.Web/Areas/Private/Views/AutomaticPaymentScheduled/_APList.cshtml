@@ -1,0 +1,43 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model IEnumerable<VisaNet.Presentation.Web.Areas.Private.Models.NextAutomaticPaymentModel>
+
+<div class="formMargin">
+    <div class="loadingMessaje" id="loadingAp" style="display: none">
+        <div class="loading">@PresentationCoreMessages.Common_Waiting</div>
+    </div>
+    <div id="divData">
+        <h4>@PresentationWebStrings.Bills_Title</h4>
+        <div class="row">
+            @if (Model == null || !Model.Any())
+            {
+                <div class="suggestionsBox">
+                    @if (TempData.ContainsKey("ErrorLoadingAutomatic"))
+                    {
+                        <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@TempData["ErrorLoadingAutomatic"]</h5>
+                    }
+                    else
+                    {
+                        <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@PresentationWebStrings.AutomaticPayment_Empty</h5>
+                    }
+                </div>
+            }
+            else
+            {
+                foreach (var ap in Model)
+                {
+                    <div class="col-md-6">
+                        @Html.Partial("_APBlock", ap)
+                    </div>
+                }
+            }
+        </div>
+        @if (Model == null || !Model.Any())
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="@Url.Action("Index","AutomaticPayment")" class="btn btn-default btn-standar mt10"><i class="icon-plus"></i> @PresentationWebStrings.Automatic_Payment_Conf</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

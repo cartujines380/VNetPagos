@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Presentation.Administration.Models.NotificationModel
+
+<h2>Edición de notificación</h2>
+
+
+
+@using (Html.BeginForm("Edit", "Notification", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(s => s.Id)
+    <div class="row mt30">
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(s => s.Description)
+                @Html.TextBoxFor(s => s.Description, new { @class = "form-control", disabled = "disabled" })
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(s => s.Level)
+                @Html.TextBoxFor(s => s.Level, new { @class = "form-control", disabled = "disabled" })
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(s => s.Category)
+                <input type="text" class="form-control" disabled="disabled" value="@EnumHelpers.GetName(typeof(FixedNotificationCategoryDto), (int)Model.Category, EnumsStrings.ResourceManager)" />
+            </div>
+        </div>
+    </div>
+    <div class="row mt30">
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(s => s.DateTime)
+                @Html.TextBox("DateTime", Model.DateTime.ToShortDateString(), new { @class = "form-control", disabled = "disabled" })
+            </div>
+        </div>
+    </div>
+    <div class="row mt30">
+        <div class="col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(s => s.Detail)
+                @Html.Raw(Model.Detail)
+            </div>
+        </div>
+        
+    </div>
+    <div class="row mt30">
+        <div class="col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(s => s.Comments, new { @class = "obligatoryField" }) *
+                @Html.TextAreaFor(s => s.Comments, 8, 16, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Comments)
+            </div>
+        </div>
+    </div>
+    <div class="row mt30">
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(s => s.Resolved)
+                @Html.CheckBoxFor(s => s.Resolved)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5">
+            <a href="@Url.Action("Index", "Notification")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+            <a href="#" id="btnSave" class="btn btn-default">
+                <strong>@PresentationAdminStrings.Save</strong>
+            </a>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnSave").click(function () {
+            $(this).parents("form").submit();
+        });
+    });
+</script>

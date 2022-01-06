@@ -1,0 +1,38 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model IEnumerable<VisaNet.Presentation.Web.Areas.Private.Models.CardListModel>
+
+<div class="formMargin">
+    @Html.Partial("_MigrateServices", Model)   
+    <h4>@PresentationWebStrings.Cards</h4>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="row">
+            <div class="suggestionsBox">
+                <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@(ViewBag.IsSearch ? PresentationCoreMessages.Common_NoSearchResults : PresentationWebStrings.Card_List_Empty)</h5>
+            </div>
+        </div>
+    }
+    else
+    {<!-- item para servicios -->
+        for (int i = 0; i < Model.Count(); i++)
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.Partial("_CardBlock", Model.ElementAt(i))
+                </div>
+                @if (Model.Count() > (i + 1))
+                {
+                    <div class="col-md-6">
+                        @Html.Partial("_CardBlock", Model.ElementAt(i + 1))
+                    </div>
+                }
+                @{i = i + 1;}
+            </div>
+        }
+    }<!-- fin del item para servicios -->
+
+    <a id="addCard" class="btn btn-default btn-link-box mt10" href="@Url.Action("AddCard","Card")"><i class="icon-plus"></i>@PresentationWebStrings.Add_Card </a>
+    <!-- fin del formMargin-->
+</div>
+<div id="EditCardModal"></div>

@@ -1,0 +1,23 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.PaymentServiceModel
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.AnonymousUser.Name)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        @Html.TextBoxFor(model => model.AnonymousUser.Name, new { @class = "w100", placeholder = PresentationWebStrings.Payment_Placeholder_Name, autocomplete = "off" })
+        @Html.ValidationMessageFor(m => m.AnonymousUser.Name)
+    </div>
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.AnonymousUser.Surname)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        @Html.TextBoxFor(model => model.AnonymousUser.Surname, new { @class = "w100", placeholder = PresentationWebStrings.Payment_Placeholder_Surname, autocomplete = "off" })
+        @Html.ValidationMessageFor(m => m.AnonymousUser.Surname)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.AnonymousUser.Email)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        @Html.TextBoxFor(model => model.AnonymousUser.Email, new { @class = "w100", placeholder = PresentationWebStrings.Payment_Placeholder_Email, autocomplete = "off" })
+        @Html.ValidationMessageFor(m => m.AnonymousUser.Email)
+        <h5 class="helpUser p15l"><i class="icon-info-sign"></i> <a class="textToolTip">@PresentationWebStrings.Payment_Email_Info</a></h5>
+    </div>
+</div>

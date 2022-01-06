@@ -1,0 +1,58 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos
+@using VisaNet.Presentation.Web.Constants
+<!-- nav -->
+<div class="navigationBar visaBlue" id="headerMenu">
+    <div class="container">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <a class="brandNavbarMobile fLeft" href="/"></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a id="miPortalLink" href="@Url.Action("Index", "Dashboard", new {area = "Private"})">@PresentationWebStrings.Dashboard</a></li>
+                    <li><a id="debitRequestLink" href="@Url.Action("Requests", "DebitManagment", new { area = "Private" })">@PresentationWebStrings.Debit_Requests</a></li>
+                    <li><a id="paymentRequestLink" href="@Url.Action("NewPayment", "Pay", new { area = "Pay" })">@PresentationWebStrings.Header_UniquePayment</a></li>
+                    <li><a id="servicesLink" href="@Url.Action("Index", "Service", new { area = "Private" })">@PresentationWebStrings.Header_Service</a></li>
+                    <li class="dropdown">
+                        <a href="#" id="paymentHistoryLink" class="dropdown-toggle" data-toggle="dropdown">@PresentationWebStrings.Payment <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index", "Bill", new { area = "Private" })"> @PresentationWebStrings.Header_Bills</a></li>
+                            <li class="divider"></li>
+                            <li><a href="@Url.Action("Service", "Service", new { payment = 1 , area = "Private" })"> @PresentationWebStrings.Header_AutomaticPayment</a></li>
+                            @*<li class="divider"></li>
+                            <li><a href="@Url.Action("Index", "AutomaticPaymentScheduled")"> @PresentationWebStrings.Header_NextAutomaticPayment</a></li>*@
+                            <li class="divider"></li>
+                            <li><a href="@Url.Action("Index", "PaymentHistory", new { area = "Private" })"> @PresentationWebStrings.Header_PaymentHistory</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="cardsLink" href="@Url.Action("Index", "Card", new { area = "Private" })"> @PresentationWebStrings.Header_Cards</a></li>
+                    <li><a id="notificationsLink" href="@Url.Action("Index", "Notification", new { area = "Private" })">@PresentationWebStrings.Header_Notification</a></li>
+                        
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="ml5 mr5">
+                        <a id="profileLink" href="@Url.Action("Index", "Profile", new { area = "Private" })" class="btn btn-default btn-navBar w100 mt5"> @(((ApplicationUserDto)Session[SessionConstants.CURRENT_SELECTED_USER]).Email) @*@PresentationWebStrings.Profile*@ <i class="icon-user"></i></a>
+                    </li>
+                    <li class="ml5 mr5">
+                        <a href="@Url.Action("LogOff", "Account", new { area = "" })" class="btn btn-default btn-navBar mt5 w100"> @PresentationWebStrings.Exit <i class="icon-signout"></i></a>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $.globalCalls = [];
+    $.globalCalls.abortAll = function () {
+        $(this).each(function (idx, call) { call.abort(); });
+        $.globalCalls.length = 0;
+    };
+
+    $(document).ready(function () {
+        $("#headerMenu").on("click", "a", function () { $.globalCalls.abortAll(); });
+    });
+</script>

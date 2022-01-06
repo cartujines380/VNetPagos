@@ -1,0 +1,129 @@
+﻿@using System.Configuration
+@using System.Globalization
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Utilities.Exportation.ExtensionMethods
+@model ICollection<VisaNet.Presentation.Web.Areas.Private.Models.PaymentHistoryModel>
+
+<!-- box del panel 3-->
+
+<div id="paymentsDiv" class="pageBox mb10">
+    <div class="formMargin">
+        <h4 class="upDownControler"> <a id="ocultar_payment_history">
+            <i id="payment_history_up" class="icon-chevron-up"></i>
+            <i id="payment_history_down" class="hide icon-chevron-down"></i>@PresentationWebStrings.Payment_History
+        </a>
+        </h4>
+
+        <div class="loadingMessaje" id="loadingHistory">
+            <div class="loading">@PresentationWebStrings.Loading_History</div>
+        </div>
+
+        <div id="history_data" class="hide">
+            @if (Model == null || !Model.Any())
+            {
+                <div id="payment_history" class="suggestionsBox">
+                    <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@PresentationWebStrings.Dashboard_No_Payments</h5>
+
+                </div>
+                <a href="@Url.Action("Service", "Pay", new { Area = "Pay" })" class="btn btn-default btn-link-box"><i class="icon-plus"></i>@PresentationWebStrings.Add_Payment</a>
+            }
+            else
+            {
+                <div id="payment_history" class="row">
+                    @foreach (var payment in Model)
+                    {
+                        <div class="col-md-6">
+                            <!-- item panel pagos realizados -->
+                            <div class="itemBox panelItem">
+                                <div class="row">
+                                    <div class="col-md-8 serviceInformation">
+                                        <div class="col-md-3 pr0 pl0 serviceImage">
+                                            @if (!String.IsNullOrEmpty(payment.ServiceImageUrl))
+                                            {
+                                                <img src="@payment.ServiceImageUrl" width="65" />
+                                            }
+                                            else
+                                            {
+                                                <img src="@ConfigurationManager.AppSettings["DefaultServiceImage"]" width="65" />
+                                            }
+                                        </div>
+                                        <div class="col-md-9 serviceDetail">
+                                            <ul>
+                                                <li>
+                                                    @if (!string.IsNullOrEmpty(payment.ServiceContainerName))
+                                                    {<span>@payment.ServiceContainerName - @payment.ServiceName </span>}
+                                                    else
+                                                    {<span>@payment.ServiceName </span>}
+                                                    <span class="shortDescription" title="@payment.ServiceDesc">
+                                                        @(string.IsNullOrEmpty(payment.ServiceDesc) ? string.Empty : " - " + @payment.ServiceDesc.Short(45))
+                                                    </span>
+                                                </li>
+                                                <li><span>@PresentationWebStrings.Payment_Card:</span> @payment.CardMask</li>
+                                                @{
+                                                    var amountDolars = string.Empty;
+                                                    var amountPesos = string.Empty;
+                                                    var conjuntion = string.Empty;
+
+                                                    if (payment.AmountDolars > 0)
+                                                    { amountDolars = "U$D " + payment.AmountDolars.ToString("##,#0.00", CultureInfo.CurrentCulture); }
+                                                    if (payment.AmountPesos > 0)
+                                                    { amountPesos = "$" + payment.AmountPesos.ToString("##,#0.00", CultureInfo.CurrentCulture); }
+                                                    if (payment.AmountDolars > 0 && payment.AmountPesos > 0)
+                                                    { conjuntion = " - "; }
+                                                }
+                                                <li><span>@PresentationWebStrings.Payment_Amount:</span> @amountDolars@conjuntion@amountPesos</li>
+                                                <li><span>@PresentationWebStrings.Payment_TransactionNumber:</span> @payment.TransactionNumber</li>
+                                                <li><span>@PresentationWebStrings.Payment_Date:</span> @payment.Date.ToShortDateString()</li>
+                                                @if (payment.Quotas > 1)
+                                                {
+                                                    <li><span>Cuotas: </span> @payment.Quotas</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 serviceActions">
+                                        <ul>
+                                            <li><a href="@Url.Action("SendCopyPaymentByEmail", "PaymentHistory", new { id = payment.Id, transactionNumber = payment.TransactionNumber })" class="send"><i class="icon-envelope"></i> @PresentationWebStrings.Payment_Send</a></li>
+                                            <li><a class="" target="_blank" href="@Url.Action("DownloadTicket", "Pay", new { id = payment.Id, transactionNumber = payment.TransactionNumber, Area = "Pay" })"><i class="icon-download-alt"></i> @PresentationWebStrings.Payment_Download</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- fin del item panel pagos realizados -->
+                        </div>
+                    }
+                </div>
+                <a href="@Url.Action("Index", "PaymentHistory")" class="btn btn-default btn-link pl0"><i class="icon-chevron-right"></i> @PresentationWebStrings.Payment_History_More</a>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var loadingMessages = ["Aguardá un instante, estamos obteniendo tus pagos.",
+           "Esta operación puede tardar algunos segundos.",
+           "Espere por favor.",
+           "Estamos teniendo demoras al consultar sus pagos, por favor aguarde."];
+
+        $("#ocultar_payment_history").click(function () {
+            $("#payment_history").toggle("slow");
+            if ($("#payment_history_up").hasClass("hide")) {
+                $("#payment_history_down").addClass("hide");
+                $("#payment_history_up").removeClass("hide");
+            } else {
+                $("#payment_history_up").addClass("hide");
+                $("#payment_history_down").removeClass("hide");
+            }
+        });
+
+        var div = $("#loadingHistory .loading");
+        var index = 0;
+        setInterval(function () {
+            div.text(loadingMessages[index]);
+            index = (index + 1) % loadingMessages.length;
+        }, 15000);
+    });
+</script>

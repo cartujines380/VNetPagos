@@ -1,0 +1,34 @@
+﻿@using VisaNet.Common.Resource.Presentation
+<div id="lbConfirmDelete" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>@PresentationAdminStrings.Reports_Transactions_Title_Cancel</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Hidden("lbHiddenUrl")
+                @Html.Hidden("lbHiddenId")
+                <p>@PresentationAdminStrings.Reports_Transactions_ConfirmCancel</p>
+                <p>
+                    <input type="checkbox" id="notify" />
+                    ¿Notificar al usuario si se realiza la cancelación de la transacción?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-danger lb-accept" id="lnkDeleteAccept">@PresentationAdminStrings.Common_Confirm</a>
+                <a href="#" class="btn lb-cancel" id="lnkDeleteCancel">@PresentationAdminStrings.Cancel</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#lnkDeleteCancel").click(function (e) {
+            e.preventDefault();
+            $("#lbConfirmDelete").modal("hide");
+        });
+
+    });
+</script>

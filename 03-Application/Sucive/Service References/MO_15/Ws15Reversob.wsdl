@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="GeoTribUy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlns="GeoTribUy" xmlns:tns1="GeoTribUy" name="Ws15Reversob" targetNamespace="GeoTribUy" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="GeoTribUy">
+      <xsd:complexType name="SDT_ListaAnu">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SDT_ListaAnu.SDT_ListaAnuItem" type="tns1:SDT_ListaAnu.SDT_ListaAnuItem" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SDT_ListaAnu.SDT_ListaAnuItem">
+        <xsd:all>
+          <xsd:element name="TipoDato" type="xsd:string" />
+          <xsd:element name="Dato" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="Ws15Reversob.Execute">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Sdt_listaanu" type="tns1:SDT_ListaAnu" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Ws15Reversob.ExecuteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Codigoretorno" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Mensajeretorno" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Ws15Reversob.ExecuteSoapIn">
+    <part name="parameters" element="tns1:Ws15Reversob.Execute" />
+  </message>
+  <message name="Ws15Reversob.ExecuteSoapOut">
+    <part name="parameters" element="tns1:Ws15Reversob.ExecuteResponse" />
+  </message>
+  <portType name="Ws15ReversobSoapPort">
+    <operation name="Execute">
+      <input message="tns1:Ws15Reversob.ExecuteSoapIn" />
+      <output message="tns1:Ws15Reversob.ExecuteSoapOut" />
+    </operation>
+  </portType>
+  <binding name="Ws15ReversobSoapBinding" type="tns1:Ws15ReversobSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Execute">
+      <soap:operation soapAction="GeoTribUyaction/AWS15REVERSOB.Execute" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Ws15Reversob">
+    <port name="Ws15ReversobSoapPort" binding="tns1:Ws15ReversobSoapBinding">
+      <soap:address location="http://montevideo.sucive.gub.uy/cows/servlet/aws15reversob" />
+    </port>
+  </service>
+</definitions>

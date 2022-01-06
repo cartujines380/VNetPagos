@@ -1,0 +1,156 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Domain.EntitiesDtos.ServiceDto
+
+<div id="lbTestCybersource" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                @if (Model != null)
+                {
+                    <h4>Test de conexi&oacute;n del servicio <strong>@Model.Name</strong> con Cybersource</h4>
+                    <br />
+
+                    <div class="loadingMessaje hidden" id="loadingDiv">
+                        <div class="loading">@PresentationAdminStrings.Loading_TestingConnection</div>
+                    </div>
+
+                    <div id="btnsRow">
+                        <p>Seleccione el Test que desea realizar:</p>
+                        <div class="row">
+                            <div class="col-md-4"><button class="btn btn-success w100" id="lnkTestCSWebApi">WebAPI</button></div>
+                            <div class="col-md-4"><button class="btn btn-success w100" id="lnkTestCSSecureAcceptance">Secure Acceptance</button></div>
+                            <div class="col-md-4"><button class="btn btn-success w100" id="lnkTestCSReports">Reportes</button></div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row hidden" id="responseDiv">
+                        <h5 style="text-align: center"><strong>Test de <span id="testName">@*nombre servicio*@</span></strong></h5>
+                        <h5 style="text-align: center">Resultado: <span id="testResult">@*resultado*@</span></h5>
+                    </div>
+
+                    <input type="hidden" id="ServiceId" name="ServiceId" value="@Model.Id" />
+
+                    <form id="payment_with_token_confirmation" method="POST" action="@ConfigurationManager.AppSettings["CybersourceFormUrl"]silent/pay">
+                        <div id="keysWithToken"></div>
+                    </form>
+                }
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn lb-cancel" id="lnkTestCSCancel">@PresentationAdminStrings.Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        //TEST WEBAPI
+        $("#lnkTestCSWebApi").click(function (e) {
+            e.preventDefault();
+
+            $('#loadingDiv').removeClass("hidden");
+            $('#btnsRow').addClass("hidden");
+            if (!$('#responseDiv').hasClass("hidden")) {
+                $('#responseDiv').addClass("hidden");
+            }
+            $('#testName').html("WebAPI");
+
+            var serviceId = $("#ServiceId").val();
+
+            $.ajax({
+                dataType: 'json',
+                type: "POST",
+                url: "@Url.Action("TestCybersourceWebApi", "Service")",
+                data: { serviceId: serviceId },
+                success: function (ret) {
+                    $('#loadingDiv').addClass("hidden");
+                    $('#btnsRow').removeClass("hidden");
+                    $('#testResult').html(ret.Message);
+                    $('#responseDiv').removeClass("hidden");
+                }
+            });
+        });
+
+        //TEST SECURE ACCEPTANCE
+        $("#lnkTestCSSecureAcceptance").click(function (e) {
+            e.preventDefault();
+
+            $('#loadingDiv').removeClass("hidden");
+            $('#btnsRow').addClass("hidden");
+            if (!$('#responseDiv').hasClass("hidden")) {
+                $('#responseDiv').addClass("hidden");
+            }
+            $('#testName').html("Secure Acceptance");
+
+            var serviceId = $("#ServiceId").val();
+
+            $.ajax({
+                dataType: 'json',
+                type: "POST",
+                url: "@Url.Action("TestCybersourceSecureAcceptance", "Service")",
+                data: { serviceId: serviceId, fpProfiler: "" },
+                success: function (ret) {
+                    if (ret.ResponseType == RESPONSE.SUCCESS) {
+                        $('#loadingDiv').addClass("hidden");
+                        $('#btnsRow').removeClass("hidden");
+
+                        $('#keysWithToken').html(ret.Content.keys);
+                        $('#payment_with_token_confirmation').submit();
+                        //$('#testResult').html("EXITOSO");
+                        //$('#responseDiv').removeClass("hidden");
+                    }
+                    if (ret.ResponseType == RESPONSE.ERROR) {
+                        $('#loadingDiv').addClass("hidden");
+                        $('#btnsRow').removeClass("hidden");
+                        $('#testResult').html(ret.Message);
+                        $('#responseDiv').removeClass("hidden");
+                    }
+                }
+            });
+        });
+
+        //TEST REPORTES
+        $("#lnkTestCSReports").click(function (e) {
+            e.preventDefault();
+
+            $('#loadingDiv').removeClass("hidden");
+            $('#btnsRow').addClass("hidden");
+            if (!$('#responseDiv').hasClass("hidden")) {
+                $('#responseDiv').addClass("hidden");
+            }
+            $('#testName').html("Reportes");
+
+            var serviceId = $("#ServiceId").val();
+
+            $.ajax({
+                dataType: 'json',
+                type: "POST",
+                url: "@Url.Action("TestCybersourceReports", "Service")",
+                data: { serviceId: serviceId },
+                success: function (ret) {
+                    $('#loadingDiv').addClass("hidden");
+                    $('#btnsRow').removeClass("hidden");
+                    $('#testResult').html(ret.Message);
+                    $('#responseDiv').removeClass("hidden");
+                }
+            });
+        });
+
+        $("#lnkTestCSCancel").click(function (e) {
+            e.preventDefault();
+            $("#lbTestCybersource").modal("hide");
+        });
+
+    });
+
+</script>
+

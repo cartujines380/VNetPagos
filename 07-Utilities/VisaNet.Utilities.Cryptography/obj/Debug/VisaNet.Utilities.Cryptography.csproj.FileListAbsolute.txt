@@ -1,0 +1,6 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Cryptography\bin\Debug\VisaNet.Utilities.Cryptography.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Cryptography\bin\Debug\VisaNet.Utilities.Cryptography.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Cryptography\obj\Debug\VisaNet.Utilities.Cryptography.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Cryptography\obj\Debug\VisaNet.Utilities.Cryptography.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Cryptography\obj\Debug\VisaNet.Utilities.Cryptography.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.Cryptography\obj\Debug\VisaNet.Utilities.Cryptography.csprojResolveAssemblyReference.cache

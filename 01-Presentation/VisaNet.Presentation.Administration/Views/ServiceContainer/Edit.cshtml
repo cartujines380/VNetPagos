@@ -1,0 +1,124 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ServiceContainerModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.ServiceContainer_Edit_Title</h2>
+
+@using (Html.BeginForm("Edit", "ServiceContainer", FormMethod.Post, new { enctype = "multipart/form-data", id = "formServiceContainer" }))
+{
+    <div class="row ">
+        <div class="col-lg-10">
+
+            @* SECCIONES *@
+            @Html.Partial("_NameSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_MainConfiguration</h4>
+            @Html.Partial("_MainConfigurationSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_Gateway_Section</h4>
+            @Html.Partial("_GatewaysSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.CommunicationExternal</h4>
+            @Html.Partial("_ExternalSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_Params_Section</h4>
+            @Html.Partial("_ReferencesSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_Detail_Section</h4>
+            @Html.Partial("_DetailsSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationWebStrings.Service_Intro</h4>
+            @Html.Partial("_ServiceIntroSection", Model)
+
+            <input type="hidden" id="initialSelectedBinGroups" />
+            @Html.HiddenFor(x => x.PropagateChangesToChildServices)
+
+            @* BOTONES *@
+            <div class="row">
+                <div class="col-lg-6">
+                    @Html.HiddenFor(s => s.Id)
+                    <a href="@Url.Action("Index", "ServiceContainer")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+                    <a href="#" id="btnGuardar" class="btn btn-default lbApprove">
+                        <strong>@PresentationAdminStrings.Save</strong>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+@Html.Partial("_RegexLightbox")
+@Html.Partial("_ConfirmEditLightbox", Model)
+
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+        loadEditor("@Html.IdFor(x => x.ContentIntro)");
+
+        if ($('#imageSee').length > 0) {
+            $('#Image').addClass('hide');
+        }
+        $("#dImage").click(function (e) {
+            e.preventDefault();
+            $("#DeleteImage").val(true);
+            $("#imageSee").addClass("hide");
+            $("#dImage").addClass("hide");
+            $('#Image').removeClass("hide");
+            $('#imageNameLabel').addClass("hide");
+            $('#@Model.Image').val("");
+        });
+
+        $("a.lbApprove").click(function () {
+            var initialBinGroups = $("#initialSelectedBinGroups").val().split(',');
+            initialBinGroups.sort();
+
+            var newBinGroups = $("#@Html.IdFor(x => x.BinGroups)").val();
+            newBinGroups.sort();
+
+            if (initialBinGroups.length == newBinGroups.length && initialBinGroups.every(function (v, i) { return v === newBinGroups[i] })) {
+                $("#@Html.IdFor(x => x.PropagateChangesToChildServices)").val(false);
+                showBlockUI('Procesando...');
+                $(this).parents("form").submit();
+            } else {
+                //Si cambiaron los grupos de Bins entonces se muestra modal para confirmar si se desea propagar cambios
+                $("#@Html.IdFor(x => x.PropagateChangesToChildServices)").val(true); //Por defecto true, pero puede desmarcarse
+                $("#lbConfirmEdit").modal("show");
+            }
+        });
+
+        $(".triggerRegexModal").click(function(e) {
+            $("#regexModal").modal('toggle');
+        });
+
+        $("#btnShowReferences").click(function (e) {
+            e.preventDefault();
+            $("#divShowReferences").addClass("hidden");
+            $("#divReferences").removeClass("hidden");
+        });
+
+        @if (ViewBag.SelectedBinGroups != null)
+        {
+            <text>
+            var rawSelectedBinGroups = @Html.Raw(ViewBag.SelectedBinGroups);
+            $("#BinGroups").on('loaded.bs.select', function (e) {
+                $("#BinGroups").selectpicker('val', rawSelectedBinGroups);
+            });
+            $("#initialSelectedBinGroups").val(rawSelectedBinGroups);
+            </text>
+        }
+
+    });
+
+    </script>

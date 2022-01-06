@@ -1,0 +1,630 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AnonymousUserDto_Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="AnonymousUserDto_Email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="AnonymousUserDto_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="AnonymousUserDto_Surname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="ApplicationUserDto_Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="ApplicationUserDto_CallCenterKey" xml:space="preserve">
+    <value>Clave callcenter</value>
+  </data>
+  <data name="ApplicationUserDto_Email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="ApplicationUserDto_Id" xml:space="preserve">
+    <value>Seleccione usuario del sitio público VISANET</value>
+  </data>
+  <data name="ApplicationUserDto_IdentityNumber" xml:space="preserve">
+    <value>Cédula de identidad</value>
+  </data>
+  <data name="ApplicationUserDto_MobileNumber" xml:space="preserve">
+    <value>Móvil</value>
+  </data>
+  <data name="ApplicationUserDto_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="ApplicationUserDto_PhoneNumber" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="ApplicationUserDto_Surname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="CardDto_Active" xml:space="preserve">
+    <value>Activa</value>
+  </data>
+  <data name="CardDto_Bin" xml:space="preserve">
+    <value>BIN</value>
+  </data>
+  <data name="CardDto_ClientAddress" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="CardDto_ClientEmail" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="CardDto_ClientIdentityNumber" xml:space="preserve">
+    <value>Cédula de identidad</value>
+  </data>
+  <data name="CardDto_ClientMobileNumber" xml:space="preserve">
+    <value>Móvil</value>
+  </data>
+  <data name="CardDto_ClientName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="CardDto_ClientPhoneNumber" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="CardDto_ClientSurname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="CardDto_Deleted" xml:space="preserve">
+    <value>Eliminada</value>
+  </data>
+  <data name="CardDto_DueDate" xml:space="preserve">
+    <value>Fecha de vencimiento</value>
+  </data>
+  <data name="CardDto_MaskedNumber" xml:space="preserve">
+    <value>Número de tarjeta</value>
+  </data>
+  <data name="CardDto_Name" xml:space="preserve">
+    <value>Nombre del titular de la tarjeta</value>
+  </data>
+  <data name="CardDto_SecurityCode" xml:space="preserve">
+    <value>Código de seguridad</value>
+  </data>
+  <data name="CardDto_Type" xml:space="preserve">
+    <value>Tipo de tarjeta</value>
+  </data>
+  <data name="ContactDto_Comments" xml:space="preserve">
+    <value>Comentarios</value>
+  </data>
+  <data name="ContactDto_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="ContactDto_Email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="ContactDto_Message" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
+  <data name="ContactDto_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="ContactDto_QueryType" xml:space="preserve">
+    <value>Tipo de consulta</value>
+  </data>
+  <data name="ContactDto_Subject" xml:space="preserve">
+    <value>Asunto</value>
+  </data>
+  <data name="ContactDto_Surname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="ContactDto_User_Taken" xml:space="preserve">
+    <value>Usuario que trabajo en el contacto</value>
+  </data>
+  <data name="CybersourceAccessKey" xml:space="preserve">
+    <value>Llave de acceso en Cybersource (AccessKey)</value>
+  </data>
+  <data name="CybersourceProfileId" xml:space="preserve">
+    <value>Identidicador de perfil en Cybersource (ProfileId)</value>
+  </data>
+  <data name="CybersourceSecretKey" xml:space="preserve">
+    <value>Llave secreta en Cybersource (SecretKey)</value>
+  </data>
+  <data name="DiscountDto_Additional" xml:space="preserve">
+    <value>Descuento adicional</value>
+  </data>
+  <data name="DiscountDto_CardType" xml:space="preserve">
+    <value>Tipo de tarjeta</value>
+  </data>
+  <data name="DiscountDto_DiscountLabel" xml:space="preserve">
+    <value>Etiqueta</value>
+  </data>
+  <data name="DiscountDto_DiscountType" xml:space="preserve">
+    <value>Tipo de descuento</value>
+  </data>
+  <data name="DiscountDto_Fixed" xml:space="preserve">
+    <value>Descuento fijo</value>
+  </data>
+  <data name="DiscountDto_From" xml:space="preserve">
+    <value>Fecha desde</value>
+  </data>
+  <data name="DiscountDto_MaximumAmount" xml:space="preserve">
+    <value>Monto máximo (UI)</value>
+  </data>
+  <data name="DiscountDto_To" xml:space="preserve">
+    <value>Fecha hasta</value>
+  </data>
+  <data name="FaqDto_Answer" xml:space="preserve">
+    <value>Respuesta</value>
+  </data>
+  <data name="FaqDto_Order" xml:space="preserve">
+    <value>Orden</value>
+  </data>
+  <data name="FaqDto_Question" xml:space="preserve">
+    <value>Pregunta</value>
+  </data>
+  <data name="HomePageDto_HomePageItem1" xml:space="preserve">
+    <value>Pastilla 1</value>
+  </data>
+  <data name="HomePageDto_HomePageItem2" xml:space="preserve">
+    <value>Pastilla 2</value>
+  </data>
+  <data name="HomePageDto_HomePageItem3" xml:space="preserve">
+    <value>Pastilla 3</value>
+  </data>
+  <data name="HomePageItemDto_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="HomePageItemDto_File" xml:space="preserve">
+    <value>Archivo</value>
+  </data>
+  <data name="HomePageItemDto_Headline1" xml:space="preserve">
+    <value>Cabezal 1</value>
+  </data>
+  <data name="HomePageItemDto_Headline2" xml:space="preserve">
+    <value>Cabezal 2</value>
+  </data>
+  <data name="HomePageItemDto_Image" xml:space="preserve">
+    <value>Imagen</value>
+  </data>
+  <data name="HomePageItemDto_LinkName" xml:space="preserve">
+    <value>Texto del link</value>
+  </data>
+  <data name="HomePageItemDto_LinkUrl" xml:space="preserve">
+    <value>Url</value>
+  </data>
+  <data name="LogDto_DateTime" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="LogDto_LogCommunicationType" xml:space="preserve">
+    <value>Tipo de comunicación</value>
+  </data>
+  <data name="LogDto_LogType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="LogDto_LogUserType" xml:space="preserve">
+    <value>Tipo de usuario</value>
+  </data>
+  <data name="LogDto_Message" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="LogDto_UserName" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="LogPaymentCyberSourceDto_Decision" xml:space="preserve">
+    <value>Decisión</value>
+  </data>
+  <data name="LogPaymentCyberSourceDto_Message" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
+  <data name="LogPaymentCyberSourceDto_ReasonCode" xml:space="preserve">
+    <value>Reason Code</value>
+  </data>
+  <data name="LogPaymentCyberSourceDto_ReqAmount" xml:space="preserve">
+    <value>Monto</value>
+  </data>
+  <data name="LogPaymentCyberSourceDto_ReqCardExpiryDate" xml:space="preserve">
+    <value>Fecha de vencimiento de tarjeta</value>
+  </data>
+  <data name="LogPaymentCyberSourceDto_ReqCardNumber" xml:space="preserve">
+    <value>Número de tarjeta</value>
+  </data>
+  <data name="LogPaymentCyberSourceDto_ReqCurrency" xml:space="preserve">
+    <value>Moneda</value>
+  </data>
+  <data name="LogPaymentCyberSourceDto_ReqTransactionType" xml:space="preserve">
+    <value>Tipo de transacción</value>
+  </data>
+  <data name="LogPaymentCyberSourceDto_TransactionDateTime" xml:space="preserve">
+    <value>Fecha de transacción</value>
+  </data>
+  <data name="LogPaymentCyberSourceDto_TransactionId" xml:space="preserve">
+    <value>ID de transacción</value>
+  </data>
+  <data name="Notifications_Category" xml:space="preserve">
+    <value>Categoría</value>
+  </data>
+  <data name="Notifications_Comments" xml:space="preserve">
+    <value>Comentarios</value>
+  </data>
+  <data name="Notifications_DateTime" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="Notifications_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Notifications_Detail" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="Notifications_Level" xml:space="preserve">
+    <value>Severidad</value>
+  </data>
+  <data name="Notifications_Resolved" xml:space="preserve">
+    <value>Resuelto</value>
+  </data>
+  <data name="ParametersDto_Banred" xml:space="preserve">
+    <value>Código banco Banred</value>
+  </data>
+  <data name="ParametersDto_Contact" xml:space="preserve">
+    <value>Mail de contacto</value>
+  </data>
+  <data name="ParametersDto_Cybersource" xml:space="preserve">
+    <value>Código Cybersource</value>
+  </data>
+  <data name="ParametersDto_ErrorNotification" xml:space="preserve">
+    <value>Mail de notificación de errores</value>
+  </data>
+  <data name="ParametersDto_GeocomCode" xml:space="preserve">
+    <value>Codigo Geocom</value>
+  </data>
+  <data name="ParametersDto_LoginNumberOfTries" xml:space="preserve">
+    <value>Cantidad de intentos fallidos previo al bloqueo de cuenta</value>
+  </data>
+  <data name="ParametersDto_SendingEmail" xml:space="preserve">
+    <value>Mail de envío de mails</value>
+  </data>
+  <data name="ParametersDto_Sistarbanc" xml:space="preserve">
+    <value>Código banco Sistarbanc</value>
+  </data>
+  <data name="ParametersDto_Sucive" xml:space="preserve">
+    <value>Código Sucive</value>
+  </data>
+  <data name="PaymentDto_AmountToCS" xml:space="preserve">
+    <value>Monto total a CyberSource</value>
+  </data>
+  <data name="PaymentDto_BillAmount" xml:space="preserve">
+    <value>Monto factura</value>
+  </data>
+  <data name="PaymentDto_BillCurrency" xml:space="preserve">
+    <value>Moneda factura</value>
+  </data>
+  <data name="PaymentDto_BillDiscountAmount" xml:space="preserve">
+    <value>Monto del descuento factura</value>
+  </data>
+  <data name="PaymentDto_BillDiscountApplied" xml:space="preserve">
+    <value>Descuento aplicado factura</value>
+  </data>
+  <data name="PaymentDto_BillExpirationDate" xml:space="preserve">
+    <value>Fecha de vencimiento de factura</value>
+  </data>
+  <data name="PaymentDto_BillExternalId" xml:space="preserve">
+    <value>Número de factura</value>
+  </data>
+  <data name="PaymentDto_BillFinalConsumer" xml:space="preserve">
+    <value>Consumidor final</value>
+  </data>
+  <data name="PaymentDto_BillTaxedAmount" xml:space="preserve">
+    <value>Monto gravado factura</value>
+  </data>
+  <data name="PaymentDto_CardBin" xml:space="preserve">
+    <value>BIN</value>
+  </data>
+  <data name="PaymentDto_CardDueDate" xml:space="preserve">
+    <value>Fecha de vencimiento de tarjeta</value>
+  </data>
+  <data name="PaymentDto_CardMaskedNumber" xml:space="preserve">
+    <value>Número de tarjeta</value>
+  </data>
+  <data name="PaymentDto_CardType" xml:space="preserve">
+    <value>Tipo de tarjeta</value>
+  </data>
+  <data name="PaymentDto_ClientAddress" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="PaymentDto_ClientEmail" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="PaymentDto_ClientName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="PaymentDto_ClientSurname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="PaymentDto_CSAuthCode" xml:space="preserve">
+    <value>Código de aprobación de CyberSource</value>
+  </data>
+  <data name="PaymentDto_CSAuthTime" xml:space="preserve">
+    <value>Fecha aprobación de CyberSource</value>
+  </data>
+  <data name="PaymentDto_CSRequestCurrency" xml:space="preserve">
+    <value>Moneda de pago a CyberSource</value>
+  </data>
+  <data name="PaymentDto_CSTransactionIdentifier" xml:space="preserve">
+    <value>Id Transacción en CyberSource</value>
+  </data>
+  <data name="PaymentDto_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="PaymentDto_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="PaymentDto_Discount" xml:space="preserve">
+    <value>Monto del descuento del pago</value>
+  </data>
+  <data name="PaymentDto_Gateway" xml:space="preserve">
+    <value>Pasarela de pago</value>
+  </data>
+  <data name="PaymentDto_GatewayTransactionId" xml:space="preserve">
+    <value>Id Transacción en pasarela</value>
+  </data>
+  <data name="PaymentDto_PaymentDescription" xml:space="preserve">
+    <value>Descripción del pago</value>
+  </data>
+  <data name="PaymentDto_PaymentStatus" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="PaymentDto_PaymentType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="PaymentDto_ReferenceNumber" xml:space="preserve">
+    <value>Número de referencia</value>
+  </data>
+  <data name="PaymentDto_ReferenceNumbers" xml:space="preserve">
+    <value>Números de referencia</value>
+  </data>
+  <data name="PaymentDto_ServiceAssociatedDescription" xml:space="preserve">
+    <value>Descripción del servicio</value>
+  </data>
+  <data name="PaymentDto_ServiceCategoryName" xml:space="preserve">
+    <value>Categoría de servicios</value>
+  </data>
+  <data name="PaymentDto_ServiceId" xml:space="preserve">
+    <value>Servicio a pagar</value>
+  </data>
+  <data name="PaymentDto_ServiceName" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="PaymentDto_SucivePreBillNumber" xml:space="preserve">
+    <value>Número de pre-factura Sucive</value>
+  </data>
+  <data name="PaymentDto_TaxedAmount" xml:space="preserve">
+    <value>Monto gravado del pago</value>
+  </data>
+  <data name="PaymentDto_TotalAmount" xml:space="preserve">
+    <value>Monto total del pago</value>
+  </data>
+  <data name="PaymentDto_TransactionNumber" xml:space="preserve">
+    <value>Número de transacción</value>
+  </data>
+  <data name="PaymentDto_UniqueIdentifier" xml:space="preserve">
+    <value>ID de pasarela de pago</value>
+  </data>
+  <data name="RoleDto_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="RoleModel_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="ServiceAssociatedDto_AutomaticPayment" xml:space="preserve">
+    <value>Pago programado</value>
+  </data>
+  <data name="ServiceAssociatedDto_CardBin" xml:space="preserve">
+    <value>BIN</value>
+  </data>
+  <data name="ServiceAssociatedDto_CardDueDate" xml:space="preserve">
+    <value>Fecha de vencimiento de tarjeta</value>
+  </data>
+  <data name="ServiceAssociatedDto_CardMaskedNumber" xml:space="preserve">
+    <value>Número de tarjeta</value>
+  </data>
+  <data name="ServiceAssociatedDto_CardType" xml:space="preserve">
+    <value>Tipo de tarjeta</value>
+  </data>
+  <data name="ServiceAssociatedDto_ClientAddress" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="ServiceAssociatedDto_ClientEmail" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="ServiceAssociatedDto_ClientIdentityNumber" xml:space="preserve">
+    <value>Cédula de identidad</value>
+  </data>
+  <data name="ServiceAssociatedDto_ClientMobileNumber" xml:space="preserve">
+    <value>Móvil</value>
+  </data>
+  <data name="ServiceAssociatedDto_ClientName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="ServiceAssociatedDto_ClientPhoneNumber" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="ServiceAssociatedDto_ClientSurname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="ServiceAssociatedDto_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="ServiceAssociatedDto_Enabled" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="ServiceAssociatedDto_ReferenceNumber" xml:space="preserve">
+    <value>Número de referencia</value>
+  </data>
+  <data name="ServiceAssociatedDto_ServiceCategoryName" xml:space="preserve">
+    <value>Categoría de servicios</value>
+  </data>
+  <data name="ServiceAssociatedDto_ServiceName" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="Service_CybersourceId" xml:space="preserve">
+    <value>Identificador de servicio en cybersource (MerchantId)</value>
+  </data>
+  <data name="SubscriberDto_Email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="SubscriberDto_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="SubscriberDto_Surname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="SystemUserDto_Enabled" xml:space="preserve">
+    <value>Habilitado</value>
+  </data>
+  <data name="SystemUserDto_LDAPUserName" xml:space="preserve">
+    <value>Nombre de Usuario (LDAP)</value>
+  </data>
+  <data name="SystemUserDto_Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="SystemUserDto_SystemUserType" xml:space="preserve">
+    <value>Tipo de usuario</value>
+  </data>
+  <data name="Tc33Dto_CreationDate" xml:space="preserve">
+    <value>Fecha de Creación</value>
+  </data>
+  <data name="Tc33Dto_CreationUser" xml:space="preserve">
+    <value>Usuario de Creación</value>
+  </data>
+  <data name="Tc33Dto_InputFileName" xml:space="preserve">
+    <value>Nombre de Archivo de Entrada</value>
+  </data>
+  <data name="Tc33Dto_OutputFileName" xml:space="preserve">
+    <value>Nombre de Archivo de Salida</value>
+  </data>
+  <data name="Tc33Dto_State" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="MembershipUserDto_Active" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="MembershipUserDto_FailLogInCount" xml:space="preserve">
+    <value>Fallos de Inicio de Sesión</value>
+  </data>
+  <data name="ParametersDto_SistarbancBrou" xml:space="preserve">
+    <value>Código banco Sistarbanc Brou</value>
+  </data>
+  <data name="CardDto_Description" xml:space="preserve">
+    <value>Descripción de la tarjeta</value>
+  </data>
+  <data name="ContactDto_PhoneNumber" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+</root>

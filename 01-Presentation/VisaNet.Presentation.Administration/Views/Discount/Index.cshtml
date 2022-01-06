@@ -1,0 +1,77 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Discounts</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <h2></h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>@PresentationAdminStrings.CardType <i class=""></i></th>
+                        <th>@PresentationAdminStrings.MaximumAmount <i class=""></i></th>
+                        <th>@PresentationAdminStrings.From <i class=""></i></th>
+                        <th>@PresentationAdminStrings.To <i class=""></i></th>
+                        <th>@PresentationAdminStrings.Fixed <i class=""></i></th>
+                        <th>@PresentationAdminStrings.Additional <i class=""></i></th>
+                        <th>@PresentationAdminStrings.DiscountType <i class=""></i></th>
+                        <th>@PresentationAdminStrings.DiscountLabel <i class=""></i></th>
+                        <th><i class=""></i></th>
+                        <th><i class=""></i></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var dataTableFilters;
+        dataTableFilters = applyDatatableNoFilters($('table'),
+            [0],
+            [
+                { "mDataProp": "CardType", "bSortable": true },
+                { "mDataProp": "MaximumAmount", "bSortable": true },
+                { "mDataProp": "From", "bSortable": true },
+                { "mDataProp": "To", "bSortable": true },
+                { "mDataProp": "Fixed", "bSortable": true },
+                { "mDataProp": "Additional", "bSortable": true },
+                { "mDataProp": "DiscountType", "bSortable": true },
+                { "mDataProp": "DiscountLabel", "bSortable": true },
+                {
+                    "sName": "Details",
+                    "sClass": "column-icon",
+                    "sDefaultContent": "",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "fnRender": function (oObj) {
+                        return '@Html.ActionGridActionLink(Actions.DiscountDetails, "<i class=\"fa fa-search\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                    }
+                },
+                {
+                    "sName": "Edit",
+                    "sClass": "column-icon",
+                    "sDefaultContent": "",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "fnRender": function (oObj) {
+                        return '@Html.ActionGridActionLink(Actions.DiscountEdit, "<i class=\"fa fa-edit\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                    }
+                }
+            ],
+            '@Url.Action("AjaxHandler", "Discount")', null, [[0, "asc"]]
+        );
+
+    });
+
+</script>

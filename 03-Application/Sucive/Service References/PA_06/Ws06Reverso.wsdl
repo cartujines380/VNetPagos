@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="GeoTribUy" xmlns:wsdlns="GeoTribUy" name="Ws06Reverso" targetNamespace="GeoTribUy" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="GeoTribUy">
+      <xsd:element name="Ws06Reverso.Execute">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Numeroprefactura" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Idpadcod" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Ws06Reverso.ExecuteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Codigoretorno" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Mensajeretorno" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Ws06Reverso.ExecuteSoapIn">
+    <part name="parameters" element="wsdlns:Ws06Reverso.Execute" />
+  </message>
+  <message name="Ws06Reverso.ExecuteSoapOut">
+    <part name="parameters" element="wsdlns:Ws06Reverso.ExecuteResponse" />
+  </message>
+  <portType name="Ws06ReversoSoapPort">
+    <operation name="Execute">
+      <input message="wsdlns:Ws06Reverso.ExecuteSoapIn" />
+      <output message="wsdlns:Ws06Reverso.ExecuteSoapOut" />
+    </operation>
+  </portType>
+  <binding name="Ws06ReversoSoapBinding" type="wsdlns:Ws06ReversoSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Execute">
+      <soap:operation soapAction="GeoTribUyaction/AWS06REVERSO.Execute" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Ws06Reverso">
+    <port name="Ws06ReversoSoapPort" binding="wsdlns:Ws06ReversoSoapBinding">
+      <soap:address location="http://paysandu.sucive.gub.uy/cows/servlet/aws06reverso" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,38 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.HighwayEmailUpload</h2>
+
+@using (Html.BeginForm("ProccessFile", "UploadHighwayEmail", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <label>Cargar archivo:</label>
+                <input class="col-md-12" type="file" name="inputFile" id="inputFile" />
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <br />
+            <div class="col-xs-6 p5l pr0">
+                <a class="btn btn-default btn-standar mt10 w100" id="sendInputFile">@PresentationCoreMessages.Common_Proccess</a>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        
+        $("#sendInputFile").click(function (e) {
+            e.preventDefault();
+            form.submit();
+        });
+
+    });
+</script>

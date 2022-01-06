@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/_HighwayLayout.cshtml";
+}
+
+
+@*@using (Html.BeginForm("Index", "AppAdmission", FormMethod.Post, new { @class = "form" })){*@
+
+<form action="https://demouy.hexacta.com:441/AppAdmission" method="POST" class="form">
+
+    <label for="id">IdApp</label>
+    <input type="text" value="asur" name="id" id="id" />
+
+    <label for="Email">Email</label>
+    <input type="text" value="rfernandez@hexacta.com" name="Email" id="Email" />
+
+    <label for="Nombre">Nombre</label>
+    <input type="text" value="Rodrigo" name="Nombre" id="Nombre" />
+
+    <label for="Apellido">Apellido</label>
+    <input type="text" value="Fernandez" name="Apellido" id="Apellido" />
+
+    <label for="Direccion">Direccion</label>
+    <input type="text" value="asd" name="Direccion" id="Direccion" />
+
+    <label for="Telefono">Telefono</label>
+    <input type="text" value="123456789" name="Telefono" id="Telefono" />
+
+    <label for="Movil">Movil</label>
+    <input type="text" value="123456789" name="Movil" id="Movil" />
+
+    <label for="CI">CI</label>
+    <input type="text" value="42016316" name="CI" id="CI" />
+
+    <label for="PermiteCambioEmail">CIPermiteCambioEmaillabel</label>
+    <input type="text" value="N" name="PermiteCambioEmail" id="PermiteCambioEmail" />
+
+    <label for="IdOperacion">IdOperacion</label>
+    <input type="text" value="" name="IdOperacion" id="IdOperacion" />
+
+    <label for="UrlCallback">UrlCallback</label>
+    <input type="text" value="www.googl.com" name="UrlCallback" id="UrlCallback" />
+
+    <label for="RegisteredUser">RegisteredUser</label>
+    <input type="text" value="true" name="RegisteredUser" id="RegisteredUser" />
+
+    <input type="submit" value="Enviar" />
+
+</form>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var random = Math.floor((Math.random() * 1000000000000000) + 1);
+
+        $("#IdOperacion").val(random);
+    });
+</script>

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="VisaNet.WebService.VisaWCF.VisaNetAccess" CodeBehind="VisaNetAccess.svc.cs" %>

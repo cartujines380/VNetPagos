@@ -1,0 +1,22 @@
+﻿@model VisaNet.Presentation.Web.Areas.Debit.Models.DebitModel
+
+<div class="row">
+    <div class="col-md-6">
+        <div> @Html.LabelFor(model => model.CommerceModel.ProductSelected)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        </div>
+        <select data-val="true" data-val-required="El campo es requerido." id="@Html.IdFor(m => m.CommerceModel.ProductSelected)" name="@Html.NameFor(m => m.CommerceModel.ProductSelected)">
+            @foreach (var i in Model.CommerceModel.ProductosListModel)
+            {
+                <option value="@i.Id" @(((Model != null) && (Model.CommerceModel.ProductSelected != Guid.Empty) && (Model.CommerceModel.ProductSelected == i.Id)) ? "selected='selected'" : string.Empty)>@i.Description</option>
+            }
+        </select>
+        @Html.ValidationMessageFor(m => m.CommerceModel.ProductSelected)
+    </div>
+</div>
+@Html.HiddenFor(x => x.CommerceModel.Name)
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#@Html.IdFor(m => Model.CommerceModel.ProductSelected)").combobox();
+    });
+</script>

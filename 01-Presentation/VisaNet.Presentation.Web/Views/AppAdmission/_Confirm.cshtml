@@ -1,0 +1,57 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@model VisaNet.Presentation.Web.Models.AppAdmissionModel
+
+<div id="lbConfirmAssociation" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <a class="brandVisaNet fLeft"></a>
+                    </div>
+                    <div class="col-xs-6"><a class="brandVisa fRight"></a></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h4 class="modal-title">Confirmar registro</h4>
+
+                <h4>
+                    Al aceptar estás <span id="textConfirm">confirmando tu registro como usuario de VisaNetPagos y </span>agregando a @Model.ServiceName a tu lista de servicios adheridos.
+                </h4>
+                <h4>
+                    Podés empezar a utilizar inmediatamente el servicio @Model.ServiceName
+                    con la tarjeta VISA ingresada; pero para utilizar el resto de los servicios
+                    ofrecidos en VisaNetPagos y administrar tu usuario debés confirmar tu
+                    registro en VisaNetPagos siguiendo las instrucciones que se enviarán
+                    por correo electrónico a la dirección <span id="emailConfirm"></span>.
+                </h4>
+
+                @if (Model.PostAssociationDescLines != null)
+                {
+                    <br />
+                    <h4 class="modal-title">Condiciones del servicio</h4>
+
+                    foreach (var line in Model.PostAssociationDescLines)
+                    {
+                        <h4>@line</h4>
+                    }
+                }
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-6 p5r">
+                        <button type="button" class="btn btn-default btn-cancelar w100" data-dismiss="modal">@PresentationWebStrings.Cancel <i class="icon-remove"></i></button>
+                    </div>
+                    <div class="col-xs-6 p5l">
+                        <button id="btnConfirm" type="button" class="btn btn-default btn-siguiente w100">ACEPTAR <i class="icon-chevron-sign-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

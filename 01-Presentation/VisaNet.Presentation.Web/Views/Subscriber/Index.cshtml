@@ -1,0 +1,80 @@
+﻿@using System.Configuration
+@using System.Web.Mvc.Html
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.SubscriberModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container p25t">
+
+    <!-- area de titulo para secciones que no son wizard-->
+    <div class="row">
+        <div class="col-md-8">
+            <h3 class="mt5 nameSection">@PresentationWebStrings.Newsletter</h3>
+        </div>
+        <div class="col-md-4"> </div>
+        <div class="clearfix"></div>
+        <div class="horizontalLineGrey"></div>
+    </div>
+    <!-- fin del area de titulo para secciones que no son wizard -->
+    @using (Html.BeginForm("Create", "Subscriber", FormMethod.Post, new { id = "frmSubmit" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="pageBox mb20 p35b">
+            <div class="formMargin">
+                <!-- campos obligatorios -->
+                <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+                <!-- campos obligatorios -->
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(p => p.Name) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Name, new { @class = "w100", @placeholder = PresentationWebStrings.Name_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Name)
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(p => p.Surname) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Surname, new { @class = "w100", @placeholder = PresentationWebStrings.Surname_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Surname)
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(p => p.Email) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Email, new { @class = "w100", @placeholder = PresentationWebStrings.Email_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Email)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Label(PresentationWebStrings.Captcha_Info) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        <div class="g-recaptcha" data-sitekey="@ConfigurationManager.AppSettings["RecaptchaPublicKey"]"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- fin del formMargin-->
+        </div>
+        <div class="row buttonsActionsBox">
+            <div class="col-md-4 pl0 pr0">
+                <div class="col-xs-6  pr0 pl0">
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-default btn-cancelar mt10 w100" role="button"> @PresentationWebStrings.Cancel <i class="icon-remove"></i></a>
+                </div>
+                <div class="col-xs-6 p5l pr0">
+                    <button type="submit" id="btnSend" class="btn btn-default btn-action mt10 w100 lbApprove">@PresentationWebStrings.Subscriber_Send <i class="icon-ok"></i></button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    }
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#frmSubmit").submit(function () {
+            if ($("#frmSubmit").valid()) { showLoaderFullScreen(); }
+        });
+
+        @*$("#btnReload").click(function (e) {
+            e.preventDefault();
+            $("#img").attr("src", "@Url.Action("GetCaptcha", "Home")?" + new Date().getTime());
+        });*@
+    });
+</script>

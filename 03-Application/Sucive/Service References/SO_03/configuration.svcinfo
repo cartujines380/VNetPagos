@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.BasicHttpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;Ws03ConsultaDeudaCCSoapBinding12&quot; /&gt;" bindingType="basicHttpBinding" name="Ws03ConsultaDeudaCCSoapBinding12" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://soriano.sucive.gub.uy/cows/servlet/aws03consultadeudacc&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;Ws03ConsultaDeudaCCSoapBinding12&quot; contract=&quot;SO_03.Ws03ConsultaDeudaCCSoapPort&quot; name=&quot;Ws03ConsultaDeudaCCSoapPort12&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://soriano.sucive.gub.uy/cows/servlet/aws03consultadeudacc&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;Ws03ConsultaDeudaCCSoapBinding12&quot; contract=&quot;SO_03.Ws03ConsultaDeudaCCSoapPort&quot; name=&quot;Ws03ConsultaDeudaCCSoapPort12&quot; /&gt;" contractName="SO_03.Ws03ConsultaDeudaCCSoapPort" name="Ws03ConsultaDeudaCCSoapPort12" />
+  </endpoints>
+</configurationSnapshot>

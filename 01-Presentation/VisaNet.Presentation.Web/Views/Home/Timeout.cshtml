@@ -1,0 +1,36 @@
+﻿@using System.Web.Optimization
+@using VisaNet.Common.Resource.Presentation
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Visa Pagos Wizard</title>
+    @*@Styles.Render("~/Content/style")*@
+    @Styles.Render("~/Content/css/style")
+    @Styles.Render("~/Content/font/font-awesome/css/style")
+    @*@Styles.Render("~/Content/font/font-awesome/fonts/style")*@
+
+    @Scripts.Render("~/Scripts/files")
+    @Scripts.Render("~/Scripts/js/files")
+</head>
+
+<body>
+
+    <!-- Area de contenidos -->
+
+    <div class="container p25t">
+        <div class="pageBox mb20">
+            <div class="formMargin">
+                <h3 class="visaTextBlue"><i class="icon-warning-sign mr5"></i> @PresentationCoreMessages.TimeOut_Title</h3>
+                <div class="horizontalLineWhite"></div>
+                <h4 class="pageNotFoundDescription"> @PresentationCoreMessages.TimeOut_Desc</h4>
+            </div>
+
+            <!-- fin del formMargin-->
+        </div>
+    </div>
+
+    <!-- fin Area de contenidos -->
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+<div id="lbConfirmResendAll" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@PresentationAdminStrings.Reports_Email_ResendAll_Title</h4>
+            </div>
+            <div class="modal-body">
+                <p>@PresentationAdminStrings.Reports_Email_ResendAll</p>
+            </div>
+            <div class="modal-footer">
+                @Html.ActionActionLink(Actions.ReportsMailsResendAll, PresentationAdminStrings.EmailResendAll, new Dictionary<string, object> { { "Class", "btn btn-success lb-accept" }, { "id", "lnkResendAll" } })
+                <a href="#" class="btn lb-cancel" id="lnkDeleteCancel" data-dismiss="modal">@PresentationAdminStrings.Cancel</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    var tr;
+    $(document).ready(function () {
+        $("#lnkResendAll").click(function (e) {
+            e.preventDefault();
+            if (!$(this).hasClass("disabled")) {
+                showBlockUI("Reenviando email");
+                var url = $(this).attr("href");
+                $.post(url, function (data) {
+                    $('#lbConfirmResendAll').modal("hide");
+                    if (data.ResponseType == RESPONSE.SUCCESS) {
+                        ShowNotification(data.Title, data.Message, 'success');
+                    }
+                    if (data.ResponseType == RESPONSE.ERROR) {
+                        ShowNotification(data.Title, data.Message, 'error');
+                    }
+                    dataTableFilters.fnFilter();
+                    hideBlockUI();
+                }).fail(function () {
+                    hideBlockUI();
+                    window.location.replace('@Url.Action("Index", "Error")');
+                });
+            }
+        });
+    });
+</script>

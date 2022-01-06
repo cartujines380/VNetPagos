@@ -1,0 +1,1024 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VisaNet.WebService.VisaWCF</name>
+    </assembly>
+    <members>
+        <member name="M:VisaNet.WebService.VisaWCF.DataValidation.GetValidationErrors(System.Object)">
+            <summary>
+            Executes validations against de 'obj' parameter.
+            </summary>
+            <param name="obj">The model to validate</param>
+            <returns>The errors generated from the validation</returns>
+        </member>
+        <member name="M:VisaNet.WebService.VisaWCF.DataValidation.AreInputParametersValid(System.Object,System.String@)">
+            <summary>
+            Checks that the input parameters of the webmethod are correct
+            </summary>
+            <param name="inputParameters">The model containing the input parameters. The model's properties should be marked with DataAnnotations</param>
+            <param name="errorMsg">Returns a message with the details of the errors</param>
+            <returns>True in case all parameters are correct. False otherwise.</returns>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.CyberSourceData">
+            <summary>
+            Resultado de las operaciones de CyberSource.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.CyberSourceData.PaymentData">
+            <summary>
+            Resultado del pago en CyberSource. Si es null, o bien no se realizó o hubo un error de VisaNet al hacerlo.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.CyberSourceData.VoidData">
+            <summary>
+            Resultado del void en CyberSource. Si es null, o bien no se realizó o hubo un error de VisaNet al hacerlo.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.CyberSourceData.RefundData">
+            <summary>
+            Resultado del refund en CyberSource. Si es null, o bien no se realizó o hubo un error de VisaNet al hacerlo.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.CyberSourceData.ReversalData">
+            <summary>
+            Resultado del reversal en CyberSource. Si es null, o bien no se realizó o hubo un error de VisaNet al hacerlo.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.CsResponse">
+            <summary>
+            Resultado de operación de CyberSource.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.CsResponse.PaymentResponseCode">
+            <summary>
+            Código de respuesta (100 = OK)
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.CsResponse.PaymentRequestId">
+            <summary>
+            Id de la transacción.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.BillsData">
+            <summary>
+            Parámetros para la obtención de facturas a pagar.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.BillsData.ServiceId">
+            <summary>
+            Identificador único de VisaNet del servicio a pagar.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.BillsData.GatewayEnumDto">
+            <summary>
+            Pasarela a utilizar para obtener y pagar facturas: { "Banred", "Sistarbanc", "Sucive", "Geocom", "Carretera" }
+            Es opcional. Si se ingresa null, se utiliza por defecto alguna de las pasarelas habilitadas por el servicio.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.BillsData.ServiceReferenceNumber">
+            <summary>
+            Valor para identificar las facturas dentro un servicio, correspondiente a la propiedad "ServiceReferenceName" del servicio. 
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.BillsData.ServiceReferenceNumber2">
+            <summary>
+            Valor para identificar las facturas dentro un servicio, correspondiente a la propiedad "ServiceReferenceName2" del servicio.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.BillsData.ServiceReferenceNumber3">
+            <summary>
+            Valor para identificar las facturas dentro un servicio, correspondiente a la propiedad "ServiceReferenceName3" del servicio.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.BillsData.ServiceReferenceNumber4">
+            <summary>
+            Valor para identificar las facturas dentro un servicio, correspondiente a la propiedad "ServiceReferenceName4" del servicio.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.BillsData.ServiceReferenceNumber5">
+            <summary>
+            Valor para identificar las facturas dentro un servicio, correspondiente a la propiedad "ServiceReferenceName5" del servicio.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.BillsData.ServiceReferenceNumber6">
+            <summary>
+            Valor para identificar las facturas dentro un servicio, correspondiente a la propiedad "ServiceReferenceName6" del servicio.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.BillsData.UserData">
+            <summary>
+            Información del usuario que realiza el pago.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.NotificationType">
+            <summary>
+            Tipo de notificación.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.Operation">
+            <summary>
+            Operación.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.NotificationData">
+            <summary>
+            Parámetros para el registro del resultado de una operación.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.NotificationData.NotificationType">
+            <summary>
+            Tipo de notificación.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.NotificationData.Operation">
+            <summary>
+            Operación.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.NotificationData.Message">
+            <summary>
+            Mensaje.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.PreprocessPaymentData">
+            <summary>
+            Parámetros para el preprocesamiento de facturas a pagar.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.PreprocessPaymentData.Bills">
+            <summary>
+            Listado de facturas a pagar, obtenidas como resultado de la obtención de facturas. 
+            Deben corresponder todas al mismo servicio y pasarela, y haber al menos una.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.PaymentData">
+            <summary>
+            Parámetros para la realización del pago de una factura.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.PaymentData.Bill">
+            <summary>
+            Factura a pagar, obtenida dentro del resultado del preprocesamiento.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.PaymentData.CyberSourceData">
+            <summary>
+            Resultado de la operación en CyberSource.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.PaymentData.UserInfo">
+            <summary>
+            Información del usuario que realiza el pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.PaymentData.CardData">
+            <summary>
+            Información de la tarjeta con la que se efectuará el pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.PaymentData.ServiceId">
+            <summary>
+            Identificador único de VisaNet del servicio a pagar.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData">
+            <summary>
+            Resultado de la operación en CyberSource.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.AuthAmount">
+            <summary>
+            AuthAmount
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.AuthTime">
+            <summary>
+            AuthTime
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.AuthCode">
+            <summary>
+            AuthCode
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.AuthAvsCode">
+            <summary>
+            AuthAvsCode
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.AuthResponse">
+            <summary>
+            AuthResponse
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.AuthTransRefNo">
+            <summary>
+            AuthTransRefNo
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.Decision">
+            <summary>
+            Decision
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.BillTransRefNo">
+            <summary>
+            BillTransRefNo
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.PaymentToken">
+            <summary>
+            PaymentToken
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.ReasonCode">
+            <summary>
+            ReasonCode
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.ReqAmount">
+            <summary>
+            ReqAmount
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.ReqCurrency">
+            <summary>
+            ReqCurrency
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.TransactionId">
+            <summary>
+            TransactionId
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.ReqTransactionUuid">
+            <summary>
+            ReqTransactionUuid
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.ReqReferenceNumber">
+            <summary>
+            ReqReferenceNumber
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetCyberSourceData.ReqTransactionType">
+            <summary>
+            ReqTransactionType
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.CardData">
+            <summary>
+            Información de la tarjeta de pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.CardData.CardBinNumbers">
+            <summary>
+            Los primeros 6 dígitos del número de la tarjeta de pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.CardData.MaskedNumber">
+            <summary>
+            Número de la tarjeta enmascarado (en formato: "411111xxxxxx1111")
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.CardData.DueDate">
+            <summary>
+            Fecha de vencimiento de la tarjeta (en formato: "MMyy").
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.CardData.Name">
+            <summary>
+            Nombre del titular de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.CardData.Phone">
+            <summary>
+            Teléfono.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.ServicesData">
+            <summary>
+            Parámetros para la obtención de servicios habilitados para pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.ServicesData.TimeStamp">
+            <summary>
+            Fecha y hora de la solicitud (opcional).
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.SearchPaymentsData">
+            <summary>
+            Parámetros para la búsqueda de pagos realizados.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.SearchPaymentsData.TransactionId">
+            <summary>
+            Identificador de la transacción del pago de la factura (opcional)
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.SearchPaymentsData.ServiceId">
+            <summary>
+            Identificador único de VisaNet del servicio (opcional)
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.SearchPaymentsData.FromDate">
+            <summary>
+            Fecha desde (en el formato: "dd/MM/yyyy")
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.SearchPaymentsData.ToDate">
+            <summary>
+            Fecha hasta (en el formato: "dd/MM/yyyy")
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetAccessBaseData">
+            <summary>
+            Parámetros comunes a todos los métodos del Web Service.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetAccessBaseData.PaymentPlatform">
+            <summary>
+            Identificador de la plataforma de pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetAccessBaseData.DigitalSignature">
+            <summary> Firma digital. </summary>
+            <remarks>
+            <para>La comunicación con VisaNetPagos se realizará mediante SSL. </para>
+            <para>Para verificar la autenticidad de la información recibida, se utilizará una firma digital que será enviada como parámetro. Esto permitirá asegurar la identidad del servidor que envía la información. </para>
+            <para>
+            Para generar dicha firma se deberá:
+            <list type="number">
+            <item> <description> Generar un hash (algoritmo SHA-1) concatenando todos los parámetros que se envíen. </description> </item>
+            <item> <description> Firmar el hash obtenido en el paso anterior, utilizando el algoritmo RSA y una clave privada generada por quien envía la información; el resultado de la misma convertido a formato Base64. </description> </item>
+            </list>
+            </para>
+            <para>Quién envía la información deberá entregar la clave pública (RSA 2048bits) a quien recibe la misma para que éste pueda realizar la verificación de la firma al momento de recibir una solicitud. </para>
+            <para>A continuación se detalla el orden en que se deben concatenar los parámetros de la firma digital para los diferentes métodos. Tener en cuenta que en caso de que el valor del parámetro sea null, no se agrega. </para>
+            <list type="table">
+            <listheader>
+            <term>Método</term>
+            <term>Orden de los parámetros</term>
+            </listheader>
+            <item>
+            <term>
+            GetServices
+            </term>
+            <term>
+            <list type="number"> <item> <description> PaymentPlatform </description> </item> </list>
+            </term>
+            </item>
+            <item>
+            <term>
+            SearchBills
+            </term>
+            <term>
+            <list type="number">
+            <item> <description> PaymentPlatform </description> </item>
+            <item> <description> ServiceId </description> </item>
+            <item> <description> ServiceReferenceNumber </description> </item>
+            <item> <description> ServiceReferenceNumber2 </description> </item>
+            <item> <description> ServiceReferenceNumber3 </description> </item>
+            <item> <description> ServiceReferenceNumber4 </description> </item>
+            <item> <description> ServiceReferenceNumber5 </description> </item>
+            <item> <description> ServiceReferenceNumber5 </description> </item>
+            <item> <description> ServiceReferenceNumber6 </description> </item>
+            <item> <description> GatewayEnumDto </description> </item>
+             <item> 
+            <description> 
+            Información del usuario (UserInfo): 
+            <list type="number">
+            <item> <description> Ci </description> </item>
+            <item> <description> Email </description> </item>
+            <item> <description> Name </description> </item>
+            <item> <description> Surname </description> </item>
+            <item> <description> Address </description> </item>
+            </list>
+            </description> 
+            </item>
+            </list>
+            </term>
+            </item>
+            <item>
+            <term>
+            PreprocessPayment
+            </term>
+            <term>
+            <list type="number">
+            <item> <description> PaymentPlatform </description> </item>
+            <item> 
+            <description> 
+            Luego se agrega la información de cada factura (Bills): 
+            <list type="number">
+            <item> <description> AmountToCybersource (el separador de decimales debe ser '.') </description> </item>
+            <item> <description> BillId </description> </item>
+            <item> <description> BillNumber </description> </item>
+            <item> <description> Currency </description> </item>
+            <item> <description> Description </description> </item>
+            <item> <description> Discount (el separador de decimales debe ser '.') </description> </item>
+            <item> <description> DiscountApplyed ('true' o 'false') </description> </item>
+            <item> <description> ExpirationDate (formato: 'yyyyMMdd') </description> </item>
+            <item> <description> FinalConsumer ('true' o 'false') </description> </item>
+            <item> <description> Gateway </description> </item>
+            <item> <description> GatewayTransactionId </description> </item>
+            <item> <description> CensusId </description> </item>
+            <item> <description> Lines </description> </item>
+            <item> <description> ServiceId </description> </item>
+            <item> <description> Payable ('true' o 'false') </description> </item>
+            <item> <description> TotalAmount (el separador de decimales debe ser '.') </description> </item>
+            <item> <description> TotalTaxedAmount (el separador de decimales debe ser '.') </description> </item>
+            <item> <description> CardBinNumbers </description> </item>
+            <item> <description> ServiceReferenceNumber </description> </item>
+            <item> <description> ServiceReferenceNumber2 </description> </item>
+            <item> <description> ServiceReferenceNumber3 </description> </item>
+            <item> <description> ServiceReferenceNumber4 </description> </item>
+            <item> <description> ServiceReferenceNumber5 </description> </item>
+            <item> <description> ServiceReferenceNumber6 </description> </item>
+            <item> <description> MerchantReferenceCode </description> </item>
+            <item> <description> MerchantId </description> </item>
+            <item> <description> ServiceType </description> </item>
+            <item> <description> MultipleBillsAllowed ('true' o 'false') </description> </item>
+            <item> <description> CreationDate </description> </item>
+            </list>
+            </description> 
+            </item>
+            </list>
+            </term>
+            </item>
+            <item>
+            <term>
+            Payment
+            </term>
+            <term>
+            <list type="number">
+            <item> <description> PaymentPlatform </description> </item>
+            <item> 
+            <description> 
+            Se agrega la información de la factura (Bill): 
+            <list type="number">
+            <item> <description> AmountToCybersource (el separador de decimales debe ser '.') </description> </item>
+            <item> <description> BillId </description> </item>
+            <item> <description> BillNumber </description> </item>
+            <item> <description> Currency </description> </item>
+            <item> <description> Description </description> </item>
+            <item> <description> Discount (el separador de decimales debe ser '.') </description> </item>
+            <item> <description> DiscountApplyed ('true' o 'false') </description> </item>
+            <item> <description> ExpirationDate (formato: 'yyyyMMdd') </description> </item>
+            <item> <description> FinalConsumer ('true' o 'false') </description> </item>
+            <item> <description> Gateway </description> </item>
+            <item> <description> GatewayTransactionId </description> </item>
+            <item> <description> CensusId </description> </item>
+            <item> <description> Lines </description> </item>
+            <item> <description> ServiceId </description> </item>
+            <item> <description> Payable ('true' o 'false') </description> </item>
+            <item> <description> TotalAmount (el separador de decimales debe ser '.') </description> </item>
+            <item> <description> TotalTaxedAmount (el separador de decimales debe ser '.') </description> </item>
+            <item> <description> CardBinNumbers </description> </item>
+            <item> <description> ServiceReferenceNumber </description> </item>
+            <item> <description> ServiceReferenceNumber2 </description> </item>
+            <item> <description> ServiceReferenceNumber3 </description> </item>
+            <item> <description> ServiceReferenceNumber4 </description> </item>
+            <item> <description> ServiceReferenceNumber5 </description> </item>
+            <item> <description> ServiceReferenceNumber6 </description> </item>
+            <item> <description> MerchantReferenceCode </description> </item>
+            <item> <description> MerchantId </description> </item>
+            <item> <description> ServiceType </description> </item>
+            <item> <description> MultipleBillsAllowed ('true' o 'false') </description> </item>
+            <item> <description> CreationDate </description> </item>
+            <item> <description> DiscountObjId </description> </item>
+            </list>
+            </description> 
+            </item>
+            <item> 
+            <description> 
+            Luego se agrega la información de la tarjeta (CardData): 
+            <list type="number">
+            <item> <description> CardBinNumbers </description> </item>
+            <item> <description> DueDate </description> </item>
+            <item> <description> MaskedNumber </description> </item>
+            <item> <description> Name </description> </item>
+            </list>
+            </description> 
+            </item>
+            <item> 
+            <description> 
+            Después se agrega la información de CyberSource (CyberSourceData): 
+            <list type="number">
+            <item> <description> TransactionId </description> </item>
+            <item> <description> PaymentToken </description> </item>
+            <item> <description> ReasonCode </description> </item>
+            </list>
+            </description> 
+            </item>
+            <item> <description> ServiceId </description> </item>
+            <item> 
+            <description> 
+            Por último se agrega la información del usuario (UserInfo): 
+            <list type="number">
+            <item> <description> Email </description> </item>
+            </list>
+            </description> 
+            </item>
+            </list>
+            </term>
+            </item>
+            <item>
+            <term>
+            SearchPayments
+            </term>
+            <term>
+            <list type="number">
+            <item> <description> PaymentPlatform </description> </item>
+            <item> <description> TransactionId </description> </item>
+            <item> <description> ServiceId </description> </item>
+            <item> <description> FromDate (formato: 'yyyyMMdd') </description> </item>
+            <item> <description> ToDate (formato: 'yyyyMMdd') </description> </item>
+            </list>
+            </term>
+            </item>
+            <item>
+            <term>
+            NotifyOperationResult
+            </term>
+            <term>
+            <list type="number">
+            <item> <description> PaymentPlatform </description> </item>
+            <item> <description> NotificationType (ejemplo: 'Ok') </description> </item>
+            <item> <description> Operation (ejemplo: 'Payment') </description> </item>
+            <item> <description> Message </description> </item>
+            </list>
+            </term>
+            </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetAccessResponseCode">
+            <summary>
+            Código de respuesta.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetAccessBaseResponse">
+            <summary>
+            Propiedades comunes a los resultados de todos los métodos del Web Service.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetAccessBaseResponse.ResponseCode">
+            <summary>
+            Código de respuesta.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetAccessBaseResponse.ResponseError">
+            <summary>
+            Información de resultado de error.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.UserData">
+            <summary>
+            Información del usuario que realiza el pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.UserData.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.UserData.Ci">
+            <summary>
+            Documento de identidad
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.UserData.Address">
+            <summary>
+            Dirección
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.UserData.Name">
+            <summary>
+            Nombre
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.UserData.Surname">
+            <summary>
+            Apellido
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.ResponseError">
+            <summary>
+            Información del resultado de error.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.ResponseError.ResponseType">
+            <summary>
+            Código de error.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.ResponseError.ResponseText">
+            <summary>
+            Mensaje de error.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.SearchPaymentsResponse">
+            <summary>
+            Resultado de la búsqueda de pagos realizados.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.SearchPaymentsResponse.Response">
+            <summary>
+            Listado de pagos realizados encontrados.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.PreprocessPaymentResponse">
+            <summary>
+            Resultado del preprocesamiento de facturas a pagar.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.PreprocessPaymentResponse.Response">
+            <summary>
+            Listado de facturas listas para pagar.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.BillsResponse">
+            <summary>
+            Resultado de la obtención de facturas a pagar.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.BillsResponse.Response">
+            <summary>
+            Listado de facturas a pagar.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse">
+            <summary>
+            Información de la factura.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.BillId">
+            <summary>
+            Identificador único de VisaNet de la factura.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.BillNumber">
+            <summary>
+            Identificador externo de la factura.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.ExpirationDate">
+            <summary>
+            Fecha de vencimiento de la factura.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.Currency">
+            <summary>
+            Moneda de la factura: { "UYU", "USD" }
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.Description">
+            <summary>
+            Concepto de la factura.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.GatewayTransactionId">
+            <summary>
+            Identificador de la pasarela de la transacción (utilizado por Sistarbanc).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.Payable">
+            <summary>
+            Valor que indica si la factura está habilitada para pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.FinalConsumer">
+            <summary>
+            Valor que indica si la factura es de un consumidor final.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.DiscountApplyed">
+            <summary>
+            Valor que indica si la factura tiene descuento aplicado.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.TotalTaxedAmount">
+            <summary>
+            Importe sobre el que se aplica el impuesto.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.TotalAmount">
+            <summary>
+            Importe de la factura.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.Discount">
+            <summary>
+            Importe del descuento.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.AmountToCybersource">
+            <summary>
+            Importe total a pagar en CyberSource (Importe original - Descuento).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.Gateway">
+            <summary>
+            Pasarela utilizada para obtener la factura: { "Banred", "Sistarbanc", "Sucive", "Geocom", "Carretera" }
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.Lines">
+            <summary>
+            Descripción de las deudas a pagar (utilizado por Sucive y Geocom).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.CensusId">
+            <summary>
+            Número de padrón del vehículo a pagar (utilizado por Sucive y Geocom).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.ServiceId">
+            <summary>
+            Identificador único de VisaNet del servicio.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.MerchantId">
+            <summary>
+            Identificador externo del servicio.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.ServiceReferenceNumber">
+            <summary>
+            Valor para identificar las facturas dentro un servicio, correspondiente a la propiedad "ServiceReferenceName" del servicio al que corresponde esta factura. 
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.ServiceReferenceNumber2">
+            <summary>
+            Valor para identificar las facturas dentro un servicio, correspondiente a la propiedad "ServiceReferenceName2" del servicio al que corresponde esta factura. 
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.ServiceReferenceNumber3">
+            <summary>
+            Valor para identificar las facturas dentro un servicio, correspondiente a la propiedad "ServiceReferenceName3" del servicio al que corresponde esta factura. 
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.ServiceReferenceNumber4">
+            <summary>
+            Valor para identificar las facturas dentro un servicio, correspondiente a la propiedad "ServiceReferenceName4" del servicio al que corresponde esta factura. 
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.ServiceReferenceNumber5">
+            <summary>
+            Valor para identificar las facturas dentro un servicio, correspondiente a la propiedad "ServiceReferenceName5" del servicio al que corresponde esta factura. 
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.ServiceReferenceNumber6">
+            <summary>
+            Valor para identificar las facturas dentro un servicio, correspondiente a la propiedad "ServiceReferenceName6" del servicio al que corresponde esta factura. 
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.CardBinNumbers">
+            <summary>
+            Los primeros 6 dígitos del número de la tarjeta de pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.MerchantReferenceCode">
+            <summary>
+            Código de referencia del ente.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.ServiceType">
+            <summary>
+            Descripción del tipo/categoría del servicio (por ejemplo: Telefonía, Gas, Emergencias).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.MultipleBillsAllowed">
+            <summary>
+            Valor que indica si el servicio acepta múltiples facturas consolidadas en una única en el momento de pagar.
+            De lo contrario, las facturas se deben pagar una a una.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.CreationDate">
+            <summary>
+            Fecha de inicio del proceso de pago, es decir, la obtención de facturas (utilizado por Sistarbanc).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetBillResponse.DiscountObjId">
+            <summary>
+            Identificador del objeto descuento utilizado.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.PaymentResponse">
+            <summary>
+            Resultado de la realización de un pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.PaymentResponse.CyberSourceData">
+            <summary>
+            Resultado de las operaciones de CyberSource.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.PaymentResponse.Response">
+            <summary>
+            Pago realizado.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetPayment">
+            <summary>
+            Información del pago realizado.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetPayment.Bill">
+            <summary>
+            Factura pagada.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetPayment.DateTime">
+            <summary>
+            Fecha y hora del pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetPayment.GatewayTransactionId">
+            <summary>
+            Identificador de Sistarbanc de la transacción.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetPayment.TransactionId">
+            <summary>
+            Identificador de la transacción.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetPayment.UserInfo">
+            <summary>
+            Información del usuario.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.ServicesResponse">
+            <summary>
+            Resultado de la obtención de servicios habilitados para pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.ServicesResponse.Response">
+            <summary>
+            Listado de servicios habilitados para pago.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices">
+            <summary>
+            Contiene la información del servicio habilitado para pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.Active">
+            <summary>
+            Valor que indica si el servicio está activo.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.ServiceType">
+            <summary>
+            Descripción del tipo/categoría del servicio (por ejemplo: Telefonía, Gas, Emergencias).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.ServiceName">
+            <summary>
+            Nombre del servicio.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.ServiceReferenceName">
+            <summary>
+            Nombre de las propiedades para identificar una factura del servicio (por ejemplo: Número de documento o Matrícula, Padrón y Departamento).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.ServiceReferenceName2">
+            <summary>
+            Nombre de las propiedades para identificar una factura del servicio (por ejemplo: Número de documento o Matrícula, Padrón y Departamento).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.ServiceReferenceName3">
+            <summary>
+            Nombre de las propiedades para identificar una factura del servicio (por ejemplo: Número de documento o Matrícula, Padrón y Departamento).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.ServiceReferenceName4">
+            <summary>
+            Nombre de las propiedades para identificar una factura del servicio (por ejemplo: Número de documento o Matrícula, Padrón y Departamento).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.ServiceReferenceName5">
+            <summary>
+            Nombre de las propiedades para identificar una factura del servicio (por ejemplo: Número de documento o Matrícula, Padrón y Departamento).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.ServiceReferenceName6">
+            <summary>
+            Nombre de las propiedades para identificar una factura del servicio (por ejemplo: Número de documento o Matrícula, Padrón y Departamento).
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.ServiceId">
+            <summary>
+            Identificador único de VisaNet del servicio.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.MerchantId">
+            <summary>
+            Identificador externo del servicio.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.Gateways">
+            <summary>
+            Listado de pasarelas habilitadas para la obtención y pago de facturas del servicio. Las mismas pueden ser: { "Banred", "Sistarbanc", "Sucive", "Geocom", "Carretera" }
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.DebitCard">
+            <summary>
+            Valor que indica si el servicio acepta tarjetas de débito como forma de pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.CreditCard">
+            <summary>
+            Valor que indica si el servicio acepta tarjetas de crédito como forma de pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.DebitCardInternational">
+            <summary>
+            Valor que indica si el servicio acepta tarjetas de débito extranjeras como forma de pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.CreditCardInternational">
+            <summary>
+            Valor que indica si el servicio acepta tarjetas de crédito extranjeras como forma de pago.
+            </summary>
+        </member>
+        <member name="P:VisaNet.WebService.VisaWCF.EntitiesDto.VisaNetServices.MultipleBillsAllowed">
+            <summary>
+            Valor que indica si el servicio acepta múltiples facturas consolidadas en una única en el momento de pagar.
+            De lo contrario, las facturas se deben pagar una a una.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.EntitiesDto.NotificationResponse">
+            <summary>
+            Resultado de la notificación.
+            </summary>
+        </member>
+        <member name="T:VisaNet.WebService.VisaWCF.IVisaNetAccess">
+            <summary>
+            Proporciona los métodos necesarios para la obtención, realización y consulta de pagos de servicios.
+            </summary>
+        </member>
+        <member name="M:VisaNet.WebService.VisaWCF.IVisaNetAccess.GetServices(VisaNet.WebService.VisaWCF.EntitiesDto.ServicesData)">
+            <summary>
+            Devuelve un listado de los servicios habilitados para pagar.
+            </summary>
+            <param name="data">Contiene los parámetros necesarios para la obtención de servicios.</param>
+            <returns>Resultado de la obtención de servicios.</returns>
+            <example>
+            <code source="Examples.cs" region="GetServices" lang="cs" title="C#" />
+            </example>
+        </member>
+        <member name="M:VisaNet.WebService.VisaWCF.IVisaNetAccess.SearchBills(VisaNet.WebService.VisaWCF.EntitiesDto.BillsData)">
+            <summary>
+            Devuelve un listado de las facturas pendientes de pago correspondientes a un determinado comercio/servicio y referencia de pago, para una pasarela determinada.
+            </summary>
+            <param name="data">Contiene los parámetros necesarios para la obtención de facturas a pagar.</param>
+            <returns>Resultado de la obtención de facturas.</returns>
+            <example>
+            <code source="Examples.cs" region="SearchBills" lang="cs" title="C#" />
+            </example>
+        </member>
+        <member name="M:VisaNet.WebService.VisaWCF.IVisaNetAccess.PreprocessPayment(VisaNet.WebService.VisaWCF.EntitiesDto.PreprocessPaymentData)">
+            <summary>
+            Realiza el procesamiento previo al pago de un listado de facturas. 
+            Devuelve, en el caso de Geocom o Sucive, una única factura consolidada y, en otro caso, una lista de facturas listas para ser pagadas, con los correspondientes descuentos aplicados.
+            </summary>
+            <param name="data">Contiene los parámetros necesarios para el preprocesamiento de facturas.</param>
+            <returns>Resultado del preprocesamiento.</returns>
+            <example>
+            <code source="Examples.cs" region="PreprocessPayment" lang="cs" title="C#" />
+            </example>
+        </member>
+        <member name="M:VisaNet.WebService.VisaWCF.IVisaNetAccess.Payment(VisaNet.WebService.VisaWCF.EntitiesDto.PaymentData)">
+            <summary>
+            Realiza el pago de una determinada factura.
+            </summary>
+            <param name="data">Contiene los parámetros necesarios para el pago de una factura.</param>
+            <returns>Resultado del proceso de pago.</returns>
+            <example>
+            <code source="Examples.cs" region="Payment" lang="cs" title="C#" />
+            </example>
+        </member>
+        <member name="M:VisaNet.WebService.VisaWCF.IVisaNetAccess.SearchPayments(VisaNet.WebService.VisaWCF.EntitiesDto.SearchPaymentsData)">
+            <summary>
+            Devuelve el pago efectuado para una determinada factura (opcional), o un listado de todos los pagos realizados dentro del rango de fechas especificado (opcional), para un determinado servicio (opcional).
+            </summary>
+            <param name="data">Contiene los parámetros necesarios para la búsqueda de pagos realizados.</param>
+            <returns>Resultado de la búsqueda de pagos.</returns>
+            <example>
+            <code source="Examples.cs" region="SearchPayments" lang="cs" title="C#" />
+            </example>
+        </member>
+        <member name="M:VisaNet.WebService.VisaWCF.IVisaNetAccess.NotifyOperationResult(VisaNet.WebService.VisaWCF.EntitiesDto.NotificationData)">
+            <summary>
+            Permite notificar sobre el resultado de una operación.
+            </summary>
+            <param name="data">Contiene los parámetros necesarios para la notificación.</param>
+            <returns>Resultado de la notificación.</returns>
+            <example>
+            <code source="Examples.cs" region="NotifyOperationResult" lang="cs" title="C#" />
+            </example>
+        </member>
+    </members>
+</doc>

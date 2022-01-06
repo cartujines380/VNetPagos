@@ -1,0 +1,87 @@
+﻿@using VisaNet.Common.Security.Entities
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Common.Security.Entities.Resources
+@using VisaNet.Presentation.Administration.Constants
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav side-nav">
+        @if (User.Identity.IsAuthenticated && Session[SessionConstants.CURRENT_USER_FUNCTIONALITIES_GROUP_ACTUAL] != null)
+        {
+            var currentUserFunctionalities = ((IList<Functionality>)Session[SessionConstants.CURRENT_USER_FUNCTIONALITIES_GROUP_ACTUAL]).Where(f => f.MemberOfFunctionalityId == null).OrderBy(f => f.Order).ToList();
+
+            foreach (var item in currentUserFunctionalities.Where(f => f.FunctionalityGroupId.HasValue))
+            {
+                if (item.FunctionalitiesMembers.Any())
+                {
+                    <li>
+                        <a href="#" class="dropdown-toggle">
+                            <i class="@item.IconClass"></i>
+                            <span class="menu-text">@FunctionalityStrings.ResourceManager.GetString(Enum.GetName(typeof(Functionalities), item.Id)) </span><b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu" style="display: none">
+                            @foreach (var functionalitiesMember in item.FunctionalitiesMembers)
+                            {
+                                <li>@Html.FunctionalityActionLink((Functionalities)Enum.ToObject(typeof(Functionalities), functionalitiesMember.Id))</li>
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li>@Html.FunctionalityActionLink((Functionalities)Enum.ToObject(typeof(Functionalities), item.Id))</li>
+                }
+            }
+        }
+    </ul>
+
+    <ul class="nav navbar-nav navbar-left navbar-user">
+        @if (User.Identity.IsAuthenticated && Session[SessionConstants.CURRENT_USER_FUNCTIONALITY_GROUP] != null)
+        {
+            foreach (var item in ((IList<FunctionalityGroup>)Session[SessionConstants.CURRENT_USER_FUNCTIONALITY_GROUP]).Where(x => x.Id != (int)FunctionalitiesGroups.Notifications))
+            {
+                var functionalitiesGroupsEnum = (FunctionalitiesGroups)Enum.ToObject(typeof(FunctionalitiesGroups), item.Id);
+                <li>@Html.FunctionalityGroupActionLink(functionalitiesGroupsEnum)</li>
+            }
+        }
+
+    </ul>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown user-dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @User.Identity.Name <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("LogOff", "Account")"><i class="fa fa-power-off"></i> Log Out</a></li>
+                </ul>
+            </li>
+        </ul>
+    }
+    @*<div id="_FixedNotifications"></div>*@
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.each($(".submenu"), function (index, value) {
+            if ($("li > .active", $(this)).length > 0) {
+                $(value).show();
+            } else {
+                $(value).hide();
+            }
+
+        });
+
+        @{
+            var functionalityGroups = Session[SessionConstants.CURRENT_USER_FUNCTIONALITY_GROUP] as List<FunctionalityGroup>;
+            if (User.Identity.IsAuthenticated && functionalityGroups != null && functionalityGroups.Any(x => x.Id == (int)FunctionalitiesGroups.Notifications))
+    {
+@*<text>
+        $.get("@Url.Action("GetNotificationsForMenu", "Notification")").done(function (view) {
+            $("#_FixedNotifications").html(view);
+        });
+        </text>*@
+    }
+        }
+    });
+</script>

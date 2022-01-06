@@ -1,0 +1,72 @@
+﻿@using VisaNet.Common.Resource.EntitiesDto
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+<h2>@PresentationAdminStrings.SystemUsers</h2>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <h2></h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered dataTable">
+                    <thead>
+                        <tr>
+                            <th>@EntitiesDtosStrings.SystemUserDto_LDAPUserName</th>
+                            <th>@EntitiesDtosStrings.SystemUserDto_SystemUserType</th>
+                            <th>@EntitiesDtosStrings.SystemUserDto_Roles</th>
+                            <th><i class=""></i></th>
+                            <th><i class=""></i></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            @Html.ActionActionLink(Actions.SystemUsersCreate, "<i class=\"icon-plus\"></i>" + PresentationAdminStrings.Create, new Dictionary<string, object> { { "Class", "btn btn-default" }, { "id", "btnNew" } })
+        </div>
+    </div>
+    @Html.Partial("_DeleteLightbox")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            applyDatatableStandard($('table'),
+                    [0, 1, 2],
+                    [
+                        { "mDataProp": "UserName" },
+                        { "mDataProp": "SystemUserType" },
+                        { "mDataProp": "Roles", "bSortable": false },
+                        {
+                            "sName": "Edit",
+                            "sClass": "column-icon",
+                            "sDefaultContent": "",
+                            "bSearchable": false,
+                            "bSortable": false,
+                            "fnRender": function (oObj) {
+                                return '@Html.ActionGridActionLink(Actions.SystemUsersEdit, "<i class=\"fa fa-edit\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                            }
+                        },
+                        {
+                            "sName": "Borrar",
+                            "sClass": "column-icon",
+                            "sDefaultContent": "",
+                            "bSearchable": false,
+                            "bSortable": false,
+                            "fnRender": function (oObj) {
+                                return '@Html.ActionGridActionLink(Actions.SystemUsersDelete, "<i class=\"fa fa-trash-o\"></i>", new Dictionary<string, object> { { "Class", "btn-editar lnkDelete" } })';
+                            }
+                        }
+                    ],
+                    '@Url.Action("AjaxHandler", "SystemUser")', null, null);
+
+
+            $('table').on("click", ".lnkDelete", function (e) {
+                if (!$(this).hasClass("disabled")) {
+                    e.preventDefault();
+                    tr = $(this).parents("tr");
+                    var lb = $('#lbConfirmDelete');
+                    $("#lbHiddenUrl", lb).val($(this).attr("href"));
+                    lb.modal();
+                }
+            });
+        });
+
+    </script>

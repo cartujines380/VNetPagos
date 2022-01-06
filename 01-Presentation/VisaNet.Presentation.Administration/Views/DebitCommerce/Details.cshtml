@@ -1,0 +1,105 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model VisaNet.Presentation.Administration.Models.CommerceModel
+
+<h2>Comercio de Debito - Ver</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Name, new { @class = "obligatoryField" }) *
+                    @Html.TextBoxFor(b => b.Name, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.ServiceId, new { @class = "obligatoryField" }) *
+                    <div class="selectMask w100 selectMultiple">
+                        @Html.DropDownListFor(m => m.ServiceId, (IEnumerable<SelectListItem>)ViewBag.ServicesLigthList, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <div class="col-lg-6">
+                        <label>Imagen</label>
+                        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                        {
+                            <a href="@Model.ImageUrl" target="_blank"> @PresentationAdminStrings.See </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <label>Producto:</label>
+            </div>
+        </div>
+        <div style="padding-left: 30px">
+            @foreach (var productModel in Model.ProductosListModel)
+            {
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label>- @productModel.Description</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label>Propiedades:</label>
+                    </div>
+                </div>
+                <div style="padding-left: 30px">
+                    @foreach (var productPropertyModel in productModel.ProductPropertyModelList.OrderBy(x => x.InputSequence))
+                    {
+                        <div class="row">
+                            <div class="col-lg-1">
+                                <div class="form-group">
+                                    @Html.CheckBoxFor(b => productPropertyModel.Requiered, new { @disabled = "disabled" })
+                                    @Html.LabelFor(b => productPropertyModel.Requiered)
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    @Html.LabelFor(b => productPropertyModel.Name)
+                                    @Html.TextBoxFor(b => productPropertyModel.Name, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    @Html.LabelFor(b => productPropertyModel.InputSequence)
+                                    @Html.TextBoxFor(b => productPropertyModel.InputSequence, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    @Html.LabelFor(b => productPropertyModel.ContentType)
+                                    @Html.TextBoxFor(b => productPropertyModel.ContentType, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    @Html.LabelFor(b => productPropertyModel.MaxSize)
+                                    @Html.TextBoxFor(b => productPropertyModel.MaxSize, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="@Url.Action("Index", "DebitCommerce")" class="btn btn-default btn-cancel">Volver </a>
+            </div>
+        </div>
+    </div>
+</div>

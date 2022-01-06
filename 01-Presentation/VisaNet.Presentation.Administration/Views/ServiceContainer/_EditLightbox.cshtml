@@ -1,0 +1,47 @@
+﻿@using VisaNet.Common.Resource.Presentation
+<div id="lbConfirmChange" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>@PresentationCoreMessages.Common_Change</h4>
+                @Html.Hidden("lbChangeHiddenUrl")
+                @Html.Hidden("lbChangeHiddenId")
+                <p>@PresentationCoreMessages.Common_ChangeServiceStatus</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-danger lb-accept" id="lnkChangeAccept">@PresentationAdminStrings.Common_Confirm</a>
+                <a href="#" class="btn lb-cancel" id="lnkChangeCancel">@PresentationAdminStrings.Cancel</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+@*@Html.Partial("_LoaderFullScreen")*@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#lnkChangeAccept").click(function (e) {
+            e.preventDefault();
+            $.post($("#lbChangeHiddenUrl").val(), function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $('#lbConfirmChange').modal("hide");
+                    ShowNotification(data.Title, data.Message, 'success');
+                    location.reload();
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    $('#lbConfirmChange').modal("hide");
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            }).fail(function () { window.location.replace('@Url.Action("Index", "Error")'); });;
+        });
+
+        $("#lnkChangeCancel").click(function (e) {
+            e.preventDefault();
+            $("#lbConfirmChange").modal("hide");
+        });
+
+    });
+</script>

@@ -1,0 +1,47 @@
+﻿@using System.Configuration
+@using System.Globalization
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Utilities.Cybersource
+@using VisaNet.Utilities.Exportation.ExtensionMethods
+@model VisaNet.Presentation.Web.Areas.Private.Models.NextAutomaticPaymentModel
+
+<div class="itemBox serviceItem">
+    <div class="row">
+        <div class="col-md-8 panelInformation">
+            <div class="col-md-3 pr0 pl0 panelImage">
+                @if (!String.IsNullOrEmpty(Model.ServiceImageName))
+                {
+                    <img src="@Model.ServiceImageName" width="65" />
+                }
+                else
+                {
+                    <img src="@ConfigurationManager.AppSettings["DefaultServiceImage"]" width="54" />
+                }
+            </div>
+            <div class="col-md-9 panelDetail">
+                <ul>
+                    <li><span>@Model.ServiceName </span> - <span class="shortDescription" title="@Model.ServiceDescription">@Model.ServiceDescription.Short(45)</span></li>
+                    @if (!String.IsNullOrEmpty(Model.ReferenceValue))
+                    {
+                        <li><span class="bold">@Model.ReferenceName:</span> @Model.ReferenceValue</li>
+                    }
+                    <li><span class="bold">@PresentationWebStrings.DueDate:</span> @Model.DueDate.ToShortDateString()</li>
+                    <li><span class="bold">@PresentationWebStrings.Next_Automatic_Payment:</span> @Model.Date.ToShortDateString()</li>
+                    @if (Model.Currency == Currency.DOLAR_AMERICANO)
+                    {
+                        <li><span class="bold">@PresentationWebStrings.Amount:</span> U$D @Model.Amount.ToString("##,#0.00", CultureInfo.CurrentCulture)</li>
+                    }
+                    else
+                    {
+                        <li><span class="bold">@PresentationWebStrings.Amount:</span> $ @Model.Amount.ToString("##,#0.00", CultureInfo.CurrentCulture)</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 panelActions">
+            <ul>
+                <li><a href="@Url.Action("Item", "AutomaticPayment", new RouteValueDictionary { { "serviceId", Model.ServiceAssociatedId }, { "fromConfiguration", false } })"><i class="icon-pencil"></i> @PresentationCoreMessages.Configuration</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

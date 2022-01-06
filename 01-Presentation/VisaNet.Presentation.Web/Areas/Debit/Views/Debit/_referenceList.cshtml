@@ -1,0 +1,27 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.ProductModel
+
+<div class="row">
+    @{int pos = 0;}
+    @foreach (var property in Model.ProductPropertyModelList.OrderBy(x => x.InputSequence))
+    {
+        <div class="col-md-6">
+            <label for="@property.Name">@property.Name</label>
+            @if (property.Requiered)
+            {
+                <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+            }
+            @Html.TextBox(property.Name, "",
+                new
+                {
+                    @class = "w100",
+                    placeholder = "Ingresa tu " + property.Name,
+                    Autocomplete = "off",
+                    Id = "UserInputProp_" + property.InputSequence,
+                    Name = "UserInputProp_" + property.InputSequence
+                })
+            @Html.ValidationMessage("UserInputProp_" + property.InputSequence, null, new { @class = "help-inline" })
+        </div>
+        pos = pos + 1;
+    }
+</div>

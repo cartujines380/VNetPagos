@@ -1,0 +1,92 @@
+﻿@using System.Configuration
+<div id="content">
+    <form method="post" id="formIframe" class="" action="@Url.Action("PaginaPagoConUsuarioFirmaIframe", "LoadPage")">
+        @{
+            var random = new Random();
+        }
+
+        <h4>Datos usuario</h4>
+        <label for="IdUsuario">IdUsuario(*)</label>
+        <input type="text" name="IdUsuario" placeholder="IdUsuario" value="IdUsuario" />
+        <br />
+        <br />
+
+        <h4>Datos comercio</h4>
+        <label for="UrlCallback">UrlCallback(*)</label>
+        <input type="text" name="UrlCallback" placeholder="UrlCallback" value="@ConfigurationManager.AppSettings["TestingUrlCallback"]" />
+        <label for="IdOperacion">IdOperacion(*)</label>
+        <input type="text" name="IdOperacion" placeholder="IdOperacion" value="@random.Next(1, 100000000)" />
+        <label for="IdApp">IdApp(*)</label>
+        <input type="text" name="IdApp" placeholder="IdApp" value="@ConfigurationManager.AppSettings["TestingAppId"]" />
+        <label for="IdMerchant">IdMerchant(*)</label>
+        <input type="text" name="IdMerchant" placeholder="MerchantId" value="@ConfigurationManager.AppSettings["TestingMerchantId"]" />
+        <br />
+        <br />
+
+        <h4>Datos factura</h4>
+        <label for="FacturaIdentificador">FacturaIdentificador(**)</label>
+        <input type="text" name="FacturaIdentificador" placeholder="FacturaIdentificador" value="@random.Next(1000000, 9999999)" />
+        <label for="FacturaImporte">FacturaImporte(**)</label>
+        <input type="text" name="FacturaImporte" placeholder="FacturaImporte" value="122000" />
+        <label for="FacturaImporteGravado">FacturaImporteGravado(**)</label>
+        <input type="text" name="FacturaImporteGravado" placeholder="FacturaImporteGravado" value="122000" />
+        <label for="FacturaMoneda">FacturaMoneda(**)</label>
+        <input type="text" name="FacturaMoneda" placeholder="FacturaMoneda" value="N" />
+        <br />
+        <br />
+        <label for="FacturaFecha">FacturaFecha</label>
+        <input type="text" name="FacturaFecha" placeholder="FacturaFecha" value="20170404" />
+        <label for="FacturaDescripcion">FacturaDescripcion</label>
+        <input type="text" name="FacturaDescripcion" placeholder="FacturaDescripcion" value="Factura Descripcion" />
+        <label for="FacturaCuota">FacturaAceptaCuota</label>
+        <input type="text" name="FacturaCuota" placeholder="FacturaCuota" value="S" />
+        <label for="FacturaConsFinal">FacturaConsFinal</label>
+        <input type="text" name="FacturaConsFinal" placeholder="FacturaConsFinal" value="1" />
+        <br />
+        <br />
+        <label for="FacturaLineas[0].Orden">FacturaLineas[0].Orden</label>
+        <input type="text" name="FacturaLineas[0].Orden" id="FacturaLineas[0].Orden" placeholder="FacturaLineas[0].Orden" value="1" />
+        <label for="FacturaLineas[0].Concepto">FacturaLineas[0].Concepto</label>
+        <input type="text" name="FacturaLineas[0].Concepto" id="FacturaLineas[0].Concepto" placeholder="FacturaLineas[0].Concepto" value="Concepto A" />
+        <label for="FacturaLineas[0].Importe">FacturaLineas[0].Importe</label>
+        <input type="text" name="FacturaLineas[0].Importe" id="FacturaLineas[0].Importe" placeholder="FacturaLineas[0].Importe" value="72000" />
+        <br />
+        <br />
+        <label for="FacturaLineas[1].Orden">FacturaLineas[1].Orden</label>
+        <input type="text" name="FacturaLineas[1].Orden" id="FacturaLineas[1].Orden" placeholder="FacturaLineas[1].Orden" value="3" />
+        <label for="FacturaLineas[1].Concepto">FacturaLineas[1].Concepto</label>
+        <input type="text" name="FacturaLineas[1].Concepto" id="FacturaLineas[1].Concepto" placeholder="FacturaLineas[1].Concepto" value="Concepto C" />
+        <label for="FacturaLineas[1].Importe">FacturaLineas[1].Importe</label>
+        <input type="text" name="FacturaLineas[1].Importe" id="FacturaLineas[1].Importe" placeholder="FacturaLineas[1].Importe" value="40000" />
+        <br />
+        <br />
+        <label for="FacturaLineas[2].Orden">FacturaLineas[2].Orden</label>
+        <input type="text" name="FacturaLineas[2].Orden" id="FacturaLineas[2].Orden" placeholder="FacturaLineas[2].Orden" value="2" />
+        <label for="FacturaLineas[2].Concepto">FacturaLineas[2].Concepto</label>
+        <input type="text" name="FacturaLineas[2].Concepto" id="FacturaLineas[2].Concepto" placeholder="FacturaLineas[2].Concepto" value="Concepto B" />
+        <label for="FacturaLineas[2].Importe">FacturaLineas[2].Importe</label>
+        <input type="text" name="FacturaLineas[2].Importe" id="FacturaLineas[2].Importe" placeholder="FacturaLineas[2].Importe" value="10000" />
+        <br />
+        <br />
+
+        <h4>Referencias</h4>
+        <label for="RefCliente1">Referencia 1</label>
+        <input type="text" name="RefCliente1" placeholder="Referencia 1" value="" />
+        <label for="RefCliente2">Referencia 2</label>
+        <input type="text" name="RefCliente2" placeholder="Referencia 2" value="" />
+        <label for="RefCliente3">Referencia 3</label>
+        <input type="text" name="RefCliente3" placeholder="Referencia 3" value="" />
+        <br />
+        <br />
+        <label for="RefCliente4">Referencia 4</label>
+        <input type="text" name="RefCliente4" placeholder="Referencia 4" value="" />
+        <label for="RefCliente5">Referencia 5</label>
+        <input type="text" name="RefCliente5" placeholder="Referencia 5" value="" />
+        <label for="RefCliente6">Referencia 6</label>
+        <input type="text" name="RefCliente6" placeholder="Referencia 6" value="" />
+        <br />
+        <br />
+
+        <input type="submit" id="enviar" value="PAGO CON USUARIO" />
+    </form>
+</div>

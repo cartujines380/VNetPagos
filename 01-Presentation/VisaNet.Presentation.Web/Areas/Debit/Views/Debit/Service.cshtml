@@ -1,0 +1,165 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Presentation.Web.Areas.Debit.Models
+@model VisaNet.Presentation.Web.Areas.Debit.Models.DebitModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container p25t">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 nameSection">@PresentationWebStrings.Debit_New_Title</h3>
+            <h4 class="pageDescription">@PresentationWebStrings.Debit_New_Desc</h4>
+        </div>
+        <div class="clearfix"></div>
+        <div class="horizontalLineGrey"></div>
+    </div>
+
+    <div class="mt20">
+
+        <div class="wizardBox">
+            <!-- area de titulo y breadcrumb-->
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="mt5">Paso @Model.Setps[DebitsStepsEnum.Service]: Selección de Servicio</h3>
+                    <h4 class="pageDescription">@PresentationWebStrings.Debit_Service</h4>
+                </div>
+                <div class="col-md-4 steps">
+                    @Html.Partial("_Steps", Model.Setps)
+                </div>
+                <div class="clearfix"></div>
+                <div class="horizontalLineGrey"></div>
+            </div>
+            <!-- area de titulo y breadcrumb-->
+            <!-- campos obligatorios -->
+            <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+            <!-- campos obligatorios -->
+            @using (Html.BeginForm("ServiceNext", "Debit", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+            {
+                @Html.AntiForgeryToken()
+                
+                <div class="formMargin">
+                    <div class="row">
+                        <div class="col-md-12 hide generalError" id="generalError">
+                            <i class="icon-warning-sign"></i>
+                            @PresentationWebStrings.From_General_Error
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div> <label>Servicio</label><i class="icon-asterisk visanetOrangeTxt obligatoryField"></i></div>
+                            <select data-val="true" data-val-required="El campo es requerido." id="@Html.IdFor(m => m.CommerceModel.Id)" name="@Html.NameFor(m => m.CommerceModel.Id)">
+                                <option></option>
+                                @foreach (var i in Model.Commerces)
+                                {
+                                    <option value="@i.Id" data-tags="@i.Tags" @(((Model != null) && (Model.CommerceModel.Id != Guid.Empty) && (Model.CommerceModel.Id == i.Id)) ? "selected='selected'" : string.Empty)>@i.Name</option>
+                                }
+                            </select>
+                            @Html.ValidationMessageFor(m => m.CommerceModel.Id)
+                        </div>
+                    </div>
+
+                    <div id="productsDiv">
+
+                    </div>
+
+                    <div id="referencesDiv">
+
+                    </div>
+
+                    <div class="row wizardButtons">
+                        <div class="col-md-8"></div>
+                        <div class="col-md-4">
+                            <div class="col-xs-6"></div>
+                            <div class="col-xs-6 p5l pr0">
+                                <button id="btnNext" class="btn btn-default btn-siguiente mt10 w100">@PresentationCoreMessages.Common_Next<i class="icon-chevron-sign-right"></i></button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- fin del formMargin-->
+            }
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <button id="btnCancelDebit" class="btn btn-default btn-cancelar mt10 w100">@PresentationWebStrings.Abandon_Request<i class="icon-remove"></i></button>
+            </div>
+        </div>
+        @Html.Partial("_Cancel")
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#stepService").addClass("active");
+        $("#debitRequestLink").addClass("vnpTitleSelected");
+
+        $("#@Html.IdFor(m => m.CommerceModel.Id)").combobox();
+
+        $('#@Html.IdFor(m => m.CommerceModel.Id)').change(function () {
+            LoadProp();
+        });
+
+        if ($('#@Html.IdFor(m => m.CommerceModel.Id)').val() !== '' && $('#@Html.IdFor(m => m.CommerceModel.Id)').val() !== '00000000-0000-0000-0000-00000000000') {
+            LoadProp();
+        }
+
+        $('#@Html.IdFor(m => m.CommerceModel.ProductSelected)').change(function () {
+            LoadRef();
+        });
+
+        $("#btnNext").click(function () {
+            $("#form").submit();
+        });
+        $("#btnCancelDebit").click(function (e) {
+            e.preventDefault();
+            $("#lbCancelDebit").modal();
+        });
+    });
+
+    //referencesDiv
+    function LoadProp() {
+        $.ajax({
+            data: $('#form').serialize(),
+            url: '@Url.Action("GetProductos", "Debit")',
+            dataType: 'json',
+            success: function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $('#productsDiv').html(data.Content);
+                    CheckProp();
+                }
+                if (data.ResponseType != RESPONSE.SUCCESS) {
+                    $('#productsDiv').html();
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            }
+        });
+    }
+
+    function CheckProp() {
+        if ($('#@Html.IdFor(m => m.CommerceModel.ProductSelected)').length === 1) {
+            LoadRef();
+        }
+    }
+
+    //referencesDiv
+    function LoadRef() {
+        $.ajax({
+            data: $('#form').serialize(),
+            url: '@Url.Action("GetReferences", "Debit")',
+            dataType: 'json',
+            success: function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $('#referencesDiv').html(data.Content);
+                }
+                if (data.ResponseType != RESPONSE.SUCCESS) {
+                    $('#referencesDiv').html();
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            }
+        });
+    }
+</script>

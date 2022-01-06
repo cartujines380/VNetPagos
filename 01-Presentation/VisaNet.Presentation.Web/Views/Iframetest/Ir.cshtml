@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<script src="https://code.jquery.com/jquery-1.12.1.js"></script>
+
+<form method="POST" action="http://localhost:8530/apps/puntacarretaslocal" id="formid">
+    @{
+        var random = new Random();
+    }
+    @*<form method="POST" action="https://demouy.hexacta.com:448/apps/puntacarretaslocal" id="formid">*@
+
+    <input value="sherryagy@mailinator.com" name="Email" id="Email" class="hidden" />
+
+    <input value="@random.Next(1, 100000000)" name="IdOperacion" id="IdOperacion" class="hidden"/>
+    <input value="N" name="PermiteCambioEmail" id="PermiteCambioEmail" class="hidden"/>
+    <input value="https://requestb.in/1o7c50a1" name="urlCallback" id="urlCallback" class="hidden"/>
+
+    @*<button type="submit" id="buttonid"></button>*@
+
+</form>
+
+<script>
+    $(document).ready(function() {
+        $("#formid").submit();
+    });
+</script>

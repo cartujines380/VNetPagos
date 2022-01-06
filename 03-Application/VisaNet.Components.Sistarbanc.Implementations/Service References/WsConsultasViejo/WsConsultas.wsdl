@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="https://192.168.141.190/spfws/services/WsConsultas" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns1="urn:WsConsultasImp" xmlns:impl="https://192.168.141.190/spfws/services/WsConsultas" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="https://192.168.141.190/spfws/services/WsConsultas" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="https://192.168.141.190/spfws/services/WsConsultas">
+      <xsd:import namespace="urn:WsConsultasImp" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="ArrayOf_soapenc_string">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="soapenc:string[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOf_tns1_FacturaDeConsulta">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="tns1:FacturaDeConsulta[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOf_tns1_ServicioDeConsulta">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="tns1:ServicioDeConsulta[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:WsConsultasImp">
+      <xsd:import namespace="https://192.168.141.190/spfws/services/WsConsultas" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="Resultado">
+        <xsd:sequence>
+          <xsd:element name="codigoError" type="xsd:int" />
+          <xsd:element name="descripcionError" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FacturaDeConsulta">
+        <xsd:sequence>
+          <xsd:element name="descripcion" nillable="true" type="impl:ArrayOf_soapenc_string" />
+          <xsd:element name="fecha" nillable="true" type="soapenc:string" />
+          <xsd:element name="fechaEmision" nillable="true" type="soapenc:string" />
+          <xsd:element name="fechaLimitePago" nillable="true" type="soapenc:string" />
+          <xsd:element name="fechaVencimiento" nillable="true" type="soapenc:string" />
+          <xsd:element name="idFactura" nillable="true" type="soapenc:string" />
+          <xsd:element name="idTransaccion" nillable="true" type="soapenc:string" />
+          <xsd:element name="importe" nillable="true" type="soapenc:string" />
+          <xsd:element name="importeDevolucion" nillable="true" type="soapenc:string" />
+          <xsd:element name="moneda" nillable="true" type="soapenc:string" />
+          <xsd:element name="precedencia" type="xsd:int" />
+          <xsd:element name="tipoDocumento" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ServicioDeConsulta">
+        <xsd:sequence>
+          <xsd:element name="descripcion" nillable="true" type="impl:ArrayOf_soapenc_string" />
+          <xsd:element name="facturas" nillable="true" type="impl:ArrayOf_tns1_FacturaDeConsulta" />
+          <xsd:element name="idOrganismo" nillable="true" type="soapenc:string" />
+          <xsd:element name="idServicio" nillable="true" type="impl:ArrayOf_soapenc_string" />
+          <xsd:element name="nombreCliente" nillable="true" type="soapenc:string" />
+          <xsd:element name="tipoServicio" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResultadoServicioImpago">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns1:Resultado">
+            <xsd:sequence>
+              <xsd:element name="servicio" nillable="true" type="tns1:ServicioDeConsulta" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="FacturaDeConsultaCB">
+        <xsd:sequence>
+          <xsd:element name="descripcion" nillable="true" type="impl:ArrayOf_soapenc_string" />
+          <xsd:element name="fecha" nillable="true" type="soapenc:string" />
+          <xsd:element name="fechaEmision" nillable="true" type="soapenc:string" />
+          <xsd:element name="fechaLimitePago" nillable="true" type="soapenc:string" />
+          <xsd:element name="fechaVencimiento" nillable="true" type="soapenc:string" />
+          <xsd:element name="idFactura" nillable="true" type="soapenc:string" />
+          <xsd:element name="idTransaccion" nillable="true" type="soapenc:string" />
+          <xsd:element name="importe" nillable="true" type="soapenc:string" />
+          <xsd:element name="importeDevolucion" nillable="true" type="soapenc:string" />
+          <xsd:element name="moneda" nillable="true" type="soapenc:string" />
+          <xsd:element name="tipoDocumento" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ServicioDeConsultaCB">
+        <xsd:sequence>
+          <xsd:element name="codigoBarras" nillable="true" type="soapenc:string" />
+          <xsd:element name="descripcion" nillable="true" type="impl:ArrayOf_soapenc_string" />
+          <xsd:element name="factura" nillable="true" type="tns1:FacturaDeConsultaCB" />
+          <xsd:element name="idOrganismo" nillable="true" type="soapenc:string" />
+          <xsd:element name="nombreCliente" nillable="true" type="soapenc:string" />
+          <xsd:element name="tipoServicio" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResultadoServicioImpagoCB">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns1:Resultado">
+            <xsd:sequence>
+              <xsd:element name="servicio" nillable="true" type="tns1:ServicioDeConsultaCB" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ResultadoServiciosImpagos">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns1:Resultado">
+            <xsd:sequence>
+              <xsd:element name="servicios" nillable="true" type="impl:ArrayOf_tns1_ServicioDeConsulta" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getServicioImpagoCBResponse">
+    <wsdl:part name="getServicioImpagoCBReturn" type="tns1:ResultadoServicioImpagoCB" />
+  </wsdl:message>
+  <wsdl:message name="getServiciosImpagosRequest">
+    <wsdl:part name="idClienteBanco" type="soapenc:string" />
+    <wsdl:part name="idOrganismo" type="soapenc:string" />
+    <wsdl:part name="tipoServicio" type="soapenc:string" />
+    <wsdl:part name="banco" type="soapenc:string" />
+    <wsdl:part name="firma" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="getServicioImpagoResponse">
+    <wsdl:part name="getServicioImpagoReturn" type="tns1:ResultadoServicioImpago" />
+  </wsdl:message>
+  <wsdl:message name="getServiciosImpagosResponse">
+    <wsdl:part name="getServiciosImpagosReturn" type="tns1:ResultadoServiciosImpagos" />
+  </wsdl:message>
+  <wsdl:message name="getServicioImpagoCBRequest">
+    <wsdl:part name="banco" type="soapenc:string" />
+    <wsdl:part name="codigos" type="impl:ArrayOf_soapenc_string" />
+    <wsdl:part name="firma" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="getServicioImpagoRequest">
+    <wsdl:part name="banco" type="soapenc:string" />
+    <wsdl:part name="idOrganismo" type="soapenc:string" />
+    <wsdl:part name="tipoServicio" type="soapenc:string" />
+    <wsdl:part name="idServicio" type="impl:ArrayOf_soapenc_string" />
+    <wsdl:part name="firma" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:portType name="WsConsultasImp">
+    <wsdl:operation name="getServicioImpago" parameterOrder="banco idOrganismo tipoServicio idServicio firma">
+      <wsdl:input name="getServicioImpagoRequest" message="impl:getServicioImpagoRequest" />
+      <wsdl:output name="getServicioImpagoResponse" message="impl:getServicioImpagoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getServicioImpagoCB" parameterOrder="banco codigos firma">
+      <wsdl:input name="getServicioImpagoCBRequest" message="impl:getServicioImpagoCBRequest" />
+      <wsdl:output name="getServicioImpagoCBResponse" message="impl:getServicioImpagoCBResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getServiciosImpagos" parameterOrder="idClienteBanco idOrganismo tipoServicio banco firma">
+      <wsdl:input name="getServiciosImpagosRequest" message="impl:getServiciosImpagosRequest" />
+      <wsdl:output name="getServiciosImpagosResponse" message="impl:getServiciosImpagosResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsConsultasSoapBinding" type="impl:WsConsultasImp">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="getServicioImpago">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getServicioImpagoRequest">
+        <wsdlsoap:body use="encoded" namespace="https://192.168.141.190/spfws/services/WsConsultas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getServicioImpagoResponse">
+        <wsdlsoap:body use="encoded" namespace="https://192.168.141.190/spfws/services/WsConsultas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getServicioImpagoCB">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getServicioImpagoCBRequest">
+        <wsdlsoap:body use="encoded" namespace="https://192.168.141.190/spfws/services/WsConsultas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getServicioImpagoCBResponse">
+        <wsdlsoap:body use="encoded" namespace="https://192.168.141.190/spfws/services/WsConsultas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getServiciosImpagos">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getServiciosImpagosRequest">
+        <wsdlsoap:body use="encoded" namespace="https://192.168.141.190/spfws/services/WsConsultas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getServiciosImpagosResponse">
+        <wsdlsoap:body use="encoded" namespace="https://192.168.141.190/spfws/services/WsConsultas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsConsultasImpService">
+    <wsdl:port name="WsConsultas" binding="impl:WsConsultasSoapBinding">
+      <wsdlsoap:address location="https://192.168.141.190/spfws/services/WsConsultas" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

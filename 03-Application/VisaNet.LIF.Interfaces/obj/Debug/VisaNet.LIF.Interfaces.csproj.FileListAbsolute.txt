@@ -1,0 +1,9 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\03-Application\VisaNet.LIF.Interfaces\bin\Debug\VisaNet.LIF.Interfaces.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\03-Application\VisaNet.LIF.Interfaces\bin\Debug\VisaNet.LIF.Interfaces.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\03-Application\VisaNet.LIF.Interfaces\bin\Debug\VisaNet.Lif.Domain.EntitesDtos.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\03-Application\VisaNet.LIF.Interfaces\bin\Debug\VisaNet.Lif.Domain.EntitesDtos.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\03-Application\VisaNet.LIF.Interfaces\obj\Debug\VisaNet.LIF.Interfaces.csprojResolveAssemblyReference.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\03-Application\VisaNet.LIF.Interfaces\obj\Debug\VisaNet.LIF.Interfaces.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\03-Application\VisaNet.LIF.Interfaces\obj\Debug\VisaNet.LIF.Interfaces.csproj.CopyComplete
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\03-Application\VisaNet.LIF.Interfaces\obj\Debug\VisaNet.LIF.Interfaces.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\03-Application\VisaNet.LIF.Interfaces\obj\Debug\VisaNet.LIF.Interfaces.pdb

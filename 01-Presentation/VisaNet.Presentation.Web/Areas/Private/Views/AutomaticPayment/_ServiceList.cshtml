@@ -1,0 +1,37 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model IEnumerable<VisaNet.Presentation.Web.Areas.Private.Models.ServiceListModel>
+
+<div class="formMargin">
+    <div class="loadingMessaje" id="loadingAp" style="display: none">
+        <div class="loading">@PresentationCoreMessages.Common_Waiting</div>
+    </div>
+    <div id="divData">
+        <h4>@PresentationWebStrings.Service_ServiceList</h4>
+        <div class="row">
+            @if (Model == null || !Model.Any())
+            {
+                <div class="suggestionsBox">
+                    <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@TempData["LoadinError_AutomaticPayment"]</h5>
+                </div>
+            }
+            else
+            {
+                foreach (var serviceAssosiated in Model)
+                {
+                    <div class="col-md-6">
+                        @Html.Partial("_Block", serviceAssosiated)
+                    </div>
+                }
+            }
+        </div>
+
+        @if (Model == null || !Model.Any())
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="@Url.Action("Associate","Service")" class="btn btn-default btn-standar mt10 mr0"><i class="icon-plus"></i> @PresentationWebStrings.Service_Add</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

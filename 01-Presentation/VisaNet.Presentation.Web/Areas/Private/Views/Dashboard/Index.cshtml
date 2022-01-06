@@ -1,0 +1,192 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Presentation.Web.Areas.Private.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container p25t">
+    <div class="row">
+        <div class="col-md-12">
+            <!--<h4 class="pageDescription mt20">@PresentationWebStrings.Dashboard_Desc </h4>
+            <div class="horizontalLineGreyTitle"></div>-->
+            @*<h5 class="f13 mb0"><i class="icon-warning-sign visanetOrangeTxt"></i>@PresentationWebStrings.Service_See_More_Ref</h5>*@
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div id="debits">
+        @Html.Partial("_DebitHistory")
+    </div>
+    <div id="data">
+        @Html.Partial("_BillsAndAutoPayments")
+    </div>
+	<div id="payments">
+        @*@Html.Partial("_PaymentHistory", (ICollection<PaymentHistoryModel>)ViewBag.PaymentHistory)*@
+    </div>
+</div>
+@Html.Partial("_ConfirmCancelDebit")
+@Html.Partial("_ConfirmDeleteDebit")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#miPortalLink").addClass("vnpTitleSelected");
+        LoadData();
+        LoadDebits();
+
+        $("#payments").on("click", "a.send", function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: $(this).attr('href'),
+                dataType: 'json',
+                success: function (data) {
+                    if (data.ResponseType == RESPONSE.SUCCESS) {
+                        ShowNotification(data.Title, data.Message, 'success');
+                    }
+                    if (data.ResponseType == RESPONSE.ERROR) {
+                        ShowNotification(data.Title, data.Message, 'error');
+                    }
+                }
+            });
+        });
+
+        $("#data").on("click", "#btnPayBill", function (e) {
+            showLoaderFullScreen();
+        });
+
+        $("#data").on("click", "#btnMultipleBills", function (e) {
+            showLoaderFullScreen();
+        });
+
+        $('body').on('click', '#btnConfirmCancel', function (e) {
+            e.preventDefault();
+
+            CancelDebitRequest();
+            e.stopPropagation();
+    });
+        $('body').on('click', '#btnConfirmDelete', function (e) {
+            DeleteDebitRequest();
+        });
+
+    });
+    function CancelDebitRequest() {
+        $("#divLoading").show();
+        $.ajax({
+            data: { 'DebitRequestIdToCancel': $('#DebitRequestIdToCancel').val() },
+            type: "POST",
+            url: '@Url.Action("CancelDebitRequest", "Dashboard", new { Area = "Private" })',
+            //dataType: 'html',
+            success: function (result) {
+                $("#lbConfirmCancel").modal("hide");
+                $("#divLoading").hide();
+                //Se verifica si expiro la sesion
+                try {
+                    var resultJson = JSON.parse(result);
+                    if (resultJson != null && resultJson.sessionExpired != null && resultJson.sessionExpired == true) {
+                        window.location = resultJson.loginUrl;
+                    }
+                } catch (e) { }
+                if (result.ResponseType == RESPONSE.SUCCESS) {
+                    LoadDebits();
+                    ShowNotification(result.Title, result.Message, 'success');
+                }
+                if (result.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(result.Title, result.Message, 'error');
+                }
+            },
+            error: function () {
+                $("#divLoading").hide();
+                ShowNotification("", "No pudimos cancelar su solicitud. Intentá nuevamente o comunicate con el CallCenter", 'error');
+            }
+        });
+    }
+    function DeleteDebitRequest() {
+        $("#divLoading").show();
+        $.ajax({
+            data: { 'DebitRequestIdToCancel': $('#DebitRequestIdToCancel').val() },
+            type: "POST",
+            url: '@Url.Action("DeleteDebitRequest", "Dashboard", new { Area = "Private" })',
+            //dataType: 'html',
+            success: function (result) {
+                $("#lbConfirmDelete").modal("hide");
+                $("#divLoading").hide();
+                //Se verifica si expiro la sesion
+                try {
+                    var resultJson = JSON.parse(result);
+                    if (resultJson != null && resultJson.sessionExpired != null && resultJson.sessionExpired == true) {
+                        window.location = resultJson.loginUrl;
+                    }
+                } catch (e) { }
+                if (result.ResponseType == RESPONSE.SUCCESS) {
+                    LoadDebits();
+                    ShowNotification(result.Title, result.Message, 'success');
+                }
+                if (result.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(result.Title, result.Message, 'error');
+                }
+            },
+            error: function () {
+                $("#divLoading").hide();
+                ShowNotification("", "No pudimos eliminar el débito. Intentá nuevamente o comunicate con el CallCenter", 'error');
+            }
+        });
+    }
+    function LoadData() {
+        $.ajax({
+            beforeSend: function (call) { $.globalCalls.push(call); },
+            url: '@Url.Action("GetBillsAndAutomaticPaymentsAjax", "Dashboard", new { Area = "Private" })',
+            dataType: 'html',
+            success: function (result) {
+                //Se verifica si expiro la sesion
+                try {
+                    var resultJson = JSON.parse(result);
+                    if (resultJson != null && resultJson.sessionExpired != null && resultJson.sessionExpired == true) {
+                        window.location = resultJson.loginUrl;
+                    }
+                } catch (e) { }
+                $('#data').html(result);
+                $('#loadingAp').attr("class", "hide");
+                $('#loadingBills').attr("class", "hide");
+                $('#bills_data').removeAttr("class", "hide");
+                $('#payment_data').removeAttr("class", "hide");
+            }
+        });
+    }
+    function LoadPayments() {
+        $.ajax({
+            beforeSend: function (call) { $.globalCalls.push(call); },
+            url: '@Url.Action("GetPaymentsAjax", "Dashboard", new {Area="Private"})',
+            dataType: 'html',
+            success: function (result) {
+                //Se verifica si expiro la sesion
+                try {
+                    var resultJson = JSON.parse(result);
+                    if (resultJson != null && resultJson.sessionExpired != null && resultJson.sessionExpired == true) {
+                        window.location = resultJson.loginUrl;
+                    }
+                } catch (e) {}
+                $('#payments').html(result);
+                $('#loadingHistory').attr("class", "hide");
+                $('#history_data').removeAttr("class", "hide");
+            }
+        });
+    }
+
+    function LoadDebits() {
+        $.ajax({
+            beforeSend: function (call) { $.globalCalls.push(call); },
+            url: '@Url.Action("GetDebitAjax", "Dashboard", new {Area="Private"})',
+            dataType: 'html',
+            success: function (result) {
+                //Se verifica si expiro la sesion
+                try {
+                    var resultJson = JSON.parse(result);
+                    if (resultJson != null && resultJson.sessionExpired != null && resultJson.sessionExpired == true) {
+                        window.location = resultJson.loginUrl;
+                    }
+                } catch (e) { }
+                $('#debits').html(result);
+                $('#loadingDebits').attr("class", "hide");
+                $('#history_debits_data').removeAttr("class", "hide");
+            }
+        });
+    }
+</script>

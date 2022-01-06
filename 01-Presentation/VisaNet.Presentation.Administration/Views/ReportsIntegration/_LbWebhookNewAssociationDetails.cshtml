@@ -1,0 +1,161 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.WebhookNewAssociationModel
+
+<div id="lbDetails" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4>@PresentationAdminStrings.Details</h4>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <tbody>
+
+                        @* DATOS GENERALES *@
+                        <tr>
+                            <th>@PresentationAdminStrings.CreationDate</th>
+                            <td>@Model.CreationDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Application_Id</th>
+                            <td>@Model.IdApp</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Operation_Id_App</th>
+                            <td>@Model.IdOperationApp</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.ResultCode</th>
+                            <td>@Model.HttpResponseCode</td>
+                        </tr>
+                        <tr>
+                            <th>Es asociación</th>
+                            <td>@Model.IsAssociation</td>
+                        </tr>
+                        <tr>
+                            <th>Es pago</th>
+                            <td>@Model.IsPayment</td>
+                        </tr>
+
+                        @* DATOS USUARIO *@
+                        <tr>
+                            <th>@PresentationAdminStrings.User_Id</th>
+                            <td>@Model.IdUser</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Email</th>
+                            <td>@Model.UserEmail</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Name</th>
+                            <td>@Model.UserName</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Filters_Surname</th>
+                            <td>@Model.UserSurname</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.CI</th>
+                            <td>@Model.UserIdentityNumber</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.MobileNumber</th>
+                            <td>@Model.UserMobileNumber</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.PhoneNumber</th>
+                            <td>@Model.UserPhoneNumber</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Debit_UserAddress</th>
+                            <td>@Model.UserAddress</td>
+                        </tr>
+
+                        @* DATOS TARJETA *@
+                        <tr>
+                            <th>@PresentationAdminStrings.Card_Id</th>
+                            <td>@Model.IdCard</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Card_DueDate_Short</th>
+                            <td>@Model.CardDueDate</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Filters_MaskedNumber</th>
+                            <td>@Model.CardMask</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.CardType</th>
+                            <td>@Model.CardType</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Bank</th>
+                            <td>@Model.CardBank</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.BankCode</th>
+                            <td>@Model.CardBankCode</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.CardAffiliation</th>
+                            <td>@Model.CardAffiliation</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.CardAffiliationCode</th>
+                            <td>@Model.CardAffiliationCode</td>
+                        </tr>
+
+                        @* DATOS TRANSACCION *@
+                        <tr>
+                            <th>@PresentationAdminStrings.Transaction_Number_Short</th>
+                            <td>@Model.TransactionNumber</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.DiscountAmount</th>
+                            <td>@Model.DiscountAmount</td>
+                        </tr>
+
+                        @* DATOS REFERENCIAS *@
+                        <tr>
+                            <th>Ref Cliente 1</th>
+                            <td>@Model.RefCliente1</td>
+                        </tr>
+                        <tr>
+                            <th>Ref Cliente 2</th>
+                            <td>@Model.RefCliente2</td>
+                        </tr>
+                        <tr>
+                            <th>Ref Cliente 3</th>
+                            <td>@Model.RefCliente3</td>
+                        </tr>
+                        <tr>
+                            <th>Ref Cliente 4</th>
+                            <td>@Model.RefCliente4</td>
+                        </tr>
+                        <tr>
+                            <th>Ref Cliente 5</th>
+                            <td>@Model.RefCliente5</td>
+                        </tr>
+                        <tr>
+                            <th>Ref Cliente 6</th>
+                            <td>@Model.RefCliente6</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-6 p5l">
+                        <button type="button" class="btn btn-default btn-cancelar w100" data-dismiss="modal">@PresentationWebStrings.Close <i class="icon-remove"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

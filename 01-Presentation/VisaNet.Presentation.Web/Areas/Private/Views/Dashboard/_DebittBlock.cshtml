@@ -1,0 +1,43 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+
+@model VisaNet.Presentation.Web.Areas.Private.Models.DebitRequestTableModel
+<div class="col-md-6">
+    <div class="itemBox serviceItem">
+        <div class="col-md-8 col-sm-8 col-xs-12 serviceInformation">
+            <div class="col-md-3 pr0 pl0 serviceImage">
+                @if (!string.IsNullOrEmpty(Model.DebitImageUrl))
+                {
+                    <img src="@Model.DebitImageUrl" width="54" />
+                }
+                else
+                {
+                    <img src="@ConfigurationManager.AppSettings["DefaultServiceImage"]" width="54" />
+                }
+            </div>
+            <div class="col-md-9 serviceDetail">
+                <ul>
+                    <li><span>@PresentationWebStrings.Commerce:</span>@Model.MerchantName - @Model.MerchantProductName</li>
+                    <li><span>@PresentationWebStrings.Card:</span>@Model.CardNumber</li>
+                    <li><span>@PresentationWebStrings.CreationDate:</span>@Model.CreationDate.ToShortDateString()</li>
+                    <li><span>@PresentationWebStrings.Filters_DebitRequestType:</span>@EnumsStrings.ResourceManager.GetString(string.Format("{0}_{1}", typeof(DebitRequestTypeDto).Name, Enum.GetName(typeof(DebitRequestTypeDto), Model.Type)))</li>
+                    <li><span>@PresentationWebStrings.Filters_DebitRequestState:</span>@EnumsStrings.ResourceManager.GetString(string.Format("{0}_{1}", typeof(DebitRequestStateDto).Name, Enum.GetName(typeof(DebitRequestStateDto), Model.State)))</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 serviceActions">
+            <ul>
+                @if (Model.Type == DebitRequestTypeDto.High && Model.State != DebitRequestStateDto.Rejected)
+                {
+                    <li><a class="Delete" data-id="@Model.Id"><i class="icon-remove"></i>@PresentationWebStrings.Cancel</a></li>
+                }
+                else
+                {
+                    <li><a class="Activate" href="@Url.Action("Service", "Debit", new { area = "Debit", commerceId = Model.MerchantId })"><i class="icon-envelope"></i> @PresentationWebStrings.DebitRequests_Request</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

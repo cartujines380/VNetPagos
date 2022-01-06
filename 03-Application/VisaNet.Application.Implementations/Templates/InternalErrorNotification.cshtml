@@ -1,0 +1,77 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>VISA</title>
+</head>
+
+<body style="background:#e6eced">
+    <table width="800" border="0" cellspacing="0" cellpadding="0" style="margin:0 auto; background:#ffffff;">
+        <tr>
+            <td><img style="right: 0; height: 56px;" src="{HeaderPath}header.png" alt="VISA" /></td>
+        </tr>
+        <tr>
+            <td style="padding-top: 60px;padding-left: 36px;padding-right: 36px;padding-bottom: 5px;font-family: arial;color: #4f9bc9;font-size: 18px;">
+                <strong>@Model.Title</strong>
+            </td>
+        </tr>
+        @*@if (Model.User != null)
+        {
+            <tr>
+                <td style="padding-top: 10px; line-height: 1.4em; padding-left: 36px; padding-right: 36px; padding-bottom: 5px; font-family: arial; color: #858585; font-size: 14px;">
+                    <p><strong>Usuario:</strong></p>
+                    <ul style="list-style-type: none">
+                        <li><strong>Nombre:</strong> @Model.User.Name</li>
+                        <li><strong>Apellido:</strong> @Model.User.Surname</li>
+                        <li><strong>Usuario:</strong> @Model.User.Email</li>
+                    </ul>
+                </td>
+            </tr>
+        }*@
+        @if (Model.Message != null && string.IsNullOrEmpty(Model.Message.ToString()) == false)
+        {
+            <tr>
+                <td style="padding-top: 10px; line-height: 1.4em; padding-left: 36px; padding-right: 36px; padding-bottom: 5px; font-family: arial; color: #858585; font-size: 14px;">
+                    <p><strong>Mensaje:</strong></p>
+                    <p>@Model.Message</p>
+                </td>
+            </tr>
+        }
+        @if (Model.ExceptionMessage != null && string.IsNullOrEmpty(Model.ExceptionMessage.ToString()) == false)
+        {
+
+            <tr>
+                <td style="padding-top: 10px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;padding-bottom:5px;font-family: arial;color: #858585;font-size: 14px;">
+                    <p><strong>ExceptionMessage:</strong></p>
+                    <p>@Model.ExceptionMessage</p>
+                </td>
+            </tr>
+        }
+        @if (Model.StackTrace != null && string.IsNullOrEmpty(Model.StackTrace.ToString()) == false)
+        {
+            <tr>
+                <td style="padding-top: 10px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;padding-bottom:5px;font-family: arial;color: #858585;font-size: 14px;">
+                    <p><strong>StackTrace:</strong></p>
+                    <p>@Model.StackTrace</p>
+                </td>
+            </tr>
+        }
+        @if (Model.InnerException != null && string.IsNullOrEmpty(Model.InnerException.ToString()) == false)
+        {
+            <tr>
+                <td style="padding-top: 10px; line-height: 1.4em; padding-left: 36px; padding-right: 36px; padding-bottom: 5px; font-family: arial; color: #858585; font-size: 14px;">
+                    <p><strong>InnerException:</strong></p>
+                    <p>@Model.InnerException</p>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td style="padding-top: 20px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;padding-bottom: 60px;font-family: arial;color: #858585;font-size: 14px; font-style:italic">
+            </td>
+        </tr>
+        <tr>
+            <td style="background:#75787b; padding-top:10px; padding-left:36px; padding-bottom:10px; padding-right:36px; color:#dadada; font-family:Arial, Helvetica, sans-serif; font-size:12px">Visa portal de pagos ɠ2014. Todos los derechos reservados.</td>
+        </tr>
+    </table>
+</body>
+</html>

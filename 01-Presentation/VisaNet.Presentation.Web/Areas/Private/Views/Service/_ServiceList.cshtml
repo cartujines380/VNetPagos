@@ -1,0 +1,57 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model IEnumerable<VisaNet.Presentation.Web.Areas.Private.Models.ServiceListModel>
+@{
+    var displayLength = (int)ViewBag.DisplayLength;
+}
+<div class="formMargin">
+    <div class="loadingMessaje" id="loadingAp" style="display: none">
+        <div class="loading">@PresentationCoreMessages.Common_Waiting</div>
+    </div>
+    <div id="divData">
+        <h4>@PresentationWebStrings.Service_ServiceList</h4>
+        <div class="row">
+            @if (Model == null || !Model.Any())
+            {
+                <div class="suggestionsBox">
+                    <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@(ViewBag.IsSearch ? PresentationCoreMessages.Common_NoSearchResults : PresentationWebStrings.Service_List_Empty)</h5>
+                </div>
+                <a href="@Url.Action("NewAssociate")" class="btn btn-default btn-link-box mt10"><i class="icon-plus"></i> @PresentationWebStrings.Service_Add</a>
+            }
+            else
+            {
+                for (int i = 0; i < Model.Count(); i++)
+                {
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.Partial("_ServiceBlock", Model.ElementAt(i))
+                        </div>
+                        @if (Model.Count() > (i + 1))
+                        {
+                            <div class="col-md-6">
+                                @Html.Partial("_ServiceBlock", Model.ElementAt(i + 1))
+                            </div>
+                        }
+                        @{i = i + 1;}
+                    </div>
+                }
+            }
+        </div>
+        @if (Model != null && Model.Any())
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="@Url.Action("NewAssociate")" class="btn btn-default btn-link-box mt10"><i class="icon-plus"></i> @PresentationWebStrings.Service_Add</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        @if (Model != null && Model.Any() && Model.Count() == displayLength )
+        {<text>$("#lnkOlderItems").show();</text>}
+        else
+        {<text>$("#lnkOlderItems").hide();</text>}
+    });
+</script>

@@ -1,0 +1,128 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+<div class="modal fade" tabindex="-1" role="dialog" id="containerReferencesModal">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@PresentationAdminStrings.Service_Params_Section del servicio contenedor</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.ContainerReferenceParamName)
+                                    @Html.TextBoxFor(s => s.ContainerReferenceParamName, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.HiddenFor(s => s.ContainerReferenceParamName)
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.ContainerReferenceParamRegex)
+                                    @Html.TextBoxFor(s => s.ContainerReferenceParamRegex, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.HiddenFor(s => s.ContainerReferenceParamRegex)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.ContainerReferenceParamName2)
+                                    @Html.TextBoxFor(s => s.ContainerReferenceParamName2, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.HiddenFor(s => s.ContainerReferenceParamName2)
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.ContainerReferenceParamRegex2)
+                                    @Html.TextBoxFor(s => s.ContainerReferenceParamRegex2, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.HiddenFor(s => s.ContainerReferenceParamRegex2)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.ContainerReferenceParamName3)
+                                    @Html.TextBoxFor(s => s.ContainerReferenceParamName3, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.HiddenFor(s => s.ContainerReferenceParamName3)
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.ContainerReferenceParamRegex3)
+                                    @Html.TextBoxFor(s => s.ContainerReferenceParamRegex3, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.HiddenFor(s => s.ContainerReferenceParamRegex3)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.ContainerReferenceParamName4)
+                                    @Html.TextBoxFor(s => s.ContainerReferenceParamName4, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.HiddenFor(s => s.ContainerReferenceParamName4)
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.ContainerReferenceParamRegex4)
+                                    @Html.TextBoxFor(s => s.ContainerReferenceParamRegex4, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.HiddenFor(s => s.ContainerReferenceParamRegex4)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.ContainerReferenceParamName5)
+                                    @Html.TextBoxFor(s => s.ContainerReferenceParamName5, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.HiddenFor(s => s.ContainerReferenceParamName5)
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.ContainerReferenceParamRegex5)
+                                    @Html.TextBoxFor(s => s.ContainerReferenceParamRegex5, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.HiddenFor(s => s.ContainerReferenceParamRegex5)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.ContainerReferenceParamName6)
+                                    @Html.TextBoxFor(s => s.ContainerReferenceParamName6, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.HiddenFor(s => s.ContainerReferenceParamName6)
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.ContainerReferenceParamRegex6)
+                                    @Html.TextBoxFor(s => s.ContainerReferenceParamRegex6, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.HiddenFor(s => s.ContainerReferenceParamRegex6)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

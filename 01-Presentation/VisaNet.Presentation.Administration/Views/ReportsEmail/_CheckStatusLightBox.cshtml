@@ -1,0 +1,44 @@
+﻿@using VisaNet.Common.Resource.Presentation
+<div id="lbConfirmCheckStatus" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@PresentationAdminStrings.CheckEmailsStatus</h4>
+            </div>
+            <div class="modal-body">
+                <p>@PresentationCoreMessages.Common_Confirm</p>
+            </div>
+            <div class="modal-footer">
+                @Html.ActionLink(PresentationAdminStrings.CheckEmailsStatusBtn, "ReportsEmail", null,new { @Class = "btn btn-success lb-accept", @Id = "lnkCheckStatus" }) 
+                @*@Html.Action("CheckStatus", "", new Dictionary<string, object> { { "Class", "btn btn-success lb-accept" }, { "id", "lnkResendAll" } })*@
+                <a href="#" class="btn lb-cancel" id="lnkDeleteCancel" data-dismiss="modal">@PresentationAdminStrings.Cancel</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    var tr;
+    $(document).ready(function () {
+        $("#lnkCheckStatus").click(function (e) {
+            e.preventDefault();
+            showBlockUI("Actualizando estados");
+            var url = '@(Url.Action("CheckStatus","ReportsEmail"))';
+            $.post(url, function (data) {
+                $('#lbConfirmCheckStatus').modal("hide");
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    ShowNotification(data.Title, data.Message, 'success');
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+                dataTableFilters.fnFilter();
+                hideBlockUI();
+            }).fail(function () {
+                hideBlockUI();
+                window.location.replace('@Url.Action("Index", "Error")');
+            });
+        });
+    });
+</script>

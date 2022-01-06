@@ -1,0 +1,31 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Presentation.Administration.Models.FaqModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Faq_Details_Title</h2>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Order)
+            @Html.DisplayFor(model => model.Order)
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Question)
+            @Html.DisplayFor(model => model.Question)
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Answer)
+            @Html.DisplayFor(model => model.Answer)
+        </div>
+        
+        @Html.ActionActionLink(Actions.FaqEdit, PresentationAdminStrings.Edit, new RouteValueDictionary { { "id", Model.Id } }, new Dictionary<string, object> { { "Class", "btn btn-default" } })
+        @Html.ActionActionLink(Actions.FaqList, PresentationAdminStrings.Back, new Dictionary<string, object> { { "Class", "btn btn-default" } })
+    </div>
+</div>

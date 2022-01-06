@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Presentation.Administration.Models.PageModel
+
+<h2>@PresentationAdminStrings.LegalPages_Details_Title</h2>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="form-group">
+            @Html.TextArea("Content", new { id = "Content", disabled = "disabled" })
+        </div>        
+        @Html.ActionActionLink(Actions.LegalPagesEdit, PresentationAdminStrings.Edit, new RouteValueDictionary { { "id", Model.Id } }, new Dictionary<string, object> { { "Class", "btn btn-default" } })
+    </div>
+</div>
+
+@{
+    var contenido = Html.Raw(Model.Content);
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        loadEditor("Content", "@contenido");
+    });
+</script>

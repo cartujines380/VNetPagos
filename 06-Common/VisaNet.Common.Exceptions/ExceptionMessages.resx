@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SERVICECATEGORY_IN_SERVICE" xml:space="preserve">
+    <value>No se puede eliminar la categoría seleccionada, hay un servicio que la utiliza.</value>
+  </data>
+  <data name="SERVICECATEGORY_NAME_ALREADY_USED" xml:space="preserve">
+    <value>Nombre de la categoría ya existente.</value>
+  </data>
+  <data name="SUBSCRIBER_EMAIL_ALREADY_USED" xml:space="preserve">
+    <value>Dirección de correo ya existente.</value>
+  </data>
+  <data name="SERVICE_NAME_ALREADY_USED" xml:space="preserve">
+    <value>Nombre de servicio ya existente.</value>
+  </data>
+  <data name="USER_EMAIL_DUPLICATED" xml:space="preserve">
+    <value>Dirección de correo ya existente.</value>
+  </data>
+  <data name="USER_NOT_EXIST" xml:space="preserve">
+    <value>El usuario indicado no existe.</value>
+  </data>
+  <data name="USER_USERNAME_DUPLICATED" xml:space="preserve">
+    <value>E-mail ya existente.</value>
+  </data>
+  <data name="USER_USERNAME_EMAIL_NOT_MATCH" xml:space="preserve">
+    <value>Nombre de usuario y dirección de correo no coninciden.</value>
+  </data>
+  <data name="SERVICE_BANRED_SISTARBANC_CODE_UNIQUE" xml:space="preserve">
+    <value>El código del servicio en Banred/Sistarbanc ya fue utilizado.</value>
+  </data>
+  <data name="SERVICE_CYBERSOURCE_CODE_UNIQUE" xml:space="preserve">
+    <value>El código del servicio en Cybersource ya fue utilizado.</value>
+  </data>
+  <data name="SERVICE_ASOCIATED" xml:space="preserve">
+    <value>El servicio esta asociado a un usuario, no se puede eliminar.</value>
+  </data>
+  <data name="FAQ_QUESTION_ALREADY_USED" xml:space="preserve">
+    <value>Pregunta ya existente.</value>
+  </data>
+  <data name="APPLICATION_USER_EMAIL_DUPLICATED" xml:space="preserve">
+    <value>El correo electrónico ingresado ya se encuentra registrado en el sistema.</value>
+  </data>
+  <data name="APPLICATION_USER_IDENTITY_DUPLICATED" xml:space="preserve">
+    <value>El número de identidad ingresado ya se encuentra registrado en el sistema.</value>
+  </data>
+  <data name="APPLICATION_USER_NOT_EXIST" xml:space="preserve">
+    <value>El usuario indicado no existe.</value>
+  </data>
+  <data name="APPLICATION_USER_OLD_PASSWORD_NOT_MATCH" xml:space="preserve">
+    <value>E-mail o contraseña anterior no coinciden.</value>
+  </data>
+  <data name="SYSTEM_USER_NOT_EXIST" xml:space="preserve">
+    <value>El usuario indicado no existe.</value>
+  </data>
+  <data name="SYSTEM_USER_USERNAME_DUPLICATED" xml:space="preserve">
+    <value>E-mail ya existente.</value>
+  </data>
+  <data name="ROLE_USERS_ASSOCIATED" xml:space="preserve">
+    <value>Existen usuarios asociados al rol indicado.</value>
+  </data>
+  <data name="AUTH_LOGIN_ERROR" xml:space="preserve">
+    <value>El e-mail o la contraseña es incorrecto.</value>
+  </data>
+  <data name="SYSTEM_USER_DISABLED" xml:space="preserve">
+    <value>El usuario no se encuentra habilitado.</value>
+  </data>
+  <data name="APPLICATION_USER_DISABLED" xml:space="preserve">
+    <value>El usuario no se encuentra habilitado.</value>
+  </data>
+  <data name="APPLICATION_USER_MISSING_MEMBERSHIP_IDENTIFIER" xml:space="preserve">
+    <value>Identificador de Membership no encontrado.</value>
+  </data>
+  <data name="APPLICATION_USER_INVALID_TOKEN" xml:space="preserve">
+    <value>Token inválido.</value>
+  </data>
+  <data name="BIN_VALUE_USED" xml:space="preserve">
+    <value>Valor de BIN ya existente.</value>
+  </data>
+  <data name="APPLICATION_USER_INVALID_CONFIRMATION_TOKEN" xml:space="preserve">
+    <value>Token de confirmación no válido.</value>
+  </data>
+  <data name="SISTARBANC_NROERROR_50" xml:space="preserve">
+    <value>El servicio no se encuentra disponible para recibir pagos, comunicate con nuestro Call Center</value>
+  </data>
+  <data name="SISTARBANC_NORESPONSE" xml:space="preserve">
+    <value>No hay respuesta de Sistarbanc</value>
+  </data>
+  <data name="GENERAL_ERROR" xml:space="preserve">
+    <value>Se produjo un error. Intentá nuevamente en unos minutos.</value>
+  </data>
+  <data name="SERVICE_PAYMENTS_ASSOCIATED" xml:space="preserve">
+    <value>Existen pagos asociados al servicio indicado.</value>
+  </data>
+  <data name="CYBERSOURCE_ACCESS_KEY" xml:space="preserve">
+    <value>La clave de acceso en cybersource no puede ser vacía.</value>
+  </data>
+  <data name="CYBERSOURCE_SECRET_KEY" xml:space="preserve">
+    <value>La clave de seguridad en cybersource no puede ser vacía.</value>
+  </data>
+  <data name="PAYMENT_CARD_INVALID" xml:space="preserve">
+    <value>El número de tarjeta no es válido.</value>
+  </data>
+  <data name="BANRED_NORESPONSE" xml:space="preserve">
+    <value>ERROR EN BANRED</value>
+  </data>
+  <data name="CYBERSOURCE_COMMUNICATION" xml:space="preserve">
+    <value>Error de comunicación</value>
+  </data>
+  <data name="CYBERSOURCE_FAULT" xml:space="preserve">
+    <value>Error de fault</value>
+  </data>
+  <data name="CYBERSOURCE_TIMEOUT" xml:space="preserve">
+    <value>Error de timeout</value>
+  </data>
+  <data name="BANRED_COMMUNICATION" xml:space="preserve">
+    <value>Error de comunicación Banred</value>
+  </data>
+  <data name="BANRED_FAULT" xml:space="preserve">
+    <value>Error fault Banred</value>
+  </data>
+  <data name="BANRED_TIMEOUT" xml:space="preserve">
+    <value>Error timeout Banred</value>
+  </data>
+  <data name="PAYMENT_NOT_FOUND" xml:space="preserve">
+    <value>El pago indicado no existe.</value>
+  </data>
+  <data name="SISTARBANC_NROERROR_29" xml:space="preserve">
+    <value>No se pudo realizar el pago ya que esta factura se encuentra paga.</value>
+  </data>
+  <data name="SISTARBANC_NROERROR_57" xml:space="preserve">
+    <value>No se pudo realizar el pago ya que existe una factura previa impaga.</value>
+  </data>
+  <data name="BIN_VALUE_FOR_SERVICE_NOT_VALID" xml:space="preserve">
+    <value>El servicio seleccionado no se puede pagar con este tipo de tarjeta.</value>
+  </data>
+  <data name="BIN_VALUE_NOT_RECOGNIZED" xml:space="preserve">
+    <value>El sistema no reconoce la tarjeta ingresada. Por favor intentá con otra.</value>
+  </data>
+  <data name="ANONYMOUS_USER_EMAIL_DUPLICATED" xml:space="preserve">
+    <value>El correo electrónico ingresado ya se encuentra registrado en el sistema.</value>
+  </data>
+  <data name="CYBERSOURCE_REFUND_ERROR" xml:space="preserve">
+    <value>Error en metodo refund payment</value>
+  </data>
+  <data name="CYBERSOURCE_VOID_ERROR" xml:space="preserve">
+    <value>Error en método void payment</value>
+  </data>
+  <data name="SERVICE_CARD_IS_DEFAULT" xml:space="preserve">
+    <value>No se puede desactivar una tarjeta configurada para el pago de un servicio.</value>
+  </data>
+  <data name="DISCOUNT_NO_DISCOUNT_FOR_CARDTYPE__INTERNAL" xml:space="preserve">
+    <value>No se encuentra configurado el descuento para el tipo de tarjeta y fecha ingresada. Fecha: {0} Tarjeta: {1}</value>
+  </data>
+  <data name="QUOTATION_NO_CONFIGURED_FOR_UI__INTERNAL" xml:space="preserve">
+    <value>No se encuentra configurada la cotización para la UI para la fecha {0}</value>
+  </data>
+  <data name="SERVICE_DEFAULT_CARD_NOTACTIVE" xml:space="preserve">
+    <value>El servicio que querés activar no tiene una tarjeta por defecto activa. Por favor, ingresá una nueva tarjeta o activá una.</value>
+  </data>
+  <data name="ANONYMOUS_USER_CI_DUPLICATED" xml:space="preserve">
+    <value>La cédula de identidad ingresada ya se encuentra registrada en el sistema.</value>
+  </data>
+  <data name="SUCIVE_NORESPONSE" xml:space="preserve">
+    <value>No hay respuesta de SUCIVE</value>
+  </data>
+  <data name="BIN_ERROR_NOSERVICE" xml:space="preserve">
+    <value>El servicio {0} ({1}) seleccionado no se puede pagar con este tipo de tarjeta, bin {2}</value>
+  </data>
+  <data name="BIN_ERROR_VALUE_NOT_RECOGNIZED" xml:space="preserve">
+    <value>El sistema no reconoce la tarjeta ingresada. Bin {0}</value>
+  </data>
+  <data name="BILL_ACCOUNT_NOT_FOUND" xml:space="preserve">
+    <value>Número de cuenta no encontrado.</value>
+  </data>
+  <data name="BILL_ANTEL_ACCOUNTNOTFOUND" xml:space="preserve">
+    <value>No existe la cuenta. Por favor validá el número de cuenta ingresado.</value>
+  </data>
+  <data name="BILL_ANTEL_ONLYNUMBER" xml:space="preserve">
+    <value>No existe la cuenta. Ingresá el número de cuenta (SIN guiones) que aparece en su factura (Ej: 95299766000145).</value>
+  </data>
+  <data name="BILL_OSE_ACCOUNTNOTFOUND" xml:space="preserve">
+    <value>No existe la cuenta. Por favor validá el número de cuenta ingresado.</value>
+  </data>
+  <data name="BILL_TCC_ACCOUNTNOTFOUND" xml:space="preserve">
+    <value>No existe la cuenta. Por favor validá el número de cliente ingresado.</value>
+  </data>
+  <data name="BILL_UTE_ACCOUNTNOTFOUND" xml:space="preserve">
+    <value>No existe la cuenta. Por favor validá el número de cuenta ingresado.</value>
+  </data>
+  <data name="SUCIVE_CONFIRMATION_ERROR" xml:space="preserve">
+    <value>Se produjo un error en Sucive al confirmar un pago.</value>
+  </data>
+  <data name="GEOCOM_CONFIRMATION_ERROR" xml:space="preserve">
+    <value>Se produjo un error en Geocom al confirmar un pago.</value>
+  </data>
+  <data name="GEOCOM_NORESPONSE" xml:space="preserve">
+    <value>No hay respuesta de Geocom</value>
+  </data>
+  <data name="GEOCOM_MULTIPLEIDPADRON" xml:space="preserve">
+    <value>Se obtuvieron dos id padron para un paquete de datos.</value>
+  </data>
+  <data name="GEOCOM_CANTGETBILL" xml:space="preserve">
+    <value>No se pudo obtener factura. </value>
+  </data>
+  <data name="BILL_GEOCOM_004" xml:space="preserve">
+    <value>No posee deuda.</value>
+  </data>
+  <data name="SUCIVE_MULTIPLEIDPADRON" xml:space="preserve">
+    <value>Se obtuvieron dos id padron para un paquete de datos.</value>
+  </data>
+  <data name="SUCIVE_ERROR090" xml:space="preserve">
+    <value>No existe tramite para el valor ingresado.</value>
+  </data>
+  <data name="MAILGUN_ADD_ERROR" xml:space="preserve">
+    <value>No se pudo agregar el mail en mailgun.</value>
+  </data>
+  <data name="MAILGUN_DELETE_ERROR" xml:space="preserve">
+    <value>No se puedo eliminar el mail en mailgun.</value>
+  </data>
+  <data name="TC33_NOT_FOUND" xml:space="preserve">
+    <value>No se encontró archivo Tc33</value>
+  </data>
+  <data name="SERVICE_CARD_IS_DEFAULT_MIGRATE_SERVICES" xml:space="preserve">
+    <value>No se puede desactivar una tarjeta configurada para el pago de un servicio. Primero debes migrar los servicios a otra tarjeta.</value>
+  </data>
+  <data name="SERVICE_CARD_HAS_PAYMENTS" xml:space="preserve">
+    <value>No se puede eliminar una tarjeta que ha realizado pagos.</value>
+  </data>
+  <data name="BIN_NOTVALID_FOR_SERVICE" xml:space="preserve">
+    <value>Tarjeta no habilitada para este servicio. Por favor intentá con otra tarjeta.</value>
+  </data>
+  <data name="BIN_ERROR_NOTACTIVE" xml:space="preserve">
+    <value>El servicio {0} ({1}) seleccionado no se puede pagar con este tipo de tarjeta, bin {2} INACTIVO</value>
+  </data>
+  <data name="BIN_NOTACTIVE" xml:space="preserve">
+    <value>Esta tarjeta no está habilitada para este servicio.</value>
+  </data>
+  <data name="PAYMENT_NO_BILL" xml:space="preserve">
+    <value>Transacción sin factura asociada.</value>
+  </data>
+  <data name="SERVICE_CARD_IS_USED_MIGRATE_SERVICES" xml:space="preserve">
+    <value>No se puede desactivar una tarjeta configurada para el pago de un servicio. Primero debes migrar los servicios a otra tarjeta.</value>
+  </data>
+  <data name="SERVICE_NOT_DELETED" xml:space="preserve">
+    <value>El servicio seleccionado no pudo ser eliminado.</value>
+  </data>
+  <data name="SERVICE_IS_CONTAINER" xml:space="preserve">
+    <value>El servicio que querés guardar no puede ser contenido por otro, ya que es un servicio padre.</value>
+  </data>
+  <data name="BILL_SERVICE_DISABLE" xml:space="preserve">
+    <value>El servicio no se encuentra disponible. Intentá nuevamente o espera unos minutos.</value>
+  </data>
+  <data name="GENERAL_COMUNICATION_ERROR_PAYMENT" xml:space="preserve">
+    <value>No se pudo pagar la factura por problemas en la comunicación con el comercio.</value>
+  </data>
+  <data name="BILL_NOT_PAYABLE" xml:space="preserve">
+    <value>No se pudo realizar el pago ya que esta factura no se puede paga por internet.</value>
+  </data>
+  <data name="GENERAL_COMUNICATION_ERROR_BILL" xml:space="preserve">
+    <value>No se pudieron obtener las facturas por problemas en la comunicación con el comercio.</value>
+  </data>
+  <data name="SERVICE_NOT_EXIST" xml:space="preserve">
+    <value>El servicio indicado no existe.</value>
+  </data>
+  <data name="ANONYMOUS_USER_MISSING" xml:space="preserve">
+    <value>Faltan los datos del usuario anonimo.</value>
+  </data>
+  <data name="INVALID_CARD_ASOCIATION" xml:space="preserve">
+    <value>La tarjeta asociada no pertenece al usaurio.</value>
+  </data>
+  <data name="USER_CARD_NOT_MATCH" xml:space="preserve">
+    <value>La tarjeta no corresponde al usuario seleccionado.</value>
+  </data>
+  <data name="OPERATION_ID_REPETED" xml:space="preserve">
+    <value>Id de operación repetido.</value>
+  </data>
+  <data name="SERVICE_MERCHANTID_DUPLICATED" xml:space="preserve">
+    <value>El merchantId ingresado ya está en uso para otro servicio con la pasarela apps seleccionada</value>
+  </data>
+  <data name="MAILGUN_EMAILNOTFOUND" xml:space="preserve">
+    <value>No se encontró el email en la base de datos MailgunId: {0}</value>
+  </data>
+  <data name="EMAIL_STATUS_CANNOT_BE_CANCELED" xml:space="preserve">
+    <value>Solo pueden cancelarse emails con estado: "Error al enviar a Mailgun" y "Fallo de envío (recuperable)"</value>
+  </data>
+  <data name="BINGROUP_NAME_USED" xml:space="preserve">
+    <value>El nombre del grupo duplicado.</value>
+  </data>
+  <data name="SERVICE_BINGROUP_REQUIRED" xml:space="preserve">
+    <value>El Servicio debe tener al menos un grupo de BIN's</value>
+  </data>
+  <data name="BANK_BROU_MUSTEXISTS" xml:space="preserve">
+    <value>El banco BROU no puede ser eliminado. Se necesita para las transacciones de Sistarbanc</value>
+  </data>
+  <data name="BANK_CODE_USED" xml:space="preserve">
+    <value>El código del banco ya existe.</value>
+  </data>
+  <data name="BANK_NAME_USED" xml:space="preserve">
+    <value>El nombre del banco ya existe.</value>
+  </data>
+  <data name="BANK_QUOTA_EMPTY" xml:space="preserve">
+    <value>Mínimo debe tener una cuota seleccionada.</value>
+  </data>
+  <data name="CARDTYPE_NOT_DEFINED" xml:space="preserve">
+    <value>Tipo de tarjeta inválido</value>
+  </data>
+  <data name="BIN_NOTACTIVE2" xml:space="preserve">
+    <value>El BIN no está activo.</value>
+  </data>
+  <data name="BIN_COUNTRY_MUST_BE_UY" xml:space="preserve">
+    <value>Dado el tipo de tarjeta seleccionado, el país debe ser UY</value>
+  </data>
+  <data name="BIN_COUNTRY_MUST_NOT_BE_UY" xml:space="preserve">
+    <value>Dado el tipo de tarjeta seleccionado, el país no puede ser UY</value>
+  </data>
+  <data name="DEFAULT_BIN_CANNOT_BE_EDITED" xml:space="preserve">
+    <value>El bin por defecto no puede ser editado</value>
+  </data>
+  <data name="BINGROUP_DEFAULT_CANNOT_BE_DELETED" xml:space="preserve">
+    <value>El grupo de bin '{0}' no puede ser eliminado ya que es default</value>
+  </data>
+  <data name="DEFAULT_BIN_CANNOT_BE_DELETED" xml:space="preserve">
+    <value>El bin por defecto no puede ser eliminado</value>
+  </data>
+  <data name="BINGROUP_DEFAULT_CANNOT_BE_RENAMED" xml:space="preserve">
+    <value>El nombre del grupo de bin '{0}' no puede ser editado ya que es default</value>
+  </data>
+  <data name="CARDTYPE_NOT_ALLOWED_QUOTA_PAYMENT" xml:space="preserve">
+    <value>El tipo de tarjeta ingresada no permite pago en cuotas.</value>
+  </data>
+  <data name="BANK_DONOT_ALLOW_QUOTA" xml:space="preserve">
+    <value>El emisor no tiene configurado el pagos en cuota {0}.</value>
+  </data>
+  <data name="SERVICE_NOT_ALLOWED_QUOTA_PAYMENT" xml:space="preserve">
+    <value>El servicio {0} no tiene configurado el pagos en cuota.</value>
+  </data>
+  <data name="DISCOUNT_MULTIPLE_DISCOUNT_FOR_CARDTYPE" xml:space="preserve">
+    <value>Hay configurado más de un descuento para el tipo de tarjeta y fecha ingresada. Fecha: {0}</value>
+  </data>
+  <data name="INTERPRETER_NAME_USED" xml:space="preserve">
+    <value>Nombre de interprete ya existente.</value>
+  </data>
+  <data name="APPLICATION_USER_SERVICEASSOCIATED" xml:space="preserve">
+    <value>El servicio no corresponde al usuario seleccionado</value>
+  </data>
+  <data name="PAYMENT_USER_NOT_RELATED" xml:space="preserve">
+    <value>La transacción y el usuario no estan relacionados.</value>
+  </data>
+  <data name="SERVICE_MOMENTARILY_DISABLED" xml:space="preserve">
+    <value>El servicio {0} se encuentra momentaneamente fuera de servicio hasta el {1}.</value>
+  </data>
+  <data name="DISCOUNT_INVALID_MODEL" xml:space="preserve">
+    <value>El modelo enviado es inválido</value>
+  </data>
+  <data name="PAYMENT_NOT_FOUND_NROTRNS" xml:space="preserve">
+    <value>El pago ({0}) indicado no existe.</value>
+  </data>
+  <data name="PAYMENT_STATUS_NOT_VALID" xml:space="preserve">
+    <value>El pago ({0}) se encuentra en estado {1}.</value>
+  </data>
+  <data name="BILL_ALREADY_PAID" xml:space="preserve">
+    <value>La factura se encuentra paga.</value>
+  </data>
+  <data name="CARD_EXPIRED" xml:space="preserve">
+    <value>La tarjeta está vencida</value>
+  </data>
+  <data name="BANK_FIRST_QUOTA_NOT_SELECTED" xml:space="preserve">
+    <value>Debe seleccionar la cuota 1.</value>
+  </data>
+  <data name="WEBBHOOKREGISTRATION_ACCESSTOKEN_EXPIRED" xml:space="preserve">
+    <value>El link de acceso ha expirado.</value>
+  </data>
+  <data name="AUTOMATIC_PAYMENT_AMOUNT_LESS_THAN_ONE" xml:space="preserve">
+    <value>El monto ingresado debe ser mayor a 0.</value>
+  </data>
+  <data name="AUTOMATIC_PAYMENT_DAYS_WRONG" xml:space="preserve">
+    <value>Los días previos al vencimiento deben ser entre 1 y 5.</value>
+  </data>
+  <data name="BANRED_GENERAL_ERROR" xml:space="preserve">
+    <value>Error en la plataforma de Banred</value>
+  </data>
+  <data name="DISCOUNT_INVALID_LAW_ID" xml:space="preserve">
+    <value>El indicador de Ley enviado es inválido.</value>
+  </data>
+  <data name="BILL_TAXED_AMOUNT_NOT_ALLOW" xml:space="preserve">
+    <value>El monto de la factura debe ser mayor a 0. Id operacion '{0}', Monto '{1}'</value>
+  </data>
+  <data name="CARD_DELETE_ERROR_SERVICEASSOCIATED_WITHOUT_CARD" xml:space="preserve">
+    <value>La tarjeta no se puede eliminar porque es la unica que tiene el servicio asociado.</value>
+  </data>
+  <data name="USER_EMAIL_MISSING" xml:space="preserve">
+    <value>Falta la dirección de correo electrónico</value>
+  </data>
+  <data name="USER_MOBILEPHONE_MISSING" xml:space="preserve">
+    <value>Falta el número de teléfono </value>
+  </data>
+  <data name="ACCESS_TOKEN_EXPIRED" xml:space="preserve">
+    <value>El link de acceso ha expirado.</value>
+  </data>
+  <data name="ACCESS_TOKEN_INVALID_STATE" xml:space="preserve">
+    <value>El link de acceso se encuentra inhabilitado.</value>
+  </data>
+  <data name="ID_NOT_FOUND" xml:space="preserve">
+    <value>No se encontró un objecto con ese identificador.</value>
+  </data>
+  <data name="BILL_EXPIRED" xml:space="preserve">
+    <value>Factura vencida.</value>
+  </data>
+  <data name="SERVICE_APPID_DUPLICATED" xml:space="preserve">
+    <value>El appId ingresado ya está en uso para otro servicio.</value>
+  </data>
+  <data name="INVALID_IMAGE_FORMAT" xml:space="preserve">
+    <value>Formato de imagen inválido.</value>
+  </data>
+  <data name="CONNECTION_FAILED" xml:space="preserve">
+    <value>La conexión hacia el servidor de archivos falló. Intente mas tarde.</value>
+  </data>
+  <data name="PAYMENT_FIELD48_WRONG" xml:space="preserve">
+    <value>Pago no realizado. El campo 48 no se pudo validar.</value>
+  </data>
+  <data name="AFFILIATIONCARD_CODE_REPETED" xml:space="preserve">
+    <value>Código de programa repetido.</value>
+  </data>
+  <data name="BIN_BANKID_AFFILIATIONCARD_BANKID" xml:space="preserve">
+    <value>El banco asociado al bin es distinto al banco asociado al programa.</value>
+  </data>
+  <data name="SERVICE_CARD_IS_USED_MIGRATE_DEBITS" xml:space="preserve">
+    <value>No se puede desactivar la tarjeta ya que es utilizada en el pago de un débito. Primero debes migrar los débitos a otra tarjeta.</value>
+  </data>
+  <data name="BIN_NOTVALID_FOR_ALL" xml:space="preserve">
+    <value>No se pudo realizar la migración porque la nueva tarjeta no es aceptada por alguno de los servicios. Pruebe migrar los servicios de forma individual.</value>
+  </data>
+  <data name="SERVICE_REFERENCES_EMPTY" xml:space="preserve">
+    <value>El servicio (o su servicio contenedor) pide referencias pero no se definieron las mismas.</value>
+  </data>
+</root>

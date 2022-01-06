@@ -1,0 +1,117 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model VisaNet.Presentation.Administration.Models.CustomerSiteBranchModel
+
+<h2>Portal de Comercio - Nueva Sucursal</h2>
+
+@using (Html.BeginForm("Create", "CustomerSiteBranch", FormMethod.Post, new { enctype = "multipart/form-data", autocomplete = "off" }))
+{
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-6">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(b => b.Name, new { @class = "obligatoryField" }) *
+                        @Html.TextBoxFor(b => b.Name, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.Name)
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.CustomerSiteCommerce, new { @class = "obligatoryField" }) *
+                        <div class="selectMask w100 selectMultiple">
+                            @Html.DropDownListFor(m => m.CustomerSiteCommerce, (IEnumerable<SelectListItem>)ViewBag.CommercesLigthList,
+                                PresentationAdminStrings.Filters_Commerce_Placeholder,
+                                new { @class = "form-control" })
+                        </div>
+                        @Html.ValidationMessageFor(s => s.CustomerSiteCommerce)
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ServiceId, new { @class = "obligatoryField" }) *
+                        <div class="selectMask w100 selectMultiple" id="divServicesDropDownList">
+                            @Html.Partial("_ServicesDropDownList")
+                        </div>
+                        @Html.ValidationMessageFor(s => s.ServiceId)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ContactEmail)
+                        @Html.TextBoxFor(s => s.ContactEmail, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.ContactEmail)
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ContactAddress)
+                        @Html.TextBoxFor(s => s.ContactAddress, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.ContactAddress)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ContactPhoneNumber)
+                        @Html.TextBoxFor(s => s.ContactPhoneNumber, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.ContactPhoneNumber)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="@Url.Action("Index", "CustomerSiteBranch")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+                    <a href="#" id="btnGuardar" class="btn btn-default lbApprove">
+                        <strong>@PresentationAdminStrings.Save</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("a.lbApprove").click(function() {
+            $(this).parents("form").submit();
+        });
+
+        $("#@Html.IdFor(model => model.CustomerSiteCommerce)").on('change', function(e) {
+            e.preventDefault();
+            var combo = $("#@Html.IdFor(model => model.CustomerSiteCommerce)").val();
+            var empty = '@Guid.Empty';
+            if (combo != empty) {
+                updateServiceDropDownList(combo);
+            } else {
+
+            }
+        });
+    });
+    function updateServiceDropDownList(commerceId) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("GetServicesLists", "CustomerSiteBranch")',
+            data: "commerceId=" + commerceId,
+            dataType: 'json',
+            success: function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $("#divServicesDropDownList").html(data.Content);
+                }
+            }
+        });
+    }
+</script>

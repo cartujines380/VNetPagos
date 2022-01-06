@@ -1,0 +1,55 @@
+﻿@using System.Web.Optimization
+@using VisaNet.Common.Resource.Presentation
+@model Dictionary<string, string>
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisaNet</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    @Styles.Render("~/CustomStyles")
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    @Scripts.Render("~/ThirdpartyScripts")
+    @Scripts.Render("~/CustomScripts")
+    <style>
+        div#msg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 500px;
+            height: 300px;
+            margin-left: -250px;
+            margin-top: -150px;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="POST" action="@ViewBag.RedirectTo" id="formid">
+        @foreach (var key in Model)
+    {
+        <input id="@key.Key" name="@key.Key" value="@key.Value" class="hidden" />
+        @*<input id="@key.Key" name="@key.Key" value="@key.Value" />*@
+}
+        <input id="ActionRedirect" name="ActionRedirect" value="@ViewBag.ActionRedirect" class="hidden" />
+        <div id="msg"><p><center><h5><b>@PresentationWebStrings.Payment_Loading_Await</b></h5></center></p></div>
+    </form>
+    
+    <script>
+        $(document).ready(function () {
+            showLoaderFullScreen();
+            $("#formid").submit();
+        });
+    </script>
+
+</body>
+</html>

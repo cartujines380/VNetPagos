@@ -1,0 +1,31 @@
+﻿@using VisaNet.Common.Resource.Presentation
+<div id="lbConfirmDelete" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <a class="brandVisaNet fLeft" href="/"> </a>
+                    </div>
+                    <div class="col-xs-6"><a class="brandVisa fRight"></a></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h4 class="modal-title">@PresentationWebStrings.DebitRequest_Delete_Confirmation</h4>
+                <h4>@PresentationWebStrings.DebitRequest_Delete_Confirmation_Question</h4>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-6 p5r">
+                        <button type="button" class="btn btn-default btn-cancelar w100" data-dismiss="modal">@PresentationWebStrings.Cancel <i class="icon-remove"></i></button>
+                    </div>
+                    <div class="col-xs-6 p5l">
+                        <button id="btnConfirmDelete" type="button" class="btn btn-default btn-siguiente w100">@PresentationWebStrings.Eliminate <i class="icon-chevron-sign-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

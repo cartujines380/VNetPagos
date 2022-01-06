@@ -1,0 +1,74 @@
+﻿@using System.Globalization
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Utilities.Cybersource
+
+@model VisaNet.Domain.EntitiesDtos.BillDto
+
+
+<div id="modalDetailBill" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <a class="brandVisaNet fLeft" href="/"> </a>
+                    </div>
+                    <div class="col-xs-6"><a class="brandVisa fRight"></a></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h4 class="modal-title">@PresentationWebStrings.Billdetail</h4>
+                <div><h4 class="visaTextBlue">@PresentationWebStrings.BillDetailBreakdown <span id="" class="ml10"></span></h4></div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Descripción</td>
+                            <td>@PresentationWebStrings.DueDate</td>
+                            <td style="text-align: right;">@PresentationWebStrings.Payment_Bills_Amount</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var i = 0;
+                        }
+                        @if (Model.Bills != null)
+                        {
+                            foreach (var bill in Model.Bills)
+                            {
+                                var symbol = bill.Currency == Currency.PESO_URUGUAYO ? "$" : "U$D";
+                                <tr>
+                                    <td>@bill.Description</td>
+                                    <td>
+                                        @if (Model.Bills[0] != null && Model.Bills[0].ExpirationDate != null)
+                                        {
+                                            @Model.Bills[0].ExpirationDate.ToString("dd/MM/yyyy")
+                                        }
+
+                                    </td>
+                                    <td class="text-right"><span class="amount">@symbol @bill.Amount.ToString("##,#0.00", CultureInfo.CurrentCulture)</span></td>
+                                </tr>
+                                if (i == Model.Bills.Count - 1)
+                                {
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td class="text-right" style="font-size: 13px; color: #000;">@symbol @Model.Amount.ToString("##,#0.00")</td>
+                                    </tr>
+                                }
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-6 p5r">
+                        <button type="button" class="btn btn-default btn-cancelar w100" data-dismiss="modal">@PresentationCoreMessages.Common_Close <i class="icon-remove"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

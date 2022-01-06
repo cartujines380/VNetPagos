@@ -1,0 +1,23 @@
+2018-05-07 16:42:35.944 | Info | GenerateMail Exception - emailType: DebitSuscriptionNotification, To: fmiranda@hexacta.com
+2018-05-07 16:42:35.944 | Error | 'System.Dynamic.DynamicObject' no contiene una definición para 'Type'.
+2018-05-07 16:42:42.876 | Error | 'System.Dynamic.DynamicObject' no contiene una definición para 'Type'.
+2018-05-07 16:52:29.843 | Info | GenerateMail Exception - emailType: DebitSuscriptionNotification, To: fmiranda@hexacta.com
+2018-05-07 16:52:29.851 | Error | 'System.Dynamic.DynamicObject' no contiene una definición para 'Type'.
+2018-05-07 16:54:19.312 | Info | GenerateMail Exception - emailType: DebitSuscriptionNotification, To: fmiranda@hexacta.com
+2018-05-07 16:54:19.316 | Error | 'System.Dynamic.DynamicObject' no contiene una definición para 'Type'.
+2018-05-07 16:54:21.819 | Error | 'System.Dynamic.DynamicObject' no contiene una definición para 'Type'.
+2018-05-07 17:08:17.191 | Info | GenerateMail Exception - emailType: DebitSuscriptionNotification, To: fmiranda@hexacta.com
+2018-05-07 17:08:17.585 | Error | 'System.Dynamic.DynamicObject' no contiene una definición para 'ServiceName'.
+2018-05-08 10:53:56.916 | Info |     Se envio email al cliente fmiranda@hexacta.com. Subject: VisaNetPagos - Solicitud de débito. 
+2018-05-08 11:02:53.812 | Info | GenerateMail Exception - emailType: DeleteCustomerCard, To: fmiranda@hexacta.com
+2018-05-08 11:02:53.820 | Error | El valor no puede ser nulo.
+Nombre del parámetro: format
+2018-05-08 11:12:03.468 | Info |     Se envio email al cliente fmiranda@hexacta.com. Subject: Eliminar tarjeta.. 
+2018-05-09 10:40:56.542 | Info |     Se envio email al cliente fmiranda@hexacta.com. Subject: VisaNetPagos - Notificación - Tarjeta sin uso en el portal VisaNetPagos.. 
+2018-05-18 10:26:54.388 | Info |     Se envio email al cliente fmiranda@hexacta.com. Subject: VisaNetPagos - Notificación - Tarjeta sin uso en el portal VisaNetPagos.. 
+2018-05-29 09:24:29.191 | Info |     Se envio email al cliente mmorel@hexacta.com. Subject: Error de pago de factura en Banred. 
+2018-05-29 09:28:22.707 | Info |     Se envio email al cliente mmorel@hexacta.com. Subject: Error de pago de factura en Banred. 
+2018-05-29 09:41:06.371 | Info |     Se envio email al cliente mmorel@hexacta.com. Subject: Error de pago de factura en Banred. 
+2018-05-29 11:43:41.706 | Info |     Se envio email al cliente fmiranda@hexacta.com. Subject: VisaNetPagos - Notificación - Tarjeta sin uso en el portal VisaNetPagos.. 
+2018-05-29 11:46:53.498 | Info |     Se envio email al cliente fmiranda@hexacta.com. Subject: VisaNetPagos - Notificación - Tarjeta sin uso en el portal VisaNetPagos.. 
+2018-05-29 11:48:40.523 | Info |     Se envio email al cliente fmiranda@hexacta.com. Subject: VisaNetPagos - Notificación - Tarjeta sin uso en el portal VisaNetPagos.. 

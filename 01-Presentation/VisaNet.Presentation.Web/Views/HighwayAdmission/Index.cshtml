@@ -1,0 +1,664 @@
+﻿@using System.Configuration
+@using System.Web.UI.WebControls
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.HighwayAdmissionModel
+
+@{
+    Layout = "../../Views/Shared/_HighwayLayout.cshtml";
+}
+
+<div class="container p25t">
+    <div class="row">
+        <div class="col-md-2" style="padding-right: 0px;">
+            @if (!string.IsNullOrEmpty(@Model.ServiceImage))
+            {
+                <a href="@Url.Action("Index", "HighwayAdmission", new { id = Model.ServiceUrlName })"> <img src="@Model.ServiceImage" width="74" class="img-responsive center-block" /></a>
+            }
+        </div>
+        <div class="col-md-10" style="min-height: 74px; ">
+            <h3 class="mt5 nameSection " style="padding-top: 10px">@string.Format(PresentationWebStrings.HighwayAdmissionTitle, Model.ServiceName)</h3>
+        </div>
+    </div>
+
+    @if (ViewBag.SuccessfulAssociation != null && ViewBag.SuccessfulAssociation)
+    {
+        <div class="pageBox mb20">
+            <div class="successBox">
+                <h5><i class="icon-ok"></i> Se ha asociado correctamente el servicio <span> @ViewBag.ServiceName </span> para el usuario <span> @ViewBag.Email </span> </h5>
+            </div>
+
+            @if (!String.IsNullOrEmpty(Model.PostAssociationDesc))
+            {
+                <div class="row">
+                    <div class="formMargin">
+                        <h4>@PresentationWebStrings.HighwayAdmission_PostRegistration</h4>
+                        <p>@Model.PostAssociationDesc</p>
+                    </div>
+                </div>
+            }
+
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <a href="@Url.Action("Index", "HighwayAdmission", new { id = Model.ServiceUrlName })" clas class="btn btn-default btn-siguiente mt10 w100"><i class="icon-chevron-sign-left"></i> @PresentationWebStrings.NewAssociation</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- SECCION BOTONES REGISTRADO SI/NO -->
+        <div class="pageBox mb20 @(Model.LoadRegistredData || Model.LoadNewData ? "hidden" : "")" id="registeredRadioBox">
+            <div class="formMargin">
+                <h4 class="lightBlue">@PresentationWebStrings.HighwayAdmission_UserQuestion</h4>
+                <div class="horizontalLineWhite"></div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">
+                        <button id="btnSi" class="btn btn-default btn-action mt10 w100">S&iacute;</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button id="btnNo" class="btn btn-default btn-action mt10 w100">No</button>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div><!-- TERMINA SECCION BOTONES REGISTRADO SI/NO -->
+
+        @Html.HiddenFor(m => m.LoadNewData)
+        @Html.HiddenFor(m => m.LoadRegistredData)
+
+        using (Html.BeginForm("Associate", "HighwayAdmission", FormMethod.Post, new Dictionary<string, object> { { "id", "payment_with_token_confirmation" } }))
+        {
+            @Html.HiddenFor(m => m.ServiceId)
+            @Html.HiddenFor(m => m.ServiceName)
+            @Html.HiddenFor(m => m.ServiceImage)
+
+            <!-- DATOS PERSONALES -->
+            <div class="pageBox mb20 @(Model.LoadRegistredData || Model.LoadNewData ? "" : "hidden")" id="personalDataBox">
+                <div class="formMargin">
+                    <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+                    <h4 class="lightBlue">@PresentationWebStrings.HighwayAdmission_UserData</h4>
+                    <div class="horizontalLineWhite"></div>
+
+                    <div id="registeredUser" class="hidden">
+                        <!--for registered user-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Email_AppUser)
+                                @Html.TextBoxFor(m => m.Email_AppUser, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "email_reg" })
+                                <span id="Email_AppUserRequired" class="hide help-inline field-validation-error">@PresentationCoreMessages.RequiredField</span>
+                            </div>
+
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Password_AppUser)
+                                @Html.PasswordFor(m => m.Password_AppUser, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "password_reg" })
+                                <span id="Password_AppUserRequired" class="hide help-inline field-validation-error">@PresentationCoreMessages.RequiredField</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <button id="btnSearchUser" class="btn btn-default btn-action mt10 w100"> Buscar datos </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="registeredUserLoggedIn" class="@(Model.LoadRegistredData ? "" : "hidden") ">
+                        <!--for registered user logged in-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Name)
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "name_loggedIn", @disabled = "disable" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Surname)
+                                @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "surname_loggedIn", @disabled = "disable" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Email)
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "email_loggedIn", @disabled = "disable" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="newUser" class="@(Model.LoadNewData? "" : "hidden") ">
+                        <!--for not registered user-->
+                        @Html.Partial("_NewUserData", Model)
+                    </div>
+
+                </div>
+            </div><!-- TERMINA DATOS PERSONALES -->
+
+            <!-- DATOS DEL SERVICIO -->
+            <div class="pageBox mb20 @(Model.LoadRegistredData || Model.LoadNewData ? "" : "hidden")" id="referencesDataBox">
+                <div class="formMargin">
+                    <h4 class="lightBlue">@PresentationWebStrings.HighwayAdmission_ServiceData</h4>
+                    <div class="horizontalLineWhite"></div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>@Model.ReferenceName </label> <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                            @Html.TextBoxFor(m => m.ReferenceNumber, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "ref1_id" })
+                            @Html.ValidationMessageFor(m => m.ReferenceNumber, "", new { @class = "help-inline field-validation-error", id = "ref1_errmsg" })
+                        </div>
+
+                        @if (!Model.ReferenceName2.IsEmpty())
+                        {
+                            <div class="col-md-6" id="ref2_div">
+                                <label>@Model.ReferenceName2 </label> <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                @Html.TextBoxFor(m => m.ReferenceNumber2, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", data_val = "true", data_val_required = "El campo es requerido.", id = "ref2_id" })
+                                <span id="ref2_errmsg" class="field-validation-valid help-inline field-validation-error" data-valmsg-for="ReferenceNumber2" data-valmsg-replace="true"></span>
+                            </div>
+                        }
+                    </div>
+
+                    @if (!Model.ReferenceName3.IsEmpty() || !Model.ReferenceName4.IsEmpty())
+                    {
+                        <div class="row">
+                            @if (!Model.ReferenceName3.IsEmpty())
+                            {
+                                <div class="col-md-6" id="ref3_div">
+                                    <label>@Model.ReferenceName3 </label> <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                    @Html.TextBoxFor(m => m.ReferenceNumber3, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", data_val = "true", data_val_required = "El campo es requerido.", id = "ref3_id" })
+                                    <span id="ref3_errmsg" class="field-validation-valid help-inline field-validation-error" data-valmsg-for="ReferenceNumber3" data-valmsg-replace="true"></span>
+                                </div>
+                            }
+                            @if (!Model.ReferenceName4.IsEmpty())
+                            {
+                                <div class="col-md-6" id="ref4_div">
+                                    <label>@Model.ReferenceName4 </label> <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                    @Html.TextBoxFor(m => m.ReferenceNumber4, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", data_val = "true", data_val_required = "El campo es requerido.", id = "ref4_id" })
+                                    <span id="ref4_errmsg" class="field-validation-valid help-inline field-validation-error" data-valmsg-for="ReferenceNumber4" data-valmsg-replace="true"></span>
+                                </div>
+                            }
+                        </div>
+                    }
+
+                    @if (!Model.ReferenceName5.IsEmpty() || !Model.ReferenceName6.IsEmpty())
+                    {
+                        <div class="row">
+                            @if (!Model.ReferenceName5.IsEmpty())
+                            {
+                                <div class="col-md-6" id="ref2_div">
+                                    <label>@Model.ReferenceName5 </label> <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                    @Html.TextBoxFor(m => m.ReferenceNumber5, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", data_val = "true", data_val_required = "El campo es requerido.", id = "ref5_id" })
+                                    <span id="ref5_errmsg" class="field-validation-valid help-inline field-validation-error" data-valmsg-for="ReferenceNumber5" data-valmsg-replace="true"></span>
+                                </div>
+                            }
+                            @if (!Model.ReferenceName6.IsEmpty())
+                            {
+                                <div class="col-md-6" id="ref2_div">
+                                    <label>@Model.ReferenceName6 </label> <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                    @Html.TextBoxFor(m => m.ReferenceNumber6, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", data_val = "true", data_val_required = "El campo es requerido.", id = "ref6_id" })
+                                    <span id="ref6_errmsg" class="field-validation-valid help-inline field-validation-error" data-valmsg-for="ReferenceNumber6" data-valmsg-replace="true"></span>
+                                </div>
+                            }
+                        </div>
+                    }
+
+                </div>
+            </div><!-- TERMINA DATOS DEL SERVICIO -->
+
+            <input type="hidden" name="UserId" id="UserId" />
+            <input type="hidden" name="CardId" id="CardId" />
+            <input type="hidden" name="CardHolderName" id="CardHolderName" />
+            <input type="hidden" name="CardBin" id="CardBin" />
+
+            <input type="hidden" name="AcceptTermsAndConditionsVisa" id="AcceptTermsAndConditionsVisa" />
+            <input type="hidden" name="AcceptTermsAndConditionsService" id="AcceptTermsAndConditionsService" />
+
+        }
+
+        <!-- DATOS DE PAGO -->
+        <div class="pageBox mb20 @(Model.LoadNewData || Model.LoadRegistredData ? "" : "hidden")" id="cardsDataBox">
+            @Html.Partial("_CardList", Model)
+        </div><!-- TERMINA DATOS DE PAGO-->
+
+        <!-- TERMINOS Y CONDICIONES-->
+        <div class="pageBox mb20 @(Model.LoadRegistredData || Model.LoadNewData ? "" : "hidden")" id="termsDataBox">
+            <div class="formMargin">
+                <h4 class="lightBlue">@PresentationWebStrings.HighwayAdmission_TermsAndConditions</h4>
+                <div class="horizontalLineWhite"></div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.CheckBoxFor(p => p.AcceptTermsAndConditionsVisa, new { @id = "checkConditionsVisa" })
+                        <label>@PresentationWebStrings.Registration_Conditions_Accept <a id="btnConditionsVisa" href="">@PresentationWebStrings.HighwayAdmission_TermsVisa</a></label>
+                        <span id="conditionsMessageVisa" class="hide help-inline field-validation-error">@PresentationWebStrings.Registration_Conditions_Validation</span>
+                    </div>
+
+                    @if (!String.IsNullOrEmpty(Model.TermsAndConditionsService))
+                    {
+                        <div class="col-md-6">
+                            @Html.CheckBoxFor(p => p.AcceptTermsAndConditionsService, new { @id = "checkConditionsService" })
+                            <label>@PresentationWebStrings.Registration_Conditions_Accept <a id="btnConditionsService" href="">@PresentationWebStrings.HighwayAdmission_TermsService</a></label>
+                            <span id="conditionsMessageService" class="hide help-inline field-validation-error">@PresentationWebStrings.Registration_Conditions_Validation</span>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div><!-- TERMINA TERMINOS Y CONDICIONES-->
+
+        <!-- SECCION BOTONES -->
+        <div class="row buttonsActionsBox @(Model.LoadNewData || Model.LoadRegistredData ? "" : "hidden")" id="buttonsActionsBox">
+            <div class="col-md-8"></div>
+            <div class="col-md-4 pl0 pr0">
+                <div class="col-xs-6  pr0 pl0">
+                    <a href="@Url.Action("Index", "HighwayAdmission", new { id = Model.ServiceUrlName })" clas class="btn btn-default btn-cancelar mt10 w100" role="button"> @PresentationWebStrings.Cancel <i class="icon-remove"></i></a>
+                </div>
+                <div class="col-xs-6 p5l pr0">
+                    <button id="btnSend" class="btn btn-default btn-action mt10 w100">@PresentationWebStrings.Register <i class="icon-ok"></i></button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div><!-- TERMINA SECCION BOTONES-->
+    }
+
+</div>
+
+@Html.Partial("_Confirm")
+
+<div id="termsVisa"></div>
+<div id="termsService"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        bindEvents();
+
+        //BOTON BUSCAR USUARIO
+        $("#btnSearchUser").click(function (e) {
+            e.preventDefault();
+            var userName = $("#email_reg").val();
+            var password = $("#password_reg").val();
+            if (userName != "" && password != "") {
+                if (isValidEmailAddress(userName)) {
+                    showLoaderFullScreen("@PresentationWebStrings.Loader_Message");
+                    $.post("@Url.Action("LoadUserAjax", "HighwayAdmission")", "userName=" + userName + "&password=" + password).success(function (data) {
+                        if (data.ResponseType == RESPONSE.SUCCESS) {
+                            $('#registeredRadioBox').addClass("hidden");
+                            $('#registeredUser').addClass("hidden");
+
+                            $('#name_loggedIn').val(data.Content.userName);
+                            $('#surname_loggedIn').val(data.Content.userSurName);
+                            $('#email_loggedIn').val(data.Content.userEmail);
+                            $('#UserId').val(data.Content.userId);
+
+                            $('#registeredUserLoggedIn').removeClass("hidden");
+                            $("#referencesDataBox").removeClass("hidden");
+                            $("#cardsDataBox").removeClass("hidden");
+                            $('#buttonsActionsBox').removeClass("hidden");
+                            $('#termsDataBox').removeClass("hidden");
+
+                            $('#cardsDataBox').html(data.Content.cardListContent);
+
+                            hideReferencesWarnings();
+
+                            ShowNotification(data.Title, data.Message, 'success');
+                            hideLoaderFullScreen();
+                        }
+                        if (data.ResponseType == RESPONSE.ERROR) {
+                            ShowNotification(data.Title, data.Message, 'error');
+                            hideLoaderFullScreen();
+                        }
+                        bindEvents();
+                    });
+                } else {
+                    $("#email_reg").addClass("input-validation-error");
+                    $("#Email_AppUserRequired").removeClass("hide");
+                    $("#Email_AppUserRequired").html("@PresentationCoreMessages.InvalidEmail");
+                }
+            } else {
+                if ($("#email_reg").val() == "") {
+                    $("#email_reg").addClass("input-validation-error");
+                    $("#Email_AppUserRequired").removeClass("hide");
+                    $("#Email_AppUserRequired").html("@PresentationCoreMessages.RequiredField");
+                }
+                if ($("#password_reg").val() == "") {
+                    $("#password_reg").addClass("input-validation-error");
+                    $("#Password_AppUserRequired").removeClass("hide");
+                    $("#Password_AppUserRequired").html("@PresentationCoreMessages.RequiredField");
+                }
+            }
+        });
+
+        //BOTON REGISTRAR
+        $("#btnSend").click(function (e) {
+            e.preventDefault();
+            var valid = $("#payment_with_token_confirmation").valid();
+            var validCardData = true;
+            var validCardNumber = true;
+            var cardselected = false;
+
+            if ($('#newCardForm').hasClass('hidden')) {
+                //selecciona tarjeta existente
+                var cardId = $('input[name=card_radio]:checked').val();
+                if (cardId != undefined) {
+                    $("#CardId").val(cardId);
+                } else {
+                    return;
+                }
+                cardselected = $('input[name=card_radio]:checked').val();
+                if (!cardselected || cardselected == "") {
+                    CardNotSelected();
+                    return;
+                }
+            } else {
+                //tarjeta nueva
+                validCardData = $("#payment_confirmation").valid();
+                validCardNumber = isValidCardNumber();
+
+                var cardNumber = $("#card_number").val();
+                if ($("#card_number").val() != "") {
+                    $("#CardBin").val(cardNumber.substring(0, 6));
+                    $("#CardHolderName").val($("#card_holdername").val());
+                }
+            }
+
+            //controlo terminos y condiciones aceptados
+            var visaTerms = true;
+            var serviceTerms = true;
+
+            if (!$("#checkConditionsVisa").is(":checked")) {
+                $("#conditionsMessageVisa").removeClass("hide");
+                visaTerms = false;
+                $("#AcceptTermsAndConditionsVisa").val(false);
+            } else {
+                $("#AcceptTermsAndConditionsVisa").val(true);
+            }
+
+            var checkboxService = document.getElementById("checkConditionsService");
+
+            if (checkboxService != null) {
+                var checkbox = $("#checkConditionsService");
+                if (!checkbox.is(":checked")) {
+                    $("#conditionsMessageService").removeClass("hide");
+                    serviceTerms = false;
+                    $("#AcceptTermsAndConditionsService").val(false);
+                } else {
+                    $("#AcceptTermsAndConditionsService").val(true);
+                }
+            }
+
+            if (valid & validCardData & validCardNumber & visaTerms & serviceTerms) {
+                $.ajax({
+                    dataType: 'json',
+                    type: "POST",
+                    url: '@Url.Action("ValidateCardTypeAndReferences", "HighwayAdmission")',
+                    data: $("#payment_with_token_confirmation").serialize(),
+                    success: function (data) {
+                        if (data.ResponseType == RESPONSE.SUCCESS) {
+                            if (cardselected) {
+                                $("#lbConfirmAssociation").modal();
+                            } else {
+                                if ($("#card_holdername").val() != "" && $("#card_number").val() != "" && $("#card_code").val() != "" && $("#NumberInvalid").hasClass("hide")) {
+                                    $('#cybersourceKeys').html(data.Content.keys);
+                                    $("#lbConfirmAssociation").modal();
+                                } else {
+                                    $("#payment_confirmation").valid();
+                                    isValidCardNumber();
+                                }
+                            }
+                        }
+                        if (data.ResponseType == RESPONSE.ERROR) {
+                            ShowNotification(data.Title, data.Message, 'error');
+                            if (data.Content) {
+                                $('#newUser').html(data.Content);
+                            }
+                            $("#payment_confirmation").valid();
+                            isValidCardNumber();
+                        }
+                    }
+                });
+            }
+
+        });
+
+        //BOTON CONFIRMAR
+        $("#btnConfirm").click(function (e) {
+            e.preventDefault();
+            if ($("#UserId").val != "") {
+                if ($('#newCardForm').hasClass('hidden')) {
+                    $("#payment_with_token_confirmation").submit();
+                } else {
+                    var month = $("#ddlMonth").find(":selected").val();
+                    var year = $("#ddlYear").find(":selected").val();
+                    $("#card_expiry_date").attr("value", month + "-" + year);
+                    $("#payment_confirmation").submit();
+                    //$("#payment_with_token_confirmation").submit(); //para probar
+                }
+            }
+        });
+
+        //BOTONES SI/NO
+        $("#btnNo").click(function (e) {
+            e.preventDefault();
+
+            $("#newUser").removeClass("hidden");
+            if (!$("#registeredUser").hasClass("hidden")) {
+                $("#registeredUser").addClass("hidden");
+            }
+
+            $("#personalDataBox").removeClass("hidden");
+            $("#referencesDataBox").removeClass("hidden");
+            $("#cardsDataBox").removeClass("hidden");
+            $('#buttonsActionsBox').removeClass("hidden");
+            $('#termsDataBox').removeClass("hidden");
+
+            var form = $("#payment_confirmation");
+            form.removeData("validator");
+            form.removeData("unobtrusiveValidation");
+            $.validator.unobtrusive.parse("#payment_confirmation");
+        });
+
+        $("#btnSi").click(function (e) {
+            e.preventDefault();
+            $("#registeredUser").removeClass("hidden");
+            if (!$("#newUser").hasClass("hidden")) {
+                $("#newUser").addClass("hidden");
+            }
+            $("#personalDataBox").removeClass("hidden");
+            if (!$("#referencesDataBox").hasClass("hidden")) {
+                $("#referencesDataBox").addClass("hidden");
+            }
+            if (!$("#cardsDataBox").hasClass("hidden")) {
+                $("#cardsDataBox").addClass("hidden");
+            }
+            if (!$("#buttonsActionsBox").hasClass("hidden")) {
+                $("#buttonsActionsBox").addClass("hidden");
+            }
+            if (!$("#termsDataBox").hasClass("hidden")) {
+                $("#termsDataBox").addClass("hidden");
+            }
+        });
+
+        $('.preview').popover({
+            'trigger': 'hover',
+            'html': true,
+            'content': function () {
+                return "@PresentationWebStrings.Resgistration_CallCenter_Desc";
+            }
+        });
+
+        $('.previewPassword').popover({
+            'trigger': 'hover',
+            'html': true,
+            'content': function () {
+                return "@PresentationWebStrings.Resgistration_Password_Desc";
+            }
+        });
+
+        $("#email_reg").keyup(function (e) {
+            e.preventDefault();
+
+            var name = $("#email_reg").val();
+            if (name == "") {
+                $("#Email_AppUserRequired").removeClass("hide");
+                $("#email_reg").addClass("input-validation-error");
+                $("#Email_AppUserRequired").html("@PresentationCoreMessages.RequiredField");
+            } else {
+                if (!isValidEmailAddress(name)) {
+                    $("#email_reg").addClass("input-validation-error");
+                    $("#Email_AppUserRequired").removeClass("hide");
+                    $("#Email_AppUserRequired").html("@PresentationCoreMessages.InvalidEmail");
+                } else {
+                    $("#Email_AppUserRequired").addClass("hide");
+                    $("#email_reg").removeClass("input-validation-error");
+                }
+            }
+        });
+
+        $("#password_reg").keyup(function (e) {
+            e.preventDefault();
+
+            var name = $("#password_reg").val();
+            if (name == "") {
+                $("#Password_AppUserRequired").removeClass("hide");
+                $("#password_reg").addClass("input-validation-error");
+                $("#Password_AppUserRequired").html("@PresentationCoreMessages.RequiredField");
+            } else {
+                $("#Password_AppUserRequired").addClass("hide");
+                $("#password_reg").removeClass("input-validation-error");
+            }
+        });
+
+        $("#btnConditionsVisa").click(function (e) {
+            e.preventDefault();
+            $.get("@Url.Action("ConditionsVisa", "HighwayAdmission")").success(function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $("#termsVisa").html(data.Content);
+                    $("#modalTermsVisa", "#termsVisa").modal();
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            });
+        });
+
+        $("#btnConditionsService").click(function (e) {
+            e.preventDefault();
+            $.get("@Url.Action("ConditionsService", "HighwayAdmission")").success(function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $("#termsService").html(data.Content);
+                    $("#modalTermsService", "#termsService").modal();
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            });
+        });
+
+        $("#checkConditionsVisa").click(function () {
+            if ($(this).is(":checked")) {
+                if (!$("#conditionsMessageVisa").hasClass("hide")) {
+                    $("#conditionsMessageVisa").addClass("hide");
+                }
+                $("#AcceptTermsAndConditionsVisa").val(true);
+            } else {
+                $("#AcceptTermsAndConditionsVisa").val(false);
+            }
+        });
+
+        $("#checkConditionsService").click(function () {
+            if ($(this).is(":checked")) {
+                if (!$("#conditionsMessageService").hasClass("hide")) {
+                    $("#conditionsMessageService").addClass("hide");
+                }
+                $("#AcceptTermsAndConditionsService").val(true);
+            } else {
+                $("#AcceptTermsAndConditionsService").val(false);
+            }
+        });
+
+    });
+
+    function isValidCardNumber() {
+        var valid = true;
+        if (!validateCardNumber($("#card_number").val())) {
+            $("#card_number").trigger('keyup');
+            valid = false;
+        }
+        return valid;
+    }
+
+    function bindEvents() {
+        $("[data-type=existingCard]").click(function () {
+            if (!$("#newCardForm").hasClass("hidden")) {
+                $("#newCardForm").addClass("hidden");
+            }
+            $("#CardId").val($('input[name=card_radio]:checked').val());
+        });
+
+        $("#newCard").click(function () {
+            $("#newCardForm").removeClass("hidden");
+            $("#CardId").val("");
+
+
+            var form = $("#payment_confirmation");
+            form.removeData("validator");
+            form.removeData("unobtrusiveValidation");
+            $.validator.unobtrusive.parse("#payment_confirmation");
+
+        });
+    }
+
+    function isValidEmailAddress(emailAddress) {
+        var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+        return pattern.test(emailAddress);
+    }
+
+    function validateCardNumber(number) {
+        if (number.length != 16) { return false; }
+        if (number.charAt(0) != 4) { return false; }
+
+        var length = number.length;
+        var value = null;
+        var value_card = null;
+        var sum = 0;
+        for (var i = 0; i < length; i += 2) {
+            value = parseInt(number.charAt(i)) * 2;
+            if (value > 9) {
+                value_card = value.toString();
+                value = parseInt(value_card.charAt(0)) +
+                parseInt(value_card.charAt(1));
+            }
+            sum += value;
+        }
+        for (var i = 1; i < length; i += 2) {
+            sum += parseInt(number.charAt(i));
+        }
+        if ((sum % 10) == 0) { return true; }
+        return false;
+    }
+
+    function hideReferencesWarnings() {
+        $("#ref1_id").removeClass("input-validation-error");
+        $("#ref2_id").removeClass("input-validation-error");
+        $("#ref3_id").removeClass("input-validation-error");
+        $("#ref4_id").removeClass("input-validation-error");
+        $("#ref5_id").removeClass("input-validation-error");
+        $("#ref6_id").removeClass("input-validation-error");
+
+
+        if (!$("span[for='ref1_id']").hasClass("hide")) {
+            $("span[for='ref1_id']").addClass("hide");
+        }
+        if (!$("span[for='ref2_id']").hasClass("hide")) {
+            $("span[for='ref2_id']").addClass("hide");
+        }
+        if (!$("span[for='ref3_id']").hasClass("hide")) {
+            $("span[for='ref3_id']").addClass("hide");
+        }
+        if (!$("span[for='ref4_id']").hasClass("hide")) {
+            $("span[for='ref4_id']").addClass("hide");
+        }
+        if (!$("span[for='ref5_id']").hasClass("hide")) {
+            $("span[for='ref5_id']").addClass("hide");
+        }
+        if (!$("span[for='ref6_id']").hasClass("hide")) {
+            $("span[for='ref6_id']").addClass("hide");
+        }
+    }
+
+</script>

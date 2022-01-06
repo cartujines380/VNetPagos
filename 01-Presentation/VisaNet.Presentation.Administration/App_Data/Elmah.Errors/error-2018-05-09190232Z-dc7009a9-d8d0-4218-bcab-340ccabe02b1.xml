@@ -1,0 +1,176 @@
+﻿<error errorId="dc7009a9-d8d0-4218-bcab-340ccabe02b1" application="/LM/W3SVC/4/ROOT" host="DESKTOP-LV00ICC" type="System.Web.HttpException" message="The controller for path '/scripts/ckeditor/undefinedimageUploaddocgallery.png' was not found or does not implement IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): The controller for path '/scripts/ckeditor/undefinedimageUploaddocgallery.png' was not found or does not implement IController.&#xD;&#xA;   en System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   en System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   en System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   en System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   en System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="admin" time="2018-05-09T19:02:32.6312730Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_ACCEPT:image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:es-VE,en-US;q=0.8,en;q=0.6,es-ES;q=0.4,es;q=0.2&#xD;&#xA;HTTP_COOKIE:Promotion=here; __RequestVerificationToken=ome7s7SIUA9GuHH0D-sOkO6wMiin-cE67vBGHHIavU34ao5W8gr5pBs5quKAHiknqQLyPghRcQygX3dCnsela6ygtKvzh5DJt5PSHUbewIY1; .ASPXAUTH=9E04F1D1774E72FEDA36287844670E4FDED5BC67188B5DB53990BFE371B4470A04266941ACC054F11B0D1864A1D780942D9D07BBF036571C051CBBCFD693AFE67CBA7E4F57ED34CBAA92DCD1F7050E18DB020172D74BF6453D2383BE4633234B; ASP.NET_SessionId=iaqwtsqya4svd3hz1phhxzbb&#xD;&#xA;HTTP_HOST:localhost:64504&#xD;&#xA;HTTP_REFERER:http://localhost:64504/Service/Edit/75d4ffd6-292e-48e1-9347-121964d12942&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Accept: image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: es-VE,en-US;q=0.8,en;q=0.6,es-ES;q=0.4,es;q=0.2&#xD;&#xA;Cookie: Promotion=here; __RequestVerificationToken=ome7s7SIUA9GuHH0D-sOkO6wMiin-cE67vBGHHIavU34ao5W8gr5pBs5quKAHiknqQLyPghRcQygX3dCnsela6ygtKvzh5DJt5PSHUbewIY1; .ASPXAUTH=9E04F1D1774E72FEDA36287844670E4FDED5BC67188B5DB53990BFE371B4470A04266941ACC054F11B0D1864A1D780942D9D07BBF036571C051CBBCFD693AFE67CBA7E4F57ED34CBAA92DCD1F7050E18DB020172D74BF6453D2383BE4633234B; ASP.NET_SessionId=iaqwtsqya4svd3hz1phhxzbb&#xD;&#xA;Host: localhost:64504&#xD;&#xA;Referer: http://localhost:64504/Service/Edit/75d4ffd6-292e-48e1-9347-121964d12942&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/4/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\01-Presentation\VisaNet.Presentation.Administration\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="4" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/4" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/scripts/ckeditor/undefinedimageUploaddocgallery.png" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\01-Presentation\VisaNet.Presentation.Administration\scripts\ckeditor\undefinedimageUploaddocgallery.png" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="t=D3NA" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="65185" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/scripts/ckeditor/undefinedimageUploaddocgallery.png" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="64504" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/scripts/ckeditor/undefinedimageUploaddocgallery.png" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="es-VE,en-US;q=0.8,en;q=0.6,es-ES;q=0.4,es;q=0.2" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="Promotion=here; __RequestVerificationToken=ome7s7SIUA9GuHH0D-sOkO6wMiin-cE67vBGHHIavU34ao5W8gr5pBs5quKAHiknqQLyPghRcQygX3dCnsela6ygtKvzh5DJt5PSHUbewIY1; .ASPXAUTH=9E04F1D1774E72FEDA36287844670E4FDED5BC67188B5DB53990BFE371B4470A04266941ACC054F11B0D1864A1D780942D9D07BBF036571C051CBBCFD693AFE67CBA7E4F57ED34CBAA92DCD1F7050E18DB020172D74BF6453D2383BE4633234B; ASP.NET_SessionId=iaqwtsqya4svd3hz1phhxzbb" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:64504" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:64504/Service/Edit/75d4ffd6-292e-48e1-9347-121964d12942" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="t">
+      <value string="D3NA" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="Promotion">
+      <value string="here" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="ome7s7SIUA9GuHH0D-sOkO6wMiin-cE67vBGHHIavU34ao5W8gr5pBs5quKAHiknqQLyPghRcQygX3dCnsela6ygtKvzh5DJt5PSHUbewIY1" />
+    </item>
+    <item name=".ASPXAUTH">
+      <value string="9E04F1D1774E72FEDA36287844670E4FDED5BC67188B5DB53990BFE371B4470A04266941ACC054F11B0D1864A1D780942D9D07BBF036571C051CBBCFD693AFE67CBA7E4F57ED34CBAA92DCD1F7050E18DB020172D74BF6453D2383BE4633234B" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="iaqwtsqya4svd3hz1phhxzbb" />
+    </item>
+  </cookies>
+</error>

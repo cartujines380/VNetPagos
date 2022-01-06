@@ -1,0 +1,48 @@
+﻿@using VisaNet.Common.Resource.Presentation
+<div id="lbConfirmBlock" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 id="ModalTitle"></h4>
+            </div>
+            <div class="modal-body">
+                @Html.Hidden("lbBlockHiddenUrl")
+                @Html.Hidden("lbBlockHiddenId")
+                <p>@PresentationCoreMessages.Common_Confirm</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-danger lb-accept" id="lnkBlockAccept">@PresentationAdminStrings.Common_Confirm</a>
+                <a href="#" class="btn lb-cancel" id="lnkBlockCancel">@PresentationAdminStrings.Cancel</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    var tr;
+    $(document).ready(function () {
+
+        $("#lnkBlockAccept").click(function (e) {
+            e.preventDefault();
+            $.post($("#lbBlockHiddenUrl").val(), function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    oTable.fnDeleteRow(tr[0]);
+                    tr = null;
+                    $('#lbConfirmBlock').modal("hide");
+                    ShowNotification(data.Title, data.Message, 'success');
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    $('#lbConfirmBlock').modal("hide");
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            }).fail(function () { window.location.replace('@Url.Action("Index", "Error")'); });;
+        });
+
+        $("#lnkBlockCancel").click(function (e) {
+            e.preventDefault();
+            $("#lbConfirmBlock").modal("hide");
+        });
+
+    });
+</script>

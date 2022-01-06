@@ -1,0 +1,119 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Domain.EntitiesDtos.TableFilters.PromotionFilterDto
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Promotions</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control w100", @placeholder = "Ingrese el nombre a buscar", autocomplete = "off" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-default btn-standar mt10 w100" id="execute">@PresentationAdminStrings.Common_Search</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-10">
+        <h2></h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>@PresentationAdminStrings.Name <i class=""></i></th>
+                        <th>@PresentationAdminStrings.Status <i class=""></i></th>
+                        <th><i class=""></i></th>
+                        <th><i class=""></i></th>
+                        <th><i class=""></i></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        @Html.ActionActionLink(Actions.PromotionCreate, "<i class=\"icon-plus\"></i>" + PresentationAdminStrings.Create, new Dictionary<string, object> { { "Class", "btn btn-default" }, { "id", "btnNew" } })
+    </div>
+</div>
+
+@Html.Partial("_DeleteLightbox")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var dataTableFilters;
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "Name", "value": $("#@Html.IdFor(m => m.Name)").val() });
+        }
+
+        dataTableFilters = applyDatatableExternalFilters($('table'),
+                [0],
+                [
+                    { "mDataProp": "Name" },
+                    { "mDataProp": "Active" },
+                    //{
+                    //    "sName": "Active",
+                    //    "sDefaultContent": "",
+                    //    "fnRender": function (oObj) {
+                    //        return oObj.aData.Active == true ? "Activa" : "Desactiva";
+                    //    }
+                    //},
+                     {
+                         "sName": "Details",
+                         "sClass": "column-icon",
+                         "sDefaultContent": "",
+                         "bSearchable": false,
+                         "bSortable": false,
+                         "fnRender": function (oObj) {
+                             return '@Html.ActionGridActionLink(Actions.PromotionDetails, "<i class=\"fa fa-search\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                         }
+                     },
+                    {
+                        "sName": "Edit",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.PromotionEdit, "<i class=\"fa fa-edit\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                        }
+                    },
+                    {
+                        "sName": "Borrar",
+                        "sClass": "column-icon",
+                        //esto le indica que no lo mapee con el array
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.PromotionDelete, "<i class=\"fa fa-trash-o\"></i>", new Dictionary<string, object> { { "Class", "btn-editar lnkDelete" } })';
+                        }
+                    }
+                ],
+            '@Url.Action("AjaxHandler", "Promotion")', externalFilters, null, [[0, "asc"]]);
+
+
+        $('table').on("click", ".lnkDelete", function (e) {
+            if (!$(this).hasClass("disabled")) {
+                e.preventDefault();
+                tr = $(this).parents("tr");
+                var lb = $('#lbConfirmDelete');
+                $("#lbHiddenUrl", lb).val($(this).attr("href"));
+                lb.modal();
+            }
+        });
+
+        $("#execute").click(function (e) {
+            e.preventDefault();
+            dataTableFilters.fnFilter();
+        });
+
+    });
+
+</script>

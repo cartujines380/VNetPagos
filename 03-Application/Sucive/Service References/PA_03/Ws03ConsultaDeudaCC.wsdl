@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="GeoTribUy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlns="GeoTribUy" xmlns:tns1="GeoTribUy" name="Ws03ConsultaDeudaCC" targetNamespace="GeoTribUy" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="GeoTribUy">
+      <xsd:complexType name="SDT_ColeccionCobranza">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SDT_ColeccionCobranza.SDT_ColeccionCobranzaItem" type="tns1:SDT_ColeccionCobranza.SDT_ColeccionCobranzaItem" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SDT_ColeccionCobranza.SDT_ColeccionCobranzaItem">
+        <xsd:all>
+          <xsd:element name="Paga" type="xsd:string" />
+          <xsd:element name="Permitido" type="xsd:string" />
+          <xsd:element name="Anio" type="xsd:string" />
+          <xsd:element name="Vencimiento" type="xsd:string" />
+          <xsd:element name="CodigoConcepto" type="xsd:string" />
+          <xsd:element name="Concepto" type="xsd:string" />
+          <xsd:element name="Cuota" type="xsd:string" />
+          <xsd:element name="Importe" type="xsd:string" />
+          <xsd:element name="Linea" type="xsd:short" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="Ws03ConsultaDeudaCC.Execute">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Idpadron" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Utilizacc" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Tipoclave" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Ws03ConsultaDeudaCC.ExecuteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Sdtcoleccioncobranza" type="tns1:SDT_ColeccionCobranza" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Auxiliarcobro" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Codigoretorno" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Mensajeretorno" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Ws03ConsultaDeudaCC.ExecuteSoapIn">
+    <part name="parameters" element="tns1:Ws03ConsultaDeudaCC.Execute" />
+  </message>
+  <message name="Ws03ConsultaDeudaCC.ExecuteSoapOut">
+    <part name="parameters" element="tns1:Ws03ConsultaDeudaCC.ExecuteResponse" />
+  </message>
+  <portType name="Ws03ConsultaDeudaCCSoapPort">
+    <operation name="Execute">
+      <input message="tns1:Ws03ConsultaDeudaCC.ExecuteSoapIn" />
+      <output message="tns1:Ws03ConsultaDeudaCC.ExecuteSoapOut" />
+    </operation>
+  </portType>
+  <binding name="Ws03ConsultaDeudaCCSoapBinding" type="tns1:Ws03ConsultaDeudaCCSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Execute">
+      <soap:operation soapAction="GeoTribUyaction/AWS03CONSULTADEUDACC.Execute" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Ws03ConsultaDeudaCC">
+    <port name="Ws03ConsultaDeudaCCSoapPort" binding="tns1:Ws03ConsultaDeudaCCSoapBinding">
+      <soap:address location="http://paysandu.sucive.gub.uy/cows/servlet/aws03consultadeudacc" />
+    </port>
+  </service>
+</definitions>

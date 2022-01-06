@@ -1,0 +1,79 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ServiceContainerModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.ServiceContainer_New_Title</h2>
+
+@using (Html.BeginForm("Create", "ServiceContainer", FormMethod.Post, new { enctype = "multipart/form-data", id = "formServiceContainer" }))
+{
+    <div class="row ">
+        <div class="col-lg-10">
+
+            @* SECCIONES *@
+            @Html.Partial("_NameSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_MainConfiguration</h4>
+            @Html.Partial("_MainConfigurationSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_Gateway_Section</h4>
+            @Html.Partial("_GatewaysSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.CommunicationExternal</h4>
+            @Html.Partial("_ExternalSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_Params_Section</h4>
+            @Html.Partial("_ReferencesSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationAdminStrings.Service_Detail_Section</h4>
+            @Html.Partial("_DetailsSection", Model)
+
+            <div class="horizontalLineLighGrey mt20 mb20"></div>
+            <h4>@PresentationWebStrings.Service_Intro</h4>
+            @Html.Partial("_ServiceIntroSection", Model)
+
+
+            @* BOTONES *@
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="@Url.Action("Index", "ServiceContainer")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+                    <a href="#" id="btnGuardar" class="btn btn-default lbApprove">
+                        <strong>@PresentationAdminStrings.Save</strong>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+@Html.Partial("_RegexLightbox")
+
+<script type="text/javascript">
+      $(document).ready(function () {
+          loadEditor("@Html.IdFor(x => x.ContentIntro)");
+
+          $("a.lbApprove").click(function () {
+              showBlockUI('Procesando...');
+              $(this).parents("form").submit();
+          });
+
+          $(".triggerRegexModal").click(function(e) {
+              $("#regexModal").modal('toggle');
+          });
+
+          $("#btnShowReferences").click(function (e) {
+              e.preventDefault();
+              $("#divShowReferences").addClass("hidden");
+              $("#divReferences").removeClass("hidden");
+          });
+      });
+</script>

@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Actions" xml:space="preserve">
+    <value>Acciones</value>
+  </data>
+  <data name="AnonymousUsers" xml:space="preserve">
+    <value>Usuarios anónimos</value>
+  </data>
+  <data name="ApplicationUsers" xml:space="preserve">
+    <value>Usuarios de la aplicación</value>
+  </data>
+  <data name="AuditLogDetails" xml:space="preserve">
+    <value>Detalle de registro de auditoría</value>
+  </data>
+  <data name="AuditLogs" xml:space="preserve">
+    <value>Registro de auditoría</value>
+  </data>
+  <data name="AutomaticPayments" xml:space="preserve">
+    <value>Pagos programados</value>
+  </data>
+  <data name="Bank" xml:space="preserve">
+    <value>Bancos</value>
+  </data>
+  <data name="Bills" xml:space="preserve">
+    <value>Facturas</value>
+  </data>
+  <data name="Bin" xml:space="preserve">
+    <value>BIN</value>
+  </data>
+  <data name="BinBinGroups" xml:space="preserve">
+    <value>Asociación entre BIN y Grupo de BIN</value>
+  </data>
+  <data name="BinGroups" xml:space="preserve">
+    <value>Grupo de BIN</value>
+  </data>
+  <data name="BinGroupServices" xml:space="preserve">
+    <value>Asociación entre Grupo de BIN y Servicios</value>
+  </data>
+  <data name="Cards" xml:space="preserve">
+    <value>Tarjetas</value>
+  </data>
+  <data name="ConciliationBanred" xml:space="preserve">
+    <value>Conciliación Banred</value>
+  </data>
+  <data name="ConciliationCybersource" xml:space="preserve">
+    <value>Conciliación CyberSource</value>
+  </data>
+  <data name="ConciliationSistarbanc" xml:space="preserve">
+    <value>Conciliación Sistarbanc</value>
+  </data>
+  <data name="ConciliationSucive" xml:space="preserve">
+    <value>Conciliación Sucive</value>
+  </data>
+  <data name="ConciliationSummary" xml:space="preserve">
+    <value>Resúmen de conciliación</value>
+  </data>
+  <data name="ConciliationVisanet" xml:space="preserve">
+    <value>Conciliación Portal</value>
+  </data>
+  <data name="ConciliationVisanetCallback" xml:space="preserve">
+    <value>Conciliación Visanet</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contactos</value>
+  </data>
+  <data name="CybersourceErrorGroups" xml:space="preserve">
+    <value>Grupo de errores de CyberSource</value>
+  </data>
+  <data name="CybersourceErrors" xml:space="preserve">
+    <value>Errores de CyberSource</value>
+  </data>
+  <data name="Discounts" xml:space="preserve">
+    <value>Descuentos</value>
+  </data>
+  <data name="Emails" xml:space="preserve">
+    <value>Emails</value>
+  </data>
+  <data name="Faqs" xml:space="preserve">
+    <value>Preguntas frecuentes</value>
+  </data>
+  <data name="FixedNotifications" xml:space="preserve">
+    <value>Notificaciones Backend</value>
+  </data>
+  <data name="Functionalities" xml:space="preserve">
+    <value>Funcionalidades</value>
+  </data>
+  <data name="FunctionalitiesGroups" xml:space="preserve">
+    <value>Grupo de funcionalidades</value>
+  </data>
+  <data name="Gateway" xml:space="preserve">
+    <value>Gateway</value>
+  </data>
+  <data name="HighwayAuxiliarDatas" xml:space="preserve">
+    <value>Datos auxiliares de carretera</value>
+  </data>
+  <data name="HighwayBills" xml:space="preserve">
+    <value>Facturas de carretera</value>
+  </data>
+  <data name="HighwayEmailErrors" xml:space="preserve">
+    <value>Errores en emails de carretera</value>
+  </data>
+  <data name="HighwayEmails" xml:space="preserve">
+    <value>Emails de carretera</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Página de inicio</value>
+  </data>
+  <data name="HomePageItems" xml:space="preserve">
+    <value>Ítems de la página de inicio</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Imágenes</value>
+  </data>
+  <data name="Interpreters" xml:space="preserve">
+    <value>Interpretadores</value>
+  </data>
+  <data name="LDAPBaseUserRoles" xml:space="preserve">
+    <value>Roles de usuarios LDAP</value>
+  </data>
+  <data name="LDAPBaseUsers" xml:space="preserve">
+    <value>Usuarios LDAP</value>
+  </data>
+  <data name="LifApiBills" xml:space="preserve">
+    <value>Facturas de API LIF</value>
+  </data>
+  <data name="Locations" xml:space="preserve">
+    <value>Locaciones</value>
+  </data>
+  <data name="LogPaymentCyberSources" xml:space="preserve">
+    <value>Registros de pago de CyberSource</value>
+  </data>
+  <data name="Logs" xml:space="preserve">
+    <value>Registros</value>
+  </data>
+  <data name="MembershipUsers" xml:space="preserve">
+    <value>Usuarios de Membership</value>
+  </data>
+  <data name="NewBillNotificationInfo" xml:space="preserve">
+    <value>Información de notifiación de nueva factura</value>
+  </data>
+  <data name="NotificationConfigs" xml:space="preserve">
+    <value>Configuración de notificaciones</value>
+  </data>
+  <data name="NotificationMessagesDump" xml:space="preserve">
+    <value>DUMP de Configuración de notificaciones</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notificaciones Backend</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Páginas</value>
+  </data>
+  <data name="Parameters" xml:space="preserve">
+    <value>Parámetros</value>
+  </data>
+  <data name="Payments" xml:space="preserve">
+    <value>Pagos</value>
+  </data>
+  <data name="PaymentsIdentifiers" xml:space="preserve">
+    <value>Identificadores de pagos</value>
+  </data>
+  <data name="PendingAutomaticPayments" xml:space="preserve">
+    <value>Pagos programados pendientes</value>
+  </data>
+  <data name="ProcessHistory" xml:space="preserve">
+    <value>Histórico de procesos</value>
+  </data>
+  <data name="Promotion" xml:space="preserve">
+    <value>Promociones</value>
+  </data>
+  <data name="Quotations" xml:space="preserve">
+    <value>Cuotas</value>
+  </data>
+  <data name="ReportAutomaticPaymentView" xml:space="preserve">
+    <value>Vista de reporte de pagos programados</value>
+  </data>
+  <data name="ReportServiceAssociatedView" xml:space="preserve">
+    <value>Vista de reporte de servicios asociados</value>
+  </data>
+  <data name="ReportTransactionView" xml:space="preserve">
+    <value>Vista de reporte de transacciones</value>
+  </data>
+  <data name="RoleActions" xml:space="preserve">
+    <value>Asociación entre Rol y Acción</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="ServiceEnableEmails" xml:space="preserve">
+    <value>Emails de servicios habilitados</value>
+  </data>
+  <data name="ServiceGateway" xml:space="preserve">
+    <value>Gateway de servicios</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Servicios</value>
+  </data>
+  <data name="ServicesAssociated" xml:space="preserve">
+    <value>Servicios asociados</value>
+  </data>
+  <data name="ServicesAssociatedCards" xml:space="preserve">
+    <value>Asociación entre servicios asociados y tarjetas</value>
+  </data>
+  <data name="ServicesCategories" xml:space="preserve">
+    <value>Categorías de servicios</value>
+  </data>
+  <data name="SistarbancUser" xml:space="preserve">
+    <value>Usuarios Sistarbanc</value>
+  </data>
+  <data name="Sms" xml:space="preserve">
+    <value>SMS</value>
+  </data>
+  <data name="Subscribers" xml:space="preserve">
+    <value>Suscriptores</value>
+  </data>
+  <data name="SystemUsers" xml:space="preserve">
+    <value>Usuarios del sistema</value>
+  </data>
+  <data name="Tc33" xml:space="preserve">
+    <value>TC33</value>
+  </data>
+  <data name="Tc33Transactions" xml:space="preserve">
+    <value>Transacciones de TC33</value>
+  </data>
+  <data name="WebhookDowns" xml:space="preserve">
+    <value>Webhook de bajas</value>
+  </data>
+  <data name="WebhookNewAssociations" xml:space="preserve">
+    <value>Webhook de nuevas asociaciones</value>
+  </data>
+  <data name="WebhookRegistrations" xml:space="preserve">
+    <value>Webhook registros</value>
+  </data>
+  <data name="WsBillPaymentOnlineAuxiliarFields" xml:space="preserve">
+    <value>Campos auxiliares de facturas online para WebService</value>
+  </data>
+  <data name="WsBillPaymentOnlines" xml:space="preserve">
+    <value>Facturas online para pagos para WebService</value>
+  </data>
+  <data name="WsBillQueries" xml:space="preserve">
+    <value>Consultas de facturas para WebService</value>
+  </data>
+  <data name="WsCardRemoves" xml:space="preserve">
+    <value>Eliminaciones de tarjetas para WebService</value>
+  </data>
+  <data name="WsCommerceQueries" xml:space="preserve">
+    <value>Consultas de comercios para WebService</value>
+  </data>
+  <data name="WsPaymentCancellations" xml:space="preserve">
+    <value>Cancelaciones de pagos para WebService</value>
+  </data>
+</root>

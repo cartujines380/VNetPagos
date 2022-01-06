@@ -1,0 +1,76 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ContactModel
+
+<div id="lbEdit" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+        @using (Html.BeginForm("Edit", "Contact", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-body">
+                <h4>@PresentationAdminStrings.Contact_Edit_Title</h4>
+                <div class="form-group">
+                    @Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.Surname) (@Html.DisplayFor(model => model.Email) @Html.DisplayFor(model => model.PhoneNumber))
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.QueryType)
+                    @Html.DisplayFor(model => model.QueryType)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Subject)
+                    @Html.DisplayFor(model => model.Subject)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Message)
+                    @Html.DisplayFor(model => model.Message)
+                </div>
+                @if (Model.Taken)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.User)
+                        @Html.DisplayFor(model => model.User)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Comments)
+                        @Html.DisplayFor(model => model.Comments)
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Comments)
+                        @Html.TextAreaFor(model => model.Comments, new { @style = "width: 100%" })
+                    </div>
+                }
+
+                @Html.HiddenFor(model => model.Id)
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-detalles" id="lnkAccept">@PresentationAdminStrings.Back</a>
+                @if (!Model.Taken)
+                {
+                    <a href="#" class="btn btn-success" id="lnkSave">@PresentationAdminStrings.Save</a>
+                }
+            </div>
+        }
+            
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#lnkAccept").click(function (e) {
+            e.preventDefault();
+            $("#lbEdit").modal("hide");
+        });
+
+        $("#lnkSave").click(function (e) {
+            e.preventDefault();
+            $("form").submit();
+        });
+    });
+</script>

@@ -1,0 +1,319 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.VisaNetOn.Models.PagePaymentModel
+
+@if (Model.NewUser)
+{
+    <div class="row title-section-wrapper hidden-xs">
+        <span class="title-section cpo">Pagar con tarjeta de crédito </span> <span class="log-in-cta">¿Tenés cuenta en VisaNetPagos? <a href="" data-toggle="modal" data-target="#logInModal">Click acá para iniciar sesión</a></span>
+    </div>
+    @Html.Partial("_LogIn")
+}
+else
+{
+    <div class="row title-section-wrapper hidden-xs">
+        <span class="title-section cpo">Pagar con tarjeta de crédito </span>
+    </div>
+}
+
+<div class="col-xs-12 col-sm-5 col-md-5">
+    @if (Model.NewUser)
+    {
+        <div class="visible-xs">
+            @Html.Partial("_LoginMobile")
+        </div>
+    }
+    @Html.Partial("_BillDetailsMobile")
+
+    <form id="formVon" method="post" class="registro">
+        @if (Model.UserData.CardList != null && Model.UserData.CardList.Any())
+        {
+            @Html.Partial("_Cards")
+        }
+
+        @Html.HiddenFor(x => x.IdOperation)
+        @Html.HiddenFor(x => x.WebhookRegistrationId)
+        @Html.HiddenFor(x => x.ServiceInfo.IdApp)
+        @Html.HiddenFor(x => x.ServiceInfo.ServiceId)
+        @Html.HiddenFor(x => x.ServiceInfo.ServiceName)
+        @Html.HiddenFor(x => x.ServiceInfo.MerchantId)
+        @Html.HiddenFor(x => x.ServiceInfo.UrlCallback)
+        @Html.HiddenFor(x => x.ServiceInfo.AllowsWebservicePayments)
+        @Html.HiddenFor(x => x.ServiceInfo.MaxQuotasAllowed)
+        @Html.HiddenFor(x => x.ServiceInfo.ReferenceNumber1)
+        @Html.HiddenFor(x => x.ServiceInfo.ReferenceNumber2)
+        @Html.HiddenFor(x => x.ServiceInfo.ReferenceNumber3)
+        @Html.HiddenFor(x => x.ServiceInfo.ReferenceNumber4)
+        @Html.HiddenFor(x => x.ServiceInfo.ReferenceNumber5)
+        @Html.HiddenFor(x => x.ServiceInfo.ReferenceNumber6)
+
+        @Html.Partial("_UserData")
+        @Html.HiddenFor(x => x.RememberUser)
+
+        @Html.HiddenFor(x => x.NewCard)
+        @Html.HiddenFor(x => x.SelectedCardId)
+        @Html.HiddenFor(x => x.CardBin)
+        @Html.HiddenFor(x => x.Quotas)
+
+        @Html.Partial("_BillAndDiscountData")
+    </form>
+
+    <form id="formPostCs" method="post" class="registro" action="@ConfigurationManager.AppSettings["CybersourceFormUrl"]silent/pay">
+        <div id="divNewCard" class="@(Model.UserData.CardList != null && Model.UserData.CardList.Any() ? "hidden" : "")">
+            @Html.Partial("_CardForm")
+        </div>
+
+        @if (Model.ServiceInfo.MaxQuotasAllowed > 1 && Model.BillData.AcceptQuotas)
+        {
+            <span class="title-form">Cantidad de cuotas</span>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 column">
+                <select id="ddl_quotas" style="width:100%">
+                    <option value="1" selected="selected">1</option>
+                </select>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 column">
+                <a class="help" data-toggle="tooltip" data-placement="top" title="Las cuotas habilitadas se cargan según la tarjeta elegida o ingresada.">
+                    <img src="~/images/help.jpg">
+                </a>
+            </div>
+        }
+    </form>
+
+    <div class="footer-registro">
+        <div class="wrapper-chbox checkbox">
+            @if (Model.NewUser && Model.EnableRememberUser)
+            {
+                var serviceName = !string.IsNullOrEmpty(Model.ServiceInfo.ServiceContainerName) ? Model.ServiceInfo.ServiceContainerName : Model.ServiceInfo.ServiceName;
+                var acceptText = "";
+                <div class=" squaredTwo">
+                    @if (string.IsNullOrEmpty(Model.ServiceInfo.TermsAndConditionsService))
+                    {
+                        acceptText = "Quiero que se guarden mis datos para próximas compras en <b>" + serviceName + "</b>.";
+                    }
+                    else
+                    {
+                        acceptText = "Quiero que se guarden mis datos para próximas compras en <b>" + serviceName + "</b>, y acepto sus <b><a href='' data-toggle='modal' data-target='#modalServiceTC'>Términos y Condiciones</a></b>.";
+                    }
+                    <input type="checkbox" id="chkRemember" name="chkRemember" checked="checked" onclick="updateCheckboxRemember(this)" />
+                    <label for="chkRemember"></label>
+                </div>
+                <span class="chbox chbox-signup"> <b> @Html.Raw(acceptText)</b></span>
+            }
+        </div>
+        <div class="actions">
+            <a class="btn" id="btnCancel">Cancelar</a>
+            <a class="btn siguiente" id="btnValidate" aria-controls="tarjeta" role="tab" data-toggle="tab">Pagar</a>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_BillDetails")
+
+@Html.Partial("_TermsAndConditionsService", Model.ServiceInfo)
+@Html.Partial("_ConfirmPayment")
+
+
+<script type="text/javascript">
+
+    function updateSelectedCard(card) {
+        var cardBin = $(card).data("cardnumber").substring(0, 6);
+        var cardId = $(card).data("cardid");
+        $("#divNewCard").addClass("hidden");
+        $("#@Html.IdFor(x => x.NewCard)").val("false");
+        $("#@Html.IdFor(x => x.SelectedCardId)").val(cardId);
+        $("#@Html.IdFor(x => x.CardBin)").val(cardBin);
+        $("#ulCardList").children().find("i").removeClass("fa-check");
+        var options = $(card).data("cardquotas");
+        setQuotasDropDownOptions(options);
+        $(card).find("i").addClass("fa-check");
+    };
+
+    function setQuotasDropDownOptions(options) {
+        options = options + "";
+        var select = $('#ddl_quotas');
+        select.empty();
+        var split = options.split(',');
+        for (var i = 0; i < split.length; i++) {
+            select.append('<option value="' + split[i] + '">' + split[i] + '</option>');
+        }
+        $("#@Html.IdFor(x => x.Quotas)").val("1");
+    }
+
+    function updateCheckboxRemember(checkbox) {
+        if (checkbox.checked) {
+            $("#@Html.IdFor(x => x.RememberUser)").val(true);
+        } else {
+            $("#@Html.IdFor(x => x.RememberUser)").val(false);
+        }
+    };
+
+    $(document).ready(function () {
+        var fpProfiler = cybs_dfprofiler("@Model.ServiceInfo.MerchantId.Trim()", "@ConfigurationManager.AppSettings["CsEnvironment"]", "@ConfigurationManager.AppSettings["CsFingerprintRedirectUrl"]");
+
+        $("#closeModalLogin").on('click', function () {
+            $("#mobileLogIn").trigger('click');
+        });
+
+        $("#btnValidate").click(function (e) {
+            //Envia los datos para validar
+            e.preventDefault();
+            if (validateRequiredFields()) {
+                showLoaderFullScreen();
+                var formData = $("#formVon").serialize();
+                $.post("@Url.Action("ValidateCardAndGetDiscount", "Payment")", formData).done(validationCallback);
+            }
+        });
+
+        $("#btnPay").click(function (e) {
+            //Confirma el pago
+            e.preventDefault();
+            $("#lbConfirmPayment").modal('hide');
+            showLoaderFullScreen();
+            loadCyberSourceKeysForPaymentAndSubmit();
+        });
+
+        $("#btnAddNewCard").click(function (e) {
+            //Muestra seccion para agregar nueva tarjeta
+            e.preventDefault();
+            resetNewCardFields();
+            $("#divNewCard").removeClass("hidden");
+            $("#@Html.IdFor(x => x.NewCard)").val("true");
+            $("#@Html.IdFor(x => x.SelectedCardId)").val("");
+            $("#ulCardList").children().find("i").removeClass("fa-check");
+        });
+
+        $("#btnCancel").click(function (e) {
+            //Cancela la operacion
+            e.preventDefault();
+            $("#formVon").attr("action", "@Url.Action("CancelPayment", "Payment")");
+            $("#formVon").submit();
+        });
+
+        $("#card_number").keyup(function (e) {
+            e.preventDefault();
+            if ($("#card_number").val().length == 16) {
+                var cardBin = $("#card_number").val().substring(0, 6);
+                var serviceId = $("#@Html.IdFor(x => x.ServiceInfo.ServiceId)").val();
+                loadQuotasAjax(cardBin, serviceId);
+            } else {
+                var options = "1";
+                setQuotasDropDownOptions(options);
+            }
+        });
+
+        $("#ddl_quotas").on('change', function (e) {
+            e.preventDefault();
+            var quota = $("#ddl_quotas").val();
+            $("#@Html.IdFor(x => x.Quotas)").val(quota);
+        });
+
+        function loadQuotasAjax(cardBin, serviceId) {
+            $.ajax({
+                url: "@Url.Action("LoadCardQuotas", "Payment")",
+                type: "post",
+                data: "cardBin=" + cardBin + "&serviceId=" + serviceId,
+                dataType: "json",
+                success: function (data) {
+                    var options = data.Content.Quotas;
+                    setQuotasDropDownOptions(options);
+                },
+                error: function () {
+                    var options = "1";
+                    setQuotasDropDownOptions(options);
+                }
+            });
+        }
+
+        function validateRequiredFields() {
+            var cardValidation = true;
+            var newCard = $("#@Html.IdFor(x => x.NewCard)").val() == "true" || $("#@Html.IdFor(x => x.NewCard)").val() == "True";
+
+            if (newCard) {
+                cardValidation = validateCardRequiredFields();
+                var expireDate = $("[name='month']").val() + "-" + $("[name='year']").val();
+                $("#card_expiry_date").val(expireDate);
+                var cardBin = $("#card_number").val().substring(0, 6);
+                $("#@Html.IdFor(x => x.CardBin)").val(cardBin);
+            } else {
+                if ($("#@Html.IdFor(x => x.SelectedCardId)").val() == null || $("#@Html.IdFor(x => x.SelectedCardId)").val() == "") {
+                    cardValidation = false;
+                    showNotification("Debe seleccionar una tarjeta o ingresar una nueva.", 'error');
+                }
+            }
+            return cardValidation;
+        }
+
+        function resetNewCardFields() {
+            var options = "1";
+            setQuotasDropDownOptions(options);
+            $("#card_number").val("");
+            $("#card_cvn").val("");
+            $("#card_holder_name").val("");
+            $("[name='month']").val("01");
+            $("[name='year']").val(@DateTime.Now.Year);
+            $("#card_expiry_date").val("");
+        }
+
+        var validationCallback = function (data) {
+            hideLoaderFullScreen();
+            if (data.ResponseType === 0) {
+                loadDiscountData(data.Content);
+                if (!data.Content.DiscountApplied) {
+                    $("#lblPaymentDiscountType").addClass("hide");
+                    $("#lblPaymentDiscountAmount").addClass("hide");
+                } else {
+                    $("#lblPaymentDiscountType").removeClass("hide");
+                    $("#lblPaymentDiscountAmount").removeClass("hide");
+                    $("#lblPaymentDiscountType").html(data.Content.DiscountTypeStr);
+                    $("#lblPaymentDiscountAmount").html(data.Content.Currency + ' ' + data.Content.DiscountStr);
+                }
+                $("#lblPaymentTotalAfterDiscount").html(data.Content.Currency + ' ' + data.Content.TotalAfterDiscountStr);
+                $("#lbConfirmPayment").modal();
+            } else {
+                showNotification(data.Message, 'error');
+            }
+        };
+
+        function loadCyberSourceKeysForPaymentAndSubmit() {
+            var formUrl = "@Url.Action("LoadCyberSourceKeysForPayment", "Payment")";
+            var formData = $("#formVon").serialize() + "&nameTh=" + $("#card_holder_name").val() + "&fingerprint=" + fpProfiler;
+            loadCyberSourceKeysAjax(formUrl, formData);
+        }
+
+        function loadCyberSourceKeysAjax(formUrl, formData) {
+            $.ajax({
+                url: formUrl,
+                type: "post",
+                data: formData,
+                dataType: "json",
+                success: function (data) {
+                    if (data.ResponseType === 0) {
+                        $("#formPostCs").append(data.Content.Keys);
+                        $("#formPostCs").submit();
+                    } else {
+                        hideLoaderFullScreen();
+                        showNotification(data.Message, "error");
+                        $("#myModal").modal('hide');
+                    }
+                },
+                error: function () {
+                    hideLoaderFullScreen();
+                    showNotification("@PresentationCoreMessages.NotificationFail", "error");
+                    $("#myModal").modal('hide');
+                }
+            });
+        }
+
+        function loadDiscountData(data) {
+            $("#@Html.IdFor(x => x.DiscountData.CybersourceAmount)").val(data.CybersourceAmount);
+            $("#@Html.IdFor(x => x.DiscountData.DiscountObjId)").val(data.DiscountObjId);
+            $("#@Html.IdFor(x => x.DiscountData.DiscountAmount)").val(data.DiscountAmount);
+            $("#@Html.IdFor(x => x.DiscountData.BillDiscount)").val(data.BillDiscount);
+            $("#@Html.IdFor(x => x.DiscountData.Amount)").val(data.Amount);
+            $("#@Html.IdFor(x => x.DiscountData.TaxedAmount)").val(data.TaxedAmount);
+            $("#@Html.IdFor(x => x.DiscountData.DiscountType)").val(data.DiscountType);
+        }
+
+    });
+
+</script>

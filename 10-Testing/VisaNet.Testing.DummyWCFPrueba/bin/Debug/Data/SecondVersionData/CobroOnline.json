@@ -1,0 +1,40 @@
+[
+    {
+        "IdApp": "puntacarretaslocal",
+        "IdOperacion": "-1",
+        "FacturaOnlineModel": 
+		{
+			"CodComercio": "",
+			"CodSucursal": "",
+			"NroFactura": "-1",
+			"IdUsuario": "97C7915E-EA66-4753-B438-FBFE0277FD5D",
+			"IdTarjeta": "AA5ABDB8-548E-403C-86D0-495AE822AF0F",
+			"Descripcion": "Factura de prueba DEMO",
+			"FchFactura": "06/06/2017",
+			"Moneda": "N",
+			"MontoTotal": 560,
+			"Indi": 6,
+			"MontoGravado": 530,
+			"ConsFinal": "true",
+			"Cuotas": 1,
+			"IdMerchant": "visanetuy17",
+			"DeviceFingerprint": "123456",
+			"IpCliente": "192.192.192.192",
+			"TelefonoCliente": "0123456789",
+			"DireccionEnvioClienteModel" : 
+			{
+				"Calle": "calle",
+				"Barrio": "barrio",
+				"Telefono": "123456",
+				"CodigoPostal": "11400",
+				"Complemento": "conmplement",
+				"Esquina": "esquina",
+				"Latitud": "3.5789465",
+				"Longitud": "long",
+				"NumeroPuerta": "445",
+				"Ciudad": "Montevideo",
+				"Pais": "UY"
+			}
+		}
+    }
+]

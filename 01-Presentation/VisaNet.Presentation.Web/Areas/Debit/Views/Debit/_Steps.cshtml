@@ -1,0 +1,77 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Presentation.Web.Areas.Debit.Models
+@model IDictionary<DebitsStepsEnum, int>
+<!-- simbolos de pasos -->
+
+<div class="row steps">
+
+    <div class="col-xs-2 pr0 pl0">
+        <div id="stepService" class="box">
+            <div class="iconBox">
+                <div class="iconMargin">
+                    <div class="icon">
+                        <i class="icon-copy"></i>
+                    </div>
+                </div>
+                <div class="iconDescription"> @Model[DebitsStepsEnum.Service].@PresentationWebStrings.Step_Service</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-1  p5r p5l">
+        <div class="iconBox">
+            <i class="icon-arrow-right"></i>
+        </div>
+    </div>
+    @if (Model.ContainsKey(DebitsStepsEnum.User))
+    {
+        <div class="col-xs-2 pr0 pl0">
+            <div id="stepUser" class="box">
+                <div class="iconBox">
+                    <div class="iconMargin">
+                        <div class="icon">
+                            <i class="icon-file-text-alt"></i>
+                        </div>
+                    </div>
+                    <div class="iconDescription"> @Model[DebitsStepsEnum.User].@PresentationWebStrings.Step_User</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-1  p5r p5l">
+            <div class="iconBox">
+                <i class="icon-arrow-right"></i>
+            </div>
+        </div>
+    }
+    <div class="col-xs-2 pr0 pl0">
+        <div id="stepCard" class="box">
+            <div class="iconBox">
+                <div class="iconMargin">
+                    <div class="icon">
+                        <i class="icon-credit-card"></i>
+                    </div>
+                </div>
+                <div class="iconDescription"> @Model[DebitsStepsEnum.Card].@PresentationWebStrings.Step_Card </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-1 p5r p5l">
+        <div class="iconBox">
+            <i class="icon-arrow-right"></i>
+        </div>
+    </div>
+    <div class="col-xs-2 pr0 pl0">
+        <div id="stepConfirm" class="box">
+            <div class="iconBox">
+                <div class="iconMargin">
+                    <div class="icon">
+                        <i class="icon-ok"></i>
+                    </div>
+                </div>
+                <div class="iconDescription"> @Model[DebitsStepsEnum.Confirmation].@PresentationWebStrings.Step_Confirm </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-1"></div>
+</div>
+
+<!-- fin simbolos de pasos -->

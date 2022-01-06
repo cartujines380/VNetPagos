@@ -1,0 +1,53 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.LogOnModel
+
+<div class="container p25t">
+    @using (Html.BeginForm("LogIn", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { id = "frmSubmit", @Class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="pageBox mb20">
+            <div class="formMargin">
+                <h4 class="lightBlue">@PresentationCoreMessages.Security_LogIn_Title</h4>
+                <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> Los campos marcados con un <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>son obligatorios</h5>
+                <div class="horizontalLineWhite"></div>
+                @if (TempData.ContainsKey("FromRegistration") && (bool)TempData["FromRegistration"])
+                {
+                <div class="greenBox">
+                    @PresentationCoreMessages.Login_NeedConfirmation
+                </div>
+                }
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.UserName)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", autocomplete = "off" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.Password)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", autocomplete = "off" })
+                        @Html.ValidationMessageFor(m => m.Password)
+
+                        <h5> @Html.ActionLink(PresentationCoreMessages.Security_ForgetMyPassword, "ForgetMyPassword", "Account")</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row buttonsActionsBox">
+            <div class="col-md-4 pl0 pr0">
+                <button type="submit" id="btnSubmit" class="btn btn-primary btn-action p25r p25l">@PresentationCoreMessages.Security_LogIn</button>
+            </div>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#frmSubmit").submit(function () {
+            if ($("#frmSubmit").valid()) { showLoaderFullScreen(); }
+        });
+    });
+</script>
+

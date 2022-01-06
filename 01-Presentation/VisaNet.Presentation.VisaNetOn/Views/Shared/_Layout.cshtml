@@ -1,0 +1,63 @@
+﻿@using System.Diagnostics
+@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisaNet</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/thirdparty/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Content/thirdparty/css/toastr.css" />
+    @Styles.Render("~/CustomStyles")
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    @Scripts.Render("~/ThirdpartyScripts")
+    @Scripts.Render("~/CustomScripts")
+
+    @if (Request.Browser.Browser.ToLower() == "safari" && Session["IsActiveSession"] == null)
+    {
+        string pageUrl = Request.Url.GetLeftPart(UriPartial.Path);
+        if (Request.Params["sf"] != null && Request.Params["sf"] == "true")
+        {
+            Session["IsActiveSession"] = true;
+            
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#TokenAcceso").val("@Request.Params["t"]");
+                    $("#formSafariFix").submit();
+                });
+            </script>
+        }
+        else if (Session["IsActiveSession"] == null)
+        {
+            <script>top.window.location = "?sf=true&t=" + "@Request.Params["t"]";</script>
+        }
+    }
+</head>
+
+<body>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "formSafariFix" }))
+    {
+        @Html.Hidden("TokenAcceso")
+        @Html.Hidden("SafariFix")
+    }
+
+    <div id="content">
+        <ul id="registro" class="nav nav-tabs" role="tablist">
+            <img src="~/images/logo-visa.jpg" class="logoVisa">
+            <img src="~/images/visa-net-pagos.jpg" class="logoVisaNet">
+        </ul>
+        <div>
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.ChangeTracker
+@using VisaNet.Presentation.Administration.Helpers
+@model AuditLogDto
+
+<div id="lbDetails" class="modal fade">
+    <div class="modal-dialog" style="width: 70%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>@PresentationAdminStrings.Audit_Details_Title</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: scroll;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label">@PresentationAdminStrings.TrackChanges_DateTime</label>
+                        <input type="text" class="form-control" value="@Model.EventDate.ToString("dd/MM/yyyy HH:mm:ss")" disabled="disabled" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>@PresentationAdminStrings.TrackChanges_Ip</label>
+                        <input type="text" class="form-control" value="@Model.IP" disabled="disabled" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>@PresentationAdminStrings.TrackChanges_LogType</label>
+                        <input type="text" class="form-control" value="@EnumHelpers.GetName(typeof(EventTypeDto), (int)Model.EventType, EnumsStrings.ResourceManager)" disabled="disabled" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>@PresentationAdminStrings.TrackChanges_UserName</label>
+                        <input type="text" class="form-control" value="@Model.UserName" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>@PresentationAdminStrings.TrackChanges_TableName</label>
+                        <input type="text" class="form-control" value="@AuditHelper.TranslateAuditTableName(Model.TableName)" disabled="disabled" />
+                    </div> 
+                    <div class="col-md-3">
+                        <label>@PresentationAdminStrings.TrackChanges_AditionalInfo</label>
+                        <input type="text" class="form-control" value="@Model.AditionalInfo" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="row" style=" margin-top: 20px;">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-bordered table-hover tablesorter">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%">@PresentationAdminStrings.TrackChanges_ColumnName</th>
+                                    <th style="width: 10%">@PresentationAdminStrings.TrackChanges_OrginalValue</th>
+                                    <th style="width: 20px">@PresentationAdminStrings.TrackChanges_NewValue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.LogDetails.Count == 0)
+                                {
+                                    <tr><td colspan="3">La entidad fue editada sin haber modificado algún valor</td></tr>
+                                }
+                                else
+                                {
+                                    foreach (var i in Model.LogDetails)
+                                    {
+                                        <tr>
+                                            <td style="width: 10%">@i.ColumnName</td>
+                                            <td style="width: 10%">@i.OrginalValue</td>
+                                            <td style="width: 10%">@i.NewValue</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn lb-accept" id="lnkAccept">@PresentationAdminStrings.Back</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#lnkAccept").click(function (e) {
+            e.preventDefault();
+            $("#lbDetails").modal("hide");
+        });
+    });
+</script>

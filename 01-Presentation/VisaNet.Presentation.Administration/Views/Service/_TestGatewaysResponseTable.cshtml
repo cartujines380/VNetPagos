@@ -1,0 +1,66 @@
+﻿@using System.Globalization
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Utilities.Cybersource
+
+@model List<VisaNet.Presentation.Administration.Models.TestGatewaysModel>
+
+<div>
+    <p>Resultados:</p>
+
+    @foreach (var gateway in Model)
+    {
+        if (gateway.SuccessfulConnection)
+        {
+            if (gateway.Bills != null && gateway.Bills.Any())
+            {
+                <ul><li>@gateway.GatewayName: CONEXI&Oacute;N EXITOSA. Facturas obtenidas:</li></ul>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Descripción</td>
+                            <td>@PresentationWebStrings.DueDate</td>
+                            <td style="text-align: right;">@PresentationWebStrings.Payment_Bills_Amount</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ var i = 0; }
+
+                        @foreach (var bill in gateway.Bills)
+                        {
+                            var symbol = bill.Currency == Currency.PESO_URUGUAYO ? "$" : "U$D";
+                            <tr>
+                                <td>@bill.Description</td>
+                                <td>
+                                    @if (gateway.Bills[0] != null && gateway.Bills[0].ExpirationDate != null)
+                                    {
+                                        @gateway.Bills[0].ExpirationDate.ToString("dd/MM/yyyy")
+                                    }
+
+                                </td>
+                                <td class="text-right"><span class="amount">@symbol @bill.Amount.ToString("##,#0.00", CultureInfo.CurrentCulture)</span></td>
+                            </tr>
+                            @*if (i == gateway.Bills.Count - 1)
+                            {
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td class="text-right" style="font-size: 13px; color: #000;">@symbol @bill.Amount.ToString("##,#0.00")</td>
+                                </tr>
+                            }*@
+                            i++;
+                        }
+
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <ul><li>@gateway.GatewayName: CONEXI&Oacute;N EXITOSA. No se obtuvieron facturas.</li></ul>
+            }
+        }
+        else
+        {
+            <ul><li>@gateway.GatewayName: ERROR DE CONEXI&Oacute;N</li></ul>
+        }
+    }
+</div>

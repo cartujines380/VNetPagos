@@ -1,0 +1,10 @@
+﻿@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.DiscountType)
+            @Html.DropDownListFor(s => s.DiscountType, (ICollection<SelectListItem>)ViewBag.Discounts, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+    </div>
+</div>

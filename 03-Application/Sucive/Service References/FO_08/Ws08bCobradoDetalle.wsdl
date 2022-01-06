@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="GeoTribUy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlns="GeoTribUy" xmlns:tns1="GeoTribUy" name="Ws08bCobradoDetalle" targetNamespace="GeoTribUy" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="GeoTribUy">
+      <xsd:complexType name="SDT_WS08bTotalesCobros">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SDT_WS08bTotalesCobros.SDT_WS08bTotalesCobrosItem" type="tns1:SDT_WS08bTotalesCobros.SDT_WS08bTotalesCobrosItem" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SDT_WS08bTotalesCobros.SDT_WS08bTotalesCobrosItem">
+        <xsd:all>
+          <xsd:element name="NumerodeCobro" type="xsd:int" />
+          <xsd:element name="MontodelCobro" type="xsd:double" />
+          <xsd:element name="CodigoCobro" type="xsd:byte" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="Ws08bCobradoDetalle.Execute">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Nrocobrodesde" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Nrocobrohasta" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Fechacobro" type="xsd:date" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Ws08bCobradoDetalle.ExecuteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Sdttotales" type="tns1:SDT_WS08bTotalesCobros" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Totalcobrado" type="xsd:double" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Cantidadcobros" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Codigoretorno" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Mensajeretorno" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Ws08bCobradoDetalle.ExecuteSoapIn">
+    <part name="parameters" element="tns1:Ws08bCobradoDetalle.Execute" />
+  </message>
+  <message name="Ws08bCobradoDetalle.ExecuteSoapOut">
+    <part name="parameters" element="tns1:Ws08bCobradoDetalle.ExecuteResponse" />
+  </message>
+  <portType name="Ws08bCobradoDetalleSoapPort">
+    <operation name="Execute">
+      <input message="tns1:Ws08bCobradoDetalle.ExecuteSoapIn" />
+      <output message="tns1:Ws08bCobradoDetalle.ExecuteSoapOut" />
+    </operation>
+  </portType>
+  <binding name="Ws08bCobradoDetalleSoapBinding" type="tns1:Ws08bCobradoDetalleSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Execute">
+      <soap:operation soapAction="GeoTribUyaction/AWS08BCOBRADODETALLE.Execute" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Ws08bCobradoDetalle">
+    <port name="Ws08bCobradoDetalleSoapPort" binding="tns1:Ws08bCobradoDetalleSoapBinding">
+      <soap:address location="http://florida.sucive.gub.uy/cows/servlet/aws08bcobradodetalle" />
+    </port>
+  </service>
+</definitions>

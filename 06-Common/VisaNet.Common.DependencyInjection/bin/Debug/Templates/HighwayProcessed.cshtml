@@ -1,0 +1,103 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>VISA</title>
+</head>
+
+<body style="background:#e6eced">
+    <table width="800" border="0" cellspacing="0" cellpadding="0" style="margin:0 auto; background:#ffffff; border: 1px solid #dadada">
+        <tr>
+            <td style="padding-left: 36px; padding-top:36px; padding-left: 36px; padding-right:36px; padding-bottom:5px;">
+                <img style="" src="cid:visa_mail_header.png" alt="VisaNetPagos" />
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 36px; padding-top:0; padding-left: 640px; padding-right:36px; padding-bottom:5px;font-family: arial; color: #000000; font-size: 12px;">
+                @Model.Date
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 10px; line-height: 1.4em; padding-left: 36px; padding-right: 36px; padding-bottom: 5px; font-family: arial; color: #000000; font-size: 12px;">
+                <p>Estimada instituci&oacute;n,</p>
+                <p>@Model.ServiceName (@Model.CodCommerce, @Model.CodBranch)</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 30px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;padding-bottom:5px;font-family: arial;color: #000000;font-size: 12px;">
+                <p>Le informamos que hemos recibido el archivo @Model.FileName y fue procesado (referencia: @Model.TransactionNumber) en forma exitosa.</p>
+                <p>La base de datos ha sido actualizada por lo que ya se encuentran disponibles para el cobro en <a href="https://www.visanetpagos.com.uy/">visanetpagos.com.uy</a> las facturas informadas en el mencionado archivo.</p>
+                <p>A continuación, y para vuestro control, le detallamos la cantidad de registros recibidos y los importes totales por moneda:</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 10px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;padding-bottom:5px;font-family: arial;color: #000000;font-size: 12px;"></td>
+        </tr>
+
+        <tr>
+            <td>
+                <div style="max-width:800px">
+                    <table width="600">
+                        <tr>
+                            <td style="font-size: 12px;color:#000000;padding-left: 110px;padding-bottom:5px;font-family: arial">
+                                Cantidad de Facturas recibidas en $U (Pesos Uruguayos):
+                            </td>
+                            <td style="font-size: 12px;color:#000000;padding-left: 30px;padding-bottom:5px;font-family: arial; font-weight:bold">
+                                @Model.CountPesos
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 12px;color:#000000;padding-left: 110px;padding-bottom:5px;font-family: arial">
+                                Total en $U (Pesos Uruguayos):
+                            </td>
+                            <td style="font-size: 12px;color:#000000;padding-left: 30px;padding-bottom:5px;font-family: arial; font-weight:bold">
+                                @Model.ValuePesos
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 12px;color:#000000;padding-left: 110px;padding-bottom:5px;font-family: arial">
+                                Cantidad de Facturas recibidas en USD (Dólares Americanos):
+                            </td>
+                            <td style="font-size: 12px;color:#000000;padding-left: 30px;padding-bottom:5px;font-family: arial; font-weight:bold">
+                                @Model.CountDollars
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 12px;color:#000000;padding-left: 110px;padding-bottom:5px;font-family: arial">
+                                Total en USD (Dólares Americanos):
+                            </td>
+                            <td style="font-size: 12px;color:#000000;padding-left: 30px;padding-bottom:5px;font-family: arial; font-weight:bold">
+                                @Model.ValueDollars
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 20px;line-height: 1.4em;padding-left: 36px;padding-right: 36px;padding-bottom: 20px;font-family: arial;color: #000000;font-size: 12px; font-style:italic"></td>
+        </tr>
+        <tr>
+            <td style="padding-top: 10px; line-height: 1.4em; padding-left: 36px; padding-right: 36px; padding-bottom: 5px; font-family: arial; color: #858585; font-size: 12px;">
+                <p><strong>Importante:</strong> Este es un correo generado en forma automática, por favor no responda a esta casilla de correo. Por consultas o sugerencias contactarse con <a href="mailto:portalpagos@visanet.com.uy">portalpagos@visanet.com.uy</a>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 36px;">
+                <img src="cid:visa_mail_footer.png" alt="VisaNetUruguay" />
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 0; line-height: 1.4em; padding-left: 36px; padding-right: 36px; padding-bottom: 36px; font-family: arial; color: #858585; font-size: 12px;">
+                <p>
+                    Tel.: (+598) 2908 9080
+                    <br />Soriano 791 Piso 3
+                    <br />11100 - Montevideo, Uruguay
+                </p>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

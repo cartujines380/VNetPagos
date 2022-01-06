@@ -1,0 +1,201 @@
+v 02.02.08
+- Bug 56342
+- Enhancement 56349
+- fecha en listado de tc33
+- arreglo fix notification geocom
+
+v 02.02.07.01
+- Arreglo de Ley en TC33
+
+v 02.02.07
+- Cambios de texto de PedidosYa
+- Se agregaron NotificationFix en distintos lugares del sitio
+- Ajuste de listado de NotificationFix
+- Test de conexcion en CS y Pasarelas
+- Agregado de mensajes personalisados para falla en obtencion de facturas
+- Enhancement 46992
+- Enhancement 54313
+- Enhancement 53460
+
+v 02.02.06
+- Mayor log en WCF
+
+v 02.02.05.05
+- Arreglo bug de batch notificaciones
+- Arreglo procesamiento de email de carreteras
+- Issue 48552 - Agrega auditoría a entidades
+- Enchancement 54254
+- Requirement Change 25745
+- Enhancement 50653
+- Enhancement 51005
+
+
+V 02.02.05.04
+- Logs de Tc33
+- Bug en sucive. Cuando el codigo de confirmacion era -1
+- Bug pago programado con usuario nuevo en sistarbanc
+
+V 02.02.05.03
+- Arreglo en migrar servicios de tarjetas
+
+V 02.02.05.02
+- Arreglo de multiples facturas sucive
+
+V 02.02.05
+- Pedidos ya
+- Tareas hechas en esta version:
+	Enhancement 46987
+	Requirement Change 43242:
+		Enhancement 43248
+		Enhancement 43249
+		Enhancement 43250
+		Enhancement 43251
+		Enhancement 43253
+		Enhancement 43255
+		Enhancement 43261
+		Enhancement 43263
+		Enhancement 43449
+		Enhancement 44878
+		Enhancement 45197
+		Enhancement 45915
+		Enhancement 45916
+	Bug 49041
+	Enhancement 31210
+	Enhancement 33849
+	
+V 02.02.03.04
+- Arreglo de carretera propia email
+
+V 02.02.03.03
+- Delay en reverso
+
+V 02.02.03.02
+- Arreglo de carretera propia email
+
+V 02.02.03.01
+- Arreglo de intendencia maldonado
+
+V 02.02.03
+- Arreglo de Tc33 y pago programado
+- Arreglo de id padron en edicion de servicio
+
+V 02.02.02
+- Pago Por importe
+- Tareas hechas en esta version:
+	Requirement Change 4563
+	Enhancement 41889
+	Enhancement 32043
+	Enhancement 33326
+	Enhancement 35801
+	Enhancement 41865
+	Enhancement 41866
+	Enhancement 41868
+
+V 02.02.01
+- Tareas hechas en esta version:
+	Enhancement 35706
+	Enhancement 35808
+	Enhancement 37409
+	Enhancement 37410
+	Enhancement 37411
+	Enhancement 37412
+	Enhancement 37413
+	Enhancement 37415
+	Enhancement 39785
+	Enhancement 39975
+
+V 02.02.00
+- Se crea WCF VisaNetPagosWCF
+- Se agrega transactionalContext para mailgun y webservice
+- Tareas hechas en esta version:
+	Bug 32634
+	Requirement Change 15891
+	Enhancement 33534
+	Enhancement 15923
+	Enhancement 35361
+	Enhancement 35362
+	Enhancement 35364
+	Enhancement 33606
+	Enhancement 37393
+	Enhancement 19223
+	Enhancement 22299
+	Enhancement 18527
+	Enhancement 30518
+	Requirement Change 35796
+
+V 02.01.05
+- Arreglo de conciliación (Creamos dos SP)
+- Tareas hechas en esta version:
+	Enhancement 33624
+
+v 02.01.04
+- Arreglo de reporte de conciliacion
+- Arreglo de proceso de pago automatico
+- Tareas hechas en esta version:
+	Bug 28076
+	Bug 35614
+	Enhancement 34276
+	Enhancement 33628
+	Bug 34277
+	Issue 34779
+	Enhancement 35795
+
+v 02.01.03
+- Arreglo de mensajes de errores con bin
+
+v 02.01.02
+- Arreglo de proceso de pago automatico
+- Tareas hechas en esta version:
+	Issue 34811
+
+V 02.01.01
+-Tareas hechas en esta version:
+	Agregado de extract
+	Bug: 32634
+
+V 02.01.0
+-Tareas hechas en esta version:
+	Requirement 16031
+	Enhancement 29996
+	Bug 29687
+	
+V 02.01.00
+-Tareas hechas en esta version:
+	Bug 31082
+	Enhancement 31188
+	Enhancement 31175
+	Enhancement 32096
+	Enhancement 32312
+
+- Se agrega pasarela de pagos Carretera
+- Se agrega modificaciones a sistarbanc (primer pago realizado)
+
+V 02.00.01
+-Tareas hechas en esta version:
+	Bug 27957
+	Enhancement 18295
+	Enhancement 19791
+	Enhancement 22298
+	Enhancement 22383
+	Enhancement 27927
+	Enhancement 29689
+	Enhancement 29692
+	Enhancement 29695
+	Enhancement 29697
+
+- Agrege pedido de andres. Geocom con serviceType 1 usa el idpadron como parametro
+- Arreglos de Matias y rodrigo
+
+V 02.00.00
+- Agregado de Geocom Maldonado - Rocha - Canelones.
+- Agregado cambios solicitaos por CS (etiquetas nuevas).
+- Arreglo en mensaje de error de la contraseña.
+- Tareas hechas en esta version:
+	Bug 22398
+	Bug 27637
+	Enhancement 22206
+	Enhancement 18219
+	Enhancement 22384
+	Requirement Change 24896
+	Requirement Change 24897
+	Requirement Change 24898

@@ -1,0 +1,252 @@
+﻿@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos
+@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Domain.EntitiesDtos.TableFilters.ReportFilterDto
+
+<!-- box del panel 3-->
+<div class="container p25t">
+    <div id="paymentsDiv" class="pageBox mb10">
+        <div class="formMargin">
+            <h4 class="upDownControler"> <a id="hide_reports"><i id="reports_up" class="icon-chevron-up"></i> <i id="reports_down" class="hide icon-chevron-down"></i>@PresentationWebStrings.Reports</a></h4>
+            <div id="reports_toggle">
+                <div class="loadingMessaje" id="loadingReports">
+                    <div class="loading">@PresentationWebStrings.Loading_Reports</div>
+                </div>
+                <form id="filterForm">
+                    @Html.HiddenFor(m => m.DisplayStart)
+                    <div class="row">
+                        <div class="col-xs-6 col-md-2">
+                            <label>@PresentationWebStrings.Filters_From</label>
+                            <div class="form-group">
+                                <div class='input-group date'>
+                                    <input type="text" value="@Model.From.Value.ToString("dd/MM/yyy")" id="@Html.IdFor(x => x.From)" name="@Html.NameFor(x => x.From)" class="form-control w100 dateFilter" placeholder="@PresentationCoreMessages.Common_Placeholder_Date" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-2">
+                            <label>@PresentationWebStrings.Filters_To</label>
+                            <div class="form-group">
+                                <div class='input-group date'>
+                                    <input type="text" value="@Model.To.Value.ToString("dd/MM/yyy")" id="@Html.IdFor(x => x.To)" name="@Html.NameFor(x => x.To)" class="form-control w100 dateFilter" placeholder="@PresentationCoreMessages.Common_Placeholder_Date" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-2">
+                            <label>Agrupar por</label>
+                            @Html.DropDownListFor(x => x.GroupedBy, EnumHelpers.ConvertToSelectList(typeof(ReportFilterGrouper), PresentationWebStrings.ResourceManager), new { @class = "form-control" })
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <label>Rubro/Servicio</label>
+                            <select class="form-control" multiple data-selected-text-format="count>3" title='Todos' id="categories" data-actions-box="true">
+                                @foreach (var group in (Dictionary<ServiceCategoryDto, List<ServiceDto>>)ViewBag.ServicesCategories)
+                                {
+                                    <optgroup label="@group.Key.Name">
+                                        @foreach (var cat in group.Value)
+                                        {
+                                            <option value="@cat.Id">@cat.Name</option>
+                                        }
+                                    </optgroup>
+                                }
+                            </select>
+
+                            @Html.HiddenFor(x => x.Categories)
+                        </div>
+                        <div class="col-xs-12 col-md-2">
+                            <div style="width: 100%; height: 25px;"></div>
+                            <div class="col-xs-6 p5l pr0">
+                                <a class="btn btn-default btn-standar mt10 w100" id="search"> @PresentationWebStrings.Filters_Calculate</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div id="reports_data" class="panelItem">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div id="pieChart" style="width: 100%; height: 400px;"></div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <td class="col-md-6">Rubro</td>
+                                        <td class="col-md-3 right">Monto</td>
+                                        <td class="col-md-3 right">%</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="tBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-xs-12">
+                            <div id="lineChart" style="width: 100%; height: 400px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        var colors = ['#1A1F70', '#FFC500', '#D10F26', '#1A417F', '#3AD10F', '#F79C03', '1A6E8E', '#020202', '#E85208', '#1A2F77', '#7986CB', '#14BB42'];
+        var titleStyle = {
+            color: '#003da9',
+            fontName: 'segoeui, Arial',
+            fontSize: 20,
+            bold: false,
+            italic: false
+        };
+        var pieChartData;
+
+        $(document).ready(function () {
+
+            $('#categories').selectpicker();
+            $('#categories').selectpicker('selectAll');
+
+            $("#hide_reports").click(function () {
+                $("#reports_toggle").toggle("slow");
+                if ($("#reports_up").hasClass("hide")) {
+                    $("#reports_down").addClass("hide");
+                    $("#reports_up").removeClass("hide");
+                } else {
+                    $("#reports_up").addClass("hide");
+                    $("#reports_down").removeClass("hide");
+                }
+            });
+
+            $('.dateFilter').datepicker({
+                language: "es",
+                format: 'dd/mm/yyyy'
+            });
+
+            drawCharts();
+
+            $("#search").click(function (e) {
+                e.preventDefault();
+                $("#Categories").val($("#categories").val());
+                var filter = $("#filterForm").serialize();
+                drawPieChartCallback(filter);
+                drawLineChartCallback(filter);
+            });
+        });
+
+        function drawCharts() {
+
+            $("#Categories").val($("#categories").val());
+
+            var filter = $("#filterForm").serialize();
+
+            google.load("visualization", "1", { packages: ["corechart"] });
+            google.setOnLoadCallback(function () { drawPieChartCallback(filter); drawLineChartCallback(filter); });
+
+        }
+
+
+        function drawPieChartCallback(filter) {
+            $.post("@Url.Action("PieChart", "Report")", filter, function (mData) {
+                pieChartData = mData;
+                var data = google.visualization.arrayToDataTable(mData);
+
+                var options = {
+                    title: $("#GroupedBy").val() == "0" ? 'Gastos por rubro' : 'Gastos por servicio',
+                    titleTextStyle: titleStyle,
+                    pieHole: 0.3,
+                    chartArea: { left: 20, top: 40, width: '100%', height: '80%' },
+                    colors: colors,
+                    legend: { position: 'none' }
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('pieChart'));
+                chart.draw(data, options);
+
+                drawTable();
+            });
+        }
+
+        function drawTable() {
+            var tBody = $("#tBody");
+            tBody.empty();
+
+            var data = [pieChartData[0]];
+            data = data.concat(pieChartData.slice(1, pieChartData.length).sort(function (a, b) { return b[1] - a[1] }));
+
+            var total = 0;
+            for (var i = 1; i < data.length; i++) {
+                total += data[i][1];
+            }
+
+            for (var i = 1; i < data.length; i++) {
+                var average = (data[i][1] / total * 100).toFixed(1);
+                tBody.append("<tr><td><i class='icon-circle' style='color:" + colors[i - 1] + "'></i>" + data[i][0] + "</td><td class='number'>" + formatNumber(data[i][1]) + "</td><td class='number'>" + formatNumber(average) + "</td></tr>");
+            }
+        }
+
+        function drawLineChartCallback(filter) {
+            $.post("@Url.Action("LineChart", "Report")", filter, function (mData) {
+                var data = google.visualization.arrayToDataTable(mData);
+                var legend = {
+                    textStyle: {
+                        fontName: 'segoeui, Arial',
+                        fontSize: 11,
+                        bold: false,
+                        italic: false
+                    }
+                };
+                var options = {
+                    title: 'Gastos por mes',
+                    //chartArea: { left: 20, top: 40, width: '80%', height: '80%' },
+                    colors: colors,
+                    titleTextStyle: titleStyle,
+                    legend: legend
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('lineChart'));
+                chart.draw(data, options);
+            });
+            $("#loadingReports").addClass("hide");
+        }
+
+        function formatNumber(number) {
+            if (typeof number == 'string') {
+                number = parseFloat(number);
+            }
+            var number = number.toFixed(2) + '';
+            var x = number.split('.');
+            var x1 = x[0];
+            var x2 = x.length > 1 ? ',' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + '.' + '$2');
+            }
+            return x1 + x2;
+        }
+
+
+    </script>
+
+    <style>
+        table {
+            background: #FFF;
+        }
+
+            table i {
+                margin: 20px;
+                font-size: 14px;
+            }
+
+            table td.number {
+                text-align: right;
+            }
+
+            table .center {
+                text-align: center;
+            }
+
+            table .right {
+                text-align: right;
+            }
+    </style>

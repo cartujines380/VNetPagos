@@ -1,0 +1,72 @@
+@using System.Web.Http
+@using System.Web.Http.Controllers
+@using System.Web.Http.Description
+@using System.Collections.ObjectModel
+@using VisaNet.LIF.WebApi.Areas.HelpPage.Models
+@model Collection<ApiDescription>
+
+@{
+    ViewBag.Title = "Seguridad";
+}
+
+<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+<header class="help-page">
+    <div class="content-wrapper">
+        <div class="float-left">
+            <h1>@ViewBag.Title</h1>
+        </div>
+    </div>
+</header>
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <p>
+                La comunicaci&oacute;n con VisaNetPagos se realizar&aacute; mediante SSL.
+                Para verificar la autenticidad de la informaci&oacute;n recibida, se utilizar&aacute;  una firma digital que ser&aacute;  enviada como par&aacute;metro. Esto permitir&aacute;  asegurar la identidad del servidor que env&iacute;a la informaci&oacute;n.
+            </p>
+            <p>
+                Para generar dicha firma se deber&aacute; :
+                <ol>
+                    <li>
+                        Generar un hash (algoritmo SHA-1) concatenando todos los par&aacute;metros que se env&iacute;en en min&uacute;scula ordenados alfab&eacute;ticamente y recursivamente. (*)
+                    </li>
+                    <li>
+                        Firmar el hash obtenido en el paso anterior, utilizando el algoritmo RSA y una clave privada generada por quien env&iacute;a la informaci&oacute;n; el resultado de la misma convertido a formato Base64.
+                    </li>
+                    <li>
+                        Agregar la firma obtenida en un header del request con nombre <strong>Signature</strong>
+                    </li>
+                </ol>
+            </p>
+            <p>
+                Qui&eacute;n env&iacute;a la informaci&oacute;n deber&aacute;  entregar la clave p&uacute;blica (RSA 2048bits) a quien recibe la misma para que &eacute;ste pueda realizar la verificaci&oacute;n de la firma al momento de recibir una solicitud.
+            </p>
+            <p>
+                Nota: Para los campos de fecha (Date), la firma debe realizarse pasando dicha fecha a un string con el siguiente formato “YYYYMMDD”.<br/>
+                Los campos num&eacute;ricos deben venir sin separador de coma decimal (el importe 100,00 se expresar&aacute; como 10000 y 1234,56 como 123456).
+            </p>
+            <p>
+                (*) Ejemplo
+            </p>
+
+            <div class="sample-content">
+                <pre class="wrapped">
+                    {
+                    	'AppId': 'myAppId',
+                    	'Bill': {
+                    		'Amount': 146179,
+                    		'Currency': 'uyu',
+                    		'IsFinalConsumer': 'true',
+                    		'LawId': 0,
+                    		'TaxedAmount': 146179
+                    	},
+                    	'Bin': '424242',
+                    	'OperationId': 'myOperationId'
+                    }
+                    </pre>
+            </div>
+            <p>Los campos concatenados alfab&eacute;ticamente y recursivamente en este ejemplo ser&iacute;an <strong>[AppId][Bill.Amount][Bill.Currency][Bill.IsFinalConsumer][Bill.LawId][Bill.TaxedAmount][Bin][OperationId]</strong></p>
+            <p>El resultado de la concatenaci&oacute;n en este ejemplo es: <strong>myappid146179uyutrue0146179424242myoperationid</strong></p>
+        </div>
+    </section>
+</div>

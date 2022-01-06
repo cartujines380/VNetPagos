@@ -1,0 +1,38 @@
+﻿@model VisaNet.VONRegister.Models.Register
+
+<div id="content">
+    <ul id="registro" class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#cuenta" aria-controls="cuenta" role="tab" data-toggle="tab"><span>1</span> Tu Cuenta</a></li>
+        <li role="presentation"><a href="#tarjeta" aria-controls="tarjeta" role="tab" data-toggle="tab"><span>2</span> Tu Tarjeta</a></li>
+        <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa hidden-xs" />
+    </ul>
+    <div class="logos-visa visible-xs">
+        <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa-xs">
+        <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="logoVisaNetPagos-xs">
+    </div>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="container-fluid tab-pane active" id="cuenta">
+
+            @using (Html.BeginForm("Add", "Card", FormMethod.Post, new { id = "cuenta", @class = "registro" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Partial("_ServiceReferences", Model)
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="footer-registro">
+                            <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="hidden-xs hidden-sm">
+                            <div class="actions">
+                                <a class="btn" href="@Url.Action("SignOut", "Account")">Cancelar</a>
+                                <button class="btn siguiente">Siguiente</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+
+</div>

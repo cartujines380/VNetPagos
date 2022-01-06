@@ -1,0 +1,131 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model VisaNet.Presentation.Administration.Models.DebitRequestModel
+
+<h2>Suscripción de Debito - Ver</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.ApplicationUserModel.Email, new { @class = "obligatoryField" }) *
+                    @Html.TextBoxFor(b => b.ApplicationUserModel.Email, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.ApplicationUserModel.Name, new { @class = "obligatoryField" }) *
+                    @Html.TextBoxFor(b => b.ApplicationUserModel.Name, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.ApplicationUserModel.Surname, new { @class = "obligatoryField" }) *
+                    @Html.TextBoxFor(b => b.ApplicationUserModel.Surname, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.ApplicationUserModel.MobileNumber, new { @class = "obligatoryField" }) *
+                    @Html.TextBoxFor(b => b.ApplicationUserModel.MobileNumber, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.CardModel.CardMaskedNumber, new { @class = "obligatoryField" }) *
+                    @Html.TextBoxFor(b => b.CardModel.CardMaskedNumber, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.CardModel.CardDueDate, new { @class = "obligatoryField" }) *
+                    @Html.TextBoxFor(b => b.CardModel.CardDueDate, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.ReferenceNumber, new { @class = "obligatoryField" }) *
+                    @Html.TextBoxFor(b => b.ReferenceNumber, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">  
+            <div class="col-lg-12">
+                <label>Producto:</label>
+            </div>
+        </div>
+        <div style="padding-left: 30px">
+            @foreach (var productModel in Model.CommerceModel.ProductosListModel)
+            {
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label>@productModel.Description</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label>Propiedades:</label>
+                    </div>
+                </div>
+                <div style="padding-left: 30px">
+                    @foreach (var productPropertyModel in productModel.ProductPropertyModelList.OrderBy(x => x.InputSequence))
+                    {
+                        <div class="row">
+                            <div class="col-lg-1">
+                                <div class="form-group">
+                                    @Html.CheckBoxFor(b => productPropertyModel.Requiered, new { @disabled = "disabled" })
+                                    @Html.LabelFor(b => productPropertyModel.Requiered)
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    @Html.LabelFor(b => productPropertyModel.Name)
+                                    @Html.TextBoxFor(b => productPropertyModel.Name, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    @Html.LabelFor(b => productPropertyModel.InputSequence)
+                                    @Html.TextBoxFor(b => productPropertyModel.InputSequence, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    @Html.LabelFor(b => productPropertyModel.ContentType)
+                                    @Html.TextBoxFor(b => productPropertyModel.ContentType, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    @Html.LabelFor(b => productPropertyModel.MaxSize)
+                                    @Html.TextBoxFor(b => productPropertyModel.MaxSize, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    @Html.Label("Dato ingreado")
+                                    @Html.TextBoxFor(b => Model.References.FirstOrDefault(y => y.ProductPropertyId == productPropertyModel.DebitProductPropertyId).Value, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="@Url.Action("Index", "DebitSuscription")" class="btn btn-default btn-cancel">Volver </a>
+            </div>
+        </div>
+    </div>
+</div>

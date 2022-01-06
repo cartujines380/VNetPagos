@@ -1,0 +1,41 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@model VisaNet.Presentation.Web.Models.HighwayAdmissionModel
+
+<div id="modalTermsService" class="modal">
+    <div class="modal-dialog" style="width:820px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <a class="brandVisaNet fLeft"></a>
+                    </div>
+                    <div class="col-xs-6"><a class="brandVisa fRight"></a></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h4 class="modal-title">@PresentationWebStrings.TermsAndConditions de @Model.ServiceName</h4>
+                <div class="pageFormat">
+                    <div class="pages">
+                        @*@Html.Raw(Model.TermsAndConditionsServiceLines)*@
+                        @foreach (var line in Model.TermsAndConditionsServiceLines)
+                        {
+                            <p>@line</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-6 p5r"></div>
+
+                    <div class="col-xs-6 p5l">
+                        <button type="button" class="btn btn-default btn-cancelar w100" data-dismiss="modal">@PresentationWebStrings.Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

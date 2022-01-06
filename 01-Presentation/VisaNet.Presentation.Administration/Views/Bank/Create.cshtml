@@ -1,0 +1,126 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+@using VisaNet.Domain.EntitiesDtos
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model VisaNet.Presentation.Administration.Models.BankModel
+
+<h2>@PresentationAdminStrings.Bank_New_Title</h2>
+
+@using (Html.BeginForm("Create", "Bank", FormMethod.Post, new { enctype = "multipart/form-data", autocomplete = "off" }))
+{
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-6">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(b => b.Name, new { @class = "obligatoryField" }) *
+                        @Html.TextBoxFor(b => b.Name, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.Name)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.Code, new { @class = "obligatoryField" }) *
+                        @Html.TextBoxFor(s => s.Code, new { @class = "form-control numeric" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.Code)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.QuotesPermited, new { @class = "obligatoryField" }) *
+                        <div class="selectMask w100 selectMultiple">
+                            @Html.DropDownListFor(m => m.QuotesPermited, (IEnumerable<SelectListItem>)ViewBag.Quotas,
+                                                           new Dictionary<string, object> { { "class", "selectpicker" }, { "multiple", "multiple" }, { "data-selected-text-format", "count>3" }, { "data-actions-box", "true" }, { "data-icon-base", "fa" }, { "data-tick-icon", "fa-check" }, { "data-select-all-text", "Todos" }, { "data-deselect-all-text", "Ninguno" }, { "data-none-selected-text", "Ninguno seleccionado" }, { "data-count-selected-text", "Seleccionados {0} de {1}" } })
+                        </div>
+                        @Html.ValidationMessageFor(s => s.QuotesPermited)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="col-md-12 scrollTable" style="padding-left: 0px;">
+                        @Html.Label("Programas de tarjetas disponibles", new { @class = "obligatoryField" })
+                        <table class="table table-striped" id="affiliationTable">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Codigo</th>
+                                    <th>Activo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.AfiliationCard != null && ((List<AffiliationCardDto>)ViewBag.AfiliationCard).Any())
+                                {
+                                    foreach (var ac in ((List<AffiliationCardDto>)ViewBag.AfiliationCard))
+                                    {
+                                        <tr>
+                                            <td><a target='_blank' href='@Url.Action("Edit", "AffiliationCard")?id=@ac.Id'>@ac.Name</a></td>
+                                            <td>@ac.Code</td>
+                                            @if (ac.Active)
+                                            {
+                                                <td><i class="fa fa-toggle-on fa-2x"></i></td>
+                                            }
+                                            else
+                                            {
+                                                <td><i class="fa fa-toggle-off fa-2x"></i></td>
+                                            }
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="@Url.Action("Index", "Bank")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+                    <a href="#" id="btnGuardar" class="btn btn-default lbApprove">
+                        <strong>@PresentationAdminStrings.Save</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var table = undefined;
+
+        $('#QuotesPermited').selectpicker();
+
+
+        applyDataTable();
+
+
+        @*@if (ViewBag.Quotas == null)
+        {
+            <text>
+        $('#QuotesPermited').selectpicker('selectAll');
+            </text>
+        }*@
+
+        $("a.lbApprove").click(function () {
+            $(this).parents("form").submit();
+        });
+
+        function applyDataTable() {
+            table = $("#affiliationTable").dataTable({ "oLanguage": TABLES_LOCALE });
+        }
+    });
+</script>
+
+

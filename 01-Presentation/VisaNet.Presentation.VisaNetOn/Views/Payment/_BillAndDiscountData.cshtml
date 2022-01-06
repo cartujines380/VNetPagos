@@ -1,0 +1,19 @@
+﻿@model VisaNet.Presentation.VisaNetOn.Models.PagePaymentModel
+
+@Html.HiddenFor(x => x.BillData.ExternalId)
+@Html.HiddenFor(x => x.BillData.Currency)
+@Html.HiddenFor(x => x.BillData.CurrencySymbol)
+@Html.HiddenFor(x => x.BillData.Amount)
+@Html.HiddenFor(x => x.BillData.Description)
+@Html.HiddenFor(x => x.BillData.FinalConsumer)
+@Html.HiddenFor(x => x.BillData.GenerationDate)
+@Html.HiddenFor(x => x.BillData.AcceptQuotas)
+@Html.HiddenFor(x => x.BillData.TaxedAmount)
+
+@Html.HiddenFor(x => x.DiscountData.CybersourceAmount)
+@Html.HiddenFor(x => x.DiscountData.DiscountObjId)
+@Html.HiddenFor(x => x.DiscountData.DiscountAmount)
+@Html.HiddenFor(x => x.DiscountData.BillDiscount)
+@Html.HiddenFor(x => x.DiscountData.Amount)
+@Html.HiddenFor(x => x.DiscountData.TaxedAmount)
+@Html.HiddenFor(x => x.DiscountData.DiscountType)

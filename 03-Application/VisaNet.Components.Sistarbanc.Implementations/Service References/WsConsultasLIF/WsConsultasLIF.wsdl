@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="https://192.168.141.190/spfws/services/WsConsultasLIF" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns1="urn:WsConsultasLIF" xmlns:impl="https://192.168.141.190/spfws/services/WsConsultasLIF" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="https://192.168.141.190/spfws/services/WsConsultasLIF" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="https://192.168.141.190/spfws/services/WsConsultasLIF">
+      <xsd:import namespace="urn:WsConsultasLIF" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="ArrayOf_soapenc_string">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="soapenc:string[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOf_tns1_FacturaDeConsultaLIF">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="tns1:FacturaDeConsultaLIF[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:WsConsultasLIF">
+      <xsd:import namespace="https://192.168.141.190/spfws/services/WsConsultasLIF" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="Resultado">
+        <xsd:sequence>
+          <xsd:element name="codigoError" type="xsd:int" />
+          <xsd:element name="descripcionError" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FacturaDeConsultaLIF">
+        <xsd:sequence>
+          <xsd:element name="consumidorFinal" type="xsd:boolean" />
+          <xsd:element name="descripcion" nillable="true" type="impl:ArrayOf_soapenc_string" />
+          <xsd:element name="facturaDGI" nillable="true" type="soapenc:string" />
+          <xsd:element name="fecha" nillable="true" type="soapenc:string" />
+          <xsd:element name="fechaEmision" nillable="true" type="soapenc:string" />
+          <xsd:element name="fechaLimitePago" nillable="true" type="soapenc:string" />
+          <xsd:element name="fechaVencimiento" nillable="true" type="soapenc:string" />
+          <xsd:element name="idFactura" nillable="true" type="soapenc:string" />
+          <xsd:element name="idTransaccion" nillable="true" type="soapenc:string" />
+          <xsd:element name="importeFactura" nillable="true" type="soapenc:string" />
+          <xsd:element name="importeGravado" nillable="true" type="soapenc:string" />
+          <xsd:element name="moneda" nillable="true" type="soapenc:string" />
+          <xsd:element name="precedencia" type="xsd:int" />
+          <xsd:element name="tipoDocumento" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ServicioDeConsultaLIF">
+        <xsd:sequence>
+          <xsd:element name="descripcion" nillable="true" type="impl:ArrayOf_soapenc_string" />
+          <xsd:element name="facturas" nillable="true" type="impl:ArrayOf_tns1_FacturaDeConsultaLIF" />
+          <xsd:element name="idOrganismo" nillable="true" type="soapenc:string" />
+          <xsd:element name="idServicio" nillable="true" type="impl:ArrayOf_soapenc_string" />
+          <xsd:element name="nombreCliente" nillable="true" type="soapenc:string" />
+          <xsd:element name="tipoServicio" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResultadoServicioImpagoLIF">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns1:Resultado">
+            <xsd:sequence>
+              <xsd:element name="servicio" nillable="true" type="tns1:ServicioDeConsultaLIF" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getServicioImpagoLIFRequest">
+    <wsdl:part name="banco" type="soapenc:string" />
+    <wsdl:part name="idOrganismo" type="soapenc:string" />
+    <wsdl:part name="tipoServicio" type="soapenc:string" />
+    <wsdl:part name="idServicio" type="impl:ArrayOf_soapenc_string" />
+    <wsdl:part name="firma" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="getServicioImpagoLIFResponse">
+    <wsdl:part name="getServicioImpagoLIFReturn" type="tns1:ResultadoServicioImpagoLIF" />
+  </wsdl:message>
+  <wsdl:portType name="WsConsultasLIF">
+    <wsdl:operation name="getServicioImpagoLIF" parameterOrder="banco idOrganismo tipoServicio idServicio firma">
+      <wsdl:input name="getServicioImpagoLIFRequest" message="impl:getServicioImpagoLIFRequest" />
+      <wsdl:output name="getServicioImpagoLIFResponse" message="impl:getServicioImpagoLIFResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsConsultasLIFSoapBinding" type="impl:WsConsultasLIF">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="getServicioImpagoLIF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getServicioImpagoLIFRequest">
+        <wsdlsoap:body use="encoded" namespace="https://192.168.141.190/spfws/services/WsConsultasLIF" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getServicioImpagoLIFResponse">
+        <wsdlsoap:body use="encoded" namespace="https://192.168.141.190/spfws/services/WsConsultasLIF" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsConsultasLIFService">
+    <wsdl:port name="WsConsultasLIF" binding="impl:WsConsultasLIFSoapBinding">
+      <wsdlsoap:address location="https://spf.quanam.com/spfws/services/WsConsultasLIF" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

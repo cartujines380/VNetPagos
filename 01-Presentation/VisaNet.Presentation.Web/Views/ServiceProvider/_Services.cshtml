@@ -1,0 +1,12 @@
+﻿@model IEnumerable<VisaNet.Presentation.Web.Models.ServiceModel>
+
+
+
+<div class="pageBox">
+    <div class="row">
+        @foreach (var serv in Model)
+        {
+            @Html.Partial("_Service", serv)
+        }
+    </div>
+</div>

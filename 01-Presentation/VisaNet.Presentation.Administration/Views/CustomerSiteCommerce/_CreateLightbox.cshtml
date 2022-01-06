@@ -1,0 +1,34 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+<div id="lbConfirmCreate" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Alta de comercio</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Hidden("lbHiddenUrl")
+                @Html.Hidden("lbHiddenId")
+                <p>¿Esta seguro que desea dar de alta un nuevo comercio?</p>
+                <p>
+                    <input type="checkbox" id="checkboxBranch" checked />
+                    Si se selecciona que SI, se van a crear las sucursales necesarias para este comercio. Si el servicio de VNP seleccionado es un servicio contenedor, se creara una sucursal por cada servicio hijo.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-success lb-accept" id="lnkCreateAccept">@PresentationAdminStrings.Common_Confirm</a>
+                <a href="#" class="btn lb-cancel" id="lnkCreateCancel">@PresentationAdminStrings.Cancel</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#lnkCreateCancel").click(function (e) {
+            e.preventDefault();
+            $("#lbConfirmCreate").modal("hide");
+        });
+    });
+</script>

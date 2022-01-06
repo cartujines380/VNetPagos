@@ -1,0 +1,247 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@{
+    ViewBag.Title = "SuccessfulAssosiation";
+}
+
+@model VisaNet.Presentation.Web.Areas.Private.Models.SuccessfulAssosiationModel
+<div class="container p25t">
+    <div class="successBox mb20">
+        <h5><i class="icon-ok"></i> @PresentationWebStrings.SuccessfulAssosiation_Title <span> @Model.ServiceName </span> @PresentationWebStrings.SuccessfulAssosiation_Title_SecondLine </h5>
+    </div>
+    @if (Model.EnableAutomaticPayment)
+    {
+        <div class="wizardBox">
+            <!-- area de titulo y breadcrumb-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="mt5">@PresentationWebStrings.Service_Automatic_Payment_Desc </h3>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="horizontalLineGrey"></div>
+            </div>
+            <!-- area de titulo y breadcrumb-->
+            <!-- campos obligatorios -->
+            <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+            <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Automatic_Payment_Header_Message</h5>
+            <!-- campos obligatorios -->
+            @using (Html.BeginForm("AddAutomaticPayment", "Service", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="formMargin">
+                    <div class="row">
+                        <div class="col-md-12 hide generalError" id="generalError">
+                            <i class="icon-warning-sign"></i>
+                            @PresentationWebStrings.From_General_Error
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.CardMask)
+                            @Html.TextBoxFor(model => model.CardMask, new { @class = "w100", @disabled = "disabled" })
+                        </div>
+                    </div>
+                    <div class="horizontalLineWhite"></div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.MaxCountPayments)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                            <div>
+                                <div> <label class="mr20 f13"><input type="radio" name="UnlimitedQuotas" value="true" @(Model.UnlimitedQuotas ? "checked=checked" : "") /> Pagos ilimitados</label></div>
+                                <label class="mr5 f13"><input type="radio" name="UnlimitedQuotas" value="false" @(!Model.UnlimitedQuotas ? "checked=checked" : "") /> Cantidad de pagos</label>  @Html.TextBoxFor(model => model.MaxCountPayments, new { @class = "w10 mr10 numeric", @maxlength = 2 }) <h5 class="displayInline">( <i class="icon-info"></i> Pagos realizados hasta el momento: @Model.QuotasDone )</h5>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.MaxCountPayments)
+                        </div>
+                    </div>
+                    <div class="horizontalLineWhite"></div>
+                    @if (Model.Sucive)
+                    {
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    @Html.CheckBoxFor(s => s.SuciveAnnualPatent)
+                                    @Html.LabelFor(s => s.SuciveAnnualPatent)
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.MaxAmount)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                            <div>
+                                <label class="mr5 f13"><input type="radio" name="UnlimitedAmount" id="unlimited_radio_false" value="false" @(!Model.UnlimitedAmount ? "checked=checked" : "") /> Máximo</label>
+                                @if (Model.MaxAmountIsNullOrZero)
+                                {
+                                    @Html.TextBoxFor(model => model.MaxAmount, new { @class = "w80 mr10 numeric input-validation-error", @maxlength = 12, id = "max_amount", placeholder = PresentationWebStrings.Automatic_Payment_Amount_Placeholder })
+                                }
+                                else
+                                {
+                                    @Html.TextBoxFor(model => model.MaxAmount, new { @class = "w80 mr10 numeric", @maxlength = 12, id = "max_amount", placeholder = PresentationWebStrings.Automatic_Payment_Amount_Placeholder })
+                                }
+                                <span id="maxAmount_error" class="help-inline field-validation-error @(Model.MaxAmountIsNullOrZero ? "" : "hide")">@PresentationCoreMessages.MaxAmount_Invalid</span>
+                            </div>
+                            <div>
+                                <label class="mr20 f13"><input type="radio" name="UnlimitedAmount" id="unlimited_radio_true" value="true" @(Model.UnlimitedAmount ? "checked=checked" : "") /> Ilimitado</label>
+                            </div>
+                            <h5 class="helpUser"><i class="icon-info-sign"></i><a class="amounttool"> @PresentationWebStrings.Automatic_Payment_Amount_Question</a></h5>
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.DayBeforeExpiration)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                            @Html.TextBoxFor(model => model.DayBeforeExpiration, new { @class = "w100 numeric", @maxlength = 1, placeholder = PresentationWebStrings.Automatic_Payment_Days_Placeholder })
+                            <h5 class="helpUser"><i class="icon-info-sign"></i><a class="daystool"> @PresentationWebStrings.Automatic_Payment_Days_Question</a></h5>
+                            @Html.ValidationMessageFor(model => model.DayBeforeExpiration)
+                        </div>
+                    </div>
+                    <div class="row wizardButtons">
+                        <div class="col-md-8"></div>
+                        <div class="col-md-4">
+                            <div class="col-xs-6 p5r pl0">
+                                <a href="@Url.Action("Index", "Service")" class="btn btn-default btn-anterior mt10 w100"><i class="icon-chevron-sign-left"></i> @PresentationWebStrings.No_Thanks</a>
+                            </div>
+                            <div class="col-xs-6 p5l pr0">
+                                <button id="btnNext" class="btn btn-default btn-siguiente mt10 w100"> @PresentationWebStrings.Schedule <i class="icon-chevron-sign-right"></i></button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                @Html.HiddenFor(s => s.ServiceId)
+                @Html.HiddenFor(s => s.CardId)
+                @Html.HiddenFor(s => s.CardMask)
+                @Html.HiddenFor(s => s.EnableAutomaticPayment)
+        <!-- fin del formMargin-->
+            }
+        </div>
+    }
+    else
+    {
+        <div class="row wizardButtons">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                @*<div class="col-xs-6 p5r pl0">*@
+                <a href="@Url.Action("Index", "Service")" class="btn btn-default btn-siguiente mt10 w100"><i class="icon-chevron-sign-left"></i> @PresentationWebStrings.Back</a>
+                @*</div>*@
+                @*<div class="clearfix"></div>*@
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    }
+
+    @*<div class="row">
+            <div class="col-md-2">
+                <button id="btnCancelPayment" class="btn btn-default btn-cancelar mt10 w100">@PresentationWebStrings.Service_Cancel <i class="icon-remove"></i></button>
+            </div>
+        </div>*@
+</div>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#servicesLink").addClass("vnpTitleSelected");
+            $(".numeric").numeric();
+
+            $("#btnNext").click(function (e) {
+                e.preventDefault();
+                if ($("#form").valid()) {
+                    var unlimited = $('input[name=UnlimitedAmount]:checked').val();
+                    if (unlimited == "false") {
+                        if (maxAmountValid()) {
+                            if (!$("#generalError").hasClass("hide")) {
+                                changeStateGeneralErrorForm();
+                            }
+                            showLoaderFullScreen();
+                            $("#form").submit();
+                        }
+                    } else {
+                        if (!$("#generalError").hasClass("hide")) {
+                            changeStateGeneralErrorForm();
+                        }
+                        showLoaderFullScreen();
+                        $("#form").submit();
+                    }
+                } else {
+                    var unlimited2 = $('input[name=UnlimitedAmount]:checked').val();
+                    if (unlimited2 == "false") {
+                        maxAmountValid();
+                    }
+                    if ($("#generalError").hasClass("hide")) {
+                        changeStateGeneralErrorForm();
+                    }
+                }
+
+                //if ($("#form").valid()) {
+                //    showLoaderFullScreen();
+                //    $("#form").submit();
+                //} else {
+                //    if ($("#generalError").hasClass("hide")) {
+                //        changeStateGeneralErrorForm();
+                //    }
+                //}
+            });
+
+            $('.amounttool').popover({
+                'trigger': 'hover',
+                'html': false,
+                'content': function () {
+                    return "Es el monto máximo que aceptas pagar de forma programada para este servicio. Si el monto de la(s) factura(s) exceden este monto se te notificará pero no se realizará el pago.";
+                }
+            });
+
+            $('.daystool').popover({
+                'trigger': 'hover',
+                'html': false,
+                'content': function () {
+                    return "Es la cantidad de días previos al vencimiento de la factura en que deseas pagar la factura.";
+                }
+            });
+
+            $("#max_amount").blur(function (e) {
+                e.preventDefault();
+                var unlimitedAmount = $('input[name=UnlimitedAmount]:checked').val();
+                if (unlimitedAmount == "false") {
+                    var value = $("#max_amount").val();
+                    if (value == "" || value <= 0) {
+                        $("#maxAmount_error").removeClass("hide");
+                        if (!$("#max_amount").hasClass("input-validation-error")) {
+                            $("#max_amount").addClass("input-validation-error");
+                        }
+                    }
+                    else {
+                        if (!$("#maxAmount_error").hasClass("hide")) {
+                            $("#maxAmount_error").addClass("hide");
+                        }
+                        $("#max_amount").removeClass("input-validation-error");
+                    }
+                }
+            });
+
+            $("#unlimited_radio_true").click(function () {
+                $("#max_amount").removeClass("input-validation-error");
+                if (!$("#maxAmount_error").hasClass("hide")) {
+                    $("#maxAmount_error").addClass("hide");
+                }
+            });
+
+            $("#unlimited_radio_false").click(function () {
+                $("#max_amount").trigger('blur');
+            });
+        });
+
+        function maxAmountValid() {
+            var valid = true;
+            var value = $("#max_amount").val();
+            if (value == "" || value <= 0) {
+                if (!$("#max_amount").hasClass("input-validation-error")) {
+                    $("#max_amount").addClass("input-validation-error");
+                }
+                $("#maxAmount_error").removeClass("hide");
+                if ($("#generalError").hasClass("hide")) {
+                    changeStateGeneralErrorForm();
+                }
+                valid = false;
+            }
+            return valid;
+        }
+
+    </script>

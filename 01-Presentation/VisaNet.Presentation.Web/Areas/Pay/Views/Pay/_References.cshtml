@@ -1,0 +1,137 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.PaymentServiceModel
+
+@{
+    var creditCard = ViewBag.CreditCard != null && (bool)ViewBag.CreditCard;
+    var debitCard = ViewBag.CreditCard != null && (bool)ViewBag.DebitCard;
+    var creditCardInternational = ViewBag.CreditCard != null && (bool)ViewBag.CreditCardInternational;
+    var debitCardInternational = ViewBag.CreditCard != null && (bool)ViewBag.DebitCardInternational;
+
+
+    IList<string> lst = new List<string>();
+
+    if (debitCard) { lst.Add(PresentationWebStrings.Service_CardType_DebitCard); }
+    if (creditCard) { lst.Add(PresentationWebStrings.Service_CardType_CreditCard); }
+    if (debitCardInternational) { lst.Add(PresentationWebStrings.Service_CardType_DebitCardInternational); }
+    if (creditCardInternational) { lst.Add(PresentationWebStrings.Service_CardType_CreditCardInternational); }
+
+    @*if (lst.Any())
+    {<h5><i class="icon-warning-sign visanetOrangeTxt"></i>@PresentationWebStrings.Service_Card_Type @string.Join(" o ", lst)</h5>}*@
+}
+@Html.HiddenFor(m => m.ServiceType)
+@Html.HiddenFor(x => x.ServiceToPayId)
+@if (Model.AskReferences)
+{
+    <div class="row">
+            @if (!String.IsNullOrEmpty(Model.ReferenceName))
+            {
+                <div class="col-md-6">
+                    @Html.HiddenFor(m => m.ReferenceName)
+                    <label for="@Model.ReferenceName">@Model.ReferenceName</label><i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    @Html.TextBoxFor(x => x.ReferenceValue, new { @class = "w100", placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+                    @Html.ValidationMessageFor(m => m.ReferenceValue, null, new { @class = "help-inline" })
+                    @if (!String.IsNullOrEmpty(Model.TooltipeImage))
+                    {
+                        <h5 class="helpUser"><i class="icon-info-sign"></i><a class="preview" rel="popover" data-image-url="@Model.TooltipeImage"> @PresentationWebStrings.ReferenceNumber_Where</a></h5>
+                    }
+                    else
+                    {
+                        <h5 class="helpUser p15l"><i class="icon-info-sign"></i> <a class="refToolTip">@PresentationWebStrings.ReferenceNumber_Where</a></h5>
+                    }
+                    @Html.HiddenFor(s => s.TooltipeImage)
+                    @Html.HiddenFor(m => m.ReferenceRegex)
+
+                </div>
+            }
+            @if (!String.IsNullOrEmpty(Model.ReferenceName2))
+            {
+                <div class="col-md-6">
+                    @Html.HiddenFor(m => m.ReferenceName2)
+                    <label for="@Model.ReferenceName2">@Model.ReferenceName2</label>
+                    <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    @Html.TextBoxFor(x => x.ReferenceValue2, new { @class = "w100", placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+                    @Html.ValidationMessageFor(m => m.ReferenceValue2, null, new { @class = "help-inline" })
+                    <h5 class="helpUser">  &nbsp;  </h5>
+                    @Html.HiddenFor(m => m.ReferenceRegex2)
+                </div>
+            }
+        </div>
+        <div class="row">
+            @if (!String.IsNullOrEmpty(Model.ReferenceName3))
+            {
+                <div class=" col-md-6">
+                    @Html.HiddenFor(m => m.ReferenceName3)
+                    <label for="@Model.ReferenceName3">@Model.ReferenceName3</label><i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    @Html.TextBoxFor(x => x.ReferenceValue3, new { @class = "w100", placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+                    @Html.ValidationMessageFor(m => m.ReferenceValue3, null, new { @class = "help-inline" })
+                    @Html.HiddenFor(m => m.ReferenceRegex3)
+                </div>
+            }
+
+            @if (!String.IsNullOrEmpty(Model.ReferenceName4))
+            {
+
+                <div class="col-md-6">
+                    @Html.HiddenFor(m => m.ReferenceName4)
+                    <label for="@Model.ReferenceName4">@Model.ReferenceName4</label>
+                    <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    @Html.TextBoxFor(x => x.ReferenceValue4, new { @class = "w100", placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+                    @Html.ValidationMessageFor(m => m.ReferenceValue4, null, new { @class = "help-inline" })
+                    @Html.HiddenFor(m => m.ReferenceRegex4)
+
+                </div>
+            }
+        </div>
+        <div class="row">
+            @if (!String.IsNullOrEmpty(Model.ReferenceName5))
+            {
+                <div class="col-md-6">
+                    @Html.HiddenFor(m => m.ReferenceName5)
+                    <label for="@Model.ReferenceName5">@Model.ReferenceName5</label><i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    @Html.TextBoxFor(x => x.ReferenceValue5, new { @class = "w100", placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+                    @Html.ValidationMessageFor(m => m.ReferenceValue5, null, new { @class = "help-inline" })
+                    @Html.HiddenFor(m => m.ReferenceRegex5)
+                </div>
+            }
+            @if (!String.IsNullOrEmpty(Model.ReferenceName6))
+            {
+                <div class="col-md-6">
+                    @Html.HiddenFor(m => m.ReferenceName6)
+                    <label for="@Model.ReferenceName6">@Model.ReferenceName6</label><i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    @Html.TextBoxFor(x => x.ReferenceValue6, new { @class = "w100", placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+                    @Html.ValidationMessageFor(m => m.ReferenceValue6, null, new { @class = "help-inline" })
+                    @Html.HiddenFor(m => m.ReferenceRegex6)
+                </div>
+            }
+        </div>
+}
+
+
+<script>
+    $(document).ready(function () {
+
+        if ($("#listadoref4").val()) {
+            $("#@Html.IdFor(m => m.ReferenceValue4)").combobox();
+        }
+        if ($("#@Html.IdFor(m => m.ServiceType)").val() == "CON") {
+            $("#@Html.IdFor(m => m.ReferenceValue)").numeric();
+        }
+        $('.preview').popover({
+            'trigger': 'hover',
+            'html': true,
+            'content': function () {
+                return "@Html.Raw(Model.TooltipeDesc) </br></br><img src='" + $(this).data('imageUrl') + "'>";
+            }
+        });
+        $('.refToolTip').popover({
+            'trigger': 'hover',
+            'html': false,
+            'content': function () {
+                return "@Html.Raw(Model.TooltipeDesc)";
+            }
+        });
+
+        $("#ServiceType").val('@Model.ServiceType');
+    });
+</script>

@@ -1,0 +1,137 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.WsBillPaymentOnlineModel
+
+<div id="lbDetails" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4>@PresentationAdminStrings.Details</h4>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <tbody>
+
+                        @* DATOS GENERALES *@
+                        <tr>
+                            <th>@PresentationAdminStrings.CreationDate</th>
+                            <td>@Model.CreationDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Application_Id</th>
+                            <td>@Model.IdApp</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Operation_Id</th>
+                            <td>@Model.IdOperation</td>
+                        </tr>
+                        <tr>
+                            <th>Cód. Comercio</th>
+                            <td>@Model.CodCommerce</td>
+                        </tr>
+                        <tr>
+                            <th>Cód. Sucursal</th>
+                            <td>@Model.CodBranch</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.MerchantId</th>
+                            <td>@Model.IdMerchant</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.ResultCode</th>
+                            <td>@Model.Codresult</td>
+                        </tr>
+
+                        @* DATOS USUARIO Y TARJETA *@
+                        <tr>
+                            <th>@PresentationAdminStrings.User_Id</th>
+                            <td>@Model.IdUser</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Card_Id</th>
+                            <td>@Model.IdCard</td>
+                        </tr>
+
+                        @* DATOS FACTURA *@
+                        <tr>
+                            <th>@PresentationAdminStrings.Bill_External_Id</th>
+                            <td>@Model.BillNumber</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Monto total</th>
+                            <td>@Model.AmountTotal</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Monto gravado</th>
+                            <td>@Model.AmountTaxed</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Moneda</th>
+                            <td>@Model.Currency</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Cons final</th>
+                            <td>@Model.ConsFinal</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Fecha</th>
+                            <td>@Model.DateBill.ToString("dd/MM/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Cuota</th>
+                            <td>@Model.Quota</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Descripción</th>
+                            <td>@Model.Description</td>
+                        </tr>
+                        <tr>
+                            <th>Indi</th>
+                            <td>@Model.Indi</td>
+                        </tr>
+
+                        @* DATOS TRANSACCION *@
+                        <tr>
+                            <th>Fecha pago</th>
+                            <td>@Model.PaymentDate</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Transaction_Number_Short</th>
+                            <td>@Model.PaymentTransactionNumber</td>
+                        </tr>
+
+                        @* DATOS OTROS *@
+                        <tr>
+                            <th>Device Fingerprint</th>
+                            <td>@Model.DeviceFingerprint</td>
+                        </tr>
+                        <tr>
+                            <th>IP Cliente</th>
+                            <td>@Model.CustomerIp</td>
+                        </tr>
+                        <tr>
+                            <th>Teléfono Cliente</th>
+                            <td>@Model.CustomerPhone</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.WcfVersion</th>
+                            <td>@Model.WcfVersion</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-6 p5l">
+                        <button type="button" class="btn btn-default btn-cancelar w100" data-dismiss="modal">@PresentationWebStrings.Close <i class="icon-remove"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

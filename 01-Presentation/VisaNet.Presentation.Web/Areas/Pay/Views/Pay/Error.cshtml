@@ -1,0 +1,13 @@
+﻿@model Dictionary<string, string>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var keyValue in Model)
+{
+    <input name="@keyValue.Key" id="@keyValue.Key" value="@keyValue.Value" width="100%" />
+    <br />
+}

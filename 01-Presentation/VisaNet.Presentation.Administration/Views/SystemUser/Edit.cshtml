@@ -1,0 +1,84 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Presentation.Administration.Models.SystemUserModel
+
+
+<h2>@PresentationAdminStrings.SystemUser_Edit_Title</h2>
+
+<div class="row mt30">
+    <div class="col-lg-6">
+
+        @using (Html.BeginForm("Edit", "SystemUser", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(s => s.LDAPUserName)
+                @Html.TextBoxFor(s => s.LDAPUserName, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(s => s.LDAPUserName)
+
+            <div class="form-group">
+                @Html.LabelFor(s => s.SystemUserTypeId)
+                @Html.DropDownListFor(s => s.SystemUserTypeId,
+                                            EnumHelpers.ConvertToSelectList(typeof(SystemUserTypeDto), (int)Model.SystemUserTypeId, EnumsStrings.ResourceManager),
+                                            PresentationCoreMessages.Common_Select,
+                                            new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(s => s.SystemUserTypeId)
+
+            <div class="form-group">
+                @Html.CheckBoxFor(s => s.Enabled)
+                @Html.LabelFor(s => s.Enabled, new{@Class = "obligatoryField"})
+            </div>
+
+            <div id="userTypeContainer">
+                @if (Model != null && Model.SystemUserTypeId == (int)SystemUserTypeDto.Administration)
+                {
+                    <div class="control-group">
+                        @Html.Partial("_RoleSelection", Model)
+                    </div>
+                }
+            </div>
+<div class="mt20">
+            <a href="@Url.Action("Index")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+            <a href="#" id="btnGuardar" class="btn btn-default lbApprove">
+                <strong>@PresentationAdminStrings.Save</strong>
+            </a></div>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function LoadPartialRoles() {
+        $.post('@Url.Action("AjaxRolesPartial", new { id = (Model != null && Model.Id != default(Guid)) ? Model.Id.ToString() : Guid.Empty.ToString() })', function (data) {
+            if (data.ResponseType == RESPONSE.SUCCESS) {
+                $("#userTypeContainer").html(data.Content);
+            }
+
+            if (data.ResponseType == RESPONSE.ERROR) {
+                ShowNotification(data.Title, data.Message, data.NotificationType);
+            }
+        }).fail(function () { window.location.replace('@Url.Action("Index", "Error")'); });
+    }
+
+
+    $(document).ready(function () {
+        $("a.lbApprove").click(function () { $(this).parents("form").submit(); });
+
+        $("#SystemUserTypeId").change(function () {
+            var value = $("#SystemUserTypeId :selected").val();
+            var container = $("#userTypeContainer");
+
+            if (value == "" || value == "@(((int)SystemUserTypeDto.CallCenter).ToString())") {
+                container.html("");
+            } else {
+                LoadPartialRoles();
+            }
+        });
+
+
+    });
+</script>

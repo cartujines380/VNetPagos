@@ -1,0 +1,136 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Domain.EntitiesDtos.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model VisaNet.Presentation.Administration.Models.LifApiBillModel
+
+<h2>@PresentationAdminStrings.LifApiBill_Detail_Title</h2>
+
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.CreationDate)
+                    @Html.TextBoxFor(s => s.CreationDate, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="horizontalLineLighGrey mt20 mb20"></div>
+<h4>Request</h4>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(b => b.AppId)
+                    @Html.TextBoxFor(b => b.AppId, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.OperationId)
+                    @Html.TextBoxFor(s => s.OperationId, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.BinValue)
+                    @Html.TextBoxFor(s => s.BinValue, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.Currency)
+                    @Html.TextBoxFor(s => s.Currency, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.Amount)
+                    @Html.TextBoxFor(s => s.Amount, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.TaxedAmount)
+                    @Html.TextBoxFor(s => s.TaxedAmount, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.IsFinalConsumer)
+                    @Html.TextBoxFor(s => s.IsFinalConsumer, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.LawId)
+                    @Html.TextBoxFor(s => s.LawId, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="horizontalLineLighGrey mt20 mb20"></div>
+<h4>Response</h4>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(b => b.CardType)
+                    @Html.TextBoxFor(b => b.CardType, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.IssuingCompany)
+                    @Html.TextBoxFor(s => s.IssuingCompany, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.DiscountAmount)
+                    @Html.TextBoxFor(s => s.DiscountAmount, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.AmountToCyberSource)
+                    @Html.TextBoxFor(s => s.AmountToCyberSource, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            @if (!string.IsNullOrEmpty(Model.Error))
+            {
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.Error)
+                        @Html.TextAreaFor(s => s.Error, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="horizontalLineLighGrey mt20 mb20"></div>
+<div class="row">
+    <div class="col-lg-6">
+        <a href="@Url.Action("Index", "ReportsLifApiBill")" class="btn btn-default">@PresentationAdminStrings.Back </a>
+    </div>
+</div>
+
+

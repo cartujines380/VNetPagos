@@ -1,0 +1,125 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Domain.EntitiesDtos.TableFilters.ReportsIntegrationFilterDto
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @PresentationAdminStrings.CreationDate
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Application_Id
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Operation_Id_App
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Action
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Email
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.User_Id
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Bill_External_Id
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Transaction_Number_Short
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Details
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="divDetailsModal"></div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var dataTableFilters;
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "ExternalRequestType", "value": $("#@Html.IdFor(m => m.ExternalRequestType)").val() });
+            aoData.push({ "name": "DateFrom", "value": $("#@Html.IdFor(m => m.DateFrom)").val() });
+            aoData.push({ "name": "DateTo", "value": $("#@Html.IdFor(m => m.DateTo)").val() });
+            aoData.push({ "name": "IdOperation", "value": $("#@Html.IdFor(m => m.IdOperation)").val() });
+            aoData.push({ "name": "IdApp", "value": $("#@Html.IdFor(m => m.IdApp)").val() });
+            aoData.push({ "name": "TransactionNumber", "value": $("#@Html.IdFor(m => m.TransactionNumber)").val() });
+        }
+
+        dataTableFilters = applyDatatableExternalFilters($('#table'),
+            null,
+            [
+                { "mDataProp": "CreationDate" },
+                { "mDataProp": "IdApp", "bSortable": false },
+                { "mDataProp": "IdOperationApp", "bSortable": false },
+                { "mDataProp": "Action", "bSortable": false },
+                { "mDataProp": "Email", "bSortable": false },
+                { "mDataProp": "IdUsuario", "bSortable": false },
+                { "mDataProp": "BillExternalId", "bSortable": false },
+                {
+                    "sName": "TransactionNumber",
+                    "sClass": "column-icon",
+                    "sDefaultContent": "",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "fnRender": function (oObj) {
+                        if (oObj.aData.TransactionNumber === null || oObj.aData.TransactionNumber === '') {
+                            return '';
+                        }
+                        return '<a href="@Url.Action("Index", "ReportsTransactions")?PaymentTransactionNumber=' + oObj.aData.TransactionNumber + '">' + oObj.aData.TransactionNumber + '</a>';
+                    }
+                },
+                {
+                    "sName": "Details",
+                    "sClass": "column-icon",
+                    "sDefaultContent": "",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "fnRender": function (oObj) {
+                        if (oObj.aData.Id === '') {
+                            return '';
+                        }
+                        return "<a href='#' class='btn-details' data-id='" + oObj.aData.Id + "'><i class=\"fa fa-search\"></i></a>";
+                    }
+                }
+            ],
+            '@Url.Action("AjaxHandlerLoadTable", "ReportsIntegration")',
+            externalFilters,
+            [[0, "desc"]]
+        );
+
+        $("#table").on("click", ".btn-details", function (e) {
+            e.preventDefault();
+            var id = $(this).data("id");
+            $("#divDetailsModal").html('');
+            $.ajax({
+                method: 'GET',
+                url: '@Url.Action("WebhookRegistrationDetails", "ReportsIntegration")' + "?id=" +id,
+                async: true,
+                dataType: "html",
+                success: function (data) {
+                    $("#divDetailsModal").html(data);
+                    $("#lbDetails").modal('show');
+                },
+                error: function (err) {
+                    ShowNotification('Error', 'Ha ocurrido un error inesperado.', 'error');
+                }
+            });
+        });
+
+    });
+
+</script>

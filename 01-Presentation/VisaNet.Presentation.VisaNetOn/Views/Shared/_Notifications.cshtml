@@ -1,0 +1,34 @@
+﻿@using VisaNet.Presentation.VisaNetOn.Constants
+@using VisaNet.Utilities.Notifications
+
+@if (TempData[TempDataConstants.SHOW_NOTIFICATION] != null)
+{
+    var notifications = ((List<Notification>)TempData[TempDataConstants.SHOW_NOTIFICATION]);
+    <script type="text/javascript">
+        $(document).ready(function () {
+            @foreach (var notification in (IList<Notification>) notifications)
+        {
+            switch (notification.Type)
+            {
+                case NotificationType.Success:
+                    <text>toastr.success('@notification.Text', { timeOut: 5000 });</text>
+                    break;
+                case NotificationType.Error:
+                    <text>toastr.error('@notification.Text', { timeOut: 5000 });</text>
+                    break;
+                case NotificationType.Alert:
+                    <text>toastr.warning('@notification.Text', { timeOut: 5000 });</text>
+                    break;
+                case NotificationType.Info:
+                    <text>toastr.info('@notification.Text', { timeOut: 5000 });</text>
+                    break;
+                default:
+                    <text>toastr.info('@notification.Text', { timeOut: 5000 });</text>
+                    break;
+            }
+        }
+        });
+    </script>
+}
+
+

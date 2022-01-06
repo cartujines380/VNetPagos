@@ -1,0 +1,9 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Security\bin\Debug\VisaNet.Common.Security.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Security\bin\Debug\VisaNet.Common.Security.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Security\bin\Debug\VisaNet.Utilities.Cryptography.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Security\bin\Debug\VisaNet.Utilities.Cryptography.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Security\obj\Debug\VisaNet.Common.Security.csprojResolveAssemblyReference.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Security\obj\Debug\VisaNet.Common.Security.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Security\obj\Debug\VisaNet.Common.Security.csproj.CopyComplete
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Security\obj\Debug\VisaNet.Common.Security.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\06-Common\VisaNet.Common.Security\obj\Debug\VisaNet.Common.Security.pdb

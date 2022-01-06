@@ -1,0 +1,101 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Presentation.Administration.Models.HomePageItemModel
+
+<h2>@PresentationAdminStrings.HomePage_Edit_Title</h2>
+
+<div class="row">
+    <div class="col-lg-8">
+        @using (Html.BeginForm("Edit", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(s => s.Id)
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.Image)
+
+                        <input type="file" name="Image" id="Image" />
+                        @if (!String.IsNullOrEmpty(Model.Image_internalname))
+                        {
+                            <a href="@Model.Image_internalname" target="_blank"> VER </a>
+                            <a href="#" id="dImage"> ELIMINAR </a>
+                        }
+                        @Html.HiddenFor(s => s.DeleteImage)
+                        @Html.HiddenFor(s => s.ImagenBD)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LinkUrl, new { @class = "control-label" })
+
+                        @Html.TextBoxFor(m => m.LinkUrl, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.File)
+
+                        <input type="file" name="File" id="File" />
+                        @if (!String.IsNullOrEmpty(Model.File_internalname))
+                        {
+                            <a href="@Model.File_internalname" target="_blank"> DESCARGAR </a>
+                            <a href="#" id="dFile"> ELIMINAR </a>
+                        }
+                        @Html.HiddenFor(s => s.DeleteFile)
+                        @Html.HiddenFor(s => s.FileBD)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LinkName, new { @class = "control-label" })
+
+                        @Html.TextBoxFor(m => m.LinkName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Headline1, new { @class = "control-label" })
+
+                        @Html.TextBoxFor(m => m.Headline1, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Headline1)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Headline2, new { @class = "control-label" })
+
+                        @Html.TextBoxFor(m => m.Headline2, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Headline2)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Description, new { @class = "control-label" })
+
+                        @Html.TextAreaFor(m => m.Description, new { @rows = "6", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Description)
+                    </div>
+                </div>
+            </div>
+
+            @Html.ActionActionLink(Actions.HomePageList, PresentationAdminStrings.Cancel, new Dictionary<string, object> { { "Class", "btn btn-default btn-cancel" } })
+            @*<a href="@Url.Action("Details", "HomePage")" class="btn btn-default btn-cancel">Cancelar </a>*@
+            <a href="#" id="btnGuardar" class="btn btn-default">
+                <strong>Guardar</strong>
+            </a>
+        }
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnGuardar").click(function () {
+            $(this).parents("form").submit();
+        });
+        $("#dImage").click(function (e) {
+            e.preventDefault();
+            $("#DeleteImage").val(true);
+        });
+        $("#dFile").click(function (e) {
+            e.preventDefault();
+            $("#DeleteFile").val(true);
+        });
+    });
+</script>

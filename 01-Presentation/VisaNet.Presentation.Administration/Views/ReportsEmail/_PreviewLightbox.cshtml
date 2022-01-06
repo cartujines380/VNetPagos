@@ -1,0 +1,54 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+
+<div id="lbPreview" class="modal fade bs-example-modal-lg">
+    <div class="modal-dialog modal-lg" style="width: 70%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="lbPreviewTitle"></h4>
+            </div>
+            <div class="modal-body">
+                @Html.Hidden("lbPreviewHiddenId")
+                <div style="margin-bottom: 10px;">
+                    <b>Para:</b>
+                    <span style="padding-left: 10px;" id="lbPreviewTo"></span>
+                    <a target='_blank' id="lbPreviewAttachments" href="@Url.Action("DownloadAttachment", "ReportsEmail")" class="pull-right">Descargar adjunto</a>
+                </div>
+                <div id="lbPreviewBody"></div>
+            </div>
+            <div class="modal-footer">
+                @Html.ActionActionLink(Actions.ReportsMailsResend, PresentationAdminStrings.EmailResend, new Dictionary<string, object> { { "Class", "btn btn-success" }, { "id", "lbPreviewBtnResend" } })
+                <a href="#" class="btn" id="lnkAccept" data-dismiss="modal">@PresentationAdminStrings.Back</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#lbPreviewBtnResend").click(function (e) {
+            e.preventDefault();
+            if (!$(this).hasClass("disabled")) {
+                showBlockUI("Reenviando email");
+                var url = $(this).attr("href");
+                var id = $('#lbPreviewHiddenId').val();
+                $.post(url + '/' + id, function (data) {
+                    if (data.ResponseType == RESPONSE.SUCCESS) {
+                        $('#lbPreview').modal("hide");
+                        ShowNotification(data.Title, data.Message, 'success');
+                    }
+                    if (data.ResponseType == RESPONSE.ERROR) {
+                        ShowNotification(data.Title, data.Message, 'error');
+                    }
+                    dataTableFilters.fnFilter();
+                    hideBlockUI();
+                }).fail(function () {
+                    hideBlockUI();
+                    window.location.replace('@Url.Action("Index", "Error")');
+                });
+            }
+        });
+    });
+</script>

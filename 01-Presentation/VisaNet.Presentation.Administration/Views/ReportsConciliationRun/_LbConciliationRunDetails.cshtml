@@ -1,0 +1,83 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ReportsConciliationRunViewModel
+
+<div id="lbDetails" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4>@PresentationAdminStrings.Details</h4>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th>@PresentationAdminStrings.CreationDate</th>
+                            <td>@Model.CreationDate</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.FinishDate</th>
+                            <td>@Model.LastModificationDate</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Reports_Conciliation_Application</th>
+                            <td>@Model.App</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Type</th>
+                            <td>@Model.RunType</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Reports_Conciliation_State</th>
+                            <td>@Model.State</td>
+                        </tr>
+                        @if (!string.IsNullOrEmpty(Model.InputFileName))
+                        {
+                            <tr>
+                                <th>@PresentationAdminStrings.FileName</th>
+                                <td>@Model.InputFileName</td>
+                            </tr>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.ConciliationDateFrom))
+                        {
+                            <tr>
+                                <th>@PresentationAdminStrings.ConciliationDateFrom</th>
+                                <td>@Model.ConciliationDateFrom</td>
+                            </tr>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.ConciliationDateTo))
+                        {
+                            <tr>
+                                <th>@PresentationAdminStrings.ConciliationDateTo</th>
+                                <td>@Model.ConciliationDateTo</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                @if (!string.IsNullOrEmpty(Model.ResultDescription))
+                {
+                    <label>Descripción resultado</label>
+                    @Html.TextAreaFor(m => m.ResultDescription, new { @class = "form-control", @readonly = "readonly" })
+                }
+
+                @if (!string.IsNullOrEmpty(Model.ExceptionMessage))
+                {
+                    <label>Mensaje excepción</label>
+                    @Html.TextAreaFor(m => m.ExceptionMessage, new { @class = "form-control", @readonly = "readonly" })
+                }
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-6 p5l">
+                        <button type="button" class="btn btn-default btn-cancelar w100" data-dismiss="modal">@PresentationWebStrings.Close <i class="icon-remove"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

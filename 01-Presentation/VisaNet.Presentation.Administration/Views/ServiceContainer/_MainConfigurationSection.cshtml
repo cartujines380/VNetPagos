@@ -1,0 +1,76 @@
+﻿@model VisaNet.Presentation.Administration.Models.ServiceContainerModel
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.BinGroups)
+            <div class="selectMask w100 selectMultiple">
+                @Html.DropDownListFor(x => x.BinGroups, (ICollection<SelectListItem>)ViewBag.BinGroups, Model.IsDetailsView
+                    ? new Dictionary<string, object> { { "class", "selectpicker" }, { "disabled", "disabled" }, { "multiple", "multiple" }, { "data-selected-text-format", "count>3" }, { "data-actions-box", "true" }, { "data-icon-base", "fa" }, { "data-tick-icon", "fa-check" }, { "data-select-all-text", "Todos" }, { "data-deselect-all-text", "Ninguno" }, { "data-none-selected-text", "Ninguno seleccionado" }, { "data-count-selected-text", "Seleccionados {0} de {1}" } }
+                    : new Dictionary<string, object> { { "class", "selectpicker" }, { "multiple", "multiple" }, { "data-selected-text-format", "count>3" }, { "data-actions-box", "true" }, { "data-icon-base", "fa" }, { "data-tick-icon", "fa-check" }, { "data-select-all-text", "Todos" }, { "data-deselect-all-text", "Ninguno" }, { "data-none-selected-text", "Ninguno seleccionado" }, { "data-count-selected-text", "Seleccionados {0} de {1}" } })
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.Active, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.Active, new { @class = "obligatoryField" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.EnablePrivatePayment, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.EnablePrivatePayment, new { @class = "obligatoryField" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.EnablePublicPayment, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.EnablePublicPayment, new { @class = "obligatoryField" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.EnableAssociation, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.EnableAssociation, new { @class = "obligatoryField" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.AskUserForReferences, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.AskUserForReferences, new { @class = "obligatoryField" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.AllowSelectContentAssociation, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.AllowSelectContentAssociation, new { @class = "obligatoryField" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.AllowSelectContentPayment, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.AllowSelectContentPayment, new { @class = "obligatoryField" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.AllowMultipleCards, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.AllowMultipleCards, new { @class = "obligatoryField" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.MaxQuotaAllow)
+            @Html.DropDownListFor(s => s.MaxQuotaAllow, (ICollection<SelectListItem>)ViewBag.Quotas, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+    </div>
+</div>

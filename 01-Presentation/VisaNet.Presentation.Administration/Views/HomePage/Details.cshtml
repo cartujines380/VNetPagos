@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Presentation.Administration.Models.HomePageItemModel
+
+<h2>@PresentationAdminStrings.HomePage_Details_Title</h2>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.DisplayNameFor(m => m.Image)
+
+                    @Html.TextBoxFor(m => m.Image_originalname, new { disabled = "disabled", @class = "form-control" })
+                    @if (!String.IsNullOrEmpty(Model.Image_internalname))
+                    {
+                        <a href="@Model.Image_internalname" target="_blank"> VER </a>
+                    }
+                </div>
+                <div class="form-group">
+                    @Html.DisplayNameFor(model => model.LinkUrl)
+
+                    @Html.TextBoxFor(m => m.LinkUrl, new { disabled = "disabled", @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.DisplayNameFor(model => model.File)
+
+                    @Html.TextBoxFor(m => m.File_originalname, new { disabled = "disabled", @class = "form-control" })
+                    @if (!String.IsNullOrEmpty(Model.File_internalname))
+                    {
+                        <a href="@Model.File_internalname" target="_blank"> DESCARGAR </a>
+                    }
+                </div>
+                <div class="form-group">
+                    @Html.DisplayNameFor(model => model.LinkName)
+
+                    @Html.TextBoxFor(m => m.LinkName, new { disabled = "disabled", @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.DisplayNameFor(model => model.Headline1)
+
+                    @Html.TextBoxFor(m => m.Headline1, new { disabled = "disabled", @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.DisplayNameFor(model => model.Headline2)
+
+                    @Html.TextBoxFor(m => m.Headline2, new { disabled = "disabled", @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.DisplayNameFor(model => model.Description)
+
+                    @Html.TextAreaFor(m => m.Description, new { @rows = "6", disabled = "disabled", @class = "form-control" })
+                </div>
+            </div>
+        </div>    
+        @Html.ActionActionLink(Actions.HomePageList, PresentationAdminStrings.Back, new Dictionary<string, object> { { "Class", "btn btn-default" } })
+        
+    </div>
+</div>

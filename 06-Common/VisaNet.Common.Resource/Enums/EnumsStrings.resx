@@ -1,0 +1,1159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AuthorizationAmountTypeDto_Gross" xml:space="preserve">
+    <value>Precio sin descuento (Bruto)</value>
+  </data>
+  <data name="AuthorizationAmountTypeDto_Net" xml:space="preserve">
+    <value>Precio con descuento (Neto)</value>
+  </data>
+  <data name="CardTypeDto_Credit" xml:space="preserve">
+    <value>Crédito</value>
+  </data>
+  <data name="CardTypeDto_Debit" xml:space="preserve">
+    <value>Débito</value>
+  </data>
+  <data name="CardTypeDto_InternationalCredit" xml:space="preserve">
+    <value>Crédito Extranjera</value>
+  </data>
+  <data name="CardTypeDto_InternationalDebit" xml:space="preserve">
+    <value>Débito Extranjera</value>
+  </data>
+  <data name="ConciliationAppDto_Banred" xml:space="preserve">
+    <value>Banred</value>
+  </data>
+  <data name="ConciliationAppDto_Batch" xml:space="preserve">
+    <value>Batch</value>
+  </data>
+  <data name="ConciliationAppDto_CyberSource" xml:space="preserve">
+    <value>CyberSource</value>
+  </data>
+  <data name="ConciliationAppDto_Payment" xml:space="preserve">
+    <value>Pago</value>
+  </data>
+  <data name="ConciliationAppDto_Settelment" xml:space="preserve">
+    <value>Liquidación</value>
+  </data>
+  <data name="ConciliationAppDto_Sistarbanc" xml:space="preserve">
+    <value>Sistarbanc</value>
+  </data>
+  <data name="ConciliationAppDto_Site" xml:space="preserve">
+    <value>Portal</value>
+  </data>
+  <data name="ConciliationAppDto_Sucive" xml:space="preserve">
+    <value>Sucive</value>
+  </data>
+  <data name="ConciliationAppDto_Tc33" xml:space="preserve">
+    <value>Tc33</value>
+  </data>
+  <data name="ConciliationOriginDto_External" xml:space="preserve">
+    <value>Externas</value>
+  </data>
+  <data name="ConciliationOriginDto_Vnp" xml:space="preserve">
+    <value>VNP</value>
+    <comment>_</comment>
+  </data>
+  <data name="ConciliationStateDto_Checked" xml:space="preserve">
+    <value>Revisada</value>
+  </data>
+  <data name="ConciliationStateDto_Difference" xml:space="preserve">
+    <value>Con diferencias</value>
+  </data>
+  <data name="ConciliationStateDto_DoesNotApply" xml:space="preserve">
+    <value>No aplica</value>
+  </data>
+  <data name="ConciliationStateDto_Error" xml:space="preserve">
+    <value>Con diferencias</value>
+  </data>
+  <data name="ConciliationStateDto_NotFound" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ConciliationStateDto_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ConciliationTypeDto_Complete" xml:space="preserve">
+    <value>Completa</value>
+  </data>
+  <data name="ConciliationTypeDto_CybersourceOnly" xml:space="preserve">
+    <value>Sólo Cybersource</value>
+  </data>
+  <data name="CurrencyDto_USD" xml:space="preserve">
+    <value>Dólares americanos</value>
+  </data>
+  <data name="CurrencyDto_UYU" xml:space="preserve">
+    <value>Pesos uruguayos</value>
+  </data>
+  <data name="DateParameterDto_Day" xml:space="preserve">
+    <value>Día</value>
+  </data>
+  <data name="DateParameterDto_DayOfWeek" xml:space="preserve">
+    <value>Día de la semana</value>
+  </data>
+  <data name="DateParameterDto_Hour" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="DateParameterDto_Month" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="DateParameterDto_Year" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="DateParameterDto_YearAndMonth" xml:space="preserve">
+    <value>Año y mes</value>
+  </data>
+  <data name="DateParameterDto_YearMonthAndDay" xml:space="preserve">
+    <value>Año, mes y día</value>
+  </data>
+  <data name="DimensionDto_Amount" xml:space="preserve">
+    <value>Importe</value>
+  </data>
+  <data name="DimensionDto_AverageAmount" xml:space="preserve">
+    <value>Importe promedio</value>
+  </data>
+  <data name="DimensionDto_Count" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="DiscountLabelTypeDto_AfamRefund" xml:space="preserve">
+    <value>Descuento Ley 18.910</value>
+  </data>
+  <data name="DiscountLabelTypeDto_FinancialInclusion" xml:space="preserve">
+    <value>Descuento Ley 19.210</value>
+  </data>
+  <data name="DiscountLabelTypeDto_ImesiRefund" xml:space="preserve">
+    <value>Descuento Ley 18.083</value>
+  </data>
+  <data name="DiscountLabelTypeDto_TaxReintegration" xml:space="preserve">
+    <value>Descuento Ley 18.999</value>
+  </data>
+  <data name="DiscountLabelTypeDto_TourismActivity" xml:space="preserve">
+    <value>Descuento Ley 17.934</value>
+  </data>
+  <data name="DiscountTypeDto_AfamRefund" xml:space="preserve">
+    <value>Ley 18.910 (Devuelve AFAM)</value>
+  </data>
+  <data name="DiscountTypeDto_FinancialInclusion" xml:space="preserve">
+    <value>Ley 19.210 (Devuelve IVA)</value>
+  </data>
+  <data name="DiscountTypeDto_ImesiRefund" xml:space="preserve">
+    <value>Ley 18.083 (Devuelve IMESI)</value>
+  </data>
+  <data name="DiscountTypeDto_NoDiscount" xml:space="preserve">
+    <value>No aplica descuento</value>
+  </data>
+  <data name="DiscountTypeDto_Reserved" xml:space="preserve">
+    <value>Reservado</value>
+  </data>
+  <data name="DiscountTypeDto_TourismOrTaxReintegration" xml:space="preserve">
+    <value>Ley 17.934 / Ley 18.999 (Devuelve IVA / Reintegro impuestos)</value>
+  </data>
+  <data name="EmailType_AutomaticPaymentNotification" xml:space="preserve">
+    <value>Pago Programado [Interno]</value>
+  </data>
+  <data name="EmailType_BillAboutToExpired" xml:space="preserve">
+    <value>Factura por vencer</value>
+  </data>
+  <data name="EmailType_BillExpired" xml:space="preserve">
+    <value>Factura vencida</value>
+  </data>
+  <data name="EmailType_BinNotDefined" xml:space="preserve">
+    <value>Nro BIN no definido</value>
+  </data>
+  <data name="EmailType_ContactForm" xml:space="preserve">
+    <value>Nuevo Contacto</value>
+  </data>
+  <data name="EmailType_CopyPayment" xml:space="preserve">
+    <value>Copia de pago</value>
+  </data>
+  <data name="EmailType_CybersourceError" xml:space="preserve">
+    <value>Error en Cybersource</value>
+  </data>
+  <data name="EmailType_ExpiringCard" xml:space="preserve">
+    <value>Tarjeta por vencer</value>
+  </data>
+  <data name="EmailType_GeneralNotification" xml:space="preserve">
+    <value>Notificación General</value>
+  </data>
+  <data name="EmailType_InternalErrorNotification" xml:space="preserve">
+    <value>Notificación de Error [Interno]</value>
+  </data>
+  <data name="EmailType_InternalGeneralNotification" xml:space="preserve">
+    <value>Notificación General [Interno]</value>
+  </data>
+  <data name="EmailType_NewBill" xml:space="preserve">
+    <value>Nueva Factura</value>
+  </data>
+  <data name="EmailType_NewPayment" xml:space="preserve">
+    <value>Nuevo Pago</value>
+  </data>
+  <data name="EmailType_NewUser" xml:space="preserve">
+    <value>Nuevo Usuario</value>
+  </data>
+  <data name="EmailType_PaymentCancellationError" xml:space="preserve">
+    <value>Error en cancelación de pago CyberSource</value>
+  </data>
+  <data name="EmailType_PaymentDoneCancellation" xml:space="preserve">
+    <value>Cancelación de transacción</value>
+  </data>
+  <data name="EmailType_ResetPassword" xml:space="preserve">
+    <value>Nueva Contraseña</value>
+  </data>
+  <data name="EmailType_ServiceDeletedNotification" xml:space="preserve">
+    <value>Baja de servicio</value>
+  </data>
+  <data name="ErrorCodeDto_AUTORIZACION_ACEPTADA_DECLINADA_POR_CYBERSOURCE" xml:space="preserve">
+    <value>AUTORIZACIÓN ACEPTADA, DECLINADA POR CYBERSOURCE</value>
+  </data>
+  <data name="ErrorCodeDto_AUTORIZACION_ACEPTADA_Y_DECLINADA_POR_CYBERSOURCE_CVV_CHECK" xml:space="preserve">
+    <value>AUTORIZACIÓN ACEPTADA, DECLINADA POR CYBERSOURCE (CVV CHECK)</value>
+  </data>
+  <data name="ErrorCodeDto_AUTORIZACION_ACEPTADA_Y_RECHAZADA_POR_CYBERSOURCE_POR_NO_PASAR_EL_AVS" xml:space="preserve">
+    <value>AUTORIZACIÓN ACEPTADA, RECHAZADA POR CYBERSOURCE POR NO PASAR EL AVS</value>
+  </data>
+  <data name="ErrorCodeDto_AUTORIZACION_AUTOMATICA_RECHAZADA" xml:space="preserve">
+    <value>AUTORIZACIÓN AUTOMATICA RECHAZADA</value>
+  </data>
+  <data name="ErrorCodeDto_CAMPO_CON_VALOR_NEGATIVO" xml:space="preserve">
+    <value>CAMPO CON VALOR NEGATIVO</value>
+  </data>
+  <data name="ErrorCodeDto_CAMPO_EXCEDE_EL_LARGO_MAXIMO" xml:space="preserve">
+    <value>CAMPO EXCEDE EL LARGO MAXIMO</value>
+  </data>
+  <data name="ErrorCodeDto_CAMPO_FECHA_NO_TIENE_VALOR_VALIDO" xml:space="preserve">
+    <value>CAMPO FECHA NO TIENE VALOR VALIDO</value>
+  </data>
+  <data name="ErrorCodeDto_CAMPO_NO_CONCUERDA_CON_LOS_DATOS_ENVIADOS" xml:space="preserve">
+    <value>CAMPO NO CONCUERDA CON LOS DATOS ENVIADOS</value>
+  </data>
+  <data name="ErrorCodeDto_CAMPO_OBLIGATORIO_NO_ENVIADO" xml:space="preserve">
+    <value>CAMPO OBLIGATORIO NO ENVIADO</value>
+  </data>
+  <data name="ErrorCodeDto_CERTIFICADO_NO_ENCONTRADO" xml:space="preserve">
+    <value>Certificado faltante.</value>
+  </data>
+  <data name="ErrorCodeDto_CUENTA_CONGELADA" xml:space="preserve">
+    <value>CUENTA CONGELADA</value>
+  </data>
+  <data name="ErrorCodeDto_CVV_INVALIDO" xml:space="preserve">
+    <value>CVV INVÁLIDO</value>
+  </data>
+  <data name="ErrorCodeDto_CYBERSOURCE_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ErrorCodeDto_DECISIONMANAGER" xml:space="preserve">
+    <value>DECISIONMANAGER</value>
+  </data>
+  <data name="ErrorCodeDto_EL_BIN_DE_LA_FACTURA_NO_SE_CORRESPONDE_CON_LOS_DATOS_DE_LA_TARJETA_INGRESADOS" xml:space="preserve">
+    <value>El BIN de la factura no se corresponde con los datos de la tarjeta ingresados.</value>
+  </data>
+  <data name="ErrorCodeDto_EL_TIEMPO_DE_RESPUESTA_DE_LA_PASARELA_SUPERO_EL_TIEMPO_DE_ESPERA_DEFINIDO" xml:space="preserve">
+    <value>El tiempo de respuesta de la pasarela superó el tiempo de espera definido.</value>
+  </data>
+  <data name="ErrorCodeDto_EL_TIPO_DE_TARJETA_ES_INVALIDO_O_NO_CORREPSONDE_CON_EL_NRO_DE_CUENTA" xml:space="preserve">
+    <value>EL TIPO DE TARJETA ES INVÁLIDO O NO CORREPSONDE CON EL NRO DE CUENTA</value>
+  </data>
+  <data name="ErrorCodeDto_EL_TIPO_DE_TARJETA_NO_ES_ACEPTADA_POR_EL_PROCESADOR" xml:space="preserve">
+    <value>EL TIPO DE TARJETA NO ES ACEPTADA POR EL PROCESADOR</value>
+  </data>
+  <data name="ErrorCodeDto_ERRORES_EN_LOS_CAMPOS_ENVIADOS" xml:space="preserve">
+    <value>Error al validar los campos requeridos</value>
+  </data>
+  <data name="ErrorCodeDto_ERROR_AL_INENTAR_GENERAR_LA_TRANSACCION" xml:space="preserve">
+    <value>Hubo un error al notificar a la pasarela.</value>
+  </data>
+  <data name="ErrorCodeDto_ERROR_AL_INENTAR_GUARDAR_LA_TRANSACCION" xml:space="preserve">
+    <value>Se produjo un error en el portal, se notifico al ente pero no se pudo guardar el pago y/o facturas.</value>
+  </data>
+  <data name="ErrorCodeDto_ERROR_DE_BANCO" xml:space="preserve">
+    <value>ERROR DE BANCO</value>
+  </data>
+  <data name="ErrorCodeDto_ERROR_DE_CAMPOS" xml:space="preserve">
+    <value>ERROR DE CAMPOS</value>
+  </data>
+  <data name="ErrorCodeDto_ERROR_DE_KEYS" xml:space="preserve">
+    <value>ERROR DE KEYS</value>
+  </data>
+  <data name="ErrorCodeDto_ERROR_DE_LA_PASARELA" xml:space="preserve">
+    <value>ERROR DE LA PASARELA</value>
+  </data>
+  <data name="ErrorCodeDto_ERROR_DE_LA_PASARELA_SUCIVE_O_GEOCOM" xml:space="preserve">
+    <value>ERROR DE LA PASARELA SUCIVE/GEOCOM</value>
+  </data>
+  <data name="ErrorCodeDto_ERROR_EN_DATOS_DEL_USUARIO_EN_CYBERSOURCE" xml:space="preserve">
+    <value>ERROR EN DATOS DEL USUARIO EN CYBERSOURCE</value>
+  </data>
+  <data name="ErrorCodeDto_ERROR_GENERAL" xml:space="preserve">
+    <value>Error General</value>
+  </data>
+  <data name="ErrorCodeDto_ERROR_GENERAL_DEL_PROCESADOR" xml:space="preserve">
+    <value>ERROR GENERAL DEL PROCESADOR</value>
+  </data>
+  <data name="ErrorCodeDto_ERROR_GENERAL_LUEGO_DE_REALIZADO_EL_PAGO_O_REVERSO_DE_LA_TRANSACCION" xml:space="preserve">
+    <value>Error General - Luego de realizado el Pago o Reverso de la transacción.</value>
+  </data>
+  <data name="ErrorCodeDto_FACTURA_YA_INGRESADA_EN_EL_SISTEMA" xml:space="preserve">
+    <value>FACTURA YA INGRESADA EN EL SISTEMA</value>
+  </data>
+  <data name="ErrorCodeDto_FACTURA_YA_PAGA_EN_EL_SISTEMA" xml:space="preserve">
+    <value>FACTURA YA PAGA EN EL SISTEMA</value>
+  </data>
+  <data name="ErrorCodeDto_FIRMA_INVALIDA" xml:space="preserve">
+    <value>Firma inválida.</value>
+  </data>
+  <data name="ErrorCodeDto_FONDOS_INSUFICIENTES" xml:space="preserve">
+    <value>FONDOS INSUFICIENTES</value>
+  </data>
+  <data name="ErrorCodeDto_ID_OPERACION_REPETIDO" xml:space="preserve">
+    <value>ID OPERACIÓN REPETIDO</value>
+  </data>
+  <data name="ErrorCodeDto_LAS_FACTURAS_A_PAGAR_DEBEN_SER_DEL_MISMO_SERVICIO" xml:space="preserve">
+    <value>Las facturas a pagar deben ser del mismo servicio.</value>
+  </data>
+  <data name="ErrorCodeDto_LAS_FACTURAS_A_PAGAR_DEBEN_SER_DE_LA_MISMA_PASARELA" xml:space="preserve">
+    <value>Las facturas a pagar deben ser de la misma pasarela.</value>
+  </data>
+  <data name="ErrorCodeDto_LAS_FACTURAS_A_PAGAR_DEBEN_TENER_EL_MISMO_BIN" xml:space="preserve">
+    <value>Las facturas a pagar deben tener el mismo BIN.</value>
+  </data>
+  <data name="ErrorCodeDto_LAS_FACTURAS_A_PAGAR_DEBEN_TENER_EL_MISMO_ID_PADRON" xml:space="preserve">
+    <value>El Id Padron de las facturas a pagar debe ser el mismo.</value>
+  </data>
+  <data name="ErrorCodeDto_LA_PASARELA_INGRESADA_NO_ESTA_ASOCIADA_AL_SERVICIO" xml:space="preserve">
+    <value>La pasarela ingresada no está asociada al servicio.</value>
+  </data>
+  <data name="ErrorCodeDto_LIMITE_DE_CREDITO_EXCEDIDO" xml:space="preserve">
+    <value>LIMITE DE CRÉDITO EXCEDIDO</value>
+  </data>
+  <data name="ErrorCodeDto_MATRICULA_SIN_SERVICIO_ASOCIADO" xml:space="preserve">
+    <value>MATRICULA SIN SERVICIO ASOCIADO</value>
+  </data>
+  <data name="ErrorCodeDto_NEGACION_GENERAL" xml:space="preserve">
+    <value>NEGACIÓN GENERAL</value>
+  </data>
+  <data name="ErrorCodeDto_NO_SE_ENCONTRO_LA_OPERACION" xml:space="preserve">
+    <value>NO SE ENCONTRO LA OPERACION</value>
+  </data>
+  <data name="ErrorCodeDto_NO_SE_ENCONTRO_LA_TRANSACCION" xml:space="preserve">
+    <value>NO SE ENCONTRO LA TRANSACCION</value>
+  </data>
+  <data name="ErrorCodeDto_NO_SE_INGRESO_NINGUNA_FACTURA_A_PAGAR" xml:space="preserve">
+    <value>Debe ingresar alguna factura a pagar.</value>
+  </data>
+  <data name="ErrorCodeDto_NUMERO_DE_CUENTA_INVALIDO" xml:space="preserve">
+    <value>NÚMERO DE CUENTA INVÁLIDO</value>
+  </data>
+  <data name="ErrorCodeDto_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ErrorCodeDto_OPERACION_YA_REALIZADA" xml:space="preserve">
+    <value>OPERACION YA REALIZADA</value>
+  </data>
+  <data name="ErrorCodeDto_PAYER_AUTHENTICATION_ERROR" xml:space="preserve">
+    <value>PAYER AUTHENTICATION ERROR</value>
+  </data>
+  <data name="ErrorCodeDto_SERVICIO_CON_TARJETA_VENCIDA" xml:space="preserve">
+    <value>SERVICIO CON TARJETA VENCIDA</value>
+  </data>
+  <data name="ErrorCodeDto_SERVICIO_SIN_TARJETA_PARA_PAGAR" xml:space="preserve">
+    <value>SERVICIO SIN TARJETA PARA PAGAR</value>
+  </data>
+  <data name="ErrorCodeDto_SERVICIO_SIN_TOKEN_PARA_PAGAR" xml:space="preserve">
+    <value>SERVICIO SIN TOKEN PARA PAGAR</value>
+  </data>
+  <data name="ErrorCodeDto_TARJETA_DECLARADA_COMO_ROBADA_O_PERDIDA" xml:space="preserve">
+    <value>TARJETA DECLARADA COMO ROBADA O PERDIDA</value>
+  </data>
+  <data name="ErrorCodeDto_TARJETA_INACTIVA_O_NO_AUTORIZADA" xml:space="preserve">
+    <value>TARJETA INACTIVA / NO AUTORIZADA</value>
+  </data>
+  <data name="ErrorCodeDto_TARJETA_NO_ENCONTRADA" xml:space="preserve">
+    <value>TARJETA NO ENCONTRADA</value>
+  </data>
+  <data name="ErrorCodeDto_TARJETA_VENCIDA" xml:space="preserve">
+    <value>TARJETA VENCIDA</value>
+  </data>
+  <data name="ErrorCodeDto_USUARIO_NO_ENCONTRADO" xml:space="preserve">
+    <value>USUARIO NO ENCONTRADO</value>
+  </data>
+  <data name="EventTypeDto_Added" xml:space="preserve">
+    <value>Creación</value>
+  </data>
+  <data name="EventTypeDto_Deleted" xml:space="preserve">
+    <value>Borrado</value>
+  </data>
+  <data name="EventTypeDto_Modified" xml:space="preserve">
+    <value>Modificación</value>
+  </data>
+  <data name="ExternalRequestTypeDto_WebhookDown" xml:space="preserve">
+    <value>Webhook baja</value>
+  </data>
+  <data name="ExternalRequestTypeDto_WebhookNewAssociation" xml:space="preserve">
+    <value>Webhook alta</value>
+  </data>
+  <data name="ExternalRequestTypeDto_WebhookRegistration" xml:space="preserve">
+    <value>Webhook registro</value>
+  </data>
+  <data name="ExternalRequestTypeDto_WsBillPaymentOnline" xml:space="preserve">
+    <value>Webservice pago de factura</value>
+  </data>
+  <data name="ExternalRequestTypeDto_WsBillQuery" xml:space="preserve">
+    <value>Webservice consulta de factura</value>
+  </data>
+  <data name="ExternalRequestTypeDto_WsCardRemove" xml:space="preserve">
+    <value>Webservice baja tarjeta</value>
+  </data>
+  <data name="ExternalRequestTypeDto_WsCommerceQuery" xml:space="preserve">
+    <value>Webservice consulta de comercio</value>
+  </data>
+  <data name="ExternalRequestTypeDto_WsPaymentCancellation" xml:space="preserve">
+    <value>Webservice cancelar factura</value>
+  </data>
+  <data name="FixedNotificationCategoryDto_BatchProcess" xml:space="preserve">
+    <value>Proceso batch</value>
+  </data>
+  <data name="FixedNotificationCategoryDto_Conciliation" xml:space="preserve">
+    <value>Conciliación</value>
+  </data>
+  <data name="FixedNotificationCategoryDto_CybersourceError" xml:space="preserve">
+    <value>Error de Cs</value>
+  </data>
+  <data name="FixedNotificationCategoryDto_GatewayError" xml:space="preserve">
+    <value>Error de Pasarela</value>
+  </data>
+  <data name="FixedNotificationCategoryDto_PaymentError" xml:space="preserve">
+    <value>Error de Pago</value>
+  </data>
+  <data name="FixedNotificationCategoryDto_ServiceConfiguration" xml:space="preserve">
+    <value>Conf Servicio</value>
+  </data>
+  <data name="FixedNotificationLevelDto_Error" xml:space="preserve">
+    <value>Error crítico</value>
+  </data>
+  <data name="FixedNotificationLevelDto_Info" xml:space="preserve">
+    <value>Información</value>
+  </data>
+  <data name="FixedNotificationLevelDto_Ok" xml:space="preserve">
+    <value>Correcto</value>
+  </data>
+  <data name="FixedNotificationLevelDto_Warning" xml:space="preserve">
+    <value>Alerta / Error</value>
+  </data>
+  <data name="HighwayEmailStatusDto_Accepted" xml:space="preserve">
+    <value>Aceptado</value>
+  </data>
+  <data name="HighwayEmailStatusDto_Processing" xml:space="preserve">
+    <value>Procesando</value>
+  </data>
+  <data name="HighwayEmailStatusDto_ProcessingError" xml:space="preserve">
+    <value>Error en procesamiento</value>
+  </data>
+  <data name="HighwayEmailStatusDto_RejectedCommitFailed" xml:space="preserve">
+    <value>Rechazado: error in inserción de datos en BD</value>
+  </data>
+  <data name="HighwayEmailStatusDto_RejectedFileBadlyFormed" xml:space="preserve">
+    <value>Rechazado: archivo mal formado</value>
+  </data>
+  <data name="HighwayEmailStatusDto_RejectedFileNameBadlyFormed" xml:space="preserve">
+    <value>Rechazado: nombre de archivo mal formado</value>
+  </data>
+  <data name="HighwayEmailStatusDto_RejectedFileNameError" xml:space="preserve">
+    <value>Rechazado: error en nombre de archivo</value>
+  </data>
+  <data name="HighwayEmailStatusDto_RejectedFileNotFound" xml:space="preserve">
+    <value>Rechazado: archivo no encontrado</value>
+  </data>
+  <data name="HighwayEmailStatusDto_RejectedFileNotOne" xml:space="preserve">
+    <value>Rechazado: más de un archivo</value>
+  </data>
+  <data name="HighwayEmailStatusDto_RejectedFileType" xml:space="preserve">
+    <value>Rechazado: error en tipo de archivo</value>
+  </data>
+  <data name="HighwayEmailStatusDto_RejectedSenderNotRegistered" xml:space="preserve">
+    <value>Rechazado: usuario no registrado</value>
+  </data>
+  <data name="LogCommunicationType_Banred" xml:space="preserve">
+    <value>Banred</value>
+  </data>
+  <data name="LogCommunicationType_Carretera" xml:space="preserve">
+    <value>Carretera</value>
+  </data>
+  <data name="LogCommunicationType_CyberSource" xml:space="preserve">
+    <value>CyberSource</value>
+  </data>
+  <data name="LogCommunicationType_Gateway" xml:space="preserve">
+    <value>Pasarela de pago</value>
+  </data>
+  <data name="LogCommunicationType_Geocom" xml:space="preserve">
+    <value>Geocom</value>
+  </data>
+  <data name="LogCommunicationType_ServiceAssociatedElimination" xml:space="preserve">
+    <value>Eliminación de servicio asociado</value>
+  </data>
+  <data name="LogCommunicationType_Sistarbanc" xml:space="preserve">
+    <value>Sistarbanc</value>
+  </data>
+  <data name="LogCommunicationType_VisaNet" xml:space="preserve">
+    <value>VisaNet</value>
+  </data>
+  <data name="LogCommunicationType_WebService" xml:space="preserve">
+    <value>Web Service</value>
+  </data>
+  <data name="LogOperationType_AutomaticPaymentBatch" xml:space="preserve">
+    <value>Error en proceso de pago programado</value>
+  </data>
+  <data name="LogOperationType_AutomaticServiceAssociated" xml:space="preserve">
+    <value>Servicio asociado automaticamente</value>
+  </data>
+  <data name="LogOperationType_BillPayment" xml:space="preserve">
+    <value>Pago factura</value>
+  </data>
+  <data name="LogOperationType_Cybersource" xml:space="preserve">
+    <value>Error en Cybersource</value>
+  </data>
+  <data name="LogOperationType_DebitPaymentBatch" xml:space="preserve">
+    <value>Pago por debito</value>
+  </data>
+  <data name="LogOperationType_DiscountCalculation" xml:space="preserve">
+    <value>Error en cálculo de descuento</value>
+  </data>
+  <data name="LogOperationType_LogInFail" xml:space="preserve">
+    <value>Intento ingreso fallido</value>
+  </data>
+  <data name="LogOperationType_NewCardAdded" xml:space="preserve">
+    <value>Nueva tarjeta asociada</value>
+  </data>
+  <data name="LogOperationType_Refund" xml:space="preserve">
+    <value>Refund</value>
+  </data>
+  <data name="LogOperationType_Reverse" xml:space="preserve">
+    <value>Reverse</value>
+  </data>
+  <data name="LogOperationType_ServiceAssociated" xml:space="preserve">
+    <value>Servicio asociado</value>
+  </data>
+  <data name="LogOperationType_ServiceAssociatedBadBinNumber" xml:space="preserve">
+    <value>Error configuración en BIN de servicio asociado</value>
+  </data>
+  <data name="LogOperationType_ServiceAssociatedBadCardConfiguration" xml:space="preserve">
+    <value>Error configuración en tarjeta de servicio asociado</value>
+  </data>
+  <data name="LogOperationType_ServiceAssociatedElimination" xml:space="preserve">
+    <value>Eliminación de servicio asociado</value>
+  </data>
+  <data name="LogOperationType_ServiceAssociatedPaymentException" xml:space="preserve">
+    <value>Excepción en pago de servicio asociado</value>
+  </data>
+  <data name="LogOperationType_UserChangePassword" xml:space="preserve">
+    <value>Cambio de contraseña</value>
+  </data>
+  <data name="LogOperationType_UserCreation" xml:space="preserve">
+    <value>Usuario creado</value>
+  </data>
+  <data name="LogOperationType_UserEdit" xml:space="preserve">
+    <value>Usuario editado</value>
+  </data>
+  <data name="LogOperationType_UserResetPassword" xml:space="preserve">
+    <value>Contraseña regenerada</value>
+  </data>
+  <data name="LogOperationType_Void" xml:space="preserve">
+    <value>Void</value>
+  </data>
+  <data name="LogOperationType_Webhooks" xml:space="preserve">
+    <value>Webhook</value>
+  </data>
+  <data name="LogOperationType_WebServicePayment" xml:space="preserve">
+    <value>Web service</value>
+  </data>
+  <data name="LogType_Alert" xml:space="preserve">
+    <value>Alerta</value>
+  </data>
+  <data name="LogType_Debug" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="LogType_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="LogType_Fatal" xml:space="preserve">
+    <value>Fatal</value>
+  </data>
+  <data name="LogType_Info" xml:space="preserve">
+    <value>Información</value>
+  </data>
+  <data name="LogType_Trace" xml:space="preserve">
+    <value>Trace</value>
+  </data>
+  <data name="LogUserType_NoRegistered" xml:space="preserve">
+    <value>Sin registrar</value>
+  </data>
+  <data name="LogUserType_Other" xml:space="preserve">
+    <value>Otro</value>
+  </data>
+  <data name="LogUserType_Registered" xml:space="preserve">
+    <value>Registrado</value>
+  </data>
+  <data name="NotificationTypeDto_Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="NotificationTypeDto_Sms" xml:space="preserve">
+    <value>SMS</value>
+  </data>
+  <data name="NotificationTypeDto_Web" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="ParameterDto_Date" xml:space="preserve">
+    <value>Período</value>
+  </data>
+  <data name="ParameterDto_Gateway" xml:space="preserve">
+    <value>Pasarela de pago</value>
+  </data>
+  <data name="ParameterDto_PaymentType" xml:space="preserve">
+    <value>Tipo de pago</value>
+  </data>
+  <data name="ParameterDto_Service" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="ParameterDto_ServiceCategory" xml:space="preserve">
+    <value>Categoría de servicios</value>
+  </data>
+  <data name="PaymentTypeDto_AnonymousUser" xml:space="preserve">
+    <value>Usuario anónimo</value>
+  </data>
+  <data name="PaymentTypeDto_App" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="PaymentTypeDto_Automatic" xml:space="preserve">
+    <value>Programado</value>
+  </data>
+  <data name="PaymentTypeDto_Bank" xml:space="preserve">
+    <value>Webservice banco</value>
+  </data>
+  <data name="PaymentTypeDto_Debit" xml:space="preserve">
+    <value>Débito</value>
+  </data>
+  <data name="PaymentTypeDto_Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="QueryTypeDto_Complaint" xml:space="preserve">
+    <value>Denuncia</value>
+  </data>
+  <data name="QueryTypeDto_Other" xml:space="preserve">
+    <value>Otro</value>
+  </data>
+  <data name="QueryTypeDto_Question" xml:space="preserve">
+    <value>Pregunta</value>
+  </data>
+  <data name="QueryTypeDto_Suggestion" xml:space="preserve">
+    <value>Sugerencia</value>
+  </data>
+  <data name="StatusEnumDto_Active" xml:space="preserve">
+    <value>Activos</value>
+  </data>
+  <data name="StatusEnumDto_Active1" xml:space="preserve">
+    <value>Activos</value>
+  </data>
+  <data name="StatusEnumDto_All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="StatusEnumDto_All1" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="StatusEnumDto_NotActive" xml:space="preserve">
+    <value>Inactivos</value>
+  </data>
+  <data name="StatusEnumDto_NotActive1" xml:space="preserve">
+    <value>Inactivos</value>
+  </data>
+  <data name="SystemUserTypeDto_Administration" xml:space="preserve">
+    <value>Administración</value>
+  </data>
+  <data name="SystemUserTypeDto_CallCenter" xml:space="preserve">
+    <value>Call Center</value>
+  </data>
+  <data name="TransactionStatusDto_Cancelled" xml:space="preserve">
+    <value>Canceladas</value>
+  </data>
+  <data name="TransactionStatusDto_Completed" xml:space="preserve">
+    <value>Concretadas</value>
+  </data>
+  <data name="YesNoEnumDto_All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="ActiveOrInactiveEnumDto_All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="YesNoEnumDto_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="ActiveOrInactiveEnumDto_Active" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="YesNoEnumDto_Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="ActiveOrInactiveEnumDto_Inactive" xml:space="preserve">
+    <value>Inactivo</value>
+  </data>
+  <data name="MailgunStatusDto_Canceled" xml:space="preserve">
+    <value>Cancelado en BO</value>
+  </data>
+  <data name="MailgunStatusDto_Delivered" xml:space="preserve">
+    <value>Enviado a usuario</value>
+  </data>
+  <data name="MailgunStatusDto_DroppedHardFail" xml:space="preserve">
+    <value>Fallo de envío (no recuperable)</value>
+  </data>
+  <data name="MailgunStatusDto_DroppedOld" xml:space="preserve">
+    <value>Fallo de envío (recuperable)</value>
+  </data>
+  <data name="MailgunStatusDto_FailureReachingMg" xml:space="preserve">
+    <value>Error al enviar a Mailgun</value>
+  </data>
+  <data name="MailgunStatusDto_Resend" xml:space="preserve">
+    <value>Reenviado</value>
+  </data>
+  <data name="MailgunStatusDto_SuccessReachingMg" xml:space="preserve">
+    <value>Enviado a Mailgun</value>
+  </data>
+  <data name="EmailTypeDto_AutomaticPaymentNotification" xml:space="preserve">
+    <value>Pago Programado [Interno]</value>
+  </data>
+  <data name="EmailTypeDto_BillAboutToExpired" xml:space="preserve">
+    <value>Factura por vencer</value>
+  </data>
+  <data name="EmailTypeDto_BillExpired" xml:space="preserve">
+    <value>Factura vencida</value>
+  </data>
+  <data name="EmailTypeDto_BinNotDefined" xml:space="preserve">
+    <value>Nro BIN no definido</value>
+  </data>
+  <data name="EmailTypeDto_ContactForm" xml:space="preserve">
+    <value>Nuevo Contacto</value>
+  </data>
+  <data name="EmailTypeDto_CopyPayment" xml:space="preserve">
+    <value>Copia de pago</value>
+  </data>
+  <data name="EmailTypeDto_CybersourceError" xml:space="preserve">
+    <value>Error en Cybersource</value>
+  </data>
+  <data name="EmailTypeDto_ExpiringCard" xml:space="preserve">
+    <value>Tarjeta por vencer</value>
+  </data>
+  <data name="EmailTypeDto_GeneralNotification" xml:space="preserve">
+    <value>Notificación General</value>
+  </data>
+  <data name="EmailTypeDto_InternalErrorNotification" xml:space="preserve">
+    <value>Notificación de Error [Interno]</value>
+  </data>
+  <data name="EmailTypeDto_InternalGeneralNotification" xml:space="preserve">
+    <value>Notificación General [Interno]</value>
+  </data>
+  <data name="EmailTypeDto_NewBill" xml:space="preserve">
+    <value>Nueva Factura</value>
+  </data>
+  <data name="EmailTypeDto_NewPayment" xml:space="preserve">
+    <value>Nuevo Pago</value>
+  </data>
+  <data name="EmailTypeDto_NewUser" xml:space="preserve">
+    <value>Nuevo Usuario</value>
+  </data>
+  <data name="EmailTypeDto_PaymentCancellationError" xml:space="preserve">
+    <value>Error en cancelación de pago CyberSource</value>
+  </data>
+  <data name="EmailTypeDto_PaymentDoneCancellation" xml:space="preserve">
+    <value>Cancelación de transacción</value>
+  </data>
+  <data name="EmailTypeDto_ResetPassword" xml:space="preserve">
+    <value>Nueva Contraseña</value>
+  </data>
+  <data name="EmailTypeDto_ServiceDeletedNotification" xml:space="preserve">
+    <value>Baja de servicio</value>
+  </data>
+  <data name="UserType_AnonymousUser" xml:space="preserve">
+    <value>Usuario anonimo</value>
+  </data>
+  <data name="UserType_ApplicationUser" xml:space="preserve">
+    <value>Usuario registrado</value>
+  </data>
+  <data name="LogOperationType_UserBlocked" xml:space="preserve">
+    <value>Usuario Bloquedo en Bo</value>
+  </data>
+  <data name="ActiveOrInactiveEnumDto_Blocked" xml:space="preserve">
+    <value>Bloquedo</value>
+  </data>
+  <data name="PlatformDto_Mobile" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="PlatformDto_Web" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="EmailTypeDto_ExtractBanred" xml:space="preserve">
+    <value>Reporte de transacciones formato banred</value>
+  </data>
+  <data name="EmailTypeDto_ExtractGeocom" xml:space="preserve">
+    <value>Reporte de transacciones formato geocom</value>
+  </data>
+  <data name="EmailTypeDto_ExtractImporte" xml:space="preserve">
+    <value>Reporte de transacciones formato importe</value>
+  </data>
+  <data name="EmailTypeDto_HighwayTransactionReportsOk" xml:space="preserve">
+    <value>Envío diario de transacciones carretera</value>
+  </data>
+  <data name="EmailType_ExtractBanred" xml:space="preserve">
+    <value>Reporte de transacciones formato banred</value>
+  </data>
+  <data name="EmailType_ExtractGeocom" xml:space="preserve">
+    <value>Reporte de transacciones formato geocom</value>
+  </data>
+  <data name="EmailType_ExtractImporte" xml:space="preserve">
+    <value>Reporte de transacciones formato importe</value>
+  </data>
+  <data name="EmailType_HighwayProcessed" xml:space="preserve">
+    <value>Envío de facturas Carretera</value>
+  </data>
+  <data name="EmailTypeDto_HighwayError" xml:space="preserve">
+    <value>Envío de facturas Carretera - Error</value>
+  </data>
+  <data name="EmailTypeDto_HighwayProcessed" xml:space="preserve">
+    <value>Envío de facturas Carretera</value>
+  </data>
+  <data name="EmailTypeDto_HighwayRejected" xml:space="preserve">
+    <value>Envío de facturas Carretera - Rechazado</value>
+  </data>
+  <data name="EmailType_HighwayError" xml:space="preserve">
+    <value>Envío de facturas Carretera - Error</value>
+  </data>
+  <data name="EmailType_HighwayRejected" xml:space="preserve">
+    <value>Envío de facturas Carretera - Rechazado</value>
+  </data>
+  <data name="EmailType_HighwayTransactionReportsOk" xml:space="preserve">
+    <value>Envío diario de transacciones carretera</value>
+  </data>
+  <data name="PaymentPlatformDto_Apps" xml:space="preserve">
+    <value>WebService</value>
+  </data>
+  <data name="PaymentPlatformDto_Itau" xml:space="preserve">
+    <value>Banking Itau</value>
+  </data>
+  <data name="PaymentPlatformDto_Mobile" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="PaymentPlatformDto_VisaNet" xml:space="preserve">
+    <value>Portal</value>
+  </data>
+  <data name="PaymentPlatformDto_VisaNetPagos" xml:space="preserve">
+    <value>Portal</value>
+  </data>
+  <data name="EmailTypeDto_UserAutomaticPaymentNotification" xml:space="preserve">
+    <value>VisaNetPagos - Notificación de facturas</value>
+  </data>
+  <data name="EmailType_UserAutomaticPaymentNotification" xml:space="preserve">
+    <value>VisaNetPagos - Notificación de facturas</value>
+  </data>
+  <data name="CardTypeDto_InternationalPrepaid" xml:space="preserve">
+    <value>Prepaga Extranjera</value>
+  </data>
+  <data name="CardTypeDto_NationalPrepaid" xml:space="preserve">
+    <value>Prepaga </value>
+  </data>
+  <data name="MailgunStatusDto_NotFound" xml:space="preserve">
+    <value>No encontrado en Mailgun</value>
+  </data>
+  <data name="MailgunStatusDto_Unknown" xml:space="preserve">
+    <value>No conocido</value>
+  </data>
+  <data name="EmailTypeDto_BinFileProcessed" xml:space="preserve">
+    <value>Archivo de bines</value>
+  </data>
+  <data name="EmailType_BinFileProcessed" xml:space="preserve">
+    <value>Archivo de bines</value>
+  </data>
+  <data name="DiscountLabelTypeDto_NoDiscount" xml:space="preserve">
+    <value>No aplica descuento</value>
+  </data>
+  <data name="DiscountLabelTypeDto_Reserved" xml:space="preserve">
+    <value>Reservado</value>
+  </data>
+  <data name="PaymentTypeFilterDto_Apps" xml:space="preserve">
+    <value>App terceros</value>
+  </data>
+  <data name="PaymentTypeFilterDto_AutomaticPayment" xml:space="preserve">
+    <value>Pago programado</value>
+  </data>
+  <data name="PaymentTypeFilterDto_Mobile" xml:space="preserve">
+    <value>App VisaNetPagos</value>
+  </data>
+  <data name="PaymentTypeFilterDto_Portal" xml:space="preserve">
+    <value>Portal VisaNetPagos</value>
+  </data>
+  <data name="EmailTypeDto_UserBillNotification" xml:space="preserve">
+    <value>VisaNetPagos - Notificación de facturas</value>
+  </data>
+  <data name="EmailType_UserBillNotification" xml:space="preserve">
+    <value>VisaNetPagos - Notificación de facturas</value>
+  </data>
+  <data name="EmailTypeDto_ConciliationResults" xml:space="preserve">
+    <value>Resultado procesamiento de conciliación</value>
+  </data>
+  <data name="EmailType_ConciliationResults" xml:space="preserve">
+    <value>Resultado procesamiento de conciliación</value>
+  </data>
+  <data name="EmailTypeDto_NewUserRequestPassword" xml:space="preserve">
+    <value>Nuevo Usuario</value>
+  </data>
+  <data name="EmailType_NewUserRequestPassword" xml:space="preserve">
+    <value>Nuevo Usuario</value>
+  </data>
+  <data name="EmailType_CustomerSiteSystemUserCreation" xml:space="preserve">
+    <value>Creación de usuario para portal de comercio</value>
+  </data>
+  <data name="EmailType_CustomerSiteBillEmail" xml:space="preserve">
+    <value>Nueva factura</value>
+  </data>
+  <data name="PaymentPlatformDto_VisaNetOn" xml:space="preserve">
+    <value>VisaNetOn</value>
+  </data>
+  <data name="PaymentType_VisaNetOn" xml:space="preserve">
+    <value>VisaNetOn</value>
+  </data>
+  <data name="EmailTypeDto_CustomerSiteBillEmail" xml:space="preserve">
+    <value>Nueva factura</value>
+  </data>
+  <data name="EmailTypeDto_CustomerSiteResetPassword" xml:space="preserve">
+    <value>Regenerar contraseña usuario portal de comercio</value>
+  </data>
+  <data name="EmailTypeDto_CustomerSiteSystemUserCreation" xml:space="preserve">
+    <value>Creación de usuario para portal de comercio</value>
+  </data>
+  <data name="EmailType_CustomerSiteResetPassword" xml:space="preserve">
+    <value>Regenerar contraseña usuario portal de comercio</value>
+  </data>
+  <data name="DebitsStepsEnum_Card" xml:space="preserve">
+    <value>Tarjeta</value>
+  </data>
+  <data name="DebitsStepsEnum_Confirmation" xml:space="preserve">
+    <value>Confirmación</value>
+  </data>
+  <data name="DebitsStepsEnum_Service" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="DebitsStepsEnum_User" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="DebitRequestStateDto_Accepted" xml:space="preserve">
+    <value>Aceptado</value>
+  </data>
+  <data name="DebitRequestStateDto_Pending" xml:space="preserve">
+    <value>Pendiente</value>
+  </data>
+  <data name="DebitRequestStateDto_Rejected" xml:space="preserve">
+    <value>Rechazado</value>
+  </data>
+  <data name="DebitRequestStateDto_Synchronized" xml:space="preserve">
+    <value>Sincronizado</value>
+  </data>
+  <data name="DebitRequestTypeDto_High" xml:space="preserve">
+    <value>Alta</value>
+  </data>
+  <data name="DebitRequestTypeDto_Low" xml:space="preserve">
+    <value>Baja</value>
+  </data>
+  <data name="DebitRequestStateDto_Cancelled" xml:space="preserve">
+    <value>Cancelado</value>
+  </data>
+  <data name="EmailTypeDto_DebitSuscriptionNotification" xml:space="preserve">
+    <value>VisaNetPagos - Solicitud de débito</value>
+  </data>
+  <data name="EmailType_DebitSuscriptionNotification" xml:space="preserve">
+    <value>VisaNetPagos - Solicitud de débito</value>
+  </data>
+  <data name="DebitRequestStateDto_ManualSynchronization" xml:space="preserve">
+    <value>Sincronización manual</value>
+  </data>
+  <data name="DebitRequestStateDto_PendingCancellation" xml:space="preserve">
+    <value>Cancelación pendiente</value>
+  </data>
+  <data name="DebitRequestStateDto_AcceptedCancellation" xml:space="preserve">
+    <value>Cancelación aceptada</value>
+  </data>
+  <data name="LogOperationType_WebServiceCardRemove" xml:space="preserve">
+    <value>Baja de tarjeta por WS</value>
+  </data>
+  <data name="DebitRequestStateDto_RejectedCancellation" xml:space="preserve">
+    <value>Cancelación rechazada</value>
+  </data>
+  <data name="Type_Debit" xml:space="preserve">
+    <value>Débito</value>
+  </data>
+  <data name="Type_Service" xml:space="preserve">
+    <value>Servicio Asociado</value>
+  </data>
+  <data name="ConciliationAppModel_Banred" xml:space="preserve">
+    <value>Banred</value>
+  </data>
+  <data name="ConciliationAppModel_Batch" xml:space="preserve">
+    <value>Batch</value>
+  </data>
+  <data name="ConciliationAppModel_CyberSource" xml:space="preserve">
+    <value>CyberSource</value>
+  </data>
+  <data name="ConciliationAppModel_Payment" xml:space="preserve">
+    <value>Pago</value>
+  </data>
+  <data name="ConciliationAppModel_Settelment" xml:space="preserve">
+    <value>Liquidación</value>
+  </data>
+  <data name="ConciliationAppModel_Sistarbanc" xml:space="preserve">
+    <value>Sistarbanc</value>
+  </data>
+  <data name="ConciliationAppModel_Site" xml:space="preserve">
+    <value>Portal</value>
+  </data>
+  <data name="ConciliationAppModel_Sucive" xml:space="preserve">
+    <value>Sucive</value>
+  </data>
+  <data name="ConciliationAppModel_Tc33" xml:space="preserve">
+    <value>Tc33</value>
+  </data>
+  <data name="ConciliationRunStateDto_CompletedOk" xml:space="preserve">
+    <value>Completado OK</value>
+  </data>
+  <data name="ConciliationRunStateDto_CompletedWithErrors" xml:space="preserve">
+    <value>Completado con errores</value>
+  </data>
+  <data name="ConciliationRunStateDto_Started" xml:space="preserve">
+    <value>Iniciado</value>
+  </data>
+  <data name="ConciliationRunStateDto_TerminatedWithException" xml:space="preserve">
+    <value>Terminado por error inesperado</value>
+  </data>
+  <data name="ConciliationRunState_CompletedOk" xml:space="preserve">
+    <value>Completado OK</value>
+  </data>
+  <data name="ConciliationRunState_CompletedWithErrors" xml:space="preserve">
+    <value>Completado con errores</value>
+  </data>
+  <data name="ConciliationRunState_Started" xml:space="preserve">
+    <value>Iniciado</value>
+  </data>
+  <data name="ConciliationRunState_TerminatedWithException" xml:space="preserve">
+    <value>Terminado por error inesperado</value>
+  </data>
+  <data name="EmailType_DeleteCustomerCard" xml:space="preserve">
+    <value>VisaNetPagos - Notificación - Tarjeta sin uso en el portal VisaNetPagos.</value>
+  </data>
+</root>

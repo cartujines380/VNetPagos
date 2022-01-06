@@ -1,0 +1,66 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model IEnumerable<VisaNet.Presentation.Administration.Models.AuditLogDetailModel>
+
+<div id="lbDetails" class="modal fade">
+    <div class="modal-dialog" style="width: 70%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>@PresentationAdminStrings.Audit_Details_Title</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: scroll;">
+                <table class="table table-striped table-bordered table-hover tablesorter">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%">@PresentationAdminStrings.Audit_DateTime</th>
+                            <th style="width: 10%">@PresentationAdminStrings.Audit_Ip</th>
+                            @if (Model.Any(u => string.IsNullOrEmpty(u.SystemUser) == false))
+                            {<th style="width: 10%">@PresentationAdminStrings.Audit_SystemUser</th>}
+                            @if (Model.Any(x => x.Registered))
+                            {<th style="width: 10%">@PresentationAdminStrings.Audit_ApplicationUser</th>}
+                            @if (Model.Any(x => !x.Registered))
+                            {<th style="width: 10%">@PresentationAdminStrings.Audit_AnonymousUser</th>}
+                            <th style="width: 10%">@PresentationAdminStrings.Audit_LogType</th>
+                            <th style="width: 10%">@PresentationAdminStrings.Audit_LogUserType</th>
+                            <th style="width: 10%">@PresentationAdminStrings.Audit_LogOperationType</th>
+                            <th style="width: 10%">@PresentationAdminStrings.Audit_LogCommunicationType</th>
+                            <th style="width: 20px">@PresentationAdminStrings.Audit_Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var i in Model)
+                        {
+                            <tr>
+                                <td style="width: 10%">@i.Date</td>
+                                <td style="width: 10%">@i.IP</td>
+                                @if (string.IsNullOrEmpty(i.SystemUser) == false)
+                                {<td style="width: 10%">@i.SystemUser</td>}
+                                @if (i.Registered)
+                                {<td style="width: 10%">@i.ApplicationUser</td>}
+                                @if (!i.Registered)
+                                {<td style="width: 10%">@i.AnonymousUser</td>}
+                                <td style="width: 10%">@i.LogType</td>
+                                <td style="width: 10%">@i.LogUserType</td>
+                                <td style="width: 10%">@i.LogOperationType</td>
+                                <td style="width: 10%">@i.LogCommunicationType</td>
+                                <td style="width: 20px">@i.Message</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn lb-accept" id="lnkAccept">@PresentationAdminStrings.Back</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#lnkAccept").click(function (e) {
+            e.preventDefault();
+            $("#lbDetails").modal("hide");
+        });
+    });
+</script>

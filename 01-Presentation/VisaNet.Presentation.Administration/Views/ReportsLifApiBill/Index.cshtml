@@ -1,0 +1,161 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Domain.EntitiesDtos.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Domain.EntitiesDtos.TableFilters.LifApiBillFilterDto
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.LifApiBill_List</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.From</label>
+        <div class='input-group date' id='dateTimePickerFrom'>
+            @Html.TextBoxFor(x => x.DateFrom, new { @class = "form-control w100" })
+            <span class="input-group-addon">
+                <span class="fa fa-calendar"></span>
+            </span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.To</label>
+        <div class='input-group date' id='dateTimePickerTo'>
+            @Html.TextBoxFor(x => x.DateTo, new { @class = "form-control w100" })
+            <span class="input-group-addon">
+                <span class="fa fa-calendar"></span>
+            </span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Operation_Id</label>
+        @Html.TextBoxFor(m => m.IdOperation, new { @class = "form-control w100", @placeholder = "Ingrese el Id Operación a buscar" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Application_Id</label>
+        @Html.TextBoxFor(m => m.IdApp, new { @class = "form-control w100", @placeholder = "Ingrese el Id Aplicación a buscar" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.LawIndi</label>
+        <div class="selectMask w100">
+            @Html.DropDownListFor(m => m.LawIndi, EnumHelpers.ConvertToSelectList(typeof(DiscountTypeDto), EnumsStrings.ResourceManager), PresentationAdminStrings.Filters_PaymentType_Placeholder, new Dictionary<string, object> { { "style", "width: 100%; height: 100%; color:#999" }, { "class", "form-control" } })
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-default btn-standar mt10 w100" id="execute">@PresentationAdminStrings.Common_Search</a>
+    </div>
+</div>
+
+<div class="loadingMessaje hidden" id="loaderMessage">
+    <div class="loading">@PresentationAdminStrings.Loading</div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2></h2>
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @PresentationAdminStrings.Date
+                        </th>
+                        <th>
+                            Id App
+                        </th>
+                        <th>
+                            Id operaci&oacute;n
+                        </th>
+                        <th>Monto </th>
+                        <th>Monto gravado </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "IdApp", "value": $("#@Html.IdFor(m => m.IdApp)").val() });
+            aoData.push({ "name": "IdOperation", "value": $("#@Html.IdFor(m => m.IdOperation)").val() });
+            aoData.push({ "name": "LawIndi", "value": $("#@Html.IdFor(m => m.LawIndi)").val() });
+            aoData.push({ "name": "CreationDateTo", "value": $("#@Html.IdFor(m => m.DateTo)").val() });
+            aoData.push({ "name": "CreationDateFrom", "value": $("#@Html.IdFor(m => m.DateFrom)").val() });
+        }
+
+        function drawTable() {
+            var dataTableFilters = applyDatatableExternalFilters($('#table'), null,
+                [
+                    { "mDataProp": "Date" },
+                    { "mDataProp": "IdApp" },
+                    { "mDataProp": "IdOperation" },
+                    { "mDataProp": "Amount" },
+                    { "mDataProp": "TaxedAmount" },
+                    {
+                        "sName": "Details",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.ReportsLifApiBillDetails, "<i class=\"fa fa-search\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                        }
+                    }
+                ],
+                '@Url.Action("AjaxHandler", "ReportsLifApiBill")',
+                externalFilters, null,
+                [[0, "asc"]]
+            );
+        }
+
+        $("#execute").click(function (e) {
+            e.preventDefault();
+            drawTable();
+            dataTableFilters.fnFilter();
+        });
+
+        $('table').on("click", ".lnkDelete", function (e) {
+            if (!$(this).hasClass("disabled")) {
+                e.preventDefault();
+                tr = $(this).parents("tr");
+                var lb = $('#lbConfirmDelete');
+                $("#lbHiddenUrl", lb).val($(this).attr("href"));
+                lb.modal();
+            }
+        });
+
+        $('#dateTimePickerFrom').datetimepicker({ locale: 'es' });
+
+        $('#dateTimePickerTo').datetimepicker({
+            useCurrent: false, //Important! See issue #1075
+            locale: 'es'
+        });
+
+        $("#dateTimePickerFrom").on("dp.change", function (e) {
+            $('#dateTimePickerTo').data("DateTimePicker").minDate(e.date);
+        });
+
+        $("#dateTimePickerTo").on("dp.change", function (e) {
+            $('#dateTimePickerFrom').data("DateTimePicker").maxDate(e.date);
+        });
+
+    });
+
+</script>

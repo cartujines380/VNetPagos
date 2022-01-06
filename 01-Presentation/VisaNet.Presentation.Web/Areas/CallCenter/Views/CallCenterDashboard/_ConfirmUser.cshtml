@@ -1,0 +1,74 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Areas.CallCenter.Models.ApplicationUserModel
+<div id="lbConfirmUser" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="row">
+                    <div class="col-xs-5"> 
+                        <a class="brandVisaNet fLeft" href="/"> </a> 
+                    </div>
+                    <div class="col-xs-6"><a class="brandVisa fRight"></a></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm("ConfirmUser", "CallCenterDashboard", FormMethod.Post, new { @id = "confirmForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.IdentityNumber)
+                <div class="modal-body">
+                    <h4 class="modal-title">@PresentationCallCenterStrings.User_Confirmation</h4>
+                    <div class="modalLabels">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email):
+                            @Html.DisplayFor(model => model.Email, new { @class = "searchResultLabel" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CallCenterKey):
+                            @Html.DisplayFor(model => model.CallCenterKey, new { @class = "searchResultLabel" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name):
+                            @Html.DisplayFor(model => model.Name, new { @class = "searchResultLabel" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Surname):
+                            @Html.DisplayFor(model => model.Surname, new { @class = "searchResultLabel" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IdentityNumber):
+                            @Html.DisplayFor(model => model.IdentityNumber, new { @class = "searchResultLabel" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MobileNumber):
+                            @Html.DisplayFor(model => model.MobileNumber, new { @class = "searchResultLabel" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PhoneNumber):
+                            @Html.DisplayFor(model => model.PhoneNumber, new { @class = "searchResultLabel" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Address):
+                            @Html.DisplayFor(model => model.Address, new { @class = "searchResultLabel" })
+                        </div>
+                    </div>
+</div>
+                    }
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-xs-6 p5r">
+                                <button type="button" class="btn btn-default btn-cancelar w100" data-dismiss="modal">@PresentationCoreMessages.Common_Cancel <i class="icon-remove"></i></button>
+                            </div>
+                            <div class="col-xs-6 p5l">
+                                <button type="button" class="btn btn-default btn-siguiente w100" onclick="$('#confirmForm').submit();">@PresentationCoreMessages.Common_Load <i class="icon-chevron-sign-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,1752 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Profile" xml:space="preserve">
+    <value>Editar Perfil</value>
+  </data>
+  <data name="Profile_Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="Profile_CCKey" xml:space="preserve">
+    <value>Clave para Call Center</value>
+  </data>
+  <data name="Profile_Confirmation" xml:space="preserve">
+    <value>Confirmación contraseña</value>
+  </data>
+  <data name="Profile_Email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="Profile_identitynumber" xml:space="preserve">
+    <value>Cédula de identidad</value>
+  </data>
+  <data name="Profile_Mobile" xml:space="preserve">
+    <value>Teléfono móvil</value>
+  </data>
+  <data name="Profile_Nombre" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Profile_Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="Profile_Phone" xml:space="preserve">
+    <value>Teléfono fijo</value>
+  </data>
+  <data name="Profile_Surname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="Profile_PasswordNew" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="CallCenter" xml:space="preserve">
+    <value>Call Center</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>¿Cambiar contraseña?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="Profile_Subtitle" xml:space="preserve">
+    <value>Edición del perfil de usuario</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="Register_Success" xml:space="preserve">
+    <value>El registro se ha realizado con éxito. Se ha enviado un correo electrónico de confirmación a tu cuenta. Puede que demore unos minutos en llegar.</value>
+  </data>
+  <data name="Contact_Send" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="Subscriber_Send" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="Header_Service" xml:space="preserve">
+    <value>Mis Servicios</value>
+  </data>
+  <data name="Service_Add_Reference" xml:space="preserve">
+    <value>Ingresá tu número de referencía</value>
+  </data>
+  <data name="Step_Card" xml:space="preserve">
+    <value>Tarjeta</value>
+  </data>
+  <data name="Step_Notification" xml:space="preserve">
+    <value>Notificaciones</value>
+  </data>
+  <data name="Step_Service" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="Before" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Siguiente</value>
+  </data>
+  <data name="Required_First_Line" xml:space="preserve">
+    <value>Los campos marcados con un</value>
+  </data>
+  <data name="Required_Second_Line" xml:space="preserve">
+    <value>son obligatorios</value>
+  </data>
+  <data name="Service_Step1_Desc" xml:space="preserve">
+    <value>A través de este panel podrás adherir un servicio.</value>
+  </data>
+  <data name="Service_Step1_Title" xml:space="preserve">
+    <value>Paso 1: Selección de Servicio que querés adherir</value>
+  </data>
+  <data name="Why_Email" xml:space="preserve">
+    <value>¿Por qué debo ingresar mi email?</value>
+  </data>
+  <data name="Service_Cancel" xml:space="preserve">
+    <value>Cancelar adhesión</value>
+  </data>
+  <data name="Service_Cancel_Question" xml:space="preserve">
+    <value>¿Estás seguro que querés terminar el proceso de asociación del servicio?</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="Service_Step2_BillExpiration" xml:space="preserve">
+    <value>Notificar factura próxima a vencer</value>
+  </data>
+  <data name="Service_Step2_BillExpired" xml:space="preserve">
+    <value>Notificar factura vencida</value>
+  </data>
+  <data name="Service_Step2_BillMade" xml:space="preserve">
+    <value>Notificar nueva factura</value>
+  </data>
+  <data name="Service_Step2_Desc" xml:space="preserve">
+    <value>¿Qué ventaja tiene adherir notificaciones a un servicio?</value>
+  </data>
+  <data name="Service_Step2_Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Service_Step2_FailedAutomaticPayment" xml:space="preserve">
+    <value>Fallo en pago programado</value>
+  </data>
+  <data name="Service_Step2_Notify" xml:space="preserve">
+    <value>Notificarme</value>
+  </data>
+  <data name="Service_Step2_Notify_Second_Line" xml:space="preserve">
+    <value>días previo a vencimiento (5 días máx.)</value>
+  </data>
+  <data name="Service_Step2_PaymentMade" xml:space="preserve">
+    <value>Pago realizado</value>
+  </data>
+  <data name="Service_Step2_SMS" xml:space="preserve">
+    <value>SMS</value>
+  </data>
+  <data name="Service_Step2_Title" xml:space="preserve">
+    <value>Paso 2: Notificaciones</value>
+  </data>
+  <data name="Service_Step2_TypeNotification" xml:space="preserve">
+    <value>Tipo de Notificación</value>
+  </data>
+  <data name="Service_Step2_Web" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="Data_Still_Now" xml:space="preserve">
+    <value>Datos ingresados hasta el momento</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="Service_Step3_Card_Code" xml:space="preserve">
+    <value>Código de seguridad</value>
+  </data>
+  <data name="Service_Step3_Card_Code_Placeholder" xml:space="preserve">
+    <value>Ingresá el código de seguridad</value>
+  </data>
+  <data name="Service_Step3_Card_Code_Where" xml:space="preserve">
+    <value>¿Cuál es el código de seguridad?</value>
+  </data>
+  <data name="Service_Step3_Card_Date" xml:space="preserve">
+    <value>Fecha de vencimiento</value>
+  </data>
+  <data name="Service_Step3_Card_Date_Placeholder" xml:space="preserve">
+    <value>Ingresá la fecha de vencimiento</value>
+  </data>
+  <data name="Service_Step3_Card_Date_Where" xml:space="preserve">
+    <value>¿Dónde encuentro la fecha de vencimiento?</value>
+  </data>
+  <data name="Service_Step3_Card_Name" xml:space="preserve">
+    <value>Nombre del titular de la tarjeta</value>
+  </data>
+  <data name="Service_Step3_Card_Name_Placeholder" xml:space="preserve">
+    <value>Ingresá el nombre del titular de la tarjeta</value>
+  </data>
+  <data name="Service_Step3_Card_Number" xml:space="preserve">
+    <value>Número de tarjeta</value>
+  </data>
+  <data name="Service_Step3_Card_Number_Placeholder" xml:space="preserve">
+    <value>Ingresá los dígitos de la tarjeta</value>
+  </data>
+  <data name="Service_Step3_Card_Number_Where" xml:space="preserve">
+    <value>¿Cuál es el número de mi tarjeta?</value>
+  </data>
+  <data name="Service_Step3_Confirmation" xml:space="preserve">
+    <value>Confirmar adhesión de Servicio</value>
+  </data>
+  <data name="Service_Step3_Confirmation_Desc" xml:space="preserve">
+    <value>Se agregará el servicio</value>
+  </data>
+  <data name="Service_Step3_Confirmation_Desc2" xml:space="preserve">
+    <value>a tu lista de servicios adheridos.</value>
+  </data>
+  <data name="Service_Step3_Confirmation_Question" xml:space="preserve">
+    <value>¿Querés agregar el servicio?</value>
+  </data>
+  <data name="Service_Step3_Desc" xml:space="preserve">
+    <value>A continuación ingresá los datos de tu tarjeta de crédito para pagar los servicios.</value>
+  </data>
+  <data name="Service_Step3_Title" xml:space="preserve">
+    <value>Paso 3: Datos de tarjeta de crédito</value>
+  </data>
+  <data name="Error_Missing_Reference" xml:space="preserve">
+    <value>Falta ingresar campo de refencia</value>
+  </data>
+  <data name="Error_DaysNotification" xml:space="preserve">
+    <value>Se debe ingresar entre 0 y 5 días</value>
+  </data>
+  <data name="Automatic_Payment_Amount_Placeholder" xml:space="preserve">
+    <value>Ingresá el monto máximo</value>
+  </data>
+  <data name="Automatic_Payment_Amount_Question" xml:space="preserve">
+    <value>¿Qué significa el monto máximo?</value>
+  </data>
+  <data name="Automatic_Payment_Count_Placeholder" xml:space="preserve">
+    <value>Ingresá la cantidad de pagos a realizar</value>
+  </data>
+  <data name="Automatic_Payment_Count_Question" xml:space="preserve">
+    <value>¿Qué significa la cantidad de pagos?</value>
+  </data>
+  <data name="Automatic_Payment_Days_Placeholder" xml:space="preserve">
+    <value>Ingresá la cantidad de días previos al vencimiento</value>
+  </data>
+  <data name="Automatic_Payment_Days_Question" xml:space="preserve">
+    <value>¿Qué son los días previos al vencimiento?</value>
+  </data>
+  <data name="No_Thanks" xml:space="preserve">
+    <value>No, gracias</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Programar</value>
+  </data>
+  <data name="SuccessfulAssosiation" xml:space="preserve">
+    <value>Asociar Servicio</value>
+  </data>
+  <data name="SuccessfulAssosiation_Title" xml:space="preserve">
+    <value>El servicio </value>
+  </data>
+  <data name="SuccessfulAssosiation_Title_SecondLine" xml:space="preserve">
+    <value>ha sido adherido con éxito.</value>
+  </data>
+  <data name="Filters_Clean" xml:space="preserve">
+    <value>Borrar Filtros</value>
+  </data>
+  <data name="Filters_Search" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="Filters_Service_Desc" xml:space="preserve">
+    <value>Los filtros de búsqueda te ayudarán a encontrar un servicio que hayas adherido con anterioridad</value>
+  </data>
+  <data name="Filters_title" xml:space="preserve">
+    <value>Filtros de búsqueda</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Servicios</value>
+  </data>
+  <data name="Service_Add" xml:space="preserve">
+    <value>Adherir servicio</value>
+  </data>
+  <data name="Service_Add_Name" xml:space="preserve">
+    <value>Ingresá el nombre del servicio</value>
+  </data>
+  <data name="Service_List_Desc" xml:space="preserve">
+    <value>En esta sección podrás asociar, modificar y visualizar tus servicios asociados.</value>
+  </data>
+  <data name="Service_List_Empty" xml:space="preserve">
+    <value>Importante:  Aún no tenés ningún servicio adherido o tus servicios estan inactivos. ¿Querés adherir un servicio al panel?</value>
+  </data>
+  <data name="Service_Edit" xml:space="preserve">
+    <value>Modificar Servicio</value>
+  </data>
+  <data name="Cancel_Edit" xml:space="preserve">
+    <value>Cancelar edición</value>
+  </data>
+  <data name="Service_Edited" xml:space="preserve">
+    <value>El servicio fue editado</value>
+  </data>
+  <data name="Cancel_Card" xml:space="preserve">
+    <value>Cancelar Tarjeta</value>
+  </data>
+  <data name="Service_Add_Card" xml:space="preserve">
+    <value>Agregar Tarjeta</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>Activar</value>
+  </data>
+  <data name="Add_Card" xml:space="preserve">
+    <value>Agregar Tarjeta</value>
+  </data>
+  <data name="AutomaticPayment_Add_Button" xml:space="preserve">
+    <value>Programar Pago</value>
+  </data>
+  <data name="AutomaticPayment_Delete_Button" xml:space="preserve">
+    <value>Eliminar Pago Programado</value>
+  </data>
+  <data name="AutomaticPayment_Desc" xml:space="preserve">
+    <value>En esta sección podrás realizar el pago de cualquiera de nuestros servicios.</value>
+  </data>
+  <data name="AutomaticPayment_Edit_Button" xml:space="preserve">
+    <value>Editar Pago</value>
+  </data>
+  <data name="AutomaticPayment_Title" xml:space="preserve">
+    <value>Pagos Programados</value>
+  </data>
+  <data name="Bills_Generated" xml:space="preserve">
+    <value>Facturas pendientes</value>
+  </data>
+  <data name="Deactivate" xml:space="preserve">
+    <value>Desactivar</value>
+  </data>
+  <data name="AutomaticPayment_List_Empty" xml:space="preserve">
+    <value>Importante:  Aún no tenés ningún servicio adherido y por eso no puedes crear pagos programados. ¿Querés adherir un servicio al panel?</value>
+  </data>
+  <data name="AutomaticPayment_Item_Desc" xml:space="preserve">
+    <value>Ingresá los datos para la configuración del pago programado</value>
+  </data>
+  <data name="AutomaticPayment_Item_Title" xml:space="preserve">
+    <value>Configuración de pago programado</value>
+  </data>
+  <data name="AutomaticPayment_Service_Data" xml:space="preserve">
+    <value>Datos del servicio al cual se quiere agregar/editar un pago programado</value>
+  </data>
+  <data name="Automatic_Payment_Added" xml:space="preserve">
+    <value>El pago programado fue creado.</value>
+  </data>
+  <data name="Automatic_Payment_Deleted" xml:space="preserve">
+    <value>El pago programado fue eliminado.</value>
+  </data>
+  <data name="Automatic_Payment_Updated" xml:space="preserve">
+    <value>El pago programado fue guardado.</value>
+  </data>
+  <data name="Service_Activate" xml:space="preserve">
+    <value>El servicio fue activado.</value>
+  </data>
+  <data name="Service_Automatic_Payment_Desc" xml:space="preserve">
+    <value>¿Querés programar este servicio para que se pague automáticamente?</value>
+  </data>
+  <data name="Service_Deactivate" xml:space="preserve">
+    <value>El servicio fue desactivado.</value>
+  </data>
+  <data name="Service_ServiceList" xml:space="preserve">
+    <value>Mis servicios asociados</value>
+  </data>
+  <data name="Payment_Bills_Info" xml:space="preserve">
+    <value>Importante: Debés abonar la factura más antigua antes de abonar las facturas más recientes.</value>
+  </data>
+  <data name="Payment_Cancel" xml:space="preserve">
+    <value>Cancelar Pago</value>
+  </data>
+  <data name="Payment_Cancel_Message" xml:space="preserve">
+    <value>¿Estás seguro que querés cancelar el pago del servicio?</value>
+  </data>
+  <data name="Payment_Card_DueDate_Info" xml:space="preserve">
+    <value>¿Dónde encuentro la fecha de vencimiento?</value>
+  </data>
+  <data name="Payment_Card_Name" xml:space="preserve">
+    <value>Ingresá el nombre del titular de la tarjeta</value>
+  </data>
+  <data name="Payment_Card_Number" xml:space="preserve">
+    <value>Ingresá el número de la tarjeta</value>
+  </data>
+  <data name="Payment_Card_Number_Info" xml:space="preserve">
+    <value>¿Cuál es el número de mi tarjeta?</value>
+  </data>
+  <data name="Payment_Card_SecurityCode" xml:space="preserve">
+    <value>Ingresá el código de seguridad de la tarjeta</value>
+  </data>
+  <data name="Payment_Card_SecurityCode_Info" xml:space="preserve">
+    <value>¿Cuál es el código de seguridad de mi tarjeta?</value>
+  </data>
+  <data name="Payment_Confirm" xml:space="preserve">
+    <value>Confirmar pago de Servicio</value>
+  </data>
+  <data name="Payment_Continue" xml:space="preserve">
+    <value>Continuar pago</value>
+  </data>
+  <data name="Payment_Data_SoFar" xml:space="preserve">
+    <value>Datos ingresados hasta el momento</value>
+  </data>
+  <data name="Payment_DownloadReceipt" xml:space="preserve">
+    <value>Descargar comprobante</value>
+  </data>
+  <data name="Payment_EmailReceipt" xml:space="preserve">
+    <value>Se enviará un comprobante de pago a tu correo electrónico</value>
+  </data>
+  <data name="Payment_Email_Info" xml:space="preserve">
+    <value>¿Por qué debo ingresar mi correo electrónico?</value>
+  </data>
+  <data name="Payment_Pay" xml:space="preserve">
+    <value>Realizar Pago</value>
+  </data>
+  <data name="Payment_PaymentConfirm" xml:space="preserve">
+    <value>Pago Confirmado</value>
+  </data>
+  <data name="Payment_Placeholder_Description" xml:space="preserve">
+    <value>Ingresá la descripción</value>
+  </data>
+  <data name="Payment_Placeholder_Email" xml:space="preserve">
+    <value>Ingresá tu e-mail</value>
+  </data>
+  <data name="Payment_Service" xml:space="preserve">
+    <value>Servicio a pagar:</value>
+  </data>
+  <data name="Payment_Step1" xml:space="preserve">
+    <value>Paso 1: Selección de Servicio a pagar</value>
+  </data>
+  <data name="Payment_Step1_Description" xml:space="preserve">
+    <value>Seleccioná el servicio e ingresá los datos del mismo</value>
+  </data>
+  <data name="Payment_Step2" xml:space="preserve">
+    <value>Paso 2: Selección de Facturas a pagar</value>
+  </data>
+  <data name="Payment_Step2_Info" xml:space="preserve">
+    <value>Seleccioná la(s) factura(s) que querés pagar.</value>
+  </data>
+  <data name="Payment_Step3" xml:space="preserve">
+    <value>Paso 3: Datos de tarjeta de crédito</value>
+  </data>
+  <data name="Payment_Step3_Description" xml:space="preserve">
+    <value>Ingresá los datos de tu tarjeta de crédito para pagar la(s) factura(s) seleccionadas.</value>
+  </data>
+  <data name="Payment_Step4" xml:space="preserve">
+    <value>Paso 4: Confirmación de Pago</value>
+  </data>
+  <data name="Payment_Step4_Description" xml:space="preserve">
+    <value>Conservá tu comprobante, el servicio ha sido pagado.</value>
+  </data>
+  <data name="Payment_SuccessfulPayment" xml:space="preserve">
+    <value>Tu pago se ha realizado con éxito.</value>
+  </data>
+  <data name="Payment_TotalDolars" xml:space="preserve">
+    <value>Importe total en dólares:</value>
+  </data>
+  <data name="Payment_TotalPesos" xml:space="preserve">
+    <value>Importe total en pesos:</value>
+  </data>
+  <data name="Payment_Confirm_TransactionNumber" xml:space="preserve">
+    <value>Número de transacción:</value>
+  </data>
+  <data name="Payment_Placeholder_Name" xml:space="preserve">
+    <value>Ingresá tu nombre</value>
+  </data>
+  <data name="Payment_Placeholder_Surname" xml:space="preserve">
+    <value>Ingresá tu apellido</value>
+  </data>
+  <data name="Card_Number_Invalid" xml:space="preserve">
+    <value>El número de la tarjeta no es válido</value>
+  </data>
+  <data name="Header_UniquePayment" xml:space="preserve">
+    <value>Pagar</value>
+  </data>
+  <data name="Payment_CardAssociated_Message" xml:space="preserve">
+    <value>¿Querés pagar el servicio con algunas de tus tarjetas ya asociadas?</value>
+  </data>
+  <data name="Payment_New_Card" xml:space="preserve">
+    <value>Ingresar otra tarjeta</value>
+  </data>
+  <data name="Card_Invalid" xml:space="preserve">
+    <value>Faltó completar datos requeridos de la tarjeta</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notificaciones</value>
+  </data>
+  <data name="Notification_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="Notification_Email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="Notification_List_Empty" xml:space="preserve">
+    <value>Aún no tenés ninguna notificación.</value>
+  </data>
+  <data name="Notification_NotificationList" xml:space="preserve">
+    <value>Mis notificaciones</value>
+  </data>
+  <data name="Notification_Sms" xml:space="preserve">
+    <value>Móvil</value>
+  </data>
+  <data name="Notification_Web" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="Payment_Placeholder_Address" xml:space="preserve">
+    <value>Ingresá tu dirección</value>
+  </data>
+  <data name="Payment_Card_DueDate" xml:space="preserve">
+    <value>Ingresá la fecha de vencimiento de tu tarjeta</value>
+  </data>
+  <data name="Filters_Date_Placeholder" xml:space="preserve">
+    <value>Ingresá una fecha</value>
+  </data>
+  <data name="Filters_From" xml:space="preserve">
+    <value>Fecha desde</value>
+  </data>
+  <data name="Filters_Service" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="Filters_Service_Placeholder" xml:space="preserve">
+    <value>Ingresá el nombre del servicio</value>
+  </data>
+  <data name="Filters_To" xml:space="preserve">
+    <value>Fecha hasta</value>
+  </data>
+  <data name="Filters_NotificationType" xml:space="preserve">
+    <value>Medio</value>
+  </data>
+  <data name="Filters_NotificationType_Placeholder" xml:space="preserve">
+    <value>Seleccioná un medio de notificación</value>
+  </data>
+  <data name="Payment_Bills_Amount" xml:space="preserve">
+    <value>Importe a abonar</value>
+  </data>
+  <data name="Payment_Bills_Period" xml:space="preserve">
+    <value>Período</value>
+  </data>
+  <data name="Payment_Confirmation" xml:space="preserve">
+    <value>Se realizará un pago por</value>
+  </data>
+  <data name="Payment_Confirmation_Question" xml:space="preserve">
+    <value>¿Querés abonar el monto indicado?</value>
+  </data>
+  <data name="ReferenceNumber_Where" xml:space="preserve">
+    <value>¿Dónde encuentro el número de referencia?</value>
+  </data>
+  <data name="Step_Bill" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="Step_Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="Filters_PaymentType" xml:space="preserve">
+    <value>Medio</value>
+  </data>
+  <data name="Filters_PaymentType_Placeholder" xml:space="preserve">
+    <value>Seleccioná un tipo de pago</value>
+  </data>
+  <data name="Payments" xml:space="preserve">
+    <value>Pagos</value>
+  </data>
+  <data name="Payment_Amount" xml:space="preserve">
+    <value>Importe</value>
+  </data>
+  <data name="Payment_Card" xml:space="preserve">
+    <value>Tarjeta</value>
+  </data>
+  <data name="Payment_Date" xml:space="preserve">
+    <value>Fecha de pago</value>
+  </data>
+  <data name="Payment_List_Empty" xml:space="preserve">
+    <value>Aún no realizaste ningún pago</value>
+  </data>
+  <data name="Payment_PaymentList" xml:space="preserve">
+    <value>Historial de pagos</value>
+  </data>
+  <data name="Payment_TransactionNumber" xml:space="preserve">
+    <value>Transacción</value>
+  </data>
+  <data name="Payment_Download" xml:space="preserve">
+    <value>Descargar</value>
+  </data>
+  <data name="Payment_Send" xml:space="preserve">
+    <value>Enviar por Mail</value>
+  </data>
+  <data name="Header_AutomaticPayment" xml:space="preserve">
+    <value>Servicios con pagos programados</value>
+  </data>
+  <data name="Header_Notification" xml:space="preserve">
+    <value>Notificaciones</value>
+  </data>
+  <data name="Header_PaymentHistory" xml:space="preserve">
+    <value>Historial de pagos</value>
+  </data>
+  <data name="Service_Card_Added" xml:space="preserve">
+    <value>La tarjeta fue asociada al servicio.</value>
+  </data>
+  <data name="Cards" xml:space="preserve">
+    <value>Tarjetas</value>
+  </data>
+  <data name="Service_See_More_Ref" xml:space="preserve">
+    <value>Para ver más información del servicio ir a EDITAR SERVICIO.</value>
+  </data>
+  <data name="Card_CardList" xml:space="preserve">
+    <value>Mis tarjetas adheridas</value>
+  </data>
+  <data name="Card_Due_Date" xml:space="preserve">
+    <value>Fecha de vencimiento </value>
+  </data>
+  <data name="Card_Due_Date_Add" xml:space="preserve">
+    <value>Ingresá la fecha de vencimiento (mm-aaaa)</value>
+  </data>
+  <data name="Card_Last_4_Numbers" xml:space="preserve">
+    <value>Últimos cuatro números </value>
+  </data>
+  <data name="Card_Last_4_Numbers_Add" xml:space="preserve">
+    <value>Ingresá los últimos cuatro números de la tarjeta a buscar</value>
+  </data>
+  <data name="Card_List_Desc" xml:space="preserve">
+    <value>En esta página podés ver tus tarjetas adheridas.</value>
+  </data>
+  <data name="Filters_Card_Desc" xml:space="preserve">
+    <value>Los filtros de búsqueda te ayudarán a encontrar una tarjeta que hayas adherido con anterioridad</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Pagos</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Salir</value>
+  </data>
+  <data name="Header_Bills" xml:space="preserve">
+    <value>Facturas Pendiente de Pago</value>
+  </data>
+  <data name="Header_NextAutomaticPayment" xml:space="preserve">
+    <value>Pagos programados</value>
+  </data>
+  <data name="Header_Cards" xml:space="preserve">
+    <value>Tarjetas</value>
+  </data>
+  <data name="Card_List_Empty" xml:space="preserve">
+    <value>Importante:  No tenés ningúna tarjeta adherida. </value>
+  </data>
+  <data name="Address_Placeholder" xml:space="preserve">
+    <value>Ingresá tu dirección</value>
+  </data>
+  <data name="CallCenterKey_Placeholder" xml:space="preserve">
+    <value>Definí tu clave para Call Center</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="Email_Placeholder" xml:space="preserve">
+    <value>Ingresá tu e-mail</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>¿Necesitás ayuda?</value>
+  </data>
+  <data name="Help_Contact" xml:space="preserve">
+    <value>Contactate con nosotros</value>
+  </data>
+  <data name="IdentityNumber_Placeholder" xml:space="preserve">
+    <value>Ingresá tu cédula de identidad / DNI</value>
+  </data>
+  <data name="Message_Placeholder" xml:space="preserve">
+    <value>Ingresá el mensaje</value>
+  </data>
+  <data name="MobileNumber_Placeholder" xml:space="preserve">
+    <value>Ingresá tu número de móvil</value>
+  </data>
+  <data name="Name_Placeholder" xml:space="preserve">
+    <value>Ingresá tu nombre</value>
+  </data>
+  <data name="Newsletter" xml:space="preserve">
+    <value>Registro a newsletter</value>
+  </data>
+  <data name="PasswordConfirmation_Placeholder" xml:space="preserve">
+    <value>Ingresá tu contraseña nuevamente</value>
+  </data>
+  <data name="Password_Placeholder" xml:space="preserve">
+    <value>Ingresá tu contraseña</value>
+  </data>
+  <data name="PhoneNumber_Placeholder" xml:space="preserve">
+    <value>Ingresá tu número de teléfono</value>
+  </data>
+  <data name="QueryType_Placeholder" xml:space="preserve">
+    <value>Seleccioná el tipo de consulta</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registrarme</value>
+  </data>
+  <data name="Registration_Desc" xml:space="preserve">
+    <value>Completá los siguientes campos</value>
+  </data>
+  <data name="Registration_Password" xml:space="preserve">
+    <value>Ingresá tu contraseña</value>
+  </data>
+  <data name="Registration_User" xml:space="preserve">
+    <value>Datos del usuario</value>
+  </data>
+  <data name="Subject_Placeholder" xml:space="preserve">
+    <value>Ingresá el asunto</value>
+  </data>
+  <data name="Surname_Placeholder" xml:space="preserve">
+    <value>Ingresá tu apellido</value>
+  </data>
+  <data name="Service_ReferenceNumberDefault" xml:space="preserve">
+    <value>Nro de referencia</value>
+  </data>
+  <data name="Payment_No_Pending_Bills" xml:space="preserve">
+    <value>No se encontraron facturas pendientes.</value>
+  </data>
+  <data name="Add_Service" xml:space="preserve">
+    <value>Adherir servicio</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Importe a pagar</value>
+  </data>
+  <data name="Card" xml:space="preserve">
+    <value>Tarjeta</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Mi Portal</value>
+  </data>
+  <data name="Dashboard_Desc" xml:space="preserve">
+    <value>Este panel te mantendrá informado acerca de tus próximos vencimientos, pagos programados y pagos realizados</value>
+  </data>
+  <data name="Dashboard_No_Services" xml:space="preserve">
+    <value>Importante:  Aún no tenés ningún servicio adherido o tus servicios estan inactivos. ¿Querés adherir un servicio al panel?</value>
+  </data>
+  <data name="DueDate" xml:space="preserve">
+    <value>Vencimiento</value>
+  </data>
+  <data name="Next_Automatic_Payment" xml:space="preserve">
+    <value>Próximo pago programado</value>
+  </data>
+  <data name="Next_Automatic_Payments" xml:space="preserve">
+    <value>Próximos pagos programados</value>
+  </data>
+  <data name="Next_Automatic_Payments_More" xml:space="preserve">
+    <value>Ver más pagos programados</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Pagar</value>
+  </data>
+  <data name="Payment_History" xml:space="preserve">
+    <value>Últimos pagos realizados</value>
+  </data>
+  <data name="Payment_History_Amount" xml:space="preserve">
+    <value>Importe abonado</value>
+  </data>
+  <data name="Payment_History_Date" xml:space="preserve">
+    <value>Pago realizado</value>
+  </data>
+  <data name="Payment_History_More" xml:space="preserve">
+    <value>Ver más pagos realizados</value>
+  </data>
+  <data name="Bills_To_Pay" xml:space="preserve">
+    <value>Próximos vencimientos</value>
+  </data>
+  <data name="Bills_To_Pay_More" xml:space="preserve">
+    <value>Ver más facturas próximas a vencer</value>
+  </data>
+  <data name="Add_Automatic_Payment" xml:space="preserve">
+    <value>Adherir pago programado</value>
+  </data>
+  <data name="Add_Payment" xml:space="preserve">
+    <value>Pagar facturas</value>
+  </data>
+  <data name="Dashboard_No_Automatic_Payments" xml:space="preserve">
+    <value>Importante:  Aún no tenés ningún pago programado. ¿Querés adherir un pago programado?</value>
+  </data>
+  <data name="Dashboard_No_Payments" xml:space="preserve">
+    <value>Importante:  Aún no pagaste facturas por medio del portal de pagos VisaNet. ¿Querés pagar una factura?</value>
+  </data>
+  <data name="Header_Dashboard" xml:space="preserve">
+    <value>Mi Portal</value>
+  </data>
+  <data name="Bills_Desc" xml:space="preserve">
+    <value>En esta página podrás visualizar las facturas pendientes asociadas a tus servicios adheridos.</value>
+  </data>
+  <data name="Bills_Empty_List" xml:space="preserve">
+    <value>Importante: No tenés facturas pendientes de pago.</value>
+  </data>
+  <data name="Bills_Title" xml:space="preserve">
+    <value>Facturas pendientes de pago</value>
+  </data>
+  <data name="AP_Scheduled_Desc" xml:space="preserve">
+    <value>En esta página podrás visualizar los pagos programados agendados para tus servicios adheridos.</value>
+  </data>
+  <data name="AP_Scheduled_Title" xml:space="preserve">
+    <value>Facturas a pagar automaticamente</value>
+  </data>
+  <data name="AP_List_Empty" xml:space="preserve">
+    <value>Aún no se generaron facturas o no tiene pagos programados configurados.</value>
+  </data>
+  <data name="Filters_From_Due" xml:space="preserve">
+    <value>Fecha de vencimiento desde</value>
+  </data>
+  <data name="Filters_To_Due" xml:space="preserve">
+    <value>Fecha de vencimiento hasta</value>
+  </data>
+  <data name="Confirmation_Amount" xml:space="preserve">
+    <value>Importe de la operación</value>
+  </data>
+  <data name="Confirmation_Mask" xml:space="preserve">
+    <value>Número de tarjeta</value>
+  </data>
+  <data name="Confirmation_Ticket_Desc" xml:space="preserve">
+    <value>Comprobante válido como factura. Conservá tu ticket.</value>
+  </data>
+  <data name="Confirmation_Transaction" xml:space="preserve">
+    <value>N° de Transacción</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Día</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="Payment_Of" xml:space="preserve">
+    <value>Pago de</value>
+  </data>
+  <data name="Loading_Bills" xml:space="preserve">
+    <value>Aguardá un instante, estamos obteniendo tus facturas.</value>
+  </data>
+  <data name="Loading_History" xml:space="preserve">
+    <value>Aguardá un instante, estamos obteniendo tu historial de pagos.</value>
+  </data>
+  <data name="Loading_Payment" xml:space="preserve">
+    <value>Aguardá un instante, estamos calculando tus próximos pagos programados.</value>
+  </data>
+  <data name="Automatic_Payment_Conf" xml:space="preserve">
+    <value>Configuración pago programado</value>
+  </data>
+  <data name="Profile_ChangePassword" xml:space="preserve">
+    <value>Restablecer contraseña</value>
+  </data>
+  <data name="Filters_LogType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Filters_LogType_Placeholder" xml:space="preserve">
+    <value>Seleccioná un tipo</value>
+  </data>
+  <data name="Filters_User" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="Filters_User_Placeholder" xml:space="preserve">
+    <value>Ingresá un nombre de usuario</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="Service_Front_Desc" xml:space="preserve">
+    <value>Estos son todos los servicios </value>
+  </data>
+  <data name="Profile_User" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="Payment_Email_Send_Success" xml:space="preserve">
+    <value>Se ha enviado el correo con éxito.</value>
+  </data>
+  <data name="Dashboard_AutomaticPayment_Error" xml:space="preserve">
+    <value>Importante: Se produjo un error al intentar calcular tus próximos pagos programados. Intentá más tarde.</value>
+  </data>
+  <data name="Dashboard_Bills_Error" xml:space="preserve">
+    <value>Importante: Se produjo un error al intentar obtener las facturas. Intentá más tarde.</value>
+  </data>
+  <data name="AutomaticPayment_ConfirmDelete" xml:space="preserve">
+    <value>Confirmar eliminación de pago programado</value>
+  </data>
+  <data name="AutomaticPayment_DeleteConfirmation" xml:space="preserve">
+    <value>La eliminación de este pago programado cancelará todos los pagos programados futuros de este servicio.</value>
+  </data>
+  <data name="AutomaticPayment_DeleteConfirmation_Question" xml:space="preserve">
+    <value>¿Querés eliminar el pago programado?</value>
+  </data>
+  <data name="Registration_Conditions" xml:space="preserve">
+    <value>Términos y Condiciones de uso</value>
+  </data>
+  <data name="Registration_Conditions_Accept" xml:space="preserve">
+    <value>Acepto los</value>
+  </data>
+  <data name="Registration_Conditions_Validation" xml:space="preserve">
+    <value>Debés aceptar los términos y condiciones de uso para registrarte</value>
+  </data>
+  <data name="Loader_Message" xml:space="preserve">
+    <value>Aguardá un instante.</value>
+  </data>
+  <data name="Loader_Message_Getting_Bills" xml:space="preserve">
+    <value>Aguardá un instante. Estamos obteniendo las facturas.</value>
+  </data>
+  <data name="Card_AccountFrozen" xml:space="preserve">
+    <value>La cuenta ha sido inhabilitada por el banco.</value>
+  </data>
+  <data name="Card_CardTypeNotAccepted" xml:space="preserve">
+    <value>El tipo de tarjeta es inválido.</value>
+  </data>
+  <data name="Card_CreditLimitReached" xml:space="preserve">
+    <value>Se ha superado el límite de crédito de la tarjeta.</value>
+  </data>
+  <data name="Card_CVNCheckInvalid" xml:space="preserve">
+    <value>El código de seguridad de la tarjeta no es válido.</value>
+  </data>
+  <data name="Card_Error" xml:space="preserve">
+    <value>Se produjo un error al procesar la autorización de crédito.</value>
+  </data>
+  <data name="Card_ExpiriedCard" xml:space="preserve">
+    <value>La tarjeta se encuentra vencida.</value>
+  </data>
+  <data name="Card_InsufficientFunds" xml:space="preserve">
+    <value>Fondos insuficientes.</value>
+  </data>
+  <data name="Card_InvalidAccountNumber" xml:space="preserve">
+    <value>Número de cuenta inválido.</value>
+  </data>
+  <data name="Card_InvalidCardTypeOrNotCorrelateWithCardNumber" xml:space="preserve">
+    <value>El tipo de tarjeta es inválido o no concuerda con el número de tarjeta ingresado.</value>
+  </data>
+  <data name="Card_InvalidCVN" xml:space="preserve">
+    <value>El código de seguridad de la tarjeta no es válido.</value>
+  </data>
+  <data name="Card_InvalidFields" xml:space="preserve">
+    <value>Los datos ingresados de la tarjeta no son válidos.</value>
+  </data>
+  <data name="Payment_Failure" xml:space="preserve">
+    <value>El pago no ha podido ser procesado</value>
+  </data>
+  <data name="Payment_Failure_Apologize" xml:space="preserve">
+    <value>Disculpe los inconvenientes.</value>
+  </data>
+  <data name="Payment_Failure_TryAgain" xml:space="preserve">
+    <value>Ha ocurrido un error en el procesamiento de tu operación. Por favor intentá nuevamente o comunícate con nuestro Call Center a través de nuestro formulario de contacto.</value>
+  </data>
+  <data name="Payment_Failure_UserMessage" xml:space="preserve">
+    <value>Estimado usuario, en este momento no hemos podido procesar su solicitud a través del banco</value>
+  </data>
+  <data name="Payment_Failure_Warning" xml:space="preserve">
+    <value>Atención tu solictud no ha podido ser procesada</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Service_Edit_Step1_Subtitle" xml:space="preserve">
+    <value>A través de este panel podés editar tu numero de cliente ante el servicio seleccionado.</value>
+  </data>
+  <data name="Service_Edit_Step1_Title" xml:space="preserve">
+    <value>Paso1: Servicio a editar</value>
+  </data>
+  <data name="Service_NewCard_Cancel" xml:space="preserve">
+    <value>Cancelar asociación de nueva tarjeta</value>
+  </data>
+  <data name="Service_NewCard_Cancel_Question" xml:space="preserve">
+    <value>¿Estás seguro que querés terminar el proceso de asociación de una nueva tarjeta?</value>
+  </data>
+  <data name="Service_NewCard_Confirmation" xml:space="preserve">
+    <value>Confirmar adhesión de nueva tarjeta</value>
+  </data>
+  <data name="Service_NewCard_Confirmation_Question" xml:space="preserve">
+    <value>¿Estás seguro que querés agregar una nueva tarjeta al servicio</value>
+  </data>
+  <data name="Service_Edit_Cancel" xml:space="preserve">
+    <value>Cancelar edición de servicio adherido</value>
+  </data>
+  <data name="Service_Edit_Cancel_Question" xml:space="preserve">
+    <value>¿Estás seguro que querés terminar el proceso de edición del servicio?</value>
+  </data>
+  <data name="Service_Edit_Confirmation" xml:space="preserve">
+    <value>Confirmar edición de servicio</value>
+  </data>
+  <data name="Service_Edit_Confirmation_Question" xml:space="preserve">
+    <value>¿Estás seguro que querés editar el servicio</value>
+  </data>
+  <data name="Payment_Register" xml:space="preserve">
+    <value>Quiero registrarme</value>
+  </data>
+  <data name="Payment_Register_Later" xml:space="preserve">
+    <value>Más tarde</value>
+  </data>
+  <data name="Payment_Registration" xml:space="preserve">
+    <value>¿Querés registrarte?</value>
+  </data>
+  <data name="Payment_Registration_Description" xml:space="preserve">
+    <value>Ser parte del portal te permitirá realizar tus pagos automáticamente, ver tu historial de pagos y tener muchos beneficios más.</value>
+  </data>
+  <data name="Help_Menu" xml:space="preserve">
+    <value>Ayuda</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="Profile_Edit_Success" xml:space="preserve">
+    <value>Se han editado los datos con éxito.</value>
+  </data>
+  <data name="Card_Due_Date_Month" xml:space="preserve">
+    <value>Ingresá el mes</value>
+  </data>
+  <data name="Card_Due_Date_Year" xml:space="preserve">
+    <value>Ingresá el año</value>
+  </data>
+  <data name="Service_Card_Type" xml:space="preserve">
+    <value>Este servicio puede pagarse únicamente con tarjeta(s) </value>
+  </data>
+  <data name="Bin_Not_Defined" xml:space="preserve">
+    <value>El sistema no reconoce esta tarjeta. Por favor intentá con otra.</value>
+  </data>
+  <data name="Bin_Not_Valid" xml:space="preserve">
+    <value>La tarjeta no fue habilitada para operar con VisaNetPagos. Por favor intente con otra tarjeta.</value>
+  </data>
+  <data name="Service_CardType_CreditCard" xml:space="preserve">
+    <value>Crédito Visa emitida en Uruguay</value>
+  </data>
+  <data name="Service_CardType_DebitCard" xml:space="preserve">
+    <value>Débito</value>
+  </data>
+  <data name="Service_International" xml:space="preserve">
+    <value>El servicio no se puede pagar con tarjetas extranjeras.</value>
+  </data>
+  <data name="Loader_Processing_Payment" xml:space="preserve">
+    <value>Aguardá un instante, estamos procesando tu transacción.</value>
+  </data>
+  <data name="Payment_Financial_Inclusion" xml:space="preserve">
+    <value>Descuento Ley 19.210</value>
+  </data>
+  <data name="Payment_Total_After_Discount" xml:space="preserve">
+    <value>Total a pagar</value>
+  </data>
+  <data name="Payment_Total_Bills" xml:space="preserve">
+    <value>Monto total de facturas</value>
+  </data>
+  <data name="Service_CardType_CreditCardInternational" xml:space="preserve">
+    <value>Crédito emitida en el exterior</value>
+  </data>
+  <data name="Service_CardType_DebitCardInternational" xml:space="preserve">
+    <value>con Tarjeta de Débito</value>
+  </data>
+  <data name="Service_Updated" xml:space="preserve">
+    <value>El servicio fue guardado.</value>
+  </data>
+  <data name="Confirmation_Financial_Inclusion" xml:space="preserve">
+    <value>Descuento Ley 19.210</value>
+  </data>
+  <data name="Confirmation_Total_After_Discount" xml:space="preserve">
+    <value>Monto total abonado</value>
+  </data>
+  <data name="Confirmation_Total_Bills" xml:space="preserve">
+    <value>Monto total</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Por defecto</value>
+  </data>
+  <data name="Services_Cards_Desc" xml:space="preserve">
+    <value>A través de esta sección podrás seleccionar cual de tus tarjetas será asociada al servicio.</value>
+  </data>
+  <data name="Service_CardList" xml:space="preserve">
+    <value>Mis tarjetas adheridas</value>
+  </data>
+  <data name="Action_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Action_Succesfull" xml:space="preserve">
+    <value>Acción satisfactoria</value>
+  </data>
+  <data name="Card_My" xml:space="preserve">
+    <value>Seleccionar Tarjeta </value>
+  </data>
+  <data name="Service_Card_Activate" xml:space="preserve">
+    <value>La tarjeta fue activada</value>
+  </data>
+  <data name="Service_Card_Deactivate" xml:space="preserve">
+    <value>La tarjeta fue desactivada</value>
+  </data>
+  <data name="Service_Card_Default" xml:space="preserve">
+    <value>La tarjeta esta activada para realizar los pagos por defecto</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Volver</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>Ver Programación</value>
+  </data>
+  <data name="Payment_Confirmation_Register" xml:space="preserve">
+    <value>¿Querés registrarte?</value>
+  </data>
+  <data name="Payment_Confirmation_Register_Benefits" xml:space="preserve">
+    <value>Ser parte del portal te permitirá realizar tus pagos automáticamente, ver tu historial de pagos y tener muchos beneficios más</value>
+  </data>
+  <data name="Service_Can_Not_Edit" xml:space="preserve">
+    <value>El servicio cuenta con facturas pagas por lo cual no podés editar el/los número(s) de referencia.</value>
+  </data>
+  <data name="Bills_All_References" xml:space="preserve">
+    <value>Tenés que ingresar todas las referencias asociadas al servicio.</value>
+  </data>
+  <data name="Bills_General_Error" xml:space="preserve">
+    <value>Por el momento no podemos obtener tus facturas. Validá que los datos ingresados sean los correctos. Si el error persiste intentá más tarde.</value>
+  </data>
+  <data name="From_General_Error" xml:space="preserve">
+    <value>No se pudo procesar la solicitud por errores en el formulario. Verificá los datos ingresados.</value>
+  </data>
+  <data name="Loader_Processing_Card" xml:space="preserve">
+    <value>Aguardá un instante, estamos adhiriendo el servicio.</value>
+  </data>
+  <data name="NewCard_Confirmation_Question" xml:space="preserve">
+    <value>¿Estás seguro que querés agregar una nueva tarjeta?</value>
+  </data>
+  <data name="Form_Error_SelectCard" xml:space="preserve">
+    <value>No se pudo procesar la solicitud. Tenés que seleccionar una tarjeta o ingresar una nueva.</value>
+  </data>
+  <data name="Card_Add_Success" xml:space="preserve">
+    <value>La tarjeta se ingresó correctamente.</value>
+  </data>
+  <data name="Filters_ReferenceNumber" xml:space="preserve">
+    <value>Número de referencia</value>
+  </data>
+  <data name="Filters_ReferenceNumber_Placeholder" xml:space="preserve">
+    <value>Ingresá un número de referencia</value>
+  </data>
+  <data name="Payment_Step1_Details" xml:space="preserve">
+    <value>Paso 1: Información del Servicio a pagar</value>
+  </data>
+  <data name="Payment_Bills_Expired_Info" xml:space="preserve">
+    <value>No se puede realizar el pago debido a que existen facturas vencidas.</value>
+  </data>
+  <data name="Card_Set_Default" xml:space="preserve">
+    <value>Asociar a Servicio</value>
+  </data>
+  <data name="Captcha_Error" xml:space="preserve">
+    <value>Respuesta incorrecta. Por favor volvé a intentarlo.</value>
+  </data>
+  <data name="Captcha_Info" xml:space="preserve">
+    <value>Verificación</value>
+  </data>
+  <data name="Payment_Title" xml:space="preserve">
+    <value>Pago de Servicio</value>
+  </data>
+  <data name="Payment_Bills_Calculate" xml:space="preserve">
+    <value>A continuación se muestra el importe original de la factura. El importe final a pagar se calculará una vez seleccionada la tarjeta de pago.</value>
+  </data>
+  <data name="Payment_Bill_SuciveAnnual" xml:space="preserve">
+    <value>Si abonás las seis cuotas antes de que venza la primera, se te aplicará un descuento mayor que abonando las mismas individualmente.</value>
+  </data>
+  <data name="Tooltip_Payment_Email_Info" xml:space="preserve">
+    <value>Tu mail es necesario para que enviemos por mail el comprobante del pago</value>
+  </data>
+  <data name="Tootltip_Payment_Card_DueDate_Info" xml:space="preserve">
+    <value>La fecha de vencimiento se encuentra en frente de la tarjeta. Tiene el formado MM/AA</value>
+  </data>
+  <data name="Tootltip_Payment_Card_Number_Where" xml:space="preserve">
+    <value>El número se encuentra en el frente de la tarjeta y tiene una longitud de 16 dígitos.</value>
+  </data>
+  <data name="Dashboard_AutomaticPayment_NotActive" xml:space="preserve">
+    <value>Importante: No tenés pagos programados creados.</value>
+  </data>
+  <data name="Dashboard_AutomaticPayment_WithOutService" xml:space="preserve">
+    <value>Importante: No pudimos calcular tus próximos pagos programados porque no tenés servicios asociados a tu cuenta.</value>
+  </data>
+  <data name="Dashboard_Without_ActiveService" xml:space="preserve">
+    <value>Importante: No pudimos obtener facturas pendientes porque tus servicios están desactivados.</value>
+  </data>
+  <data name="Dashboard_Without_Services" xml:space="preserve">
+    <value>Importante: No pudimos obtener tus facturas porque no tenés servicios asociados a tu cuenta.</value>
+  </data>
+  <data name="AutomaticPayment_WithoutActiveService" xml:space="preserve">
+    <value>Importante: tus servicios adheridos estan desactivados y por eso no podés crear pagos programados. ¿Querés adherir un servicio al panel?</value>
+  </data>
+  <data name="AutomaticPayment_Scheduled_SubTitle" xml:space="preserve">
+    <value>Para agregar un nuevo pago programado ir a AGREGAR PAGO.</value>
+  </data>
+  <data name="AutomaticPayment_SubTitle" xml:space="preserve">
+    <value>Para ver más información del pago programado ir a CONFIGURACIÓN.</value>
+  </data>
+  <data name="Bills_SubTitle" xml:space="preserve">
+    <value>Para pagar una factura pendiente ir a PAGAR.</value>
+  </data>
+  <data name="Dashboard_AutomaticPayment_ServiceNotActive" xml:space="preserve">
+    <value>Importante: No pudimos calcular tus próximos pagos programados porque no hay facturas pendientes.</value>
+  </data>
+  <data name="Home_Select_service" xml:space="preserve">
+    <value>Seleccioná de la lista o ingresá el servicio que querés pagar</value>
+  </data>
+  <data name="Payment_Desc" xml:space="preserve">
+    <value>En esta página podrás pagar las facturas pendientes.</value>
+  </data>
+  <data name="AutomaticPayment_Empty" xml:space="preserve">
+    <value>No tenés facturas pendientes de pago para los servicios con pagos programados.</value>
+  </data>
+  <data name="Card_Activate_Help" xml:space="preserve">
+    <value>Para activar una tarjeta existente ir a ACTIVAR.</value>
+  </data>
+  <data name="Notification_Desc" xml:space="preserve">
+    <value>En esta página podrás ver el historial de los avisos que te fueron enviados.</value>
+  </data>
+  <data name="PaymentHistory_Desc" xml:space="preserve">
+    <value>En esta página encontrarás el historial de todos tus pagos realizados.</value>
+  </data>
+  <data name="PaymentHistory_Help" xml:space="preserve">
+    <value>Para descargar comprobante de pago ir a DESCARGAR.</value>
+  </data>
+  <data name="Profile_Edit_Success_EmilChanged" xml:space="preserve">
+    <value>Se han editado los datos con éxito. Por favor ingresá de vuelta en el sitio con el nuevo email.</value>
+  </data>
+  <data name="AutomaticPayment_Not_Arranged" xml:space="preserve">
+    <value>Configurar Pago Programado</value>
+  </data>
+  <data name="AutomaticPayment_Arranged_Date" xml:space="preserve">
+    <value>Fecha pago programado:</value>
+  </data>
+  <data name="Bills_To_Pay_And_Payments" xml:space="preserve">
+    <value>Próximos vencimientos y pagos programados</value>
+  </data>
+  <data name="Card_IssuerCard" xml:space="preserve">
+    <value>Se produjo un error de comunicación con el emisor de la tarjeta. Por favor intentá nuevamente con otra tarjeta.</value>
+  </data>
+  <data name="Card_StolenLostCard" xml:space="preserve">
+    <value>Error en el procesamiento de la tarjeta.</value>
+  </data>
+  <data name="Resgistration_CallCenter_Desc" xml:space="preserve">
+    <value>Ingresá un número de hasta 6 dígitos que te será pedido en caso de tener que comunicarte con el Call Center.</value>
+  </data>
+  <data name="Resgistration_CallCenter_Question" xml:space="preserve">
+    <value>¿Para qué necesito una clave de Call Center?</value>
+  </data>
+  <data name="CallCenter_Phone_Footer" xml:space="preserve">
+    <value>También podés pagar tus facturas llamando al 1840 de lunes a viernes de 10:00 a 18:00hs</value>
+  </data>
+  <data name="Eliminate" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Service_Card_Eliminate" xml:space="preserve">
+    <value>La tarjeta fue eliminada</value>
+  </data>
+  <data name="BillGeneratedDate" xml:space="preserve">
+    <value>Fecha generación</value>
+  </data>
+  <data name="MigrateServices" xml:space="preserve">
+    <value>Migrar servicios asociados a otra tarjeta</value>
+  </data>
+  <data name="Service_Card_Migration" xml:space="preserve">
+    <value>Se migraron los servicios asociados a la tarjeta seleccionada</value>
+  </data>
+  <data name="Service_Card_Migration_Error_No_Active_Cards" xml:space="preserve">
+    <value>No se puede migrar los servicios asociados porque no tenés otras tarjetas activas.</value>
+  </data>
+  <data name="Migrate_Services" xml:space="preserve">
+    <value>Migrar servicios asociados a otra tarjeta</value>
+  </data>
+  <data name="Migrate_Services_Message" xml:space="preserve">
+    <value>Seleccioná la tarjeta a la cual querés migrar los servicios</value>
+  </data>
+  <data name="Migrate_Services_No_Active_Cards" xml:space="preserve">
+    <value>No tenés otras tarjetas activas</value>
+  </data>
+  <data name="Filters_Bin" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="AutomaticPayment_NotAllowed" xml:space="preserve">
+    <value>Este servicio no permite pagos programados</value>
+  </data>
+  <data name="Resgistration_Password_Desc" xml:space="preserve">
+    <value>La contraseña debe ser alfanumérica y contener al menos 8 caracteres, uno en mayúscula y uno en minúscula.</value>
+  </data>
+  <data name="Resgistration_Password_Requirements" xml:space="preserve">
+    <value>Requerimientos</value>
+  </data>
+  <data name="HighwayAdmissionTitle" xml:space="preserve">
+    <value>Registro para uso de servicio {0}</value>
+  </data>
+  <data name="Service_Delete" xml:space="preserve">
+    <value>El servicio fue eliminado.</value>
+  </data>
+  <data name="Eliminate_Service" xml:space="preserve">
+    <value>Eliminar Servicio</value>
+  </data>
+  <data name="Service_Eliminate_Confirmation" xml:space="preserve">
+    <value>Eliminar servicio asociado</value>
+  </data>
+  <data name="Service_Eliminate_Confirmation_Question" xml:space="preserve">
+    <value>¿Estás seguro que querés eliminar el servicio</value>
+  </data>
+  <data name="Card_Selected" xml:space="preserve">
+    <value>Tarjeta asociada al servicio.</value>
+  </data>
+  <data name="Card_List" xml:space="preserve">
+    <value>Mis Tarjetas</value>
+  </data>
+  <data name="NewAssociation" xml:space="preserve">
+    <value>Nuevo registro</value>
+  </data>
+  <data name="Payment_General_Error" xml:space="preserve">
+    <value>Ha ocurrido un error en el pago, por favor intentá nuevamente o comunicate con el Call Center</value>
+  </data>
+  <data name="Payment_Step2_1" xml:space="preserve">
+    <value>Paso 2: Selección de Monto a pagar</value>
+  </data>
+  <data name="Payment_Step2_Info_1" xml:space="preserve">
+    <value>Seleccioná el monto que querés pagar.</value>
+  </data>
+  <data name="Pay_Multiple_Bills" xml:space="preserve">
+    <value>Pagar múltiples facturas</value>
+  </data>
+  <data name="HighwayAdmission_CardData" xml:space="preserve">
+    <value>Completá los datos de la tarjeta VISA que querés asociar a {0}</value>
+  </data>
+  <data name="HighwayAdmission_CardQuestion" xml:space="preserve">
+    <value>¿Querés pagar el servicio con alguna de tus tarjetas asociadas?</value>
+  </data>
+  <data name="HighwayAdmission_PaymentData" xml:space="preserve">
+    <value>Datos de pago</value>
+  </data>
+  <data name="HighwayAdmission_PostRegistration" xml:space="preserve">
+    <value>Pasos a seguir:</value>
+  </data>
+  <data name="HighwayAdmission_ServiceData" xml:space="preserve">
+    <value>Datos del servicio</value>
+  </data>
+  <data name="HighwayAdmission_TermsAndConditions" xml:space="preserve">
+    <value>Términos y condiciones</value>
+  </data>
+  <data name="HighwayAdmission_UserData" xml:space="preserve">
+    <value>Datos del usuario</value>
+  </data>
+  <data name="HighwayAdmission_UserQuestion" xml:space="preserve">
+    <value>¿Sos usuario registrado en VisaNetPagos?</value>
+  </data>
+  <data name="HighwayAdmission_TermsService" xml:space="preserve">
+    <value>Términos y Condiciones del servicio</value>
+  </data>
+  <data name="HighwayAdmission_TermsVisa" xml:space="preserve">
+    <value>Términos y Condiciones de VisaNetPagos</value>
+  </data>
+  <data name="TermsAndConditions" xml:space="preserve">
+    <value>Términos y Condiciones</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="MyServices" xml:space="preserve">
+    <value>Mis Servicios</value>
+  </data>
+  <data name="Service_Add_Error" xml:space="preserve">
+    <value>No se pudo asociar el servicio. Intentá nuevamente o comunicate con el Call Center.</value>
+  </data>
+  <data name="Bin_Not_Valid_For_Service" xml:space="preserve">
+    <value>Este servicio no se puede pagar con este tipo de tarjeta.</value>
+  </data>
+  <data name="Action_Warning" xml:space="preserve">
+    <value>¡Atención!</value>
+  </data>
+  <data name="Service_Card_Migration_Error_Card_Not_Accepted" xml:space="preserve">
+    <value>No se puede migrar los servicios asociados porque alguno no acepta el tipo de tarjeta seleccionada.</value>
+  </data>
+  <data name="Service_Card_Migration_No_Services_To_Migrate" xml:space="preserve">
+    <value>Esta tarjeta no tiene servicios para migrar.</value>
+  </data>
+  <data name="Loading_Reports" xml:space="preserve">
+    <value>Aguardá un instante, estamos obteniendo tu historial de pagos.</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Reportes</value>
+  </data>
+  <data name="Registration_Apps_Conditions_Accept" xml:space="preserve">
+    <value>Al registrarte aceptás los</value>
+  </data>
+  <data name="AppAdmission_CardQuestion" xml:space="preserve">
+    <value>Seleccioná o ingresá una nueva tarjeta VISA para asociar a</value>
+  </data>
+  <data name="ReportFilterGrouper_Category" xml:space="preserve">
+    <value>Rubro</value>
+  </data>
+  <data name="ReportFilterGrouper_Service" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="Filters_Calculate" xml:space="preserve">
+    <value>Calcular</value>
+  </data>
+  <data name="Billdetail" xml:space="preserve">
+    <value>Detalle de factura</value>
+  </data>
+  <data name="BillDetailBreakdown" xml:space="preserve">
+    <value>Desglose</value>
+  </data>
+  <data name="Filters_Service_Name" xml:space="preserve">
+    <value>Ingresá el nombre del servicio</value>
+  </data>
+  <data name="Automatic_Payment_Header_Message" xml:space="preserve">
+    <value>La primera vez que programes un pago puede tener varias facturas pendiente de pago, por lo que el sistema pagará todas las facturas pendientes a la fecha.</value>
+  </data>
+  <data name="Card_Deactivate_Modal_Question" xml:space="preserve">
+    <value>¿Estás seguro que querés desactivar esta tarjeta?</value>
+  </data>
+  <data name="Card_Deactivate_Modal_Title" xml:space="preserve">
+    <value>Desactivar tarjeta</value>
+  </data>
+  <data name="Card_Delete_Modal_Question" xml:space="preserve">
+    <value>¿Estás seguro que querés eliminar esta tarjeta?</value>
+  </data>
+  <data name="Card_Delete_Modal_Title" xml:space="preserve">
+    <value>Eliminar tarjeta</value>
+  </data>
+  <data name="Bills_Get_General_Error" xml:space="preserve">
+    <value>Ha ocurrido un error con la consulta de facturas pendientes, por favor intentá nuevamente o comunicate con el Call Center</value>
+  </data>
+  <data name="Add_card_To_Service" xml:space="preserve">
+    <value>Ha ocurrido un error al asociar la tarjeta con el servicio, por favor intentá nuevamente o comunicate con el Call Center.</value>
+  </data>
+  <data name="Service_Intro" xml:space="preserve">
+    <value>Texto de introducción al servicio</value>
+  </data>
+  <data name="Apps_AssociationError" xml:space="preserve">
+    <value>Se produjo un error al intentar asociar el servicio. Intente nuevamente y si el error persiste comuníquese con el Call Center</value>
+  </data>
+  <data name="Apps_AssociationOk" xml:space="preserve">
+    <value>Felicitaciones!! Se ha creado la asociación.</value>
+  </data>
+  <data name="Apps_NotRegistered" xml:space="preserve">
+    <value>Si no tenés usuario hacé click acá.</value>
+  </data>
+  <data name="Apps_Registered" xml:space="preserve">
+    <value>Si ya tenés usuario y querés usarlo hace click acá.</value>
+  </data>
+  <data name="Card_GeneralError" xml:space="preserve">
+    <value>Error en el procesamiento de la tarjeta.</value>
+  </data>
+  <data name="InvalidData" xml:space="preserve">
+    <value>Alguno de los datos no es válido, por favor verifíquelos.</value>
+  </data>
+  <data name="Resgistration_Password_DoesnotMatch" xml:space="preserve">
+    <value>Las contraseñas no coinciden</value>
+  </data>
+  <data name="Card_AlreadyIn" xml:space="preserve">
+    <value>(*) Tarjeta ya asociada al servicio</value>
+  </data>
+  <data name="Payment_Failure_TryAgain_Link" xml:space="preserve">
+    <value>Ha ocurrido un error en el procesamiento de tu operación. Por favor intentá nuevamente o comunícate con nuestro Call Center a través de nuestro </value>
+  </data>
+  <data name="Quota" xml:space="preserve">
+    <value>Cuotas</value>
+  </data>
+  <data name="MigrationTestFail" xml:space="preserve">
+    <value>Hay servicios que no pueden ser migrados a la tarjeta seleccionada. ¿Desa continuar con los demás servicios?</value>
+  </data>
+  <data name="Migrate" xml:space="preserve">
+    <value>Migrar</value>
+  </data>
+  <data name="Migration_Test_Fail_Message" xml:space="preserve">
+    <value>¿Desea migrar los demás servicios a la tarjeta seleccionada?</value>
+  </data>
+  <data name="Migration_Test_Fail_Title" xml:space="preserve">
+    <value>No es posible migrar los siguientes servicios:</value>
+  </data>
+  <data name="AssociatedServices" xml:space="preserve">
+    <value>Servicios asociados</value>
+  </data>
+  <data name="ThreIsNoAssociatedService" xml:space="preserve">
+    <value>No hay ningún servicio asociado que listar.</value>
+  </data>
+  <data name="Migration_Test_Fail_Add_Card" xml:space="preserve">
+    <value>Por favor agregá una nueva tarjeta para poder migrar los servicios a esta</value>
+  </data>
+  <data name="Bill_NotPayable_DateLimit" xml:space="preserve">
+    <value>Se superó la fecha límite de pago ({0})</value>
+  </data>
+  <data name="Bill_NotPayable_ExistingDebt" xml:space="preserve">
+    <value>No se puede pagar porque existen deudas impagas anteriores</value>
+  </data>
+  <data name="Bill_NotPayable_General" xml:space="preserve">
+    <value>No se puede pagar</value>
+  </data>
+  <data name="Bill_Payable" xml:space="preserve">
+    <value>Pagable</value>
+  </data>
+  <data name="Card_Issuer" xml:space="preserve">
+    <value>Se produjo un error de comunicación con el emisor de la tarjeta.</value>
+  </data>
+  <data name="Home_Selection_Commerces" xml:space="preserve">
+    <value>Seleccioná de la lista o ingresá el servicio al que querés adherirte</value>
+  </data>
+  <data name="Debit_New_Desc" xml:space="preserve">
+    <value>En esta página podrás solicitar la adhesión al débito en algunos servicios.</value>
+  </data>
+  <data name="Debit_New_Title" xml:space="preserve">
+    <value>Adhesión de débito</value>
+  </data>
+  <data name="Debit_Card" xml:space="preserve">
+    <value>Seleccioná una tarjeta o crea una nueva</value>
+  </data>
+  <data name="Debit_Service" xml:space="preserve">
+    <value>Seleccioná el servicio e ingresá los datos del mismo</value>
+  </data>
+  <data name="Debit_Requests" xml:space="preserve">
+    <value>Mis Débitos</value>
+  </data>
+  <data name="DebitRequests_Desc" xml:space="preserve">
+    <value>En esta página encontrarás las solicitudes a débitos generadas.</value>
+  </data>
+  <data name="Filters_DebitRequestState" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Filters_DebitRequestType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Header_DebitRequests" xml:space="preserve">
+    <value>Mis Solicitudes</value>
+  </data>
+  <data name="Filters_Card" xml:space="preserve">
+    <value>Tarjeta</value>
+  </data>
+  <data name="Filters_Card_Placeholder" xml:space="preserve">
+    <value>Seleccione una tarjeta</value>
+  </data>
+  <data name="Filters_DebitRequestType_Placeholder" xml:space="preserve">
+    <value>Seleccioná un tipo de solicitud</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Selecciona un estado de solicitud</value>
+  </data>
+  <data name="Filters_DebitRequestState_Placeholder" xml:space="preserve">
+    <value>Seleccioná un estado de solicitud</value>
+  </data>
+  <data name="Commerce" xml:space="preserve">
+    <value>Comercio</value>
+  </data>
+  <data name="CreationDate" xml:space="preserve">
+    <value>Fecha de creación</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Producto</value>
+  </data>
+  <data name="Debit_User" xml:space="preserve">
+    <value>Creá tu usuario</value>
+  </data>
+  <data name="CardType_Disabled_Debit" xml:space="preserve">
+    <value>Este tipo de tarjeta no esta habilitada para la adhesión en debito.</value>
+  </data>
+  <data name="DebitRequests_Request" xml:space="preserve">
+    <value>Solicitar</value>
+  </data>
+  <data name="Debit_Confirmation" xml:space="preserve">
+    <value>Confirmación de alta</value>
+  </data>
+  <data name="Step_User" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="RequestDebit" xml:space="preserve">
+    <value>Solicitar débito</value>
+  </data>
+  <data name="DebitRequests_Empty" xml:space="preserve">
+    <value>No hay solicitudes</value>
+  </data>
+  <data name="DebitRequests_Historical" xml:space="preserve">
+    <value>Histórico de solicitudes de débito</value>
+  </data>
+  <data name="Debits_empty" xml:space="preserve">
+    <value>Aún no solicitaste ningún débito</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmación</value>
+  </data>
+  <data name="DebitRequest_Confirm" xml:space="preserve">
+    <value>Confirmar solicitud</value>
+  </data>
+  <data name="Service_Continue" xml:space="preserve">
+    <value>Continuar adhesión</value>
+  </data>
+  <data name="Registration_Login" xml:space="preserve">
+    <value>Datos para inicio sesión</value>
+  </data>
+  <data name="ViewMore" xml:space="preserve">
+    <value>Ver más</value>
+  </data>
+  <data name="DebitRequest_Cancel_Question" xml:space="preserve">
+    <value>¿Estás seguro que querés terminar el proceso de adhesión al débito?</value>
+  </data>
+  <data name="DebitRequest_Cancel_Confirmation" xml:space="preserve">
+    <value>Cancelar adhesión a débito</value>
+  </data>
+  <data name="DebitRequest_Cancel_Confirmation_Question" xml:space="preserve">
+    <value>¿Estás seguro que querés cancelar la adhesión?</value>
+  </data>
+  <data name="ReferenceNumber" xml:space="preserve">
+    <value>Número de referencia</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="DebitRequest_Cancellation" xml:space="preserve">
+    <value>Se inició la cancelación de la solicitud</value>
+  </data>
+  <data name="DebitRequest_Delete_Confirmation" xml:space="preserve">
+    <value>Eliminar adhesión a débito</value>
+  </data>
+  <data name="DebitRequest_Delete_Confirmation_Question" xml:space="preserve">
+    <value>¿Estás seguro que querés eliminar la adhesión?</value>
+  </data>
+  <data name="DebitRequest_Removed" xml:space="preserve">
+    <value>El débito fue eliminado</value>
+  </data>
+  <data name="DebitRequest_RequestDate" xml:space="preserve">
+    <value>Fecha de solicitud</value>
+  </data>
+  <data name="DebitRequest_Confirmation" xml:space="preserve">
+    <value>Confirmación de solicitud</value>
+  </data>
+  <data name="Loading_DebitHistory" xml:space="preserve">
+    <value>Aguardá un instante, estamos obteniendo tu historial de débitos.</value>
+  </data>
+  <data name="AssociatedDebits" xml:space="preserve">
+    <value>Debitos Asociados</value>
+  </data>
+  <data name="MigrateDebits" xml:space="preserve">
+    <value>Migrar Debitos Asociados a otra tarjeta</value>
+  </data>
+  <data name="ThreIsNoAssociatedDebit" xml:space="preserve">
+    <value>No hay ningún débito asociado que listar.</value>
+  </data>
+  <data name="Migrate_Debits" xml:space="preserve">
+    <value>Migrar debitos asociados a otra tarjeta</value>
+  </data>
+  <data name="Migrate_Debits_Message" xml:space="preserve">
+    <value>Seleccioná la tarjeta a la cual querés migrar los débitos</value>
+  </data>
+  <data name="Abandon_Request" xml:space="preserve">
+    <value>Abandonar solicitud</value>
+  </data>
+  <data name="ServicesAndDebitsAssociated" xml:space="preserve">
+    <value>Servicios y débitos asociados</value>
+  </data>
+  <data name="Payment_Card_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="EditCardDescription" xml:space="preserve">
+    <value>Editar Descripción</value>
+  </data>
+  <data name="Service_Step3_Card_Description_Placeholder" xml:space="preserve">
+    <value>Ingresá una descripción para identificar la tarjeta (opcional)</value>
+  </data>
+  <data name="Debit_Card_Migration_No_Debits_To_Migrate" xml:space="preserve">
+    <value>Para poder migrar los débitos automáticos a otra tarjeta tendrás que solicitar la baja de la adhesión de la tarjeta actual. Una vez aceptada la baja podrás solicitar el alta para la nueva tarjeta.</value>
+  </data>
+  <data name="Payment_Loading_Await" xml:space="preserve">
+    <value>Aguarde unos instantes. No cierre el navegador.</value>
+  </data>
+</root>

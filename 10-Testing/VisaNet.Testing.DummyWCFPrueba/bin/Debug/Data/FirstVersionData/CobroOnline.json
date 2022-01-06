@@ -1,0 +1,21 @@
+[
+  {
+    "IdApp": "pedidosyalocal",
+    "IdOperacion": "-1",
+    "FacturaOnlineModel": {
+      "CodComercio": "7899877",
+      "CodSucursal": "788",
+      "NroFactura": "-1",
+      "IdUsuario": "C6F15A95-AB6D-4020-9358-511EDE558AE0",
+      "IdTarjeta": "7C0C3140-6AA8-460E-9799-483A5FABB2EB",
+      "Descripcion": "Factura de prueba DEMO",
+      "FchFactura": "10/10/2017",
+      "Moneda": "N",
+      "MontoTotal": 560,
+      "Indi": 0,
+      "MontoGravado": 560,
+      "ConsFinal": "false",
+      "Cuotas": 1
+    }
+  }
+]

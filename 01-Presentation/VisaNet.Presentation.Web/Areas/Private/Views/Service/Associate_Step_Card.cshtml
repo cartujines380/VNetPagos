@@ -1,0 +1,400 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using System.Configuration
+@using VisaNet.Domain.EntitiesDtos
+
+@{
+    Layout = "~/Views/Shared/_LayoutWithoutAnalytics.cshtml"; //no Google Analytics
+}
+
+@model VisaNet.Presentation.Web.Areas.Private.Models.ServiceAssociateCardModel
+
+<div class="container p25t">
+    <div class="wizardBox">
+        <!-- area de titulo y breadcrumb-->
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="mt5">@PresentationWebStrings.Service_Step3_Title</h3>
+                <h4 class="pageDescription">@PresentationWebStrings.Service_Step3_Desc</h4>
+            </div>
+            <div class="col-md-4">
+                @Html.Partial("_Steps")
+            </div>
+            <div class="clearfix"></div>
+            <div class="horizontalLineGrey"></div>
+
+        </div>
+        <!-- area de datos seleccionados -->
+        <div class="highlightArea">
+            <h3><i class="icon-angle-right"></i> @PresentationWebStrings.Data_Still_Now</h3>
+            <label><i class="icon-angle-right lightBlue"></i> @PresentationWebStrings.Service <span>@Model.ServiceName</span> </label>
+            @if (!String.IsNullOrEmpty(Model.ReferenceName) && !String.IsNullOrEmpty(Model.ReferenceValue))
+            {
+                <label><i class="icon-angle-right lightBlue"></i> @Model.ReferenceName: <span>@Model.ReferenceValue</span></label>
+            }
+            @if (!String.IsNullOrEmpty(Model.ReferenceName2) && !String.IsNullOrEmpty(Model.ReferenceValue2))
+            {
+                <label><i class="icon-angle-right lightBlue"></i> @Model.ReferenceName2: <span>@Model.ReferenceValue2</span></label>
+            }
+            @if (!String.IsNullOrEmpty(Model.ReferenceName3) && !String.IsNullOrEmpty(Model.ReferenceValue3))
+            {
+                <label><i class="icon-angle-right lightBlue"></i> @Model.ReferenceName3: <span>@Model.ReferenceValue3</span></label>
+            }
+            @if (!String.IsNullOrEmpty(Model.ReferenceName4) && !String.IsNullOrEmpty(Model.ReferenceValue4))
+            {
+                <label><i class="icon-angle-right lightBlue"></i> @Model.ReferenceName4: <span>@Model.ReferenceValue4</span></label>
+            }
+            @if (!String.IsNullOrEmpty(Model.ReferenceName5) && !String.IsNullOrEmpty(Model.ReferenceValue5))
+            {
+                <label><i class="icon-angle-right lightBlue"></i> @Model.ReferenceName5: <span>@Model.ReferenceValue5</span></label>
+            }
+            @if (!String.IsNullOrEmpty(Model.ReferenceName6) && !String.IsNullOrEmpty(Model.ReferenceValue6))
+            {
+                <label><i class="icon-angle-right lightBlue"></i> @Model.ReferenceName6: <span>@Model.ReferenceValue6</span></label>
+            }
+
+        </div>
+        <div class="formMargin">
+            <div class="row">
+                <div class="col-md-12 hide generalError" id="cardNotSelected">
+                    <i class="icon-warning-sign"></i>
+                    @PresentationWebStrings.Form_Error_SelectCard
+                </div>
+            </div>
+        </div>
+        @using (Html.BeginForm("CreateServiceWithToken", "Service", FormMethod.Post, new Dictionary<string, object> { { "id", "payment_with_token_confirmation" } }))
+        {
+            @Html.AntiForgeryToken()
+        <!-- area de seleccion de tarjetas ingresadas con anterioridad -->
+            if (ViewBag.Cards != null)
+            {
+                <div id="cards" class="highlightAreaCards">
+                    <div class="row selectCreditCard">
+                        @{ int i = 0; }
+                         
+                        <h3><i class="icon-credit-card"></i> @PresentationWebStrings.Payment_CardAssociated_Message</h3>
+                        @foreach (var card in (ICollection<CardDto>)ViewBag.Cards)
+                        {
+                            <div class="col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-offset-0 col-xs-12">
+                                <a href="#">
+                                    <div class="card @card.State.ToString()" data-cardid="@card.Id" data-type=existingCard>
+                                        <p class="mask"><span>@card.MaskedNumber.Substring(0, 4)</span> <span>@card.MaskedNumber.Substring(4, 4)</span> <span>@card.MaskedNumber.Substring(8, 4)</span> <span>@card.MaskedNumber.Substring(12, 4)</span></p>
+                                        @if (!string.IsNullOrEmpty(card.Description))
+                                        {
+                                            var desc = card.Description.Length > 36 ? card.Description.Substring(0, 32) + " ..." : card.Description;
+                                            <p class="vencimiento">@desc</p>
+                                        }
+                                        <p class="vencimiento">Vencimiento: @card.DueDate.ToString("MM/yyyy")</p>
+                                        <img src="@Url.Content("~/Content/images/check.png")" class="check _hide">
+                                        <span id="CanNotBeAssociated">No se puede asociar</span>
+                                        <span id="Expired">Vencida</span>
+                                    </div>
+                                </a>
+                            </div>
+                            i++;
+                        }
+                        <input type="hidden" name="card" />
+                        <div class="col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-offset-0 col-xs-12">
+                            <a href="#" id="newCard">
+                                <div class="card agregar">
+                                    <p class="add">
+                                        Agregar otra tarjeta
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div><!-- area de seleccion de tarjetas ingresadas con anterioridad -->
+            }
+        }
+        <!-- area de titulo y breadcrumb-->
+        <form id="payment_confirmation" method="POST" action="@ConfigurationManager.AppSettings["CybersourceFormUrl"]silent/token/create">
+
+            <div id="cybersourceKeys"></div>
+
+            <div id="newCardForm" class="@(ViewBag.Cards != null ? ((ICollection<CardDto>)ViewBag.Cards).Count > 0 ? "hide" : "" : "")">
+
+                <!-- campos obligatorios -->
+                <h5>
+                    <i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    @PresentationWebStrings.Required_Second_Line
+                </h5>
+                <!-- campos obligatorios -->
+
+                <div class="formMargin">
+                    <div class="row">
+                        <div class="col-md-12 hide generalError" id="generalError">
+                            <i class="icon-warning-sign"></i>
+                            @PresentationWebStrings.From_General_Error
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Name)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                            @Html.TextBoxFor(m => m.Name, new { @id = "Name", @class = "w100", placeholder = PresentationWebStrings.Payment_Card_Name, autocomplete = "off" })
+                            @Html.ValidationMessageFor(m => m.Name)
+                            <span id="NameRequired" class="hide help-inline field-validation-error">@PresentationCoreMessages.RequiredField</span>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Number)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                            <input type="text" name="card_number" id="card_number" class="w100 numeric" maxlength="16" placeholder="@PresentationWebStrings.Service_Step3_Card_Number_Placeholder" autocomplete="off" />
+                            <input type="hidden" name="card_type" id="card_type" value="001" />
+                            @Html.ValidationMessageFor(m => m.Number)
+                            <span id="NumberInvalid" class="hide help-inline field-validation-error">@PresentationWebStrings.Card_Number_Invalid</span>
+                            <h5 class="helpUser"><i class="icon-info-sign"></i><a class="Card_Number_Where"> @PresentationWebStrings.Service_Step3_Card_Number_Where</a></h5>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.SecurityCode)
+                            <input type="password" name="card_cvn" id="card_cvn" class="w100 numeric" maxlength="4" placeholder="@PresentationWebStrings.Service_Step3_Card_Code_Placeholder" autocomplete="off" />
+                            @Html.ValidationMessageFor(m => m.SecurityCode)
+                            <span id="SecurityCodeInvalid" class="hide help-inline field-validation-error">@PresentationWebStrings.Card_CVNCheckInvalid</span>
+                            <h5 class="helpUser"><i class="icon-info-sign"></i><a class="Card_Code_Where" data-image-url="@Url.Content("~/Content/images/CVN.png")"> @PresentationWebStrings.Service_Step3_Card_Code_Where</a></h5>
+                        </div>
+                        <div class='col-md-6'>
+                            @Html.LabelFor(m => m.DueDate)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                            <div class="creditCardsFix">
+                                <div class="col-xs-6 p5r pl0"><div class="selectMask w100">@Html.DropDownList("ddlMonth", Enumerable.Range(1, 12).Select(i => new SelectListItem { Text = i.ToString("00"), Value = i.ToString("00") }), new { @class = "w100" })</div></div>
+                                <div class="col-xs-6 p5l pr0"><div class="selectMask w100">@Html.DropDownList("ddlYear", new SelectList(Enumerable.Range(DateTime.Now.Year, 25)), new { @class = "w100" })</div></div>
+                                @Html.Hidden("card_expiry_date")
+                                @Html.ValidationMessageFor(m => m.DueDate)
+                            </div>
+                            <h5 class="helpUser" style="margin-top: 49px"><i class="icon-info-sign"></i><a class="Card_DueDate_Info"> @PresentationWebStrings.Payment_Card_DueDate_Info</a></h5>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row wizardButtons">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <div class="col-xs-6 p5r pl0">
+                        <a href="@Url.Action("StepNotification")" class="btn btn-default btn-anterior mt10 w100"><i class="icon-chevron-sign-left"></i> @PresentationWebStrings.Before</a>
+                    </div>
+                    <div class="col-xs-6 p5l pr0">
+                        <a id="btnNext" href="#" class="btn btn-default btn-siguiente mt10 w100"> @PresentationWebStrings.Add <i class="icon-plus"></i></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- fin del formMargin-->
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <button id="btnCancelPayment" class="btn btn-default btn-cancelar mt10 w100">@PresentationWebStrings.Service_Cancel<i class="icon-remove"></i></button>
+        </div>
+    </div>
+
+    @Html.Partial("_Confirm")
+    @Html.Partial("_Cancel")
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var fpProfiler = cybs_dfprofiler("@Model.MerchantId", "@ConfigurationManager.AppSettings["CsEnvironment"]", "@ConfigurationManager.AppSettings["CsFingerprintRedirectUrl"]"); 
+        $("#servicesLink").addClass("vnpTitleSelected");
+        $("#stepCard").addClass("active");
+        
+        $("#card_number").blur(function (e) {
+            e.preventDefault();
+
+            var cardNumber = $("#card_number").val();
+            if (!validateCardNumber(cardNumber)) {
+                $("#NumberInvalid").removeClass("hide");
+            } else {
+                $("#NumberInvalid").addClass("hide");
+            }
+        });
+
+        $("[data-type=existingCard]").click(function () {
+            $("#newCardForm").addClass("hide");
+            $("#cardNotSelected").addClass("hide");
+        });
+
+        $("#newCard").click(function () {
+            $("#newCardForm").removeClass("hide");
+            $("#cardNotSelected").addClass("hide");
+        });
+
+        $("#Name").blur(function (e) {
+            e.preventDefault();
+
+            var name = $("#Name").val();
+            if (name == "") {
+                $("#NameRequired").removeClass("hide");
+                $("#Name").addClass("input-validation-error");
+            } else {
+                $("#NameRequired").addClass("hide");
+            }
+        });
+
+        $("#card_cvn").blur(function (e) {
+            e.preventDefault();
+            if (validateCardCVV($("#card_cvn").val())) {
+                $("#SecurityCodeInvalid").addClass("hide");
+            } else {
+                $("#SecurityCodeInvalid").removeClass("hide");
+            }
+        });
+
+        $("#btnNext").click(function (e) {
+            e.preventDefault();
+            if (!$('#newCardForm').hasClass('hide')) {
+
+                if ($("#Name").val() != "" && $("#card_number").val() != "" && $("#NumberInvalid").hasClass("hide") && validateCardCVV($("#card_cvn").val())) {
+                    showLoaderFullScreen("@PresentationWebStrings.Loader_Message");
+
+                    //Envio el BIN de la tarjeta al servidor para validar su tipo antes de enviar a Cybersource
+                    var cardNumber = $("#card_number").val();
+                    var maskedNumber = cardNumber.substring(0, 6);
+                    $.ajax({
+                        dataType: 'json',
+                        type: "POST",
+                        url: '@Url.Action("ValidateCardType", "Service", new {Area = "Private"})',
+                        data: { newAssociation: true, maskedNumber: maskedNumber, nameTh: $("#Name").val(), fpProfiler : fpProfiler},
+                        success: function (data) {
+                            if (data.ResponseType == RESPONSE.SUCCESS) {
+                                $('#cybersourceKeys').html(data.Content.keys);
+                                $("#lbConfirmPayment").modal();
+                            }
+                            if (data.ResponseType == RESPONSE.ERROR) {
+                                ShowNotification(data.Title, data.Message, 'error');
+                            }
+                            hideLoaderFullScreen();
+                        }
+                    }).fail(function (error) {
+                        alert(error);
+                        hideLoaderFullScreen();
+                    });
+                } else {
+                    if ($("#Name").val() == "") {
+                        $("#Name").addClass("input-validation-error");
+                        $("#NameRequired").removeClass("hide");
+                    }
+                    if ($("#card_number").val() == "") {
+                        $("#card_number").addClass("input-validation-error");
+                        $("#NumberInvalid").removeClass("hide");
+                    }
+                    if ($("#card_cvn").val().length < 3 || $("#card_cvn").val().length > 4) {
+                        $("#card_cvn").addClass("input-validation-error");
+                        $("#SecurityCodeInvalid").removeClass("hide");
+                    }
+                    if ($("#generalError").hasClass("hide")) {
+                        changeStateGeneralErrorForm();
+                    }
+                }
+
+            } else {
+                var value = $('a div.card.selected', '#payment_with_token_confirmation').attr('data-cardId');
+                //var value = $('input[name=card]:checked', '#payment_with_token_confirmation').val();
+                if (value != undefined) {
+                    $("input[name='card']", '#payment_with_token_confirmation').val(value);
+                    $("#lbConfirmPayment").modal();
+                } else {
+                    CardNotSelected();
+                }
+            }
+
+        });
+
+        $("#btnCancelPayment").click(function () {
+            $("#lbCancelPayment").modal({
+                onShow: function () {
+                    $("#btnCancel").click(function () {
+                        window.location.replace('@Url.Action("Index", "Home")');
+                    });
+                }
+            });
+        });
+
+        $("#btnConfirm").click(function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                dataType: 'html',
+                type: "GET",
+                url: '@Url.Action("CheckPaymentModel", "Service", new { Area = "Private" })',
+                success: function (data) {
+                    if (data == RESPONSE.SUCCESS) {
+                        var month = $("#ddlMonth").find(":selected").val();
+                        var year = $("#ddlYear").find(":selected").val();
+                        $("#card_expiry_date").attr("value", month + "-" + year);
+                        showLoaderFullScreen("@PresentationWebStrings.Loader_Processing_Card");
+                        if (!$('#newCardForm').hasClass('hide')) {
+                            $.get('@Url.Action("LogCSInvocation", "Service", new {area="Private"})').success(function () {
+                                $('#payment_confirmation').submit();
+                            }).error(function (error) {
+                                hideLoaderFullScreen();
+                                ShowNotification(error.title, error.Message, 'error');
+                            });
+
+                        } else {
+                            $('#payment_with_token_confirmation').submit();
+                        }
+                    }
+                    if (data == RESPONSE.ERROR) {
+                        window.location.assign('@Url.Action("Timeout", "Home", new{ Area=""})');
+                    }
+                }
+            });
+        });
+
+        $('.Card_Number_Where').popover({
+            'trigger': 'hover',
+            'html': false,
+            'content': function () {
+                return "@PresentationWebStrings.Tootltip_Payment_Card_Number_Where";
+            }
+        });
+
+        $('.Card_DueDate_Info').popover({
+            'trigger': 'hover',
+            'html': false,
+            'content': function () {
+                return "@PresentationWebStrings.Tootltip_Payment_Card_DueDate_Info";
+            }
+        });
+
+        $('.Card_Code_Where').popover({
+            'trigger': 'hover',
+            'html': true,
+            'content': function () {
+                return "<img src='" + $(this).data('imageUrl') + "'>";
+            }
+        });
+
+        $("a div.card").click(function (e) {
+            e.preventDefault();
+            if ($(this).hasClass("Active") || $(this).hasClass("agregar")) {
+                updateSelectedCard($(this));
+            }
+        });
+
+        function updateSelectedCard(element) {
+            $("a div.card").removeClass("selected");
+            element.addClass("selected");
+        }
+    });
+
+    function validateCardNumber(number) {
+        if (number.length != 16) { return false; }
+        if (number.charAt(0) != 4) { return false; }
+
+        var length = number.length;
+        var value = null;
+        var value_cad = null;
+        var sum = 0;
+        for (var i = 0; i < length; i += 2) {
+            value = parseInt(number.charAt(i)) * 2;
+            if (value > 9) {
+                value_cad = value.toString();
+                value = parseInt(value_cad.charAt(0)) +
+                parseInt(value_cad.charAt(1));
+            }
+            sum += value;
+        }
+        for (var i = 1; i < length; i += 2) {
+            sum += parseInt(number.charAt(i));
+        }
+        if ((sum % 10) == 0) { return true; }
+        return false;
+    }
+</script>

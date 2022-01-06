@@ -1,0 +1,48 @@
+﻿@using System.Configuration
+@using System.Globalization
+@model VisaNet.Presentation.VisaNetOn.Models.PagePaymentModel
+
+<div class="hidden-xs col-sm-7 col-md-7">
+    <div class="registro right">
+        <span class="title-form">Detalle de la compra</span>
+        <div class="wrapper-vendedor">
+            <div class="info-vendedor">
+                @if (!string.IsNullOrEmpty(Model.ServiceInfo.ServiceContainerName))
+                {
+                    <span class="vendedor">@Model.ServiceInfo.ServiceContainerName</span>
+                    <span class="empresa">@Model.ServiceInfo.ServiceName</span>
+                }
+                else
+                {
+                    <span class="vendedor">@Model.ServiceInfo.ServiceName</span>
+                }
+                <span class="factura">Factura Nº @Model.BillData.ExternalId</span>
+            </div>
+            <div class="crop">
+                @if (!string.IsNullOrEmpty(Model.ServiceInfo.ImageName))
+                {
+                    <img src="@Model.ServiceInfo.ImageName" />
+                }
+                else
+                {
+                    <img src="@ConfigurationManager.AppSettings["DefaultServiceImage"]" />
+                }
+            </div>
+        </div>
+        @if (Model.BillData.BillsDetails != null && Model.BillData.BillsDetails.Any())
+        {
+            <p class="compra-detail">
+                @foreach (var billsDetail in Model.BillData.BillsDetails.OrderBy(x => x.Order))
+                {
+                    <span class="left-title">@Html.Raw(billsDetail.Concept)</span>
+                    <span class="right-value">@Model.BillData.CurrencySymbol @billsDetail.Amount.ToString("#,###.00", CultureInfo.CreateSpecificCulture("es-UY"))</span>
+                }
+            </p>
+        }
+        
+        <div class="wrapper-precio">
+            <span class="precio" style="text-align: center">Total: </span> 
+            <span class="precio">@Model.BillData.CurrencySymbol @Model.BillData.Amount.ToString("#,###.00", CultureInfo.CreateSpecificCulture("es-UY"))</span>
+        </div>
+    </div>
+</div>

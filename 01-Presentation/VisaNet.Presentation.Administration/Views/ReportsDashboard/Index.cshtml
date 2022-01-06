@@ -1,0 +1,85 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Domain.EntitiesDtos.TableFilters.ReportsDashboardFilterDto
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Reports_Dashboard_Title</h2>
+
+@using (Html.BeginForm("GetDashboard", "ReportsDashboard", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+{
+    <div class="row">
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.From</label>
+            @Html.EditorFor(m => m.From, new { @class = "w100" })
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationWebStrings.Filters_To</label>
+            @Html.EditorFor(m => m.To, new { @class = "w100" })
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.Reports_Transactions_Currency</label>
+            <div class="selectMask w100">
+                @Html.DropDownListFor(model => model.Currency,
+                                        (from int value in Enum.GetValues(typeof(CurrencyDto))
+                                         where value != (int)CurrencyDto.UI
+                                         select new SelectListItem
+                                         {
+                                             Text = EnumHelpers.GetName(typeof(CurrencyDto), value, EnumsStrings.ResourceManager),
+                                             Value = value.ToString()
+                                         }).ToList(),
+                                 new Dictionary<string, object> { { "style", "width: 100%; height: 100%; color:#999" }, { "class", "search_init form-control" } })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-xs-6 p5l pr0">
+                <a class="btn btn-default btn-standar mt10 w100" id="execute"> @PresentationCoreMessages.Common_Execute</a>
+            </div>
+        </div>
+    </div>
+}
+
+<br />
+
+<div id="dashboard"></div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#execute").click(function () {
+            var dataModel = $("#form").serialize();
+            GetDashboard(dataModel);
+        });
+    });
+
+    function GetDashboard(dataModel) {
+
+        $(document).ajaxComplete(function () { $.unblockUI(); });
+
+        $.ajax({
+            dataType: 'json',
+            type: "POST",
+            url: "@Url.Action("GetDashboard", "ReportsDashboard")",
+            data: dataModel,
+            beforeSend: function () {
+                showBlockUI('Procesando...'); },
+            success: function (ret) {
+                if (ret.ResponseType == RESPONSE.SUCCESS) {
+                    $("#dashboard").html(ret.Content);
+                }
+                if (ret.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(ret.Title, ret.Message, 'error');
+                }
+            }
+        });
+    }
+
+</script>

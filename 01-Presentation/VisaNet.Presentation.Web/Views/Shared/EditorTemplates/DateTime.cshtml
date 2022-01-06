@@ -1,0 +1,9 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model DateTime?
+
+<div class="form-group">
+    <div class='input-group date' id='datetimepicker1'>
+        @Html.TextBoxFor(m => m, new { @class = "form-control w100", placeholder = PresentationCoreMessages.Common_Placeholder_Date })
+        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span>
+    </div>
+</div>

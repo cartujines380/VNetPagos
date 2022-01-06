@@ -1,0 +1,90 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Areas.CallCenter.Models.ApplicationUserModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/CallCenter/Views/Shared/_LayoutCallCenter.cshtml";
+}
+
+<div class="container p25t">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 nameSection">@PresentationCallCenterStrings.Dashboard</h3>
+            <h4 class="pageDescription">@Html.LabelFor(p => p.Id)</h4>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="pageBox p35b">
+        <h5>  <i class="icon-exclamation-sign visanetOrangeTxt"></i> Los campos marcados con un <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>son obligatorios </h5>
+        <div class="horizontalLineGrey"></div>
+        <div class="formMargin">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Nombre de usuario </label><i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    <div class="w100">
+                        @Html.TextBoxFor(p => p.Email, new { @class = "w100" })
+                        @Html.HiddenFor(p => p.Id)
+                    </div>
+                    @Html.ValidationMessageFor(p => p.Id)
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(p => p.IdentityNumber)
+                    @Html.TextBoxFor(p => p.IdentityNumber, new { @class = "w100" })
+                    @Html.ValidationMessageFor(p => p.IdentityNumber)
+                </div>
+            </div>
+        </div>
+        <!-- fin del formMargin-->
+    </div>
+    <div class="row buttonsActionsBox">
+        <div class="col-md-2 pl0 pr0">
+            <a id="btnShow" href="@Url.Action("SearchUser", "CallCenterDashboard")" class="btn btn-default btn-link-box mt10 w100" role="button"> @PresentationCoreMessages.Common_Show <i class="icon-ok"></i></a>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="divLb"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        function onSuccess(data, response) {
+            response($.map(data, function (item) {
+                return {
+                    label: item.Email,
+                    valueID: item.Id
+                };
+            }));
+        }
+
+        autoComplete("#@Html.IdFor(model => model.Email)", "#@Html.IdFor(model => model.Id)", '@Url.Action("AutoCompleteUsers", "CallCenterDashboard")', onSuccess);
+        
+        $("#btnShow").click(function (e) {
+            e.preventDefault();
+
+            var userId = $("#@Html.IdFor(model => model.Id)").val();
+            var iN = $("#@Html.IdFor(model => model.IdentityNumber)").val();
+            $.ajax({
+                dataType: 'json',
+                type: "POST",
+                url: $("#btnShow").attr("href"),
+                data: { id: userId, identityNumber: iN },
+                success: function (data) {
+                    if (data.ResponseType == RESPONSE.SUCCESS) {
+                        $("#divLb").html(data.Content);
+
+                        $("#lbConfirmUser").modal();
+                    }
+                    if (data.ResponseType == RESPONSE.ERROR) {
+                        ShowNotification(data.Title, data.Message, 'error');
+                    }
+                }
+            });
+        });
+
+    });
+</script>

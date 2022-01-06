@@ -1,0 +1,129 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.Entities.Enums
+@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <td>@PresentationAdminStrings.Status</td>
+            <td>@PresentationAdminStrings.Service_Gateway</td>
+            <td>@PresentationAdminStrings.Service_Param1</td>
+            <td>@PresentationAdminStrings.Service_Param2</td>
+            <td>@PresentationAdminStrings.Service_Param3</td>
+            <td>@PresentationAdminStrings.Service_Param4</td>
+            <td>@PresentationAdminStrings.SendExtract</td>
+        </tr>
+        <tbody>
+            @{ int ii = 0;}
+            @foreach (var gateway in Model.ServiceGateways)
+            {
+                <tr>
+                    <td>
+                        @Html.CheckBox("ServiceGateways[" + ii + "].Active", gateway.Active, Model.IsDetailsView ? new { @disabled = "disable" } : null)
+                    </td>
+                    <td>
+                        @Html.Label(gateway.GatewayName, new { @class = "obligatoryField" })
+                        @Html.Hidden("ServiceGateways[" + ii + "].GatewayName", gateway.GatewayName)
+                    </td>
+                    <td>
+                        @Html.TextBox("ServiceGateways[" + ii + "].ReferenceId", gateway.ReferenceId, Model.IsDetailsView ? (object)new { @class = (gateway.GatewayEnum == (int)GatewayEnum.Apps) ? "form-control numeric" : "form-control ", @disabled = "disable" } : (object)new { @class = (gateway.GatewayEnum == (int)GatewayEnum.Apps) ? "form-control numeric" : "form-control " })
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Banred)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Banred_Param1)
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Sistarbanc)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Sistarbanc_Param1)
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Sucive)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Sucive_Param1)
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Geocom)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Geocom_Param1)
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Carretera)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Highway_Param1)
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Importe)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Importe_Param1)
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Apps)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Highway_Param1)
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.PagoLink)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_LinkPayment_Param1)
+                        }
+                    </td>
+                    <td>
+                        @(gateway.GatewayEnum == (int)GatewayEnum.Banred || gateway.GatewayEnum == (int)GatewayEnum.PagoLink ?
+                                Html.Raw("") :
+                            gateway.GatewayEnum == (int)GatewayEnum.Apps ?
+                                Html.TextBox("ServiceGateways[" + ii + "].ServiceType", gateway.ServiceType, Model.IsDetailsView ? (object)new { @class = "form-control numeric", @disabled = "disabled" } : (object)new { @class = "form-control numeric" }) :
+                                Html.TextBox("ServiceGateways[" + ii + "].ServiceType", gateway.ServiceType, Model.IsDetailsView ? (object)new { @class = "form-control numeric", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                        )
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Banred)
+                        {
+
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Sistarbanc)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Sistarbanc_Param2)
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Sucive)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Sucive_Param2)
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Geocom)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Geocom_Param2)
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Carretera)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Highway_Param2)
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Importe)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Importe_Param2)
+                        }
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Apps)
+                        {
+                            @Html.Label(PresentationAdminStrings.Service_Highway_Param2)
+                        }
+                    </td>
+                    <td>
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Importe)
+                        {
+                            @Html.TextBox("ServiceGateways[" + ii + "].AuxiliarData", gateway.AuxiliarData, Model.IsDetailsView ? (object)new { @class = "form-control numeric", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                            @Html.Label(PresentationAdminStrings.Service_Importe_Param3)
+                        }
+                    </td>
+                    <td>
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Importe)
+                        {
+                            @Html.TextBox("ServiceGateways[" + ii + "].AuxiliarData2", gateway.AuxiliarData2, Model.IsDetailsView ? (object)new { @class = "form-control numeric", @disabled = "disabled" } : (object)new { @class = "form-control" })
+                            @Html.Label(PresentationAdminStrings.Service_Importe_Param4)
+                        }
+                    </td>
+                    <td>
+                        @if (gateway.GatewayEnum == (int)GatewayEnum.Banred
+                        || gateway.GatewayEnum == (int)GatewayEnum.Importe
+                        || gateway.GatewayEnum == (int)GatewayEnum.Carretera
+                        || gateway.GatewayEnum == (int)GatewayEnum.PagoLink)
+                        {
+                            @Html.CheckBox("ServiceGateways[" + ii + "].SendExtract", gateway.SendExtract, Model.IsDetailsView ? new { @disabled = "disabled" } : null )
+                        }
+                    </td>
+                </tr>
+                @Html.Hidden("ServiceGateways[" + ii + "].GatewayId", gateway.GatewayId)
+                @Html.Hidden("ServiceGateways[" + ii + "].GatewayEnum", gateway.GatewayEnum)
+                ii++;
+            }
+        </tbody>
+    </table>
+</div>

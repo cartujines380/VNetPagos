@@ -1,0 +1,901 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BCBBFA18-001D-439D-AE39-3777CAB56278}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VisaNet.Presentation.Web</RootNamespace>
+    <AssemblyName>VisaNet.Presentation.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="HXCaptcha">
+      <HintPath>..\..\packages\HXCaptcha\HXCaptcha.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Ninject.MVC5.3.2.0.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NLog.4.3.10\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Recaptcha">
+      <HintPath>..\..\packages\recaptcha.1.0.5.0\lib\.NetFramework 4.0\Recaptcha.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Activities">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Elmah.Errors\ElmahErrors.txt" />
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Areas\CallCenter\Views\Shared\_HeaderCallCenter.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\CallCenter\Views\Shared\_LayoutCallCenter.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap-select.css" />
+    <Content Include="Content\css\bootstrap-select.min.css" />
+    <Content Include="Content\css\bootstrap-theme.css" />
+    <Content Include="Content\css\bootstrap-theme.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\datepicker.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\jquery-ui.css" />
+    <Content Include="Content\css\jquery.pnotify.default.css" />
+    <Content Include="Content\css\jquery.ui.theme.css" />
+    <Content Include="Content\css\smart-app-banner.css" />
+    <Content Include="Content\css\visa3.css" />
+    <Content Include="Content\css\visa.css" />
+    <Content Include="Content\Dashboard.css" />
+    <Content Include="Content\font\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\hx-custom.css" />
+    <Content Include="Content\images\add-card-white.png" />
+    <Content Include="Content\images\add-card.png" />
+    <Content Include="Content\images\Android Icons\launcher-icon-2x.png" />
+    <Content Include="Content\images\Android Icons\launcher-icon-3x.png" />
+    <Content Include="Content\images\Android Icons\launcher-icon-4x.png" />
+    <Content Include="Content\images\animated-overlay.gif" />
+    <Content Include="Content\images\AppStore.svg" />
+    <Content Include="Content\images\banner-bg.jpg" />
+    <Content Include="Content\images\banner-bg.png" />
+    <Content Include="Content\images\check.png" />
+    <Content Include="Content\images\CVN.png" />
+    <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\gplay.png" />
+    <Content Include="Content\images\headerBannerWide.jpg" />
+    <Content Include="Content\images\images.png" />
+    <Content Include="Content\images\landing.png" />
+    <Content Include="Content\images\loader.gif" />
+    <Content Include="Content\images\loader2-.gif" />
+    <Content Include="Content\images\loader2.gif" />
+    <Content Include="Content\images\loaderFullScreen.GIF" />
+    <Content Include="Content\images\loaderMsj.gif" />
+    <Content Include="Content\images\logos\artigas.png" />
+    <Content Include="Content\images\logos\artigas_off.png" />
+    <Content Include="Content\images\logos\canelones.png" />
+    <Content Include="Content\images\logos\canelones_off.png" />
+    <Content Include="Content\images\logos\cerro_largo.png" />
+    <Content Include="Content\images\logos\cerro_largo_off.png" />
+    <Content Include="Content\images\logos\colonia.png" />
+    <Content Include="Content\images\logos\colonia_off.png" />
+    <Content Include="Content\images\logos\durazno.png" />
+    <Content Include="Content\images\logos\durazno_off.png" />
+    <Content Include="Content\images\logos\flores.png" />
+    <Content Include="Content\images\logos\flores_off.png" />
+    <Content Include="Content\images\logos\florida.png" />
+    <Content Include="Content\images\logos\florida_off.png" />
+    <Content Include="Content\images\logos\lavalleja.png" />
+    <Content Include="Content\images\logos\lavalleja_off.png" />
+    <Content Include="Content\images\logos\maldonado.png" />
+    <Content Include="Content\images\logos\maldonado_off.png" />
+    <Content Include="Content\images\logos\montevideo.png" />
+    <Content Include="Content\images\logos\montevideo_off.png" />
+    <Content Include="Content\images\logos\paysandu.png" />
+    <Content Include="Content\images\logos\paysandu_off.png" />
+    <Content Include="Content\images\logos\rio_negro.png" />
+    <Content Include="Content\images\logos\rio_negro_off.png" />
+    <Content Include="Content\images\logos\rivera.png" />
+    <Content Include="Content\images\logos\rivera_off.png" />
+    <Content Include="Content\images\logos\rocha.png" />
+    <Content Include="Content\images\logos\rocha_off.png" />
+    <Content Include="Content\images\logos\salto.png" />
+    <Content Include="Content\images\logos\san_jose.png" />
+    <Content Include="Content\images\logos\san_jose_off.png" />
+    <Content Include="Content\images\logos\soriano.png" />
+    <Content Include="Content\images\logos\soriano_off.png" />
+    <Content Include="Content\images\logos\tacuarembo.png" />
+    <Content Include="Content\images\logos\tacuarembo_off.png" />
+    <Content Include="Content\images\logos\treinta_y_tres.png" />
+    <Content Include="Content\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Content\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Content\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Content\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Content\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Content\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Content\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Content\images\visa.jpg" />
+    <Content Include="Content\images\visanet_no_image.png" />
+    <Content Include="Content\images\visa_blue.jpg" />
+    <Content Include="Content\images\visa_default_service_logo.png" />
+    <Content Include="Content\images\visa_default_service_logo_blue.png" />
+    <Content Include="Content\images\_images.png" />
+    <Content Include="Content\jquery.pnotify.default.css" />
+    <Content Include="Content\font\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\background.png" />
+    <Content Include="Content\images\background2.png" />
+    <Content Include="Content\images\background3.png" />
+    <Content Include="Content\images\headerBanner.jpg" />
+    <Content Include="Content\images\services.jpg" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Global.asax" />
+    <Content Include="mantenimiento.html" />
+    <Content Include="Scripts\ajaxResponses.js" />
+    <Content Include="Scripts\bootstrap-select.js" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\ClientSideValidations\regexValidation.js" />
+    <Content Include="Scripts\cybs_devicefingerprint.js" />
+    <Content Include="Scripts\html5shim\html5shim.js" />
+    <Content Include="Areas\Pay\Views\web.config" />
+    <Content Include="Areas\Pay\Views\Pay\_Cancel.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\_Confirm.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\_DetailBill.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\_DetailFinalBill.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\_References.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\_Registration.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\_ServicesInContainer.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\_Steps.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\Bills.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\Card.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\Error.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\NotificationError.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\PaymentConfirm.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\Service.cshtml" />
+    <Content Include="Areas\Pay\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\_UserNotRegisteredData.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\ServiceDetails.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_ServicesInContainer.cshtml" />
+    <Content Include="Content\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\css\bootstrap.min.css.map" />
+    <Content Include="Areas\Private\Views\Card\_MigrationTestFail.cshtml" />
+    <Content Include="Areas\Private\Views\Card\_AssociatedServices.cshtml" />
+    <Content Include="Areas\Private\Views\DebitManagment\Index.cshtml" />
+    <Content Include="Areas\Debit\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Debit\Views\Debit\User.cshtml" />
+    <Content Include="Areas\Debit\Views\web.config" />
+    <Content Include="Areas\Debit\Views\Debit\_referenceList.cshtml" />
+    <Content Include="Areas\Private\Views\DebitManagment\Requests.cshtml" />
+    <Content Include="Areas\Private\Views\DebitManagment\_RequestList.cshtml" />
+    <Content Include="Areas\Private\Views\Shared\_RequestBlock.cshtml" />
+    <Content Include="Areas\Debit\Views\Debit\Service.cshtml" />
+    <Content Include="Areas\Debit\Views\Debit\_products.cshtml" />
+    <Content Include="Areas\Debit\Views\Debit\Card.cshtml" />
+    <Content Include="Areas\Debit\Views\Debit\_Confirm.cshtml" />
+    <Content Include="Areas\Debit\Views\Debit\Confirmation.cshtml" />
+    <Content Include="Areas\Debit\Views\Debit\_Steps.cshtml" />
+    <Content Include="Areas\Private\Views\Dashboard\_DebitHistory.cshtml" />
+    <Content Include="Areas\Private\Views\Dashboard\_DebittBlock.cshtml" />
+    <Content Include="Areas\Debit\Views\Debit\_Cancel.cshtml" />
+    <Content Include="Areas\Private\Views\Shared\_ConfirmCancelDebit.cshtml" />
+    <Content Include="Areas\Private\Views\Shared\_ConfirmDeleteDebit.cshtml" />
+    <Content Include="Areas\Pay\Views\Pay\_SelectSuciveAnnual.cshtml" />
+    <Content Include="Areas\Private\Views\Card\_EditCardDescription.cshtml" />
+    <None Include="Properties\PublishProfiles\Azure.Production.pubxml" />
+    <None Include="Properties\PublishProfiles\Azure.Staging.pubxml" />
+    <None Include="Properties\PublishProfiles\demouy.Development.pubxml" />
+    <None Include="Properties\PublishProfiles\demouy.Production.pubxml" />
+    <None Include="Properties\PublishProfiles\demouy.Testing.pubxml" />
+    <None Include="Properties\PublishProfiles\DeployLocal.pubxml" />
+    <None Include="Properties\PublishProfiles\VisaNet.Production.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.js" />
+    <Content Include="Scripts\js\affix.js" />
+    <Content Include="Scripts\js\alert.js" />
+    <Content Include="Scripts\js\datepicker.es.js" />
+    <Content Include="Scripts\js\bootstrap-datepicker.js" />
+    <Content Include="Scripts\js\button.js" />
+    <Content Include="Scripts\js\carousel.js" />
+    <Content Include="Scripts\js\collapse.js" />
+    <Content Include="Scripts\js\modal.js" />
+    <Content Include="Scripts\js\popover.js" />
+    <Content Include="Scripts\js\scrollspy.js" />
+    <Content Include="Scripts\js\tab.js" />
+    <Content Include="Scripts\js\tooltip.js" />
+    <Content Include="Scripts\js\transition.js" />
+    <Content Include="Scripts\mobile-detect.min.js" />
+    <Content Include="Scripts\smart-app-banner.js" />
+    <Content Include="Views\Shared\_LayoutWithoutAnalytics.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\Registration\Index.cshtml" />
+    <Content Include="Views\Home\Index_Viejo.cshtml" />
+    <Content Include="Content\font\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\font\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\font\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\font\Ubuntu-B.ttf" />
+    <Content Include="Content\font\Ubuntu-R.ttf" />
+    <Content Include="Content\font\Ubuntu-RI.ttf" />
+    <Content Include="Content\css\bootstrap.css.map" />
+    <Content Include="Content\css\bootstrap-theme.css.map" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Areas\Private\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Private\Views\Service\Associate.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_References.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_Cancel.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_Confirm.cshtml" />
+    <Content Include="Areas\Private\Views\Service\Associate_Step_Notification.cshtml" />
+    <Content Include="Areas\Private\Views\Service\Associate_Step_Card.cshtml" />
+    <Content Include="Content\font\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Private\Views\Service\SuccessfulAssosiation.cshtml" />
+    <Content Include="Areas\Private\Views\Service\Index.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_ServiceBlock.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_ServiceList.cshtml" />
+    <Content Include="Areas\Private\Views\Service\EditServiceAssosiated.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_StepsEdit.cshtml" />
+    <Content Include="Areas\Private\Views\Service\EditServiceAssociatedNotification.cshtml" />
+    <Content Include="Areas\Private\Views\Card\AddCard.cshtml" />
+    <Content Include="Areas\Private\Views\AutomaticPayment\Index.cshtml" />
+    <Content Include="Areas\Private\Views\AutomaticPayment\_ServiceList.cshtml" />
+    <Content Include="Areas\Private\Views\AutomaticPayment\_Block.cshtml" />
+    <Content Include="Areas\Private\Views\AutomaticPayment\Item.cshtml" />
+    <Content Include="Areas\Private\Views\PaymentHistory\_PaymentBlock.cshtml" />
+    <Content Include="Areas\Private\Views\PaymentHistory\_PaymentList.cshtml" />
+    <Content Include="Areas\Private\Views\PaymentHistory\Index.cshtml" />
+    <Content Include="Areas\Private\Views\Card\Index.cshtml" />
+    <Content Include="Areas\Private\Views\Card\_CardList.cshtml" />
+    <Content Include="Areas\Private\Views\Card\_CardBlock.cshtml" />
+    <Content Include="Areas\Private\Views\Dashboard\_PaymentHistory.cshtml" />
+    <Content Include="Areas\CallCenter\Views\web.config" />
+    <Content Include="Areas\CallCenter\Views\CallCenterDashboard\Index.cshtml" />
+    <Content Include="Areas\CallCenter\Views\CallCenterAccount\LogIn.cshtml" />
+    <Content Include="Areas\CallCenter\Views\CallCenterAccount\NotAllowed.cshtml" />
+    <Content Include="Areas\CallCenter\Views\CallCenterDashboard\_ConfirmUser.cshtml" />
+    <Content Include="Areas\Private\Views\Dashboard\_BillsAndAutoPayments.cshtml" />
+    <Content Include="Areas\Private\Views\Bill\Index.cshtml" />
+    <Content Include="Areas\Private\Views\Bill\_BillList.cshtml" />
+    <Content Include="Areas\Private\Views\Bill\_BillBlock.cshtml" />
+    <Content Include="Areas\Private\Views\AutomaticPaymentScheduled\Index.cshtml" />
+    <Content Include="Areas\Private\Views\AutomaticPaymentScheduled\_APList.cshtml" />
+    <Content Include="Areas\Private\Views\AutomaticPaymentScheduled\_APBlock.cshtml" />
+    <Content Include="Areas\CallCenter\Views\Log\Index.cshtml" />
+    <Content Include="Areas\CallCenter\Views\Log\_LogList.cshtml" />
+    <Content Include="Areas\CallCenter\Views\Log\_DetailsLightbox.cshtml" />
+    <Content Include="Areas\Private\Views\Profile\ChangePassword.cshtml" />
+    <Content Include="Content\font\segoeui.ttf" />
+    <Content Include="Content\font\segoeuil.ttf" />
+    <Content Include="Areas\Private\Views\AutomaticPayment\_DeleteConfirm.cshtml" />
+    <Content Include="Areas\Private\Views\Card\_CancelNewCard.cshtml" />
+    <Content Include="Areas\Private\Views\Card\_ConfirmNewCard.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_ConfirmEdition.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_CancelEdition.cshtml" />
+    <Content Include="Areas\Private\Views\Service\NotificationError.cshtml" />
+    <Content Include="Areas\Private\Views\Service\ListCard.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_CardList.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_CardBlock.cshtml" />
+    <Content Include="Areas\Private\Views\Card\NotificationError.cshtml" />
+    <Content Include="Areas\CallCenter\Views\CallCenterAccount\Timeout.cshtml" />
+    <Content Include="Content\font\seguisb.ttf" />
+    <Content Include="Content\font\segoeui.eot" />
+    <Content Include="Content\font\segoeuib.ttf" />
+    <Content Include="Content\font\segoeuil.eot" />
+    <Content Include="Content\font\seguisb.eot" />
+    <Content Include="Content\font\Ubuntu-B.eot" />
+    <Content Include="Content\font\Ubuntu-R.eot" />
+    <Content Include="Content\font\Ubuntu-RI.eot" />
+    <Content Include="Areas\Private\Views\Card\_MigrateServices.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_ConfirmDelete.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_ConfirmDeleteAP.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_ReferencesSystem.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_CardBlockExternal.cshtml" />
+    <Content Include="Areas\Private\Views\Report\_Reports.cshtml" />
+    <Content Include="Content\css\bootstrap-select.css.map" />
+    <Content Include="Areas\Private\Views\Report\Index.cshtml" />
+    <Content Include="Areas\Private\Views\_ViewStart.cshtml" />
+    <Content Include="NLog.config" />
+    <Content Include="Areas\Private\Views\Card\_DeactivateCard.cshtml" />
+    <Content Include="Areas\Private\Views\Card\_DeleteCard.cshtml" />
+    <Content Include="Areas\Private\Views\Notification\Index.cshtml" />
+    <Content Include="Areas\Private\Views\Notification\_NotificationList.cshtml" />
+    <Content Include="Areas\Private\Views\Notification\_NotificationBlock.cshtml" />
+    <Content Include="Scripts\bootstrap-select.js.map" />
+    <Content Include="Scripts\functions.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\DataTable\jquery.dataTables.1.js" />
+    <Content Include="Scripts\DataTable\jquery.dataTables.2.bootstrap.js" />
+    <Content Include="Scripts\DataTable\jquery.dataTables.3.Extensions.js" />
+    <Content Include="Scripts\jquery.numeric.js" />
+    <Content Include="Scripts\jquery.pnotify.js" />
+    <Content Include="Scripts\jquery.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\locale.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Web.Azure.Production.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Azure.Staging.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.demouy.Development.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.demouy.Production.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.demouy.Testing.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.VisaNet.Production.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\CallCenter\CallCenterAreaRegistration.cs" />
+    <Compile Include="Areas\CallCenter\Controllers\CallCenterAccountController.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Areas\CallCenter\Controllers\BaseController.cs" />
+    <Compile Include="Areas\CallCenter\Controllers\CallCenterDashboardController.cs" />
+    <Compile Include="Areas\CallCenter\Controllers\LogController.cs" />
+    <Compile Include="Areas\CallCenter\Models\ApplicationUserModel.cs" />
+    <Compile Include="Areas\CallCenter\Models\LogFiltersModel.cs" />
+    <Compile Include="Areas\CallCenter\Models\LogOnModel.cs" />
+    <Compile Include="Areas\Debit\Controllers\DebitController.cs" />
+    <Compile Include="Areas\Debit\DebitAreaRegistration.cs" />
+    <Compile Include="Areas\Debit\Mappers\ApplicationUserMapper.cs" />
+    <Compile Include="Areas\Debit\Mappers\CommerceMapper.cs" />
+    <Compile Include="Areas\Debit\Models\ApplicationUserModel.cs" />
+    <Compile Include="Areas\Debit\Models\FailedModel.cs" />
+    <Compile Include="Areas\Debit\Models\ConfirmationModel.cs" />
+    <Compile Include="Areas\Debit\Models\DebitModel.cs" />
+    <None Include="Areas\Debit\Views\Debit\Card.cshtml" />
+    <Compile Include="Areas\Debit\Models\DebitsStepsEnum.cs" />
+    <Compile Include="Areas\Private\Models\DebitRequestTableModel.cs" />
+    <Compile Include="Areas\Pay\Controllers\PayController.cs" />
+    <Compile Include="Areas\Pay\Models\ConfirmationModel.cs" />
+    <Compile Include="Areas\Pay\PaymentAreaRegistration.cs" />
+    <Compile Include="Areas\Private\Controllers\AutomaticPaymentController.cs" />
+    <Compile Include="Areas\Private\Controllers\AutomaticPaymentScheduledController.cs" />
+    <Compile Include="Areas\Private\Controllers\DebitManagmentController.cs" />
+    <Compile Include="Areas\Private\Controllers\BillController.cs" />
+    <Compile Include="Areas\Private\Controllers\CardController.cs" />
+    <Compile Include="Areas\Private\Controllers\NotificationController.cs" />
+    <Compile Include="Areas\Private\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Private\Controllers\PaymentHistoryController.cs" />
+    <Compile Include="Areas\Private\Controllers\ReportController.cs" />
+    <Compile Include="Areas\Private\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Private\Controllers\ServiceController.cs" />
+    <Compile Include="Areas\Private\Mappers\NotificationMapper.cs" />
+    <Compile Include="Areas\Private\Models\DashboradModel.cs" />
+    <Compile Include="Areas\Private\Models\BillModel.cs" />
+    <Compile Include="Areas\Private\Models\CardListModel.cs" />
+    <Compile Include="Areas\Private\Models\DebitRequestsViewModel.cs" />
+    <Compile Include="Areas\Private\Models\NextAutomaticPaymentModel.cs" />
+    <Compile Include="Areas\Private\Models\NotificationModel.cs" />
+    <Compile Include="Areas\Private\Models\PaymentBillModel.cs" />
+    <Compile Include="Areas\Private\Models\PaymentCardModel.cs" />
+    <Compile Include="Areas\Private\Models\PaymentHistoryModel.cs" />
+    <Compile Include="Areas\Private\Mappers\AutomaticPaymentMapper.cs" />
+    <Compile Include="Areas\Private\Mappers\ServiceAssosiatedMapper.cs" />
+    <Compile Include="Areas\Private\Models\AutomaticPaymentModel.cs" />
+    <Compile Include="Areas\Private\Models\ProfileModel.cs" />
+    <Compile Include="Areas\Private\Models\ServiceAssociateCardModel.cs" />
+    <Compile Include="Areas\Private\Models\BillToPayModel.cs" />
+    <Compile Include="Areas\Private\Models\ServiceAssociateModel.cs" />
+    <Compile Include="Areas\Private\Models\ServiceAssociateNotificationModel.cs" />
+    <Compile Include="Areas\Private\Models\ServiceCardListModel.cs" />
+    <Compile Include="Areas\Private\Models\ServiceListModel.cs" />
+    <Compile Include="Areas\Private\Models\SevicesAssosiatedViewModel.cs" />
+    <Compile Include="Areas\Private\Models\SuccessfulAssosiationModel.cs" />
+    <Compile Include="Areas\Private\PrivateAreaRegistration.cs" />
+    <Compile Include="Controllers\AppAdmissionController.cs" />
+    <Compile Include="Controllers\AppLocalController.cs" />
+    <Compile Include="Controllers\AutoCompleteController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\IframetestController.cs" />
+    <Compile Include="Controllers\LandingSuciveController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
+    <Compile Include="Controllers\HighwayAdmissionController.cs" />
+    <Compile Include="Controllers\InstitutionalContentController.cs" />
+    <Compile Include="Controllers\NoticesController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\PaymentHandlerController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\ServiceProviderController.cs" />
+    <Compile Include="Controllers\SubscriberController.cs" />
+    <Compile Include="Controllers\FaqController.cs" />
+    <Compile Include="Controllers\LegalPagesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VersionController.cs" />
+    <Compile Include="Enums\CurrentUserType.cs" />
+    <Compile Include="Filters\DataMinMax.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Mappers\DebitRequestTableMapper.cs" />
+    <Compile Include="Helpers\DebitCommerceManagment.cs" />
+    <Compile Include="Mappers\PromotionMapper.cs" />
+    <Compile Include="Mappers\BillMapper.cs" />
+    <Compile Include="Mappers\AnonymousUserMapper.cs" />
+    <Compile Include="Mappers\PaymentMapper.cs" />
+    <Compile Include="Mappers\ProfileMapper.cs" />
+    <Compile Include="Mappers\RegistrationMapper.cs" />
+    <Compile Include="Mappers\ContactMapper.cs" />
+    <Compile Include="Areas\CallCenter\Models\LogModel.cs" />
+    <Compile Include="Models\AppLocalModel.cs" />
+    <Compile Include="Models\CommerceModel.cs" />
+    <Compile Include="Models\DebitCommercesModel.cs" />
+    <Compile Include="Models\LandingModel.cs" />
+    <Compile Include="Models\CaptchaResponseModel.cs" />
+    <Compile Include="Models\AppAdmissionModel.cs" />
+    <Compile Include="Models\HighwayCardModel.cs" />
+    <Compile Include="Models\CyberSourceKeyModel.cs" />
+    <Compile Include="Models\HighwayAdmissionModel.cs" />
+    <Compile Include="Models\HomeServiceModel.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\BillModel.cs" />
+    <Compile Include="Models\CardModel.cs" />
+    <Compile Include="Models\AnonymousUserModel.cs" />
+    <Compile Include="Models\PaymentBillModel.cs" />
+    <Compile Include="Models\PaymentModel.cs" />
+    <Compile Include="Models\PaymentServiceModel.cs" />
+    <Compile Include="Models\PromotionModel.cs" />
+    <Compile Include="Models\RegistrationModel.cs" />
+    <Compile Include="Constants\ApplicationConstants.cs" />
+    <Compile Include="Constants\SessionConstants.cs" />
+    <Compile Include="Constants\TempDataConstants.cs" />
+    <Compile Include="CustomAttributes\CustomDisplay.cs" />
+    <Compile Include="Mappers\FaqMapper.cs" />
+    <Compile Include="Mappers\PageMapper.cs" />
+    <Compile Include="Mappers\SubscriberMapper.cs" />
+    <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\FaqModel.cs" />
+    <Compile Include="Models\PageModel.cs" />
+    <Compile Include="Models\ServiceModel.cs" />
+    <Compile Include="Models\ServiceProviderViewModel.cs" />
+    <Compile Include="Models\SubscriberModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerModules\CustomServerHeaderModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\LegalPages\Index.cshtml" />
+    <Content Include="Views\Faq\Index.cshtml" />
+    <Content Include="Views\Notices\Index.cshtml" />
+    <Content Include="Views\InstitutionalContent\Index.cshtml" />
+    <Content Include="Areas\Private\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Private\web.config" />
+    <Content Include="Views\Subscriber\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\Account\NotAllowed.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\RegisterConfirmation.cshtml" />
+    <Content Include="Views\Account\ChangePasswordFromToken.cshtml" />
+    <Content Include="Views\Account\ConfirmationFailure.cshtml" />
+    <Content Include="Views\Account\SetPasswordFromTokenSuccess.cshtml" />
+    <Content Include="Views\Account\ForgetMyPassword.cshtml" />
+    <Content Include="Views\Account\ForgetMyPasswordSuccess.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Private\Views\Service\_Steps.cshtml" />
+    <Content Include="Views\PaymentHandler\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\ServiceProvider\Index.cshtml" />
+    <Content Include="Views\ServiceProvider\_Services.cshtml" />
+    <Content Include="Views\ServiceProvider\_Service.cshtml" />
+    <Content Include="Views\Shared\_LoaderFullScreen.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Help\Index.cshtml" />
+    <Content Include="Views\Home\_Promotion.cshtml" />
+    <Content Include="Views\Home\Timeout.cshtml" />
+    <Content Include="Views\Shared\_CybersourceKeys.cshtml" />
+    <Content Include="Views\Account\ActivateUser.cshtml" />
+    <Content Include="Views\HighwayAdmission\Index.cshtml" />
+    <Content Include="Views\HighwayAdmission\_CardList.cshtml" />
+    <Content Include="Views\Shared\_HighwayLayout.cshtml" />
+    <Content Include="Views\HighwayAdmission\_Confirm.cshtml" />
+    <Content Include="Views\HighwayAdmission\_NewUserData.cshtml" />
+    <Content Include="Views\HighwayAdmission\_TermsAndConditionsVisa.cshtml" />
+    <Content Include="Views\HighwayAdmission\_TermsAndConditionsService.cshtml" />
+    <Content Include="Views\AppAdmission\Index.cshtml" />
+    <Content Include="Views\AppAdmission\_NewUserData.cshtml" />
+    <Content Include="Views\AppAdmission\_CardList.cshtml" />
+    <Content Include="Views\AppAdmission\_Confirm.cshtml" />
+    <Content Include="Views\AppAdmission\_ForgetMyPassword.cshtml" />
+    <Content Include="Views\AppAdmission\End.cshtml" />
+    <Content Include="Views\AppAdmission\_TermsAndConditionsVisa.cshtml" />
+    <Content Include="Views\AppAdmission\_TermsAndConditionsService.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Error\OldBrowser.cshtml" />
+    <Content Include="Views\LandingSucive\Index.cshtml" />
+    <Content Include="Views\Iframetest\Index.cshtml" />
+    <Content Include="Views\Iframetest\Ir.cshtml" />
+    <Content Include="Views\AppAdmission\Error.cshtml" />
+    <Content Include="Views\Shared\_HeaderPrivate.cshtml" />
+    <Content Include="Views\Shared\_HeaderCallCenter.cshtml" />
+    <Content Include="Views\AppAdmission\_References.cshtml" />
+    <Content Include="Views\AppLocal\Index.cshtml" />
+    <Content Include="Views\Shared\_MobileAd.cshtml" />
+    <Content Include="Views\AppAdmission\Test.cshtml" />
+    <Content Include="Views\AppAdmission\Iframe.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Debit\Views\Shared\" />
+    <Folder Include="Areas\Pay\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.CustomerSite.EntitiesDtos\VisaNet.CustomerSite.EntitiesDtos.csproj">
+      <Project>{D291090E-2461-47AC-A835-B29E43A8221F}</Project>
+      <Name>VisaNet.CustomerSite.EntitiesDtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.EntitiesDtos\VisaNet.Domain.EntitiesDtos.csproj">
+      <Project>{cac323d1-c42c-4821-ab23-06cacefb548e}</Project>
+      <Name>VisaNet.Domain.EntitiesDtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.Entities\VisaNet.Domain.Entities.csproj">
+      <Project>{A7D3A101-C512-4000-A66C-9BDD86B2AF82}</Project>
+      <Name>VisaNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.AzureUpload\VisaNet.Common.AzureUpload.csproj">
+      <Project>{20001DBA-6EA1-4342-94C4-40EF07FB5ADF}</Project>
+      <Name>VisaNet.Common.AzureUpload</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.ConfigSections\VisaNet.Common.ConfigSections.csproj">
+      <Project>{C6AEC7CE-6F8F-4D33-B745-6B879E35906C}</Project>
+      <Name>VisaNet.Common.ConfigSections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Exceptions\VisaNet.Common.Exceptions.csproj">
+      <Project>{CB1FEB9F-6933-445A-A6EE-A1769D25C266}</Project>
+      <Name>VisaNet.Common.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Logging\VisaNet.Common.Logging.csproj">
+      <Project>{7716D78C-5414-404A-B804-D10B2C965724}</Project>
+      <Name>VisaNet.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Resource\VisaNet.Common.Resource.csproj">
+      <Project>{98E9C8F3-4D89-4B5C-B5C5-4B4B026F7596}</Project>
+      <Name>VisaNet.Common.Resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Security.Entities\VisaNet.Common.Security.Entities.csproj">
+      <Project>{45708FFD-868A-4DAC-B15A-E2B6F984A5D2}</Project>
+      <Name>VisaNet.Common.Security.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Security.Filters\VisaNet.Common.Security.Filters.csproj">
+      <Project>{A4872775-728E-4EC6-9DBE-4EC5DFAA0B7A}</Project>
+      <Name>VisaNet.Common.Security.Filters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.Cryptography\VisaNet.Utilities.Cryptography.csproj">
+      <Project>{39516270-8878-400C-BCD9-A7B5C63617AA}</Project>
+      <Name>VisaNet.Utilities.Cryptography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.Cybersource\VisaNet.Utilities.Cybersource.csproj">
+      <Project>{8B1B0270-9611-41EE-A980-D39B4A2F87E0}</Project>
+      <Name>VisaNet.Utilities.Cybersource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.Exportation\VisaNet.Utilities.Exportation.csproj">
+      <Project>{C89A6574-9057-42E4-8C7D-D526C4629E88}</Project>
+      <Name>VisaNet.Utilities.Exportation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.Helpers\VisaNet.Utilities.Helpers.csproj">
+      <Project>{D5D69AF0-7CAA-47B8-9CE3-E93C893665FD}</Project>
+      <Name>VisaNet.Utilities.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.JsonResponse\VisaNet.Utilities.JsonResponse.csproj">
+      <Project>{4622e5fa-3571-4364-a44c-a5f2471a57ac}</Project>
+      <Name>VisaNet.Utilities.JsonResponse</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.Notifications\VisaNet.Utilities.Notifications.csproj">
+      <Project>{59A9EE0E-8113-4F80-B35A-6BA6A89474AA}</Project>
+      <Name>VisaNet.Utilities.Notifications</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.SFTPClient\VisaNet.Utilities.SFTPClient.csproj">
+      <Project>{ADF74233-BC52-4C71-95F2-CB81EF2B5406}</Project>
+      <Name>VisaNet.Utilities.SFTPClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.Presentation.Core.WebApi.Interfaces\VisaNet.Presentation.Core.WebApi.Interfaces.csproj">
+      <Project>{fb3cfba8-b1bd-4e1e-ae02-181a505df8e2}</Project>
+      <Name>VisaNet.Presentation.Core.WebApi.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.Presentation.Core\VisaNet.Presentation.Core.csproj">
+      <Project>{548656B7-21FF-44DA-8FB5-88C2151E0166}</Project>
+      <Name>VisaNet.Presentation.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.DependencyInjection\VisaNet.Common.DependencyInjection.csproj">
+      <Project>{9A0BD042-AA4B-4053-8E1C-D17108F9321F}</Project>
+      <Name>VisaNet.Common.DependencyInjection</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Production|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Testing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Development|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'VisaNet.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Staging|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8530</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8530/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

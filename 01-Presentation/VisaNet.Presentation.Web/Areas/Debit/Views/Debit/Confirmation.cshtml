@@ -1,0 +1,87 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Presentation.Web.Areas.Debit.Models
+@using VisaNet.Presentation.Web.Constants
+@model ConfirmationModel
+
+@{
+    ViewBag.Title = "Confirmation";
+    var newUser = !User.Identity.IsAuthenticated && Session[SessionConstants.CURRENT_SELECTED_USER] == null;
+}
+
+<div class="container p25t">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 nameSection">@PresentationWebStrings.Debit_New_Title</h3>
+            <h4 class="pageDescription">@PresentationWebStrings.Debit_New_Desc</h4>
+        </div>
+        <div class="clearfix"></div>
+        <div class="horizontalLineGrey"></div>
+    </div>
+    <div class="mt20">
+        <div class="wizardBox">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="mt5">Paso @Model.Setps[DebitsStepsEnum.Confirmation]: @PresentationWebStrings.DebitRequest_Confirmation</h3>
+                </div>
+                <div class="col-md-4">
+                    @Html.Partial("_Steps", Model.Setps)
+                </div>
+                <div class="clearfix"></div>
+                <div class="horizontalLineGrey"></div>
+            </div>
+            <div class="successBox mb20">
+                <h5><i class="icon-ok"></i> Se ha generado una solicitúd de débito para el servicio <span> @Model.CommerceName</span>. Esta debera ser aprobada por el servicio.</h5>
+            </div>
+            <div class="formMargin">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="imgPreview">
+                            <div class="ticketBox">
+                                <div class="paymentSecondRow">
+                                    <div class="row">
+                                        <div class="col-md-12">Usuario: <span> @Model.ApplicationUserModel.Email </span></div>
+                                        <div class="col-md-12">Producto: <span> @Model.ProductName </span></div>
+                                        @foreach (var refs in Model.ProductPropertyModelList.OrderBy(x => x.InputSequence))
+                                        {
+                                            if (!String.IsNullOrEmpty(refs.UserInput))
+                                            {
+                                                <div class="col-md-12">@refs.Name:<span> @refs.UserInput</span></div>
+                                            }
+                                        }
+                                        <div class="col-md-12">Tarjeta: <span> @Model.Number </span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @if (newUser)
+                {
+                    <a href="@Url.Action("Index", "Home", new { Area = ""  })" class="btn btn-default btn-inicio mt10 w100">@PresentationCoreMessages.Common_BackHome<i class="icon-home"></i></a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Requests", "DebitManagment", new {Area = "Private"})" class="btn btn-default btn-inicio mt10 w100">@PresentationWebStrings.Debit_Requests</a>
+                }
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#stepConfirm").addClass("active");
+        $("#debitRequestLink").addClass("vnpTitleSelected");
+
+        if ("@newUser" == "True")
+        {
+            ShowNotification("Se ha creado la solicitud", "Si se acaba de registrar como usuario, ingrese a su casilla de correo para confirmar el registro", 'success');
+        }
+    });
+</script>

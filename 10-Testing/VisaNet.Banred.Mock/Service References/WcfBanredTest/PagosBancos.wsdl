@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.banred.com.uy/PagosBancos/" name="PagosBancos" targetNamespace="http://www.banred.com.uy/PagosBancos/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.banred.com.uy/PagosBancos/">
+      <xsd:element name="consultaEntesDisponibles">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="idAgenteExterno" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="consultaEntesDisponiblesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="resultado" type="xsd:int" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="textoResultado" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="listaEntes" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="consultaFacturasEnte">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="idAgenteExterno" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="codigoEnte" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="codigoCuentaEnte" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="consultaFacturasEnteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="resultado" type="xsd:int" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="textoResultado" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="cantFacturas" type="xsd:int" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="listaFacturas" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="pagarFacturaEnte">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="idAgenteExterno" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="codigoEnte" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="codigoCuentaEnte" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="nroFactura" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="montoPago" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="MontoDescuentoIVA" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="monedaPago" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="fechaVencimiento" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="idOperacionAgente" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="firmaDigital" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="pagarFacturaEnteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="resultado" type="xsd:int" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="textoResultado" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="nroTransaccion" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="fechaHoraPago" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmarOperacion">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="idAgenteExterno" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="idOperacionExterna" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="status" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="idOperacionAgente" type="xsd:string" />
+            <xsd:element name="firmaDigital" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmarOperacionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="resultado" type="xsd:int" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="textoResultado" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="nroTransaccionExterna" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="fechaHoraConfirmacion" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="consultaEstadoOperacion">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="idAgenteExterno" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="idOperacionExterna" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="consultaEstadoOperacionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="resultado" type="xsd:int" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="textoResultado" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="estado" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="fechaHoraEstado" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="consultaEstadoPago">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="idAgenteExterno" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="idOperacionAgente" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="consultaEstadoPagoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="resultado" type="xsd:int" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="textoResultado" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="estado" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="fechaHoraEstado" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="nroTransaccion" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="resetearEpin">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="idAgenteExterno" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="tipoDoc" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="nroDocumento" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="ePinNuevo" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="resetearEpinResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="resultado" type="xsd:int" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="textoResultado" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="consultaEntesDisponiblesRequest">
+    <wsdl:part name="parameters" element="tns:consultaEntesDisponibles" />
+  </wsdl:message>
+  <wsdl:message name="consultaEntesDisponiblesResponse">
+    <wsdl:part name="parameters" element="tns:consultaEntesDisponiblesResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultaFacturasEnteRequest">
+    <wsdl:part name="parameters" element="tns:consultaFacturasEnte" />
+  </wsdl:message>
+  <wsdl:message name="consultaFacturasEnteResponse">
+    <wsdl:part name="parameters" element="tns:consultaFacturasEnteResponse" />
+  </wsdl:message>
+  <wsdl:message name="pagarFacturaEnteRequest">
+    <wsdl:part name="parameters" element="tns:pagarFacturaEnte" />
+  </wsdl:message>
+  <wsdl:message name="pagarFacturaEnteResponse">
+    <wsdl:part name="parameters" element="tns:pagarFacturaEnteResponse" />
+  </wsdl:message>
+  <wsdl:message name="confirmarOperacionRequest">
+    <wsdl:part name="parameters" element="tns:confirmarOperacion" />
+  </wsdl:message>
+  <wsdl:message name="confirmarOperacionResponse">
+    <wsdl:part name="parameters" element="tns:confirmarOperacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultaEstadoOperacionRequest">
+    <wsdl:part name="parameters" element="tns:consultaEstadoOperacion" />
+  </wsdl:message>
+  <wsdl:message name="consultaEstadoOperacionResponse">
+    <wsdl:part name="parameters" element="tns:consultaEstadoOperacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultaEstadoPagoRequest">
+    <wsdl:part name="parameters" element="tns:consultaEstadoPago" />
+  </wsdl:message>
+  <wsdl:message name="consultaEstadoPagoResponse">
+    <wsdl:part name="parameters" element="tns:consultaEstadoPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="resetearEpinRequest">
+    <wsdl:part name="parameters" element="tns:resetearEpin" />
+  </wsdl:message>
+  <wsdl:message name="resetearEpinResponse">
+    <wsdl:part name="parameters" element="tns:resetearEpinResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PagosBancos">
+    <wsdl:operation name="consultaEntesDisponibles">
+      <wsdl:input message="tns:consultaEntesDisponiblesRequest" />
+      <wsdl:output message="tns:consultaEntesDisponiblesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaFacturasEnte">
+      <wsdl:input message="tns:consultaFacturasEnteRequest" />
+      <wsdl:output message="tns:consultaFacturasEnteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="pagarFacturaEnte">
+      <wsdl:input message="tns:pagarFacturaEnteRequest" />
+      <wsdl:output message="tns:pagarFacturaEnteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="confirmarOperacion">
+      <wsdl:input message="tns:confirmarOperacionRequest" />
+      <wsdl:output message="tns:confirmarOperacionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaEstadoOperacion">
+      <wsdl:input message="tns:consultaEstadoOperacionRequest" />
+      <wsdl:output message="tns:consultaEstadoOperacionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaEstadoPago">
+      <wsdl:input message="tns:consultaEstadoPagoRequest" />
+      <wsdl:output message="tns:consultaEstadoPagoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="resetearEpin">
+      <wsdl:input message="tns:resetearEpinRequest" />
+      <wsdl:output message="tns:resetearEpinResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PagosBancosSOAP" type="tns:PagosBancos">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="consultaEntesDisponibles">
+      <soap:operation soapAction="http://www.banred.com.uy/PagosBancos/consultaEntesDisponibles" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaFacturasEnte">
+      <soap:operation soapAction="http://www.banred.com.uy/PagosBancos/consultaFacturasEnte" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pagarFacturaEnte">
+      <soap:operation soapAction="http://www.banred.com.uy/PagosBancos/pagarFacturaEnte" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmarOperacion">
+      <soap:operation soapAction="http://www.banred.com.uy/PagosBancos/confirmarOperacion" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaEstadoOperacion">
+      <soap:operation soapAction="http://www.banred.com.uy/PagosBancos/consultaEstadoOperacion" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaEstadoPago">
+      <soap:operation soapAction="http://www.banred.com.uy/PagosBancos/consultaEstadoPago" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resetearEpin">
+      <soap:operation soapAction="http://www.banred.com.uy/PagosBancos/resetearEpin" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PagosBancos">
+    <wsdl:port name="PagosBancosSOAP" binding="tns:PagosBancosSOAP">
+      <soap:address location="http://www.banred.com.uy/servtest/ws/PagosBancos.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

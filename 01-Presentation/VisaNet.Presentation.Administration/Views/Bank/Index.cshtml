@@ -1,0 +1,145 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Domain.EntitiesDtos.TableFilters.BankFilterDto
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Banks</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Name</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control w100", @placeholder = "Ingrese el nombre a buscar", autocomplete = "off" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Code</label>
+        @Html.TextBoxFor(m => m.Code, new { @class = "form-control w100 numeric", @placeholder = "Ingrese el código a buscar", autocomplete = "off" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.BinValue</label>
+        @Html.TextBoxFor(m => m.BinValue, new { @class = "form-control w100", @placeholder = "Ingrese el bin de la tarjeta a buscar", autocomplete = "off" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-default btn-standar mt10 w100" id="execute">@PresentationAdminStrings.Common_Search</a>
+    </div>
+</div>
+
+<div class="loadingMessaje hidden" id="loaderMessage">
+    <div class="loading">@PresentationAdminStrings.Loading</div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2></h2>
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @PresentationAdminStrings.Name
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Code
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Quoata
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@Html.ActionActionLink(Actions.BankCreate, "<i class=\"icon-plus\"></i>" + PresentationAdminStrings.Create, new Dictionary<string, object> { { "Class", "btn btn-default" }, { "id", "btnNew" } })
+
+@Html.Partial("_DeleteLightbox")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var dataTableFilters;
+
+        var bankName = '@Html.Raw(ViewBag.BankName)';
+
+        $("input[id='Name']").val(bankName);
+
+        function externalFilters(aoData) {
+           
+            aoData.push({ "name": "Name", "value": $("#@Html.IdFor(m => m.Name)").val() });
+            aoData.push({ "name": "Code", "value": $("#@Html.IdFor(m => m.Code)").val() });
+            aoData.push({ "name": "BinValue", "value": $("#@Html.IdFor(m => m.BinValue)").val() });
+        }
+
+        dataTableFilters = applyDatatableExternalFilters($('#table'), null,
+                [
+                    { "mDataProp": "Name" },
+                    { "mDataProp": "Code" },
+                    {
+                        "mDataProp": "QuotesPermited",
+                        "bSearchable": false,
+                        "bSortable": false,
+                    },
+                    {
+                        "sName": "Details",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.BankDetails, "<i class=\"fa fa-search\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                        }
+                    },
+                     {
+                         "sName": "Edit",
+                         "sClass": "column-icon",
+                         "sDefaultContent": "",
+                         "bSearchable": false,
+                         "bSortable": false,
+                         "fnRender": function (oObj) {
+                             return '@Html.ActionGridActionLink(Actions.BankEdit, "<i class=\"fa fa-edit\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                         }
+                     },
+                    {
+                        "sName": "Borrar",
+                        "sClass": "column-icon",
+                        //esto le indica que no lo mapee con el array
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.BankDelete, "<i class=\"fa fa-trash-o\"></i>", new Dictionary<string, object> { { "Class", "btn-editar lnkDelete" } })';
+                        }
+                    }
+                ],
+    '@Url.Action("AjaxHandler", "Bank")',
+    externalFilters, null,
+    [[0, "asc"]]);
+
+        $("#execute").click(function (e) {
+            e.preventDefault();
+            dataTableFilters.fnFilter();
+        });
+
+        $('table').on("click", ".lnkDelete", function (e) {
+            if (!$(this).hasClass("disabled")) {
+                e.preventDefault();
+                tr = $(this).parents("tr");
+                var lb = $('#lbConfirmDelete');
+                $("#lbHiddenUrl", lb).val($(this).attr("href"));
+                lb.modal();
+            }
+        });
+
+    });
+</script>
+

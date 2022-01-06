@@ -1,0 +1,79 @@
+﻿@using System.Configuration
+
+<script type="text/javascript">
+
+    !function () { "use strict"; function a() { function a() { function a(a, c) { function d(a) { var c = 1 === (e = 1 - e) ? "width" : "height"; return Math.floor(Number(a) * b[c]) } var e = 0; i[c].coords = a.split(",").map(d).join(",") } var b = { width: k.width / k.naturalWidth, height: k.height / k.naturalHeight }; j.forEach(a) } function b(a) { return a.coords.replace(/ *, */g, ",").replace(/ +/g, ",") } function c() { clearTimeout(l), l = setTimeout(a, 250) } function d() { (k.width !== k.naturalWidth || k.height !== k.naturalHeight) && a() } function e() { k.addEventListener("load", a, !1), window.addEventListener("focus", a, !1), window.addEventListener("resize", c, !1), window.addEventListener("readystatechange", a, !1), document.addEventListener("fullscreenchange", a, !1) } function f() { return "function" == typeof h._resize } function g() { i = h.getElementsByTagName("area"), j = Array.prototype.map.call(i, b), k = document.querySelector('img[usemap="#' + h.name + '"]'), h._resize = a } var h = this, i = null, j = null, k = null, l = null; f() ? h._resize() : (g(), e(), d()) } function b() { function b(a) { if (!a.tagName) throw new TypeError("Object is not a valid DOM element"); if ("MAP" !== a.tagName.toUpperCase()) throw new TypeError("Expected <MAP> tag, found <" + a.tagName + ">.") } function c(c) { c && (b(c), a.call(c), d.push(c)) } var d; return function (a) { switch (d = [], typeof a) { case "undefined": case "string": Array.prototype.forEach.call(document.querySelectorAll(a || "map"), c); break; case "object": c(a); break; default: throw new TypeError("Unexpected data type (" + typeof a + ").") } return d } } "function" == typeof define && define.amd ? define([], b) : "object" == typeof module && "object" == typeof module.exports ? module.exports = b() : window.imageMapResize = b(), "jQuery" in window && (jQuery.fn.imageMapResize = function () { return this.filter("map").each(a).end() }) }();
+    //# sourceMappingURL=imageMapResizer.map
+</script>
+
+@if (bool.Parse(ConfigurationManager.AppSettings["ShowAppAd"]))
+{
+    <div id="lbAd" class="modal promotionLightbox">
+        <div class="modal-dialog modal-lg">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="modal-content">
+                <div class="promotionImage">
+                    <img src="@Url.Content("~/Content/images/landing.png")" usemap="#Map" height="1002" width="636" />
+                    <map name="Map" id="Map">
+                        <area shape="rect" coords="201,285,415,368" href="https://itunes.apple.com/uy/app/visanetpagos/id1173540628?mt=8">
+                        <area shape="rect" coords="201,385,415,460" href="https://play.google.com/store/apps/details?id=com.visanetpagos.app&amp;hl=es">
+                    </map>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    function CanShowModal() {
+        var showModal = window.localStorage.getItem("showModal");
+
+        if (showModal === null) return true;
+        var timeDiff = Math.abs(new Date() - Date.parse(showModal));
+        var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+        if (diffDays > 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    $(document).ready(function() {
+        var md = new MobileDetect(window.navigator.userAgent);
+
+        if ((!md.mobile() || md.tablet()) && CanShowModal()) {
+            // some code..
+            $("#lbAd").modal("show");
+            $('map').imageMapResize();
+
+            $('#lbAd').on('hidden.bs.modal', function(e) {
+                window.localStorage.setItem("showModal", new Date());
+            });
+        } else {
+            if (md.userAgent() !== "Safari") {
+                new SmartBanner({
+                    daysHidden: 0, // days to hide banner after close button is clicked (defaults to 15)
+                    daysReminder: 0, // days to hide banner after "VIEW" button is clicked (defaults to 90)
+                    appStoreLanguage: 'es', // language code for the App Store (defaults to user's browser language)
+                    title: 'VisaNetPagos App',
+                    author: 'VisaNet Uruguay',
+                    button: 'Descargar',
+                    store: {
+                        ios: 'En App Store',
+                        android: 'En Google Play'
+                    },
+                    price: {
+                        ios: 'Grátis',
+                        android: 'Grátis'
+                    }
+                    // , theme: '' // put platform type ('ios', 'android', etc.) here to force single theme on all device
+                    // , icon: '' // full path to icon image if not using website icon image
+                    // , force: 'ios' // Uncomment for platform emulation
+                });
+            }
+        }
+
+        
+    });
+</script>

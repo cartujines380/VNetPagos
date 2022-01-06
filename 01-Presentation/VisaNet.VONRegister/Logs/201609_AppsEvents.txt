@@ -1,0 +1,634 @@
+2016-09-14 10:42:23.373 | Info | 001 - IdOperacion:(32050937) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:32050937 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 10:42:38.806 | Info | SET HASHED DOM
+2016-09-14 10:42:39.557 | Info | Application_EndRequest 
+2016-09-14 10:42:39.557 | Info | dnsDomain: localhost
+2016-09-14 10:42:39.557 | Info | domains: demouy.hexacta.com
+2016-09-14 10:42:41.144 | Info | Application_EndRequest 
+2016-09-14 10:42:41.147 | Info | dnsDomain: localhost
+2016-09-14 10:42:41.147 | Info | domains: demouy.hexacta.com
+2016-09-14 11:24:52.629 | Info | 
+2016-09-14 11:24:57.225 | Info | Application_EndRequest 
+2016-09-14 11:24:57.225 | Info | abs: 
+2016-09-14 11:24:58.503 | Info | 001 - IdOperacion:(69497388) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:69497388 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:28:35.490 | Info | 
+2016-09-14 11:28:35.501 | Info | 
+2016-09-14 11:28:35.501 | Info | 
+2016-09-14 11:28:39.721 | Info | Application_EndRequest 
+2016-09-14 11:28:39.721 | Info | Application_EndRequest 
+2016-09-14 11:28:39.721 | Info | Application_EndRequest 
+2016-09-14 11:28:39.730 | Info | abs: 
+2016-09-14 11:28:39.730 | Info | abs: 
+2016-09-14 11:28:39.730 | Info | abs: 
+2016-09-14 11:28:40.388 | Info | 001 - IdOperacion:(41378025) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:41378025 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:28:53.530 | Info | SET HASHED DOM
+2016-09-14 11:28:54.355 | Info | Application_EndRequest 
+2016-09-14 11:28:54.355 | Info | dnsDomain: localhost
+2016-09-14 11:28:54.383 | Info | abs: 
+2016-09-14 11:28:54.383 | Info | domains: demouy.hexacta.com
+2016-09-14 11:28:56.102 | Info | Application_EndRequest 
+2016-09-14 11:28:56.110 | Info | dnsDomain: localhost
+2016-09-14 11:28:56.110 | Info | abs: 
+2016-09-14 11:28:56.110 | Info | domains: demouy.hexacta.com
+2016-09-14 11:29:09.785 | Info | 003 - IdOperacion:(41378025) Email:gvarini@hexacta.com
+2016-09-14 11:29:09.807 | Info | Application_EndRequest 
+2016-09-14 11:29:09.807 | Info | dnsDomain: localhost
+2016-09-14 11:29:31.934 | Info | abs: 
+2016-09-14 11:29:31.976 | Info | domains: demouy.hexacta.com
+2016-09-14 11:40:17.164 | Info | 
+2016-09-14 11:40:17.180 | Info | Application_EndRequest 
+2016-09-14 11:40:24.099 | Info | abs: 
+2016-09-14 11:40:25.440 | Info | 001 - IdOperacion:(68182609) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:68182609 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:40:26.905 | Info | SET HASHED DOM
+2016-09-14 11:40:27.117 | Info | Application_EndRequest 
+2016-09-14 11:40:27.117 | Info | dnsDomain: localhost
+2016-09-14 11:40:34.283 | Info | abs: 
+2016-09-14 11:40:34.292 | Info | domains: demouy.hexacta.com
+2016-09-14 11:40:35.701 | Info | Application_EndRequest 
+2016-09-14 11:40:35.701 | Info | dnsDomain: localhost
+2016-09-14 11:40:36.610 | Info | abs: 
+2016-09-14 11:40:36.620 | Info | domains: demouy.hexacta.com
+2016-09-14 11:40:41.365 | Info | 003 - IdOperacion:(68182609) Email:gvarini@hexacta.com
+2016-09-14 11:40:41.388 | Info | Application_EndRequest 
+2016-09-14 11:40:41.388 | Info | dnsDomain: localhost
+2016-09-14 11:40:57.763 | Info | abs: 
+2016-09-14 11:40:57.786 | Info | domains: demouy.hexacta.com
+2016-09-14 11:43:04.580 | Info | 003 - IdOperacion:(68182609) Email:gvarini@hexacta.com
+2016-09-14 11:43:04.616 | Info | Application_EndRequest 
+2016-09-14 11:43:04.616 | Info | dnsDomain: localhost
+2016-09-14 11:43:10.140 | Info | abs: 
+2016-09-14 11:43:10.140 | Info | domains: demouy.hexacta.com
+2016-09-14 11:44:28.672 | Info | 
+2016-09-14 11:44:28.672 | Info | 
+2016-09-14 11:44:28.672 | Info | 
+2016-09-14 11:44:33.894 | Info | Application_EndRequest 
+2016-09-14 11:44:33.894 | Info | Application_EndRequest 
+2016-09-14 11:44:33.894 | Info | Application_EndRequest 
+2016-09-14 11:44:50.309 | Info | abs: 
+2016-09-14 11:44:50.309 | Info | abs: 
+2016-09-14 11:44:50.351 | Info | abs: 
+2016-09-14 11:44:52.080 | Info | 001 - IdOperacion:(37029747) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:37029747 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:44:56.164 | Info | SET HASHED DOM
+2016-09-14 11:44:57.213 | Info | Application_EndRequest 
+2016-09-14 11:44:57.218 | Info | dnsDomain: localhost
+2016-09-14 11:44:57.218 | Info | abs: 
+2016-09-14 11:44:57.218 | Info | domains: demouy.hexacta.com
+2016-09-14 11:44:58.923 | Info | Application_EndRequest 
+2016-09-14 11:44:58.923 | Info | dnsDomain: localhost
+2016-09-14 11:44:58.934 | Info | abs: 
+2016-09-14 11:44:58.934 | Info | domains: demouy.hexacta.com
+2016-09-14 11:47:21.065 | Info | 
+2016-09-14 11:47:21.065 | Info | 
+2016-09-14 11:47:21.065 | Info | 
+2016-09-14 11:47:24.495 | Info | Application_EndRequest 
+2016-09-14 11:47:24.495 | Info | Application_EndRequest 
+2016-09-14 11:47:24.495 | Info | Application_EndRequest 
+2016-09-14 11:47:24.495 | Info | abs: 
+2016-09-14 11:47:24.514 | Info | abs: 
+2016-09-14 11:47:24.514 | Info | abs: 
+2016-09-14 11:47:26.140 | Info | 001 - IdOperacion:(22278557) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:22278557 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:47:28.031 | Info | SET HASHED DOM
+2016-09-14 11:47:28.749 | Info | 001 - IdOperacion:(22278557) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:22278557 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:47:28.803 | Error | 007 - IdOperacion:(22278557) Id operación repetido. AppId: puntacarretaslocal.
+2016-09-14 11:47:28.845 | Info | Application_EndRequest 
+2016-09-14 11:47:28.852 | Info | dnsDomain: localhost
+2016-09-14 11:47:28.852 | Info | abs: 
+2016-09-14 11:47:28.852 | Info | domains: demouy.hexacta.com
+2016-09-14 11:47:28.938 | Info | Application_EndRequest 
+2016-09-14 11:47:28.942 | Info | dnsDomain: localhost
+2016-09-14 11:47:28.942 | Info | abs: 
+2016-09-14 11:47:28.942 | Info | domains: demouy.hexacta.com
+2016-09-14 11:47:30.157 | Info | Application_EndRequest 
+2016-09-14 11:47:30.167 | Info | dnsDomain: localhost
+2016-09-14 11:47:30.176 | Info | abs: 
+2016-09-14 11:47:30.176 | Info | domains: demouy.hexacta.com
+2016-09-14 11:47:37.946 | Info | 
+2016-09-14 11:47:37.946 | Info | Application_EndRequest 
+2016-09-14 11:47:37.959 | Info | abs: 
+2016-09-14 11:47:38.114 | Info | 
+2016-09-14 11:47:38.114 | Info | Application_EndRequest 
+2016-09-14 11:47:38.114 | Info | abs: 
+2016-09-14 11:47:38.597 | Info | 001 - IdOperacion:(81016339) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:81016339 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:47:38.789 | Info | SET HASHED DOM
+2016-09-14 11:47:39.087 | Info | Application_EndRequest 
+2016-09-14 11:47:39.097 | Info | dnsDomain: localhost
+2016-09-14 11:47:39.097 | Info | abs: 
+2016-09-14 11:47:39.097 | Info | domains: demouy.hexacta.com
+2016-09-14 11:47:40.216 | Info | Application_EndRequest 
+2016-09-14 11:47:40.223 | Info | dnsDomain: localhost
+2016-09-14 11:47:40.223 | Info | abs: 
+2016-09-14 11:47:40.223 | Info | domains: demouy.hexacta.com
+2016-09-14 11:47:40.299 | Info | 001 - IdOperacion:(81016339) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:81016339 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:47:40.349 | Error | 007 - IdOperacion:(81016339) Id operación repetido. AppId: puntacarretaslocal.
+2016-09-14 11:47:40.349 | Info | Application_EndRequest 
+2016-09-14 11:47:40.366 | Info | dnsDomain: localhost
+2016-09-14 11:47:40.366 | Info | abs: 
+2016-09-14 11:47:40.377 | Info | domains: demouy.hexacta.com
+2016-09-14 11:47:40.394 | Info | Application_EndRequest 
+2016-09-14 11:47:40.394 | Info | dnsDomain: localhost
+2016-09-14 11:47:40.394 | Info | abs: 
+2016-09-14 11:47:40.394 | Info | domains: demouy.hexacta.com
+2016-09-14 11:47:47.296 | Info | 
+2016-09-14 11:47:47.309 | Info | Application_EndRequest 
+2016-09-14 11:47:47.319 | Info | abs: 
+2016-09-14 11:47:47.761 | Info | 001 - IdOperacion:(37637548) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:37637548 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:47:47.972 | Info | SET HASHED DOM
+2016-09-14 11:47:48.117 | Info | Application_EndRequest 
+2016-09-14 11:47:48.117 | Info | dnsDomain: localhost
+2016-09-14 11:47:48.117 | Info | abs: 
+2016-09-14 11:47:48.131 | Info | domains: demouy.hexacta.com
+2016-09-14 11:47:48.152 | Info | Application_EndRequest 
+2016-09-14 11:47:48.152 | Info | dnsDomain: localhost
+2016-09-14 11:47:48.161 | Info | abs: 
+2016-09-14 11:47:48.161 | Info | domains: demouy.hexacta.com
+2016-09-14 11:48:18.043 | Info | 003 - IdOperacion:(37637548) Email:gvarini@hexacta.com
+2016-09-14 11:48:18.095 | Info | Application_EndRequest 
+2016-09-14 11:48:18.098 | Info | dnsDomain: localhost
+2016-09-14 11:48:18.098 | Info | abs: 
+2016-09-14 11:48:18.098 | Info | domains: demouy.hexacta.com
+2016-09-14 11:48:59.553 | Info | 
+2016-09-14 11:48:59.553 | Info | Application_EndRequest 
+2016-09-14 11:48:59.567 | Info | abs: 
+2016-09-14 11:49:00.022 | Info | 
+2016-09-14 11:49:00.022 | Info | Application_EndRequest 
+2016-09-14 11:49:00.033 | Info | abs: 
+2016-09-14 11:49:02.070 | Info | 001 - IdOperacion:(96582080) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:96582080 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:49:02.833 | Info | SET HASHED DOM
+2016-09-14 11:49:03.143 | Info | Application_EndRequest 
+2016-09-14 11:49:03.152 | Info | dnsDomain: localhost
+2016-09-14 11:49:03.152 | Info | abs: 
+2016-09-14 11:49:03.152 | Info | domains: demouy.hexacta.com
+2016-09-14 11:49:04.144 | Info | Application_EndRequest 
+2016-09-14 11:49:04.151 | Info | dnsDomain: localhost
+2016-09-14 11:49:04.151 | Info | abs: 
+2016-09-14 11:49:04.151 | Info | domains: demouy.hexacta.com
+2016-09-14 11:49:04.466 | Info | Application_EndRequest 
+2016-09-14 11:49:04.476 | Info | dnsDomain: localhost
+2016-09-14 11:49:04.476 | Info | abs: 
+2016-09-14 11:49:04.493 | Info | domains: demouy.hexacta.com
+2016-09-14 11:49:19.734 | Info | 003 - IdOperacion:(96582080) Email:gvarini@hexacta.com
+2016-09-14 11:49:19.752 | Info | Application_EndRequest 
+2016-09-14 11:49:19.752 | Info | dnsDomain: localhost
+2016-09-14 11:49:19.773 | Info | abs: 
+2016-09-14 11:49:19.773 | Info | domains: demouy.hexacta.com
+2016-09-14 11:49:44.027 | Info | 
+2016-09-14 11:49:44.782 | Info | Application_EndRequest 
+2016-09-14 11:49:44.782 | Info | abs: 
+2016-09-14 11:49:45.009 | Info | 
+2016-09-14 11:49:45.009 | Info | Application_EndRequest 
+2016-09-14 11:49:45.021 | Info | abs: 
+2016-09-14 11:49:48.524 | Info | 
+2016-09-14 11:49:48.532 | Info | Application_EndRequest 
+2016-09-14 11:49:48.532 | Info | abs: 
+2016-09-14 11:49:48.876 | Info | 
+2016-09-14 11:49:48.891 | Info | Application_EndRequest 
+2016-09-14 11:49:48.916 | Info | abs: 
+2016-09-14 11:49:48.959 | Info | 
+2016-09-14 11:49:48.969 | Info | Application_EndRequest 
+2016-09-14 11:49:48.969 | Info | abs: 
+2016-09-14 11:49:52.505 | Info | 001 - IdOperacion:(25222630) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:25222630 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:49:53.033 | Info | SET HASHED DOM
+2016-09-14 11:49:53.592 | Info | Application_EndRequest 
+2016-09-14 11:49:53.603 | Info | dnsDomain: localhost
+2016-09-14 11:49:53.603 | Info | abs: 
+2016-09-14 11:49:53.603 | Info | domains: demouy.hexacta.com
+2016-09-14 11:49:53.632 | Info | Application_EndRequest 
+2016-09-14 11:49:53.632 | Info | dnsDomain: localhost
+2016-09-14 11:49:53.632 | Info | abs: 
+2016-09-14 11:49:53.632 | Info | domains: demouy.hexacta.com
+2016-09-14 11:51:07.850 | Info | 003 - IdOperacion:(25222630) Email:gvarini@hexacta.com
+2016-09-14 11:51:07.893 | Info | Application_EndRequest 
+2016-09-14 11:51:07.893 | Info | dnsDomain: localhost
+2016-09-14 11:51:07.893 | Info | abs: 
+2016-09-14 11:51:07.914 | Info | domains: demouy.hexacta.com
+2016-09-14 11:51:17.366 | Info | 003 - IdOperacion:(25222630) Email:gvarini@hexacta.com
+2016-09-14 11:51:17.377 | Info | Application_EndRequest 
+2016-09-14 11:51:17.377 | Info | dnsDomain: localhost
+2016-09-14 11:51:17.399 | Info | abs: 
+2016-09-14 11:51:17.399 | Info | domains: demouy.hexacta.com
+2016-09-14 11:51:36.801 | Info | 003 - IdOperacion:(25222630) Email:gvarini@hexacta.com
+2016-09-14 11:51:36.850 | Info | Application_EndRequest 
+2016-09-14 11:51:36.850 | Info | dnsDomain: localhost
+2016-09-14 11:51:36.859 | Info | abs: 
+2016-09-14 11:51:36.859 | Info | domains: demouy.hexacta.com
+2016-09-14 11:55:20.631 | Info | 002 - IdOperacion:(25222630) Email:gvarini@hexacta.com
+2016-09-14 11:55:20.757 | Info | Application_EndRequest 
+2016-09-14 11:55:20.757 | Info | dnsDomain: localhost
+2016-09-14 11:55:20.766 | Info | abs: 
+2016-09-14 11:55:20.766 | Info | domains: demouy.hexacta.com
+2016-09-14 11:55:20.789 | Info | 013 - (IdOperacion:(25222630) Id Servicio:095a666d-056c-4681-a81d-a0220e05435c
+2016-09-14 11:55:22.730 | Info | Application_EndRequest 
+2016-09-14 11:55:22.738 | Info | dnsDomain: localhost
+2016-09-14 11:55:22.738 | Info | abs: 
+2016-09-14 11:55:22.738 | Info | domains: demouy.hexacta.com
+2016-09-14 11:55:35.481 | Info | 
+2016-09-14 11:55:35.493 | Info | Application_EndRequest 
+2016-09-14 11:55:35.493 | Info | abs: 
+2016-09-14 11:55:40.584 | Info | 001 - IdOperacion:(84784597) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:84784597 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:55:40.770 | Info | SET HASHED DOM
+2016-09-14 11:55:40.894 | Info | Application_EndRequest 
+2016-09-14 11:55:40.894 | Info | dnsDomain: localhost
+2016-09-14 11:55:40.909 | Info | abs: 
+2016-09-14 11:55:40.909 | Info | domains: demouy.hexacta.com
+2016-09-14 11:55:40.936 | Info | Application_EndRequest 
+2016-09-14 11:55:40.941 | Info | dnsDomain: localhost
+2016-09-14 11:55:40.941 | Info | abs: 
+2016-09-14 11:55:40.941 | Info | domains: demouy.hexacta.com
+2016-09-14 11:55:46.671 | Info | 
+2016-09-14 11:55:46.678 | Info | Application_EndRequest 
+2016-09-14 11:55:46.678 | Info | abs: 
+2016-09-14 11:55:46.868 | Info | 
+2016-09-14 11:55:46.868 | Info | Application_EndRequest 
+2016-09-14 11:55:46.868 | Info | abs: 
+2016-09-14 11:55:48.717 | Info | 001 - IdOperacion:(22732397) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:22732397 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 11:55:48.947 | Info | SET HASHED DOM
+2016-09-14 11:55:50.315 | Info | Application_EndRequest 
+2016-09-14 11:55:50.331 | Info | dnsDomain: localhost
+2016-09-14 11:55:50.331 | Info | abs: 
+2016-09-14 11:55:50.331 | Info | domains: demouy.hexacta.com
+2016-09-14 11:55:50.366 | Info | Application_EndRequest 
+2016-09-14 11:55:50.366 | Info | dnsDomain: localhost
+2016-09-14 11:55:50.366 | Info | abs: 
+2016-09-14 11:55:50.378 | Info | domains: demouy.hexacta.com
+2016-09-14 12:17:12.139 | Info | 003 - IdOperacion:() Email:gvarini@hexacta.com
+2016-09-14 12:17:12.170 | Info | Application_EndRequest 
+2016-09-14 12:17:12.175 | Info | dnsDomain: localhost
+2016-09-14 12:19:30.216 | Info | 
+2016-09-14 12:19:36.690 | Info | Application_EndRequest 
+2016-09-14 12:20:57.179 | Info | abs: 
+2016-09-14 12:21:01.292 | Info | 001 - IdOperacion:(96216934) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:96216934 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 12:21:02.246 | Info | SET HASHED DOM
+2016-09-14 12:21:04.447 | Info | Application_EndRequest 
+2016-09-14 12:21:04.447 | Info | dnsDomain: localhost
+2016-09-14 12:21:14.187 | Info | abs: 
+2016-09-14 12:21:14.201 | Info | domains: demouy.hexacta.com
+2016-09-14 12:21:15.676 | Info | Application_EndRequest 
+2016-09-14 12:21:15.676 | Info | dnsDomain: localhost
+2016-09-14 12:21:16.650 | Info | abs: 
+2016-09-14 12:21:16.663 | Info | domains: demouy.hexacta.com
+2016-09-14 12:21:21.611 | Info | Application_EndRequest 
+2016-09-14 12:21:21.624 | Info | dnsDomain: localhost
+2016-09-14 12:21:31.462 | Info | abs: 
+2016-09-14 12:21:31.462 | Info | domains: demouy.hexacta.com
+2016-09-14 12:35:59.291 | Info | Application_PostAcquireRequestState 
+2016-09-14 12:35:59.304 | Info | Application_PostAcquireRequestState 
+2016-09-14 12:35:59.316 | Info | Application_PostAcquireRequestState 
+2016-09-14 12:35:59.304 | Info | Application_PostAcquireRequestState 
+2016-09-14 12:35:59.451 | Info | 
+2016-09-14 12:35:59.451 | Info | 
+2016-09-14 12:35:59.451 | Info | 
+2016-09-14 12:35:59.767 | Info | Application_EndRequest 
+2016-09-14 12:36:01.508 | Info | abs: 
+2016-09-14 12:36:06.655 | Info | Application_EndRequest 
+2016-09-14 12:36:06.655 | Info | Application_EndRequest 
+2016-09-14 12:36:06.655 | Info | Application_EndRequest 
+2016-09-14 12:36:08.771 | Info | abs: 
+2016-09-14 12:36:07.916 | Info | abs: 
+2016-09-14 12:36:10.645 | Info | abs: 
+2016-09-14 12:36:16.482 | Info | Application_PostAcquireRequestState 
+2016-09-14 12:36:16.543 | Info | 001 - IdOperacion:(84212394) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:84212394 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 12:36:17.322 | Info | SET HASHED DOM
+2016-09-14 12:36:18.030 | Info | Application_EndRequest 
+2016-09-14 12:36:18.034 | Info | dnsDomain: localhost
+2016-09-14 12:36:18.034 | Info | abs: 
+2016-09-14 12:36:18.034 | Info | domains: demouy.hexacta.com
+2016-09-14 12:36:35.844 | Info | Application_PostAcquireRequestState 421aa90e079fa326b6494f812ad13e79
+2016-09-14 12:36:37.897 | Info | Application_EndRequest 
+2016-09-14 12:36:37.897 | Info | dnsDomain: localhost
+2016-09-14 12:36:37.897 | Info | abs: 
+2016-09-14 12:36:37.909 | Info | domains: demouy.hexacta.com
+2016-09-14 12:36:46.502 | Info | Application_PostAcquireRequestState 421aa90e079fa326b6494f812ad13e79
+2016-09-14 12:36:48.310 | Info | 002 - IdOperacion:(84212394) Email:gvarini@hexacta.com
+2016-09-14 12:36:48.399 | Info | Application_EndRequest 
+2016-09-14 12:36:48.399 | Info | dnsDomain: localhost
+2016-09-14 12:36:48.407 | Info | abs: 
+2016-09-14 12:36:48.407 | Info | domains: demouy.hexacta.com
+2016-09-14 12:36:49.330 | Info | Application_PostAcquireRequestState 421aa90e079fa326b6494f812ad13e79
+2016-09-14 12:36:49.330 | Info | 013 - (IdOperacion:(84212394) Id Servicio:095a666d-056c-4681-a81d-a0220e05435c
+2016-09-14 12:36:49.997 | Info | Application_EndRequest 
+2016-09-14 12:36:49.997 | Info | dnsDomain: localhost
+2016-09-14 12:36:49.997 | Info | abs: 
+2016-09-14 12:36:49.997 | Info | domains: demouy.hexacta.com
+2016-09-14 12:36:54.449 | Info | Application_PostAcquireRequestState 421aa90e079fa326b6494f812ad13e79
+2016-09-14 12:36:54.449 | Info | Application_EndRequest 
+2016-09-14 12:36:54.466 | Info | dnsDomain: localhost
+2016-09-14 12:36:54.466 | Info | abs: 
+2016-09-14 12:36:54.474 | Info | domains: demouy.hexacta.com
+2016-09-14 12:36:56.245 | Info | Application_PostAcquireRequestState 421aa90e079fa326b6494f812ad13e79
+2016-09-14 12:36:56.304 | Info | Application_EndRequest 
+2016-09-14 12:36:56.318 | Info | dnsDomain: localhost
+2016-09-14 12:36:56.318 | Info | abs: 
+2016-09-14 12:36:56.337 | Info | domains: demouy.hexacta.com
+2016-09-14 12:37:21.380 | Info | Application_PostAcquireRequestState 421aa90e079fa326b6494f812ad13e79
+2016-09-14 12:37:21.393 | Info | 
+2016-09-14 12:37:21.404 | Info | Application_EndRequest 
+2016-09-14 12:37:21.420 | Info | abs: 
+2016-09-14 12:37:26.994 | Info | Application_PostAcquireRequestState 421aa90e079fa326b6494f812ad13e79
+2016-09-14 12:37:27.001 | Info | 001 - IdOperacion:(93602943) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:93602943 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 12:37:27.722 | Info | SET HASHED DOM
+2016-09-14 12:37:28.589 | Info | Application_EndRequest 
+2016-09-14 12:37:28.602 | Info | dnsDomain: localhost
+2016-09-14 12:37:28.607 | Info | abs: 
+2016-09-14 12:37:28.607 | Info | domains: demouy.hexacta.com
+2016-09-14 12:37:28.632 | Info | Application_PostAcquireRequestState 421aa90e079fa326b6494f812ad13e79
+2016-09-14 12:37:28.642 | Info | Application_EndRequest 
+2016-09-14 12:37:28.642 | Info | dnsDomain: localhost
+2016-09-14 12:37:28.642 | Info | abs: 
+2016-09-14 12:37:28.642 | Info | domains: demouy.hexacta.com
+2016-09-14 15:12:06.096 | Info | 
+2016-09-14 15:12:16.717 | Info | 001 - IdOperacion:(57727250) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:57727250 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-14 15:12:25.998 | Info | 002 - IdOperacion:(57727250) Email:gvarini@hexacta.com
+2016-09-14 15:12:26.108 | Info | 013 - (IdOperacion:(57727250) Id Servicio:095a666d-056c-4681-a81d-a0220e05435c
+2016-09-14 15:13:13.910 | Info | 010 - (IdOperacion:(57727250)
+2016-09-14 15:13:27.104 | Info | 011 - (IdOperacion:(57727250) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-14 15:13:28.276 | Info | 014 - (IdOperacion:(57727250)
+2016-09-14 15:13:31.136 | Info | 015 - (IdOperacion:(57727250) RequestId:4738765892336972001514
+2016-09-14 15:13:32.139 | Info | 016 - TokengenerationCallBack - INICIO METODO. PROCESO 20160914031332
+2016-09-14 15:13:37.344 | Info | 016 - (IdOperacion:(57727250) - TokengenerationCallBack - Realizo POST a http://requestb.in/sj5phusj, id de operación 57727250, PROCESO 20160914031332, idapp puntacarretaslocal
+2016-09-14 15:22:22.585 | Info | 
+2016-09-14 15:22:22.585 | Info | 
+2016-09-14 15:22:22.585 | Info | 
+2016-09-14 15:22:32.170 | Info | 001 - IdOperacion:(78347010) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:78347010 UrlCallback: AppId:puntacarretaslocal
+2016-09-15 10:04:08.616 | Info | 
+2016-09-15 10:05:18.818 | Info | 
+2016-09-15 10:05:18.818 | Info | 
+2016-09-15 10:05:18.818 | Info | 
+2016-09-15 10:05:18.819 | Info | 
+2016-09-15 10:06:02.395 | Info | 
+2016-09-15 10:06:34.363 | Info | 
+2016-09-15 10:07:00.181 | Info | 001 - IdOperacion:(94394309) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:94394309 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal,FirmaDigital
+2016-09-15 10:07:07.617 | Info | 
+2016-09-15 10:07:22.812 | Info | 
+2016-09-15 10:07:35.280 | Info | 001 - IdOperacion:(54011681) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:54011681 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-15 10:07:38.060 | Info | 
+2016-09-15 10:07:56.295 | Info | 
+2016-09-15 10:08:33.490 | Info | 001 - IdOperacion:(23914448) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:23914448 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-15 10:08:37.819 | Info | 
+2016-09-15 10:08:59.723 | Info | 
+2016-09-15 10:10:16.265 | Info | 001 - IdOperacion:(73246425) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:73246425 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-15 10:10:20.354 | Info | 
+2016-09-15 10:10:40.731 | Info | 
+2016-09-15 10:10:54.047 | Info | 001 - IdOperacion:(38023506) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:38023506 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-15 12:22:50.073 | Info | 
+2016-09-15 12:26:53.541 | Info | 001 - IdOperacion:(42250139) Email:123gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:42250139 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-15 12:26:58.369 | Error | El usuario indicado no existe.    at VisaNet.Presentation.Core.WebApiClient.<TraceErrorAsync>d__19.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 88
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at VisaNet.Presentation.Core.WebApiClient.<CallApiServiceAsync>d__6`1.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 27
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at VisaNet.VONRegister.Controllers.AccountController.<Index>d__f.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.VONRegister\Controllers\AccountController.cs:line 204
+2016-09-15 12:31:16.343 | Info | 009 - IdOperacion:(42250139) Email:123gvarini@hexacta.com Nombre:Guillermo Varini Apellido:Varini Direccion:455 E. 22nd Street Telefono:6309324400 Movil: CI:guillevarini@gmail.com
+2016-09-15 12:31:20.516 | Info | 010 - (IdOperacion:(42250139)
+2016-09-15 12:34:03.837 | Info | 
+2016-09-15 12:34:10.597 | Info | 001 - IdOperacion:(21447401) Email:123gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:21447401 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-15 12:34:13.336 | Error | El usuario indicado no existe.    at VisaNet.Presentation.Core.WebApiClient.<TraceErrorAsync>d__19.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 88
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at VisaNet.Presentation.Core.WebApiClient.<CallApiServiceAsync>d__6`1.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 27
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at VisaNet.VONRegister.Controllers.AccountController.<Index>d__f.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.VONRegister\Controllers\AccountController.cs:line 204
+2016-09-23 13:16:26.205 | Info | 
+2016-09-23 13:16:50.257 | Info | 
+2016-09-23 15:48:24.645 | Info | 
+2016-09-23 15:55:49.084 | Info | 
+2016-09-23 16:18:59.256 | Info | 
+2016-09-28 15:40:40.490 | Info | 001 - IdOperacion:() Email: Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:S IdOperacion: UrlCallback: AppId:
+2016-09-28 15:41:08.313 | Info | 
+2016-09-28 15:41:13.691 | Info | 001 - IdOperacion:(16682034) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:16682034 UrlCallback:http://requestb.in/sj5phusj AppId:puntacarretaslocal
+2016-09-28 15:51:43.698 | Info | 001 - IdOperacion:() Email: Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:S IdOperacion: UrlCallback: AppId:
+2016-09-28 15:52:31.413 | Info | 001 - IdOperacion:() Email: Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:S IdOperacion: UrlCallback: AppId:
+2016-09-28 15:52:31.515 | Error | 007 - IdOperacion:() Id operación repetido. AppId: .
+2016-09-28 15:52:34.622 | Info | 001 - IdOperacion:() Email: Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:S IdOperacion: UrlCallback: AppId:
+2016-09-28 15:52:34.708 | Error | 007 - IdOperacion:() Id operación repetido. AppId: .
+2016-09-28 15:57:16.160 | Info | 
+2016-09-28 15:58:02.490 | Info | 001 - IdOperacion:(41745704) Email:gvarini512@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:41745704 UrlCallback:http://requestb.in/q7mql1q7 AppId:
+2016-09-28 15:58:12.601 | Info | 001 - IdOperacion:() Email: Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:S IdOperacion: UrlCallback: AppId:
+2016-09-28 15:58:12.687 | Error | 007 - IdOperacion:() Id operación repetido. AppId: .
+2016-09-28 15:58:14.164 | Info | 
+2016-09-28 15:58:18.389 | Info | 
+2016-09-28 15:58:25.995 | Info | 001 - IdOperacion:(42233371) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:S IdOperacion:42233371 UrlCallback:http://requestb.in/q7mql1q7 AppId:
+2016-09-28 15:59:19.595 | Info | 
+2016-09-28 15:59:23.429 | Info | 001 - IdOperacion:(68794180) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:68794180 UrlCallback:http://requestb.in/q7mql1q7 AppId:
+2016-09-28 16:01:48.971 | Info | 
+2016-09-28 16:02:04.026 | Info | 001 - IdOperacion:(18455852) Email:gvarini4444@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:18455852 UrlCallback:http://requestb.in/q7mql1q7 AppId:puntacarretaslocal
+2016-09-28 16:02:19.143 | Info | 
+2016-09-28 16:02:30.309 | Info | 001 - IdOperacion:(61489692) Email:gvarini123@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:61489692 UrlCallback:http://requestb.in/q7mql1q7 AppId:puntacarretaslocal
+2016-09-28 16:05:02.767 | Info | 
+2016-09-28 16:05:24.342 | Info | 001 - IdOperacion:(66402503) Email:gv123arini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:66402503 UrlCallback:http://requestb.in/q7mql1q7 AppId:puntacarretaslocal
+2016-09-28 16:05:56.890 | Info | 
+2016-09-28 16:06:01.963 | Info | 001 - IdOperacion:(99616537) Email:gvarini4@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:99616537 UrlCallback:http://requestb.in/q7mql1q7 AppId:puntacarretaslocal
+2016-09-28 16:14:40.187 | Info | 
+2016-09-28 16:14:40.187 | Info | 
+2016-09-28 16:14:52.292 | Info | 001 - IdOperacion:(58186907) Email:gvarini@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:58186907 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 16:15:05.244 | Info | 
+2016-09-28 16:15:12.461 | Info | 001 - IdOperacion:(26022379) Email:gvarini21@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:26022379 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 16:15:20.756 | Error | El usuario indicado no existe.    at VisaNet.Presentation.Core.WebApiClient.<TraceErrorAsync>d__19.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 88
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at VisaNet.Presentation.Core.WebApiClient.<CallApiServiceAsync>d__6`1.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 27
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at VisaNet.VONRegister.Controllers.AccountController.<Index>d__f.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.VONRegister\Controllers\AccountController.cs:line 204
+2016-09-28 16:15:37.960 | Info | 009 - IdOperacion:(26022379) Email:gvarini21@hexacta.com Nombre:Guillermo Varini Apellido:Varini Direccion:455 E. 22nd Street Telefono:6309324400 Movil: CI:guillevarini@gmail.com
+2016-09-28 16:15:37.990 | Info | 010 - (IdOperacion:(26022379)
+2016-09-28 16:15:56.110 | Info | 011 - (IdOperacion:(26022379) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-28 16:15:57.676 | Info | 014 - (IdOperacion:(26022379)
+2016-09-28 16:16:01.265 | Info | 015 - (IdOperacion:(26022379) RequestId:4750901260676391604107
+2016-09-28 16:16:02.346 | Info | 016 - TokengenerationCallBack - INICIO METODO. PROCESO 20160928041602
+2016-09-28 16:16:12.080 | Info | 016 - (IdOperacion:(26022379) - TokengenerationCallBack - Realizo POST a http://requestb.in/q7mql1q7, id de operación 26022379, PROCESO 20160928041602, idapp puntacarretaslocal
+2016-09-28 16:18:32.302 | Info | 
+2016-09-28 16:18:39.745 | Info | 001 - IdOperacion:(64577978) Email:gvarini21@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:64577978 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 16:18:49.221 | Info | 002 - IdOperacion:(64577978) Email:gvarini21@hexacta.com
+2016-09-28 16:18:49.294 | Info | 013 - (IdOperacion:(64577978) Id Servicio:0c37925e-666e-4a67-8c25-e0f92d9765e4
+2016-09-28 16:18:55.143 | Info | 010 - (IdOperacion:(64577978)
+2016-09-28 16:19:47.525 | Info | 011 - (IdOperacion:(64577978) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:424242
+2016-09-28 16:19:48.765 | Info | 014 - (IdOperacion:(64577978)
+2016-09-28 16:19:50.068 | Info | 015 - (IdOperacion:(64577978) RequestId:4750903548906436104105
+2016-09-28 16:19:50.545 | Info | 016 - TokengenerationCallBack - INICIO METODO. PROCESO 20160928041950
+2016-09-28 16:21:30.232 | Info | 016 - (IdOperacion:(64577978) - TokengenerationCallBack - Realizo POST a http://requestb.in/q7mql1q7, id de operación 64577978, PROCESO 20160928041950, idapp puntacarretaslocal
+2016-09-28 16:27:52.892 | Info | 
+2016-09-28 16:27:59.157 | Info | 001 - IdOperacion:(48876539) Email:gvarini2121@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:48876539 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 16:28:05.470 | Error | El usuario indicado no existe.    at VisaNet.Presentation.Core.WebApiClient.<TraceErrorAsync>d__19.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 88
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at VisaNet.Presentation.Core.WebApiClient.<CallApiServiceAsync>d__6`1.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 27
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at VisaNet.VONRegister.Controllers.AccountController.<Index>d__f.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.VONRegister\Controllers\AccountController.cs:line 204
+2016-09-28 16:28:32.053 | Info | 009 - IdOperacion:(48876539) Email:gvarini2121@hexacta.com Nombre:Guillermo Varini Apellido:Varini Direccion:455 E. 22nd Street Telefono:telefono Movil: CI:40124056
+2016-09-28 16:28:32.073 | Info | 010 - (IdOperacion:(48876539)
+2016-09-28 16:28:43.559 | Info | 011 - (IdOperacion:(48876539) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-28 16:28:45.095 | Info | 014 - (IdOperacion:(48876539)
+2016-09-28 16:28:47.310 | Info | 015 - (IdOperacion:(48876539) RequestId:
+2016-09-28 16:28:47.675 | Info | 016 - TokengenerationCallBack - INICIO METODO. PROCESO 20160928042847
+2016-09-28 16:29:57.773 | Info | 010 - (IdOperacion:(48876539)
+2016-09-28 16:30:16.569 | Info | 011 - (IdOperacion:(48876539) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-28 16:30:17.800 | Info | 014 - (IdOperacion:(48876539)
+2016-09-28 16:30:18.835 | Info | 015 - (IdOperacion:(48876539) RequestId:
+2016-09-28 16:30:19.305 | Info | 016 - TokengenerationCallBack - INICIO METODO. PROCESO 20160928043019
+2016-09-28 16:30:37.131 | Info | 010 - (IdOperacion:(48876539)
+2016-09-28 16:30:54.137 | Info | 011 - (IdOperacion:(48876539) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-28 16:30:56.239 | Info | 014 - (IdOperacion:(48876539)
+2016-09-28 16:30:56.982 | Info | 015 - (IdOperacion:(48876539) RequestId:
+2016-09-28 16:30:57.253 | Info | 016 - TokengenerationCallBack - INICIO METODO. PROCESO 20160928043057
+2016-09-28 16:31:17.936 | Info | 010 - (IdOperacion:(48876539)
+2016-09-28 16:34:27.452 | Info | 
+2016-09-28 16:34:30.793 | Info | 
+2016-09-28 16:34:33.750 | Info | 001 - IdOperacion:(19066041) Email:gvarini2121@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:19066041 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 16:34:36.445 | Error | El usuario indicado no existe.    at VisaNet.Presentation.Core.WebApiClient.<TraceErrorAsync>d__19.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 88
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at VisaNet.Presentation.Core.WebApiClient.<CallApiServiceAsync>d__6`1.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 27
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at VisaNet.VONRegister.Controllers.AccountController.<Index>d__f.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.VONRegister\Controllers\AccountController.cs:line 204
+2016-09-28 16:35:07.202 | Info | 009 - IdOperacion:(19066041) Email:gvarini2121@hexacta.com Nombre:Guillermo Varini Apellido:Varini Direccion:455 E. 22nd Street Telefono:6192223 Movil: CI:40120456
+2016-09-28 16:35:07.228 | Info | 010 - (IdOperacion:(19066041)
+2016-09-28 16:35:18.512 | Info | 011 - (IdOperacion:(19066041) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-28 16:35:19.878 | Info | 014 - (IdOperacion:(19066041)
+2016-09-28 16:35:21.107 | Info | 015 - (IdOperacion:(19066041) RequestId:4750912859516575004105
+2016-09-28 16:35:21.457 | Info | 016 - TokengenerationCallBack - INICIO METODO. PROCESO 20160928043521
+2016-09-28 16:45:22.080 | Info | 
+2016-09-28 16:45:34.087 | Info | 001 - IdOperacion:(26561713) Email:gvarini2121@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:26561713 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 16:45:40.302 | Error | El usuario indicado no existe.    at VisaNet.Presentation.Core.WebApiClient.<TraceErrorAsync>d__19.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 88
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at VisaNet.Presentation.Core.WebApiClient.<CallApiServiceAsync>d__6`1.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 27
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at VisaNet.VONRegister.Controllers.AccountController.<Index>d__f.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.VONRegister\Controllers\AccountController.cs:line 204
+2016-09-28 16:46:09.853 | Info | 009 - IdOperacion:(26561713) Email:gvarini2121@hexacta.com Nombre:Guillermo  Apellido:Varini Direccion:455 E. 22nd Street Telefono:26192223 Movil: CI:40124056
+2016-09-28 16:46:09.886 | Info | 010 - (IdOperacion:(26561713)
+2016-09-28 16:46:19.450 | Info | 011 - (IdOperacion:(26561713) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-28 16:46:20.707 | Info | 014 - (IdOperacion:(26561713)
+2016-09-28 16:46:22.969 | Info | 015 - (IdOperacion:(26561713) RequestId:4750919477886646004107
+2016-09-28 16:46:23.923 | Info | 016 - TokengenerationCallBack - INICIO METODO. PROCESO 20160928044623
+2016-09-28 16:47:09.001 | Info | 016 - (IdOperacion:(26561713) - TokengenerationCallBack - Realizo POST a http://requestb.in/q7mql1q7, id de operación 26561713, PROCESO 20160928044623, idapp puntacarretaslocal
+2016-09-28 16:48:11.011 | Info | 
+2016-09-28 16:51:45.304 | Info | 001 - IdOperacion:(73153051) Email:gvarini21@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:73153051 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 16:51:52.521 | Info | 002 - IdOperacion:(73153051) Email:gvarini21@hexacta.com
+2016-09-28 16:51:52.587 | Info | 013 - (IdOperacion:(73153051) Id Servicio:0c37925e-666e-4a67-8c25-e0f92d9765e4
+2016-09-28 16:51:57.988 | Info | 010 - (IdOperacion:(73153051)
+2016-09-28 16:52:12.387 | Info | 011 - (IdOperacion:(73153051) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-28 16:52:29.603 | Info | 011 - (IdOperacion:(73153051) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-28 16:52:42.092 | Info | 014 - (IdOperacion:(73153051)
+2016-09-28 16:52:58.476 | Info | 015 - (IdOperacion:(73153051) RequestId:4750923430476677804106
+2016-09-28 16:53:00.836 | Info | 016 - TokengenerationCallBack - INICIO METODO. PROCESO 20160928045300
+2016-09-28 16:53:17.439 | Info | 016 - (IdOperacion:(73153051) - TokengenerationCallBack - Realizo POST a http://requestb.in/q7mql1q7, id de operación 73153051, PROCESO 20160928045300, idapp puntacarretaslocal
+2016-09-28 16:53:25.403 | Info | 
+2016-09-28 16:53:51.010 | Info | 001 - IdOperacion:(50363312) Email:gvarini2112@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:50363312 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 16:53:53.982 | Error | El usuario indicado no existe.    at VisaNet.Presentation.Core.WebApiClient.<TraceErrorAsync>d__19.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 88
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at VisaNet.Presentation.Core.WebApiClient.<CallApiServiceAsync>d__6`1.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 27
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at VisaNet.VONRegister.Controllers.AccountController.<Index>d__f.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.VONRegister\Controllers\AccountController.cs:line 204
+2016-09-28 16:54:27.656 | Info | 009 - IdOperacion:(50363312) Email:gvarini2112@hexacta.com Nombre:Guillermo  Apellido:Varini Direccion:455 E. 22nd Street Telefono:6309324400 Movil: CI:40124056
+2016-09-28 16:54:27.695 | Info | 010 - (IdOperacion:(50363312)
+2016-09-28 16:54:43.403 | Info | 011 - (IdOperacion:(50363312) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-28 16:54:45.273 | Info | 014 - (IdOperacion:(50363312)
+2016-09-28 16:55:08.656 | Info | 
+2016-09-28 16:55:15.946 | Info | 001 - IdOperacion:(41068006) Email:gvarini2112@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:41068006 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 16:55:19.945 | Error | El usuario indicado no existe.    at VisaNet.Presentation.Core.WebApiClient.<TraceErrorAsync>d__19.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 88
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at VisaNet.Presentation.Core.WebApiClient.<CallApiServiceAsync>d__6`1.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 27
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at VisaNet.VONRegister.Controllers.AccountController.<Index>d__f.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.VONRegister\Controllers\AccountController.cs:line 204
+2016-09-28 16:58:00.565 | Info | 
+2016-09-28 16:58:17.885 | Info | 001 - IdOperacion:(72004680) Email:gvarini1221@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:72004680 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 16:58:22.319 | Error | El usuario indicado no existe.    at VisaNet.Presentation.Core.WebApiClient.<TraceErrorAsync>d__19.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 88
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at VisaNet.Presentation.Core.WebApiClient.<CallApiServiceAsync>d__6`1.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 27
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at VisaNet.VONRegister.Controllers.AccountController.<Index>d__f.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.VONRegister\Controllers\AccountController.cs:line 204
+2016-09-28 16:58:45.224 | Info | 009 - IdOperacion:(72004680) Email:gvarini1221@hexacta.com Nombre:Guillermo  Apellido:Varini Direccion:455 E. 22nd Street Telefono:123 Movil:456 CI:789
+2016-09-28 16:58:45.256 | Info | 010 - (IdOperacion:(72004680)
+2016-09-28 16:58:54.372 | Info | 011 - (IdOperacion:(72004680) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-28 16:58:55.902 | Info | 014 - (IdOperacion:(72004680)
+2016-09-28 16:59:03.411 | Info | 015 - (IdOperacion:(72004680) RequestId:
+2016-09-28 16:59:03.998 | Info | 016 - TokengenerationCallBack - INICIO METODO. PROCESO 20160928045903
+2016-09-28 16:59:41.227 | Info | 010 - (IdOperacion:(72004680)
+2016-09-28 17:01:47.626 | Info | 
+2016-09-28 17:01:51.663 | Info | 001 - IdOperacion:(555804) Email:gvarini1221@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:555804 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 17:01:55.092 | Error | El usuario indicado no existe.    at VisaNet.Presentation.Core.WebApiClient.<TraceErrorAsync>d__19.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 88
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at VisaNet.Presentation.Core.WebApiClient.<CallApiServiceAsync>d__6`1.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 27
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at VisaNet.VONRegister.Controllers.AccountController.<Index>d__f.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.VONRegister\Controllers\AccountController.cs:line 204
+2016-09-28 17:02:18.561 | Info | 009 - IdOperacion:(555804) Email:gvarini1221@hexacta.com Nombre:Guillermo Apellido:Varini Direccion:455 E. 22nd Street Telefono:123123123 Movil:123 CI:456
+2016-09-28 17:02:18.565 | Info | 010 - (IdOperacion:(555804)
+2016-09-28 17:02:29.794 | Info | 011 - (IdOperacion:(555804) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-28 17:02:31.023 | Info | 014 - (IdOperacion:(555804)
+2016-09-28 17:02:36.048 | Info | 015 - (IdOperacion:(555804) RequestId:4750929208246701604107
+2016-09-28 17:02:36.490 | Info | 016 - TokengenerationCallBack - INICIO METODO. PROCESO 20160928050236
+2016-09-28 17:03:18.897 | Info | 016 - (IdOperacion:(555804) - TokengenerationCallBack - Realizo POST a http://requestb.in/q7mql1q7, id de operación 555804, PROCESO 20160928050236, idapp puntacarretaslocal
+2016-09-28 17:06:30.777 | Info | 
+2016-09-28 17:06:36.818 | Info | 001 - IdOperacion:(19506315) Email:gvarini1221@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:19506315 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 17:06:45.636 | Info | 
+2016-09-28 17:06:49.117 | Info | 001 - IdOperacion:(9220920) Email:gvarini121212@hexacta.com Nombre: Apellido: Direccion: Telefono: Movil: CI: PermiteCambioEmail:N IdOperacion:9220920 UrlCallback:http://requestb.in/q7mql1q7 IdApp:puntacarretaslocal
+2016-09-28 17:06:52.169 | Error | El usuario indicado no existe.    at VisaNet.Presentation.Core.WebApiClient.<TraceErrorAsync>d__19.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 88
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at VisaNet.Presentation.Core.WebApiClient.<CallApiServiceAsync>d__6`1.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.Presentation.Core\WebApiClient.cs:line 27
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at VisaNet.VONRegister.Controllers.AccountController.<Index>d__f.MoveNext() in d:\VisaNet-Pagos\Source\Main\01-Presentation\VisaNet.VONRegister\Controllers\AccountController.cs:line 204
+2016-09-28 17:07:12.147 | Info | 009 - IdOperacion:(9220920) Email:gvarini121212@hexacta.com Nombre:Guillermo Apellido:Varini Direccion:455 E. 22nd Street Telefono:123123123 Movil:123 CI:456
+2016-09-28 17:07:12.174 | Info | 010 - (IdOperacion:(9220920)
+2016-09-28 17:07:19.351 | Info | 011 - (IdOperacion:(9220920) NewCard:True selectedCardId:00000000-0000-0000-0000-000000000000 cardBin:411111
+2016-09-28 17:07:20.789 | Info | 014 - (IdOperacion:(9220920)
+2016-09-28 17:07:22.141 | Info | 015 - (IdOperacion:(9220920) RequestId:4750932069396719004107
+2016-09-28 17:07:22.525 | Info | 016 - TokengenerationCallBack - INICIO METODO. PROCESO 20160928050722
+2016-09-28 17:07:49.268 | Info | 016 - (IdOperacion:(9220920) - TokengenerationCallBack - Realizo POST a http://requestb.in/q7mql1q7, id de operación 9220920, PROCESO 20160928050722, idapp puntacarretaslocal

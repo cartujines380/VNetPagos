@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns1="urn:WsAltasBajasImp" xmlns:impl="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:WsAltasBajasImp">
+      <xsd:import namespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="Resultado">
+        <xsd:sequence>
+          <xsd:element name="codigoError" type="xsd:int" />
+          <xsd:element name="descripcionError" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResultadoAltasBajas">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns1:Resultado">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas">
+      <xsd:import namespace="urn:WsAltasBajasImp" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="ArrayOf_soapenc_string">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="soapenc:string[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="altaClienteRequest1">
+    <wsdl:part name="banco" type="soapenc:string" />
+    <wsdl:part name="idClienteBanco" type="soapenc:string" />
+    <wsdl:part name="nombre" type="soapenc:string" />
+    <wsdl:part name="apellido" type="soapenc:string" />
+    <wsdl:part name="usuario" type="soapenc:string" />
+    <wsdl:part name="password" type="soapenc:string" />
+    <wsdl:part name="firma" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="bajaPerfilResponse">
+    <wsdl:part name="bajaPerfilReturn" type="tns1:ResultadoAltasBajas" />
+  </wsdl:message>
+  <wsdl:message name="bajaPerfilRequest">
+    <wsdl:part name="banco" type="soapenc:string" />
+    <wsdl:part name="idClienteBanco" type="soapenc:string" />
+    <wsdl:part name="idOrganismo" type="soapenc:string" />
+    <wsdl:part name="tipoServicio" type="soapenc:string" />
+    <wsdl:part name="idServicio" type="impl:ArrayOf_soapenc_string" />
+    <wsdl:part name="firma" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="bajaClienteResponse">
+    <wsdl:part name="bajaClienteReturn" type="tns1:ResultadoAltasBajas" />
+  </wsdl:message>
+  <wsdl:message name="altaClienteResponse">
+    <wsdl:part name="altaClienteReturn" type="tns1:ResultadoAltasBajas" />
+  </wsdl:message>
+  <wsdl:message name="bajaClienteRequest">
+    <wsdl:part name="banco" type="soapenc:string" />
+    <wsdl:part name="idClienteBanco" type="soapenc:string" />
+    <wsdl:part name="firma" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="altaClienteRequest">
+    <wsdl:part name="banco" type="soapenc:string" />
+    <wsdl:part name="idClienteBanco" type="soapenc:string" />
+    <wsdl:part name="nombre" type="soapenc:string" />
+    <wsdl:part name="apellido" type="soapenc:string" />
+    <wsdl:part name="firma" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="altaPerfilRequest">
+    <wsdl:part name="banco" type="soapenc:string" />
+    <wsdl:part name="idClienteBanco" type="soapenc:string" />
+    <wsdl:part name="idOrganismo" type="soapenc:string" />
+    <wsdl:part name="tipoServicio" type="soapenc:string" />
+    <wsdl:part name="idServicio" type="impl:ArrayOf_soapenc_string" />
+    <wsdl:part name="otrosDatos" type="soapenc:string" />
+    <wsdl:part name="firma" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="altaClienteResponse1">
+    <wsdl:part name="altaClienteReturn" type="tns1:ResultadoAltasBajas" />
+  </wsdl:message>
+  <wsdl:message name="altaPerfilResponse">
+    <wsdl:part name="altaPerfilReturn" type="tns1:ResultadoAltasBajas" />
+  </wsdl:message>
+  <wsdl:portType name="WsAltasBajasImp">
+    <wsdl:operation name="bajaCliente" parameterOrder="banco idClienteBanco firma">
+      <wsdl:input name="bajaClienteRequest" message="impl:bajaClienteRequest" />
+      <wsdl:output name="bajaClienteResponse" message="impl:bajaClienteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="altaPerfil" parameterOrder="banco idClienteBanco idOrganismo tipoServicio idServicio otrosDatos firma">
+      <wsdl:input name="altaPerfilRequest" message="impl:altaPerfilRequest" />
+      <wsdl:output name="altaPerfilResponse" message="impl:altaPerfilResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="bajaPerfil" parameterOrder="banco idClienteBanco idOrganismo tipoServicio idServicio firma">
+      <wsdl:input name="bajaPerfilRequest" message="impl:bajaPerfilRequest" />
+      <wsdl:output name="bajaPerfilResponse" message="impl:bajaPerfilResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="altaCliente" parameterOrder="banco idClienteBanco nombre apellido firma">
+      <wsdl:input name="altaClienteRequest" message="impl:altaClienteRequest" />
+      <wsdl:output name="altaClienteResponse" message="impl:altaClienteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="altaCliente" parameterOrder="banco idClienteBanco nombre apellido usuario password firma">
+      <wsdl:input name="altaClienteRequest1" message="impl:altaClienteRequest1" />
+      <wsdl:output name="altaClienteResponse1" message="impl:altaClienteResponse1" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsAltasBajasSoapBinding" type="impl:WsAltasBajasImp">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="bajaCliente">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="bajaClienteRequest">
+        <wsdlsoap:body use="encoded" namespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="bajaClienteResponse">
+        <wsdlsoap:body use="encoded" namespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="altaPerfil">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="altaPerfilRequest">
+        <wsdlsoap:body use="encoded" namespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="altaPerfilResponse">
+        <wsdlsoap:body use="encoded" namespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bajaPerfil">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="bajaPerfilRequest">
+        <wsdlsoap:body use="encoded" namespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="bajaPerfilResponse">
+        <wsdlsoap:body use="encoded" namespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="altaCliente">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="altaClienteRequest">
+        <wsdlsoap:body use="encoded" namespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="altaClienteResponse">
+        <wsdlsoap:body use="encoded" namespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="altaCliente">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="altaClienteRequest1">
+        <wsdlsoap:body use="encoded" namespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="altaClienteResponse1">
+        <wsdlsoap:body use="encoded" namespace="https://spf.sistarbanc.com.uy/spfws/services/WsAltasBajas" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsAltasBajasImpService">
+    <wsdl:port name="WsAltasBajas" binding="impl:WsAltasBajasSoapBinding">
+      <wsdlsoap:address location="https://spf.quanam.com/spfws/services/WsAltasBajas" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

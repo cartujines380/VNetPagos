@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9de00bfb-4238-4f48-971d-317173f30691" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://demouy.hexacta.com:441/testwcf/v05/VNPAccess.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="VNPAccess.xsd" MetadataType="Schema" ID="379b0df9-b6d2-44d2-b10f-88966bde698b" SourceId="1" SourceUrl="https://demouy.hexacta.com:441/TestWCF/v05/VNPAccess.svc?xsd=xsd1" />
+    <MetadataFile FileName="VNPAccess.wsdl" MetadataType="Wsdl" ID="5a143c73-516b-43f3-837e-d410271f8750" SourceId="1" SourceUrl="https://demouy.hexacta.com:441/testwcf/v05/VNPAccess.svc?wsdl" />
+    <MetadataFile FileName="VNPAccess1.xsd" MetadataType="Schema" ID="e41b5aa5-fe6c-44c9-8422-79183da142ce" SourceId="1" SourceUrl="https://demouy.hexacta.com:441/TestWCF/v05/VNPAccess.svc?xsd=xsd2" />
+    <MetadataFile FileName="VNPAccess2.xsd" MetadataType="Schema" ID="f0359ed0-d17e-4635-b68b-9c509f5a4cfe" SourceId="1" SourceUrl="https://demouy.hexacta.com:441/TestWCF/v05/VNPAccess.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

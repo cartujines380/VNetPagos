@@ -1,0 +1,144 @@
+﻿@using System.Configuration
+@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Presentation.Web.Models.ContactModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container p25t">
+
+    <!-- area de titulo para secciones que no son wizard-->
+    <div class="row">
+        <div class="col-md-8">
+            <h3 class="mt5 nameSection">@PresentationWebStrings.Contact</h3>
+        </div>
+        <div class="col-md-4"> </div>
+        <div class="clearfix"></div>
+        <div class="horizontalLineGrey"></div>
+    </div>
+    <!-- fin del area de titulo para secciones que no son wizard -->
+    @using (Html.BeginForm("Create", "Contact", FormMethod.Post, new { id = "frmSubmit" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="pageBox mb10">
+            <div class="formMargin">
+                <!-- campos obligatorios -->
+                <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+                <!-- campos obligatorios -->
+                <div class="row">
+                    <div class="col-md-12 hide generalError" id="generalError">
+                        <i class="icon-warning-sign"></i>
+                        @PresentationWebStrings.From_General_Error
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(p => p.Name) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Name, new { @class = "w100", @placeholder = PresentationWebStrings.Name_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Name)
+
+                        @Html.LabelFor(p => p.Surname) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Surname, new { @class = "w100", @placeholder = PresentationWebStrings.Surname_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Surname)
+
+                        @Html.LabelFor(p => p.Email) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Email, new { @class = "w100", @placeholder = PresentationWebStrings.Email_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Email)
+
+                        @Html.LabelFor(p => p.PhoneNumber) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.PhoneNumber, new { @class = "w100", @placeholder = PresentationWebStrings.PhoneNumber_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.PhoneNumber)
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.QueryType) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        <div class="selectMask w100">
+                            @Html.DropDownList("QueryType",
+                                EnumHelpers.ConvertToSelectList(typeof(QueryTypeDto), EnumsStrings.ResourceManager),
+                                PresentationWebStrings.QueryType_Placeholder)
+                        </div>
+                        @Html.ValidationMessageFor(m => m.QueryType)
+
+                        @Html.LabelFor(model => model.Subject) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(model => model.Subject, new { @class = "w100", @placeholder = PresentationWebStrings.Subject_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(m => m.Subject)
+
+                        @Html.LabelFor(model => model.Message) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextAreaFor(m => m.Message, new { id = Html.IdFor(m => m.Message), @rows = "5", @style= "style='margin: 0px; height: 120px; width: 506px;'" ,@class = "w100", @placeholder = PresentationWebStrings.Message_Placeholder, autocomplete = "off", maxlength = "500" })
+                        @Html.ValidationMessageFor(m => m.Message)
+                        <h5>Largo máximo: 500 - Restantes: <span id="charactersRemaining">500</span></h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Label(PresentationWebStrings.Captcha_Info) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        <div class="g-recaptcha" data-sitekey="@ConfigurationManager.AppSettings["RecaptchaPublicKey"]"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- fin del formMargin-->
+        </div>
+
+        <div class="row buttonsActionsBox">
+            <div class="col-md-4 pl0 pr0">
+                <div class="col-xs-6  pr0 pl0">
+                    <a href="@Url.Action("Index","Home")" class="btn btn-default btn-cancelar mt10 w100" role="button"> @PresentationWebStrings.Cancel <i class="icon-remove"></i></a>
+                </div>
+                <div class="col-xs-6 p5l pr0">
+                    <button type="submit" id="btnSend" class="btn btn-default btn-action mt10 w100">@PresentationWebStrings.Contact_Send <i class="icon-ok"></i></button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var maxLength = 500;
+        $("#contactLink").addClass("vnpTitleSelected");
+
+        $("#frmSubmit").submit(function () {
+            if ($("#frmSubmit").valid()) {
+                showLoaderFullScreen();
+                //changeStateGeneralErrorForm();
+            } else {
+                if ($("#generalError").hasClass("hide")) {
+                    changeStateGeneralErrorForm();
+                }
+            }
+        });
+
+        if ('@ViewBag.Error' == 'True') {
+            if ($("#generalError").hasClass("hide")) {
+                changeStateGeneralErrorForm();
+            }
+        }
+
+        $('#@Html.IdFor(m => m.Message)').keyup(function () {
+            var x = $(this).val();
+            var newLines = x.match(/(\r\n|\n|\r)/g);
+            var addition = 0;
+            if (newLines != null) {
+                addition = newLines.length;
+            }
+            var totalLength = x.length + addition;
+
+            if (totalLength >= maxLength) {
+                $('#charactersRemaining').text(0);
+            } else {
+                $('#charactersRemaining').text(maxLength - totalLength);
+            }
+        });
+
+        $("#btnReload").click(function (e) {
+            e.preventDefault();
+            $("#img").attr("src", "@Url.Action("GetCaptcha", "Home")?" + new Date().getTime());
+        });
+    });
+</script>

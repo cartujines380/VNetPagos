@@ -1,0 +1,84 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ServiceContainerModel
+
+<div class="row">
+    <div id="CommunicationExternal">
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.CertificateThumbprintExternal)
+                @Html.TextBoxFor(s => s.CertificateThumbprintExternal, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(s => s.CertificateThumbprintExternal)
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.CertificateThumbprintVisa)
+                @Html.TextBoxFor(s => s.CertificateThumbprintVisa, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(s => s.CertificateThumbprintVisa)
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.ExternalUrlAdd)
+                @Html.TextBoxFor(s => s.ExternalUrlAdd, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(s => s.ExternalUrlAdd)
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.ExternalUrlRemove)
+                @Html.TextBoxFor(s => s.ExternalUrlRemove, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(s => s.ExternalUrlRemove)
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.UrlIntegrationVersion)
+                @Html.DropDownListFor(s => s.UrlIntegrationVersion, (ICollection<SelectListItem>)ViewBag.IntegrationVersion, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(s => s.UrlIntegrationVersion)
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.CheckBoxFor(s => s.AllowVon, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+                @Html.LabelFor(s => s.AllowVon, new { @class = "obligatoryField" })
+            </div>
+            @Html.ValidationMessageFor(s => s.AllowVon)
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.CheckBoxFor(s => s.AllowWcfPayment, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+                @Html.LabelFor(s => s.AllowWcfPayment, new { @class = "obligatoryField" })
+            </div>
+            @Html.ValidationMessageFor(s => s.AllowWcfPayment)
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.CheckBoxFor(s => s.InformCardBank, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+                @Html.LabelFor(s => s.InformCardBank, new { @class = "obligatoryField" })
+            </div>
+            @Html.ValidationMessageFor(s => s.InformCardBank)
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.CheckBoxFor(s => s.InformCardType, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+                @Html.LabelFor(s => s.InformCardType, new { @class = "obligatoryField" })
+            </div>
+            @Html.ValidationMessageFor(s => s.InformCardType)
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.CheckBoxFor(s => s.InformAffiliationCard, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+                @Html.LabelFor(s => s.InformAffiliationCard, new { @class = "obligatoryField" })
+            </div>
+            @Html.ValidationMessageFor(s => s.InformAffiliationCard)
+        </div>
+    </div>
+    <div id="CommunicationExternalText" class="hidden">
+        <div class="col-lg-6">
+            <div class="form-group">
+                @PresentationAdminStrings.Integration_Father_Only
+            </div>
+        </div>
+    </div>
+</div>

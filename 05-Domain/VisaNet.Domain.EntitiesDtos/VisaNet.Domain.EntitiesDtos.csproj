@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CAC323D1-C42C-4821-AB23-06CACEFB548E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VisaNet.Domain.EntitiesDtos</RootNamespace>
+    <AssemblyName>VisaNet.Domain.EntitiesDtos</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy|AnyCPU'">
+    <OutputPath>bin\demouy\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure|AnyCPU'">
+    <OutputPath>bin\Azure\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SebaPrueba|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\SebaPrueba\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Testing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Testing\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Production|AnyCPU'">
+    <OutputPath>bin\demouy.Production\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Testing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.Testing\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Development|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.Development\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.ReleaseCandidate|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\demouy.ReleaseCandidate\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'VisaNet.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\VisaNet.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Azure.Production\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Staging|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Azure.Staging\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AffiliationCardDto.cs" />
+    <Compile Include="AnonymousUserDto.cs" />
+    <Compile Include="BinAuthorizationAmountTypeDto.cs" />
+    <Compile Include="CancelTrnsDto.cs" />
+    <Compile Include="BinFileProcessResultDto.cs" />
+    <Compile Include="BinGroupDto.cs" />
+    <Compile Include="CardMigrationTestDto.cs" />
+    <Compile Include="CardOperationDto.cs" />
+    <Compile Include="CardMigrationServicesDto.cs" />
+    <Compile Include="CardVonDto.cs" />
+    <Compile Include="CheckBillInsertedDto.cs" />
+    <Compile Include="ConciliationDailySummaryDto.cs" />
+    <Compile Include="ConciliationRunDto.cs" />
+    <Compile Include="CyberSourceAcknowledgementDto.cs" />
+    <Compile Include="CybersourceGetCardNameDto.cs" />
+    <Compile Include="CybersourceCreateDebitWithNewCardDto.cs" />
+    <Compile Include="CyberSourceVoidDto.cs" />
+    <Compile Include="DebitAssociatedDto.cs" />
+    <Compile Include="DeleteTrnsDto.cs" />
+    <Compile Include="Enums\ConciliationRunStateDto.cs" />
+    <Compile Include="ReportsModel\ReportsUsersVonDto.cs" />
+    <Compile Include="RunConciliationDto.cs" />
+    <Compile Include="TableFilters\ReportsConciliationRunFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsUserVonFilterDto.cs" />
+    <Compile Include="Tc33SyncNotificationDto.cs" />
+    <Compile Include="DebitManualSyncNotificationDto.cs" />
+    <Compile Include="DebitRequestEmailDto.cs" />
+    <Compile Include="DebitRequestDto.cs" />
+    <Compile Include="DebitRequestExcelDto.cs" />
+    <Compile Include="DebitRequestSyncDto.cs" />
+    <Compile Include="DebitRequestTableDto.cs" />
+    <Compile Include="EmailMessageDto.cs" />
+    <Compile Include="Enums\ActiveOrInactiveEnumDto.cs" />
+    <Compile Include="Enums\AutomaticPaymentNotificationEnumDto.cs" />
+    <Compile Include="Enums\CardStateDto.cs" />
+    <Compile Include="Enums\BillTypeDto.cs" />
+    <Compile Include="Enums\ConciliationAppDto.cs" />
+    <Compile Include="Enums\ConciliationOriginDto.cs" />
+    <Compile Include="Enums\DebitRequestStateDto.cs" />
+    <Compile Include="Enums\DebitRequestTypeDto.cs" />
+    <Compile Include="Enums\EmailTypeDto.cs" />
+    <Compile Include="Enums\MailgunStatusDto.cs" />
+    <Compile Include="Enums\PaymentResultTypeDto.cs" />
+    <Compile Include="Enums\PlatformDto.cs" />
+    <Compile Include="Enums\SmsStatusDto.cs" />
+    <Compile Include="Enums\WebhookRegisterTypeDto.cs" />
+    <Compile Include="Enums\UrlIntegrationVersionEnumDto.cs" />
+    <Compile Include="Enums\UserType.cs" />
+    <Compile Include="ExternalRequest\AccessTokenFilterDto.cs" />
+    <Compile Include="ExternalRequest\WebhookAccessTokenDto.cs" />
+    <Compile Include="ExternalRequest\WsCardRemoveDto.cs" />
+    <Compile Include="ExternalRequest\WsUrlTransactionQueryDto.cs" />
+    <Compile Include="GeneratePreBillDto.cs" />
+    <Compile Include="IAssociationInfoDto.cs" />
+    <Compile Include="InterpreterDto.cs" />
+    <Compile Include="MailgunBounceDto.cs" />
+    <Compile Include="MailgunDeliveryDto.cs" />
+    <Compile Include="MailgunFailureDto.cs" />
+    <Compile Include="MailgunResponseDto.cs" />
+    <Compile Include="MembershipUserDto.cs" />
+    <Compile Include="NotificationMessageDto.cs" />
+    <Compile Include="AutomaticPaymentStatisticsDto.cs" />
+    <Compile Include="ProcessedBillResultDto.cs" />
+    <Compile Include="ProcessOperationDto.cs" />
+    <Compile Include="ReportsModel\ReportCardsViewDto.cs" />
+    <Compile Include="ReportsModel\ReportConciliationDetailDto.cs" />
+    <Compile Include="ResultDto.cs" />
+    <Compile Include="ServiceOfflineDto.cs" />
+    <Compile Include="SmsMessageDto.cs" />
+    <Compile Include="SmsMessageVonAccessDto.cs" />
+    <Compile Include="TableFilters\AffiliationCardFilterDto.cs" />
+    <Compile Include="TableFilters\CardServiceDataDto.cs" />
+    <Compile Include="TableFilters\DebitRequestsFilterDto.cs" />
+    <Compile Include="TableFilters\InterpreterFilterDto.cs" />
+    <Compile Include="TableFilters\DailyConciliationFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsEmailsFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsUserFilterDto.cs" />
+    <Compile Include="FileDto.cs" />
+    <Compile Include="UserBillDto.cs" />
+    <Compile Include="TableFilters\BillFilterDto.cs" />
+    <Compile Include="ChangeTrackerExcelDto.cs" />
+    <Compile Include="AuditExcelDto.cs" />
+    <Compile Include="AuditLogDto.cs" />
+    <Compile Include="ApplicationUserCreateEditDto.cs" />
+    <Compile Include="ApplicationUserDto.cs" />
+    <Compile Include="AutomaticPaymentDto.cs" />
+    <Compile Include="BankCodeDto.cs" />
+    <Compile Include="BankDto.cs" />
+    <Compile Include="BillGeocomDto.cs" />
+    <Compile Include="ChangeTracker\AuditLogDto.cs" />
+    <Compile Include="ChangeTracker\AuditLogDetailDto.cs" />
+    <Compile Include="ChangeTracker\EventTypeDto.cs" />
+    <Compile Include="ConciliationGeocomDto.cs" />
+    <Compile Include="ConciliationVisanetCallbackDto.cs" />
+    <Compile Include="CybersourceCreateAppAssociationDto.cs" />
+    <Compile Include="CybersourceCreateServiceAssociatedDto.cs" />
+    <Compile Include="CybersourceCreatePaymentDto.cs" />
+    <Compile Include="CyberSourceMerchantDefinedDataDto.cs" />
+    <Compile Include="CyberSourceOperationData.cs" />
+    <Compile Include="CybersourceCreateCardDto.cs" />
+    <Compile Include="CybersourceTransactionsDataDto.cs" />
+    <Compile Include="CybersourceTransactionsDto.cs" />
+    <Compile Include="DashboardDto.cs" />
+    <Compile Include="Enums\PaymentTypeFilterDto.cs" />
+    <Compile Include="Enums\CybersourceMsg.cs" />
+    <Compile Include="Enums\ErrorCodeDto.cs" />
+    <Compile Include="Enums\RedirectEnums.cs" />
+    <Compile Include="Enums\SystemVersionDto.cs" />
+    <Compile Include="Enums\YesNoEnumDto.cs" />
+    <Compile Include="Enums\DiscountLabelTypeDto.cs" />
+    <Compile Include="Enums\DiscountTypeDto.cs" />
+    <Compile Include="Enums\ExternalRequestTypeDto.cs" />
+    <Compile Include="Enums\FixedNotificationCategoryDto.cs" />
+    <Compile Include="Enums\FixedNotificationLevelDto.cs" />
+    <Compile Include="Enums\HighwayBillTypeDto.cs" />
+    <Compile Include="Enums\HighwayEmailStatusDto.cs" />
+    <Compile Include="Enums\HighwayEmailTypeDto.cs" />
+    <Compile Include="Enums\PaymentStatusDto.cs" />
+    <Compile Include="Enums\PendingRegisterStatusDto.cs" />
+    <Compile Include="Enums\ProcessStatusDto.cs" />
+    <Compile Include="Enums\ProcessTypeDto.cs" />
+    <Compile Include="Enums\ReportFilterGrouper.cs" />
+    <Compile Include="Enums\StatusEnumDto.cs" />
+    <Compile Include="Enums\TransactionStatusDto.cs" />
+    <Compile Include="Enums\VisanetCallbackStateDto.cs" />
+    <Compile Include="ExternalRequest\TransactionCommerceResult.cs" />
+    <Compile Include="ExternalRequest\UserDataInputDto.cs" />
+    <Compile Include="ExternalRequest\WebhookDownDto.cs" />
+    <Compile Include="ExternalRequest\WebhookNewAssociationDto.cs" />
+    <Compile Include="ExternalRequest\WebhookRegistrationDto.cs" />
+    <Compile Include="ExternalRequest\WsBillPaymentOnlineDto.cs" />
+    <Compile Include="ExternalRequest\WsBillQueryDto.cs" />
+    <Compile Include="ExternalRequest\WsCommerceQueryDto.cs" />
+    <Compile Include="ExternalRequest\WsPaymentCancellationDto.cs" />
+    <Compile Include="HighwayBillDto.cs" />
+    <Compile Include="HighwayEmailDataDto.cs" />
+    <Compile Include="HighwayEmailDto.cs" />
+    <Compile Include="HighwayEmailErrorDto.cs" />
+    <Compile Include="IUserDto.cs" />
+    <Compile Include="LifApiBillDto.cs" />
+    <Compile Include="LocationDto.cs" />
+    <Compile Include="FixedNotificationDto.cs" />
+    <Compile Include="PaymentBillDto.cs" />
+    <Compile Include="ProcessHistoryDto.cs" />
+    <Compile Include="ReportsModel\AutomaticPaymentsViewDto.cs" />
+    <Compile Include="ReportsModel\ServiceAssociatedViewDto.cs" />
+    <Compile Include="ServiceEnableEmailDto.cs" />
+    <Compile Include="TableFilters\LifApiBillFilterDto.cs" />
+    <Compile Include="TableFilters\BankFilterDto.cs" />
+    <Compile Include="TableFilters\BinGroupFilterDto.cs" />
+    <Compile Include="TableFilters\ChangeTrackerFilterDto.cs" />
+    <Compile Include="TableFilters\ReportFilterDto.cs" />
+    <Compile Include="TableFilters\FixedNotificationFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsAutomaticPaymentsFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsHighwayBillFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsHighwayEmailFilterDto.cs" />
+    <Compile Include="TableFilters\LocationFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsIntegrationFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsTc33FilterDto.cs" />
+    <Compile Include="Tc33Dto.cs" />
+    <Compile Include="BillSuciveDto.cs" />
+    <Compile Include="BillBanredDto.cs" />
+    <Compile Include="BillSistarbancDto.cs" />
+    <Compile Include="BillDto.cs" />
+    <Compile Include="BinDto.cs" />
+    <Compile Include="ConciliationBanredDto.cs" />
+    <Compile Include="ConciliationVisanetDto.cs" />
+    <Compile Include="ConciliationCybersourceDto.cs" />
+    <Compile Include="ConciliationSuciveDto.cs" />
+    <Compile Include="ConciliationSistarbancDto.cs" />
+    <Compile Include="ConciliationSummaryDto.cs" />
+    <Compile Include="CybersourceErrorGroupDto.cs" />
+    <Compile Include="DiscountQueryDto.cs" />
+    <Compile Include="CyberSourceExtraDataDto.cs" />
+    <Compile Include="CardDto.cs" />
+    <Compile Include="ContactDto.cs" />
+    <Compile Include="CustomAttributes\CustomDisplay.cs" />
+    <Compile Include="DiscountDto.cs" />
+    <Compile Include="EmailDto.cs" />
+    <Compile Include="Enums\AuthorizationAmountTypeDto.cs" />
+    <Compile Include="Enums\ConciliationStateDto.cs" />
+    <Compile Include="Enums\ConciliationTypeDto.cs" />
+    <Compile Include="Enums\DateParameterDto.cs" />
+    <Compile Include="Enums\DepartamentDtoType.cs" />
+    <Compile Include="Enums\GatewayEnumDto.cs" />
+    <Compile Include="Enums\PaymentPlatformDto.cs" />
+    <Compile Include="Enums\OperationTypeDto.cs" />
+    <Compile Include="Enums\CurrencyDto.cs" />
+    <Compile Include="Enums\CardTypeDto.cs" />
+    <Compile Include="Enums\DimensionDto.cs" />
+    <Compile Include="Enums\ParameterDto.cs" />
+    <Compile Include="Enums\NotificationPruposeDto.cs" />
+    <Compile Include="Enums\NotificationTypeDto.cs" />
+    <Compile Include="Enums\PageTypeDto.cs" />
+    <Compile Include="Enums\PaymentTypeDto.cs" />
+    <Compile Include="Enums\QueryTypeDto.cs" />
+    <Compile Include="Enums\SystemUserTypeDto.cs" />
+    <Compile Include="FaqDto.cs" />
+    <Compile Include="GatewayDto.cs" />
+    <Compile Include="NotificationConfigDto.cs" />
+    <Compile Include="NotificationDto.cs" />
+    <Compile Include="NotificationsData\NewBillNotificationInfoDto.cs" />
+    <Compile Include="NotifyPaymentDto.cs" />
+    <Compile Include="ParametersDto.cs" />
+    <Compile Include="HomePageDto.cs" />
+    <Compile Include="HomePageItemDto.cs" />
+    <Compile Include="ImageDto.cs" />
+    <Compile Include="PageDto.cs" />
+    <Compile Include="PaymentDto.cs" />
+    <Compile Include="PromotionDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CybersourceErrorDto.cs" />
+    <Compile Include="QuotationDto.cs" />
+    <Compile Include="RoleDto.cs" />
+    <Compile Include="ServiceAssociatedDto.cs" />
+    <Compile Include="ServiceCategoryDto.cs" />
+    <Compile Include="SharedFileDto.cs" />
+    <Compile Include="SistarbancUserDto.cs" />
+    <Compile Include="SubscriberDto.cs" />
+    <Compile Include="ServiceDto.cs" />
+    <Compile Include="ServiceGatewayDto.cs" />
+    <Compile Include="TableFilters\AuditFilterDto.cs" />
+    <Compile Include="TableFilters\BinFilterDto.cs" />
+    <Compile Include="TableFilters\PaymentFilterDto.cs" />
+    <Compile Include="TableFilters\LogFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsDashboardFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsCybersourceTransactionsFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsConciliationFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsCardsFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsTransactionsAmountFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsTransactionsFilterDto.cs" />
+    <Compile Include="TableFilters\RoleFilterDto.cs" />
+    <Compile Include="TableFilters\ApplicationUserFilterDto.cs" />
+    <Compile Include="ResetPasswordFromTokenDto.cs" />
+    <Compile Include="ConfirmUserDto.cs" />
+    <Compile Include="TableFilters\NotificationFilterDto.cs" />
+    <Compile Include="TableFilters\ReportsServicesAssociatedFilterDto.cs" />
+    <Compile Include="TableFilters\ServiceFilterAssosiateDto.cs" />
+    <Compile Include="TableFilters\ServiceFilterDto.cs" />
+    <Compile Include="TableFilters\PromotionFilterDto.cs" />
+    <Compile Include="Tc33OutputDto.cs" />
+    <Compile Include="Tc33ProccesDto.cs" />
+    <Compile Include="Tc33TransactionDto.cs" />
+    <Compile Include="TestGatewaysFilterDto.cs" />
+    <Compile Include="TransactionResult.cs" />
+    <Compile Include="TransactionsAmountDto.cs" />
+    <Compile Include="ValidateUserInRoleDto.cs" />
+    <Compile Include="ValidateUserDto.cs" />
+    <Compile Include="SystemUserDto.cs" />
+    <Compile Include="TableFilters\Base\BaseFilter.cs" />
+    <Compile Include="TableFilters\ContactFilterDto.cs" />
+    <Compile Include="TableFilters\FaqFilterDto.cs" />
+    <Compile Include="TableFilters\CardFilterDto.cs" />
+    <Compile Include="TableFilters\SystemUserFilterDto.cs" />
+    <Compile Include="TableFilters\SortDirection.cs" />
+    <Compile Include="TableFilters\ServiceCategoryFilterDto.cs" />
+    <Compile Include="TableFilters\SubscriberFilterDto.cs" />
+    <Compile Include="VonDataAssociationDto.cs" />
+    <Compile Include="VonDataDto.cs" />
+    <Compile Include="WebServiceTransactionHistoryDto.cs" />
+    <Compile Include="WebServiceBillStatusDto.cs" />
+    <Compile Include="WebServiceBillsStatusInputDto.cs" />
+    <Compile Include="WebServiceBillsDeleteInputDto.cs" />
+    <Compile Include="WebServiceApplicationClientDto.cs" />
+    <Compile Include="WsBankReverseInputDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WsBankReverseResultDto.cs" />
+    <Compile Include="WsBankPreprocessPaymentInputDto.cs" />
+    <Compile Include="WsBankBillsResultDto.cs" />
+    <Compile Include="WsBankPaymentInputDto.cs" />
+    <Compile Include="WsBankPaymentResultDto.cs" />
+    <Compile Include="WsBankBillsInputDto.cs" />
+    <Compile Include="WebServiceClientInputDto.cs" />
+    <Compile Include="WebServiceBillsInputDto.cs" />
+    <Compile Include="WsBankSearchPaymentsInputDto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Logging\VisaNet.Common.Logging.csproj">
+      <Project>{7716D78C-5414-404A-B804-D10B2C965724}</Project>
+      <Name>VisaNet.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Resource\VisaNet.Common.Resource.csproj">
+      <Project>{98E9C8F3-4D89-4B5C-B5C5-4B4B026F7596}</Project>
+      <Name>VisaNet.Common.Resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.Notifications\VisaNet.Utilities.Notifications.csproj">
+      <Project>{59A9EE0E-8113-4F80-B35A-6BA6A89474AA}</Project>
+      <Name>VisaNet.Utilities.Notifications</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.Domain.Entities.Base\VisaNet.Domain.Entities.Base.csproj">
+      <Project>{515F6F54-E3E5-4042-98ED-91E236E6B843}</Project>
+      <Name>VisaNet.Domain.Entities.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisaNet.Domain.Entities\VisaNet.Domain.Entities.csproj">
+      <Project>{A7D3A101-C512-4000-A66C-9BDD86B2AF82}</Project>
+      <Name>VisaNet.Domain.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

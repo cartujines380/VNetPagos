@@ -1,0 +1,122 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Domain.EntitiesDtos.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model VisaNet.Presentation.Administration.Models.BinModel
+
+<h2>@PresentationAdminStrings.Bin_Detail_Title</h2>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Name)
+                    @Html.TextBoxFor(b => b.Name, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.Value)
+                    @Html.TextBoxFor(s => s.Value, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.GatewayId)
+                    @Html.DropDownList("GatewayId", (IEnumerable<SelectListItem>)ViewBag.Gateway, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.Description)
+                    @Html.TextAreaFor(s => s.Description, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.CardTypeId)
+                    @Html.TextBox("CardType", EnumHelpers.GetName(typeof(CardTypeDto), Model.CardTypeId, EnumsStrings.ResourceManager), new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.BankId)
+                    @{
+                        var selectedBank = ((IEnumerable<SelectListItem>)ViewBag.Banks).FirstOrDefault(x => Guid.Parse(x.Value) == Model.BankId);
+                        var bankName = selectedBank == null ? string.Empty : selectedBank.Text;
+                    }
+                    <input class="form-control" disabled="disabled" id="BankId" name="BankId" type="text" value="@bankName">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.Country)
+                    @Html.TextBoxFor(s => s.Country, new {@class = "form-control", @disabled = "disabled"})
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.AffiliationCardId)
+                    @Html.DropDownList("AffiliationCardId", (IEnumerable<SelectListItem>)ViewBag.AffiliationCard, PresentationCoreMessages.Common_Select, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+                @Html.ValidationMessageFor(s => s.AffiliationCardId)
+            </div>
+            <div class="col-lg-6">
+                @Html.LabelFor(s => s.ImageName, new { @class = "mt20" })
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <a href="@Model.ImageUrl" target="_blank"> @PresentationAdminStrings.See </a>
+                }
+            </div>
+
+            <div class="col-lg-6">
+                @Html.EditorFor(x => x.BinAuthorizationAmountModelList)
+            </div>
+        </div>
+    </div>
+</div>
+<div class="horizontalLineLighGrey mt20 mb20"></div>
+<h4>@PresentationAdminStrings.BinGroup</h4>
+<div class="row">
+    <div class="col-lg-6 scrollTable">
+        <table class="table table-striped" style="margin-top: 10px;">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th style="width: 10%"></th>
+                    <th style="width: 10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.BinGroups != null && Model.BinGroups.Any())
+                {
+                    foreach (var binGroup in Model.BinGroups)
+                    {
+                        <tr>
+                            <td>@binGroup.Name</td>
+                            <td>@Html.ActionActionLink(Actions.BinGroupDetails, "<i class=\"fa fa-search\"></i>", new RouteValueDictionary { { "id", binGroup.Id } }, new Dictionary<string, object> { { "Class", "btn-editar" } })</td>
+                            <td>@Html.ActionActionLink(Actions.BinGroupEdit, "<i class=\"fa fa-edit\"></i>", new RouteValueDictionary { { "id", binGroup.Id } }, new Dictionary<string, object> { { "Class", "btn-editar" } })</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <a href="@Url.Action("Index", "Bins")" class="btn btn-default">@PresentationAdminStrings.Back </a>
+    </div>
+</div>
+
+

@@ -1,0 +1,6 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.CustomerSiteBranchModel
+
+@Html.DropDownListFor(m => m.ServiceId, (IEnumerable<SelectListItem>)ViewBag.ServicesLigthList,
+    PresentationAdminStrings.Filters_Service_Placeholder, 
+    new { @class = "form-control" })

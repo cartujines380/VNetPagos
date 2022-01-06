@@ -1,0 +1,8 @@
+﻿@model DateTime?
+
+
+<div class="input-group date">
+    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+    <input type="text" id="@Html.IdFor(m => m)" name="@Html.NameFor(m => m)" class="form-control date-picker @(ViewData["class"] != null ? ViewData["class"].ToString() : string.Empty)" value="@(Model.HasValue ? Model.Value.ToShortDateString() : string.Empty)" />
+    
+</div>

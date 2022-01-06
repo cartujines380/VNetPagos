@@ -1,0 +1,44 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model IEnumerable<VisaNet.Presentation.Web.Areas.Private.Models.NotificationModel>
+
+@{
+    var displayStart = (int)ViewBag.DisplayStart;
+    var displayLength = (int)ViewBag.DisplayLength;
+}
+
+@if (Model == null || !Model.Any())
+{
+    if (displayStart == 0)
+    {
+        <div class="suggestionsBox">
+            <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@(ViewBag.IsSearch ? PresentationCoreMessages.Common_NoSearchResults : PresentationWebStrings.Notification_List_Empty)</h5>
+        </div>
+    }
+}
+else
+{
+    for (int i = 0; i < Model.Count(); i++)
+    {
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Partial("_NotificationBlock", Model.ElementAt(i))
+            </div>
+            @if (Model.Count() > (i + 1))
+            {
+                <div class="col-md-6">
+                    @Html.Partial("_NotificationBlock", Model.ElementAt(i + 1))
+                </div>
+            }
+            @{i = i + 1;}
+        </div>
+    }
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        @if (Model != null && Model.Any() && Model.Count() == displayLength )
+        {<text>$("#lnkOlderItems").show();</text>}
+        else
+        {<text>$("#lnkOlderItems").hide();</text>}
+    });
+</script>

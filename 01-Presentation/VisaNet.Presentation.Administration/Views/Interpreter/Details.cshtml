@@ -1,0 +1,44 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model VisaNet.Presentation.Administration.Models.InterpreterModel
+
+<h2>@PresentationAdminStrings.Interpreter_details</h2>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            @Html.AntiForgeryToken()
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Name)
+                    @Html.TextBoxFor(b => b.Name, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Description)
+                    @Html.TextAreaFor(b => b.Description, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>@PresentationAdminStrings.File</label>
+                    @Html.TextBoxFor(b => b.FileName, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <a href="@Url.Action("Index", "Interpreter")" class="btn btn-default">@PresentationAdminStrings.Back </a>
+    </div>
+</div>
+
+

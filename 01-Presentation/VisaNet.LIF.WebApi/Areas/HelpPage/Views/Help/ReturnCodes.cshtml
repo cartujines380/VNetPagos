@@ -1,0 +1,72 @@
+@{
+    ViewBag.Title = "Códigos de retorno";
+}
+
+<header class="help-page">
+    <div class="content-wrapper">
+        <div class="float-left">
+            <h1>@ViewBag.Title</h1>
+        </div>
+    </div>
+</header>
+<div id="body" class="help-page">
+    <section class="content-wrapper main-content clear-fix">
+        <p>Las respuestas de la API retornar&aacute;n un objeto JSON con un c&oacute;digo de la respeusta. Debajo se encuentran documentados los códigos que pueden ser devueltos</p>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>C&oacute;digo HTTP</th>
+                    <th>C&oacute;digo de la respuesta</th>
+                    <th>Interpretaci&oacute;n</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>200</td>
+                    <td>0</td>
+                    <td>Respuesta correcta</td>
+                </tr>
+                <tr>
+                    <td>400</td>
+                    <td>1</td>
+                    <td>Modelo inv&aacute;lido</td>
+                </tr>
+                <tr>
+                    <td>400</td>
+                    <td>2</td>
+                    <td>Modelo nulo</td>
+                </tr>
+                <tr>
+                    <td>400</td>
+                    <td>3</td>
+                    <td>BIN inv&aacute;lido</td>
+                </tr>
+                <tr>
+                    <td>400</td>
+                    <td>4</td>
+                    <td>BIN inactivo para el servicio</td>
+                </tr>
+                <tr>
+                    <td>400</td>
+                    <td>5</td>
+                    <td>BIN no asociado al servicio</td>
+                </tr>
+                <tr>
+                    <td>400</td>
+                    <td>6</td>
+                    <td>BIN inactivo</td>
+                </tr>
+                <tr>
+                    <td>400</td>
+                    <td>7</td>
+                    <td>Error general</td>
+                </tr>
+                <tr>
+                    <td>403</td>
+                    <td>8</td>
+                    <td>No est&aacute; autorizado</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>

@@ -1,0 +1,17 @@
+﻿@model VisaNet.Testing.VisaNetOn.Models.AccessUrlModel
+
+@{
+    ViewBag.Title = "PaginaVNP";
+}
+
+<h2>PaginaVNP</h2>
+
+<form action="@Model.PostUrl" id="formVNP" method="post">
+    <input name="TokenAcceso" value="@Model.Token" />
+</form>
+
+<script>
+    $(document).ready(function () {
+        $("#formVNP").submit();
+    });
+</script>

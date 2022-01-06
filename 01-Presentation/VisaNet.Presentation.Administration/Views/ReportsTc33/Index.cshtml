@@ -1,0 +1,264 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Domain.EntitiesDtos.TableFilters.ReportsTc33FilterDto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TC33</h2>
+
+@using (Html.BeginForm("ProccessFile", "ReportsTc33", FormMethod.Post, new { enctype = "multipart/form-data", autocomplete = "off" }))
+{
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>File</label>
+                <input type="file" name="InputFile" id="InputFile" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <a class="btn btn-default btn-standar mt10 w100" id="execute">@PresentationCoreMessages.Common_Proccess</a>
+        </div>
+    </div>
+
+    @*<div class="row ">
+            <div class="col-lg-10">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>@TempData["ErrorTc33"]</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+}
+
+<div class="horizontalLineWhite"></div>
+
+<div class="row">
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.CreationDateFrom</label>
+        <div class="input-group date">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <input type="text" id="@Html.IdFor(m => m.CreationDateFrom)" name="@Html.NameFor(m => m.CreationDateFrom)" class="form-control _date search_init" data-type="filtro" value="@Model.CreationDateFrom.ToShortDateString()" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.CreationDateTo</label>
+        <div class="input-group date">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <input type="text" id="@Html.IdFor(m => m.CreationDateTo)" name="@Html.NameFor(m => m.CreationDateTo)" class="form-control _date search_init" data-type="filtro" value="@Model.CreationDateTo.ToShortDateString()" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label>Nombre de Archivo</label>
+        @Html.TextBoxFor(m => m.InputFileName, new { @class = "form-control w100", placeholder = "Ingrese el nombre de archivo a buscar" })
+    </div>
+    <div class="col-md-3">
+        <label>N&uacute;mero de Transacci&oacute;n</label>
+        @Html.TextBoxFor(m => m.Transaction, new { @class = "form-control w100", placeholder = "Ingrese el número de transacción a buscar" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <input class="btn btn-default btn-standar mt10 w100" type="button" id="btnSearch" formnovalidate value="@PresentationAdminStrings.Common_Search">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2></h2>
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @PresentationAdminStrings.CreationDate
+                        </th>
+                        <th>
+                            Nombre de Archivo de Entrada
+                        </th>
+                        <th>
+                            Nombre de Archivo de Salida
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Status
+                        </th>
+                        <th>
+                            Usuario de Creaci&oacute;n
+                        </th>
+                        <th>
+                            Detalles
+                        </th>
+                        <th>
+                            Transacciones
+                        </th>
+                        <th>
+                            Archivo generado
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="modalHolder"></div>
+<div id="modalDetailHolder"></div>
+
+<script type="text/javascript">
+
+    var dataTableFilters;
+
+    $(document).ready(function () {
+
+        $("#execute").click(function () {
+            $("form").submit();
+        });
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "CreationDateFrom", "value": $("#@Html.IdFor(m => m.CreationDateFrom)").val() });
+            aoData.push({ "name": "CreationDateTo", "value": $("#@Html.IdFor(m => m.CreationDateTo)").val() });
+            aoData.push({ "name": "Transaction", "value": $("#@Html.IdFor(m => m.Transaction)").val() });
+            aoData.push({ "name": "InputFileName", "value": $("#@Html.IdFor(m => m.InputFileName)").val() });
+        }
+
+        //function drawTable() {
+            dataTableFilters = applyDatatableExternalFilters($('table'),
+                null,
+                [
+                    { "mDataProp": "CreationDate" },
+                    {
+                        "mDataProp": "InputFileName",
+                        "fnRender": function (a) {
+                            return "<a target='_blank' href='@Url.Action("DownloadInputFile", "ReportsTc33")/" + a.aData.Id + "'>" + a.aData.InputFileName + "</a>";
+                        }
+                    },
+                    {
+                        "mDataProp": "OutputFileName",
+                        "fnRender": function (a) {
+                            if (a.aData.OutputFileName) {
+                                return "<a target='_blank' href='@Url.Action("DownloadOutputFile", "ReportsTc33")/" + a.aData.Id + "'>" + a.aData.OutputFileName + "</a>";
+                            } else {
+                                return "";
+                            }
+                        }
+                    },
+                    {
+                        "mDataProp": "State",
+                        "fnRender": function (a) {
+                            if (a.aData.StateValue == 3 || a.aData.StateValue == 2) {
+                                return "<a class='modalErrors' href='" + a.aData.Id + "'>" + a.aData.State + "</a>";
+                            } else {
+                                return a.aData.State;
+                            }
+                        }
+                    },
+                    { "mDataProp": "CreationUser" },
+                    {
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (a) {
+                            if (a.aData.StateValue == 0 || a.aData.StateValue == 2) {
+                                return "";
+                            } else {
+                                return '<a class="modalDetail" href="' + a.aData.Id + '"><i class="fa fa-search"></i></a>';
+                            }
+                        }
+                    },
+                    {
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (a) {
+                            if (a.aData.StateValue == 0 || a.aData.StateValue == 2) {
+                                return "";
+                            } else {
+                                return "<a class='modalTransacciones' href='" + a.aData.Id + "'>Transacciones</a>";
+                            }
+                        }
+                    },
+                    {
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (a) {
+                            if (a.aData.StateValue == 0 || a.aData.StateValue == 2) {
+                                return "";
+                            } else {
+                                return "<a target='_blank' href='@Url.Action("DownloadDetails", "ReportsTc33")/" + a.aData.Id + "'><i class='fa fa-file-text'></i></a>";
+                            }
+                        }
+                    }
+                ],
+                '@Url.Action("AjaxHandler", "ReportsTc33")',
+                externalFilters,null,
+                [[0, "desc"]]);
+        //}
+
+        $("._date").datepicker({
+            format: "dd/mm/yyyy"
+        });
+
+        $("#btnSearch").click(function (e) {
+            e.preventDefault();
+            //drawTable();
+            dataTableFilters.fnFilter();
+        });
+
+        $('table').on("click", "a.modalTransacciones", function (e) {
+            e.preventDefault();
+            var id = $(this).attr("href");
+            $.get('@Url.Action("TransactionModal", "ReportsTc33")/' + id).success(function (html) {
+                $("#modalHolder").html(html);
+                $("#lbTransactions").modal("show");
+            });
+        });
+
+        $('table').on("click", "a.modalErrors", function (e) {
+            e.preventDefault();
+            var id = $(this).attr("href");
+            $.get('@Url.Action("ErrorsModal", "ReportsTc33")/' + id).success(function (html) {
+                $("#modalHolder").html(html);
+                $("#lbTransactions").modal("show");
+            });
+        });
+
+        $('table').on("click", "a.modalDetail", function (e) {
+            e.preventDefault();
+            var id = $(this).attr("href");
+            $.get('@Url.Action("DetailModal", "ReportsTc33")/' + id).success(function (html) {
+                $("#modalDetailHolder").html(html);
+                $("#lbDetailTransactions").modal("show");
+            });
+        });
+
+        $('#transactionFilter').keypress(validateNumber);
+
+    });
+
+    function validateNumber(event) {
+        var key = window.event ? event.keyCode : event.which;
+
+        if (event.keyCode == 8 || event.keyCode == 46
+            || event.keyCode == 37 || event.keyCode == 39) {
+            return true;
+        }
+        else if (key < 48 || key > 57) {
+            return false;
+        }
+        else return true;
+    };
+
+
+</script>

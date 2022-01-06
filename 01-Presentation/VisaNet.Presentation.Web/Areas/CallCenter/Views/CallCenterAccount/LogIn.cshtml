@@ -1,0 +1,46 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.CallCenterLogOnModel
+
+@{
+    ViewBag.Title = "INICIO";
+    Layout = "~/Areas/CallCenter/Views/Shared/_LayoutCallCenter.cshtml";
+}
+
+<div class="container p25t">
+    <div class="row">
+        @using (Html.BeginForm("LogIn", "CallCenterAccount", FormMethod.Post, new { @Class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="pageBox mb20">
+                <div class="formMargin">
+                    <h4 class="lightBlue">@PresentationCoreMessages.Security_LogIn_Callcenter_Title</h4>
+                    <div class="horizontalLineWhite"></div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.UserName)
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", autocomplete = "off" })
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", autocomplete = "off" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row buttonsActionsBox">
+                <div class="col-md-1 pl0 pr0">
+                    <input type="submit" class="btn btn-primary btn-link-box mt10 w100" value="@PresentationCoreMessages.Security_LogIn" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

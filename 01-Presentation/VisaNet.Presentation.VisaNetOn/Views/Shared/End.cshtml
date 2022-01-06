@@ -1,0 +1,13 @@
+﻿<form id="associationCallBack" method="POST" action="@Model.UrlCallback">
+    <input class="hidden" id="IdOperacion" name="IdOperacion" value="@Model.OperationId" />
+    <input class="hidden" id="CodResultado" name="CodResultado" value="@Model.ResultCode" />
+    <input class="hidden" id="DescResultado" name="DescResultado" value="@Model.ResultDescription" />
+    <input class="hidden" id="AppId" name="AppId" value="@Model.AppId" />
+    <input class="hidden" id="TrnsNumber" name="TrnsNumber" value="@Model.TrnsNumber" />
+</form>
+
+<script>
+    $(document).ready(function () {
+        $("#associationCallBack").submit();
+    });
+</script>

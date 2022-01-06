@@ -1,0 +1,7 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Banred.Mock\bin\VisaNet.Banred.Mock.dll.config
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Banred.Mock\bin\VisaNet.Banred.Mock.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Banred.Mock\bin\VisaNet.Banred.Mock.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Banred.Mock\obj\Debug\VisaNet.Banred.Mock.csprojResolveAssemblyReference.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Banred.Mock\obj\Debug\VisaNet.Banred.Mock.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Banred.Mock\obj\Debug\VisaNet.Banred.Mock.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\10-Testing\VisaNet.Banred.Mock\obj\Debug\VisaNet.Banred.Mock.pdb

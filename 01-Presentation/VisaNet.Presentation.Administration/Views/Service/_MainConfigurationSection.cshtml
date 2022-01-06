@@ -1,0 +1,92 @@
+﻿@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.ServiceContainerId)
+            @Html.DropDownListFor(s => s.ServiceContainerId, (ICollection<SelectListItem>)ViewBag.ServicesLigthList, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group" id="divBinGroups">
+            @Html.Partial("_BinGroupsDropDown", Model)
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.Active, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.Active, new { @class = "obligatoryField" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.EnableMultipleBills, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.EnableMultipleBills, new { @class = "obligatoryField" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.EnablePrivatePayment, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.EnablePrivatePayment, new { @class = "obligatoryField" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.EnablePublicPayment, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.EnablePublicPayment, new { @class = "obligatoryField" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.EnableAssociation, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.EnableAssociation, new { @class = "obligatoryField" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.AskUserForReferences, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.AskUserForReferences, new { @class = "obligatoryField" })
+        </div>
+    </div>
+    @*<div class="col-lg-6">
+            <div class="form-group">
+                @Html.CheckBoxFor(s => s.EnablePartialPayment, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+                @Html.LabelFor(s => s.EnablePartialPayment, new { @class = "obligatoryField" })
+            </div>
+        </div>*@
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.EnableAutomaticPayment, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.EnableAutomaticPayment, new { @class = "obligatoryField" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.CheckBoxFor(s => s.AllowMultipleCards, Model.IsDetailsView ? (object)new { @disabled = "disabled" } : null)
+            @Html.LabelFor(s => s.AllowMultipleCards, new { @class = "obligatoryField" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.InterpreterId)
+            @Html.DropDownListFor(s => s.InterpreterId, (ICollection<SelectListItem>)ViewBag.Interpreters, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.InterpreterAuxParam)
+            @Html.TextBoxFor(s => s.InterpreterAuxParam, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6" id="quotasComboId">
+        @Html.Partial("_QuotasCombo")
+    </div>
+</div>

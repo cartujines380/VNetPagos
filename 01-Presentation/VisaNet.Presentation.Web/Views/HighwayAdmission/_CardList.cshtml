@@ -1,0 +1,107 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.HighwayAdmissionModel
+
+<div class="formMargin">
+    <h4 class="lightBlue">Datos de pago</h4>
+    <div class="horizontalLineWhite"></div>
+
+    @if (Model != null && Model.AssociatedCards != null && Model.AssociatedCards.Any())
+    {
+        <div id="hasCards">
+            <!--has cards associated-->
+            <div class="row">
+                <h4 style="font-size: 14px;font-family:segoeui, Arial; color: #575757">@PresentationWebStrings.HighwayAdmission_CardQuestion</h4>
+
+                @for (int i = 0; i < Model.AssociatedCards.Count(); i++)
+                {
+                    var optChecked = string.Empty;
+                    if (i == 0)
+                    {
+                        optChecked = "checked='checked'";
+                    }
+                    <div class="col-md-6">
+                        <input id="@Model.AssociatedCards.ElementAt(i).Id" name="card_radio" class="cardsRadio" type="radio" value="@Model.AssociatedCards.ElementAt(i).Id" data-type="existingCard" @optChecked />
+                        <label for="@Model.AssociatedCards.ElementAt(i).Id">@Model.AssociatedCards.ElementAt(i).Mask</label>
+                    </div>
+                }
+
+                <div class="col-md-6">
+                    <input name="card_radio" id="newCard" type="radio" />
+                    <label for="newCard">@PresentationWebStrings.Payment_New_Card</label>
+                </div>
+            </div>
+            <div class="horizontalLineWhite"></div>
+        </div>
+    }
+
+    <form id="payment_confirmation" method="POST" action="@ConfigurationManager.AppSettings["CybersourceFormUrl"]silent/pay">
+
+        <div id="cybersourceKeys"></div>
+
+        @*        <div id="newCardForm" class="@((Model != null && ((Model.LoadNewData || Model.LoadRegistredData) || Model.AssociatedCards == null || !Model.AssociatedCards.Any())) ? "" : "hidden")">*@
+        <div id="newCardForm" class="@(Model != null && Model.AssociatedCards != null && Model.AssociatedCards.Any() ? "hidden" : "")">
+            <!--if no cards associated or new card radiobutton checked-->
+            <h4 style="font-size: 14px;font-family:segoeui, Arial; color: #575757">@PresentationWebStrings.HighwayAdmission_CardData</h4>
+
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.CardHolderName) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    <input type="text" name="card_holdername" id="card_holdername" class="form-control" style="height: 38px;" autocomplete="off" data-val="true" data-val-required="El campo es requerido." />
+                    <span id="NameRequired" class="help-inline field-validation-error" data-valmsg-for="card_holdername" data-valmsg-replace="true"></span>
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.CardNumber) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    <input type="text" name="card_number" id="card_number" class="form-control numeric" style="height: 38px;" autocomplete="off" @*data-val="true" data-val-required="@PresentationWebStrings.Card_Number_Invalid"*@ />
+                    <input type="hidden" name="card_type" id="card_type" value="001" />
+                    <span id="NumberInvalid" class="hide help-inline field-validation-error" data-valmsg-for="card_number" @*data-valmsg-replace="true"*@>@PresentationWebStrings.Card_Number_Invalid</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.CardCode) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    <input type="text" name="card_code" id="card_code" class="form-control numeric" style="height: 38px;" autocomplete="off" data-val="true" data-val-required="El campo es requerido." />
+                    <span id="CodeRequired" class="help-inline field-validation-error" data-valmsg-for="card_code" data-valmsg-replace="true"></span>
+                </div>
+                <div class='col-md-6'>
+                    @Html.LabelFor(m => m.CardDueDate) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    <div class="creditCardsFix">
+                        <div class="col-xs-6 p5r pl0">
+                            <div class="form-control selectMask" style="height: 38px;">@Html.DropDownList("ddlMonth", Enumerable.Range(1, 12).Select(i => new SelectListItem { Text = i.ToString("00"), Value = i.ToString("00") }), new { @class = "w100" })</div>
+                        </div>
+                        <div class="col-xs-6 p5l pr0">
+                            <div class="form-control selectMask" style="height: 38px;">@Html.DropDownList("ddlYear", new SelectList(Enumerable.Range(DateTime.Now.Year, 25)), new { @class = "w100" })</div>
+                        </div>
+                        @Html.Hidden("card_expiry_date")
+                        @Html.ValidationMessageFor(m => m.CardDueDate)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#card_number").blur(function (e) {
+            e.preventDefault();
+            var cardNumber = $("#card_number").val();
+            if (!validateCardNumber(cardNumber)) { //esta en Index
+                $("#NumberInvalid").removeClass("hide");
+                if (!$("#card_number").hasClass("input-validation-error")) {
+                    $("#card_number").addClass("input-validation-error");
+                }
+            } else {
+                if (!$("#NumberInvalid").hasClass("hide")) {
+                    $("#NumberInvalid").addClass("hide");
+                }
+                $("#card_number").removeClass("input-validation-error");
+            }
+        });
+
+    });
+
+</script>

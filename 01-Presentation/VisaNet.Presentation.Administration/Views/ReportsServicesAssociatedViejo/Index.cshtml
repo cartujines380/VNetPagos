@@ -1,0 +1,106 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model IEnumerable<VisaNet.Presentation.Administration.Models.ServiceAssociatedModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Reports_ServicesAssociated_Title</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <label>@PresentationAdminStrings.Filters_Email</label>
+        <input name="sSearch_0" type="text" class="search_init" style="width: 100%" data-type="filtro" placeholder="@PresentationAdminStrings.Filters_Email_Placeholder" />
+    </div>
+    <div class="col-md-4">
+        <label>@PresentationAdminStrings.Filters_Name</label>
+        <input name="sSearch_1" type="text" class="search_init" style="width: 100%" data-type="filtro" placeholder="@PresentationAdminStrings.Filters_Name_Placeholder" />
+    </div>
+    <div class="col-md-4">
+        <label>@PresentationAdminStrings.Filters_Surname</label>
+        <input name="sSearch_2" type="text" class="search_init" style="width: 100%" data-type="filtro" placeholder="@PresentationAdminStrings.Filters_Surname_Placeholder" />
+    </div>
+    <div class="col-md-4">
+        <label>@PresentationAdminStrings.Filters_Service</label>
+        <div class="selectMask w100">
+            @Html.DropDownList("sSearch_3",
+                                (IEnumerable<SelectListItem>)ViewBag.Services,
+                                PresentationAdminStrings.Filters_Service_Placeholder,
+                                new Dictionary<string, object> { { "style", "width: 100%; height: 100%; color:#999" }, { "class", "search_init" } })
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label>@PresentationAdminStrings.Filters_ServiceCategory</label>
+        <div class="selectMask w100">
+            @Html.DropDownList("sSearch_4",
+                                (IEnumerable<SelectListItem>)ViewBag.ServiceCategories,
+                                PresentationAdminStrings.Filters_ServiceCategory_Placeholder,
+                                new Dictionary<string, object> { { "style", "width: 100%; height: 100%; color:#999" }, { "class", "search_init" } })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-10">
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ClientEmail)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ClientName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ClientSurname)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ServiceName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ServiceCategoryName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CardMaskedNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CardBin)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CardType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AutomaticPayment)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Enabled)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <a href="@Url.Action("ExcelExport", "ReportsServicesAssociated")" class="btn btn-default">@PresentationCoreMessages.Common_Export</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        applyDatatableStandard($('table'),
+                [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+                [
+                    { "mDataProp": "ClientEmail" },
+                    { "mDataProp": "ClientName" },
+                    { "mDataProp": "ClientSurname" },
+                    { "mDataProp": "ServiceName" },
+                    { "mDataProp": "ServiceCategoryName" },
+                    { "mDataProp": "CardMaskedNumber" },
+                    { "mDataProp": "CardBin" },
+                    { "mDataProp": "CardType" },
+                    { "mDataProp": "AutomaticPayment" },
+                    { "mDataProp": "Enabled" }
+                ],
+                '@Url.Action("AjaxHandler", "ReportsServicesAssociated")', null, null);
+    });
+</script>

@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{37BFC595-3053-4E8E-BFBB-C522C7E5AE46}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VisaNet.Services.WebApi</RootNamespace>
+    <AssemblyName>VisaNet.Services.WebApi</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <WebGreaseLibPath>..\..\packages\WebGrease.1.5.1\lib</WebGreaseLibPath>
+    <Use64BitIISExpress />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="VisaNet.Common">
+      <HintPath>..\..\libs\VisaNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Administration\AuditController.cs" />
+    <Compile Include="Controllers\Administration\AffiliationCardController.cs" />
+    <Compile Include="Controllers\Administration\ConciliationVisaNetTc33Controller.cs" />
+    <Compile Include="Controllers\Administration\ConciliationVNPController.cs" />
+    <Compile Include="Controllers\Administration\CyberSourceAcknowledgementController.cs" />
+    <Compile Include="Controllers\Administration\DebitCommerceController.cs" />
+    <Compile Include="Controllers\Administration\LifApiBillController.cs" />
+    <Compile Include="Controllers\Administration\BillController.cs" />
+    <Compile Include="Controllers\Administration\ConciliationDailySummaryController.cs" />
+    <Compile Include="Controllers\Administration\InterpreterController.cs" />
+    <Compile Include="Controllers\Administration\BinGroupController.cs" />
+    <Compile Include="Controllers\Administration\BankController.cs" />
+    <Compile Include="Controllers\Administration\BinsController.cs" />
+    <Compile Include="Controllers\Administration\ChangeTrackerController.cs" />
+    <Compile Include="Controllers\Administration\HomePageItemController.cs" />
+    <Compile Include="Controllers\Administration\HomePageController.cs" />
+    <Compile Include="Controllers\Administration\DiscountController.cs" />
+    <Compile Include="Controllers\Administration\FixedNotificationController.cs" />
+    <Compile Include="Controllers\Administration\ParametersController.cs" />
+    <Compile Include="Controllers\Administration\PageController.cs" />
+    <Compile Include="Controllers\Administration\FaqController.cs" />
+    <Compile Include="Controllers\Administration\GatewayController.cs" />
+    <Compile Include="Controllers\Administration\NotificationController.cs" />
+    <Compile Include="Controllers\Administration\PaymentController.cs" />
+    <Compile Include="Controllers\Administration\PromotionController.cs" />
+    <Compile Include="Controllers\Administration\ConciliationSummaryController.cs" />
+    <Compile Include="Controllers\Administration\ReportsHighwayController.cs" />
+    <Compile Include="Controllers\Administration\EmailController.cs" />
+    <Compile Include="Controllers\Administration\ServiceValidatorController.cs" />
+    <Compile Include="Controllers\Administration\SystemVersionsController.cs" />
+    <Compile Include="Controllers\Administration\Tc33Controller.cs" />
+    <Compile Include="Controllers\Administration\ReportsController.cs" />
+    <Compile Include="Controllers\Administration\ServiceAssociatedController.cs" />
+    <Compile Include="Controllers\Administration\LogController.cs" />
+    <Compile Include="Controllers\Administration\CyberSourceAccessController.cs" />
+    <Compile Include="Controllers\Administration\WebhookLogController.cs" />
+    <Compile Include="Controllers\Administration\IntegrationController.cs" />
+    <Compile Include="Controllers\Customersite\CustomerSiteController.cs" />
+    <Compile Include="Controllers\WebService\WebServiceBankController.cs" />
+    <Compile Include="Controllers\WebService\WebServiceExternalAppController.cs" />
+    <Compile Include="Controllers\WebService\WebServiceExternalController.cs" />
+    <Compile Include="Controllers\Web\WebControllerHelper.cs" />
+    <Compile Include="Controllers\Web\WebDebitController.cs" />
+    <Compile Include="Controllers\Web\WebVisaNetOnIntegrationController.cs" />
+    <Compile Include="Controllers\Web\WebCyberSourceAccessController.cs" />
+    <Compile Include="Controllers\Web\WebFixedNotificationController.cs" />
+    <Compile Include="Controllers\Web\WebHighwayController.cs" />
+    <Compile Include="Controllers\Web\WebParameterController.cs" />
+    <Compile Include="Controllers\Web\WebHomePageController.cs" />
+    <Compile Include="Controllers\Web\WebLocationController.cs" />
+    <Compile Include="Controllers\Web\WebReportController.cs" />
+    <Compile Include="Controllers\Web\WebQuotationController.cs" />
+    <Compile Include="Controllers\Web\WebDiscountController.cs" />
+    <Compile Include="Controllers\Web\WebBinController.cs" />
+    <Compile Include="Controllers\Web\WebAnonymousUserController.cs" />
+    <Compile Include="Controllers\Web\WebPromotionController.cs" />
+    <Compile Include="Controllers\Web\WebLogController.cs" />
+    <Compile Include="Controllers\Web\WebSystemUserController.cs" />
+    <Compile Include="Controllers\Web\WebNotificationController.cs" />
+    <Compile Include="Controllers\Web\WebAutoCompleteController.cs" />
+    <Compile Include="Controllers\Web\WebGatewayController.cs" />
+    <Compile Include="Controllers\Web\WebApplicationUserController.cs" />
+    <Compile Include="Controllers\Web\WebContactController.cs" />
+    <Compile Include="Controllers\Web\WebFaqController.cs" />
+    <Compile Include="Controllers\Web\WebBillController.cs" />
+    <Compile Include="Controllers\Web\WebPageController.cs" />
+    <Compile Include="Controllers\Web\WebRegisterUserController.cs" />
+    <Compile Include="Controllers\Web\WebServiceAssosiateController.cs" />
+    <Compile Include="Controllers\Web\WebCardController.cs" />
+    <Compile Include="Controllers\Web\WebServiceController.cs" />
+    <Compile Include="Controllers\Web\WebSubscriberController.cs" />
+    <Compile Include="Controllers\Web\WebPaymentController.cs" />
+    <Compile Include="Controllers\Administration\ServiceController.cs" />
+    <Compile Include="Controllers\Administration\SubscriberController.cs" />
+    <Compile Include="Controllers\Administration\ContactController.cs" />
+    <Compile Include="Controllers\Administration\ServiceCategoryController.cs" />
+    <Compile Include="Controllers\Administration\RoleController.cs" />
+    <Compile Include="Controllers\Administration\RegisterUserController.cs" />
+    <Compile Include="Controllers\Administration\ApplicationUserController.cs" />
+    <Compile Include="Controllers\Administration\TestController.cs" />
+    <Compile Include="Controllers\Administration\SystemUserController.cs" />
+    <Compile Include="Controllers\Web\WebWebhookLogController.cs" />
+    <Compile Include="Controllers\Web\WebWebhookRegistrationController.cs" />
+    <Compile Include="Filters\ExceptionFilters\BillExceptionFilterAttribute.cs" />
+    <Compile Include="Filters\ExceptionFilters\GenericExceptionFilterAttribute.cs" />
+    <Compile Include="Filters\ExceptionFilters\ProviderBusinessExceptionFilterAttribute.cs" />
+    <Compile Include="Filters\ExceptionFilters\ProviderFatalExceptionFilterAttribute.cs" />
+    <Compile Include="Filters\ExceptionFilters\FatalExceptionFilterAttribute.cs" />
+    <Compile Include="Filters\ExceptionFilters\BusinessExceptionFilterAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomModelBinder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Elmah.Errors\ElmahErrors.txt" />
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\03-Application\VisaNet.Application.Interfaces\VisaNet.Application.Interfaces.csproj">
+      <Project>{9C9EA748-A322-4B65-8B24-DD76EE0DA93F}</Project>
+      <Name>VisaNet.Application.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\03-Application\VisaNet.Application.VisaNetOn.Interfaces\VisaNet.Application.VisaNetOn.Interfaces.csproj">
+      <Project>{9C974218-2C50-4023-B533-DCC067C2B528}</Project>
+      <Name>VisaNet.Application.VisaNetOn.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\03-Application\VisaNet.Components.CyberSource.Interfaces\VisaNet.Components.CyberSource.Interfaces.csproj">
+      <Project>{FEE868C6-2033-451F-B6E9-7DEDA1A2E8EE}</Project>
+      <Name>VisaNet.Components.CyberSource.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\03-Application\VisaNet.Components.Sucive.Interfaces\VisaNet.Components.Sucive.Interfaces.csproj">
+      <Project>{C719B18B-9ED2-49C6-8195-B9724FF9978B}</Project>
+      <Name>VisaNet.Components.Sucive.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.CustomerSite.EntitiesDtos\VisaNet.CustomerSite.EntitiesDtos.csproj">
+      <Project>{D291090E-2461-47AC-A835-B29E43A8221F}</Project>
+      <Name>VisaNet.CustomerSite.EntitiesDtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.Entities.Base\VisaNet.Domain.Entities.Base.csproj">
+      <Project>{515F6F54-E3E5-4042-98ED-91E236E6B843}</Project>
+      <Name>VisaNet.Domain.Entities.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.EntitiesDtos\VisaNet.Domain.EntitiesDtos.csproj">
+      <Project>{cac323d1-c42c-4821-ab23-06cacefb548e}</Project>
+      <Name>VisaNet.Domain.EntitiesDtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05-Domain\VisaNet.Domain.Entities\VisaNet.Domain.Entities.csproj">
+      <Project>{a7d3a101-c512-4000-a66c-9bdd86b2af82}</Project>
+      <Name>VisaNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.ChangeTracker\VisaNet.Common.ChangeTracker.csproj">
+      <Project>{55d072b8-47f9-422e-acc5-d397c621087c}</Project>
+      <Name>VisaNet.Common.ChangeTracker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.DependencyInjection\VisaNet.Common.DependencyInjection.csproj">
+      <Project>{9A0BD042-AA4B-4053-8E1C-D17108F9321F}</Project>
+      <Name>VisaNet.Common.DependencyInjection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Exceptions\VisaNet.Common.Exceptions.csproj">
+      <Project>{CB1FEB9F-6933-445A-A6EE-A1769D25C266}</Project>
+      <Name>VisaNet.Common.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Logging\VisaNet.Common.Logging.csproj">
+      <Project>{7716D78C-5414-404A-B804-D10B2C965724}</Project>
+      <Name>VisaNet.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Resource\VisaNet.Common.Resource.csproj">
+      <Project>{98E9C8F3-4D89-4B5C-B5C5-4B4B026F7596}</Project>
+      <Name>VisaNet.Common.Resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Security.Entities\VisaNet.Common.Security.Entities.csproj">
+      <Project>{45708FFD-868A-4DAC-B15A-E2B6F984A5D2}</Project>
+      <Name>VisaNet.Common.Security.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\06-Common\VisaNet.Common.Security.Filters\VisaNet.Common.Security.Filters.csproj">
+      <Project>{A4872775-728E-4EC6-9DBE-4EC5DFAA0B7A}</Project>
+      <Name>VisaNet.Common.Security.Filters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.Cybersource\VisaNet.Utilities.Cybersource.csproj">
+      <Project>{8B1B0270-9611-41EE-A980-D39B4A2F87E0}</Project>
+      <Name>VisaNet.Utilities.Cybersource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\07-Utilities\VisaNet.Utilities.Notifications\VisaNet.Utilities.Notifications.csproj">
+      <Project>{59A9EE0E-8113-4F80-B35A-6BA6A89474AA}</Project>
+      <Name>VisaNet.Utilities.Notifications</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLog.config" />
+    <Content Include="Json\ServicesOffline.json" />
+    <None Include="Properties\PublishProfiles\Azure.Staging.pubxml" />
+    <None Include="Properties\PublishProfiles\demouy.Development.pubxml" />
+    <None Include="Properties\PublishProfiles\demouy.Production.pubxml" />
+    <None Include="Properties\PublishProfiles\demouy.Testing.pubxml" />
+    <None Include="Properties\PublishProfiles\DeployLocal.pubxml" />
+    <None Include="Properties\PublishProfiles\VisaNet.Production.pubxml" />
+    <None Include="Web.Azure.Staging.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.demouy.Development.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.demouy.Production.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.demouy.Testing.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.VisaNet.Production.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Production|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Testing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'demouy.Development|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'VisaNet.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure.Staging|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62652</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:62652/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

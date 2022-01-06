@@ -1,0 +1,181 @@
+﻿@using System.Configuration
+@using System.Globalization
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Utilities.Cybersource
+@using VisaNet.Utilities.Exportation.ExtensionMethods
+@model VisaNet.Presentation.Web.Areas.Private.Models.DashBoardModel
+
+
+<div id="billsDiv" class="pageBox mb10">
+    <div class="formMargin">
+        <h4 class="upDownControler"> <a id="ocultar_bills_to_pay"><!--<i id="bills_to_pay_up" class="icon-chevron-up"></i> <i id="bills_to_pay_down" class="hide icon-chevron-down"></i>-->@PresentationWebStrings.Bills_To_Pay_And_Payments</a></h4>
+
+        <div class="loadingMessaje" id="loadingBills">
+            <div class="loading">@PresentationWebStrings.Loading_Bills</div>
+        </div>
+
+        <div id="bills_data" class="hide">
+            @if (Model == null || Model.Bills == null || !Model.Bills.Any())
+            {
+                <div id="bills_to_pay_suggestion" class="suggestionsBox">
+                    @if (TempData.ContainsKey("ErrorBills"))
+                    {
+                        <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@TempData["ErrorBills"]</h5>
+                    }
+                    @if (TempData.ContainsKey("ErrorLoadingBill"))
+                    {
+                        <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@TempData["ErrorLoadingBill"]</h5>
+                    }
+                    @if (!TempData.ContainsKey("ErrorLoadingBill") && !TempData.ContainsKey("ErrorBills"))
+                    {
+                        <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@PresentationWebStrings.Bills_Empty_List</h5>
+                    }
+                </div>
+                <a href="@Url.Action("Associate","Service")" class="btn btn-default btn-link-box"><i class="icon-plus"></i>@PresentationWebStrings.Add_Service</a>
+            }
+            else
+            {
+                <div id="bills_to_pay" class="row">
+                    @foreach (var bill in Model.Bills)
+                    {
+                        <div class="col-md-6">
+
+                            <!-- item proximos vencimientos panel -->
+                            <div class="itemBox panelItem">
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-6 col-xs-12 serviceInformation">
+                                        <div class="col-md-3 pl0 panelImage">
+                                            @if (!String.IsNullOrEmpty(bill.ServiceImageName))
+                                            {
+                                                <img src="@bill.ServiceImageName" width="54" class="img-responsive" />
+                                            }
+                                            else
+                                            {
+                                                <img src="@ConfigurationManager.AppSettings["DefaultServiceImage"]" width="54" class="img-responsive" />
+                                            }
+                                        </div>
+                                        <div class="col-md-9 serviceDetail">
+                                            <ul>
+                                                <li>
+                                                    @if (!string.IsNullOrEmpty(bill.ServiceContainerName))
+                                                    {<span>@bill.ServiceContainerName - @bill.ServiceName </span>}
+                                                    else
+                                                    {<span class="titleCard">@bill.ServiceName </span>}
+                                                    <span class="shortDescription mb20" title="@bill.ServiceDesc">
+                                                        @(string.IsNullOrEmpty(bill.ServiceDesc) ? string.Empty : " - " + bill.ServiceDesc.Short(45))
+                                                    </span>
+                                                </li>
+
+                                                @if (!String.IsNullOrEmpty(bill.ReferenceName))
+                                                {
+                                                    <li><span class="bold">@bill.ReferenceName:</span> @bill.ReferenceValue</li>
+
+                                                }
+
+                                                @*@if (Model != null && !String.IsNullOrEmpty(bill.DefaultCardDescription))
+                                                {                                                    
+                                                    var desc = bill.DefaultCardDescription;
+                                                   
+                                                    <li><span class="bold">@PresentationWebStrings.Payment_Card_Description:</span>@Html.Raw(desc)</li>                                                
+                                                }*@
+                                                @if (Model != null && !String.IsNullOrEmpty(bill.DefaultCardMask))
+                                                {
+                                                    var mask = @bill.DefaultCardMask;
+                                                   
+                                                    <li><span class="bold">@PresentationWebStrings.Payment_Card:</span>@Html.Raw(mask)</li>
+                                                }
+                                                @{var currency = bill.Currency == Currency.PESO_URUGUAYO ? "$" : "U$D";}
+
+                                                <li><span class="bold">@PresentationWebStrings.DueDate:</span> @bill.DueDate.ToShortDateString()</li>
+                                                <li><span class="bold">@PresentationWebStrings.Amount:</span> @currency @bill.Amount.ToString("##,#0.00", CultureInfo.CurrentCulture)</li>
+
+                                                @if (bill.AllowsAutomaticPayment)
+                                                {
+                                                    if (String.IsNullOrEmpty(bill.AutomaticPaymentDateString))
+                                                    {
+                                                        <li><a class="btn btn-default btn-link pl0" style="color: #428BC9!important;" href="@Url.Action("Item", "AutomaticPayment", new RouteValueDictionary {{ "serviceId", bill.ServiceAssociatedId },{ "fromConfiguration", true }})"><i class="icon-chevron-right"></i> @PresentationWebStrings.AutomaticPayment_Not_Arranged </a></li>
+                                                    }
+                                                    if (!String.IsNullOrEmpty(bill.AutomaticPaymentDateString))
+                                                    {
+                                                        <li><span>@PresentationWebStrings.AutomaticPayment_Arranged_Date </span>@bill.AutomaticPaymentDateString</li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-6 col-xs-12 panelActions">
+                                        <ul>
+                                            @if (bill.Payable)
+                                            {
+                                                <li>
+                                                    <a id="btnPayBill" class="link-block" href="@Url.Action("PaySelectedBill", "Dashboard", new RouteValueDictionary { { "billExternalId", bill.BillExternalId },
+                                                                                    { "serviceAssociatedId", bill.ServiceAssociatedId }, { "gateway", (int)bill.GatewayEnumDto }, { "line", bill.Line } })"><i class="icon-dollar"></i>Pagar</a>
+                                                </li>
+                                                if (bill.MultipleBills)
+                                                {
+                                                    <li>
+                                                        <a id="btnMultipleBills" class="link-block" href="@Url.Action("PayMultipleBills", "Dashboard", new RouteValueDictionary { { "billExternalId", bill.BillExternalId },
+                                                                            { "serviceAssociatedId", bill.ServiceAssociatedId }, { "gateway", (int)bill.GatewayEnumDto }, { "line", bill.Line } })"><i class="icon-money"></i>@PresentationWebStrings.Pay_Multiple_Bills</a>
+                                                                    </li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li>@bill.DashboardDescription</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- fin del item panel proximos vencimientos -->
+                        </div>
+                    }
+                </div>
+                <a href="@Url.Action("Index", "Bill")" class="btn btn-default btn-link pl0"><i class="icon-chevron-right"></i> @PresentationWebStrings.Bills_To_Pay_More</a>
+                <a href="@Url.Action("Bills", "Bill", new RouteValueDictionary(){{"Payment",1}})" class="btn btn-default btn-link pl0"><i class="icon-chevron-right"></i> @PresentationWebStrings.Next_Automatic_Payments_More</a>
+                <a href="@Url.Action("NewAssociate", "Service")" class="btn btn-default btn-link-box"><i class="icon-chevron-right"></i> @PresentationWebStrings.Add_Service</a>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var loadingMessages = ["Aguardá un instante, estamos obteniendo tus facturas.",
+            "Esta operación puede tardar algunos segundos.",
+            "Espere por favor.",
+            "Estamos teniendo demoras al consultar las facturas, por favor aguarde."];
+
+        $("#ocultar_bills_to_pay").click(function () {
+            $("#bills_to_pay").toggle("slow");
+            if ($("#bills_to_pay_up").hasClass("hide")) {
+                $("#bills_to_pay_down").addClass("hide");
+                $("#bills_to_pay_up").removeClass("hide");
+            } else {
+                $("#bills_to_pay_up").addClass("hide");
+                $("#bills_to_pay_down").removeClass("hide");
+            }
+        });
+
+        $("#ocultar_next_automatic_payments").click(function () {
+            $("#next_automatic_payments").toggle("slow");
+            if ($("#next_automatic_payments_up").hasClass("hide")) {
+                $("#next_automatic_payments_down").addClass("hide");
+                $("#next_automatic_payments_up").removeClass("hide");
+            } else {
+                $("#next_automatic_payments_up").addClass("hide");
+                $("#next_automatic_payments_down").removeClass("hide");
+            }
+        });
+
+        var div = $("#loadingBills .loading");
+        var index = 0;
+        setInterval(function () {
+            div.text(loadingMessages[index]);
+            index = (index+1) % loadingMessages.length;
+        }, 15000);
+
+    });
+</script>

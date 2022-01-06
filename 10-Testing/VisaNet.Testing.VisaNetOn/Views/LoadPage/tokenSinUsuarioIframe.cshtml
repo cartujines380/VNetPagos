@@ -1,0 +1,61 @@
+﻿@using System.Configuration
+
+<div id="content">
+    <form method="post" id="formIframe" class="" action="@Url.Action("PaginaTokenSinUsuarioFirmaIframe", "LoadPage")">
+        @{
+            var random = new Random();
+        }
+
+        <h4>Datos usuario</h4>
+        <label for="Email">Email</label>
+        <input type="text" name="Email" placeholder="Email" value="@ConfigurationManager.AppSettings["TestingEmail"]" />
+        <label for="Nombre">Nombre</label>
+        <input type="text" name="Nombre" placeholder="Nombre" value="" />
+        <label for="Apellido">Apellido</label>
+        <input type="text" name="Apellido" placeholder="Apellido" value="" />
+        <label for="Direccion">Direccion</label>
+        <input type="text" name="Direccion" placeholder="Direccion" value="" />
+        <label for="Telefono">Telefono</label>
+        <input type="text" name="Telefono" placeholder="Telefono" value="" />
+        <br />
+        <br />
+        <label for="Movil">Movil</label>
+        <input type="text" name="Movil" placeholder="Movil" value="" />
+        <label for="CI">CI</label>
+        <input type="text" name="CI" placeholder="CI" value="" />
+        <label for="PermiteCambioEmail">PermiteCambioEmail</label>
+        <input type="text" name="PermiteCambioEmail" placeholder="PermiteCambioEmail" value="S" />
+        <br />
+        <br />
+
+        <h4>Datos comercio</h4>
+        <label for="UrlCallback">UrlCallback(*)</label>
+        <input type="text" name="UrlCallback" placeholder="UrlCallback" value="@ConfigurationManager.AppSettings["TestingUrlCallback"]" />
+        <label for="IdOperacion">IdOperacion(*)</label>
+        <input type="text" name="IdOperacion" placeholder="IdOperacion" value="@random.Next(1, 100000000)" />
+        <label for="IdApp">IdApp(*)</label>
+        <input type="text" name="IdApp" placeholder="IdApp" value="@ConfigurationManager.AppSettings["TestingAppId"]" />
+        <br />
+        <br />
+
+        <h4>Referencias</h4>
+        <label for="RefCliente1">Referencia 1</label>
+        <input type="text" name="RefCliente1" placeholder="Referencia 1" value="" />
+        <label for="RefCliente2">Referencia 2</label>
+        <input type="text" name="RefCliente2" placeholder="Referencia 2" value="" />
+        <label for="RefCliente3">Referencia 3</label>
+        <input type="text" name="RefCliente3" placeholder="Referencia 3" value="" />
+        <br />
+        <br />
+        <label for="RefCliente4">Referencia 4</label>
+        <input type="text" name="RefCliente4" placeholder="Referencia 4" value="" />
+        <label for="RefCliente5">Referencia 5</label>
+        <input type="text" name="RefCliente5" placeholder="Referencia 5" value="" />
+        <label for="RefCliente6">Referencia 6</label>
+        <input type="text" name="RefCliente6" placeholder="Referencia 6" value="" />
+        <br />
+        <br />
+
+        <input type="submit" id="enviar" value="TOKEN SIN USUARIO" />
+    </form>
+</div>

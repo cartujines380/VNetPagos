@@ -1,0 +1,682 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.AppAdmissionModel
+
+@{
+    Layout = "~/Views/Shared/_HighwayLayout.cshtml";
+}
+
+<div class="container p25t" id="divIndex">
+    @if (ViewBag.SuccessfulAssociation != null && ViewBag.SuccessfulAssociation)
+    {
+        <div class="pageBox mb20">
+            <div class="successBox">
+                <h5><i class="icon-ok"></i> Se ha asociado correctamente el servicio <span> @ViewBag.ServiceName </span> para el usuario <span> @ViewBag.Email </span> </h5>
+            </div>
+
+            @if (!String.IsNullOrEmpty(Model.PostAssociationDesc))
+            {
+                <div class="row">
+                    <div class="formMargin">
+                        <h4>@PresentationWebStrings.HighwayAdmission_PostRegistration</h4>
+                        <p>@Model.PostAssociationDesc</p>
+                    </div>
+                </div>
+            }
+
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <a href="@Url.Action("Index", "AppAdmission", new { id = Model.ServiceUrlName })" cla class="btn btn-default btn-siguiente mt10 w100"><i class="icon-chevron-sign-left"></i> @PresentationWebStrings.NewAssociation</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    }
+    else
+    {
+        @Html.HiddenFor(m => m.LoadNewData)
+        @Html.HiddenFor(m => m.LoadRegistredData)
+        @Html.HiddenFor(m => m.RegisteredEmail)
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="mt5 appstitle @(Model.LoadNewData ? "" : "hidden")" id="titleNewUser">Completá tus datos para registrarte como usuario de VisaNetPagos e ingresá una tarjeta VISA de forma segura para realizar tus pagos de @Model.ServiceName</h3>
+                <h3 class="mt5 appstitle @(Model.RegisteredEmail ? "" : "hidden")" id="titleRegisteredUser">Ingresá con tu usuario de VisaNetPagos y podrás seleccionar una de tus tarjetas ya almacenadas o ingresar una nueva tarjeta VISA de forma segura para ser utilizada en @Model.ServiceName</h3>
+            </div>
+            <div class="clearfix"></div>
+            <div class="horizontalLineGrey"></div>
+        </div>
+
+        using (Html.BeginForm("Associate", "AppAdmission", FormMethod.Post, new Dictionary<string, object> { { "id", "payment_with_token_confirmation" } }))
+        {
+            @Html.HiddenFor(m => m.ServiceId)
+            @Html.HiddenFor(x => x.AllowsNewEmail)
+            @Html.HiddenFor(x => x.AskReferences)
+            <!-- DATOS PERSONALES -->
+            <div class="pageBox mb20 @((Model.LoadRegistredData || Model.LoadNewData || Model.RegisteredEmail) && !Model.ShowCardsAfterCsFail ? "" : "hidden")" id="personalDataBox">
+                <div class="formMargin">
+                    <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+                    <h4 class="lightBlue">Usuario</h4>
+
+                    <div class="horizontalLineWhite"></div>
+                    
+                    <div id="registeredUser" class="@( !Model.LoadRegistredData ? (Model.RegisteredEmail && !Model.LoadNewData ? "" : "hidden") : "hidden")">
+                        <!--for registered user-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Email) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                @if (Model.AllowsNewEmail)
+                                {
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "email_reg" })
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" disabled="disabled" style="height: 38px;" autocomplete="off" value="@Model.Email" />
+                                    <input type="hidden" name="Email" id="email_reg" value="@Model.Email" />
+                                }
+                                <span id="Email_AppUserRequired" class="hide help-inline field-validation-error">@PresentationCoreMessages.RequiredField</span>
+                            </div>
+
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Password_AppUser) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                                @Html.PasswordFor(m => m.Password_AppUser, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "password_reg" })
+                                <span id="Password_AppUserRequired" class="hide help-inline field-validation-error">@PresentationCoreMessages.RequiredField</span>
+
+                                @*<h5><a href="@Url.Action("ForgetMyPassword", "AppAdmission", new { id = Model.ServiceUrlName, email = Model.Email_AppUser, allow = Model.AllowsNewEmail })">@PresentationCoreMessages.Security_ForgetMyPassword</a></h5>*@
+                                <h5><a id="btnForgetPass">@PresentationCoreMessages.Security_ForgetMyPassword</a></h5>
+                            </div>
+                        </div>
+
+                        <h5><a href="" id="btnNewUser" class="@(!Model.AllowsNewEmail && Model.RegisteredEmail ? "hidden" : "")">@PresentationWebStrings.Apps_NotRegistered</a></h5>
+
+                        <div class="col-md-8"></div>
+                        @if (Model.AllowsNewEmail)
+                        {
+                            <div class="col-md-4 pl0 pr0">
+                                <div class="col-xs-6  pr0 pl0">
+                                    <a href="@Url.Action("CancelAssociation", "AppAdmission")" class="btn btn-default btn-cancelar mt10 w100" role="button"> @PresentationWebStrings.Cancel <i class="icon-remove"></i></a>
+                                    @*<button id="btnNewUser" class="btn btn-default btn-action mt10 w100"> Nuevo usuario </button>*@
+                                </div>
+                                <div class="col-xs-6 p5l pr0">
+                                    <button id="btnSearchUser" class="btn btn-default btn-action mt10 w100"> Ingresar <i class="icon-ok"></i></button>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-4 pl0 pr0">
+                                <div class="col-xs-6  pr0 pl0"></div>
+                                <div class="col-xs-6 p5l pr0">
+                                    <button id="btnSearchUser" class="btn btn-default btn-action mt10 w100"> Ingresar </button>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        }
+                        <div class="row">
+                        </div>
+                    </div>
+
+                    <div id="registeredUserLoggedIn" class="@(Model.LoadRegistredData ? "" : "hidden") ">
+                        <!--for registered user logged in-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Email)
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "email_loggedIn", @disabled = "disable" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="newUser" class="@(Model.LoadNewData? "" : "hidden") ">
+                        <h5><a href="" id="btnReturnLogin" class="">@PresentationWebStrings.Apps_Registered</a></h5>
+                        <!--for not registered user-->
+                        @Html.Partial("_NewUserData", Model)
+                    </div>
+                    
+                    <div id="refsView" class="@(Model.LoadRegistredData || Model.LoadNewData ? "" : "hidden") ">
+                        @Html.Partial("_References", Model)
+                    </div>
+
+                </div>
+            </div><!-- TERMINA DATOS PERSONALES -->
+
+            <input type="hidden" name="UserId" id="UserId" value="@Model.UserId" />
+            <input type="hidden" name="CardId" id="CardId" />
+            <input type="hidden" name="CardHolderName" id="CardHolderName" />
+            <input type="hidden" name="CardBin" id="CardBin" />
+            <input type="hidden" name="IdOperation" id="@Model.IdOperation" />
+        }
+
+        <!-- DATOS DE PAGO -->
+        @*<div class="pageBox mb20 @(Model.ShowCardsAfterCsFail || Model.LoadRegistredData ? "" : "hidden")" id="cardsDataBox">*@
+    <div class="pageBox mb20 @(Model.ShowCardsAfterCsFail ? "" : "hidden")" id="cardsDataBox">
+        @Html.Partial("_CardList", Model)
+    </div><!-- TERMINA DATOS DE PAGO-->
+
+        <!-- TERMINOS Y CONDICIONES-->
+        @*<div class="pageBox mb20 @(Model.LoadRegistredData || Model.LoadNewData ? "" : "hidden")" id="termsDataBox">*@
+    <div class="pageBox mb20 @(Model.ShowCardsAfterCsFail? "" : "hidden")" id="termsDataBox">
+        <div class="formMargin">
+            <h4 class="lightBlue">@PresentationWebStrings.HighwayAdmission_TermsAndConditions</h4>
+            <div class="horizontalLineWhite"></div>
+
+            @if (!String.IsNullOrEmpty(Model.TermsAndConditionsService))
+            {
+                <h4 style="font-size: 14px;font-family:segoeui, Arial; color: #575757">
+                    @PresentationWebStrings.Registration_Apps_Conditions_Accept
+                    <a id="btnConditionsVisa" href="" style="font-size: 14px;font-family:segoeui, Arial;">@PresentationWebStrings.HighwayAdmission_TermsVisa</a>
+                    y los <a id="btnConditionsService" href="" style="font-size: 14px;font-family:segoeui, Arial;">@PresentationWebStrings.HighwayAdmission_TermsService</a>.
+                </h4>
+            }
+            else
+            {
+                <h4 style="font-size: 14px;font-family:segoeui, Arial; color: #575757">
+                    @PresentationWebStrings.Registration_Apps_Conditions_Accept
+                    <a id="btnConditionsVisa" href="" style="font-size: 14px;font-family:segoeui, Arial;">@PresentationWebStrings.HighwayAdmission_TermsVisa</a>.
+                </h4>
+            }
+
+        </div>
+    </div><!-- TERMINA TERMINOS Y CONDICIONES-->
+
+        <!-- SECCION BOTONES -->
+        <div class="row buttonsActionsBox @(Model.LoadNewData || Model.LoadRegistredData || Model.ShowCardsAfterCsFail? "" : "hidden")" id="buttonsActionsBox">
+            <div class="col-md-8"></div>
+            <div class="col-md-4 pl0 pr0">
+                <div class="col-xs-6  pr0 pl0">
+                    <a href="@Url.Action("CancelAssociation", "AppAdmission")" id="btnCancel" class="btn btn-default btn-cancelar mt10 w100 @(!Model.AskReferences? "" : "hidden")" role="button"> @PresentationWebStrings.Cancel <i class="icon-remove"></i></a>
+                    <button id="btnBack" class="btn btn-default btn-cancelar mt10 w100 @(Model.AskReferences? "" : "hidden")">Atr&aacute;s <i class="icon-arrow-left"></i></button>
+                </div>
+                <div class="col-xs-6 p5l pr0">
+                    <button id="btnNext" class="btn btn-default btn-action mt10 w100 @(!Model.ShowCardsAfterCsFail? "" : "hidden")">Siguiente <i class="icon-arrow-right"></i></button>
+                    <button id="btnSend" class="btn btn-default btn-action mt10 w100 @(Model.ShowCardsAfterCsFail? "" : "hidden")">
+                        @PresentationWebStrings.Register <i class="icon-ok"></i>
+                    </button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div><!-- TERMINA SECCION BOTONES-->
+    }
+
+</div>
+
+@Html.Partial("_Confirm")
+@Html.Partial("_TermsAndConditionsService")
+<div id="termsVisa"></div>
+<div id="divForgetPass"></div>
+
+<input class="hidden" id="IsUserReg" name="IsUserReg" value="false" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        bindEvents();
+        
+        $("#btnBack").click(function (e) {
+            e.preventDefault();
+            $("#personalDataBox").removeClass("hidden");
+            $("#cardsDataBox").addClass("hidden");
+            $("#termsDataBox").addClass("hidden");
+
+            $("#btnSend").addClass("hidden");
+            $("#btnNext").removeClass("hidden");
+
+            $("#btnBack").addClass("hidden");
+            $("#btnCancel").removeClass("hidden");
+        });
+
+        $("#btnNext").click(function (e) {
+            e.preventDefault();
+            if ($('#registeredUserLoggedIn').hasClass("hidden")) {
+                $("#emailConfirm").html($("#email_notreg").val());
+                $("input[name=@Html.NameFor(x => x.Email)]").val($("#email_notreg").val());
+            } else {
+                $("#emailConfirm").html($("#email_loggedIn").val());
+            }
+            if ($("#payment_with_token_confirmation").valid()) {
+                $.ajax({
+                    dataType: 'json',
+                    type: "POST",
+                    url: '@Url.Action("LoadUserCards", "AppAdmission")',
+                    data: $("#payment_with_token_confirmation").serialize(),
+                    success: function (data) {
+                        if (data.ResponseType == RESPONSE.SUCCESS) {
+                            LoadCardData(data);
+                            if ($("#hasCards").length)
+                            {
+                                $("#btnSend").html("Agregar tarjeta");
+                            }
+                        }
+                        if (data.ResponseType == RESPONSE.ERROR) {
+                            ShowNotification(data.Title, data.Message, 'error');
+                            $('#newUser').html(data.Content.userdata);
+                            $('#refsView').html(data.Content.referencesView);
+                            validatePageInput();
+                        }
+                    }
+                });
+            }
+        });
+
+        $("#btnNewUser").click(function (e) {
+            e.preventDefault();
+            
+            if ($('#registeredUserLoggedIn').hasClass("hidden")) {
+                $("#emailConfirm").html($("#email_notreg").val());
+                $("#email_reg").val($("#email_notreg").val());
+            } else {
+                $("#emailConfirm").html($("#email_loggedIn").val());
+            }
+
+            $.post("@Url.Action("NewUserAjax", "AppAdmission")").success(function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $("#registeredUser").addClass("hidden");
+                    $("#newUser").removeClass("hidden");
+
+                    $("#buttonsActionsBox").removeClass("hidden");
+                    $("#btnReturnLogin").removeClass("hidden");
+                    $("#titleNewUser").removeClass("hidden");
+                    $("#titleRegisteredUser").addClass("hidden");
+
+                    if (data.Content.referencesView) {
+                        $('#refsView').html(data.Content.referencesView);
+                        $('#refsView').removeClass("hidden");
+                        validatePageInput();
+                    }
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            });
+        });
+
+        $("#btnReturnLogin").click(function (e) {
+            e.preventDefault();
+            $.post("@Url.Action("ReturnToLoginAjax", "AppAdmission")").success(function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $('#UserId').val("");
+                    $("#CardId").val("");
+
+                    $("#registeredUser").removeClass("hidden");
+
+                    if (!$("#registeredUserLoggedIn").hasClass("hidden")) {
+                        $("#registeredUserLoggedIn").addClass("hidden");
+                    }
+
+                    $("#newUser").addClass("hidden");
+                    $("#refsView").addClass("hidden");
+                    $("#cardsDataBox").addClass("hidden");
+                    $("#termsDataBox").addClass("hidden");
+                    $("#buttonsActionsBox").addClass("hidden");
+
+                    $("#btnReturnLogin").addClass("hidden");
+
+                    $("#titleNewUser").addClass("hidden");
+                    $("#titleRegisteredUser").removeClass("hidden");
+
+                    $('#cardsDataBox').html(data.Content);
+
+                    $("#textConfirm").html("confirmando tu registro como usuario de VisaNetPagos y ");
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            });
+        });
+
+        $("#btnSearchUser").click(function (e) {
+            e.preventDefault();
+            var userName = $("#email_reg").val();
+            var password = $("#password_reg").val();
+            if (userName != "" && password != "") {
+                if (isValidEmailAddress(userName)) {
+                    showLoaderFullScreen("@PresentationWebStrings.Loader_Message");
+                    $.post("@Url.Action("LoadUserAjax", "AppAdmission")", "userName=" + userName + "&password=" + password).success(function (data) {
+                        if (data.ResponseType == RESPONSE.SUCCESS) {
+                            if (data.Content.cardListContent) {
+                                LoadCardData(data);
+                                $("#btnBack").addClass("hidden");
+                                $("#btnCancel").removeClass("hidden");
+                                $("#btnSend").html("Agregar tarjeta");
+                            } else {
+                                LoadRefs(data);
+                            }
+                            ShowNotification(data.Title, data.Message, 'success');
+                            hideLoaderFullScreen();
+                        }
+                        if (data.ResponseType == RESPONSE.ERROR) {
+                            ShowNotification(data.Title, data.Message, 'error');
+                            hideLoaderFullScreen();
+                        }
+                    });
+                } else {
+                    $("#email_reg").addClass("input-validation-error");
+                    $("#Email_AppUserRequired").removeClass("hide");
+                    $("#Email_AppUserRequired").html("@PresentationCoreMessages.InvalidEmail");
+                }
+            } else {
+                if ($("#email_reg").val() == "") {
+                    $("#email_reg").addClass("input-validation-error");
+                    $("#Email_AppUserRequired").removeClass("hide");
+                    $("#Email_AppUserRequired").html("@PresentationCoreMessages.RequiredField");
+                }
+                if ($("#password_reg").val() == "") {
+                    $("#password_reg").addClass("input-validation-error");
+                    $("#Password_AppUserRequired").removeClass("hide");
+                    $("#Password_AppUserRequired").html("@PresentationCoreMessages.RequiredField");
+                }
+            }
+        });
+
+        $("#btnSend").click(function (e) {
+            e.preventDefault();
+            var valid = $("#payment_with_token_confirmation").valid();
+            var validCardData = true;
+            var validCardNumber = true;
+            var cardselected = false;
+
+            if ($('#newCardForm').hasClass('hidden')) {
+                //selecciona tarjeta existente
+                var cardId = $('input[name=card_radio]:checked').val();
+                if (cardId != undefined) {
+                    $("#CardId").val(cardId);
+                } else {
+                    return;
+                }
+                cardselected = $('input[name=card_radio]:checked').val();
+                if (!cardselected || cardselected == "") {
+                    CardNotSelected();
+                    return;
+                }
+            } else {
+                //tarjeta nueva
+                validCardData = $("#payment_confirmation").valid();
+
+                validCardNumber = isValidCardNumber();
+
+                var cardNumber = $("#card_number").val();
+                if ($("#card_number").val() != "") {
+                    $("#CardBin").val(cardNumber.substring(0, 6));
+                    $("#CardHolderName").val($("#card_holdername").val());
+                }
+            }
+
+            if (valid & validCardData & validCardNumber) {
+                if ($("#email_notreg").val() != $("#email_reg").val()) {
+                    if ($('#registeredUserLoggedIn').hasClass("hidden")) {
+                        $("#email_reg").val($("#email_notreg").val());
+                    } else {
+                        $("#email_notreg").val($("#email_reg").val());
+                    }
+                }
+
+                $.ajax({
+                    dataType: 'json',
+                    type: "POST",
+                    url: '@Url.Action("ValidateCardType", "AppAdmission")',
+                    data: $("#payment_with_token_confirmation").serialize(),
+                    success: function (data) {
+                        if (data.ResponseType == RESPONSE.SUCCESS) {
+                            if (cardselected) {
+                                if ($('#registeredUserLoggedIn').hasClass("hidden")) {
+                                    $("#emailConfirm").html($("#email_notreg").val());
+                                } else {
+                                    $("#emailConfirm").html($("#email_loggedIn").val());
+                                }
+
+                                $("#lbConfirmAssociation").modal();
+                            } else {
+                                if ($("#card_holdername").val() != "" && $("#card_number").val() != "" && $("#card_code").val() != "" && $("#NumberInvalid").hasClass("hide")) {
+                                    $('#cybersourceKeys').html(data.Content.keys);
+
+                                    if ($('#registeredUserLoggedIn').hasClass("hidden")) {
+                                        $("#emailConfirm").html($("#email_notreg").val());
+                                    } else {
+                                        $("#emailConfirm").html($("#email_loggedIn").val());
+                                    }
+
+                                    $("#lbConfirmAssociation").modal();
+                                } else {
+                                    $("#payment_confirmation").valid();
+                                    isValidCardNumber();
+                                }
+                            }
+                        }
+                        if (data.ResponseType == RESPONSE.ERROR) {
+                            ShowNotification(data.Title, data.Message, 'error');
+                            if (data.Content) {
+                                $('#newUser').html(data.Content);
+                            }
+                            $("#payment_confirmation").valid();
+                            isValidCardNumber();
+                        }
+                    }
+                });
+            }
+
+        });
+
+        //BOTON CONFIRMAR
+        $("#btnConfirm").click(function (e) {
+            e.preventDefault();
+            if ($("#UserId").val != "") {
+                if ($('#newCardForm').hasClass('hidden')) {
+                    showLoaderFullScreen("@PresentationWebStrings.Loader_Processing_Payment");
+                    $("#payment_with_token_confirmation").submit();
+                } else {
+                    var month = $("#ddlMonth").find(":selected").val();
+                    var year = $("#ddlYear").find(":selected").val();
+                    $("#card_expiry_date").attr("value", month + "-" + year);
+                    showLoaderFullScreen("@PresentationWebStrings.Loader_Processing_Payment");
+                    $("#payment_confirmation").submit();
+                    //$("#payment_with_token_confirmation").submit(); //para probar
+                }
+            }
+        });
+
+        //BOTON FORGET PASSWORD
+        $("#btnForgetPass").click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                dataType: 'json',
+                type: "POST",
+                url: '@Url.Action("ForgetMyPasswordAjax", "AppAdmission")',
+                success: function (data) {
+                    if (data.ResponseType == RESPONSE.SUCCESS) {
+                        $("#divIndex").addClass("hidden");
+                        $("#divForgetPass").removeClass("hidden");
+                        $("#divForgetPass").html(data.Content);
+                    }
+                    if (data.ResponseType == RESPONSE.ERROR) {
+                        ShowNotification(data.Title, data.Message, 'error');
+                    }
+                }
+            });
+        });
+
+
+        $('.preview').popover({
+            'trigger': 'hover',
+            'html': true,
+            'content': function () {
+                return "@PresentationWebStrings.Resgistration_CallCenter_Desc";
+            }
+        });
+
+        $('.previewPassword').popover({
+            'trigger': 'hover',
+            'html': true,
+            'content': function () {
+                return "@PresentationWebStrings.Resgistration_Password_Desc";
+            }
+        });
+
+        $("#email_reg").keyup(function (e) {
+            e.preventDefault();
+
+            var name = $("#email_reg").val();
+            if (name == "") {
+                $("#Email_AppUserRequired").removeClass("hide");
+                $("#email_reg").addClass("input-validation-error");
+                $("#Email_AppUserRequired").html("@PresentationCoreMessages.RequiredField");
+            } else {
+                if (!isValidEmailAddress(name)) {
+                    $("#email_reg").addClass("input-validation-error");
+                    $("#Email_AppUserRequired").removeClass("hide");
+                    $("#Email_AppUserRequired").html("@PresentationCoreMessages.InvalidEmail");
+                } else {
+                    $("#Email_AppUserRequired").addClass("hide");
+                    $("#email_reg").removeClass("input-validation-error");
+                }
+            }
+        });
+
+        $("#password_reg").keyup(function (e) {
+            e.preventDefault();
+
+            var pass = $("#password_reg").val();
+            if (pass == "") {
+                $("#Password_AppUserRequired").removeClass("hide");
+                $("#password_reg").addClass("input-validation-error");
+                $("#Password_AppUserRequired").html("@PresentationCoreMessages.RequiredField");
+            } else {
+                $("#Password_AppUserRequired").addClass("hide");
+                $("#password_reg").removeClass("input-validation-error");
+            }
+        });
+
+        $("#btnConditionsVisa").click(function (e) {
+            e.preventDefault();
+            $.get("@Url.Action("ConditionsVisa", "AppAdmission")").success(function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $("#termsVisa").html(data.Content);
+                    $("#modalTermsVisa", "#termsVisa").modal();
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            });
+        });
+
+        $("#btnConditionsService").click(function (e) {
+            e.preventDefault();
+            $("#modalTermsService").modal();
+        });
+
+        validatePageInput();
+    });
+
+    function validatePageInput() {
+        var form = $("form");
+        form.unbind();
+        form.data("validator", null);
+        $.validator.unobtrusive.parse(document);
+        form.validate(form.data("unobtrusiveValidation").options);
+    }
+
+    function isValidCardNumber() {
+        var valid = true;
+        if (!validateCardNumber($("#card_number").val())) {
+            $("#card_number").trigger('keyup');
+            valid = false;
+        }
+        return valid;
+    }
+
+    function bindEvents() {
+        $("[data-type=existingCard]").click(function () {
+            if (!$("#newCardForm").hasClass("hidden")) {
+                $("#newCardForm").addClass("hidden");
+            }
+            $("#CardId").val($('input[name=card_radio]:checked').val());
+        });
+
+        $("#newCard").click(function () {
+            $("#newCardForm").removeClass("hidden");
+            $("#CardId").val("");
+        });
+    }
+
+    function isValidEmailAddress(emailAddress) {
+        var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+        return pattern.test(emailAddress);
+    }
+
+    function validateCardNumber(number) {
+        if (number.length != 16) { return false; }
+        if (number.charAt(0) != 4) { return false; }
+
+        var length = number.length;
+        var value = null;
+        var value_card = null;
+        var sum = 0;
+        for (var i = 0; i < length; i += 2) {
+            value = parseInt(number.charAt(i)) * 2;
+            if (value > 9) {
+                value_card = value.toString();
+                value = parseInt(value_card.charAt(0)) +
+                parseInt(value_card.charAt(1));
+            }
+            sum += value;
+        }
+        for (var i = 1; i < length; i += 2) {
+            sum += parseInt(number.charAt(i));
+        }
+        if ((sum % 10) == 0) { return true; }
+        return false;
+    }
+
+    function LoadCardData(data) {
+        $('#cardsDataBox').html(data.Content.cardListContent);
+        $("#cardsDataBox").removeClass("hidden");
+        $("#termsDataBox").removeClass("hidden");
+        $("#personalDataBox").addClass("hidden");
+
+        $('#buttonsActionsBox').removeClass("hidden");
+        if (data.Content.allowReturn == "true") {
+            $("#btnReturnLogin").removeClass("hidden");
+        }
+
+        $("#btnSend").removeClass("hidden");
+        $("#btnNext").addClass("hidden");
+        $("#btnBack").removeClass("hidden");
+        $("#btnCancel").addClass("hidden");
+
+        var form = $("#payment_confirmation");
+        form.removeData("validator");
+        form.removeData("unobtrusiveValidation");
+        $.validator.unobtrusive.parse("#payment_confirmation");
+        
+        $('html,body').animate({
+            scrollTop: $("#cardsDataBox").offset().top
+        }, 'slow');
+        bindEvents();
+    }
+
+    function LoadRefs(data) {
+        $('#registeredUser').addClass("hidden");
+
+        $('#password_reg').val("");
+
+        $('#name_loggedIn').val(data.Content.userName);
+        $('#surname_loggedIn').val(data.Content.userSurName);
+        $('#email_loggedIn').val(data.Content.userEmail);
+        $('#UserId').val(data.Content.userId);
+
+        $('#registeredUserLoggedIn').removeClass("hidden");
+
+
+        $('#buttonsActionsBox').removeClass("hidden");
+        if (data.Content.allowReturn == "true") {
+            $("#btnReturnLogin").removeClass("hidden");
+        }
+
+        if (data.Content.referencesView) {
+            $('#refsView').html(data.Content.referencesView);
+            $('#refsView').removeClass("hidden");
+            validatePageInput();
+        }
+
+        $("#textConfirm").html("");
+    }
+
+</script>

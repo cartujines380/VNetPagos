@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://demouy.hexacta.com:448/BankingWCF/VisaNetAccess.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" />
+  <xs:element name="GetServices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" minOccurs="0" name="data" nillable="true" type="q1:ServicesData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" minOccurs="0" name="GetServicesResult" nillable="true" type="q2:ServicesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchBills">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" minOccurs="0" name="data" nillable="true" type="q3:BillsData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchBillsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" minOccurs="0" name="SearchBillsResult" nillable="true" type="q4:BillsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PreprocessPayment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" minOccurs="0" name="data" nillable="true" type="q5:PreprocessPaymentData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PreprocessPaymentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" minOccurs="0" name="PreprocessPaymentResult" nillable="true" type="q6:PreprocessPaymentResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Payment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" minOccurs="0" name="data" nillable="true" type="q7:PaymentData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PaymentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" minOccurs="0" name="PaymentResult" nillable="true" type="q8:PaymentResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchPayments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" minOccurs="0" name="data" nillable="true" type="q9:SearchPaymentsData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchPaymentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" minOccurs="0" name="SearchPaymentsResult" nillable="true" type="q10:SearchPaymentsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NotifyOperationResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" minOccurs="0" name="data" nillable="true" type="q11:NotificationData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NotifyOperationResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" minOccurs="0" name="NotifyOperationResultResult" nillable="true" type="q12:NotificationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

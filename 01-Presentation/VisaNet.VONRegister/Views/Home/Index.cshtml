@@ -1,0 +1,45 @@
+﻿@model VisaNet.VONRegister.Models.Register
+
+<div id="content">
+    <form action="@Url.Action("Index", "Account")" method="post" id="formIframe" class="">
+
+        @{
+            var random = new Random();
+        }
+        <input type="text" name="Nombre" placeholder="Nombre" />
+        <input type="text" name="Apellido" placeholder="Apellido" />
+        <input type="text" name="Email" placeholder="Email" value="gvarini@hexacta.com" />
+        <input type="text" name="Direccion" placeholder="Direccion" />
+        <input type="text" name="Telefono" placeholder="Telefono" />
+        <input type="text" name="Movil" placeholder="Movil" />
+        <input type="text" name="CI" placeholder="CI" />
+        <input type="text" name="PermiteCambioEmail" placeholder="PermiteCambioEmail" value="N" />
+        <input type="text" name="UrlCallback" value="http://requestb.in/zce0przc" />
+        <input type="text" name="IdOperacion" value="@random.Next(1, 100000000)" />
+        <input type="text" name="IdApp" value="puntacarretaslocal" />
+        <input type="text" name="FirmaDigital" id="FirmaDigital" class="hidden" />
+        <input type="submit" id="enviar" value="Enviar" />
+    </form>
+</div>
+
+@section scripts
+{
+    <script>
+        "use strict";
+        $(document).ready(function () {
+            $("#enviar").click(function (e) {
+                e.preventDefault();
+                $.post("@Url.Action("Signature", "Home")", $("#formIframe").serialize()).done(validation);
+            });
+        });
+
+        var validation = function (data) {
+            if (data.ResponseType !== 1) {
+                $("#FirmaDigital").val(data.Content);
+                $("#formIframe").submit();
+            } else {
+                showNotification(data.Message, 'error');
+            }
+        };
+    </script>
+}

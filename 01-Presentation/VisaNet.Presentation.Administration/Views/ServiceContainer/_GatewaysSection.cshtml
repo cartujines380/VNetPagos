@@ -1,0 +1,29 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ServiceContainerModel
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <td>@PresentationAdminStrings.Status</td>
+            <td>@PresentationAdminStrings.Service_Gateway</td>
+        </tr>
+        <tbody>
+            @{ int ii = 0;}
+            @foreach (var gateway in Model.ServiceGateways)
+            {
+                <tr>
+                    <td>
+                        @Html.CheckBox("ServiceGateways[" + ii + "].Active", gateway.Active)
+                    </td>
+                    <td>
+                        @Html.Label(gateway.GatewayName, new { @class = "obligatoryField" })
+                        @Html.Hidden("ServiceGateways[" + ii + "].GatewayName", gateway.GatewayName)
+                    </td>
+                </tr>
+                @Html.Hidden("ServiceGateways[" + ii + "].GatewayId", gateway.GatewayId)
+                @Html.Hidden("ServiceGateways[" + ii + "].GatewayEnum", gateway.GatewayEnum)
+                ii++;
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,41 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ServiceCategoryModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Service_Category_Edit_Title</h2>
+
+@using (Html.BeginForm("Edit", "ServiceCategory", FormMethod.Post, new { autocomplete = "off" }))
+{
+
+    <div class="row mt30">
+        <div class="col-lg-5">
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(s => s.Id)
+            <div class="form-group">
+                @Html.LabelFor(s => s.Name, new { @class = "obligatoryField" }) *
+                @Html.TextBoxFor(s => s.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(s => s.Name)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5">
+            <a href="@Url.Action("Index", "ServiceCategory")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+            <a href="#" id="btnSave" class="btn btn-default">
+                <strong>@PresentationAdminStrings.Save</strong>
+            </a>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnSave").click(function () {
+            $(this).parents("form").submit();
+        });
+    });
+</script>

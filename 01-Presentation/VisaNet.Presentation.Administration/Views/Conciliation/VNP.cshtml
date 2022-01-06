@@ -1,0 +1,125 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Presentation.Administration.Models
+
+@model VisaNet.Presentation.Administration.Models.RunConciliationModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ejecutar Conciliación Manual</h2>
+
+@using (Html.BeginForm("RunConciliation", "Conciliation", FormMethod.Post, new Dictionary<string, object> { { "id", "formRunConciliation" }, { "enctype", "multipart/form-data" } }))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <label>@PresentationAdminStrings.Reports_Conciliation_Application</label>
+            @Html.DropDownListFor(m => m.App, EnumHelpers.ConvertToSelectList(typeof(ConciliationAppModel), Model.App == null ? 0 : (int)Model.App.Value, EnumsStrings.ResourceManager), PresentationAdminStrings.Filters_Application_Placeholder, new Dictionary<string, object> { { "style", "width: 100%; height: 100%; color:#999" }, { "class", "form-control" } })
+        </div>
+
+        <div id="divDates" class="@(Model.App != ConciliationAppModel.CyberSource && Model.App != ConciliationAppModel.Sucive ? "hidden" : "")">
+            <div class="col-md-4">
+                <label>@PresentationAdminStrings.Date</label>
+                @Html.EditorFor(m => m.Date, new { @class = "w100" })
+            </div>
+            <div class="col-md-4">
+                <label>@PresentationAdminStrings.DateTo</label>
+                @Html.EditorFor(m => m.DateTo, new { @class = "w100" })
+            </div>
+        </div>
+
+        <div id="divFile" class="col-md-4 @(Model.App != ConciliationAppModel.Banred && Model.App != ConciliationAppModel.Sistarbanc && Model.App != ConciliationAppModel.Batch ? "hidden" : "")">
+            <label>@PresentationAdminStrings.File</label>
+            <input class="col-md-12" type="file" name="inputFile" id="inputFile" onchange="updateFileNameForModel(this)" />
+            @Html.HiddenFor(m => m.FileName)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="col-xs-6 p5l pr0">
+                <input type="submit" class="btn btn-default btn-standar mt10 w100" id="btnExecute" value="@PresentationCoreMessages.Common_Proccess" />
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#@Html.IdFor(m => m.App)").on('change', function () {
+            var value = $("#@Html.IdFor(m => m.App)").val();
+            if (value == 0) {
+                hideDivFile();
+                hideDivDates();
+            }
+            else if (value != @((int)ConciliationAppModel.CyberSource) && value != @((int)ConciliationAppModel.Sucive)) {
+                showDivFile();
+                hideDivDates();
+            } else {
+                hideDivFile();
+                showDivDates();
+            }
+        });
+
+        $("#btnExecute").on('click', function (e) {
+            e.preventDefault();
+            if (validateForm()) {
+                $("#formRunConciliation").submit();
+            }
+        });
+
+    });
+
+    function updateFileNameForModel(inputFile) {
+        var fileName = inputFile.value.split(/(\\|\/)/g).pop();
+        $("#@Html.IdFor(m => m.FileName)").val(fileName);
+    }
+
+    function hideDivDates() {
+        if (!$("#divDates").hasClass("hidden")) {
+            $("#divDates").addClass("hidden");
+        }
+    }
+
+    function showDivDates() {
+        if ($("#divDates").hasClass("hidden")) {
+            $("#divDates").removeClass("hidden");
+        }
+    }
+
+    function hideDivFile() {
+        if (!$("#divFile").hasClass("hidden")) {
+            $("#divFile").addClass("hidden");
+        }
+    }
+
+    function showDivFile() {
+        if ($("#divFile").hasClass("hidden")) {
+            $("#divFile").removeClass("hidden");
+        }
+    }
+
+    function validateForm() {
+        //Validate an app is selected
+        var selectedApp = $("#@Html.IdFor(m => m.App)").val();
+        if (selectedApp == null || selectedApp == "" || selectedApp < 1) {
+            ShowNotification('¡Atención!', "Debe seleccionar una aplicación.", 'alert');
+            return false;
+        }
+        //Validate a file is loaded for the apps which require itç
+        var appsWithFileNeeded = [ '@((int)ConciliationAppModel.Batch)', '@((int)ConciliationAppModel.Banred)', '@((int)ConciliationAppModel.Sistarbanc)' ];
+        var selectedAppNeedsFile = appsWithFileNeeded.indexOf(selectedApp) != -1;
+        var loadedFileName = $("#@Html.IdFor(m => m.FileName)").val();
+        if (selectedAppNeedsFile && (loadedFileName == null || loadedFileName == "")) {
+            ShowNotification('¡Atención!', "La aplicación seleccionada require que indique un archivo.", 'alert');
+            return false;
+        }
+        return true;
+    }
+
+</script>

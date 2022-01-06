@@ -1,0 +1,131 @@
+﻿@using System.Configuration
+@using System.Diagnostics
+@using System.Reflection
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Presentation.Web.Controllers
+<div class="footer p15t p35b">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="footerBrand"></div>
+                <div class="row">
+                    @*<div class="col-xs-6">@using (Html.BeginForm("Service", "Pay", new RouteValueDictionary() { { "Area", "Pay" } }, FormMethod.Get))
+    {
+        <button type="submit" class="btn btn-block btn-mainSearch mb10">Pagar Servicio</button>
+    }</div>*@
+                    <div class="col-md-12 col-sm-6 col-xs-6">
+                        @using (Html.BeginForm("Service", "Payment", new RouteValueDictionary() { { "Area", "" } }, FormMethod.Get))
+                        {
+                            <button type="submit" class="btn btn-block btn-mainSearch mb10">Pagar factura o servicio</button>
+                        }
+                    </div>
+                    <div class="col-md-12 col-sm-6 col-xs-6">
+                        @using (Html.BeginForm("Service", "Debit", new RouteValueDictionary() { { "Area", "Debit" } }, FormMethod.Get))
+                        {
+                            <button type="submit" class="btn btn-block btn-mainSearch mb10">Solicitar débito automático</button>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h4>Sobre el Portal de Pagos</h4>
+                <ul class="footerList">
+                    <li>
+                        <h5><i class="icon-angle-right"></i>@Html.ActionLink("¿Quiénes Somos?", "Index", "InstitutionalContent", new { area = "" }, null)</h5>
+                        @*<h5><i class="icon-angle-right"></i><a href="#">¿Quiénes Somos? </a></h5>*@
+                    </li>
+                    @*<li>
+                            <h5><i class="icon-angle-right"></i>@Html.ActionLink("Novedades", "Index", "Notices", new { area = "" }, null)</h5>
+                        </li>*@
+                    <li>
+                        <h5><i class="icon-angle-right"></i>@Html.ActionLink("Servicios", "Index", "ServiceProvider", new { area = "" }, null)</h5>
+                    </li>
+
+                    <li>
+                        <h5><i class="icon-angle-right"></i>@Html.ActionLink("Newsletter", "Index", "Subscriber", new { area = "" }, null)</h5>
+                    </li>
+                    <li>
+                        <h5><i class="icon-angle-right"></i>@Html.ActionLink("Contacto", "Index", "Contact", new { area = "" }, null)</h5>
+                    </li>
+                    <li>
+                        <h5><i class="icon-angle-right"></i>@Html.ActionLink("FAQ's", "Index", "Faq", new { area = "" }, null)</h5>
+                        @*<h5><i class="icon-angle-right"></i><a href="#">FAQ's </a></h5>*@
+                    </li>
+                    <li>
+                        <h5><i class="icon-angle-right"></i>@Html.ActionLink("Términos y condiciones", "Index", "LegalPages", new { area = "" }, null)</h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h4>Mobile</h4>
+                <ul>
+                    <li style="">
+                        <a href="https://itunes.apple.com/dm/app/visanetpagos/id1173540628?mt=8">
+                            <img border="0" height="50" src="~/Content/images/AppStore.svg" width="135" alt="iTunes" />
+                        </a>
+                    </li>
+                    <li style="">
+                        <a href='https://play.google.com/store/apps/details?id=com.visanetpagos.app&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+                            <img border="0" width="135" alt='Disponible en Google Play' src='~/Content/images/gplay.png' />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h4>Social</h4>
+                <ul>
+                    <li>
+                        <h5>
+                            <i class="icon-facebook-sign"></i>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=www.visanetpagos.com.uy" target="_blank">
+                                Facebook
+                            </a>
+                        </h5>
+                    </li>
+                    <li>
+                        <h5>
+                            <i class="icon-twitter-sign"></i>
+                            <a href="https://twitter.com/intent/tweet?text=VisaNet lanzó un nuevo portal para pago de servicios.&url=https://www.visanetpagos.com.uy" target="_blank">
+                                Twitter
+                            </a>
+                        </h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h4>Call Center</h4>
+                <ul>
+                    @*<li>
+                            <h5><i class="icon-angle-right"></i>@Html.ActionLink("Términos y Condiciones", "Index", "LegalPages", new { area = "" }, null)</h5>
+                            <h5><i class="icon-angle-right"></i><a href="#">Términos y Condiciones </a></h5>
+                        </li>*@
+
+                    @*<li>
+                            <h5><i class="icon-angle-right"></i>@Html.ActionLink(PresentationWebStrings.Help_Menu, "Index", "Help", new { area = "" }, null)</h5>
+                        </li>*@
+                    <li>
+                        <h5>
+                            @PresentationWebStrings.CallCenter_Phone_Footer
+                        </h5>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="dobleFooter ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>VisaNet Uruguay © @DateTime.Now.Year. Todos los derechos reservados.</h5>
+
+                    @{ string version = FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HomeController)).Location).FileVersion.Substring(0, 5); }
+                    <h5>Version @version</h5>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="fRight visaSmallBrand"></h5>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

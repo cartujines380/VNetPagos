@@ -1,0 +1,13 @@
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\bin\Debug\VisaNet.Utilities.JsonResponse.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\bin\Debug\VisaNet.Utilities.JsonResponse.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\bin\Debug\System.Web.Mvc.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\bin\Debug\VisaNet.Common.Resource.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\bin\Debug\VisaNet.Utilities.Notifications.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\bin\Debug\VisaNet.Common.Resource.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\bin\Debug\VisaNet.Utilities.Notifications.pdb
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\bin\Debug\System.Web.Mvc.xml
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\obj\Debug\VisaNet.Utilities.JsonResponse.csprojResolveAssemblyReference.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\obj\Debug\VisaNet.Utilities.JsonResponse.csproj.CoreCompileInputs.cache
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\obj\Debug\VisaNet.Utilities.JsonResponse.csproj.CopyComplete
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\obj\Debug\VisaNet.Utilities.JsonResponse.dll
+C:\TFS\VisaNet-Pagos\Source\Branch\EliminarTokensCs\07-Utilities\VisaNet.Utilities.JsonResponse\obj\Debug\VisaNet.Utilities.JsonResponse.pdb

@@ -1,0 +1,18 @@
+﻿@model VisaNet.Presentation.Web.Models.AppAdmissionModel
+
+@{
+    ViewBag.Title = "End";
+    Layout = "~/Views/Shared/_HighwayLayout.cshtml";
+}
+
+<form id="associationCallBack" method="POST" action="@Model.UrlCallback">
+    <input class="hidden" id="IdOperacion" name="IdOperacion" value="@Model.IdOperation" />
+    <input class="hidden" id="CodResultado" name="CodResultado" value="@ViewBag.ResultCode" />
+    <input class="hidden" id="DescResultado" name="DescResultado" value="@ViewBag.ResultDescription" />
+</form>
+
+<script>
+    $(document).ready(function () {
+        $("#associationCallBack").submit();
+    });
+</script>

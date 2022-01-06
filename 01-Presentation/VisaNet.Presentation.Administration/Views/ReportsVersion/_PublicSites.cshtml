@@ -1,0 +1,50 @@
+﻿@model VisaNet.Presentation.Administration.Models.SystemVersionsModel
+
+<h4>Sitios Públicos</h4>
+
+<div class="row">
+    <div class="col-md-10">
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th class="col-md-2">
+                            Portal Administrador
+                        </th>
+                        <th class="col-md-2">
+                            Portal Web
+                        </th>
+                        <th class="col-md-2">
+                            Portal VisaNetOn
+                        </th>
+                        <th class="col-md-2">
+                            Portal Von Register
+                        </th>
+                        <th class="col-md-2">
+                            Portal de Comercios
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Model.AdminVersion
+                        </td>
+                        <td>
+                            @Model.WebVersion
+                        </td>
+                        <td>
+                            @Model.VisaNetOnVersion
+                        </td>
+                        <td>
+                            @Model.VonRegisterVersion
+                        </td>
+                        <td>
+                            @Model.CustomerSiteVersion
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

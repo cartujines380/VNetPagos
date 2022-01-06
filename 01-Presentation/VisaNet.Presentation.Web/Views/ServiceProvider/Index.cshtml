@@ -1,0 +1,69 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos
+@model VisaNet.Presentation.Web.Models.ServiceProviderViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container p25t">
+    <!-- area de titulo para secciones que no son wizard-->
+    <div class="row">
+        <div class="col-md-6 col-sm-4 col-xs-12">
+            <h3 class="mt5 nameSection">@PresentationWebStrings.Services</h3>
+            <h4 class="pageDescription">@PresentationWebStrings.Service_Front_Desc</h4>
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+			<div class="row" id="servicesSearch">
+                <div class="col-md-10 col-xs-10 pr0">
+                    <div>
+                        @Html.DropDownListFor(x => x.ServiceId, new SelectList(Model.Services, "Id", "Name"), string.Empty, null)
+                    </div>
+                </div>
+               <div class="col-xs-2 pl0 search-button">
+                    <a class="btn btn-default btn-standar w100" id="search"><i class="fa fa-search"></i></a>
+                </div>
+            </div>
+		</div>
+        <div class="clearfix"></div>
+    </div>
+
+    <!-- fin del area de titulo para secciones que no son wizard -->
+
+    <div class="mb20">
+        <div class="">
+            <div class="loadingMessaje hide" id="loadingServices">
+                <div class="loading">@PresentationWebStrings.Loader_Message</div>
+            </div>
+            <div id="listado">
+                @Html.Partial("_Services", Model.Services)
+            </div>
+
+            <!-- fin del formMargin-->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#servicesLink").addClass("vnpTitleSelected");
+    $("#@Html.IdFor(m => m.ServiceId)").combobox();
+
+    $("#search").click(function () {
+        var serviceSelected = $("#@Html.IdFor(m => m.ServiceId)").val();
+        var serviceId = serviceSelected == "" ? "@Guid.Empty" : serviceSelected;
+        GetServices(serviceId);
+    });
+    function GetServices(serviceId) {
+        $('#loadingServices').removeClass("hide");
+        var serName = $("#@Html.IdFor(m => m.ServiceId) option:selected").text();
+        $.ajax({
+            url: '@Url.Action("LoadServicesAjax", "ServiceProvider")',
+            data: { serviceId: serviceId, commerceName: serName },
+            dataType: 'html',
+            success: function (result) {
+                $('#listado').html(result);
+                $('#loadingServices').attr("class", "hide");
+            }
+        });
+    }
+</script>

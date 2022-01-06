@@ -1,0 +1,55 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.MerchantId, new { @class = "obligatoryField" }) *
+            @Html.TextBoxFor(s => s.MerchantId, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+            @Html.ValidationMessageFor(s => s.MerchantId)
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.LabelFor(s => s.CybersourceProfileId, new { @class = "obligatoryField" }) *
+            @Html.TextBoxFor(s => s.CybersourceProfileId, Model.IsDetailsView ? (object)new { @class = "form-control", @disabled = "disabled" } : (object)new { @class = "form-control" })
+            @Html.ValidationMessageFor(s => s.CybersourceProfileId)
+        </div>
+    </div>
+    @if (!Model.IsDetailsView)
+    {
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.CybersourceAccessKey, new { @class = "obligatoryField" }) *
+                @Html.TextBoxFor(s => s.CybersourceAccessKey, new { @class = "form-control" })
+                @if (Model.IsEditView)
+                {
+                    @Html.Label(PresentationAdminStrings.Value_Hidden)
+                }
+                @Html.ValidationMessageFor(s => s.CybersourceAccessKey)
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.CybersourceSecretKey, new { @class = "obligatoryField" }) *
+                @Html.TextBoxFor(s => s.CybersourceSecretKey, new { @class = "form-control" })
+                @if (Model.IsEditView)
+                {
+                    @Html.Label(PresentationAdminStrings.Value_Hidden)
+                }
+                @Html.ValidationMessageFor(s => s.CybersourceSecretKey)
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(s => s.CybersourceTransactionKey, new { @class = "obligatoryField" }) *
+                @Html.TextBoxFor(s => s.CybersourceTransactionKey, new { @class = "form-control" })
+                @if (Model.IsEditView)
+                {
+                    @Html.Label(PresentationAdminStrings.Value_Hidden)
+                }
+                @Html.ValidationMessageFor(s => s.CybersourceTransactionKey)
+            </div>
+        </div>
+    }
+</div>

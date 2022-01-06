@@ -1,0 +1,59 @@
+﻿@using System.Globalization
+@using VisaNet.Common.Resource.Presentation
+@model IEnumerable<VisaNet.Domain.EntitiesDtos.TransactionsAmountDto>
+@if (Model.Any())
+{
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="table-responsive">
+                <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                    <thead>
+                        <tr>
+                            <th>
+                                @ViewBag.Parameter
+                            </th>
+                            <th>
+                                @ViewBag.Dimension en Pesos
+                            </th>
+                            <th>
+                                @ViewBag.Dimension en Dolares
+                            </th>
+                            <th>
+                                @ViewBag.Dimension Total @(ViewBag.Dimension.Equals("Cantidad") ? "" : " en " + (ViewBag.Currency.Equals("$ ") ? "Pesos" : "Dolares"))
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var transactionsAmount in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @transactionsAmount.Name
+                                </td>
+                                <td>
+                                    <div class="text-right">
+                                        @(ViewBag.Dimension.Equals("Cantidad") ? "" : "$ ")@(transactionsAmount.ValuePesos != 0 ? transactionsAmount.ValuePesos.ToString("#,#", CultureInfo.CurrentCulture) : "0")
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-right">
+                                        @(ViewBag.Dimension.Equals("Cantidad") ? "" : "U$S ")@(transactionsAmount.ValueDollars != 0 ? transactionsAmount.ValueDollars.ToString("#,#", CultureInfo.CurrentCulture) : "0")
+
+                                    </div>                                </td>
+                                <td>
+                                    <div class="text-right">
+                                        @ViewBag.Currency@(transactionsAmount.ValueTotal != 0 ? transactionsAmount.ValueTotal.ToString("#,#", CultureInfo.CurrentCulture) : "0")
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h5>@PresentationAdminStrings.Reports_Transactions_List_Empty</h5>
+}

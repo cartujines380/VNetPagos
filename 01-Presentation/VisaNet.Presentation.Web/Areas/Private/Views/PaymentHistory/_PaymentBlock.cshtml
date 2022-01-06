@@ -1,0 +1,65 @@
+﻿@using System.Configuration
+@using System.Globalization
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Utilities.Exportation.ExtensionMethods
+@model VisaNet.Presentation.Web.Models.PaymentModel
+
+<div class="itemBox serviceItem">
+    <div class="row">
+        <div class="col-md-8 serviceInformation">
+            <div class="col-md-3 pr0 pl0 serviceImage">
+                @if (!String.IsNullOrEmpty(Model.ServiceImageName))
+                {
+                    <img src="@Model.ServiceImageName" width="65" />
+                }
+                else
+                {
+                    <img src="@ConfigurationManager.AppSettings["DefaultServiceImage"]" width="54" />
+                }
+            </div>
+            <div class="col-md-9 serviceDetail">
+                <ul>
+                    <li>
+                        @if (!string.IsNullOrEmpty(Model.ServiceContainerName))
+                        {<span>@Model.ServiceContainerName - @Model.ServiceName </span>}
+                        else
+                        {<span class="titleCard">@Model.ServiceName </span>}
+                        <span class="shortDescription mb20" title="@Model.ServiceDesc">
+                            @(string.IsNullOrEmpty(Model.ServiceDesc) ? string.Empty : " - " + @Model.ServiceDesc.Short(45))
+                        </span>
+                    </li>
+                    @*@if (!string.IsNullOrEmpty(Model.Card.Description))
+                    {
+                        <li><span class="bold">@PresentationWebStrings.Payment_Card_Description:</span>@Model.Card.Description</li>
+                    }*@
+                    <li><span class="bold">@PresentationWebStrings.Payment_Card:</span>@Model.Card.MaskedNumber</li>
+                    @{
+                        var amountDolars = string.Empty;
+                        var amountPesos = string.Empty;
+                        var conjuntion = string.Empty;
+
+                        if (Model.AmountDolars > 0)
+                        { amountDolars = "U$D " + Model.AmountDolars.ToString("##,#0.00", CultureInfo.CurrentCulture); }
+                        if (Model.AmountPesos > 0)
+                        { amountPesos = "$" + Model.AmountPesos.ToString("##,#0.00", CultureInfo.CurrentCulture); }
+                        if (Model.AmountDolars > 0 && Model.AmountPesos > 0)
+                        { conjuntion = " - "; }
+                    }
+                    <li><span class="bold">@PresentationWebStrings.Payment_Amount:</span> @amountDolars@conjuntion@amountPesos</li>
+                    <li><span class="bold">@PresentationWebStrings.Payment_TransactionNumber:</span> @Model.TransactionNumber</li>
+                    <li><span class="bold">@PresentationWebStrings.Payment_Date:</span> @Model.Date.ToShortDateString()</li>
+                    @if (Model.Quota > 1)
+                    {
+                        <li><span class="bold">Cuotas: </span> @Model.Quota</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 serviceActions">
+            <ul>
+                <li><a href="@Url.Action("SendCopyPaymentByEmail", "PaymentHistory", new { id = Model.Id, transactionNumber = Model.TransactionNumber })" class="send"><i class="icon-envelope"></i> @PresentationWebStrings.Payment_Send</a></li>
+                <li><a class="" target="_blank" href="@Url.Action("DownloadTicket", "Pay", new { id = Model.Id, transactionNumber = Model.TransactionNumber, Area = "Pay" })"><i class="icon-download-alt"></i> @PresentationWebStrings.Payment_Download</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

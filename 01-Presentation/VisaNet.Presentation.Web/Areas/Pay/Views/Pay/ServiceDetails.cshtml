@@ -1,0 +1,156 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Presentation.Web.Models.PaymentServiceModel
+
+<div class="container p25t">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 mb20 nameSection">@PresentationWebStrings.Header_UniquePayment</h3>
+            <h4 class="pageDescription">@PresentationWebStrings.Payment_Desc</h4>
+        </div>
+    </div>
+
+    <div class="wizardBox">
+        <!-- area de titulo y breadcrumb-->
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="mt5">@PresentationWebStrings.Payment_Step1_Details</h3>
+                <h4 class="pageDescription">@PresentationWebStrings.Payment_Step1_Description</h4>
+            </div>
+            <div class="col-md-4 steps">
+                @Html.Partial("_Steps")
+            </div>
+            <div class="clearfix"></div>
+            <div class="horizontalLineGrey"></div>
+        </div>
+        <!-- area de titulo y breadcrumb-->
+        @using (Html.BeginForm("Bills", "Pay", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.ServiceType)
+            <div class="formMargin">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.HiddenFor(m => m.ServiceFirstComboId)
+                        <div>@Html.LabelFor(m => m.ServiceFirstComboId)</div>
+                        @Html.TextBoxFor(m => m.ServiceFirstComboId, new { @class = "w100", @disabled = "disabled" })
+                    </div>
+                </div>
+                @if (Model.ServiceToPayId != Model.ServiceFirstComboId)
+                {
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.HiddenFor(m => m.ServiceFirstComboId)
+                            <div>@Html.LabelFor(m => m.ServiceFirstComboId)</div>
+                            @Html.TextBoxFor(m => m.ServiceFirstComboId, new { @class = "w100", @disabled = "disabled" })
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    @if (!String.IsNullOrEmpty(Model.ReferenceName))
+                    {
+                        <div class="col-md-6">
+                            @Html.HiddenFor(m => m.ReferenceName)
+                            @Html.Label(Model.ReferenceName)
+                            @Html.HiddenFor(m => m.ReferenceValue)
+                            @Html.TextBoxFor(m => m.ReferenceValue, new { @class = "w100", @disabled = "disabled" })
+                        </div>
+                    }
+                    @if (!String.IsNullOrEmpty(Model.ReferenceName2))
+                    {
+                        <div class="col-md-6">
+                            @Html.HiddenFor(m => m.ReferenceName2)
+                            @Html.Label(Model.ReferenceName2)
+                            @Html.HiddenFor(m => m.ReferenceValue2)
+                            @Html.TextBoxFor(m => m.ReferenceValue2, new { @class = "w100", @disabled = "disabled" })
+                        </div>
+                    }
+                    @if (!String.IsNullOrEmpty(Model.ReferenceName3))
+                    {
+                        <div class="col-md-6">
+                            @Html.HiddenFor(m => m.ReferenceName3)
+                            @Html.Label(Model.ReferenceName3)
+                            @Html.HiddenFor(m => m.ReferenceValue3)
+                            @(Model.Sucive ?
+                                  Html.TextBox(Model.ReferenceValue3, Enum.GetName(typeof(DepartamentDtoType), int.Parse(Model.ReferenceValue3)), new { @class = "w100", @disabled = "disabled" }) :
+                                  Html.TextBoxFor(m => m.ReferenceValue3, new { @class = "w100", @disabled = "disabled" })
+                                  )
+                        </div>
+                    }
+                    @if (!String.IsNullOrEmpty(Model.ReferenceName4))
+                    {
+                        <div class="col-md-6">
+                            @Html.HiddenFor(m => m.ReferenceName4)
+                            @Html.Label(Model.ReferenceName4)
+                            @Html.HiddenFor(m => m.ReferenceValue4)
+                            @Html.TextBoxFor(m => m.ReferenceValue4, new { @class = "w100", @disabled = "disabled" })
+                        </div>
+                    }
+                    @if (!String.IsNullOrEmpty(Model.ReferenceName5))
+                    {
+                        <div class="col-md-6">
+                            @Html.HiddenFor(m => m.ReferenceName5)
+                            @Html.Label(Model.ReferenceName5)
+                            @Html.HiddenFor(m => m.ReferenceValue5)
+                            @Html.TextBoxFor(m => m.ReferenceValue5, new { @class = "w100", @disabled = "disabled" })
+                        </div>
+                    }
+                    @if (!String.IsNullOrEmpty(Model.ReferenceName6))
+                    {
+                        <div class="col-md-6">
+                            @Html.HiddenFor(m => m.ReferenceName6)
+                            @Html.Label(Model.ReferenceName6)
+                            @Html.HiddenFor(m => m.ReferenceValue6)
+                            @Html.TextBoxFor(m => m.ReferenceValue6, new { @class = "w100", @disabled = "disabled" })
+                        </div>
+                    }
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.HiddenFor(model => model.Description)
+                        @Html.LabelFor(model => model.Description)
+                        @Html.TextAreaFor(model => model.Description, new { @class = "w100 ", @disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="row wizardButtons">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4 pr0">
+                        <div class="col-xs-6"></div>
+                        <div class="col-xs-6 p5l pr0">
+                            <button id="btnNext" class="btn btn-default btn-siguiente mt10 w100">@PresentationCoreMessages.Common_Next<i class="icon-chevron-sign-right"></i></button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- fin del formMargin-->
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <button id="btnCancelPayment" class="btn btn-default btn-cancelar mt10 w100">@PresentationWebStrings.Payment_Cancel<i class="icon-remove"></i></button>
+        </div>
+    </div>
+</div>
+
+    @Html.Partial("_Cancel")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#stepService").addClass("active");
+            $("#paymentRequestLink").addClass("vnpTitleSelected");
+
+            $("#btnNext").click(function (e) {
+                e.preventDefault();
+                showLoaderFullScreen("@PresentationWebStrings.Loader_Message_Getting_Bills");
+                $("#form").submit();
+            });
+
+            $("#btnCancelPayment").click(function (e) {
+                e.preventDefault();
+
+                $("#lbCancelPayment").modal();
+            });
+        });
+    </script>

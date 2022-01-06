@@ -1,0 +1,199 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Domain.EntitiesDtos.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Domain.EntitiesDtos.TableFilters.NotificationFilterDto
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Notifications</h2>
+
+<div class="row">
+    <div class="col-xs-6  col-md-2">
+        <label>@PresentationAdminStrings.From</label>
+        <div class="input-group date">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <input type="text" id="@Html.IdFor(m=>m.From)" name="@Html.NameFor(m=>m.From)" class="form-control _date search_init" data-type="filtro" value="@Model.From.ToShortDateString()" />
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <label>@PresentationWebStrings.Filters_To</label>
+        <div class="input-group date">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <input type="text" id="@Html.IdFor(m=>m.To)" name="@Html.NameFor(m=>m.To)" class="form-control _date search_init" data-type="filtro" value="@Model.To.ToShortDateString()" />
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <label>&nbsp;</label>
+        <input type="submit" class="btn btn-default" value="Buscar" id="btnSearch" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h2></h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <input id="sSearch_0" name="sSearch_0" type="text" class="search_init" data-type="filtro" placeholder="@PresentationAdminStrings.Notifications_Description" value="@Model.Description" />
+                        </th>
+                        <th>
+                            <input id="sSearch_1" name="sSearch_1" type="text" class="search_init" data-type="filtro" placeholder="@PresentationAdminStrings.Notifications_Detail" />
+                        </th>
+                        <th>
+                            <select id="sSearch_2" name="sSearch_2" class="search_init" data-type="filtro">
+                                <option value="">Todos</option>
+                                <option value="true">Si</option>
+                                <option value="false" selected="selected">No</option>
+                            </select>
+                        </th>
+                        <th>
+                            @Html.DropDownList("sSearch_3", EnumHelpers.ConvertToSelectList(typeof(FixedNotificationLevelDto), (int)FixedNotificationLevelDto.Error, EnumsStrings.ResourceManager), "Todos", new Dictionary<string, object> { { "class", "search_init" } })
+                        </th>
+                        <th>
+                            @Html.DropDownList("sSearch_4", EnumHelpers.ConvertToSelectList(typeof(FixedNotificationCategoryDto), EnumsStrings.ResourceManager), "Todos", new Dictionary<string, object> { { "class", "search_init" } })
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>@PresentationAdminStrings.Notifications_DateTime<i class=""></i></th>
+                        <th>@PresentationAdminStrings.Notifications_Description <i class=""></i></th>
+                        <th>@PresentationAdminStrings.Notifications_Detail <i class=""></i></th>
+                        <th>@PresentationAdminStrings.Notifications_Resolved <i class=""></i></th>
+                        <th>@PresentationAdminStrings.Notifications_Level <i class=""></i></th>
+                        <th>@PresentationAdminStrings.Notifications_Category<i class=""></i></th>
+                        <th><i class=""></i></th>
+                        <th><i class=""></i></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-4">
+        <input type="button" class="btn btn-default" value="Resolver todas" id="btnResolveAll" />
+    </div>
+</div>
+
+<div id="lbResolveAllConfirm" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>@PresentationAdminStrings.Notifications_ResolveAllTitle</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: scroll;">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4>@PresentationAdminStrings.Notifications_ResolveAllMessage</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <textarea id="areaComment" class="form-control" cols="12" rows="5" placeholder="Ingrese un comentario"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">@PresentationAdminStrings.Back</a>
+                <a href="#" class="btn btn-success" id="lnkAccept">@PresentationAdminStrings.Resolve</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    var table;
+    $(document).ready(function () {
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "From", "value": $("#@Html.IdFor(m=>m.From)").val() });
+            aoData.push({ "name": "To", "value": $("#@Html.IdFor(m=>m.To)").val() });
+            aoData.push({ "name": "Description", "value": $("#sSearch_0").val() });
+            aoData.push({ "name": "Detail", "value": $("#sSearch_1").val() });
+            aoData.push({ "name": "Resolved", "value": $("#sSearch_2").val() });
+            aoData.push({ "name": "Level", "value": $("#sSearch_3").val() });
+            aoData.push({ "name": "Category", "value": $("#sSearch_4").val() });
+        }
+
+        table = applyDatatableExternalFilters($('table'),
+            [0],
+            [
+                { "mDataProp": "DateTime", "sWidth": "200px" },
+                { "mDataProp": "Description" },
+                { "mDataProp": "Detail" },
+                { "mDataProp": "Resolved" },
+                { "mDataProp": "Level" },
+                { "mDataProp": "Category" },
+                {
+                    "sName": "Details",
+                    "sClass": "column-icon",
+                    "sDefaultContent": "",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "fnRender": function (oObj) {
+                        return '@Html.ActionGridActionLink(Actions.NotificationsDetails, "<i class=\"fa fa-search\"></i>", new Dictionary<string, object> { { "class", "tableButton" } })';
+                    }
+                },
+                {
+                    "sName": "Edit",
+                    "sClass": "column-icon",
+                    "sDefaultContent": "",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "fnRender": function (oObj) {
+                        return '@Html.ActionGridActionLink(Actions.NotificationsEdit, "<i class=\"fa fa-edit\"></i>", new Dictionary<string, object> { { "class", "tableButton" } })';
+                    }
+                }
+            ],
+            '@Url.Action("AjaxHandler", "Notification")', externalFilters, [[0, "desc"]]);
+
+        $("._date").datepicker({
+            format: "dd/mm/yyyy"
+        });
+
+        $("#btnSearch").click(function (e) {
+            e.preventDefault();
+            table.fnFilter();
+        });
+
+        $("#btnResolveAll").click(function (e) {
+            e.preventDefault();
+            $("#lbResolveAllConfirm").modal("show");
+        });
+
+        $("#lnkAccept", "#lbResolveAllConfirm").click(function (e) {
+            e.preventDefault();
+            if (!$("#areaComment").val() || $("#areaComment").val().trim() == "") {
+                ShowNotification('Atención', 'Debe ingresar un comentario', 'warning');
+            } else {
+                var data = {
+                    From: $("#@Html.IdFor(m=>m.From)").val(),
+                    To: $("#@Html.IdFor(m=>m.To)").val(),
+                    Description: $("#sSearch_0").val(),
+                    Detail: $("#sSearch_1").val(),
+                    Resolved: $("#sSearch_2").val(),
+                    Level: $("#sSearch_3").val(),
+                    Category: $("#sSearch_4").val(),
+                    Comment: $("#areaComment").val()
+                };
+                $.get("@Url.Action("ResolveAll", "Notification")", data).success(function () {
+                    window.location.reload();
+                }).error(function (error) {
+                    ShowNotification(error.Title, error.Message, 'error');
+                });
+            }
+        });
+
+    });
+
+</script>

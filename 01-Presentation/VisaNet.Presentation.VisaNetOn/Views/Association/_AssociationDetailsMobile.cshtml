@@ -1,0 +1,46 @@
+﻿@using System.Configuration
+@model VisaNet.Presentation.VisaNetOn.Models.PageAssociationModel
+
+<div class="visible-xs">
+    <div class="pedido-mobile">
+        <div class="header-visible">
+            <span>Detalle de asociación  </span> <span>
+                <a data-toggle="collapse" href="#collapse">&#x25BC</a>
+            </span>
+        </div>
+        <div id="collapse" class="panel-collapse collapse">
+            <div class="wrapper-vendedor">
+                <div>
+
+                    <div class="info-vendedor">
+                        @if (!string.IsNullOrEmpty(Model.ServiceInfo.ServiceContainerName))
+                        {
+                            <span class="vendedor">@Model.ServiceInfo.ServiceContainerName</span>
+                            <span class="empresa">asdasd</span>
+                        }
+                        else
+                        {
+                            <span class="vendedor">@Model.ServiceInfo.ServiceName</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="crop">
+            @if (!string.IsNullOrEmpty(Model.ServiceInfo.ImageName))
+            {
+                <img src="@Model.ServiceInfo.ImageName" />
+            }
+            else
+            {
+                <img src="@ConfigurationManager.AppSettings["DefaultServiceImage"]" />
+            }
+        </div>
+
+        <hr>
+    </div>
+    @if (Model.NewUser)
+    {
+        @Html.Partial("_LoginMobile")
+    }
+</div>

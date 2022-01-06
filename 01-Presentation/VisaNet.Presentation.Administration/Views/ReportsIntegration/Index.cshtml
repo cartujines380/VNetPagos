@@ -1,0 +1,101 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+@model VisaNet.Domain.EntitiesDtos.TableFilters.ReportsIntegrationFilterDto
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Reports_Integration_Title</h2>
+
+@using (Html.BeginForm("AjaxHandlerRenderTable", "ReportsIntegration", FormMethod.Post, new { id = "frmFilters", autocomplete = "off" }))
+{
+    <div class="row">
+        <div class="col-md-3">
+            <label>Tipo</label>
+            <div class="selectMask w100">
+                @Html.DropDownListFor(m => m.ExternalRequestType, EnumHelpers.ConvertToSelectList(typeof(ExternalRequestTypeDto), EnumsStrings.ResourceManager), PresentationAdminStrings.Filters_PaymentType_Placeholder, new Dictionary<string, object> { { "style", "width: 100%; height: 100%; color:#999" }, { "class", "form-control" } })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.From</label>
+            @Html.EditorFor(m => m.DateFrom, new { @class = "form-control w100" })
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.To</label>
+            @Html.EditorFor(m => m.DateTo, new { @class = "form-control w100" })
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.Operation_Id</label>
+            @Html.TextBoxFor(m => m.IdOperation, new { @class = "form-control w100", placeholder = "Ingrese el Id Operación a buscar" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.Application_Id</label>
+            @Html.TextBoxFor(m => m.IdApp, new { @class = "form-control w100", placeholder = "Ingrese el Id Aplicación a buscar" })
+        </div>
+        <div class="col-md-3" id="TransactionNumberCombo">
+            <label>@PresentationAdminStrings.Transaction</label>
+            @Html.TextBoxFor(m => m.TransactionNumber, new { @class = "form-control w100", placeholder = "Ingrese el número de transacción a buscar" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <a class="btn btn-default btn-standar mt10 w100" id="btnSearch">@PresentationAdminStrings.Common_Search</a>
+        </div>
+    </div>
+}
+
+<br />
+
+<div id="divTable"></div>
+
+<script type="text/javascript">
+
+    var dataTableFilters;
+
+    $(document).ready(function () {
+
+        $("#btnSearch").click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                dataType: 'json',
+                type: "POST",
+                url: '@Url.Action("AjaxHandlerRenderTable", "ReportsIntegration")',
+                data: $("#frmFilters").serialize(),
+                success: function (data) {
+                    if (data.ResponseType == RESPONSE.SUCCESS) {
+                        $('#divTable').html(data.Content);
+                    }
+                    if (data.ResponseType == RESPONSE.ERROR) {
+                        ShowNotification(data.Title, data.Message, 'info');
+                    }
+                }
+            });
+        });
+
+        $("#@Html.IdFor(model => model.ExternalRequestType)").on('change', function (e) {
+            e.preventDefault();
+            var combo = $("#@Html.IdFor(model => model.ExternalRequestType)").val();
+            var empty = '@Guid.Empty';
+            switch (combo) {
+                case "2":
+                case "3":
+                case "4":
+                    $("#TransactionNumberCombo").removeClass("hidden");
+                    break;
+                default:
+                    $("#TransactionNumberCombo").addClass("hidden");
+                    $("#@Html.IdFor(model => model.TransactionNumber)").val('');
+                    break;
+            }
+        });
+
+    });
+
+</script>

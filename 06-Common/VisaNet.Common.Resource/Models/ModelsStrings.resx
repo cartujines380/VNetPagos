@@ -1,0 +1,828 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Profile" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="Profile_Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="Profile_CCKey" xml:space="preserve">
+    <value>Clave para Call Center</value>
+  </data>
+  <data name="Profile_Confirmation" xml:space="preserve">
+    <value>Repetir contraseña</value>
+  </data>
+  <data name="Profile_Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Profile_identitynumber" xml:space="preserve">
+    <value>Cédula de identidad / DNI</value>
+  </data>
+  <data name="Profile_Mobile" xml:space="preserve">
+    <value>Móvil</value>
+  </data>
+  <data name="Profile_Nombre" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Profile_Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="Profile_PasswordNew" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="Profile_Phone" xml:space="preserve">
+    <value>Teléfono fijo</value>
+  </data>
+  <data name="Profile_Surname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="ServiceCategoryModel_Name" xml:space="preserve">
+    <value>Nombre Categoría</value>
+  </data>
+  <data name="Service_Active" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="Service_CategoryName" xml:space="preserve">
+    <value>Categoría de servicio</value>
+  </data>
+  <data name="Service_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Service_DescriptionTooltip" xml:space="preserve">
+    <value>Descripción del tooltip</value>
+  </data>
+  <data name="Service_Image" xml:space="preserve">
+    <value>Imagen de logo</value>
+  </data>
+  <data name="Service_Image_tooltip" xml:space="preserve">
+    <value>Imagen del tooltip</value>
+  </data>
+  <data name="Service_LinkId" xml:space="preserve">
+    <value>Enlace externo</value>
+  </data>
+  <data name="Service_Name" xml:space="preserve">
+    <value>Nombre servicio</value>
+  </data>
+  <data name="Service_ReferenceParamName" xml:space="preserve">
+    <value>Nombre de parámetro de referencia 1</value>
+  </data>
+  <data name="Service_Tags" xml:space="preserve">
+    <value>Tags (Separar con ; cada palabra)</value>
+  </data>
+  <data name="Bin_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Bin_Gateway" xml:space="preserve">
+    <value>Pasarela</value>
+  </data>
+  <data name="Bin_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Bin_Value" xml:space="preserve">
+    <value>Valor</value>
+  </data>
+  <data name="Automatic_Payment_Day" xml:space="preserve">
+    <value>Días previos al vencimiento</value>
+  </data>
+  <data name="Automatic_Payment_Max_Amount" xml:space="preserve">
+    <value>Monto máximo a abonar</value>
+  </data>
+  <data name="Automatic_Payment_Max_Count" xml:space="preserve">
+    <value>Cantidad de pagos a realizar</value>
+  </data>
+  <data name="Automatic_Payment_Card" xml:space="preserve">
+    <value>Tarjetas</value>
+  </data>
+  <data name="Card" xml:space="preserve">
+    <value>Tarjeta</value>
+  </data>
+  <data name="CybersourceAccessKey" xml:space="preserve">
+    <value>Llave de acceso en Cybersource (AccessKey)</value>
+  </data>
+  <data name="CybersourceProfileId" xml:space="preserve">
+    <value>Identificador de perfil en Cybersource (ProfileId)</value>
+  </data>
+  <data name="CybersourceSecretKey" xml:space="preserve">
+    <value>Llave secreta en Cybersource (SecretKey)</value>
+  </data>
+  <data name="ServiceGateway_ReferenceId" xml:space="preserve">
+    <value>Identificador en pasarela de pago</value>
+  </data>
+  <data name="ServiceGateway_ServiceType" xml:space="preserve">
+    <value>Tipo de servicio en pasarela de pago</value>
+  </data>
+  <data name="Service_CybersourceId" xml:space="preserve">
+    <value>Identificador de servicio en cybersource (MerchantId)</value>
+  </data>
+  <data name="Card_DueDate" xml:space="preserve">
+    <value>Vencimiento</value>
+  </data>
+  <data name="CybersourceTransactionKey" xml:space="preserve">
+    <value>Llave de transacción (TransactionKey)</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Importe de la operación</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="Mask" xml:space="preserve">
+    <value>Número de tarjeta</value>
+  </data>
+  <data name="Transaction" xml:space="preserve">
+    <value>N° de Transacción</value>
+  </data>
+  <data name="Bin_Image" xml:space="preserve">
+    <value>Imagen de logo</value>
+  </data>
+  <data name="Promotion_Image" xml:space="preserve">
+    <value>Imagen de la promoción</value>
+  </data>
+  <data name="Promotion_Name" xml:space="preserve">
+    <value>Nombre de la promoción</value>
+  </data>
+  <data name="Promotion_State" xml:space="preserve">
+    <value>Promoción activa</value>
+  </data>
+  <data name="Card_Expired_In_15_Days" xml:space="preserve">
+    <value>La tarjeta {0} vencerá dentro de 15 días ({1}).</value>
+  </data>
+  <data name="Card_Expired_In_5_Days" xml:space="preserve">
+    <value>La tarjeta {0} vencerá dentro de 5 días ({1}).</value>
+  </data>
+  <data name="Bin_CardType" xml:space="preserve">
+    <value>Tipo de tarjeta</value>
+  </data>
+  <data name="Service_CreditCard" xml:space="preserve">
+    <value>Crédito Local</value>
+  </data>
+  <data name="Service_DebitCard" xml:space="preserve">
+    <value>Débito Local</value>
+  </data>
+  <data name="Bin_AuthorizationAmountType" xml:space="preserve">
+    <value>Importe a mandar a Cybersource para </value>
+  </data>
+  <data name="Service_International" xml:space="preserve">
+    <value>Extranjero</value>
+  </data>
+  <data name="Service_CreditCardInternational" xml:space="preserve">
+    <value>Crédito Extranjeros</value>
+  </data>
+  <data name="Service_DebitCardInternational" xml:space="preserve">
+    <value>Débito Extranjeros</value>
+  </data>
+  <data name="Service_EnableMultipleBills" xml:space="preserve">
+    <value>Permite seleccionar más de una factura para pagar</value>
+  </data>
+  <data name="Automatic_Payment_SuciveAnnualPatent" xml:space="preserve">
+    <value>¿Querés pagar la patente de forma anual, obteniendo un mayor descuento? (El monto máximo debe permitir esta acción)</value>
+  </data>
+  <data name="Artigas" xml:space="preserve">
+    <value>Artigas</value>
+  </data>
+  <data name="Canelones" xml:space="preserve">
+    <value>Canelones</value>
+  </data>
+  <data name="Cerro_Largo" xml:space="preserve">
+    <value>Cerro Largo</value>
+  </data>
+  <data name="Colonia" xml:space="preserve">
+    <value>Colonia</value>
+  </data>
+  <data name="Durazno" xml:space="preserve">
+    <value>Durazno</value>
+  </data>
+  <data name="Flores" xml:space="preserve">
+    <value>Flores</value>
+  </data>
+  <data name="Florida" xml:space="preserve">
+    <value>Florida</value>
+  </data>
+  <data name="Lavalleja" xml:space="preserve">
+    <value>Lavalleja</value>
+  </data>
+  <data name="Maldonado" xml:space="preserve">
+    <value>Maldonado</value>
+  </data>
+  <data name="Montevideo" xml:space="preserve">
+    <value>Montevideo</value>
+  </data>
+  <data name="Paysandu" xml:space="preserve">
+    <value>Paysandú</value>
+  </data>
+  <data name="Rio_Negro" xml:space="preserve">
+    <value>Río Negro</value>
+  </data>
+  <data name="Rivera" xml:space="preserve">
+    <value>Rivera</value>
+  </data>
+  <data name="Rocha" xml:space="preserve">
+    <value>Rocha</value>
+  </data>
+  <data name="Salto" xml:space="preserve">
+    <value>Salto</value>
+  </data>
+  <data name="San_Jose" xml:space="preserve">
+    <value>San José</value>
+  </data>
+  <data name="Soriano" xml:space="preserve">
+    <value>Soriano</value>
+  </data>
+  <data name="Tacuarembo" xml:space="preserve">
+    <value>Tacuarembó</value>
+  </data>
+  <data name="Treinta_y_Tres" xml:space="preserve">
+    <value>Treinta y Tres</value>
+  </data>
+  <data name="Bin_Bank" xml:space="preserve">
+    <value>Banco </value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="OkConError" xml:space="preserve">
+    <value>Ok con error</value>
+  </data>
+  <data name="Service_ReferenceParamName2" xml:space="preserve">
+    <value>Nombre de parámetro de referencia 2</value>
+  </data>
+  <data name="Service_ReferenceParamName3" xml:space="preserve">
+    <value>Nombre de parámetro de referencia 3</value>
+  </data>
+  <data name="Service_ReferenceParamName4" xml:space="preserve">
+    <value>Nombre de parámetro de referencia 4</value>
+  </data>
+  <data name="Service_ReferenceParamName5" xml:space="preserve">
+    <value>Nombre de parámetro de referencia 5</value>
+  </data>
+  <data name="Service_ReferenceParamName6" xml:space="preserve">
+    <value>Nombre de parámetro de referencia 6</value>
+  </data>
+  <data name="Departament" xml:space="preserve">
+    <value>Departamento</value>
+  </data>
+  <data name="Service_CodBranch" xml:space="preserve">
+    <value>Código de sucursal</value>
+  </data>
+  <data name="Service_CodCommerce" xml:space="preserve">
+    <value>Código de comercio</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Correo Electrónico</value>
+  </data>
+  <data name="ExtractEmail" xml:space="preserve">
+    <value>Correo electrónico para envio de extract</value>
+  </data>
+  <data name="Service_EnableAutomaticPayment" xml:space="preserve">
+    <value>Permite seleccionar servicio para realizar pagos programados</value>
+  </data>
+  <data name="Profile_Telephone" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="Profile_VehicleId" xml:space="preserve">
+    <value>Matrícula</value>
+  </data>
+  <data name="CertificatePublicName" xml:space="preserve">
+    <value>Certificado público</value>
+  </data>
+  <data name="Bin_Active" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="CertificatePublicThumbprintExternal" xml:space="preserve">
+    <value>Thumbprint de certificado público externo</value>
+  </data>
+  <data name="Service_EnablePartialPayment" xml:space="preserve">
+    <value>Permite seleccionar servicio para realizar pagos con importe parcial</value>
+  </data>
+  <data name="Service_PostAssociationDesc" xml:space="preserve">
+    <value>Descripción post asociación</value>
+  </data>
+  <data name="Service_TermsAndConditions" xml:space="preserve">
+    <value>Términos y Condiciones</value>
+  </data>
+  <data name="Service_UrlName" xml:space="preserve">
+    <value>Friendly Name (Id app)</value>
+  </data>
+  <data name="Service_DiscountType" xml:space="preserve">
+    <value>Tipo de descuento</value>
+  </data>
+  <data name="DiscountType_FinancialInclusion" xml:space="preserve">
+    <value>Devuelve IVA (Ley 19.210 - Inclusión Financiera)</value>
+  </data>
+  <data name="DiscountType_TourismOrTaxReintegration" xml:space="preserve">
+    <value>Devuelve IVA (Ley 17.934) / Reintegro impuestos (Ley 18.999)</value>
+  </data>
+  <data name="NoDiscount" xml:space="preserve">
+    <value>No aplica descuento</value>
+  </data>
+  <data name="DiscountType_AfamRefund" xml:space="preserve">
+    <value>Devuelve AFAM (Ley 18.910)</value>
+  </data>
+  <data name="DiscountType_ImesiRefund" xml:space="preserve">
+    <value>Devuelve IMESI (Ley 18.083)</value>
+  </data>
+  <data name="Reserved" xml:space="preserve">
+    <value>Reservado</value>
+  </data>
+  <data name="Service_ExternalUrlAdd" xml:space="preserve">
+    <value>Url externa para notificar nueva asociación o tarjeta.</value>
+  </data>
+  <data name="Service_ExternalUrlCard" xml:space="preserve">
+    <value>Url externa para notificar modificación en tarjeta.</value>
+  </data>
+  <data name="Service_ExternalUrlRemove" xml:space="preserve">
+    <value>Url externa para notificar baja de asociación o tarjeta.</value>
+  </data>
+  <data name="CertificatePrivateThumbprintVisa" xml:space="preserve">
+    <value>Thumbprint de certificado privado VisaNetPagos</value>
+  </data>
+  <data name="Service_ServiceContainer" xml:space="preserve">
+    <value>Jerarquía de servicio: Servicio padre</value>
+  </data>
+  <data name="Profile_RecieveNewsletter" xml:space="preserve">
+    <value>¿Querés recibir el Newsletter?</value>
+  </data>
+  <data name="DiscountLabel_AfamRefund" xml:space="preserve">
+    <value>Descuento Ley 18.910</value>
+  </data>
+  <data name="DiscountLabel_FinancialInclusion" xml:space="preserve">
+    <value>Descuento Ley 19.210</value>
+  </data>
+  <data name="DiscountLabel_ImesiRefund" xml:space="preserve">
+    <value>Descuento Ley 18.083</value>
+  </data>
+  <data name="DiscountLabel_TaxReintegration" xml:space="preserve">
+    <value>Descuento Ley 18.999</value>
+  </data>
+  <data name="DiscountLabel_TourismActivity" xml:space="preserve">
+    <value>Descuento Ley 17.934</value>
+  </data>
+  <data name="DiscountLabel_NoDiscount" xml:space="preserve">
+    <value>No aplica descuento</value>
+  </data>
+  <data name="Service_ReferenceRegex" xml:space="preserve">
+    <value>Validación parámetro de entrada 1</value>
+  </data>
+  <data name="Service_ReferenceRegex2" xml:space="preserve">
+    <value>Validación parámetro de entrada 2</value>
+  </data>
+  <data name="Service_ReferenceRegex3" xml:space="preserve">
+    <value>Validación parámetro de entrada 3</value>
+  </data>
+  <data name="Service_ReferenceRegex4" xml:space="preserve">
+    <value>Validación parámetro de entrada 4</value>
+  </data>
+  <data name="Service_ReferenceRegex5" xml:space="preserve">
+    <value>Validación parámetro de entrada 5</value>
+  </data>
+  <data name="Service_ReferenceRegex6" xml:space="preserve">
+    <value>Validación parámetro de entrada 6</value>
+  </data>
+  <data name="Process" xml:space="preserve">
+    <value>Procesando</value>
+  </data>
+  <data name="AllowSelectContentAssociation" xml:space="preserve">
+    <value>¿Dejar seleccionar los servicios hijos al asociar servicios?</value>
+  </data>
+  <data name="AllowSelectContentPayment" xml:space="preserve">
+    <value>¿Dejar seleccionar los servicios hijos al pagar servicios?</value>
+  </data>
+  <data name="Service_EnableAssociation" xml:space="preserve">
+    <value>Permite seleccionar servicio para crear asociación</value>
+  </data>
+  <data name="Service_EnablePrivatePayment" xml:space="preserve">
+    <value>Permite seleccionar servicio para realizar pagos como usuario registrado</value>
+  </data>
+  <data name="Service_EnablePublicPayment" xml:space="preserve">
+    <value>Permite seleccionar servicio para realizar pagos como usuario no registrado</value>
+  </data>
+  <data name="Card_Expired_In_Days" xml:space="preserve">
+    <value>La tarjeta {0} vencerá dentro de {1} días ({2}). Una vez vencida no se podrá utilizar en el sitio y los pagos programados fallarán.</value>
+  </data>
+  <data name="Card_Expired_today" xml:space="preserve">
+    <value>La tarjeta {0} vence hoy. Una vez vencida no se podrá utilizar en el sitio y los pagos programados fallarán.</value>
+  </data>
+  <data name="Service_AskUserForReferences" xml:space="preserve">
+    <value>Pedir al usuario por referencias</value>
+  </data>
+  <data name="AllowMultipleCards" xml:space="preserve">
+    <value>¿Dejar seleccionar al usuario más de una tarjeta para la asociación de este servicio?</value>
+  </data>
+  <data name="ApplicationUser_Active" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="ApplicationUser_Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="ApplicationUser_CallCenterKey" xml:space="preserve">
+    <value>Clave CallCenter</value>
+  </data>
+  <data name="ApplicationUser_CreationDate" xml:space="preserve">
+    <value>Fecha Creación</value>
+  </data>
+  <data name="ApplicationUser_Email" xml:space="preserve">
+    <value>Correo Electrónico</value>
+  </data>
+  <data name="ApplicationUser_FailLogInCount" xml:space="preserve">
+    <value>Fallos de Inicio de Sesión</value>
+  </data>
+  <data name="ApplicationUser_IdentityNumber" xml:space="preserve">
+    <value>Cédula de identidad</value>
+  </data>
+  <data name="ApplicationUser_MobileNumber" xml:space="preserve">
+    <value>Número de Móvil</value>
+  </data>
+  <data name="ApplicationUser_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="ApplicationUser_PhoneNumber" xml:space="preserve">
+    <value>Número de Teléfono</value>
+  </data>
+  <data name="ApplicationUser_Platform" xml:space="preserve">
+    <value>Plataforma</value>
+  </data>
+  <data name="ApplicationUser_Surname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="ApplicationUser_Status" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Bin_Country" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="BinGroup_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="BankName" xml:space="preserve">
+    <value>Emisor</value>
+  </data>
+  <data name="Service_BinGroups" xml:space="preserve">
+    <value>Grupos de BIN's</value>
+  </data>
+  <data name="Bank_Code" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="Bank_Name" xml:space="preserve">
+    <value>Banco</value>
+  </data>
+  <data name="Bank_QuotesPermited" xml:space="preserve">
+    <value>Cuotas</value>
+  </data>
+  <data name="LifApiBill_Amount" xml:space="preserve">
+    <value>Monto</value>
+  </data>
+  <data name="LifApiBill_AmountToCyberSource" xml:space="preserve">
+    <value>Monto a cybersource</value>
+  </data>
+  <data name="LifApiBill_AppId" xml:space="preserve">
+    <value>AppId</value>
+  </data>
+  <data name="LifApiBill_BinValue" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="LifApiBill_CardType" xml:space="preserve">
+    <value>Tipo de tarjeta</value>
+  </data>
+  <data name="LifApiBill_CreationDate" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="LifApiBill_Currency" xml:space="preserve">
+    <value>Moneda</value>
+  </data>
+  <data name="LifApiBill_DiscountAmount" xml:space="preserve">
+    <value>Descuento</value>
+  </data>
+  <data name="LifApiBill_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="LifApiBill_IsFinalConsumer" xml:space="preserve">
+    <value>Consumidor final</value>
+  </data>
+  <data name="LifApiBill_IssuingCompany" xml:space="preserve">
+    <value>Banco emisor</value>
+  </data>
+  <data name="LifApiBill_LawId" xml:space="preserve">
+    <value>Indicador de ley</value>
+  </data>
+  <data name="LifApiBill_OperationId" xml:space="preserve">
+    <value>OperationId</value>
+  </data>
+  <data name="LifApiBill_TaxedAmount" xml:space="preserve">
+    <value>Monto gravado</value>
+  </data>
+  <data name="AllowQuota" xml:space="preserve">
+    <value>¿Dejar pagar este servicio en cuotas?</value>
+  </data>
+  <data name="DiscountType_NoDiscount" xml:space="preserve">
+    <value>No aplica descuento</value>
+  </data>
+  <data name="InterpreterAuxParam" xml:space="preserve">
+    <value>Parametro auxiliar para interpretes</value>
+  </data>
+  <data name="InterpreterId" xml:space="preserve">
+    <value>Interprete</value>
+  </data>
+  <data name="InformCardBank" xml:space="preserve">
+    <value>¿Informar al servicio el banco emisor de la tarjeta ingresada?</value>
+  </data>
+  <data name="InformCardType" xml:space="preserve">
+    <value>¿Informar al servicio el tipo de tarjeta ingresada?</value>
+  </data>
+  <data name="UrlIntegrationVersion" xml:space="preserve">
+    <value>Versión del sistema de integración que utiliza el servicio</value>
+  </data>
+  <data name="UrlIntegrationVersionEnumDto_FirstVersion" xml:space="preserve">
+    <value>Versión 01 - 02.02.00</value>
+  </data>
+  <data name="UrlIntegrationVersionEnumDto_NotApply" xml:space="preserve">
+    <value>No aplica</value>
+  </data>
+  <data name="UrlIntegrationVersionEnumDto_SecondVersion" xml:space="preserve">
+    <value>Versión 02 - 02.02.11</value>
+  </data>
+  <data name="AllowVon" xml:space="preserve">
+    <value>¿Habilitar VisaNetON para este servicio?</value>
+  </data>
+  <data name="AllowWcfPayment" xml:space="preserve">
+    <value>¿Permitir pagar por WebService de pago?</value>
+  </data>
+  <data name="UrlIntegrationVersionEnumDto_ThirdVersion" xml:space="preserve">
+    <value>Versión 03 - 02.03.02</value>
+  </data>
+  <data name="UrlIntegrationVersionEnumDto_FourthVersion" xml:space="preserve">
+    <value>Versión 04 - 03.00.00</value>
+  </data>
+  <data name="Bin_AfamRefund" xml:space="preserve">
+    <value>Ley 18.910 (AFAM)</value>
+  </data>
+  <data name="Bin_DiscountTypeDto" xml:space="preserve">
+    <value>Importe a mandar a Cybersource en </value>
+  </data>
+  <data name="Bin_FinancialInclusion" xml:space="preserve">
+    <value>Ley 19.210 (Inclusión Financiera)</value>
+  </data>
+  <data name="Bin_ImesiRefund" xml:space="preserve">
+    <value>Ley 18.083 (IMESI)</value>
+  </data>
+  <data name="Bin_TourismOrTaxReintegration" xml:space="preserve">
+    <value>Ley 17.934 / Ley 18.999 (Devuelve IVA / Reintegro impuestos)</value>
+  </data>
+  <data name="CustomerSite_ContactAddress" xml:space="preserve">
+    <value>Dirección de contacto</value>
+  </data>
+  <data name="CustomerSite_ContactEmail" xml:space="preserve">
+    <value>Correo electrónico de contacto</value>
+  </data>
+  <data name="CustomerSite_ContactPhoneNumber" xml:space="preserve">
+    <value>Teléfono de contacto</value>
+  </data>
+  <data name="CustomerSite_Disabled" xml:space="preserve">
+    <value>Deshabilitado</value>
+  </data>
+  <data name="CustomerSite_ServiceId" xml:space="preserve">
+    <value>Servicio de VNP</value>
+  </data>
+  <data name="CustomerSite_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="CustomerSite_SystemUser" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="CustomerSite_Commerce" xml:space="preserve">
+    <value>Comercio</value>
+  </data>
+  <data name="CustomerSite_FailLogInCount" xml:space="preserve">
+    <value>Cantidad de intentos fallidos de login</value>
+  </data>
+  <data name="CustomerSite_LastAttemptToLogIn" xml:space="preserve">
+    <value>Ultimo intento de Login</value>
+  </data>
+  <data name="CustomerSite_LastResetPassword" xml:space="preserve">
+    <value>Ultimo dia de cambio de clave</value>
+  </data>
+  <data name="CustomerSite_Master" xml:space="preserve">
+    <value>Tipo de usuario</value>
+  </data>
+  <data name="CustomerSystemUserUserType_Alternative" xml:space="preserve">
+    <value>Alternativo</value>
+  </data>
+  <data name="CustomerSystemUserUserType_Master" xml:space="preserve">
+    <value>Administrador</value>
+  </data>
+  <data name="CustomerSite_Branch" xml:space="preserve">
+    <value>Sucursal</value>
+  </data>
+  <data name="CustomerSite_PhoneNumber" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="CustomerSite_Surname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="SendEmailActivation" xml:space="preserve">
+    <value>Enviar mail para activación de usuario</value>
+  </data>
+  <data name="CommerceModel_Id" xml:space="preserve">
+    <value>Comercio</value>
+  </data>
+  <data name="CommerceModel_ProductSelected" xml:space="preserve">
+    <value>Producto</value>
+  </data>
+  <data name="CardDto_DueDate" xml:space="preserve">
+    <value>Fecha de vencimiento</value>
+  </data>
+  <data name="CardDto_MaskedNumber" xml:space="preserve">
+    <value>Número de tarjeta</value>
+  </data>
+  <data name="CardDto_Name" xml:space="preserve">
+    <value>Nombre titular</value>
+  </data>
+  <data name="CardDto_SecurityCode" xml:space="preserve">
+    <value>Código de seguridad</value>
+  </data>
+  <data name="CommerceModel_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="CommerceModel_ServiceId" xml:space="preserve">
+    <value>Servicio VNP asociado</value>
+  </data>
+  <data name="ProductModel_Description" xml:space="preserve">
+    <value>Nombre producto</value>
+  </data>
+  <data name="ProductPropertyModel_ContentType" xml:space="preserve">
+    <value>Tipo de dato</value>
+  </data>
+  <data name="ProductPropertyModel_InputSequence" xml:space="preserve">
+    <value>Orden</value>
+  </data>
+  <data name="ProductPropertyModel_MaxSize" xml:space="preserve">
+    <value>Tamaño máximo</value>
+  </data>
+  <data name="ProductPropertyModel_Name" xml:space="preserve">
+    <value>Nombre propiedad</value>
+  </data>
+  <data name="ProductPropertyModel_Requiered" xml:space="preserve">
+    <value>Requerido</value>
+  </data>
+  <data name="Service_Sort" xml:space="preserve">
+    <value>Orden a mostrar. 0 a 99 ascendiente</value>
+  </data>
+  <data name="MaxQuotaAllow" xml:space="preserve">
+    <value>Máximo numero de cuotas permitidas (si se selecciona s.contenedor se actualiza el máximo)</value>
+  </data>
+  <data name="CustomerSite_ImageName" xml:space="preserve">
+    <value>Imagen</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="Bank" xml:space="preserve">
+    <value>Banco</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="AffiliationCardId" xml:space="preserve">
+    <value>Programa de afiliación tarjeta</value>
+  </data>
+  <data name="UrlIntegrationVersionEnumDto_FifthVersion" xml:space="preserve">
+    <value>Versión 05</value>
+  </data>
+  <data name="InformAffiliationCard" xml:space="preserve">
+    <value>¿Informar al servicio el programa asociado al Bin?</value>
+  </data>
+  <data name="Card_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Bank_AffiliationCards" xml:space="preserve">
+    <value>Programas de tarjetas</value>
+  </data>
+</root>

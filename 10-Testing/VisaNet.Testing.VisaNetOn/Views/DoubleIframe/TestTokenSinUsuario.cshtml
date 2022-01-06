@@ -1,0 +1,10 @@
+﻿@using System.Configuration
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Index</h2>
+
+<iframe src="@ConfigurationManager.AppSettings["DobuleIframeUrlTokenNewUser"]" width="100%" height="100%"></iframe> 

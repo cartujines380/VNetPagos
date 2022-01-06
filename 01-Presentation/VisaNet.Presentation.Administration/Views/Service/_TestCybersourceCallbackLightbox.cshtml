@@ -1,0 +1,43 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.TestCybersourceModel
+
+<div id="lbTestCybersourceCallback" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                @if (Model != null)
+                {
+                    <h4>Test de conexi&oacute;n del servicio <strong>@Model.ServiceName</strong> con Cybersource</h4>
+
+                    <br />
+
+                    <div class="row" id="responseDiv">
+                        <h5 style="text-align: center"><strong>Test de Secure Acceptance</strong></h5>
+                        <h5 style="text-align: center">Resultado: @Html.Raw(Model.ResponseMessage)</h5>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn lb-cancel" id="lnkTestCSCallbackCancel">@PresentationAdminStrings.Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#lnkTestCSCallbackCancel").click(function (e) {
+            e.preventDefault();
+            $("#lbTestCybersourceCallback").modal("hide");
+        });
+
+    });
+
+</script>

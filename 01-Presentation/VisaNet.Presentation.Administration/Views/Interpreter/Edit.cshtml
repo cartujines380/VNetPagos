@@ -1,0 +1,64 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model VisaNet.Presentation.Administration.Models.InterpreterModel  
+
+<h2>@PresentationAdminStrings.Interpreter_edit</h2>
+
+@using (Html.BeginForm("Edit", "Interpreter", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-6">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(b => b.Name, new { @class = "obligatoryField" }) *
+                        @Html.TextBoxFor(b => b.Name, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.Name)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.Description)
+                        @Html.TextAreaFor(s => s.Description, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.Description)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>@PresentationAdminStrings.File : @Model.FileName</label>
+                        <input type="file" name="Image" id="Image" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="@Url.Action("Index", "Interpreter")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+                    <a href="#" id="btnGuardar" class="btn btn-default lbApprove">
+                        <strong>@PresentationAdminStrings.Save</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("a.lbApprove").click(function () {
+            $(this).parents("form").submit();
+        });
+    });
+</script>
+

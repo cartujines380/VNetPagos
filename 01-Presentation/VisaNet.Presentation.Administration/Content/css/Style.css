@@ -1,0 +1,42 @@
+﻿.hide {
+    display: none;
+}
+
+.nav i {
+    padding-right: 5px;
+}
+
+.column-icon {
+    text-align: center;
+}
+
+    .column-icon i {
+        width: 100%;
+        font-size: 1.5em;
+    }
+
+.selectMultiple .btn-group.bootstrap-select {
+    width: 100% !important;
+    height: 100%;
+}
+
+    .selectMultiple .btn-group.bootstrap-select button.dropdown-toggle {
+        background-color: white;
+        color: #555;
+        padding-left: 16px;
+    }
+
+    .selectMultiple .btn-group.bootstrap-select button.actions-btn.bs-select-all.btn.btn-default {
+    }
+
+td.column-icon div {
+    cursor: pointer;
+}
+
+    td.column-icon div.no-pointer {
+        cursor: default;
+    }
+
+    #detailModal a {
+        cursor: pointer;
+    }

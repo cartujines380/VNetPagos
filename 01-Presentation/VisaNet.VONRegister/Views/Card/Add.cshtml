@@ -1,0 +1,366 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.VONRegister.Models.Register
+@{
+    var showAddOtherCardClass = "";
+}
+
+<div class="container">
+
+    <ul id="registro" class="nav nav-tabs" role="tablist">
+        <li role="presentation"><a href="#cuenta" aria-controls="cuenta" role="tab" data-toggle="tab"><span>1</span> Tu Cuenta</a></li>
+        <li role="presentation" class="active"><a href="#tarjeta" aria-controls="tarjeta" role="tab" data-toggle="tab"><span>2</span> Tu Tarjeta</a></li>
+        <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa hidden-xs">
+    </ul>
+    <div class="logos-visa visible-xs">
+        <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa-xs">
+        <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="logoVisaNetPagos-xs">
+    </div>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="container-fluid tab-pane " id="cuenta"></div>
+        <div role="tabpanel" class="tab-pane active" id="tarjeta">
+            <p>Ingres&aacute; una tarjeta VISA de forma segura.</p>
+            @if (Model.CardList.Any())
+            {
+                showAddOtherCardClass = "_hide";
+                <div class="cards">
+                    @foreach (var card in Model.CardList)
+                    {
+                        <div class="col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-offset-0 col-xs-12">
+                            @if (card.AlreadyIn)
+                            {
+                                <div class="cardDisabled">
+                                    <p class="mask"><span>@card.MaskedNumber.Substring(0, 4)</span> <span>@card.MaskedNumber.Substring(4, 4)</span> <span>@card.MaskedNumber.Substring(8, 4)</span> <span>@card.MaskedNumber.Substring(12, 4)</span></p>
+                                    <p class="vencimiento">Vencimiento: @card.DueDate.ToString("MM/yyyy")</p>
+                                    <p class="descripcion">Ya asociada</p>
+                                </div>
+                            }
+                            else if (card.Expired)
+                            {
+                                <div class="cardDisabled vencida">
+                                    <p class="mask"><span>@card.MaskedNumber.Substring(0, 4)</span> <span>@card.MaskedNumber.Substring(4, 4)</span> <span>@card.MaskedNumber.Substring(8, 4)</span> <span>@card.MaskedNumber.Substring(12, 4)</span></p>
+                                    <p class="vencimiento">Vencimiento: @card.DueDate.ToString("MM/yyyy")</p>
+                                    <p class="descripcion">Vencida</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <a href="#">
+                                    <div class="card">
+                                        <p class="mask"><span>@card.MaskedNumber.Substring(0, 4)</span> <span>@card.MaskedNumber.Substring(4, 4)</span> <span>@card.MaskedNumber.Substring(8, 4)</span> <span>@card.MaskedNumber.Substring(12, 4)</span></p>
+                                        <p class="vencimiento">Vencimiento: @card.DueDate.ToString("MM/yyyy")</p>
+                                        <input type="hidden" value="@card.Id" />
+                                        <img src="@Url.Content("~/images/check.png")" class="check _hide">
+                                    </div>
+                                </a>
+                            }
+
+                        </div>
+                    }
+
+                    <div class="col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-offset-0 col-xs-12">
+                        <a href="#" id="addCard">
+                            <div class="card agregar">
+                                <p class="add">
+                                    <img src="@Url.Content("~/images/add-card.png")">Agregar otra tarjeta
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+            <form class="registro @showAddOtherCardClass addCardForm" id="cuenta" method="POST" action="@ConfigurationManager.AppSettings["CybersourceFormUrl"]silent/token/create">
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 column">
+                    <h3>Nueva tarjeta</h3>
+                </div>
+                <div class="cleaner"></div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Nombre del titlular</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        <input type="text" placeholder="Nombre del titular de la tarjeta" value="@Model.Name @Model.Surname" data-val-required name="card_holder_name" id="card_holder_name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Número de tarjeta</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX" data-val-required id="card_number" name="card_number" maxlength="16">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Fecha de vencimiento</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        @Html.DropDownList("month", Enumerable.Range(1, 12).Select(i => new SelectListItem { Text = i.ToString("00"), Value = i.ToString("00") }))
+                        @Html.DropDownList("year", new SelectList(Enumerable.Range(DateTime.Now.Year, 25)))
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Código de seguridad</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        <input type="password" class="small" placeholder="XXX" data-val-required id="card_cvn" name="card_cvn" maxlength="4">
+                        <a href="#" class="hidden-xs help" data-toggle="tooltip" data-placement="right" title="El código de seguridad está en el dorso de tu tarjeta.">
+                            <img src="@Url.Content("~/images/help.jpg")">
+                        </a>
+                        <div class="visible-xs codigoTarjeta">
+                            <img src="@Url.Content("~/images/tarjeta.jpg")">
+                            <span>Los 3 últimos dígitos detrás de la tarjeta.</span>
+                        </div>
+                    </div>
+                </div>
+
+              
+                <input type="hidden" name="card_type" id="card_type" value="001" />
+                <input type="hidden" name="card_expiry_date" id="card_expiry_date" value="" />
+
+            </form>
+
+            <form id="importantData" method="POST">
+                @Html.HiddenFor(x => x.NewCard)
+                @Html.HiddenFor(x => x.NewUser)
+                @Html.HiddenFor(x => x.SelectedCard)
+                @Html.HiddenFor(x => x.Name)
+                @Html.HiddenFor(x => x.Surname)
+                @Html.HiddenFor(x => x.Address)
+                @Html.HiddenFor(x => x.Email)
+                @Html.HiddenFor(x => x.Phone)
+                @Html.HiddenFor(x => x.Mobile)
+                @Html.HiddenFor(x => x.Identity)
+                @Html.HiddenFor(x => x.CardBin)
+                @Html.HiddenFor(x => x.Payment.Reference1Value)
+                @Html.HiddenFor(x => x.Payment.Reference2Value)
+                @Html.HiddenFor(x => x.Payment.Reference3Value)
+                @Html.HiddenFor(x => x.Payment.Reference4Value)
+                @Html.HiddenFor(x => x.Payment.Reference5Value)
+                @Html.HiddenFor(x => x.Payment.Reference6Value)
+                <input type="hidden" name="CardHolderName" id="CardHolderName" value="" />
+                @Html.HiddenFor(x => x.FpProfiler)
+            </form>
+
+            <p>
+                Haciendo clic en Siguente declara  haber leido y aceptar los&nbsp;<a href="#" data-target="#myModalService" data-toggle="modal">t&eacute;rminos y condiciones del servicio</a>
+            </p>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="footer-registro">
+                        <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="hidden-xs hidden-sm">
+                        <div class="actions">
+                            <a class="btn" href="@Url.Action("Cancel", "Home")">Cancelar</a>
+                            <a class="btn siguiente" id="btnConfirm">Siguiente</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts
+{
+    <script>
+    "use strict";
+    $(document).ready(function () {
+
+        var fpProfiler = cybs_dfprofiler("@Model.MerchantId.Trim()", "@ConfigurationManager.AppSettings["CsEnvironment"]", "@ConfigurationManager.AppSettings["CsFingerprintRedirectUrl"]");
+
+        $("#btnPay").click(function (e) {
+            e.preventDefault();
+            //If the user is creating a new card then go to CyberSource
+            if ($("#NewCard").val() === "false") {
+                $("form#importantData").attr("action", "@Url.Action("AssociateCard", "Card")");
+                $("form#importantData").submit();
+            } else {
+                //Call for CS keys
+                var number = $("#card_number").val();
+                $("#card_number").val("");
+                $("#CardHolderName").val($("#card_holder_name").val());
+                $("#FpProfiler").val(fpProfiler);
+
+                $.post("@Url.Action("LoadCyberSourceKeys", "Card")", $("form#importantData").serialize()).done(function (data) {
+                    var month = $("#month").val();
+                    var year = $("#year").val();
+                    $("#card_expiry_date").attr("value", month + "-" + year);
+                    $("#card_number").val(number);
+                    $("form#cuenta").append(data);
+                    $("form#cuenta").submit();
+                });
+            }
+        });
+
+        $("div.cards a").click(function (e) {
+            e.preventDefault();
+            $("#@Html.IdFor(x => x.NewCard)").val("false");
+            var cardId = $("input[type='hidden']", $(this)).val();
+            $("#@Html.IdFor(x => x.SelectedCard)").val(cardId);
+            $("#@Html.IdFor(x => x.NewCard)").val("false");
+            $("form#cuenta").hide();
+            $("div.card").removeClass("selected");
+            $("div.card", $(this)).addClass("selected");
+            $("div.card .check").addClass("_hide");
+            $("div.card .check", $(this)).removeClass("_hide");
+        });
+
+        $("#addCard").click(function (e) {
+            e.preventDefault();
+            $("#@Html.IdFor(x => x.NewCard)").val("true");
+            $("form#cuenta").show();
+        });
+
+        var validationCallback = function (data) {
+            //If the validation is successful
+            if (data.ResponseType !== 1) {
+                $("#pTerms").html(data.Content);
+                $("#myModal").modal('show');
+            } else {
+                showNotification(data.Message, 'error');
+            }
+        };
+
+        $("#btnConfirm").click(function (e) {
+            e.preventDefault();
+            var hasNotSelectedOption = $(".card").length !== 0 && $(".card.selected").length === 0;
+            if (hasNotSelectedOption) {
+                showNotification("Debe seleccioanr una opción", "error");
+            } else {
+                if (validateRequiredFields()) {
+                    $("#@Html.IdFor(x => x.CardBin)").val($("#card_number").val().substring(0, 6));
+                    var form = $("form#importantData");
+                    $.post("@Url.Action("ValidateCreditCard", "Card")", form.serialize()).done(validationCallback);
+                }
+            }
+        });
+
+        function validateRequiredFields() {
+
+            var newCard = $("#@Html.IdFor(x => x.NewCard)").val() !== "true" && $("#@Html.IdFor(x => x.NewCard)").val() !== "True";
+            if (newCard)
+                return true;
+
+            var card_cvn = $("#card_cvn").val() !== "";
+            var card_holder_name = $("#card_holder_name").val() !== "";
+            var card_number = $("#card_number").val() !== "";
+
+            if (!card_cvn) {
+                $("#card_cvn").addClass("input-validation-error");
+            }
+            else {
+                $("#card_cvn").removeClass("input-validation-error");
+            }
+            if (!card_holder_name) {
+                $("#card_holder_name").addClass("input-validation-error");
+            }
+            else {
+                $("#card_holder_name").removeClass("input-validation-error");
+            }
+            if (!card_number) {
+                $("#card_number").addClass("input-validation-error");
+            }
+            else {
+                $("#card_number").removeClass("input-validation-error");
+            }
+
+            return card_cvn && card_holder_name && card_number;
+        }
+
+        var acceptTermsService = function () {
+            $('#@Html.IdFor(x => x.AgreeToTermsService)').click();
+            $('#myModalService').modal('hide');
+        };
+    });
+</script>
+}
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="titulo">
+                    <h3>Confirmar registro</h3>
+                    <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa hidden-xs">
+                </div>
+                <div class="logos-visa visible-xs">
+                    <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa-xs">
+                    <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="logoVisaNetPagos-xs">
+                </div>
+                <div class="modal-body">
+                    <h4>
+                        @if (Model.NewUser)
+                        {
+                            @Html.Raw("Al aceptar estás confirmando tu registro como usuario de VisaNetPagos y agregando a " + Model.ServiceName + " a tu lista de servicios adheridos.");
+                        }
+                        else
+                        {
+                            @Html.Raw("Al aceptar estás agregando a " + Model.ServiceName + " a tu lista de servicios adheridos.");
+                        }
+                    </h4>
+                    <p>
+                        Podés empezar a utilizar inmediatamente el servicio @Model.ServiceName
+                        con la tarjeta VISA ingresada; pero para utilizar el resto de los servicios
+                        ofrecidos en VisaNetPagos y administrar tu usuario debés confirmar tu
+                        registro en VisaNetPagos siguiendo las instrucciones que se enviarán
+                        por correo electrónico a la dirección <span id="emailConfirm">@Model.Email</span>.
+                    </p>
+
+                    @if (Model.TermsAndConditionsPostConfirm != null)
+                    {
+                        <br /><br />
+                        <h4 class="modal-title">Condiciones del servicio</h4>
+                        <p>@Model.TermsAndConditionsPostConfirm</p>
+                    }
+                    @*<p id="pTerms"></p>*@
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="hidden-xs">
+                            <div class="actions">
+                                <a class="btn fLeft" data-dismiss="modal">Cancelar</a>
+                                <button class="btn siguiente" id="btnPay">Confirmar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModalService">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="titulo">
+                    <h3>@PresentationWebStrings.HighwayAdmission_TermsService</h3>
+                    <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa hidden-xs">
+                </div>
+                <div class="logos-visa visible-xs">
+                    <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa-xs">
+                    <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="logoVisaNetPagos-xs">
+                </div>
+                <div class="modal-body">
+                    <p>@Html.Raw(Model.TermsAndConditionsService)</p>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="hidden-xs">
+                            <div class="actions">
+                                <button class="btn siguiente" onclick=" acceptTermsService() ">Aceptar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>

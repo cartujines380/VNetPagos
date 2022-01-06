@@ -1,0 +1,183 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Domain.EntitiesDtos.TableFilters.ReportsUserVonFilterDto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@PresentationAdminStrings.ReportsUsersVON</h2>
+<div class="row">
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.From</label>
+        @Html.EditorFor(m => m.DateFrom, new { @class = "form-control w100" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.To</label>
+        @Html.EditorFor(m => m.DateTo, new { @class = "form-control w100" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Filters_Email</label>
+        <div class="selectMask w100">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control w100", @placeholder = "Ingrese el correo electrónico a buscar", autocomplete = "off" })
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label>Servicio</label>
+        <div class="selectMask w100">
+            <div class="selectMask w100">
+                @Html.DropDownListFor(m => m.Service, (IEnumerable<SelectListItem>)ViewBag.Services,
+                         PresentationAdminStrings.Reports_Conciliation_All,
+                         new Dictionary<string, object> { { "style", "width: 100%; height: 100%; color:#999" },
+                                                         { "class", "search_init form-control" } })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-default btn-standar mt10 w100" id="execute">@PresentationAdminStrings.Common_Search</a>
+    </div>
+</div>
+<div class="loadingMessaje hidden" id="loaderMessage">
+    <div class="loading">@PresentationAdminStrings.Loading</div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2></h2>
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @PresentationAdminStrings.CreationDate
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Email
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Name
+                        </th>
+                        <th>
+                            @PresentationAdminStrings.Filters_Surname
+                        </th>
+                        <th>UserExternalId</th>
+                        <th>ServiceId</th>
+                        <th>Servicio</th>
+                        <th>AppId</th>
+                        <th>Pagos Realizados</th>
+                        <th>Tarjetas</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="VonUsersCardsModal"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var dataTableFilters;
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "DateFrom", "value": $("#@Html.IdFor(m => m.DateFrom)").val() });
+            aoData.push({ "name": "DateTo", "value": $("#@Html.IdFor(m => m.DateTo)").val() });
+            aoData.push({ "name": "Email", "value": $("#@Html.IdFor(m => m.Email)").val() });
+            aoData.push({ "name": "Service", "value": $("#@Html.IdFor(m => m.Service)").val() });
+        }
+
+        function drawTable() {
+            dataTableFilters = applyDatatableExternalFilters($('#table'), null,
+                [
+                    { "mDataProp": "CreationDate", "bSearchable": false, "bSortable": true },
+                    { "mDataProp": "Email" },
+                    {
+                        "mDataProp": "Name",
+                        "bSearchable": false,
+                        "bSortable": false,
+                    },
+                    {
+                        "mDataProp": "Surname",
+                        "bSearchable": false,
+                        "bSortable": false,
+                    },
+                    {
+                        "mDataProp": "UserExternalId",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "bVisible": false
+                    },
+                    { "mDataProp": "ServiceId", "bSearchable": false, "bSortable": false, "bVisible": false },
+                    {
+                        "mDataProp": "ServiceName",
+                        "bSearchable": false,
+                        "bSortable": true
+                    },
+                    { "mDataProp": "AppId", "bSearchable": false, "bSortable": false, "bVisible": false },
+                    {
+                        "mDataProp": "PaymentsCount",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            if (oObj.aData != null && oObj.aData.PaymentsCount > 0) {
+                                return "<a target='_blank' href='@Url.Action("Index", "ReportsTransactions")?Email=" + oObj.aData.Email + '&ServiceId=' + oObj.aData.ServiceId + '&Platform=5&Exec=auto&DateFrom=' + oObj.aData.CreationDate + "'>" + oObj.aData.PaymentsCount + "</a>";
+                            } else {
+                                return "0";
+                            }
+                        }
+                    },
+                    {
+                        "mDataProp": "CardsCount",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            if (oObj.aData != null && oObj.aData.CardsCount > 0) {
+                                return "<a href='#' onclick=\"getCardsUser('" + oObj.aData.AnonymousUserId.trim() + "','" + oObj.aData.ServiceId + "')\">" + oObj.aData.CardsCount + "</a>";
+                            } else {
+                                return "0";
+                            }
+                        }
+                    },
+
+                ],
+                '@Url.Action("AjaxHandler", "ReportsVonUsers")',
+                externalFilters, null,
+                [[0, "desc"]]);
+        }
+
+
+        $("#execute").click(function (e) {
+            e.preventDefault();
+            drawTable();
+            dataTableFilters.fnFilter();
+        });
+
+
+
+    });
+
+
+    function getCardsUser(userId, ServiceId) {
+
+        var params = '?userId=' + userId + '&serviceId=' + ServiceId ;
+
+        $("#VonUsersCardsModal").html('');
+
+        $.ajax({
+            method: 'GET',
+            url: '@Url.Action("ViewUsersCards", "ReportsVonUsers")' + params,
+            async: true,
+            dataType: "html",
+            success: function (data) {
+                $("#VonUsersCardsModal").html(data);
+                $("#lbVonUsersCards").modal('show');
+            },
+            error: function (err) {
+                console.log(err);
+            }
+                });
+
+    }
+</script>

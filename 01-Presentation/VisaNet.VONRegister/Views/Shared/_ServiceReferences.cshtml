@@ -1,0 +1,88 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.VONRegister.Models.Register
+
+@if (!string.IsNullOrEmpty(Model.Payment.Reference1Name))
+{
+    <div class="form-group">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+            <label for="@Model.Payment.Reference1Name">@Model.Payment.Reference1Name</label>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+            @Html.TextBoxFor(x => x.Payment.Reference1Value, new { placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+            @Html.ValidationMessageFor(m => m.Payment.Reference1Value, null, new { @class = "" })
+            @Html.HiddenFor(s => s.Payment.ToolTipImage)
+            @Html.HiddenFor(m => m.Payment.Reference1Regex)
+            @Html.HiddenFor(m => m.Payment.Reference1Name)
+        </div>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.Payment.Reference2Name))
+{
+    <div class="form-group">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+            <label for="@Model.Payment.Reference2Name">@Model.Payment.Reference2Name</label>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+            @Html.TextBoxFor(x => x.Payment.Reference2Value, new { placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+            @Html.ValidationMessageFor(m => m.Payment.Reference2Value, null, new { @class = "" })
+            @Html.HiddenFor(m => m.Payment.Reference2Regex)
+            @Html.HiddenFor(m => m.Payment.Reference2Name)
+        </div>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.Payment.Reference3Name))
+{
+    <div class="form-group">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+            <label for="@Model.Payment.Reference3Name">@Model.Payment.Reference3Name</label>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+            @Html.TextBoxFor(x => x.Payment.Reference3Value, new { placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+            @Html.ValidationMessageFor(m => m.Payment.Reference3Value, null, new { @class = "" })
+            @Html.HiddenFor(m => m.Payment.Reference3Regex)
+            @Html.HiddenFor(m => m.Payment.Reference3Name)
+        </div>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.Payment.Reference4Name))
+{
+    <div class="form-group">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+            <label for="@Model.Payment.Reference4Name">@Model.Payment.Reference4Name</label>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+            @Html.TextBoxFor(x => x.Payment.Reference4Value, new { placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+            @Html.ValidationMessageFor(m => m.Payment.Reference4Value, null, new { @class = "" })
+            @Html.HiddenFor(m => m.Payment.Reference4Regex)
+            @Html.HiddenFor(m => m.Payment.Reference4Name)
+        </div>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.Payment.Reference5Name))
+{
+    <div class="form-group">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+            <label for="@Model.Payment.Reference5Name">@Model.Payment.Reference5Name</label>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+            @Html.TextBoxFor(x => x.Payment.Reference5Value, new { placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+            @Html.ValidationMessageFor(m => m.Payment.Reference5Value, null, new { @class = "" })
+            @Html.HiddenFor(m => m.Payment.Reference5Regex)
+            @Html.HiddenFor(m => m.Payment.Reference5Name)
+        </div>
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.Payment.Reference6Name))
+{
+    <div class="form-group">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+            <label for="@Model.Payment.Reference6Name">@Model.Payment.Reference6Name</label>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+            @Html.TextBoxFor(x => x.Payment.Reference6Value, new { placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+            @Html.ValidationMessageFor(m => m.Payment.Reference6Value, null, new { @class = "" })
+            @Html.HiddenFor(m => m.Payment.Reference6Regex)
+            @Html.HiddenFor(m => m.Payment.Reference6Name)
+        </div>
+    </div>
+}

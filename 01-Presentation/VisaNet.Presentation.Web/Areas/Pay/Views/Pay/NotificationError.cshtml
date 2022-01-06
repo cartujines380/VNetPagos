@@ -1,0 +1,55 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+<div class="container p25t">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 nameSection">@PresentationWebStrings.Payment_Title</h3>
+            <h4 class="pageDescription">@PresentationWebStrings.Payment_Desc</h4>
+        </div>
+        <div class="clearfix"></div>
+        <div class="horizontalLineGrey"></div>
+    </div>
+
+    <div class="mt20">
+        <div class="wizardBox">
+            <!-- area de titulo y breadcrumb-->
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="mt5">@PresentationWebStrings.Payment_Step4 </h3>
+                    <h4 class="pageDescription">@PresentationWebStrings.Payment_Failure</h4>
+                </div>
+                <div class="col-md-4">
+                    @Html.Partial("_Steps")
+                </div>
+                <div class="clearfix"></div>
+                <div class="horizontalLineGrey"></div>
+            </div>
+            <!-- area de titulo y breadcrumb-->
+            <!-- campos obligatorios -->
+            <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@PresentationWebStrings.Payment_Failure_Warning</h5>
+            <!-- campos obligatorios -->
+            <div class="formMargin">
+                <div class="row">
+                    <div class="highlightArea">
+                        <p style="font-size: 15px"><strong>@PresentationWebStrings.Payment_Failure_UserMessage </strong></p>
+                        <p style="font-size: 15px">@PresentationWebStrings.Payment_Failure_TryAgain_Link <a href="@Url.Action("Index", "Contact", new RouteValueDictionary() { { "Area", "" } })">formulario de contacto.</a></p>
+                        <p style="font-size: 12px">@PresentationWebStrings.Payment_Failure_Apologize</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <a id="btnStart" href="@Url.Action("Index", "Home")" class="btn btn-default btn-cancelar mt10 w100">@PresentationCoreMessages.Common_BackHome</a>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_Cancel")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#stepConfirm").addClass("active");
+        $("#paymentRequestLink").addClass("vnpTitleSelected");
+    });
+</script>

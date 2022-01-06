@@ -1,0 +1,32 @@
+﻿@model VisaNet.Presentation.Administration.Models.SystemVersionsModel
+
+<h4>APIs Públicas</h4>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th class="col-md-2">
+                            API-Pública Notificaciones
+                        </th>
+                        <th class="col-md-2">
+                            API-Pública LIF
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Model.NotificationPublicApiVersion
+                        </td>
+                        <td>
+                            @Model.LifPublicApiVersion
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.VisaNetOn.Models.GeneralInfo
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalVisaTC" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header" style="height: 80px;">
+                <button type="button" class="close closeButton" id="closeModalLogin" data-dismiss="modal" aria-label="Close" style="">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row title-section-wrapper">
+                    <span class="title-section cpo">@PresentationWebStrings.HighwayAdmission_TermsVisa</span>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <p>@Html.Raw(Model.TermsAndConditionsVisa)</p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="actions">
+                    <a class="btn siguiente" href="" aria-controls="tarjeta" role="tab" data-dismiss="modal">Aceptar</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

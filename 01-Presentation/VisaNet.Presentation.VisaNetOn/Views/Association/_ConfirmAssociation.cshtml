@@ -1,0 +1,37 @@
+﻿@model VisaNet.Presentation.VisaNetOn.Models.PageAssociationModel
+
+<div class="modal fade" tabindex="-1" role="dialog" id="lbConfirmAssociation" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header" style="height: 80px;">
+                <button type="button" class="close closeButton" id="closeModalLogin" data-dismiss="modal" aria-label="Close" style=""><span aria-hidden="true">&times;</span></button>
+                <div class="row title-section-wrapper">
+                    <span class="title-section cpo">Confirmá tu asociación</span>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <span class="title-form">
+                    @if (string.IsNullOrEmpty(Model.ServiceInfo.TermsAndConditionsService))
+                    {
+                        @Html.Raw("Al continuar estás aceptando que " + Model.ServiceInfo.ServiceName + " recuerde tus datos para próximas compras.")
+
+                    }
+                    else
+                    {
+                        @Html.Raw("Al continuar estás aceptando los Términos y Condiciones de " + Model.ServiceInfo.ServiceName + " y permitiendo que recuerde tus datos para próximas compras.")
+                    }
+                </span>
+            </div>
+
+            <div class="modal-footer">
+                <div class="modal-actions actions">
+                    <a class="btn" data-dismiss="modal">Cancelar</a>
+                    <a class="btn siguiente" id="btnAssociate" href="" aria-controls="tarjeta" role="tab" data-toggle="tab">Confirmar</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

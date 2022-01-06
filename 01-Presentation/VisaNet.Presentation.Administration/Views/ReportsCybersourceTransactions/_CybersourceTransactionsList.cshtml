@@ -1,0 +1,55 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model IEnumerable<VisaNet.Domain.EntitiesDtos.CybersourceTransactionsDto>
+
+<div class="row">
+    <div class="col-lg-10">
+        <div class="table-responsive">
+            <table id="table" class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @ViewBag.TransactionsName
+                        </th>
+                        <th>
+                            @PresentationCoreMessages.Common_Quantity
+                        </th>
+                        <th>
+                            @PresentationCoreMessages.Common_Export
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var index = (int)ViewBag.Index;
+                    }
+                    @foreach (var data in Model)
+                    {
+                        <tr>
+                            <td>
+                                @data.Name
+                            </td>
+                            <td>
+                                @data.Value
+                            </td>
+                            <td>
+                                <a href="#" class="btn-detalles exportDetails" data-index="@index"><i class="fa fa-download"></i></a>
+                            </td>
+                        </tr>
+                        index++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("a.exportDetails").click(function (e) {
+            e.preventDefault();
+            var index = $(this).attr("data-index");
+            $("#TransactionType").val(index);
+
+            $("#form").submit();
+        });
+    });
+</script>

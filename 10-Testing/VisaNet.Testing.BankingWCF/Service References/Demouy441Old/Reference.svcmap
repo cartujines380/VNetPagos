@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="14ec8c95-43f1-4312-a413-a2c2dfe178a5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://demouy.hexacta.com:441/BankingWcfOld/VisaNetAccess.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="VisaNetAccess.xsd" MetadataType="Schema" ID="886a46cc-d2bf-4ba5-902b-7162f85e6552" SourceId="1" SourceUrl="https://demouy.hexacta.com:441/BankingWcfOld/VisaNetAccess.svc?xsd=xsd3" />
+    <MetadataFile FileName="VisaNetAccess1.xsd" MetadataType="Schema" ID="617823fe-3c40-4f09-a4b8-52df6cee754a" SourceId="1" SourceUrl="https://demouy.hexacta.com:441/BankingWcfOld/VisaNetAccess.svc?xsd=xsd0" />
+    <MetadataFile FileName="VisaNetAccess2.xsd" MetadataType="Schema" ID="67af28cf-3156-4571-95f4-6938977aeae1" SourceId="1" SourceUrl="https://demouy.hexacta.com:441/BankingWcfOld/VisaNetAccess.svc?xsd=xsd1" />
+    <MetadataFile FileName="VisaNetAccess3.xsd" MetadataType="Schema" ID="64a9d70e-55f2-422d-87ce-b9ad9c4f16a2" SourceId="1" SourceUrl="https://demouy.hexacta.com:441/BankingWcfOld/VisaNetAccess.svc?xsd=xsd2" />
+    <MetadataFile FileName="VisaNetAccess.wsdl" MetadataType="Wsdl" ID="4a0166f5-895c-414c-ae90-1ed22c2b9110" SourceId="1" SourceUrl="https://demouy.hexacta.com:441/BankingWcfOld/VisaNetAccess.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

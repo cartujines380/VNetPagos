@@ -1,0 +1,61 @@
+﻿<div class="modal fade" tabindex="-1" role="dialog" id="regexModal">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Expresiones regulares más comunes</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Expresión</th>
+                            <th>Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cualquier letra o número</td>
+                            <td>^[A-Za-z0-9]*$</td>
+                            <td>aA12</td>
+                        </tr>
+                        <tr>
+                            <td>Cualquier letra o número entre 1 y 10 caracteres</td>
+                            <td>^[A-Za-z0-9]{1,10}$</td>
+                            <td>abc456789A</td>
+                        </tr>
+                        <tr>
+                            <td>Solo números</td>
+                            <td>^[0-9]*$</td>
+                            <td>123</td>
+                        </tr>
+                        <tr>
+                            <td>Exactamente 8 números</td>
+                            <td>^[0-9]{8}$</td>
+                            <td>12345678</td>
+                        </tr>
+                        <tr>
+                            <td>Cédula de identidad (con dígito verificador)</td>
+                            <td>^[0-9]{6,7}\-[0-9]{1}$</td>
+                            <td>1234567-1</td>
+                        </tr>
+                        <tr>
+                            <td>Cédula de identidad (sin dígito verificador)</td>
+                            <td>^[0-9]{6,7}$</td>
+                            <td>1234567</td>
+                        </tr>
+                        <tr>
+                            <td>No validar (no completar el campo)</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,120 @@
+﻿@using System.Globalization
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Utilities.Exportation.ExtensionMethods
+@model VisaNet.Presentation.Web.Areas.Pay.Models.ConfirmationModel
+
+<div class="container p25t">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 nameSection">@PresentationWebStrings.Payment_Title</h3>
+            <h4 class="pageDescription">@PresentationWebStrings.Payment_Desc</h4>
+        </div>
+        <div class="clearfix"></div>
+        <div class="horizontalLineGrey"></div>
+    </div>
+
+    <div class="mt20">
+        <div class="wizardBox">
+            <!-- area de titulo y breadcrumb-->
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="mt5">@PresentationWebStrings.Payment_Step4</h3>
+                    <h4 class="pageDescription">@PresentationWebStrings.Payment_Step4_Description</h4>
+                </div>
+                <div class="col-md-4">
+                    @Html.Partial("_Steps")
+                </div>
+                <div class="clearfix"></div>
+                <div class="horizontalLineGrey"></div>
+            </div>
+            <!-- area de titulo y breadcrumb-->
+            <div class="formMargin">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="imgPreview">
+                            <div class="ticketBox">
+                                <div class="paymentBrands">
+                                    <div class="row">
+                                        <div class="col-xs-6"><span class="ticketVisaNetBrand"></span></div>
+                                        <div class="col-xs-6"><span class="ticketVisaBrand visaBrandQuery"></span></div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="ticketVisaBrandLeft"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="paymentService">
+                                    <h4>@PresentationWebStrings.Payment_Of @Model.ServiceName</h4>
+                                </div>
+                                <div class="paymentFirstRow">
+                                    <div class="row">
+                                        <div class="col-md-3">@PresentationWebStrings.Date<span> @Model.Date </span></div>
+                                        <div class="col-md-3">@PresentationWebStrings.Hour<span> @Model.Hrs</span></div>
+                                        <div class="col-md-6">@PresentationWebStrings.Confirmation_Transaction<span> @Model.Transaction</span></div>
+                                    </div>
+                                </div>
+                                <div class="paymentSecondRow">
+                                    <div class="row">
+                                        @foreach (var refs in Model.References)
+                                        {
+                                            if (!String.IsNullOrEmpty(refs.Value))
+                                            {
+                                                <div class="col-md-12">@refs.Key:<span> @refs.Value</span></div>
+                                            }
+                                        }
+                                        <div class="col-md-12">@PresentationWebStrings.Confirmation_Total_Bills:<span> @Model.Currency @Model.TotalAmount.SignificantDigits(2).ToString("##,#0.00", CultureInfo.CurrentCulture) </span></div>
+                                        <div class="col-md-12">@Model.DiscountTypeText<span> @Model.Currency @Model.Discount.SignificantDigits(2).ToString("##,#0.00", CultureInfo.CurrentCulture) </span></div>
+                                        <div class="col-md-12">@PresentationWebStrings.Confirmation_Total_After_Discount:<span> @Model.Currency @((Model.TotalAmount - Model.Discount).SignificantDigits(2).ToString("##,#0.00", CultureInfo.CurrentCulture))</span></div>
+                                        <div class="col-md-12">@PresentationWebStrings.Confirmation_Mask:<span> @Model.Mask</span></div>
+                                        <div class="col-md-12">@PresentationWebStrings.Quota:<span> @Model.Quotas</span></div>
+                                    </div>
+                                </div>
+                                <div class="paymentLegend softGrey p10t p10b">
+                                    @*<h5>@PresentationWebStrings.Confirmation_Ticket_Desc</h5>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 paymentInformation">
+                        <div class="paymentBox">
+                            <h2 class="successColor"><i class="icon-ok"></i>@PresentationWebStrings.Payment_PaymentConfirm</h2>
+                            <h4>@PresentationWebStrings.Payment_SuccessfulPayment</h4>
+                            <h4>@PresentationWebStrings.Payment_Confirm_TransactionNumber <span class="successColor">#@Model.Transaction</span></h4>
+                            <p class="italic">@PresentationWebStrings.Payment_EmailReceipt "@Model.Email"</p>
+                            <a id="downloadTicket" class="btn btn-block btn-download w50 mt20" target="_blank" href="@Url.Action("DownloadTicket", "Pay", new { id = Model.Id, transactionNumber = Model.Transaction })">@PresentationWebStrings.Payment_DownloadReceipt<i class="icon-download-alt ml5"></i> </a>
+                        </div>
+                        @if (Model.AllowsAutomaticPayment && !Model.AlreadyHasAutomaticPayment)
+                        {
+                            <div class="registerBox">
+                                <h4>@PresentationWebStrings.AutomaticPayment_Item_Title</h4>
+                                <p>@PresentationWebStrings.Service_Automatic_Payment_Desc</p>
+                                <a href="@Url.Action("Item", "AutomaticPayment", new { serviceId = Model.ServiceAssociatedId, fromConfiguration = true, Area = "Private" })" class="btn btn-default btn-siguiente w50">@PresentationWebStrings.AutomaticPayment_Not_Arranged <i class="icon-chevron-sign-right"></i></a>
+                            </div>
+                        }
+                        @if (Model.AnonymousUserId != Guid.Empty)
+                        {
+                            <div class="registerBox">
+                                <h4>@PresentationWebStrings.Payment_Confirmation_Register</h4>
+                                <p>@PresentationWebStrings.Payment_Confirmation_Register_Benefits</p>
+                                <a href="@Url.Action("RegisterAnonymousUser", "Registration", new { anonymousUserId = Model.AnonymousUserId, Area = ""  })" class="btn btn-default btn-siguiente w50">@PresentationWebStrings.Payment_Register <i class="icon-chevron-sign-right"></i></a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- fin del formMargin-->
+        <div class="row">
+            <div class="col-md-2">
+                <a href="@Url.Action("Index", "Home", new { Area = ""  })" id="btnHome" class="btn btn-default btn-inicio mt10 w100">@PresentationCoreMessages.Common_BackHome<i class="icon-home"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#stepConfirm").addClass("active");
+        $("#paymentRequestLink").addClass("vnpTitleSelected");
+    });
+</script>

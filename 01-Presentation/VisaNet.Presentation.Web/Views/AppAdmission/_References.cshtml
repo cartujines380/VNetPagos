@@ -1,0 +1,80 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.AppAdmissionModel
+
+@if (Model.AskReferences)
+{
+    
+    <h4 class="lightBlue">Datos de asociación</h4>
+    <div class="row">
+            @if (!String.IsNullOrEmpty(Model.ReferenceName))
+            {
+                <div class="col-md-6">
+                    @Html.HiddenFor(m => m.ReferenceName)
+                    <label for="@Model.ReferenceName">@Model.ReferenceName</label><i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    @Html.TextBoxFor(x => x.ReferenceValue, new { @class = "w100", placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+                    @Html.ValidationMessageFor(m => m.ReferenceValue, null, new { @class = "help-inline" })
+                    @Html.HiddenFor(m => m.ReferenceRegex)
+                </div>
+            }
+            @if (!String.IsNullOrEmpty(Model.ReferenceName2))
+            {
+                <div class="col-md-6">
+                    @Html.HiddenFor(m => m.ReferenceName2)
+                    <label for="@Model.ReferenceName2">@Model.ReferenceName2</label><i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    @Html.TextBoxFor(x => x.ReferenceValue2, new { @class = "w100", placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+                    @Html.ValidationMessageFor(m => m.ReferenceValue2, null, new { @class = "help-inline" })
+                    @Html.HiddenFor(m => m.ReferenceRegex2)
+                </div>
+            }
+        </div>
+        <div class="row">
+            @if (!String.IsNullOrEmpty(Model.ReferenceName3))
+            {
+                <div class=" col-md-6">
+                    @Html.HiddenFor(m => m.ReferenceName3)
+                    <label for="@Model.ReferenceName3">@Model.ReferenceName3</label><i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    @Html.TextBoxFor(x => x.ReferenceValue3, new { @class = "w100", placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+                    @Html.ValidationMessageFor(m => m.ReferenceValue3, null, new { @class = "help-inline" })
+                    @Html.HiddenFor(m => m.ReferenceRegex3)
+                </div>
+            }
+
+            @if (!String.IsNullOrEmpty(Model.ReferenceName4))
+            {
+
+                <div class="col-md-6">
+                    @Html.HiddenFor(m => m.ReferenceName4)
+                    <label for="@Model.ReferenceName4">@Model.ReferenceName4</label>
+                    <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                    @Html.TextBoxFor(x => x.ReferenceValue4, new { @class = "w100", placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+                    @Html.ValidationMessageFor(m => m.ReferenceValue4, null, new { @class = "help-inline" })
+                    @Html.HiddenFor(m => m.ReferenceRegex4)
+
+                </div>
+            }
+        </div>
+    <div class="row">
+        
+        @if (!String.IsNullOrEmpty(Model.ReferenceName5))
+        {
+            <div class="col-md-6">
+                @Html.HiddenFor(m => m.ReferenceName5)
+                <label for="@Model.ReferenceName5">@Model.ReferenceName5</label><i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                @Html.TextBoxFor(x => x.ReferenceValue5, new { @class = "w100", placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+                @Html.ValidationMessageFor(m => m.ReferenceValue5, null, new { @class = "help-inline" })
+                @Html.HiddenFor(m => m.ReferenceRegex5)
+            </div>
+        }
+        @if (!String.IsNullOrEmpty(Model.ReferenceName6))
+        {
+            <div class="col-md-6">
+                @Html.HiddenFor(m => m.ReferenceName6)
+                <label for="@Model.ReferenceName6">@Model.ReferenceName6</label><i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                @Html.TextBoxFor(x => x.ReferenceValue6, new { @class = "w100", placeholder = PresentationWebStrings.Service_Add_Reference, autocomplete = "off" })
+                @Html.ValidationMessageFor(m => m.ReferenceValue6, null, new { @class = "help-inline" })
+                @Html.HiddenFor(m => m.ReferenceRegex6)
+            </div>
+        }
+    </div>
+    }

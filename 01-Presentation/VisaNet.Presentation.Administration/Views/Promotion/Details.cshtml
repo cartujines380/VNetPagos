@@ -1,0 +1,38 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.PromotionModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Promotion_Detail_Title</h2>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Name)
+                    @Html.TextBoxFor(b => b.Name, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+                @Html.ValidationMessageFor(s => s.Name)
+            </div>
+
+            <div class="col-lg-6">
+                @Html.LabelFor(s => s.ImageName, new { @class = "mt20" })
+                @if (!String.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <a href="@Model.ImageUrl" target="_blank"> VER </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <a href="@Url.Action("Index", "Promotion")" class="btn btn-default">@PresentationAdminStrings.Back </a>
+    </div>
+</div>

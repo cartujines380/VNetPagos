@@ -1,0 +1,80 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Domain.EntitiesDtos.TableFilters.ReportsCybersourceTransactionsFilterDto
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Cybersource_Transactions_Title</h2>
+
+@using (Html.BeginForm("ExcelExport", "ReportsCybersourceTransactions", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+{
+    <input type="hidden" id="TransactionType" name="TransactionType" />
+    <div class="row">
+        <div class="col-md-3">
+            <label>@PresentationAdminStrings.From</label>
+            @Html.EditorFor(m => m.From, new { @class = "w100" })
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationWebStrings.Filters_To</label>
+            @Html.EditorFor(m => m.To, new { @class = "w100" })
+        </div>
+        <div class="col-md-3">
+            <label>@PresentationWebStrings.Filters_Bin</label>
+            @Html.TextBoxFor(m => m.Bin, new { @class = "form-control w100", placeholder = "Ingrese el bin a buscar", autocomplete = "off" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-xs-6 p5l pr0">
+                <a class="btn btn-default btn-standar mt10 w100" id="execute"> @PresentationCoreMessages.Common_Execute</a>
+            </div>
+            <div class="col-xs-6 p5l pr0">
+                <a class="btn btn-default btn-standar mt10 w100" id="export"> @PresentationCoreMessages.Common_Export</a>
+            </div>
+        </div>
+    </div>
+}
+
+<br />
+<div id="listadoTokenization"></div>
+<br />
+
+<div id="listadoPagos"></div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#execute").click(function () {
+            var dataModel = $("#form").serialize();
+            GetTable(dataModel);
+        });
+
+        $("#export").click(function () {
+            $("#TransactionType").val(0);
+            $("#form").submit();
+        });
+    });
+
+    function GetTable(dataModel) {
+        showBlockUI("Procesando...");
+        $.ajax({
+            dataType: 'json',
+            type: "POST",
+            url: "@Url.Action("GetTable", "ReportsCybersourceTransactions")",
+            data: dataModel,
+            success: function (ret) {
+                if (ret.ResponseType == RESPONSE.SUCCESS) {
+                    $("#listadoTokenization").html(ret.Content);
+                    $("#listadoPagos").html(ret.Content2);
+                }
+                if (ret.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(ret.Title, ret.Message, 'error');
+                }
+                hideBlockUI();
+            }
+        });
+    }
+
+</script>

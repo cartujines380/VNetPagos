@@ -1,0 +1,177 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.WebhookRegistrationModel
+
+<div id="lbDetails" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4>@PresentationAdminStrings.Details</h4>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <tbody>
+
+                        @* DATOS GENERALES *@
+                        <tr>
+                            <th>@PresentationAdminStrings.CreationDate</th>
+                            <td>@Model.CreationDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Application_Id</th>
+                            <td>@Model.IdApp</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Operation_Id</th>
+                            <td>@Model.IdOperation</td>
+                        </tr>
+                        <tr>
+                            <th>Url Callback</th>
+                            <td>@Model.UrlCallback</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.MerchantId</th>
+                            <td>@Model.MerchantId</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Action</th>
+                            <td>@Model.Action</td>
+                        </tr>
+                        <tr>
+                            <th>Permite cambiar email</th>
+                            <td>@Model.EnableEmailChange</td>
+                        </tr>
+                        <tr>
+                            <th>Permite recordar usuario</th>
+                            <td>@Model.EnableRememberUser</td>
+                        </tr>
+                        <tr>
+                            <th>Enviar email</th>
+                            <td>@Model.SendEmail</td>
+                        </tr>
+
+                        @* DATOS USUARIO *@
+                        <tr>
+                            <th>@PresentationAdminStrings.User_Id</th>
+                            <td>@Model.IdUsuario</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Email</th>
+                            <td>@Model.UserEmail</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Name</th>
+                            <td>@Model.UserName</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Filters_Surname</th>
+                            <td>@Model.UserSurname</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.CI</th>
+                            <td>@Model.UserIdentityNumber</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.MobileNumber</th>
+                            <td>@Model.UserMobileNumber</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.PhoneNumber</th>
+                            <td>@Model.UserPhoneNumber</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Debit_UserAddress</th>
+                            <td>@Model.UserAddress</td>
+                        </tr>
+
+                        @* DATOS FACTURA *@
+                        <tr>
+                            <th>@PresentationAdminStrings.Bill_External_Id</th>
+                            <td>@Model.BillExternalId</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Monto total</th>
+                            <td>@Model.BillAmount</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Monto gravado</th>
+                            <td>@Model.BillTaxedAmount</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Moneda</th>
+                            <td>@Model.BillCurrency</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Cons final</th>
+                            <td>@Model.BillFinalConsumer</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Fecha</th>
+                            <td>@Model.BillGenerationDate</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Cuota</th>
+                            <td>@Model.BillQuota</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Descripción</th>
+                            <td>@Model.BillDescription</td>
+                        </tr>
+                        <tr>
+                            <th>Factura Vencimiento</th>
+                            <td>@Model.BillExpirationDate</td>
+                        </tr>
+
+                        @* DATOS TRANSACCION *@
+                        <tr>
+                            <th>Fecha pago</th>
+                            <td>@Model.PaymentDate</td>
+                        </tr>
+                        <tr>
+                            <th>@PresentationAdminStrings.Transaction_Number_Short</th>
+                            <td>@Model.PaymentTransactionNumber</td>
+                        </tr>
+
+                        @* DATOS REFERENCIAS *@
+                        <tr>
+                            <th>Referencia 1</th>
+                            <td>@Model.ReferenceNumber</td>
+                        </tr>
+                        <tr>
+                            <th>Referencia 2</th>
+                            <td>@Model.ReferenceNumber2</td>
+                        </tr>
+                        <tr>
+                            <th>Referencia 3</th>
+                            <td>@Model.ReferenceNumber3</td>
+                        </tr>
+                        <tr>
+                            <th>Referencia 4</th>
+                            <td>@Model.ReferenceNumber4</td>
+                        </tr>
+                        <tr>
+                            <th>Referencia 5</th>
+                            <td>@Model.ReferenceNumber5</td>
+                        </tr>
+                        <tr>
+                            <th>Referencia 6</th>
+                            <td>@Model.ReferenceNumber6</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-6 p5l">
+                        <button type="button" class="btn btn-default btn-cancelar w100" data-dismiss="modal">@PresentationWebStrings.Close <i class="icon-remove"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

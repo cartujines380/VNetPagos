@@ -1,0 +1,63 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Models
+@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Areas.Private.Models.CardListModel
+
+<div class="itemBox creditCardItem">
+    <div class="row">
+        <div class="col-md-8 col-sm-12 paymentInformation">
+            <div class="col-md-3 col-sm-6 pr0 pl0 paymentImage">
+                @if (String.IsNullOrEmpty(Model.CardImage))
+                {
+                    <img src="@Url.Content("~/Content/images/visa.jpg")" width="65" />
+                }
+                else
+                {
+                    <img src="@Model.CardImage" width="65" />
+                }
+
+            </div>
+            <div class="col-md-9 col-sm-6 paymentDetail">
+                <ul>
+                    @if (!string.IsNullOrEmpty(Model.Description))
+                    {
+                        <li><span class="bold">@ModelsStrings.Card - @Model.Description</span><span class="titleCard">@Model.Mask</span></li>
+                    }
+                    else
+                    {
+                        <li><span class="bold">@ModelsStrings.Card </span><span class="titleCard">@Model.Mask</span></li>
+                    }
+                    <li><span class="bold">@ModelsStrings.Card_DueDate: </span> @Model.DueDate</li>
+                    @if (Model.Default)
+                    {
+                        <li class="selectedCreditCard"><i class="icon-ok"></i>Tarjeta seleccionada por defecto</li>
+                    }
+                    @*<li><span class="bold">@ModelsStrings.Card_Description: </span> @Model.Description</li>*@
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 paymentActions">
+            <ul>
+                @if (Model.Active)
+                {
+                    <li><a class="Deactivate" href="#" data-card="@Model.Id" data-cardmask="@Model.Mask"><i class="icon-remove"></i>@PresentationWebStrings.Deactivate </a></li>
+                    <li><a class="MigrateServices" href="#" data-card="@Model.Id"><i class="icon-mail-forward"></i>@PresentationWebStrings.MigrateServices </a></li>
+                    <li><a class="AssociatedServices" href="#" data-card="@Model.Id"><i class="icon-list"></i>@PresentationWebStrings.AssociatedServices</a></li>                    
+                }
+                else
+                {
+                    if (!Model.Expired)
+                    {
+                        <li><a class="Activate" href="#" data-card="@Model.Id"><i class="icon-ok"></i>@PresentationWebStrings.Activate</a></li>
+                        <li><a class="Eliminate" href="#" data-card="@Model.Id" data-cardmask="@Model.Mask"><i class="icon-remove"></i>@PresentationWebStrings.Eliminate</a></li>
+                    }
+                    else
+                    {
+                        <li><a class="Eliminate" href="#" data-card="@Model.Id"><i class="icon-remove"></i>@PresentationWebStrings.Eliminate</a></li>
+                    }
+                }
+                <li><a class="EditDescription" href="#" data-card="@Model.Id" data-cardmask="@Model.Mask" data-desc="@Model.Description" data-duedate="@Model.DueDate"><i class="icon-edit"></i>@PresentationWebStrings.EditCardDescription </a></li>
+            </ul>
+        </div>
+    </div>
+</div>

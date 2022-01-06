@@ -1,0 +1,104 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Utilities.Exportation.ExtensionMethods
+@model VisaNet.Presentation.Web.Areas.Private.Models.ServiceListModel
+
+<div class="itemBox serviceItem">
+    <div class="row">
+        <div class="col-md-8 serviceInformation">
+            <div class="col-md-3 pr0 pl0 serviceImage">
+                @if (!String.IsNullOrEmpty(Model.ServiceImageName))
+                {
+                    <img src="@Model.ServiceImageName" width="65" />
+                }
+                else
+                {
+                    <img src="@ConfigurationManager.AppSettings["DefaultServiceImage"]" width="54" />
+                }
+            </div>
+            <div class="col-md-9 serviceDetail">
+                <ul>
+                    <li>
+                        <span>@(string.IsNullOrEmpty(Model.ServiceContainerName) ? string.Empty : Model.ServiceContainerName + " - ")</span>
+                        <span>@Model.ServiceName </span>
+                        <span class="shortDescription" title="@Model.ServiceDesc">
+                            @(string.IsNullOrEmpty(Model.ServiceDesc) ? string.Empty : " - " + @Model.ServiceDesc.Short(45))
+                        </span>
+                    </li>
+                    @if (!String.IsNullOrEmpty(Model.ServiceRefName))
+                    {
+                        <li><span class="bold">@Model.ServiceRefName:</span> @Model.ServiceRefValue</li>
+                    }
+
+                    @if (Model != null && !String.IsNullOrEmpty(Model.DefaultMask))
+                    {
+                        var card = Model.DefaultMask;
+                        <li><span class="bold">@PresentationWebStrings.Payment_Card:</span> @Html.Raw(card) </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 serviceActions">
+            <ul>
+                @if (Model.EnableAutomaticPayment)
+                {
+                    if (Model.ServiceAutomaticPaymentId != null)
+                    {
+                        <li><a href="@Url.Action("Item", new RouteValueDictionary { { "serviceId", Model.ServiceId }, { "fromConfiguration", true } })"><i class="icon-pencil"></i>@PresentationWebStrings.Configuration </a></li>
+                        <li><a href="#" class="Delete" data-service="@Model.ServiceId"><i class="icon-remove"></i>@PresentationWebStrings.AutomaticPayment_Delete_Button </a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("Item", new RouteValueDictionary { { "serviceId", Model.ServiceId }, { "fromConfiguration", true } })" data-service="@Model.ServiceAutomaticPaymentId"><i class="icon-ok"></i>@PresentationWebStrings.AutomaticPayment_Add_Button</a></li>
+                    }
+                }
+                else
+                {
+                    <li>@PresentationWebStrings.AutomaticPayment_NotAllowed</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_DeleteConfirm")
+<input id="serviceId" type="hidden" />
+<input id="serviceName" type="hidden" />
+
+<script>
+    $(document).ready(function () {
+        $(function () {
+            $('a.Delete').click(function (e) {
+                e.preventDefault();
+                var id = $(this).attr("data-service");
+                $("#serviceId").val(id);
+
+                var name = $('#serviceName').val();
+                $("#serviceName").val(name);
+
+                $("#lbConfirmDelete").modal();
+            });
+        });
+    });
+
+    $("#btnConfirmDelete").click(function () {
+        var id = $("#serviceId").val();
+        var name = $("#serviceName").val();
+
+        $("#lbConfirmDelete").modal("hide");
+
+        Delete(id, name);
+    });
+
+    function Delete(id, name) {
+
+        @*$.ajax({
+            data: "serviceId=" + id + "&name=" + name,
+            url: "@Url.Action("Delete", "AutomaticPayment")",
+            dataType: 'html',
+            success: function (result) {
+                $('#listado').html(result);
+            }
+        });*@
+    }
+</script>

@@ -1,0 +1,52 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Presentation.Administration.Models.FaqModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Faq_Edit_Title</h2>
+<div class="faqPageDashboard">
+    <div class="row">
+        <div class="col-lg-8">
+
+            @using (Html.BeginForm("Edit", "Faq", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Id)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Order, "Orden")
+                    @Html.TextBoxFor(m => m.Order, new { @class = "form-control numeric" })
+                    @Html.ValidationMessageFor(m => m.Order)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Question, "Pregunta")
+                    @Html.TextBoxFor(m => m.Question, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Question)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Answer, "Respuesta")
+                    @Html.TextAreaFor(m => m.Answer, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Answer)
+                </div>
+            
+                @Html.ActionActionLink(Actions.FaqList, PresentationAdminStrings.Cancel, new Dictionary<string, object> { { "Class", "btn btn-default btn-cancel" } })
+            @*<a href="@Url.Action("Index", "Faq")" class="btn btn-default btn-cancel">Cancelar</a>*@
+                <a href="#" id="btnGuardar" class="btn btn-default">
+                    <strong>Guardar</strong>
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnGuardar").click(function () {
+            $(this).parents("form").submit();
+        });
+    });
+</script>

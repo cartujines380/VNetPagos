@@ -1,0 +1,72 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.HighwayAdmissionModel
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.Name) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "name_notreg" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "help-inline" })
+    </div>
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.Surname) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "surname_notreg" })
+        @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "help-inline" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.Email) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "email_notreg" })
+        @Html.ValidationMessageFor(m => m.Email, "" ,new { @class = "help-inline" })
+    </div>
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.IdentityNumber) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        @Html.TextBoxFor(m => m.IdentityNumber, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "ci_notreg" })
+        @Html.ValidationMessageFor(m => m.IdentityNumber, "", new { @class = "help-inline" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.PhoneNumber) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "phone_notreg" })
+        @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "help-inline" })
+    </div>
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.MobileNumber)
+        @Html.TextBoxFor(m => m.MobileNumber, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "mobile_notreg" })
+        @Html.ValidationMessageFor(m => m.MobileNumber)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.Address) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "address_notreg" })
+        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "help-inline" })
+    </div>
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.CallCenterPin) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        <h5 class="helpUser" style="display: inline">
+            <i class="icon-info-sign"></i>
+            <a class="preview" rel="popover"> @PresentationWebStrings.Resgistration_CallCenter_Question</a>
+        </h5>
+        @Html.TextBoxFor(m => m.CallCenterPin, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "pincallcenter_notreg" })
+        @Html.ValidationMessageFor(m => m.CallCenterPin, "", new { @class = "help-inline" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.Password) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        <h5 class="helpUser" style="display: inline">
+            <i class="icon-info-sign"></i>
+            <a class="previewPassword" rel="popover"> @PresentationWebStrings.Resgistration_Password_Requirements</a>
+        </h5>
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "pass_notreg" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "help-inline" })
+    </div>
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.PasswordConfirmation) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+        @Html.PasswordFor(m => m.PasswordConfirmation, new { @class = "form-control", style = "height: 38px;", autocomplete = "off", id = "passconfirm_notreg" })
+        @Html.ValidationMessageFor(m => m.PasswordConfirmation, "", new { @class = "help-inline" })
+    </div>
+</div>

@@ -1,0 +1,114 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Presentation.Web.Areas.Private.Models
+
+@{
+    ViewBag.Title = PresentationWebStrings.Services;
+}
+
+@model ServiceCardListModel
+<div class="container p25t">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 nameSection">@PresentationWebStrings.Card_CardList</h3>
+            <h4 class="pageDescription">@PresentationWebStrings.Services_Cards_Desc</h4>
+            <div class="horizontalLineGreyTitle"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="pageBoxCreditCards">
+        <div class="highlightArea">
+            <h3><i class="icon-angle-right"></i> @PresentationWebStrings.Data_Still_Now</h3>
+            <label><i class="icon-angle-right lightBlue"></i> @PresentationWebStrings.Service <span>@Model.ServiceName</span> </label>
+            @if (!String.IsNullOrEmpty(Model.ServiceRefName))
+            {
+                <label><i class="icon-angle-right lightBlue"></i> @Model.ServiceRefName: <span>@Model.ServiceRefValue</span></label>
+            }
+            @if (!String.IsNullOrEmpty(Model.ServiceRefName2))
+            {
+                <label><i class="icon-angle-right lightBlue"></i> @Model.ServiceRefName2: <span>@Model.ServiceRefValue2</span></label>
+            }
+            @if (!String.IsNullOrEmpty(Model.ServiceRefName3))
+            {
+                <label><i class="icon-angle-right lightBlue"></i> @Model.ServiceRefName3: <span>@Model.ServiceRefValue3</span></label>
+            }
+            @if (!String.IsNullOrEmpty(Model.ServiceRefName4))
+            {
+                <label><i class="icon-angle-right lightBlue"></i> @Model.ServiceRefName4: <span>@Model.ServiceRefValue4</span></label>
+            }
+            @if (!String.IsNullOrEmpty(Model.ServiceRefName5))
+            {
+                <label><i class="icon-angle-right lightBlue"></i> @Model.ServiceRefName5: <span>@Model.ServiceRefValue5</span></label>
+            }
+            @if (!String.IsNullOrEmpty(Model.ServiceRefName6))
+            {
+                <label><i class="icon-angle-right lightBlue"></i> @Model.ServiceRefName6: <span>@Model.ServiceRefValue6</span></label>
+            }
+        </div>
+    </div>
+    @Html.Hidden("serviceId", Model.ServiceId.ToString())
+
+    <div class="pageBox mb20" id="listado">
+        @Html.Partial("_CardList", Model.Cards)
+    </div>
+</div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#servicesLink").addClass("vnpTitleSelected");
+            $("#listado").on("click", "a.Default", function (e) {
+                e.preventDefault();
+                var id = $(this).attr("data-card");
+                var serviceId = $(this).attr("data-service");
+                var urlAction = "@Url.Action("AddCardToService", "Service", new {Area="Private"})";
+                $.ajax({
+                    data: "serviceId=" + serviceId + "&cardId=" + id,
+                    url: urlAction,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.ResponseType == RESPONSE.SUCCESS) {
+                            $('#listado').html(data.Content);
+                            ShowNotification(data.Title, data.Message, 'success');
+                        }
+                        if (data.ResponseType == RESPONSE.ERROR) {
+                            ShowNotification(data.Title, data.Message, 'error');
+                        }
+                    }
+                });
+            });
+
+            $("#listado").on("click", "a.DeleteCard", function (e) {
+                e.preventDefault();
+                var id = $(this).attr("data-card");
+                var serviceId = $(this).attr("data-service");
+                var urlAction = "@Url.Action("DeleteCardFromService", "Service", new { Area = "Private" })";
+                AjaxCall(id, serviceId, urlAction);
+            });
+
+            $("#listado").on("click", "a.InsertCard", function (e) {
+                e.preventDefault();
+                var id = $(this).attr("data-card");
+                var serviceId = $(this).attr("data-service");
+                var urlAction = "@Url.Action("AddCardToService", "Service", new { Area = "Private" })";
+                AjaxCall(id, serviceId, urlAction);
+            });
+        });
+
+        function AjaxCall(id, serviceId, urlAction) {
+            $.ajax({
+                data: "serviceId=" + serviceId + "&cardId=" + id,
+                url: urlAction,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.ResponseType == RESPONSE.SUCCESS) {
+                        $('#listado').html(data.Content);
+                        ShowNotification(data.Title, data.Message, 'success');
+                    }
+                    if (data.ResponseType == RESPONSE.ERROR) {
+                        ShowNotification(data.Title, data.Message, 'error');
+                    }
+                }
+            });
+        }
+    </script>

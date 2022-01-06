@@ -1,0 +1,84 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@model VisaNet.Presentation.Administration.Models.BinGroupModel
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.BinGroup_Details_Title</h2>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Name)
+                    @Html.TextBoxFor(b => b.Name, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.Label("Servicios disponibles") 
+                    <div class="selectMask w100 selectMultiple">
+                        @Html.DropDownListFor(m => m.Services, Model.ServicesSelectList,
+                                                  new Dictionary<string, object> { { "class", "selectpicker" }, { "disabled", "disabled" },{ "multiple", "multiple" }, { "data-selected-text-format", "count>3" }, { "data-actions-box", "true" }, { "data-icon-base", "fa" }, { "data-tick-icon", "fa-check" }, { "data-select-all-text", "Todos" }, { "data-deselect-all-text", "Ninguno" }, { "data-none-selected-text", "Ninguno seleccionado" }, { "data-count-selected-text", "Seleccionados {0} de {1}" } })
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 scrollTable">
+        <table class="table table-striped" style="margin-top: 10px;" id="binAdded">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Valor</th>
+                    <th>País</th>
+                    <th>Emisor</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Bins != null && Model.Bins.Any())
+                {
+                    foreach (var bin in Model.Bins)
+                    {
+                        <tr>
+                            <td>@bin.Name</td>
+                            <td>@bin.Value</td>
+                            <td>@bin.Country</td>
+                            <td>@bin.BankName</td>
+                            <td>@bin.CardTypeName</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <a href="@Url.Action("Index", "BinGroup")" class="btn btn-default">@PresentationAdminStrings.Back </a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#binAdded").dataTable({ "oLanguage": TABLES_LOCALE });
+
+         $("#Services").on('loaded.bs.select', function (e) {
+
+                    $("#Services").selectpicker('val', @Html.Raw(ViewBag.ServicesJson));
+
+                });
+    })
+</script>

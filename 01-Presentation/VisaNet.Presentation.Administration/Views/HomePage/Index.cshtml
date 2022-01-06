@@ -1,0 +1,63 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Presentation.Administration.Models.HomePageModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.HomePage</h2>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            Elemento
+                        </th>
+                        <th class="column-icon"></th>
+                        <th  class="column-icon"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.HomePageItem1)
+                        </td>
+                        <td>
+                            @Html.ActionActionLink(Actions.HomePageDetails, "<i class=\"fa fa-search\"></i>", new RouteValueDictionary { { "id", Model.HomePageItem1Id } }, new Dictionary<string, object> { { "Class", "detail btn-detalles" } })
+                        </td>
+                        <td>
+                            @Html.ActionActionLink(Actions.HomePageEdit, "<i class=\"fa fa-edit\"></i>", new RouteValueDictionary { { "id", Model.HomePageItem1Id } }, new Dictionary<string, object> { { "Class", "edit btn-editar" } })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.HomePageItem2)
+                        </td>
+                        <td>
+                            @Html.ActionActionLink(Actions.HomePageDetails, "<i class=\"fa fa-search\"></i>", new RouteValueDictionary { { "id", Model.HomePageItem2Id } }, new Dictionary<string, object> { { "Class", "detail btn-detalles" } })
+                        </td>
+                        <td>
+                            @Html.ActionActionLink(Actions.HomePageEdit, "<i class=\"fa fa-edit\"></i>", new RouteValueDictionary { { "id", Model.HomePageItem2Id } }, new Dictionary<string, object> { { "Class", "edit btn-editar" } })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.HomePageItem3)
+                        </td>
+                        <td>
+                            @Html.ActionActionLink(Actions.HomePageDetails, "<i class=\"fa fa-search\"></i>", new RouteValueDictionary { { "id", Model.HomePageItem3Id } }, new Dictionary<string, object> { { "Class", "detail btn-detalles" } })
+                        </td>
+                        <td>
+                            @Html.ActionActionLink(Actions.HomePageEdit, "<i class=\"fa fa-edit\"></i>", new RouteValueDictionary { { "id", Model.HomePageItem3Id } }, new Dictionary<string, object> { { "Class", "edit btn-editar" } })
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

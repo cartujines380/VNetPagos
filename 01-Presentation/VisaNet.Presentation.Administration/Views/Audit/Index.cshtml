@@ -1,0 +1,266 @@
+﻿@using VisaNet.Common.Logging.Entities
+@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Domain.EntitiesDtos.TableFilters.AuditFilterDto
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Audit</h2>
+
+@using (Html.BeginForm("AjaxHandler", "Audit", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <label>@PresentationAdminStrings.From</label>
+            @Html.EditorFor(m => m.From, new { @class = "w100" })
+        </div>
+
+        <div class="col-md-1">
+            <label>Hora</label>
+            <select name="@Html.NameFor(x => x.HoursFrom)" type="text" class="selectMask w100" value="@Model.HoursFrom" id="@Html.IdFor(m => m.HoursFrom)">
+                <option value="0">00</option>
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7">07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+            </select>
+        </div>
+
+        <div class="col-md-1">
+            <label>Minutos</label>
+            <select name="@Html.NameFor(x => x.MinutesFrom)" type="text" class="selectMask w100" value="@Model.MinutesFrom" id="@Html.IdFor(m => m.MinutesFrom)">
+                <option value="0">00</option>
+                <option value="5">05</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <option value="35">35</option>
+                <option value="40">40</option>
+                <option value="45">45</option>
+                <option value="50">50</option>
+                <option value="55">55</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label>@PresentationAdminStrings.To</label>
+            @Html.EditorFor(m => m.To, new { @class = "w100" })
+        </div>
+
+        <div class="col-md-1">
+            <label>Hora</label>
+            <select name="@Html.NameFor(x => x.HoursTo)" type="text" class="selectMask w100" value="@Model.HoursTo" id="@Html.IdFor(m => m.HoursTo)">
+                <option value="0">00</option>
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7">07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+            </select>
+        </div>
+
+        <div class="col-md-1">
+            <label>Minutos</label>
+            <select name="@Html.NameFor(x => x.MinutesTo)" type="text" class="selectMask w100" value="@Model.MinutesTo" id="@Html.IdFor(m => m.MinutesTo)">
+                <option value="0">00</option>
+                <option value="5">05</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <option value="35">35</option>
+                <option value="40">40</option>
+                <option value="45">45</option>
+                <option value="50">50</option>
+                <option value="55">55</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>@PresentationAdminStrings.Audit_User</label>
+            @Html.TextBoxFor(m => m.User, new { @class = "form-control w100", autocomplete = "off" })
+        </div>
+
+        <div class="col-md-6">
+            <label>@PresentationAdminStrings.Audit_LogUserType</label>
+            @Html.DropDownListFor(m => m.LogUserType, EnumHelpers.ConvertToSelectList(typeof(LogUserType), EnumsStrings.ResourceManager), PresentationCoreMessages.Common_Select, new { @style = "color:#999", @class = "form-control w100" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>@PresentationAdminStrings.Audit_LogOperationType</label>
+            @Html.DropDownListFor(m => m.LogOperationType, EnumHelpers.ConvertToSelectListSorted(typeof(LogOperationType), EnumsStrings.ResourceManager), PresentationCoreMessages.Common_Select, new { @style = "color:#999", @class = "form-control w100" })
+        </div>
+
+        <div class="col-md-6">
+            <label>Filtro de texto (Mensaje)</label>
+            <input type="text" id="@Html.IdFor(m => m.Message)" value="@Model.Message" name="@Html.NameFor(x => x.Message)" class="form-control w100" autocomplete="off" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-xs-6 p5l pr0">
+                <a class="btn btn-default btn-standar mt10 w100" id="lnkFilter">@PresentationAdminStrings.Common_Search</a>
+            </div>
+            <div class="col-xs-6 p5l pr0">
+                <a class="btn btn-default btn-standar mt10 w100" id="lnkExcel" href="@Url.Action("ExcelExport", "Audit")" target="_blank">Exportar</a>
+            </div>
+        </div>
+    </div>
+}
+
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table id="tblList" class="table table-striped table-bordered table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>@PresentationAdminStrings.Audit_DateTime</th>
+                        <th>@PresentationAdminStrings.Audit_Ip</th>
+                        <th>@PresentationAdminStrings.Audit_LogUserType</th>
+                        <th>@PresentationAdminStrings.Audit_LogOperationType</th>
+                        <th>@PresentationAdminStrings.Audit_SystemUser</th>
+                        <th>@PresentationAdminStrings.Audit_ApplicationUser</th>
+                        <th>@PresentationAdminStrings.Audit_AnonymousUser</th>
+                        <th><i class=""></i></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="divLb"></div>
+
+<script type="text/javascript">
+    var oTable;
+
+    $(document).ready(function() {
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "From", "value": $("#@Html.IdFor(m => m.From)").val() });
+            aoData.push({ "name": "To", "value": $("#@Html.IdFor(m => m.To)").val() });
+            aoData.push({ "name": "LogOperationType", "value": $("#@Html.IdFor(m => m.LogOperationType)").val() });
+            aoData.push({ "name": "LogUserType", "value": $("#@Html.IdFor(m => m.LogUserType)").val() });
+            aoData.push({ "name": "User", "value": $("#@Html.IdFor(m => m.User)").val() });
+            aoData.push({ "name": "Message", "value": $("#@Html.IdFor(m => m.Message)").val() });
+            aoData.push({ "name": "HoursFrom", "value": $("#@Html.IdFor(m => m.HoursFrom)").val() });
+            aoData.push({ "name": "HoursTo", "value": $("#@Html.IdFor(m => m.HoursTo)").val() });
+            aoData.push({ "name": "MinutesFrom", "value": $("#@Html.IdFor(m => m.MinutesFrom)").val() });
+            aoData.push({ "name": "MinutesTo", "value": $("#@Html.IdFor(m => m.MinutesTo)").val() });
+        }
+
+        function drawTable() {
+            oTable = applyDatatableExternalFilters($('#tblList'),
+                null,
+                [
+                    { "mDataProp": "DateTime", "sWidth": 150 },
+                    { "mDataProp": "IP" },
+                    { "mDataProp": "LogUserType", "sWidth": 120 },
+                    { "mDataProp": "LogOperationType" },
+                    { "mDataProp": "SystemUser" },
+                    { "mDataProp": "ApplicationUser" },
+                    { "mDataProp": "AnonymousUser" },
+                    {
+                        "sName": "Details",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function(oObj) {
+                            return '@Html.ActionGridActionLink(Actions.AuditDetails, "<i class=\"fa fa-search\"></i>", new Dictionary<string, object> {{"Class", "btn-details"}})';
+                        }
+                    }
+                ],
+                '@Url.Action("AjaxHandler", "Audit")',
+             externalFilters,
+             [[0, "desc"]]);
+        }
+
+        $("#lnkFilter").click(function (e) {
+            e.preventDefault();
+            drawTable();
+            oTable.fnFilter();
+        });
+
+        $("#lnkExcel").click(function (e) {
+            var h = '@Url.Action("ExcelExport", "Audit")';
+            $(this).attr("href", h);
+            var form = $("#form");
+            var href = $(this).attr("href");
+            $(this).attr("href", href +"?"+ form.serialize());
+
+        });
+
+
+        $("#tblList").on("click", ".btn-details", function (e) {
+            e.preventDefault();
+
+            $.post($(this).attr("href"), function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $("#divLb").html(data.Content);
+
+                    $("#lbDetails").modal();
+                }
+                if (data.ResponseType == RESPONSE.ERROR) {
+                    ShowNotification(data.Title, data.Message, 'error');
+                }
+            });
+        });
+
+    });
+
+</script>

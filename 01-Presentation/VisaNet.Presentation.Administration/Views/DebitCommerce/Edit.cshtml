@@ -1,0 +1,150 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model VisaNet.Presentation.Administration.Models.CommerceModel
+
+<h2>Comercio de Debito - Editar</h2>
+
+@using (Html.BeginForm("Edit", "DebitCommerce", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Id)
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(b => b.Name, new { @class = "obligatoryField", @disabled = "disabled" }) *
+                        @Html.TextBoxFor(b => b.Name, new { @class = "form-control", autocomplete = "off" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.Name)
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ServiceId)
+                        <div class="selectMask w100 selectMultiple">
+                            @Html.DropDownListFor(m => m.ServiceId, (IEnumerable<SelectListItem>)ViewBag.ServicesLigthList, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <label>Producto:</label>
+                </div>
+            </div>
+
+            @foreach (var productModel in Model.ProductosListModel)
+            {
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label>@productModel.Description</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label>Propiedades:</label>
+                    </div>
+                </div>
+                foreach (var productPropertyModel in productModel.ProductPropertyModelList.OrderBy(x => x.InputSequence))
+                {
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <div class="form-group">
+                                @Html.CheckBoxFor(b => productPropertyModel.Requiered, new { @disabled = "disabled" })
+                                @Html.LabelFor(b => productPropertyModel.Requiered)
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                @Html.LabelFor(b => productPropertyModel.Name)
+                                @Html.TextBoxFor(b => productPropertyModel.Name, new { @class = "form-control", @disabled = "disabled" })
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                @Html.LabelFor(b => productPropertyModel.InputSequence)
+                                @Html.TextBoxFor(b => productPropertyModel.InputSequence, new { @class = "form-control", @disabled = "disabled" })
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                @Html.LabelFor(b => productPropertyModel.ContentType)
+                                @Html.TextBoxFor(b => productPropertyModel.ContentType, new { @class = "form-control", @disabled = "disabled" })
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                @Html.LabelFor(b => productPropertyModel.MaxSize)
+                                @Html.TextBoxFor(b => productPropertyModel.MaxSize, new { @class = "form-control", @disabled = "disabled" })
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            @Html.HiddenFor(m => m.UploadImageDisabled)
+            @if (!Model.UploadImageDisabled)
+            {
+                <div class="row">
+                    <div class="col-lg-1">
+                        <div class="form-group">
+                            <label>Imagen</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <span id="imageNameLabel">@Model.ImageName</span>
+                            <input type="file" name="ImageName" id="ImageName" />
+                            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                            {
+                                <a id="imageSee" href="@Model.ImageUrl" target="_blank"> VER </a>
+                                <a href="" id="dImage" target=""> ELIMINAR </a>
+                            }
+                            @Html.HiddenFor(s => s.DeleteImage)
+                            @Html.HiddenFor(s => s.ImageName)
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.HiddenFor(s => s.Id)
+                        <a href="@Url.Action("Index", "DebitCommerce")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+                        <a href="#" id="btnGuardar" class="btn btn-default lbApprove">
+                            <strong>@PresentationAdminStrings.Save</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        if ($('#imageSee').length > 0) {
+            $('#ImageName').addClass('hide');
+        }
+
+        $("#dImage").click(function (e) {
+            e.preventDefault();
+            $("#@Model.DeleteImage").val(true);
+            $("#imageSee").addClass("hide");
+            $("#dImage").addClass("hide");
+            $('#ImageName').removeClass("hide");
+            $('#imageNameLabel').addClass("hide");
+            $('#@Model.ImageName').val("");
+        });
+
+        $("#btnGuardar").click(function () {
+            $(this).parents("form").submit();
+        });
+
+    });
+</script>

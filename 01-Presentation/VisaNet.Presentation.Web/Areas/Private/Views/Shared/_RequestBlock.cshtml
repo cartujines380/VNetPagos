@@ -1,0 +1,71 @@
+﻿@using System.Configuration
+@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos.Enums
+
+@model VisaNet.Presentation.Web.Areas.Private.Models.DebitRequestTableModel
+
+<div class="itemBox serviceItem">
+    <div class="row">
+        <div class="col-md-8 col-sm-8 col-xs-12 serviceInformation">
+            <div class="col-md-3 pr0 pl0 serviceImage">
+                @if (!string.IsNullOrEmpty(Model.DebitImageUrl))
+                {
+                    <img src="@Model.DebitImageUrl" width="54" />
+                }
+                else
+                {
+                    <img src="@ConfigurationManager.AppSettings["DefaultServiceImage"]" width="54" />
+                }
+            </div>
+            <div class="col-md-9 serviceDetail">
+                <ul>
+                    <li>
+                        <span>@PresentationWebStrings.Filters_DebitRequestState</span>
+                        <span class="titleCard mb20">@EnumsStrings.ResourceManager.GetString(string.Format("{0}_{1}", typeof(DebitRequestStateDto).Name, Enum.GetName(typeof(DebitRequestStateDto), Model.State)))</span></li>
+                    <li><span class="bold">@PresentationWebStrings.Commerce:</span>@Model.MerchantName - @Model.MerchantProductName</li>                    
+                    <!--@foreach (var reference in Model.References)
+                    {
+                        <li><span class="bold">@reference.Name:</span>@reference.Value</li>
+                    }-->
+                    @*@if (!string.IsNullOrEmpty(Model.CardDescription))
+                    {
+                    <li><span class="bold">@PresentationWebStrings.Payment_Card_Description:</span>@Model.CardDescription</li>
+                    }*@
+                    
+                    <li><span class="bold">@PresentationWebStrings.Card:</span>@Model.CardNumber</li>
+                    <li><span class="bold">@PresentationWebStrings.ReferenceNumber:</span>@Model.ReferenceNumber.ToString("D9")</li>
+                    <li><span class="bold">@PresentationWebStrings.DebitRequest_RequestDate:</span>@Model.CreationDate.ToShortDateString()</li>                    
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 serviceActions">
+            <ul>
+                @if (Model.State == DebitRequestStateDto.AcceptedCancellation || Model.State == DebitRequestStateDto.Rejected)
+                {
+                    <li><a class="Delete" data-id="@Model.Id"><i class="icon-remove"></i>@PresentationWebStrings.Eliminate</a></li>
+                }
+                @if(Model.State == DebitRequestStateDto.Accepted 
+                    || Model.State == DebitRequestStateDto.Pending)
+                {
+                    <li><a class="Cancel" data-id="@Model.Id"><i class="icon-remove"></i>@PresentationWebStrings.Cancel</a></li>
+                }
+                @if (Model.State == DebitRequestStateDto.RejectedCancellation)
+                {
+                    <li><a class="rejected-cancellation-info"><i class="icon-warning-sign visanetOrangeTxt"></i>Importante</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.rejected-cancellation-info').popover({
+            'trigger': 'hover',
+            'html': true,
+            'content': function () {
+                return "La solicitud de baja fue rechazada, comunicate con el Call Center de visanet";
+            }
+        });
+    });
+</script>

@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HighwayLayout.cshtml";
+}
+@model VisaNet.Presentation.Web.Models.AppLocalModel
+
+
+
+
+<div class="container p25t" id="divIndex">
+    
+    <div class="pageBox mb20">
+        <div class="formMargin">
+            <div class="pageFormat">
+                <div class="pages">
+                    @Html.Raw(Model.ServiceIntroContent)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 appstitle" id="titleNewUser">¿Queres poder pagar el servicio @Model.ServiceName por medio de VisaNetPagos?</h3>
+        </div>
+        <div class="clearfix"></div>
+        <div class="horizontalLineGrey"></div>
+    </div>*@
+    
+   
+
+    @using (Html.BeginForm("Index", "AppAdmission", FormMethod.Post, new { id = "frmSubmit" }))
+    {
+        @Html.HiddenFor(x => x.IdOperacion)
+        <input class="hidden" name="RegisteredUser" id="RegisteredUser" value="true" />
+        <input class="hidden" name="PermiteCambioEmail" id="PermiteCambioEmail" value="S" />
+        <input class="hidden" name="UrlCallback" id="UrlCallback" value="@Url.Action("Index","AppLocal")"/>
+        <!-- SECCION BOTONES -->
+        <div class="row buttonsActionsBox " id="buttonsActionsBox">
+            <div class="col-md-8"></div>
+            <div class="col-md-4 pl0 pr0">
+                <div class="col-xs-6  pr0 pl0">
+                    @*<button id="btnBack" class="btn btn-default btn-cancelar mt10 w100 hidden">Atr&aacute;s <i class="icon-arrow-left"></i></button>*@
+                </div>
+                <div class="col-xs-6 p5l pr0">
+                    <button id="btnNext" class="btn btn-default btn-action mt10 w100">Siguiente <i class="icon-arrow-right"></i></button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div><!-- TERMINA SECCION BOTONES-->
+    }
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#btnNext").click(function (e) {
+            e.preventDefault();
+            if ($("#frmSubmit").valid()) {
+                $("#frmSubmit").submit();
+            }
+        });
+    });
+
+</script>

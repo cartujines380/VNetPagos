@@ -1,0 +1,102 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@model IEnumerable<VisaNet.Presentation.Web.Areas.Private.Models.DebitRequestTableModel>
+
+<!-- box del panel 3-->
+
+<div id="debitsDiv" class="pageBox mb10" style="margin-bottom: 50px !important;">
+    <div class="formMargin">
+        <h4 class="upDownControler">
+            <a id="ocultar_debit_history">
+                <!--<i id="debit_history_up" class="icon-chevron-up"></i>
+                <i id="debit_history_down" class="hide icon-chevron-down"></i>--> @PresentationWebStrings.DebitRequests_Historical
+            </a>
+        </h4>
+
+        <div class="loadingMessaje" id="loadingDebits">
+            <div class="loading">@PresentationWebStrings.Loading_DebitHistory</div>
+        </div>
+        <form id="filterForm">
+            <input type="hidden" id="DebitRequestIdToCancel" />
+        </form>
+        
+        <div id="history_debits_data" class="hide">
+            @if (Model == null || !Model.Any())
+            {
+                <div id="debit_history" class="suggestionsBox">
+                    <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@PresentationWebStrings.DebitRequests_Empty</h5>
+
+                </div>
+                <a href="@Url.Action("Service", "Debit", new { Area = "Debit" })" class="btn btn-default btn-link-box"><i class="icon-plus"></i>Adherirme </a>
+            }
+            else
+            {
+                <div id="debit_history">
+                    @for (int i = 0; i < Model.Count(); i++)
+                    {
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.Partial("_RequestBlock", Model.ElementAt(i))
+                            </div>
+
+                            @if (Model.Count() > (i + 1))
+                            {
+                                <div class="col-md-6">
+                                    @Html.Partial("_RequestBlock", Model.ElementAt(i + 1))
+                                </div>
+                            }
+                            @{i = i + 1;}
+                        </div>
+                    }
+                </div>
+                if (Model.Count() == 4)
+                {
+                    <a href="@Url.Action("Requests", "DebitManagment")" class="btn btn-default btn-link pl0"><i class="icon-chevron-right"></i> @PresentationWebStrings.ViewMore</a>
+                }
+                <a href="@Url.Action("Service", "Debit", new { area = "Debit" })" class="btn btn-default btn-link-box"><i class="icon-plus"></i> @PresentationWebStrings.RequestDebit</a>
+            }
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var loadingMessages = ["Aguardá un instante, estamos obteniendo tus solicitudes.",
+           "Esta operación puede tardar algunos segundos.",
+           "Espere por favor.",
+           "Estamos teniendo demoras al consultar sus solicitudes, por favor aguarde."];
+
+        $("#ocultar_debit_history").click(function () {
+            $("#debit_history").toggle("slow");
+            if ($("#debit_history_up").hasClass("hide")) {
+                $("#debit_history_down").addClass("hide");
+                $("#debit_history_up").removeClass("hide");
+            } else {
+                $("#debit_history_up").addClass("hide");
+                $("#debit_history_down").removeClass("hide");
+            }
+        });
+
+        var div = $("#loadingDebits .loading");
+        var index = 0;
+        setInterval(function () {
+            div.text(loadingMessages[index]);
+            index = (index + 1) % loadingMessages.length;
+        }, 15000);
+
+        $("#history_debits_data").on("click", 'a.Delete', function (e) {
+            e.preventDefault();
+            var id = $(this).data("id");
+            $('#DebitRequestIdToCancel').val(id);
+
+            $('#lbConfirmDelete').modal('show');
+        });
+        $("#history_debits_data").on("click", 'a.Cancel', function (e) {
+            e.preventDefault();
+            var id = $(this).data("id");
+            $('#DebitRequestIdToCancel').val(id);
+
+            $('#lbConfirmCancel').modal('show');
+        });
+    });
+</script>

@@ -1,0 +1,207 @@
+﻿@using VisaNet.Common.Resource.Enums
+@using VisaNet.Common.Resource.Helpers
+@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities.Enums
+@using VisaNet.Domain.EntitiesDtos.Enums
+@using VisaNet.Presentation.Administration.MvcHtmlHelpers
+@model VisaNet.Domain.EntitiesDtos.TableFilters.BinFilterDto
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@PresentationAdminStrings.Bin</h2>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.ValueFrom</label>
+        @Html.TextBoxFor(m => m.ValueFrom, new { @class = "form-control w100 numeric", @placeholder = "Ingrese el valor desde", autocomplete = "off" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.ValueTo</label>
+        @Html.TextBoxFor(m => m.ValueTo, new { @class = "form-control w100 numeric", @placeholder = "Ingrese el valor hasta", autocomplete = "off" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Name</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control w100", @placeholder = "Ingrese el nombre a buscar", autocomplete = "off" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Gateway</label>
+        @Html.TextBoxFor(m => m.Gateway, new { @class = "form-control w100", @placeholder = "Ingrese la pasarela a buscar", autocomplete = "off" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Country</label>
+        @Html.TextBoxFor(m => m.Country, new { @class = "form-control w100", @placeholder = "Ingrese el país a buscar", autocomplete = "off" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Bank</label>
+        @Html.TextBoxFor(m => m.Bank, new { @class = "form-control w100", @placeholder = "Ingrese el emisor a buscar", autocomplete = "off" })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.CardTypes</label>
+        @Html.DropDownList("FilterCardType", EnumHelpers.ConvertToSelectList(typeof(CardTypeDto), EnumsStrings.ResourceManager), PresentationAdminStrings.CardType, new Dictionary<string, object> { { "style", "width: 100%; height: 100%; color:#999" }, { "class", "form-control w100" } })
+    </div>
+    <div class="col-md-3">
+        <label>@PresentationAdminStrings.Status</label>
+        <select class="form-control w100" id="FilterStatus" name="FilterStatus" style="width: 100%; height: 100%; color:#999">
+            <option value="">@PresentationAdminStrings.Status</option>
+            <option value="0">Bloqueado</option>
+            <option value="1">Habilitado</option>
+        </select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-default btn-standar mt10 w100" id="execute">@PresentationAdminStrings.Common_Search</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2></h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover tablesorter">
+                <thead>
+                    <tr>
+                        <th>@PresentationAdminStrings.Name <i class=""></i></th>
+                        <th>@PresentationAdminStrings.Value <i class=""></i></th>
+                        <th>@PresentationAdminStrings.Gateway <i class=""></i></th>
+                        <th>@PresentationAdminStrings.Country <i class=""></i></th>
+                        <th>@PresentationAdminStrings.Bank <i class=""></i></th>
+                        <th>@PresentationAdminStrings.CardType <i class=""></i></th>
+                        <th>@PresentationAdminStrings.AffiliationCardName<i class=""></i></th>
+                        <th><i class=""></i></th>
+                        <th>@PresentationAdminStrings.Status<i class=""></i></th>
+                        <th><i class=""></i></th>
+                        <th><i class=""></i></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        @Html.ActionActionLink(Actions.BinsCreate, "<i class=\"icon-plus\"></i>" + PresentationAdminStrings.Create, new Dictionary<string, object> { { "Class", "btn btn-default" }, { "id", "btnNew" } })
+    </div>
+</div>
+
+@Html.Partial("_DeleteLightbox")
+@Html.Partial("_EditLightbox")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var dataTableFilters;
+
+        function externalFilters(aoData) {
+            aoData.push({ "name": "ValueFrom", "value": $("#@Html.IdFor(m => m.ValueFrom)").val() });
+            aoData.push({ "name": "ValueTo", "value": $("#@Html.IdFor(m => m.ValueTo)").val() });
+            aoData.push({ "name": "Name", "value": $("#@Html.IdFor(m => m.Name)").val() });
+            aoData.push({ "name": "Gateway", "value": $("#@Html.IdFor(m => m.Gateway)").val() });
+            aoData.push({ "name": "Country", "value": $("#@Html.IdFor(m => m.Country)").val() });
+            aoData.push({ "name": "Bank", "value": $("#@Html.IdFor(m => m.Bank)").val() });
+            aoData.push({ "name": "FilterCardType", "value": $("#FilterCardType").val() });
+            aoData.push({ "name": "FilterStatus", "value": $("#FilterStatus").val() });
+        }
+        function drawTable() {
+            dataTableFilters = applyDatatableExternalFilters($('table'),
+                [0],
+                [
+                    { "mDataProp": "Name" },
+                    { "mDataProp": "Value" },
+                    { "mDataProp": "GatewayName", "bSortable": false },
+                    { "mDataProp": "Country" },
+                    //{ "mDataProp": "Bank", "bSortable": true },
+                    {
+                        "sName": "Bank",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": true,
+                        "bSortable": true,
+                        "fnRender": function (oObj) {
+                            return "<a target='_blank' href='@Url.Action("Index", "Bank")?BankName=" + oObj.aData.Bank + "'>" + oObj.aData.Bank + "</a>";
+                        }
+                    },
+                    { "mDataProp": "CardType" },
+                    { "mDataProp": "AfiliationCardName" },
+                    {
+                        "sName": "Details",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.BinsDetails, "<i class=\"fa fa-search\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                        }
+                    },
+                    {
+                        "sName": "Details",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": true,
+                        "fnRender": function (oObj) {
+                            return oObj.aData.StatusActive ?
+                                '@Html.ActionGridActionLink(Actions.BinsEdit, "<i class=\"fa fa-toggle-on fa-2x\"></i>", new Dictionary<string, object> { { "Class", "btn-change" } })' :
+                                '@Html.ActionGridActionLink(Actions.BinsEdit, "<i class=\"fa fa-toggle-off fa-2x\"></i>", new Dictionary<string, object> { { "Class", "btn-change" } })';
+                        }
+                    },
+                    {
+                        "sName": "Edit",
+                        "sClass": "column-icon",
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.BinsEdit, "<i class=\"fa fa-edit\"></i>", new Dictionary<string, object> { { "Class", "btn-editar" } })';
+                        }
+                    },
+                    {
+                        "sName": "Borrar",
+                        "sClass": "column-icon",
+                        //esto le indica que no lo mapee con el array
+                        "sDefaultContent": "",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "fnRender": function (oObj) {
+                            return '@Html.ActionGridActionLink(Actions.BinsDelete, "<i class=\"fa fa-trash-o\"></i>", new Dictionary<string, object> { { "Class", "btn-editar lnkDelete" } })';
+                        }
+                    }
+                ],
+                '@Url.Action("AjaxHandler", "Bins")', externalFilters, null, [[0, "asc"]]
+            );
+        }
+           
+        $('table').on("click", ".lnkDelete", function (e) {
+            if (!$(this).hasClass("disabled")) {
+                e.preventDefault();
+                tr = $(this).parents("tr");
+                var lb = $('#lbConfirmDelete');
+                $("#lbHiddenUrl", lb).val($(this).attr("href"));
+                lb.modal();
+            }
+        });
+
+        $('table').on("click", ".btn-change", function (e) {
+            if (!$(this).hasClass("disabled")) {
+                e.preventDefault();
+                tr = $(this).parents("tr");
+                var lb = $('#lbConfirmChange');
+                var url = $(this).attr("href").split('/');
+                $("#lbChangeHiddenUrl", lb).val("Bins/ChangeState/" + url[url.length - 1]);
+                lb.modal();
+            }
+        });
+
+        $("#execute").click(function (e) {
+            e.preventDefault();
+            drawTable();
+            dataTableFilters.fnFilter();
+        });
+
+    });
+
+</script>

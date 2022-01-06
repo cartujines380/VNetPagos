@@ -1,0 +1,24 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model IEnumerable<VisaNet.Presentation.Web.Areas.Private.Models.BillToPayModel>
+
+<div class="row">
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="suggestionsBox">
+            <h5><i class="icon-warning-sign visanetOrangeTxt"></i>@(ViewBag.IsSearch ? PresentationCoreMessages.Common_NoSearchResults : PresentationWebStrings.Bills_Empty_List)</h5>
+        </div>
+    }
+    else
+    {
+        foreach (var bill in Model)
+        {
+            <div class="col-md-6">
+                <!-- item para pagos -->
+                @Html.Partial("_BillBlock", bill)
+                <!-- fin del item para pagos -->
+            </div>
+        }
+    }
+
+</div>

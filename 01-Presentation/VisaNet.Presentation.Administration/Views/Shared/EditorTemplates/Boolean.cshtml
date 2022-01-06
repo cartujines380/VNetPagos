@@ -1,0 +1,24 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model bool?
+@{
+    bool? modelValue = null;
+    if (ViewData.Model != null)
+    {
+        modelValue = Convert.ToBoolean(ViewData.Model, System.Globalization.CultureInfo.InvariantCulture);
+    }
+
+    var triStateValues = new List<SelectListItem>
+    {
+        new SelectListItem {Text = PresentationCoreMessages.Common_Select, Value = String.Empty, Selected = !modelValue.HasValue},
+        new SelectListItem {Text = PresentationCoreMessages.Common_Yes, Value = "True", Selected = modelValue.HasValue && modelValue.Value},
+        new SelectListItem {Text = PresentationCoreMessages.Common_No, Value = "False", Selected = modelValue.HasValue && !modelValue.Value},
+    };
+}
+@if (ViewData.ModelMetadata.IsNullableValueType)
+{
+    @Html.DropDownList("", triStateValues)
+}
+else
+{
+    @Html.CheckBox("", modelValue ?? false)
+}

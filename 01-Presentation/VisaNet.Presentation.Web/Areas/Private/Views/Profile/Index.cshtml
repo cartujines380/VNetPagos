@@ -1,0 +1,138 @@
+﻿@using System.Web.Mvc.Html
+@using VisaNet.Common.Resource.Presentation
+
+@model VisaNet.Presentation.Web.Areas.Private.Models.ProfileModel
+
+<div class="container p25t">
+    @using (Html.BeginForm("Edit", "Profile", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        <div class="pageBox mb20">
+            <div class="formMargin">
+                <h4 class="lightBlue">@PresentationWebStrings.Profile_Subtitle</h4>
+                <div class="horizontalLineWhite"></div>
+                <!-- campos obligatorios -->
+                <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+                <!-- campos obligatorios -->
+                <div class="row">
+                    <div class="col-md-12 hide generalError" id="generalError">
+                        <i class="icon-warning-sign"></i>
+                        @PresentationWebStrings.From_General_Error
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(p => p.Name) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Name, new { @class = "w100", @placeholder = PresentationWebStrings.Name_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Name)
+
+                        @Html.LabelFor(p => p.Surname) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Surname, new { @class = "w100", @placeholder = PresentationWebStrings.Surname_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Surname)
+
+                        @Html.LabelFor(p => p.Email) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Email, new { @class = "w100", @placeholder = PresentationWebStrings.Email_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Email)
+                        @Html.HiddenFor(p => p.OldEmail)
+
+                        @Html.LabelFor(p => p.IdentityNumber)
+                        @Html.TextBoxFor(p => p.IdentityNumber, new { @class = "w100", @placeholder = PresentationWebStrings.IdentityNumber_Placeholder, autocomplete = "off" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(p => p.MobileNumber)
+                        @Html.TextBoxFor(p => p.MobileNumber, new { @class = "w100", @placeholder = PresentationWebStrings.MobileNumber_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.MobileNumber)
+
+                        @Html.LabelFor(p => p.PhoneNumber)
+                        @Html.TextBoxFor(p => p.PhoneNumber, new { @class = "w100", @placeholder = PresentationWebStrings.PhoneNumber_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.PhoneNumber)
+
+                        @Html.LabelFor(p => p.Address) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.Address, new { @class = "w100", @placeholder = PresentationWebStrings.Address_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.Address)
+
+                        @Html.LabelFor(p => p.Password)<br />
+                        <div class="col-xs-6  pr0 pl0">
+                            <a href="@Url.Action("ChangePassword", "Profile")" class="btn btn-default btn-standar w100" role="button"> @PresentationWebStrings.Profile_ChangePassword </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pageBox mb20">
+            <div class="formMargin">
+                <h4 class="lightBlue">@PresentationWebStrings.CallCenter</h4>
+                <div class="horizontalLineWhite"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(p => p.CallCenterKey) <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>
+                        @Html.TextBoxFor(p => p.CallCenterKey, new { @class = "w100", @placeholder = PresentationWebStrings.CallCenterKey_Placeholder, autocomplete = "off" })
+                        @Html.ValidationMessageFor(p => p.CallCenterKey)
+                        <h5 class="helpUser">
+                            <i class="icon-info-sign"></i>
+                            <a class="preview" rel="popover"> @PresentationWebStrings.Resgistration_CallCenter_Question</a>
+                        </h5>
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+            </div>
+        </div>
+        <div class="pageBox mb20">
+            <div class="formMargin">
+                <h4 class="lightBlue">@PresentationWebStrings.Notifications</h4>
+                <div class="horizontalLineWhite"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(p => p.RecieveNewsletter)
+                        @Html.CheckBoxFor(p => p.RecieveNewsletter, new { @style = "margin-left: 5px" })
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row buttonsActionsBox">
+            <div class="col-md-4 pl0 pr0">
+                <div class="col-xs-6  pr0 pl0">
+
+                    <a href="@Url.Action("Index","Dashboard")" class="btn btn-default btn-cancelar mt10 w100" role="button"> @PresentationWebStrings.Cancel <i class="icon-remove"></i> </a>
+                </div>
+                <div class="col-xs-6 p5l pr0">
+                    <a href="#" class="btn btn-default btn-action mt10 w100 lbApprove" role="button"> @PresentationWebStrings.Save <i class="icon-ok"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#profileLink").addClass("vnpTitleSelected");
+
+        $("a.lbApprove").click(function () {
+            if ($(this).parents("form").valid()) {
+                showLoaderFullScreen();
+                //changeStateGeneralErrorForm();
+                $(this).parents("form").submit();
+            } else {
+                if ($("#generalError").hasClass("hide")) {
+                    changeStateGeneralErrorForm();
+                }
+            }
+        });
+        $('.preview').popover({
+            'trigger': 'hover',
+            'html': true,
+            'content': function () {
+                return "@PresentationWebStrings.Resgistration_CallCenter_Desc";
+            }
+        });
+
+        $("#@Html.IdFor(x => x.PhoneNumber)").numeric();
+        $("#@Html.IdFor(x => x.MobileNumber)").numeric();
+        $("#@Html.IdFor(x => x.IdentityNumber)").numeric();
+
+    });
+</script>

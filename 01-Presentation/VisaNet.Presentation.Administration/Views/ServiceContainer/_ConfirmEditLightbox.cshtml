@@ -1,0 +1,56 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ServiceContainerModel
+
+<div id="lbConfirmEdit" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>@PresentationAdminStrings.Warning</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>@PresentationAdminStrings.ServiceContainer_Warning_ChangeBinGroups</p>
+                <br />
+                <div class="form-group">
+                    <label for="chkPropagateChanges">¿Deseas aplicar los cambios a los servicios hijos?</label>
+                    <input type="checkbox" id="chkPropagateChanges" name="chkPropagateChanges" checked="checked" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default lb-accept" id="btnConfirmEdit">@PresentationAdminStrings.Common_Confirm</a>
+                <a href="#" class="btn lb-cancel" id="btnCancelEdit">@PresentationAdminStrings.Cancel</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#btnConfirmEdit").click(function (e) {
+            e.preventDefault();
+            showBlockUI('Procesando...');
+            $("#formServiceContainer").submit();
+        });
+
+        $("#chkPropagateChanges").click(function (e) {
+            if ($("#chkPropagateChanges").is(':checked')) {
+                $("#@Html.IdFor(x => x.PropagateChangesToChildServices)").val(true);
+            } else {
+                $("#@Html.IdFor(x => x.PropagateChangesToChildServices)").val(false);
+            }
+        });
+
+        $("#btnCancelEdit").click(function (e) {
+            e.preventDefault();
+            $("#lbConfirmEdit").modal("hide");
+        });
+
+    });
+
+</script>

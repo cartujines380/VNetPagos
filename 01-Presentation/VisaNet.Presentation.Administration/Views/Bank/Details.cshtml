@@ -1,0 +1,87 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Domain.EntitiesDtos;
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model VisaNet.Presentation.Administration.Models.BankModel
+
+<h2>@PresentationAdminStrings.Bank_Detail_Title</h2>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Name)
+                    @Html.TextBoxFor(b => b.Name, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.Code)
+                    @Html.TextBoxFor(s => s.Code, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.QuotesPermited)
+                    @Html.TextBoxFor(s => s.QuotesPermited, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="col-md-12 scrollTable" style="padding-left: 0px;">
+            @Html.Label("Programas de tarjetas disponibles", new { @class = "obligatoryField" })
+            <table class="table table-striped" id="affiliationTable">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Codigo</th>
+                        <th>Activo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.AfiliationCard != null && ((List<AffiliationCardDto>)ViewBag.AfiliationCard).Any())
+                    {
+                        foreach (var ac in ((List<AffiliationCardDto>)ViewBag.AfiliationCard))
+                        {
+                            <tr>
+                                <td><a target='_blank' href='@Url.Action("Edit", "AffiliationCard")?id=@ac.Id'>@ac.Name</a></td>
+                                <td>@ac.Code</td>
+                                @if (ac.Active)
+                                {
+                                    <td><i class="fa fa-toggle-on fa-2x"></i></td>
+                                }
+                                else
+                                {
+                                    <td><i class="fa fa-toggle-off fa-2x"></i></td>
+                                }
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <a href="@Url.Action("Index", "Bank")" class="btn btn-default">@PresentationAdminStrings.Back </a>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#affiliationTable").dataTable({ "oLanguage": TABLES_LOCALE });
+
+
+    })
+</script>
+

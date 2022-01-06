@@ -1,0 +1,34 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Presentation.Administration.Models
+@model SystemUserModel
+
+<div class="row-fluid form-table">
+    <div role="grid" class="dataTables_wrapper" id="table">
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-hover dataTable" id="table">
+            <thead>
+                <tr>
+                    <th>@PresentationAdminStrings.Roles</th>
+                    <th style="width: 20px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var role in (IEnumerable<RoleModel>)ViewBag.Roles)
+                {
+                    <tr>
+                        <td>@role.Name</td>
+                        <td>
+                            @if (Model != null && Model.Roles != null)
+                            {
+                                <input style="margin-top: 0px; opacity: inherit; position: inherit" type="checkbox" name="chkSelectedRole_@(role.Id)" @(Model.Roles.Any(r => r.Id == role.Id) ? "checked=\"checked\"" : string.Empty) />
+                            }
+                            else
+                            {
+                                <input style="margin-top: 0px; opacity: inherit; position: inherit" type="checkbox" name="chkSelectedRole_@(role.Id)" />
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

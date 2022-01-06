@@ -1,0 +1,108 @@
+﻿@using System.Web.Optimization
+@using VisaNet.Presentation.Web.Constants
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="@Url.Content("~/Content/images/favicon.ico")" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisaNetPagos - Portal de pagos online para los servicios de Uruguay con su tarjeta VISA</title>
+
+    <script src="~/Scripts/smart-app-banner.js"></script>
+    <link href="~/Content/css/smart-app-banner.css" rel="stylesheet" />
+    <meta name="apple-itunes-app" content="app-id=1173540628">
+    <meta name="google-play-app" content="app-id=com.visanetpagos.app">
+    <link rel="apple-touch-icon" href="'@Url.Content("~/Content/images/Android Icons/launcher-icon-4x.png")'"/>
+    <link rel="android-touch-icon" href="'@Url.Content("~/Content/images/Android Icons/launcher-icon-4x.png")'" />
+    <script src="~/Scripts/mobile-detect.min.js"></script>
+
+    @*@Styles.Render("~/Content/style")*@
+    @Styles.Render("~/Content/css/style")
+    @Styles.Render("~/Content/font/font-awesome/css/style")
+    @*@Styles.Render("~/Content/font/font-awesome/fonts/style")*@
+
+    @Scripts.Render("~/Scripts/files")
+    @Scripts.Render("~/Scripts/js/files")
+
+    <!--[if lt IE 9]>
+        <script src="@Url.Content("~/Scripts/html5shim/html5shim.js")"></script>
+
+        <script type="text/javascript">
+            var url = "@Url.Action("OldBrowser", "Error")";
+            window.location.href = url;
+        </script>
+    <![endif]-->
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    @RenderSection("GoogleAnalyticsScript", required: false)
+    <script src="@Url.Content("~/Scripts/ClientSideValidations/regexValidation.js")"></script>
+</head>
+<body>
+    <style>
+        html {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">if (self == top) { document.documentElement.style.display = "block"; } else { top.location = self.location; }</script>
+
+    @if (Session[SessionConstants.CURRENT_CALLCENTER_USER] != null)
+    {
+        @Html.Partial("_HeaderCallCenter")
+    }
+
+    <div id="wrapper">
+        <div id="header">
+            <!-- header -->
+            <div class="header p15t p5b">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            @if (User.Identity.IsAuthenticated && Session[SessionConstants.CURRENT_SELECTED_USER] != null)
+                            {
+                                @Html.ActionLink(" ", "Index", "Dashboard", new { area = "Private" }, new { @class = "brandVisaNet fLeft" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "brandVisaNet fLeft" })
+                            }
+                        </div>
+                        <div class="col-xs-6"><a class="brandVisa fRight"></a></div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- fin header -->
+            <!-- Menu principal 01 Usuario NO registado-->
+            @if (ViewData.ContainsKey("PrivateHeader") && (bool)ViewData["PrivateHeader"])
+            {
+                @Html.Partial("_HeaderPrivate")
+            }
+            else
+            {
+                @Html.Partial("_Header")
+            }
+        </div>
+        @Html.Partial("_Notifications")
+
+        <div id="content">
+            @*<div class="container p25t">*@
+            @RenderBody()
+            @*</div>*@
+        </div>
+        <!-- fin Area de contenidos -->
+
+
+        <div id="footer">
+            <!-- footer-->
+            @Html.Partial("_Footer")
+            <!-- fin footer -->
+        </div>
+
+    </div>
+    @Html.Partial("_LoaderFullScreen")
+    @*@Html.Partial("_MobileAd")*@
+</body>
+</html>
+

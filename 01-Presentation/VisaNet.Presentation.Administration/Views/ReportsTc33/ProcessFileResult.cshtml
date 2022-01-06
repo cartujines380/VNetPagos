@@ -1,0 +1,31 @@
+﻿@model VisaNet.Domain.EntitiesDtos.Tc33OutputDto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Errores de procesamiento del archivo TC33</h2>
+<div class="row">
+    <div class="col-md-10">
+        <ul class="list-group">
+            @foreach (var error in Model.Errors)
+            {
+                <li class="list-group-item">@error</li>
+            }
+        </ul>
+        <ul class="list-group">
+            @foreach (var error in Model.NotFound)
+            {
+                <li class="list-group-item">@error</li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-5">
+        <a href="@Url.Action("Index")" class="btn btn-default btn-cancel">Volver </a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    });
+</script>

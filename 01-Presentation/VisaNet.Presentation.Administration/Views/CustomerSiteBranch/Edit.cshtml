@@ -1,0 +1,91 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model VisaNet.Presentation.Administration.Models.CustomerSiteBranchModel
+
+<h2>Portal de Comercio - Editar Sucursal</h2>
+
+@using (Html.BeginForm("Edit", "CustomerSiteBranch", FormMethod.Post, new { enctype = "multipart/form-data", autocomplete = "off" }))
+{
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-6">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(b => b.Name, new { @class = "obligatoryField" }) *
+                        @Html.TextBoxFor(b => b.Name, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.Name)
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ServiceId, new { @class = "obligatoryField" }) *
+                        <div class="selectMask w100 selectMultiple">
+                            @Html.DropDownListFor(m => m.ServiceId, (IEnumerable<SelectListItem>)ViewBag.ServicesLigthList, new { @class = "form-control" })
+                        </div>
+                        @Html.ValidationMessageFor(s => s.ServiceId)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ContactEmail)
+                        @Html.TextBoxFor(s => s.ContactEmail, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.ContactEmail)
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ContactAddress)
+                        @Html.TextBoxFor(s => s.ContactAddress, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.ContactAddress)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ContactPhoneNumber)
+                        @Html.TextBoxFor(s => s.ContactPhoneNumber, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(s => s.ContactPhoneNumber)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="@Url.Action("Index", "CustomerSiteBranch")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+                    <a href="#" id="btnGuardar" class="btn btn-default lbApprove">
+                        <strong>@PresentationAdminStrings.Save</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.CustomerSiteCommerce)
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#QuotesPermited').selectpicker();
+
+        @*@if (ViewBag.Quotas == null)
+        {
+            <text>
+        $('#QuotesPermited').selectpicker('selectAll');
+            </text>
+        }*@
+
+        $("a.lbApprove").click(function () {
+            $(this).parents("form").submit();
+        });
+
+    });
+</script>

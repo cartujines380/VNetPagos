@@ -1,0 +1,75 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Presentation.Web.Constants
+@using VisaNet.Presentation.Web.Enums
+
+
+<div class="navigationBar visaBlue">
+    <div class="container">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <a class="brandNavbarMobile fLeft" href="/"></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class=""><a id="debitRequestLink" href="@Url.Action("Service", "Debit", new { area = "Debit" })">Débitos</a></li>
+                    <li class=""><a id="paymentRequestLink" href="@Url.Action("NewPayment", "Pay", new { area = "Pay" })">Pagar</a></li>
+                    <li class=""><a id="aboutUsLink" href="@Url.Action("Index", "InstitutionalContent", new { area = "" })">¿Quiénes Somos?</a></li>
+                    @*<li class=""><a href="#">¿Quiénes Somos?</a></li>*@
+                    @*<li class=""><a href="@Url.Action("Index", "Notices", new { area = "" })">Novedades</a></li>*@
+                    <li class=""><a id="servicesLink" href="@Url.Action("Index", "ServiceProvider", new { area = "" })">Servicios</a></li>
+                    @*<li class=""><a href="@Url.Action("Index", "Subscriber", new { area = "" })">Newsletter</a></li>*@
+                    <li class=""><a id="faqLink" href="@Url.Action("Index", "Faq", new { area = "" })">FAQ's</a></li>
+                    @*<li class=""><a href="#">FAQ's</a></li>*@
+                    @*<li class=""><a href="@Url.Action("Index", "Help", new { area = "" })">@PresentationWebStrings.Help_Menu</a></li>*@
+                    <li class=""><a id="contactLink" href="@Url.Action("Index", "Contact", new { area = "" })">Contacto</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                        
+
+                    @if (User.Identity.IsAuthenticated && Session[SessionConstants.CURRENT_SELECTED_USER] != null )
+                        //&& (CurrentUserType)Session[SessionConstants.CURRENT_USER_TYPE] == CurrentUserType.Public)
+                    {
+                        <li class="ml5 mr5">
+                            <a href="@Url.Action("Index","Dashboard", new {area = "private"})" class="btn btn-default btn-navBar mt5 w100"> @PresentationWebStrings.Header_Dashboard <i class="icon-dashboard"></i></a>
+                        </li>
+                        <li class="ml5 mr5">
+                            <a href="@Url.Action("LogOff", "Account", new { area = "" })" class="btn btn-default btn-navBar mt5 w100"> @PresentationWebStrings.Exit <i class="icon-signout"></i></a>
+                        </li>
+                    }
+                    else
+                    {
+                        if (User.Identity.IsAuthenticated && Session[SessionConstants.CURRENT_CALLCENTER_USER] != null )
+                            //&& (CurrentUserType)Session[SessionConstants.CURRENT_USER_TYPE] == CurrentUserType.CallCenter)
+                        {
+                            <li class="ml5 mr5">
+                                <a href="@Url.Action("Index", "CallCenterDashboard", new { area = "CallCenter" })" class="btn btn-default btn-navBar mt10 w100"> @PresentationWebStrings.Header_Dashboard <i class="icon-dashboard"></i></a>
+                            </li>
+                            <li class="ml5 mr5">
+                                <a href="@Url.Action("LogOff", "CallCenterAccount", new { area = "CallCenter" })" class="btn btn-default btn-navBar mt10 w100"> @PresentationWebStrings.Exit <i class="icon-signout"></i></a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="ml5 mr5">
+                                <a href="@Url.Action("LogIn", "Account", new { area = "" })" class="btn btn-default btn-navBar mt5 w100"> @PresentationWebStrings.Login <i class="icon-user"></i></a>
+                            </li>
+                            <li class="ml5 mr5">
+                                <a href="@Url.Action("Index", "Registration", new { area = "" })" class="btn btn-default btn-navBar mt5 w100"> @PresentationWebStrings.Registration <i class="icon-chevron-sign-right"></i></a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

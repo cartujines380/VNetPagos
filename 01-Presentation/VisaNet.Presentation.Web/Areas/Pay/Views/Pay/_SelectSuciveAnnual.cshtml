@@ -1,0 +1,25 @@
+﻿<div class="col-lg-12">
+    <div class="form-banner">
+        <h3>¿Querés pagar tu patente de forma anual?</h3>
+        <h4>
+            Tenés hasta el @TempData["AnnualLastDay"] de enero para obtener el descuento adicional de Sucive por pago anual.
+        </h4>
+        <h5>
+            Para esto no deben existir mutlas y patentes anteriores al @TempData["AnnualYear"] impagas y no haber pagado cuotas de la patente del @TempData["AnnualYear"]
+        </h5>
+        <div class="controls">
+            <div class="control-item">
+                <input type="radio" name="AnnualSucive" id="AnnualSuciveYes" value="true" checked>
+                <label class="radio" for="AnnualSuciveYes">
+                    Pagar con descuento
+                </label>
+            </div>
+            <div class="control-item">
+                <input type="radio" name="AnnualSucive" id="AnnualSuciveNo" value="false">
+                <label class="radio" for="AnnualSuciveNo">
+                    No, gracias
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

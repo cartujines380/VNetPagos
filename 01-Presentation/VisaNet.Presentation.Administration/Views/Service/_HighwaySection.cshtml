@@ -1,0 +1,54 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Administration.Models.ServiceModel
+
+<div class="row">
+    <div class="table-responsive col-md-6">
+        <table class="table" id="tblEnableEmail">
+            <tr>
+                <td>
+                    @PresentationAdminStrings.Email
+                </td>
+                @if (!Model.IsDetailsView)
+                {
+                    <td id="addFilaEnableEmail" style="color: green">
+                        [+]
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+            </tr>
+
+            <tbody id="tblEnableEmailBody">
+                @if (Model.ServiceEnableEmailModel != null && Model.ServiceEnableEmailModel.Count() != 0)
+                {
+                    Model.ServiceEnableEmailModel = Model.ServiceEnableEmailModel.OrderBy(o => o.Email).ToList();
+                    for (int i = 0; i < Model.ServiceEnableEmailModel.Count(); i++)
+                    {
+                        <tr id=@string.Format("tr_{0}", i)>
+                            @Html.Hidden(string.Format("ServiceEnableEmailModel[" + i + "].Id"), Model.ServiceEnableEmailModel.ElementAt(i).Id)
+
+                            @if (Model.IsDetailsView)
+                            {
+                                <td class="">
+                                    <input class="form-control" disabled="disabled" name=@string.Format("ServiceEnableEmailModel[" + i + "].Email") type="text" value=@Model.ServiceEnableEmailModel.ElementAt(i).Email>
+                                    @*<span data-valmsg-replace="true" data-valmsg-for=@string.Format("ServiceEnableEmailModel[" + i + "].Email") class="field-validation-valid help-inline"></span>*@
+                                </td>
+                                <td></td>
+                            }
+                            else
+                            {
+                                <td class="">
+                                    <input class="form-control" name=@string.Format("ServiceEnableEmailModel[" + i + "].Email") type="text" value=@Model.ServiceEnableEmailModel.ElementAt(i).Email>
+                                    @*<span data-valmsg-replace="true" data-valmsg-for=@string.Format("ServiceEnableEmailModel[" + i + "].Email") class="field-validation-valid help-inline"></span>*@
+                                </td>
+                                <td class="quitarLineaEnableEmail" style="color: red" id=@string.Format("lnkBorrar_{0}", i)>[-]</td>
+                            }
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

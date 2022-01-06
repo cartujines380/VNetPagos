@@ -1,0 +1,80 @@
+﻿@using VisaNet.VONRegister.Constants
+@using VisaNet.VONRegister.Helpers.Html
+@model VisaNet.VONRegister.Models.SignIn
+
+<div id="content">
+    <ul id="registro" class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#cuenta" aria-controls="cuenta" role="tab" data-toggle="tab"><span>1</span> Inicia sesión</a></li>
+        <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa hidden-xs" />
+    </ul>
+    <div class="logos-visa visible-xs">
+        <img src="@Url.Content("~/images/logo-visa.jpg")" class="logoVisa-xs">
+        <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="logoVisaNetPagos-xs">
+    </div>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="container-fluid tab-pane active" id="cuenta">
+            <form class="registro" action="@Url.Action("SignIn")" method="post" id="cuenta">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Email</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        @if (Model.EditableEmail)
+                        {
+                            @Html.EmailFor(x => x.UserName, new Dictionary<string, object> { { "placeholder", "Email" } })
+                        }
+                        else
+                        {
+                            @Html.EmailFor(x => x.UserName, new Dictionary<string, object> { { "placeholder", "Email" }, { "disabled", "disabled" } })
+                            @Html.HiddenFor(x => x.UserName)
+                        }
+                        @Html.ValidationMessageFor(x => x.UserName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label for="inputEmail3">Contraseña</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        @Html.PasswordFor(x => x.Password, new Dictionary<string, object> { { "placeholder", "Contraseña" } })
+                        @Html.ValidationMessageFor(x => x.Password)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                        <a href="@Url.Action("ResetPassword", "Account" , new { email=Model.UserName, Model.EditableEmail})">Olvidé mi contraseña</a>
+                    </div>
+                </div>
+                @if (Model.EditableEmail)
+                {
+                    <div class="form-group">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 column">
+                            <label></label>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 column">
+                            <a href="@Url.Action("NewUser", "Account" )">Quiero crear un usuario nuevo</a>
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="footer-registro">
+                            <img src="@Url.Content("~/images/visa-net-pagos.jpg")" class="hidden-xs hidden-sm">
+                            <div class="actions">
+                                <a class="btn" href="@Url.Action("Cancel", "Home")">Cancelar</a>
+                                <button class="btn siguiente">Siguiente</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @Html.HiddenFor(x => x.EditableEmail)
+            </form>
+        </div>
+    </div>
+</div>

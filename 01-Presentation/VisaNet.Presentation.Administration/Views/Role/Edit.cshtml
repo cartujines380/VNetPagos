@@ -1,0 +1,157 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@using VisaNet.Common.Security.Entities
+@using Action = VisaNet.Common.Security.Entities.Action
+@model VisaNet.Presentation.Administration.Models.RoleModel
+
+
+<div class="row rolesPage">
+    <div class="col-lg-8">
+        <h2>@PresentationAdminStrings.Role_Edit_Title</h2>
+        @using (Html.BeginForm("Edit", "Role", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(s => s.Name)
+                @Html.TextBoxFor(s => s.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(s => s.Name)
+            </div>
+
+            <div class="form-group">
+                <div class="divActionsRol">
+                    @foreach (var functionalityGroup in ((IEnumerable<FunctionalityGroup>)ViewBag.FunctionalityGroups).OrderBy(f => f.Order))
+                    {
+                        <div class="lineFuncGroup">
+                            <a class="expandButton lnkFunctionalityGroup" href="@functionalityGroup.Id">-</a>
+                            <span>@functionalityGroup.Name</span>
+                        </div>
+
+                        <div id="divFunctionalityGroup_@(functionalityGroup.Id)">
+                            @foreach (var functionality in functionalityGroup.Functionalities.OrderBy(f => f.Order))
+                            {
+                                if (functionality.Actions.Any())
+                                {
+                                    <div class="divFunctionality">
+                                        <div class="lineGroup">
+                                            <div class="selectAll" id="btnSelectAll_@(functionality.Id)"></div>
+                                            <a class="expandButton lnkFunctionality" href="@functionality.Id">-</a>
+                                            <span>@functionality.Name</span>
+                                        </div>
+                                        <div id="divFunctionality_@(functionality.Id)">
+                                            @foreach (var action in functionality.Actions.OrderBy(a => a.Name))
+                                            {
+                                                Action action1 = action;
+                                                <div class="actionLine">
+                                                    @if (Model != null && Model.ActionsIds.Any(id => id == action.Id))
+                                                    {<input type="checkbox" class="chkAction" id="chkAction_@(action.Id)" name="chkAction_@(action.Id)" checked="checked" /><label>@action.Name</label>}
+                                                    else
+                                                    {<input type="checkbox" class="chkAction" id="chkAction_@(action.Id)" name="chkAction_@(action.Id)" /><label>@action.Name</label>}
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>}
+                            }
+                        </div>
+
+
+                    }
+
+                </div>
+            </div>
+ <div class="row pl0">
+                <div class="col-lg-6">
+            <a href="@Url.Action("Index")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+            <a href="#" id="btnSave" class="btn btn-default lbApprove">
+                <strong>@PresentationAdminStrings.Save</strong>
+            </a>   </div>
+</div>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btnSave").click(function (e) {
+            e.preventDefault();
+            $(this).parents("form").submit();
+        });
+
+        $(".divFunctionality").each(function (ind) {
+            var checkeados = $("input[type=checkbox]:checked", this).length;
+            var totales = $("input[type=checkbox]", this).length;
+            var selectAll = $(".selectAll", this);
+            if (checkeados == totales) {
+                selectAll.addClass("AllCheck");
+            } else if (checkeados == 0) {
+                selectAll.addClass("NoCheck");
+            }
+            else {
+                selectAll.addClass("Check");
+            }
+        });
+
+        $(".lnkFunctionalityGroup").click(function (e) {
+            e.preventDefault();
+            if ($(this).html() == "+") {
+                $(this).html("-");
+                $("#divFunctionalityGroup_" + $(this).attr('href')).show();
+            }
+            else {
+                $(this).html("+");
+                $("#divFunctionalityGroup_" + $(this).attr('href')).hide();
+            }
+        });
+
+        $(".lnkFunctionality").click(function (e) {
+            e.preventDefault();
+            if ($(this).html() == "+") {
+                $(this).html("-");
+                $("#divFunctionality_" + $(this).attr('href')).show();
+            }
+            else {
+                $(this).html("+");
+                $("#divFunctionality_" + $(this).attr('href')).hide();
+            }
+        });
+
+        $(".selectAll").click(function (e) {
+            e.preventDefault();
+            var idFuncionalidad = $(this).parent().find(".lnkFunctionality").attr("href");
+            var nombreDiv = "#divFunctionality_" + idFuncionalidad;
+            if (!$(this).hasClass("AllCheck")) {
+                $(this).removeClass("Check");
+                $(this).removeClass("NoCheck");
+                $(this).addClass("AllCheck");
+                $(nombreDiv).show(100);
+                $("input[type=checkbox]", nombreDiv).prop('checked', true);
+            }
+            else {
+                $(this).removeClass("Check");
+                $(this).removeClass("AllCheck");
+                $(this).addClass("NoCheck");
+                $("input[type=checkbox]", nombreDiv).prop('checked', false);
+            }
+        });
+
+        $(".chkAction").click(function (e) {
+            var checkeados = $("input[type=checkbox]:checked", $(this).parent().parent()).length;
+            var totales = $("input[type=checkbox]", $(this).parent().parent()).length;
+            var selectAll = $(".selectAll", $(this).parent().parent().parent());
+            if (checkeados == 0) {
+                selectAll.removeClass("Check");
+                selectAll.removeClass("AllCheck");
+                selectAll.addClass("NoCheck");
+            }
+            else if (checkeados == totales) {
+                selectAll.removeClass("Check");
+                selectAll.removeClass("NoCheck");
+                selectAll.addClass("AllCheck");
+            }
+            else {
+                selectAll.removeClass("AllCheck");
+                selectAll.removeClass("NoCheck");
+                selectAll.addClass("Check");
+            }
+        });
+    });
+</script>

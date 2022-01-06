@@ -1,0 +1,218 @@
+﻿@using VisaNet.Common.Resource.Presentation
+@model VisaNet.Presentation.Web.Models.PaymentServiceModel
+
+<div class="container p25t">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mt5 nameSection">@PresentationWebStrings.Payment_Title</h3>
+            <h4 class="pageDescription">@PresentationWebStrings.Payment_Desc</h4>
+        </div>
+        <div class="clearfix"></div>
+        <div class="horizontalLineGrey"></div>
+    </div>
+
+    <div class="mt20">
+
+        <div class="wizardBox">
+            <!-- area de titulo y breadcrumb-->
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="mt5">@PresentationWebStrings.Payment_Step1</h3>
+                    <h4 class="pageDescription">@PresentationWebStrings.Payment_Step1_Description</h4>
+                </div>
+                <div class="col-md-4 steps">
+                    @Html.Partial("_Steps")
+                </div>
+                <div class="clearfix"></div>
+                <div class="horizontalLineGrey"></div>
+            </div>
+            <!-- area de titulo y breadcrumb-->
+            <!-- campos obligatorios -->
+            <h5><i class="icon-exclamation-sign visanetOrangeTxt"></i> @PresentationWebStrings.Required_First_Line <i class="icon-asterisk visanetOrangeTxt obligatoryField"></i>@PresentationWebStrings.Required_Second_Line</h5>
+            <!-- campos obligatorios -->
+            @using (Html.BeginForm("Bills", "Pay", FormMethod.Post, new Dictionary<string, object> { { "id", "form" } }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="formMargin">
+                    <div class="row">
+                        <div class="col-md-12 hide generalError" id="generalError">
+                            <i class="icon-warning-sign"></i>
+                            @PresentationWebStrings.From_General_Error
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div> @Html.LabelFor(model => model.ServiceFirstComboId)<i class="icon-asterisk visanetOrangeTxt obligatoryField"></i></div>
+                            <select data-val="true" data-val-required="El campo es requerido." id="@Html.IdFor(m => m.ServiceFirstComboId)" name="@Html.NameFor(m => m.ServiceFirstComboId)">
+                                <option></option>
+                                @foreach (var i in Model.Services)
+                                {
+                                    <option value="@i.Id" data-tags="@i.Tags" @(((Model != null) && (Model.ServiceFirstComboId != Guid.Empty) && (Model.ServiceFirstComboId == i.Id)) ? "selected='selected'" : string.Empty)>@i.Name</option>
+                                }
+                            </select>
+
+                            @Html.ValidationMessageFor(m => m.ServiceFirstComboId)
+                            @Html.HiddenFor(m => m.ServiceType)
+                        </div>
+                    </div>
+
+
+                    <div id="ServicesInContainerDiv">
+                        @Html.Partial("_ServicesInContainer", Model)
+                    </div>
+
+                    <div class="row">
+                        <div id="ReferencesDiv" class="col-md-12">
+                            @Html.Partial("_References", Model)
+                        </div>
+                    </div>
+
+                    <div class="row" id="annualSucive">
+                        
+                    </div>
+
+                    @if (!String.IsNullOrEmpty(ViewBag.ReferenceNumbersInvalid))
+                    {
+                        <span class="help-inline field-validation-error">@ViewBag.ReferenceNumbersInvalid</span>
+                    }
+
+                    @if (Model != null && (Model.RegisteredUserId == null || Model.RegisteredUserId == Guid.Empty))
+                    {
+                        <div class="horizontalLineWhite"></div>
+                        Html.RenderPartial("_UserNotRegisteredData", Model);
+                    }
+
+                    @* SE OCULTA EL CAMPO DESCRIPCION PORQUE NO SE ESTABA UTILIZANDO *@
+                    @*<div class="row">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.Description)
+                            @Html.TextAreaFor(model => model.Description, new { @class = "w100", placeholder = PresentationWebStrings.Payment_Placeholder_Description, autocomplete = "off" })
+                            @Html.ValidationMessageFor(m => m.Description)
+                        </div>
+                    </div>*@
+
+                    <div class="row wizardButtons">
+                        <div class="col-md-8"></div>
+                        <div class="col-md-4">
+                            <div class="col-xs-6"></div>
+                            <div class="col-xs-6 p5l pr0">
+                                <button id="btnNext" class="btn btn-default btn-siguiente mt10 w100">@PresentationCoreMessages.Common_Next<i class="icon-chevron-sign-right"></i></button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- fin del formMargin-->
+            }
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <button id="btnCancelPayment" class="btn btn-default btn-cancelar mt10 w100">@PresentationWebStrings.Payment_Cancel<i class="icon-remove"></i></button>
+            </div>
+        </div>
+
+        @Html.Partial("_Cancel")
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        function onSuccess(data, response) {
+            response($.map(data, function (item) {
+                return { label: item.Name, valueID: item.Id };
+            }));
+        }
+
+        $("#@Html.IdFor(m => m.ServiceFirstComboId)").combobox();
+        $("#stepService").addClass("active");
+        $("#paymentRequestLink").addClass("vnpTitleSelected");
+
+        $("#btnNext").click(function () {
+            $("#ReferenceValue").val($("#ReferenceValue").val().replace(/ /g, "").replace(/-/g, "").trim());
+            $("#form").submit(function () {
+                if ($(this).validate().form()) {
+                    showLoaderFullScreen("@PresentationWebStrings.Loader_Message_Getting_Bills");
+                } else {
+                    if ($("#generalError").hasClass("hide")) {
+                        changeStateGeneralErrorForm();
+                    }
+                }
+            });
+        });
+
+        $("#btnCancelPayment").click(function (e) {
+            e.preventDefault();
+            $("#lbCancelPayment").modal();
+        });
+
+
+        $('#@Html.IdFor(m => m.ServiceFirstComboId)').change(function () {
+            LoadRef();
+            CheckAnnual();
+        });
+
+        if ($('#ServiceFirstComboId').val() != '00000000-0000-0000-0000-00000000000') {
+            LoadRef();
+            CheckAnnual();
+        }
+
+        $('.textToolTip').popover({
+            'trigger': 'hover',
+            'html': false,
+            'content': function () {
+                return "@PresentationWebStrings.Tooltip_Payment_Email_Info";
+            }
+        });
+    });
+    function LoadRef() {
+        $.ajax({
+            data: $('#form').serialize(),
+            url: '@Url.Action("GetService", "Pay")',
+            dataType: 'json',
+            success: function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    removeStateGeneralErrorForm();
+                    var dataContainer = data.Content["newcombo"];
+                    var dataRefs = data.Content["refcontent"];
+                    if (dataRefs) {
+                        $('#ReferencesDiv').html(dataRefs);
+                    }
+                    if (dataContainer && dataContainer != 'clean') {
+                        $('#ServicesInContainerDiv').html(dataContainer);
+                    }
+                    if (dataContainer && dataContainer == 'clean') {
+                        $('#ServicesInContainerDiv').html('');
+                    }
+                    if (dataRefs && dataRefs == 'clean') {
+                        $('#ReferencesDiv').html('');
+                    }
+                    var form = $("form");
+                    form.unbind();
+                    form.data("validator", null);
+                    $.validator.unobtrusive.parse(document);
+                    form.validate(form.data("unobtrusiveValidation").options);
+                }
+            }
+        });
+    }
+
+    function CheckAnnual() {
+        var service = $('#ServiceFirstComboId').val();
+        $.ajax({
+            data: "serviceId=" + service,
+            url: '@Url.Action("ValidateAnnualPatent", "Pay")',
+            dataType: 'json',
+            success: function (data) {
+                if (data.ResponseType == RESPONSE.SUCCESS) {
+                    $('#annualSucive').html(data.Content);
+                    var form = $("form");
+                    form.unbind();
+                    form.data("validator", null);
+                    $.validator.unobtrusive.parse(document);
+                    form.validate(form.data("unobtrusiveValidation").options);
+                }
+            }
+        });
+    }
+</script>

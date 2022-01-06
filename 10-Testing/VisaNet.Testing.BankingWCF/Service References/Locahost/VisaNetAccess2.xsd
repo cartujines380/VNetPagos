@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaWCF.EntitiesDto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:46736/VisaNetAccess.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:46736/VisaNetAccess.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ServicesData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VisaNetAccessBaseData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TimeStamp" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ServicesData" nillable="true" type="tns:ServicesData" />
+  <xs:complexType name="VisaNetAccessBaseData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DigitalSignature" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentPlatform" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VisaNetAccessBaseData" nillable="true" type="tns:VisaNetAccessBaseData" />
+  <xs:complexType name="ServicesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VisaNetAccessBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Response" nillable="true" type="tns:ArrayOfVisaNetServices" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ServicesResponse" nillable="true" type="tns:ServicesResponse" />
+  <xs:complexType name="VisaNetAccessBaseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseCode" type="tns:VisaNetAccessResponseCode" />
+      <xs:element minOccurs="0" name="ResponseError" nillable="true" type="tns:ResponseError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VisaNetAccessBaseResponse" nillable="true" type="tns:VisaNetAccessBaseResponse" />
+  <xs:simpleType name="VisaNetAccessResponseCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ok">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Error">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="VisaNetAccessResponseCode" nillable="true" type="tns:VisaNetAccessResponseCode" />
+  <xs:complexType name="ResponseError">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResponseType" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseError" nillable="true" type="tns:ResponseError" />
+  <xs:complexType name="ArrayOfVisaNetServices">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VisaNetServices" nillable="true" type="tns:VisaNetServices" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVisaNetServices" nillable="true" type="tns:ArrayOfVisaNetServices" />
+  <xs:complexType name="VisaNetServices">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CreditCard" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CreditCardInternational" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DebitCard" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DebitCardInternational" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Gateways" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="MerchantId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MultipleBillsAllowed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceReferenceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceReferenceName2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceReferenceName3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceReferenceName4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceReferenceName5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceReferenceName6" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VisaNetServices" nillable="true" type="tns:VisaNetServices" />
+  <xs:complexType name="BillsData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VisaNetAccessBaseData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GatewayEnumDto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ServiceId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ServiceReferenceNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ServiceReferenceNumber2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ServiceReferenceNumber3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ServiceReferenceNumber4" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ServiceReferenceNumber5" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ServiceReferenceNumber6" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserData" nillable="true" type="tns:UserData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BillsData" nillable="true" type="tns:BillsData" />
+  <xs:complexType name="UserData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ci" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserData" nillable="true" type="tns:UserData" />
+  <xs:complexType name="BillsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VisaNetAccessBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Response" nillable="true" type="tns:ArrayOfVisaNetBillResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BillsResponse" nillable="true" type="tns:BillsResponse" />
+  <xs:complexType name="ArrayOfVisaNetBillResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VisaNetBillResponse" nillable="true" type="tns:VisaNetBillResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVisaNetBillResponse" nillable="true" type="tns:ArrayOfVisaNetBillResponse" />
+  <xs:complexType name="VisaNetBillResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AmountToCybersource" type="xs:double" />
+      <xs:element minOccurs="0" name="BillId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardBinNumbers" type="xs:int" />
+      <xs:element minOccurs="0" name="CensusId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreationDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Discount" type="xs:double" />
+      <xs:element minOccurs="0" name="DiscountApplyed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DiscountObjId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpirationDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FinalConsumer" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Gateway" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GatewayTransactionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lines" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MerchantId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MerchantReferenceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MultipleBillsAllowed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Payable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceReferenceNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceReferenceNumber2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceReferenceNumber3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceReferenceNumber4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceReferenceNumber5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceReferenceNumber6" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalTaxedAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VisaNetBillResponse" nillable="true" type="tns:VisaNetBillResponse" />
+  <xs:complexType name="PreprocessPaymentData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VisaNetAccessBaseData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bills" nillable="true" type="tns:ArrayOfVisaNetBillResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PreprocessPaymentData" nillable="true" type="tns:PreprocessPaymentData" />
+  <xs:complexType name="PreprocessPaymentResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VisaNetAccessBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Response" nillable="true" type="tns:ArrayOfVisaNetBillResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PreprocessPaymentResponse" nillable="true" type="tns:PreprocessPaymentResponse" />
+  <xs:complexType name="PaymentData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VisaNetAccessBaseData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bill" nillable="true" type="tns:VisaNetBillResponse" />
+          <xs:element minOccurs="0" name="CardData" nillable="true" type="tns:CardData" />
+          <xs:element minOccurs="0" name="CyberSourceData" nillable="true" type="tns:VisaNetCyberSourceData" />
+          <xs:element minOccurs="0" name="ServiceId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserInfo" nillable="true" type="tns:UserData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PaymentData" nillable="true" type="tns:PaymentData" />
+  <xs:complexType name="CardData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardBinNumbers" type="xs:int" />
+      <xs:element minOccurs="0" name="DueDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaskedNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardData" nillable="true" type="tns:CardData" />
+  <xs:complexType name="VisaNetCyberSourceData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthAmount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthAvsCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthResponse" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthTransRefNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillTransRefNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Decision" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReasonCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReqAmount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReqCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReqReferenceNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReqTransactionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReqTransactionUuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VisaNetCyberSourceData" nillable="true" type="tns:VisaNetCyberSourceData" />
+  <xs:complexType name="PaymentResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VisaNetAccessBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CyberSourceData" nillable="true" type="tns:CyberSourceData" />
+          <xs:element minOccurs="0" name="Response" nillable="true" type="tns:VisaNetPayment" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PaymentResponse" nillable="true" type="tns:PaymentResponse" />
+  <xs:complexType name="CyberSourceData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PaymentData" nillable="true" type="tns:CsResponse" />
+      <xs:element minOccurs="0" name="RefundData" nillable="true" type="tns:CsResponse" />
+      <xs:element minOccurs="0" name="ReversalData" nillable="true" type="tns:CsResponse" />
+      <xs:element minOccurs="0" name="VoidData" nillable="true" type="tns:CsResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CyberSourceData" nillable="true" type="tns:CyberSourceData" />
+  <xs:complexType name="CsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PaymentRequestId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentResponseCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CsResponse" nillable="true" type="tns:CsResponse" />
+  <xs:complexType name="VisaNetPayment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bill" nillable="true" type="tns:VisaNetBillResponse" />
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GatewayTransactionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserInfo" nillable="true" type="tns:UserData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VisaNetPayment" nillable="true" type="tns:VisaNetPayment" />
+  <xs:complexType name="SearchPaymentsData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VisaNetAccessBaseData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ServiceId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TransactionId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchPaymentsData" nillable="true" type="tns:SearchPaymentsData" />
+  <xs:complexType name="SearchPaymentsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VisaNetAccessBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Response" nillable="true" type="tns:ArrayOfVisaNetPayment" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchPaymentsResponse" nillable="true" type="tns:SearchPaymentsResponse" />
+  <xs:complexType name="ArrayOfVisaNetPayment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VisaNetPayment" nillable="true" type="tns:VisaNetPayment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVisaNetPayment" nillable="true" type="tns:ArrayOfVisaNetPayment" />
+  <xs:complexType name="NotificationData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VisaNetAccessBaseData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NotificationType" type="tns:NotificationType" />
+          <xs:element minOccurs="0" name="Operation" type="tns:Operation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NotificationData" nillable="true" type="tns:NotificationData" />
+  <xs:simpleType name="NotificationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ok">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Error">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="NotificationType" nillable="true" type="tns:NotificationType" />
+  <xs:simpleType name="Operation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Payment">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Void">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Refund">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Reversal">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Operation" nillable="true" type="tns:Operation" />
+  <xs:complexType name="NotificationResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VisaNetAccessBaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NotificationResponse" nillable="true" type="tns:NotificationResponse" />
+</xs:schema>

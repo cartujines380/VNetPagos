@@ -1,0 +1,31 @@
+﻿@using System.Configuration
+@model VisaNet.Presentation.VisaNetOn.Models.PageAssociationModel
+
+<div class="hidden-xs col-sm-7 col-md-7">
+    <div class="registro right">
+        <span class="title-form">Detalle de asociación</span>
+        <div class="wrapper-vendedor">
+            <div class="info-vendedor">
+                @if (!string.IsNullOrEmpty(Model.ServiceInfo.ServiceContainerName))
+                {
+                    <span class="vendedor">@Model.ServiceInfo.ServiceContainerName</span>
+                    <span class="empresa">@Model.ServiceInfo.ServiceName</span>
+                }
+                else
+                {
+                    <span class="vendedor">@Model.ServiceInfo.ServiceName</span>
+                }
+            </div>
+            <div class="crop">
+                @if (!string.IsNullOrEmpty(Model.ServiceInfo.ImageName))
+                {
+                    <img src="@Model.ServiceInfo.ImageName" />
+                }
+                else
+                {
+                    <img src="@ConfigurationManager.AppSettings["DefaultServiceImage"]" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

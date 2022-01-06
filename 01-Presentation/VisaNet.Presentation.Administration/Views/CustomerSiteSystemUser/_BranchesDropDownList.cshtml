@@ -1,0 +1,17 @@
+﻿
+@model VisaNet.Presentation.Administration.Models.CustomerSiteSystemUserModel
+
+    @if (ViewBag.BranchesLigthList != null)
+    {
+        @Html.LabelFor(s => s.BranchId, new { @class = "obligatoryField" }) 
+        @Html.Raw("<div class='selectMask w100 selectMultiple'>")
+        @Html.DropDownListFor(m => m.BranchId, (IEnumerable<SelectListItem>)ViewBag.BranchesLigthList,
+                 new Dictionary<string, object> { { "class", "form-control selectpicker " }, { "multiple", "multiple" }
+            ,{ "data-selected-text-format", "count>3" }, { "data-actions-box", "true" }, { "data-icon-base", "fa" }, 
+            { "data-tick-icon", "fa-check" }, { "data-select-all-text", "Todos" }, { "data-deselect-all-text", "Ninguno" }, 
+            { "data-none-selected-text", "Ninguno seleccionado" }, { "data-count-selected-text", "Seleccionados {0} de {1}" } 
+            })
+        @Html.Raw("</div>")
+        @Html.ValidationMessageFor(s => s.BranchId)
+    }
+

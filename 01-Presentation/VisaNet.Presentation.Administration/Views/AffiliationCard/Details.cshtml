@@ -1,0 +1,54 @@
+﻿@using VisaNet.Common.Resource.Presentation
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model VisaNet.Presentation.Administration.Models.AffiliationCardModel
+
+<h2>@PresentationAdminStrings.AffiliationCard_Detail_Title</h2>
+
+
+<div class="row">
+    <div class="col-lg-10">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.CheckBoxFor(s => s.Active)
+                    @Html.LabelFor(s => s.Active, new { @class = "obligatoryField", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Name, new { @class = "obligatoryField" }) *
+                    @Html.TextBoxFor(b => b.Name, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.Code, new { @class = "obligatoryField" }) *
+                    @Html.TextBoxFor(s => s.Code, new { @class = "form-control numeric", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(s => s.BankId)
+                    @Html.TextBoxFor(s => s.BankName, new { @class = "form-control numeric", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="@Url.Action("Index", "AffiliationCard")" class="btn btn-default btn-cancel">@PresentationAdminStrings.Cancel </a>
+            </div>
+        </div>
+    </div>
+</div>

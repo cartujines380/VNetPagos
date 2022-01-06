@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="VNPAccess" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IVNPAccess_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://demouy.hexacta.com:446/TestWCF/v05/VNPAccess.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://demouy.hexacta.com:446/TestWCF/v05/VNPAccess.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://demouy.hexacta.com:446/TestWCF/v05/VNPAccess.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/VisaNet.WebService.VisaNetPagosWCF.EntitiesModel" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IVNPAccess_CobroFacturaOnlineApp_InputMessage">
+    <wsdl:part name="parameters" element="tns:CobroFacturaOnlineApp" />
+  </wsdl:message>
+  <wsdl:message name="IVNPAccess_CobroFacturaOnlineApp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CobroFacturaOnlineAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVNPAccess_AnulacionCobroApp_InputMessage">
+    <wsdl:part name="parameters" element="tns:AnulacionCobroApp" />
+  </wsdl:message>
+  <wsdl:message name="IVNPAccess_AnulacionCobroApp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AnulacionCobroAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVNPAccess_ConsultaTransacciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaTransacciones" />
+  </wsdl:message>
+  <wsdl:message name="IVNPAccess_ConsultaTransacciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaTransaccionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVNPAccess_ConsultaComercios_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaComercios" />
+  </wsdl:message>
+  <wsdl:message name="IVNPAccess_ConsultaComercios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaComerciosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVNPAccess_BajaTarjeta_InputMessage">
+    <wsdl:part name="parameters" element="tns:BajaTarjeta" />
+  </wsdl:message>
+  <wsdl:message name="IVNPAccess_BajaTarjeta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BajaTarjetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVNPAccess_ConsultaUrlTransaccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaUrlTransaccion" />
+  </wsdl:message>
+  <wsdl:message name="IVNPAccess_ConsultaUrlTransaccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaUrlTransaccionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IVNPAccess">
+    <wsdl:operation name="CobroFacturaOnlineApp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVNPAccess/CobroFacturaOnlineApp" message="tns:IVNPAccess_CobroFacturaOnlineApp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVNPAccess/CobroFacturaOnlineAppResponse" message="tns:IVNPAccess_CobroFacturaOnlineApp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AnulacionCobroApp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVNPAccess/AnulacionCobroApp" message="tns:IVNPAccess_AnulacionCobroApp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVNPAccess/AnulacionCobroAppResponse" message="tns:IVNPAccess_AnulacionCobroApp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTransacciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVNPAccess/ConsultaTransacciones" message="tns:IVNPAccess_ConsultaTransacciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVNPAccess/ConsultaTransaccionesResponse" message="tns:IVNPAccess_ConsultaTransacciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaComercios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVNPAccess/ConsultaComercios" message="tns:IVNPAccess_ConsultaComercios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVNPAccess/ConsultaComerciosResponse" message="tns:IVNPAccess_ConsultaComercios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaTarjeta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVNPAccess/BajaTarjeta" message="tns:IVNPAccess_BajaTarjeta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVNPAccess/BajaTarjetaResponse" message="tns:IVNPAccess_BajaTarjeta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUrlTransaccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVNPAccess/ConsultaUrlTransaccion" message="tns:IVNPAccess_ConsultaUrlTransaccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVNPAccess/ConsultaUrlTransaccionResponse" message="tns:IVNPAccess_ConsultaUrlTransaccion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IVNPAccess" type="tns:IVNPAccess">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IVNPAccess_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CobroFacturaOnlineApp">
+      <soap:operation soapAction="http://tempuri.org/IVNPAccess/CobroFacturaOnlineApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnulacionCobroApp">
+      <soap:operation soapAction="http://tempuri.org/IVNPAccess/AnulacionCobroApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTransacciones">
+      <soap:operation soapAction="http://tempuri.org/IVNPAccess/ConsultaTransacciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaComercios">
+      <soap:operation soapAction="http://tempuri.org/IVNPAccess/ConsultaComercios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaTarjeta">
+      <soap:operation soapAction="http://tempuri.org/IVNPAccess/BajaTarjeta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUrlTransaccion">
+      <soap:operation soapAction="http://tempuri.org/IVNPAccess/ConsultaUrlTransaccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VNPAccess">
+    <wsdl:port name="BasicHttpBinding_IVNPAccess" binding="tns:BasicHttpBinding_IVNPAccess">
+      <soap:address location="https://demouy.hexacta.com:446/TestWCF/v05/VNPAccess.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
